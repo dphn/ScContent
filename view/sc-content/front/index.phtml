@@ -1,0 +1,11 @@
+<?php
+?> 
+<h1>Front</h1>
+
+<?php
+if(isset($registry['content_middle'])) {
+    foreach($registry['content_middle'] as $widget) {
+        echo $this->$widget;
+    }
+}
+?>
