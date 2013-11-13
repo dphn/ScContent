@@ -38,6 +38,11 @@ Installation
         "dphn/sc-content" : "dev-master"
     }
     ```
+ 2. Now tell composer to download ScContent by running the command:
+
+    ```bash
+    $ php composer.phar update
+    ```
     
 #### Post installation
 
