@@ -1,6 +1,12 @@
 {
 	"name": "dphn/sc-content",
-	"description": "Simple ZF2-based content editor",
+	"description": "Simple ZF2-based content editor module",
+	"license": "New BSD License",
+	"keywords": [
+        "zf2",
+        "cms",
+        "content management"
+    ],
 	"require": {
 		"php": ">=5.3.3",
         "zendframework/zendframework": ">2.2.0rc1",
