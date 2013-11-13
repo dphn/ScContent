@@ -2,6 +2,7 @@ ScContent
 =======================
 
 This module in process.
+At this time, the module works only with the database MySql.
 
 Introduction
 -----------------
@@ -27,6 +28,34 @@ Installation
 2. Install the [ZfcUser](https://github.com/ZF-Commons/ZfcUser) ZF2 module
    by cloning it into `./vendor/`.
 3. Clone this project into your `./vendor/` directory.
-4. Further installation is automatic.
+
+#### With composer
+
+1. Add this project in your composer.json:
+
+    ```json
+    "require": {
+        "dphn/sc-content" : "dev-master"
+    }
+    ```
+    
+#### Post installation
+
+1. Enabling it in your `application.config.php`file.
+
+    ```php
+    <?php
+    return array(
+        'modules' => array(
+            // ...
+            'ZfcBase',
+            'ZfcUser',
+            'ScContent',
+        ),
+        // ...
+    );
+    ```
+    
+2. Further installation is automatic.
 
 
