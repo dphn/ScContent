@@ -40,6 +40,19 @@ class CategoryControllerTest extends PHPUnit_Framework_TestCase
     {
         $serviceManager = Bootstrap::getServiceManager();
         $this->controller = new CategoryController();
+        $pluginManager = $this->controller->getPluginManager();
+        $plugin = $this
+            ->getMockBuilder('ScContent\Controller\Plugin\TranslatorProxy')
+            ->disableOriginalConstructor()
+            ->setMethods(array('__invoke'))
+            ->getMock();
+
+        $pluginManager->setFactory(
+            'translate',
+            function() use ($plugin) {
+                return $plugin;
+            }
+        );
 
         $this->fakeForm = $this
             ->getMockBuilder('ScContent\Form\Back\Category')

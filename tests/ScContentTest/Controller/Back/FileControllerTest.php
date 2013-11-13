@@ -51,6 +51,19 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
             ->getMock();
 
         $this->controller->setAddFileForm($this->fakeAddFileForm);
+        $pluginManager = $this->controller->getPluginManager();
+        $plugin = $this
+            ->getMockBuilder('ScContent\Controller\Plugin\TranslatorProxy')
+            ->disableOriginalConstructor()
+            ->setMethods(array('__invoke'))
+            ->getMock();
+
+        $pluginManager->setFactory(
+            'translate',
+            function() use ($plugin) {
+                return $plugin;
+            }
+        );
 
         $this->fakeEditFileForm = $this
             ->getMockBuilder('ScContent\Form\Back\FileEdit')

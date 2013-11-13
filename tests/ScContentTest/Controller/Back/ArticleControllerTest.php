@@ -39,7 +39,21 @@ class ArticleControllerTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $serviceManager = Bootstrap::getServiceManager();
+
         $this->controller = new ArticleController();
+        $pluginManager = $this->controller->getPluginManager();
+        $plugin = $this
+            ->getMockBuilder('ScContent\Controller\Plugin\TranslatorProxy')
+            ->disableOriginalConstructor()
+            ->setMethods(array('__invoke'))
+            ->getMock();
+
+        $pluginManager->setFactory(
+            'translate',
+            function() use ($plugin) {
+                return $plugin;
+            }
+        );
 
         $this->fakeForm = $this
             ->getMockBuilder('ScContent\Form\Back\Article')
