@@ -1,0 +1,184 @@
+<?php $this->headStyle()->captureStart() ?>
+html {
+    padding:0 20px;
+    background:#eaebec;
+}
+body {
+    max-width:600px;
+    min-width:270px;
+    margin:40px auto 20px;
+    padding:0;
+    font-size:16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height:1.428;
+    text-align:center;
+    border-radius:6px;
+	-webkit-box-shadow:0 3px 3px rgba(0,0,0,0.05);
+	box-shadow:0 3px 3px rgba(0,0,0,0.05);
+    border:1px solid #ddd;
+    background:#fff;
+    color:#222222;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin:0;
+    font-family:inherit;
+    font-weight:500;
+    color:626262;
+}
+h1 {
+    font-size:36px;
+}
+h2 {
+    font-size:30px;
+}
+h3 {
+    font-size:24px;
+}
+h4 {
+    font-size:18px;
+}
+h5 {
+    font-size:14px;
+}
+h6 {
+    font-size:12px;
+}
+p {
+    margin:0;
+}
+form {
+    padding:12px 20px;
+    text-align:left;
+}
+label {
+    margin:5px 0;
+    font-weight:600;
+    display:inline-block;
+    color:555555;
+}
+input, select, textarea {
+    margin-bottom:8px;
+    font-family:inherit;
+    font-size:14px;
+    line-height:inherit;
+}
+select, textarea, input[type="text"], input[type="password"],
+input[type="number"], input[type="email"], input[type="url"],
+input[type="search"], input[type="tel"], input[type="color"] {
+    display: block;
+    width: 100%;
+    height:34px;
+    padding:6px 12px;
+    color:#555555;
+    vertical-align:middle;
+    background-color:#ffffff;
+    border:1px solid #cccccc;
+    border-radius:4px;
+    -webkit-box-sizing:border-box;
+       -moz-box-sizing:border-box;
+            box-sizing:border-box;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition:border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+            transition:border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+select:focus, textarea:focus, input[type="text"]:focus, input[type="password"]:focus,
+input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus,
+input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus {
+    border-color:#66afe9;
+    outline:0;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+            box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+select {
+    height:36px;
+    padding:8px 12px;
+}
+code {
+    padding:2px 4px;
+    font-size:90%;
+    font-family:Monaco, Menlo, Consolas, "Courier New", monospace;
+    white-space:nowrap;
+    background-color:#f6f6f6;
+    border:1px solid #eee;
+    border-radius:4px;
+    color:#005892;
+}
+table {
+    width:100%;
+    margin:16px 0 0;
+    border-collapse:collapse;
+}
+th, td {
+    padding:6px;
+    font-size:95%;
+    text-align:left;
+    vertical-align:top;
+    border:1px solid #dddddd;
+}
+.step {
+    font-size:90%;
+}
+.btn-primary {
+    min-width:50px;
+    margin:6px auto;
+    padding:8px 14px;
+    font-size:14px;
+    font-weight:600;
+    text-align:center;
+    text-decoration:none;
+    vertical-align:middle;
+    background-color:#428bca;
+    border: 1px solid #357ebd;
+    border-radius:4px;
+    display:inline-block;
+    color:#ffffff;
+    cursor:pointer;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    color:#ffffff;
+    background-color:#3276b1;
+    border-color:#285e8e;
+    outline:0;
+}
+#header, #main, #footer {
+    margin:0;
+}
+#header {
+    padding:16px 0 8px;
+    border-bottom:1px solid #ddd;
+    -webkit-box-shadow:0 3px 3px rgba(0,0,0,0.05);
+	box-shadow:0 3px 3px rgba(0,0,0,0.05);
+    color:#4a4b4c;
+}
+#header h1 {
+    padding:0 24px;
+}
+#errors {
+    color:#c7254e;
+}
+#main {
+    padding:24px 24px 32px;
+    border-bottom:1px solid #ddd;
+}
+#footer {
+    padding:12px 24px 16px;
+}
+<?php $this->headStyle()->captureEnd() ?>
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<?php echo $this->headStyle() ?>
+
+<?php echo $this->headTitle($this->translate($title), \Zend\View\Helper\Placeholder\Container\AbstractContainer::PREPEND)->setSeparator(' . ')->setAutoEscape(false) ?>
+
+</head>
+
+<body>
+    <?php echo $this->content ?>
+    
+</body>

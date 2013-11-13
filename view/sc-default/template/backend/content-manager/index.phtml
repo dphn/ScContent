@@ -1,0 +1,41 @@
+<?php 
+    $this->headTitle($this->translate('Content Manager'));
+    $this->headScript()->appendFile($this->basePath() . '/sc-default/js/content-manager.js')
+                       ->appendFile($this->basePath() . '/sc-default/js/stratch.js');
+?>
+<?php if(isset($this->messages) && !empty($this->messages)): ?>
+
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <div class="alert alert-warning fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <ul>
+                <?php foreach($this->messages as $message): ?>
+                
+                <li><?php echo $message ?></li>
+                <?php endforeach ?>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+<?php endif ?>
+
+<div class="row">
+    <?php echo $this->partial('sc-default/template/backend/content-manager/pane.phtml', array(
+        'otherType' => $optionsProvider->getOtherOptions('first')->getType(),
+        'otherRoot' => $optionsProvider->getOtherOptions('first')->getRoot(),
+        'options' => $optionsProvider->getOptions('first'),
+        'list' => $contentListsProvider->getList('first'),
+        'pane' => 'first',
+    )) ?>
+    
+    <?php echo $this->partial('sc-default/template/backend/content-manager/pane.phtml', array(
+        'otherType' => $optionsProvider->getOtherOptions('second')->getType(),
+        'otherRoot' => $optionsProvider->getOtherOptions('second')->getRoot(),
+        'options' => $optionsProvider->getOptions('second'),
+        'list' => $contentListsProvider->getList('second'),
+        'pane' => 'second',
+    )) ?>
+    
+</div>
