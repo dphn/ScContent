@@ -13,4 +13,12 @@
         "zendframework/zendframework": ">2.2.0rc1",
         "zf-commons/zfc-user": "dev-master"
     }
+    "autoload": {
+        "psr-0": {
+            "ScContent": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
 }
