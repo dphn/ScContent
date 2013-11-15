@@ -1,7 +1,12 @@
-<?php 
+<?php
     $this->headTitle($this->translate('Edit Layout'));
 ?>
-<form action="" method="post">
+<?php if (isset($messages)): ?>
+
+    <?php echo $this->partial('sc-default/template/backend/partial/error.phtml') ?>
+<?php endif ?>
+
+<form action="<?php echo $this->url('sc-admin/layout', array('theme' => $theme->getName())) ?>" method="post">
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group content-helper">
@@ -16,10 +21,10 @@
         <div class="col-lg-12">
             <h3><?php echo $this->translate($theme->getDisplayName()) ?></h3>
             <?php if($theme->getDescription()): ?>
-            
+
             <p><?php echo $this->translate($theme->getDescription()) ?></p>
             <?php endif ?>
-            
+
         </div>
     </div>
     <div class="row">
@@ -27,24 +32,24 @@
             <div class="panel-group accordion" id="accordion">
                 <?php $first = true ?>
                 <?php foreach($regions as $regionName => $region): ?>
-                
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#<?php echo $regionName ?>">
                                 <?php echo $this->translate($regions->getDisplayName($regionName)) ?>
-                                
+
                             </a>
                         </h4>
                     </div>
                     <div id="<?php echo $regionName ?>" class="panel-collapse collapse<?php if($first): ?> in<?php $first = false; endif; ?>">
                         <div class="panel-body">
                         <?php if($region->isEmpty()): ?>
+
                             <em><?php echo $this->translate('No widgets in this region') ?></em>
-                            
                         <?php endif ?>
                         <?php foreach($region as $widget): ?>
-                        
+
                         <div class="row form-group">
                             <div class="col-sm-4 form-group-item">
                                 <h4><?php echo $this->translate($widget->getDisplayName()) ?></h4>
@@ -53,26 +58,27 @@
                                 <a href="">Edit</a>
                             </div>
                             <div class="col-sm-2 form-group-item">
-                                <input class="form-control input-sm" type="text" maxlength="3" value="<?php echo $widget->getPosition() ?>" />
+                                <input type="text" name="position[<?php echo $widget->getId() ?>]" class="form-control input-sm" maxlength="3" value="<?php echo $widget->getPosition() ?>" />
+                                <input type="hidden" name="old_position[<?php echo $widget->getId() ?>]" value="<?php echo $widget->getPosition() ?>" />
                             </div>
                             <div class="col-sm-4 form-group-item">
                                 <select name="region[<?php echo $widget->getId() ?>]" class="form-control input-sm">
                                     <?php foreach($regions->getNames() as $itemRegionName => $itemRegionDisplayName): ?>
-                                    
+
                                     <option value="<?php echo $itemRegionName?>"<?php if($itemRegionName == $regionName): ?> selected="selected"<?php endif ?>><?php echo $this->translate($itemRegionDisplayName) ?></option>
                                     <?php endforeach ?>
-                                    
+
                                 </select>
                                 <input type="hidden" name="old_region[<?php echo $widget->getId() ?>]" value="<?php echo $regionName ?>" />
                             </div>
                         </div>
                         <?php endforeach ?>
-                            
+
                         </div>
                     </div>
                 </div>
                 <?php endforeach ?>
-                
+
             </div>
         </div>
     </div>

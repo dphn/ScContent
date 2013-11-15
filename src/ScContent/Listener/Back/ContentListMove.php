@@ -53,19 +53,19 @@ class ContentListMove extends ContentListAbstractListener
             => 'Moving the elements to the search results is impossible.',
 
         self::SourceNotFound
-            => "Unable to move the element with identifier '%s'. The element was not found.",
+            => 'Unable to move the element with identifier %s. The element was not found.',
 
         self::DestinationNotFound
-            => "Unable to move the elements to the new location. The target element with identifier '%s' was not found.",
+            => 'Unable to move the elements to the new location. The target element with identifier %s was not found.',
 
         self::LoopError
-            => "Moving the element '%s' to the child elements chain is impossible.",
+            => 'Moving the element %s to the child elements chain is impossible.',
 
         self::NestingError
-            => "The element '%s' could not be moved. Nesting error. It is impossible to place the '%s' in the '%s'.",
+            => 'The element %s could not be moved. Nesting error. It is impossible to place the %s in the %s.',
 
         self::UnexpectedError
-            => "Unable to move '%s'.",
+            => 'Unable to move %s.',
     );
 
     /**

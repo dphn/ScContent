@@ -48,11 +48,40 @@ interface ModuleThemeInterface
     function getThemes();
 
     /**
+     * @param string $name
+     * @throws ScContent\Exception\DomainException
+     * @return array
+     */
+    function getThemeByName($name);
+
+    /**
+     * @param string $name
+     * @return boolean
+     */
+    function themeExists($name);
+
+    /**
+     * @param string $theme
+     * @param string $name
+     * @return boolean
+     */
+    function regionExists($theme, $name);
+
+    /**
+     * @param string $name
+     * @throws ScContent\Exception\DomainException
+     * @return string
+     */
+    function getThemeDisplayName($name);
+
+    /**
+     * @throws ScContent\Exception\DomainException
      * @return array
      */
     function getFrontendTheme();
 
     /**
+     * @throws ScContent\Exception\DomainException
      * @return array
      */
     function getBackendTheme();

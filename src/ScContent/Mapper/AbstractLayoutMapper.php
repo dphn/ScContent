@@ -53,13 +53,28 @@ class AbstractLayoutMapper extends AbstractDbMapper
     public function findExistingThemes()
     {
         $test = array();
-        $select = $this->getSql()
-            ->select()
+        $select = $this->getSql()->select()
             ->from($this->getTable(self::LayoutTableAlias))
             ->columns(array('theme'))
             ->group('theme');
 
         $result = $this->execute($select);
         return $this->toList($result, 'theme');
+    }
+
+    /**
+     * @param integer $id
+     * @return null | array
+     */
+    public function findMetaById($id)
+    {
+        $select = $this->getSql()->select()
+            ->from($this->getTable(self::LayoutTableAlias))
+            ->columns(array(
+                'id', 'theme', 'region', 'name', 'position',
+            ))
+            ->where(array('id' => $id));
+
+        return $this->execute($select)->current();
     }
 }

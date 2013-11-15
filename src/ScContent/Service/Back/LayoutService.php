@@ -9,19 +9,50 @@
  */
 namespace ScContent\Service\Back;
 
-use ScContent\Options\ModuleOptions,
+use ScContent\Service\AbstractService,
+    ScContent\Entity\Back\Theme,
+    ScContent\Options\ModuleOptions,
     ScContent\Mapper\Back\LayoutServiceMapper,
+    ScContent\Exception\RuntimeException,
     ScContent\Exception\IoCException;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class LayoutService
+class LayoutService extends AbstractService
 {
+    /**
+     * @var ScContent\Options\ModuleOptions
+     */
+    protected $moduleOptions;
+
     /**
      * @var ScContent\Mapper\Back\LayoutServiceMapper
      */
     protected $layoutMapper;
+
+    /**
+     * @param ScContent\Options\ModuleOptions $options
+     * @return void
+     */
+    public function setModuleOptions(ModuleOptions $options)
+    {
+        $this->moduleOptions = $options;
+    }
+
+    /**
+     * @throws ScContent\Exception\IoCException
+     * @return ScContent\Options\ModuleOptions
+     */
+    public function getModuleOptions()
+    {
+        if (! $this->moduleOptions instanceof ModuleOptions) {
+            throw new IoCException(
+                'The module options were not set.'
+            );
+        }
+        return $this->moduleOptions;
+    }
 
     /**
      * @param ScContent\Mapper\Back\LayoutServiceMapper $mapper
@@ -47,10 +78,43 @@ class LayoutService
     }
 
     /**
-     * @param string $theme Theme name
+     * @param string $name
+     * @throw ScContent\Exception\RuntimeException
+     * @return ScContent\Entity\Back\Theme
+     */
+    public function getTheme($name = null)
+    {
+        $translator = $this->getTranslator();
+        $moduleOptions = $this->getModuleOptions();
+        $theme = new Theme();
+        if (empty($name)) {
+            $name = $moduleOptions->getBackendThemeName();
+        }
+
+        if (! $moduleOptions->themeExists($name)) {
+            throw new RuntimeException(sprintf(
+                $translator->translate("Unknown theme '%s'."),
+                $moduleOptions->getThemeDisplayName($name)
+            ));
+        }
+
+        if (! $this->isThemeEnabled($name)) {
+            throw new RuntimeException(sprintf(
+                $translator->translate("Theme '%s' was not enabled."),
+                $moduleOptions->getThemeDisplayName($name)
+            ));
+        }
+        $options = $moduleOptions->getThemeByName($name);
+        $theme->exchangeArray($options);
+        $theme->setName($name);
+        return $theme;
+    }
+
+    /**
+     * @param string $theme
      * @return boolean
      */
-    public function isThemeRegistered($theme)
+    public function isThemeEnabled($theme)
     {
         $mapper = $this->getLayoutMapper();
         $themes = $mapper->findExistingThemes();

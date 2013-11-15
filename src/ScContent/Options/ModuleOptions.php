@@ -12,15 +12,11 @@ namespace ScContent\Options;
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-use ScContent\Exception\InvalidArgumentException,
+use ScContent\Exception\DomainException,
     //
     Zend\Stdlib\AbstractOptions;
 
-class ModuleOptions extends AbstractOptions implements
-    ModuleInterface,
-    ModuleThemeInterface,
-    ServiceDirInterface,
-    ServiceBackContentInterface
+class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
 {
     /**
      * @var array
@@ -110,6 +106,26 @@ class ModuleOptions extends AbstractOptions implements
     }
 
     /**
+     * @param array $db
+     * @return void
+     */
+    public function setDb($db)
+    {
+        if (is_array($db)) {
+            $this->db = $db;
+        }
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDb()
+    {
+        return $this->db;
+    }
+
+    /**
      * @param array $widgets
      * @return void
      */
@@ -130,23 +146,31 @@ class ModuleOptions extends AbstractOptions implements
     }
 
     /**
-     * @param array $db
-     * @return void
+     * @param string $name
+     * @return string
      */
-    public function setDb($db)
+    public function widgetExists($name)
     {
-        if (is_array($db)) {
-            $this->db = $db;
-        }
-        return $this;
+        return isset($this->widgets[$name]);
     }
 
     /**
-     * @return array
+     * @param string $name
+     * @throws ScContent\Exception\DomainException
+     * @return string
      */
-    public function getDb()
+    public function getWidgetDisplayName($name)
     {
-        return $this->db;
+        if (! $this->widgetExists($name)) {
+            throw new DomainException(sprintf(
+                "Unknown widget '%s'.",
+                $name
+            ));
+        }
+        if (isset($this->widget[$name]['display_name'])) {
+            return $this->widget[$name]['display_name'];
+        }
+        return $name;
     }
 
     /**
@@ -201,12 +225,73 @@ class ModuleOptions extends AbstractOptions implements
     }
 
     /**
+     * @param string $name
+     * @throws ScContent\Exception\DomainException
+     * @return array
+     */
+    public function getThemeByName($name)
+    {
+        if (! $this->themeExists($name)) {
+            throw new DomainException(sprintf(
+                "Unknown theme '%s'.",
+                $name
+            ));
+        }
+        return $this->themes[$name];
+    }
+
+    /**
+     * @param string $name
+     * @return boolean
+     */
+    public function themeExists($name)
+    {
+        return isset($this->themes[$name]);
+    }
+
+    /**
+     * @param string $theme
+     * @param string $name
+     * @return boolean
+     */
+    public function regionExists($theme, $name)
+    {
+        if (! $this->themeExists($theme)) {
+            return false;
+        }
+        if ($name == 'none') {
+            return true;
+        }
+        return isset($this->themes[$theme]['frontend']['regions'][$name]);
+    }
+
+    /**
+     * @param string $name
+     * @throws ScContent\Exception\DomainException
+     * @return string
+     */
+    public function getThemeDisplayName($name)
+    {
+        if (! $this->themeExists($name)) {
+            throw new DomainException(sprintf(
+                "Unknown theme '%s'.",
+                $name
+            ));
+        }
+        if (isset($this->themes[$name]['display_name'])) {
+            return $this->themes[$name]['display_name'];
+        }
+        return $name;
+    }
+
+    /**
+     * @throws ScContent\Exception\DomainException
      * @return array
      */
     public function getFrontendTheme()
     {
         if (! isset($this->themes[$this->frontendThemeName])) {
-            throw new InvalidArgumentException(sprintf(
+            throw new DomainException(sprintf(
                 "Missing frontend theme '%s'.",
                 $this->frontendThemeName
             ));
@@ -215,12 +300,13 @@ class ModuleOptions extends AbstractOptions implements
     }
 
     /**
+     * @throws ScContent\Exception\DomainException
      * @return array
      */
     public function getBackendTheme()
     {
         if (! isset($this->themes[$this->backendThemeName])) {
-            throw new InvalidArgumentException(sprintf(
+            throw new DomainException(sprintf(
                 "Missing backend theme '%s'.",
                 $this->frontendThemeName
             ));

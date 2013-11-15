@@ -45,10 +45,10 @@ class AssetsService extends AbstractInstallationService
             => 'Failed to install the assets for an unknown module %s.',
 
         self::MissingSourceArchive
-            => 'Unable to install assets. Archive of %s is not found.',
+            => 'Unable to install assets. Archive of %s was not found.',
 
         self::UnableToOpenArchive
-            => 'Unable to open archive %s. The archive is corrupt.',
+            => 'Unable to open archive %s. The archive was corrupt.',
 
         self::RecursiveError
             => 'A configuration error. The archive %s was extracted, but the directory, specified as the target does not exist.',

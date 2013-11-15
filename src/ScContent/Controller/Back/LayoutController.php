@@ -1,30 +1,30 @@
 <?php
+/**
+ * ScContent (https://github.com/dphn/ScContent)
+ *
+ * @author    Dolphin <work.dolphin@gmail.com>
+ * @copyright Copyright (c) 2013 ScContent
+ * @link      https://github.com/dphn/ScContent
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ */
 namespace ScContent\Controller\Back;
 
 use ScContent\Controller\AbstractBack,
     ScContent\Service\Back\LayoutService,
-    ScContent\Options\ModuleOptions,
-    ScContent\Entity\Back\Theme,
     ScContent\Exception\RuntimeException,
     //
-    Zend\View\Model\ViewModel;
+    Zend\View\Model\ViewModel,
+    Zend\Http\Response;
 
+/**
+ * @author Dolphin <work.dolphin@gmail.com>
+ */
 class LayoutController extends AbstractBack
 {
-    /**
-     * @var ScContent\Options\ModuleOptions
-     */
-    protected $moduleOptions;
-
     /**
      * @var ScContent\Service\Back\LayoutService
      */
     protected $layoutService;
-
-    /**
-     * @var ScContent\Entity\Back\Theme
-     */
-    protected $theme;
 
     /**
      * Shows a layout.
@@ -34,51 +34,43 @@ class LayoutController extends AbstractBack
     public function indexAction()
     {
         $service = $this->getLayoutService();
-        $moduleOptions = $this->getModuleOptions();
         try {
-            $theme = $this->getTheme($this->params()->fromRoute('theme'));
+            $theme = $service->getTheme(
+                $this->params()->fromRoute('theme')
+            );
         } catch (RuntimeException $e) {
             $this->flashMessenger()->addMessage($e->getMessage());
             return $this->redirect()
                 ->toRoute('sc-admin/themes')
                 ->setStatusCode(303);
         }
-        if (! $service->isThemeRegistered($theme->getName())) {
-            $this->flashMessenger()->addMessage(sprintf(
-                $this->translate("Theme '%s' was not enabled."),
-                $theme->getName()
-            ));
 
-            return $this->redirect()
-                ->toRoute('sc-admin/themes')
-                ->setStatusCode(303);
+        if ($this->getRequest()->isPost()) {
+            $events = $this->getEventManager();
+            $params = $this->request->getPost();
+            $params['theme'] = $theme->getName();
+            $results = $events->trigger(
+                __FUNCTION__,
+                $this,
+                $params
+            );
+            foreach ($results as $result) {
+                if ($result instanceof Response) {
+                    return $result;
+                }
+            }
         }
-
-        return new ViewModel (array(
+        $view = new ViewModel(array(
             'regions' => $service->getRegions($theme->getName()),
             'theme' => $theme
         ));
-    }
 
-    /**
-     * @param ScContent\Options\ModuleOptions $options
-     * @return void
-     */
-    public function setModuleOptions(ModuleOptions $options)
-    {
-        $this->moduleOptions = $options;
-    }
-
-    /**
-     * @return ScContent\Options\ModuleOptions
-     */
-    public function getModuleOptions()
-    {
-        if (! $this->moduleOptions instanceof ModuleOptions) {
-            $serviceLocator = $this->getServiceLocator();
-            $this->moduleOptions = $serviceLocator->get('sc-options.module');
+        $flashMessenger = $this->flashMessenger();
+        if ($flashMessenger->hasMessages()) {
+            $view->messages = $flashMessenger->getMessages();
         }
-        return $this->moduleOptions;
+
+        return $view;
     }
 
     /**
@@ -102,40 +94,5 @@ class LayoutController extends AbstractBack
             );
         }
         return $this->layoutService;
-    }
-
-    /**
-     * @param ScContent\Entity\Back\Theme $theme
-     * @return void
-     */
-    public function setTheme(Theme $theme)
-    {
-        $this->theme = $theme;
-    }
-
-    /**
-     * @param string $name
-     * @return ScContent\Entity\Back\Theme
-     */
-    public function getTheme($name = null)
-    {
-        if (! $this->theme instanceof Theme) {
-            $moduleOptions = $this->getModuleOptions();
-            $theme = new Theme();
-            if (empty($name)) {
-                $name = $moduleOptions->getBackendThemeName();
-            }
-            $themes = $moduleOptions->getThemes();
-            if (! isset($themes[$name])) {
-                throw new RuntimeException(sprintf(
-                    $this->translate("Unknown theme '%s'."), $name
-                ));
-            }
-            $options = $themes[$name];
-            $theme->exchangeArray($options);
-            $theme->setName($name);
-            $this->theme = $theme;
-        }
-        return $this->theme;
     }
 }

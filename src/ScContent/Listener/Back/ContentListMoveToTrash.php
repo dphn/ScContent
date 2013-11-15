@@ -38,10 +38,10 @@ class ContentListMoveToTrash extends ContentListAbstractListener
             => 'Moving elements from the trash to the trash is impossible.',
 
         self::SourceNotFound
-            => "Unable to move the element with identifier '%s' to the trash. The element was not found.",
+            => 'Unable to move the element with identifier %s to the trash. The element was not found.',
 
         self::UnexpectedError
-            => "Unable to move '%s' to trash.",
+            => 'Unable to move %s to trash.',
     );
 
 

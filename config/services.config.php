@@ -112,6 +112,12 @@ return array(
         'sc-mapper.back.layout.service'
             => 'ScContent\Factory\Mapper\Back\LayoutServiceMapperFactory',
 
+        'sc-mapper.back.layout.reorder'
+            => 'ScContent\Factory\Mapper\Back\LayoutReorderMapperFactory',
+
+        'sc-mapper.back.layout.move'
+            => 'ScContent\Factory\Mapper\Back\LayoutMoveMapperFactory',
+
         'sc-listener.theme.installation'
             => 'ScContent\Factory\Listener\Theme\InstallationFactory',
 
@@ -144,6 +150,12 @@ return array(
 
         'sc-listener.back.layout'
             => 'ScContent\Factory\Listener\Back\LayoutFactory',
+
+        'sc-listener.back.layout.reorder'
+            => 'ScContent\Factory\Listener\Back\LayoutReorderFactory',
+
+        'sc-listener.back.layout.move'
+            => 'ScContent\Factory\Listener\Back\LayoutMoveFactory',
 
         'sc-listener.back.garbage'
             => 'ScContent\Factory\Listener\Back\GarbageFactory',

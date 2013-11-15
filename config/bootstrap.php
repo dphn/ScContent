@@ -62,20 +62,30 @@ mb_internal_encoding(MB_INTERNAL_ENCODING);
 
 /* Activates the inspector of installation
  *
+ * If the 'installation.locked' file was not found, the
+ * installation starts.
+ *
  * The target - Application.
  * Application instance, currently exists.
  */
 $app = $e->getApplication();
 $sm = $app->getServiceManager();
 
-$app->getEventManager()->attach(
-    MvcEvent::EVENT_DISPATCH,
-    array(
-        $sm->get('sc-service.installation.inspector'),
-        'inspect',
-    ),
-    PHP_INT_MAX
-);
+$file = SCCONTENT_BASE_DIR
+    . DS . 'data'
+    . DS . 'settings'
+    . DS . 'installation.locked';
+
+if (! file_exists($file)) {
+    $app->getEventManager()->attach(
+        MvcEvent::EVENT_DISPATCH,
+        array(
+            $sm->get('sc-service.installation.inspector'),
+            'inspect',
+        ),
+        PHP_INT_MAX
+    );
+}
 
 /* Activates listeners of themes
  *

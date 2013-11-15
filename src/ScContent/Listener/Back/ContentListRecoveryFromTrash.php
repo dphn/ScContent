@@ -50,16 +50,16 @@ class ContentListRecoveryFromTrash extends ContentListAbstractListener
             => 'Recovering elements from the trash to the trash is impossible.',
 
         self::SourceNotFound
-            => "Unable to recovery the element with identifier '%s'. The element was not found.",
+            => 'Unable to recovery the element with identifier %s. The element was not found.',
 
         self::NestingError
-            => "The element '%s' could not be restored. Nesting error. It is impossible to place the '%s' in the '%s'.",
+            => 'The element %s could not be restored. Nesting error. It is impossible to place the %s in the %s.',
 
         self::DestinationNotFound
-            => "Unable to recovery the elements. The target element with identifier '%s' was not found.",
+            => 'Unable to recovery the elements. The target element with identifier %s was not found.',
 
         self::UnexpectedError
-            => "Unable to recovery '%s'.",
+            => 'Unable to recovery %s.',
     );
 
     /**

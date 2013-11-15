@@ -12,8 +12,11 @@ namespace ScContent\Entity;
 use ScContent\View\Helper\FormatProviderInterface,
     ScContent\Exception\RuntimeException;
 
-abstract class AbstractContent extends AbstractEntity
-    implements FormatProviderInterface
+/**
+ * @author Dolphin <work.dolphin@gmail.com>
+ */
+abstract class AbstractContent extends AbstractEntity implements
+    FormatProviderInterface
 {
     /**
      * @var null | integer

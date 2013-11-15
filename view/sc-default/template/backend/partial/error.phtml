@@ -1,0 +1,17 @@
+<?php if (isset($messages) && is_array($messages) && ! empty($messages)): ?>
+
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <div class="alert alert-warning fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <ul>
+                <?php foreach ($messages as $message): ?>
+
+                <li><?php echo $message ?></li>
+                <?php endforeach ?>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<?php endif ?>

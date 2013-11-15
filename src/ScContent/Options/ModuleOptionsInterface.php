@@ -12,18 +12,13 @@ namespace ScContent\Options;
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-interface ModuleInterface
+interface ModuleOptionsInterface extends
+    ModuleInstallationInterface,
+    ModuleThemeInterface,
+    ModuleWidgetInterface,
+    ServiceBackContentInterface,
+    ServiceDirInterface
 {
-    /**
-     * @param array $widgets
-     */
-    function setWidgets($widgets);
-
-    /**
-     * @return array
-     */
-    function getWidgets();
-
     /**
      * @param array $db
      */

@@ -38,10 +38,10 @@ class ContentListDelete extends ContentListAbstractListener
             => 'Permanently delete content that is not in the trash, is impossible.',
 
         self::SourceNotFound
-            => "Unable to permanently delete the element with identifier '%s'. The element was not found.",
+            => 'Unable to permanently delete the element with identifier %s. The element was not found.',
 
         self::UnexpectedError
-            => "Failed to permanently delete '%s'",
+            => 'Failed to permanently delete %s.',
     );
 
     /**

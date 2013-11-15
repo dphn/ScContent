@@ -93,7 +93,8 @@ class Schema implements SchemaInterface
             `options`  LONGTEXT,
             `position` INT UNSIGNED NOT NULL,
             PRIMARY KEY (`id`),
-            UNIQUE KEY (`theme`, `region`, `name`)
+            UNIQUE KEY (`theme`, `name`),
+            KEY (`theme`, `region`, `position`)
         )" . (('mysql' == $dataBase) ? 'ENGINE=InnoDB CHARSET=utf8' : '');
 
         /* Contains the relationship between the existing contents and

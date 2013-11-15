@@ -44,7 +44,6 @@ class ContentManagerController extends AbstractBack
      */
     public function indexAction()
     {
-        $flashMessenger = $this->flashMessenger();
         $optionsProvider = $this->getOptionsProvider();
         if ($this->getRequest()->isPost()) {
             $event = $this->request->getPost('suboperation');
@@ -64,6 +63,7 @@ class ContentManagerController extends AbstractBack
             'contentListsProvider' => $lists
         ));
 
+        $flashMessenger = $this->flashMessenger();
         if ($flashMessenger->hasMessages()) {
             $view->messages = $flashMessenger->getMessages();
         }

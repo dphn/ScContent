@@ -33,9 +33,6 @@ return array(
         'sc-controller.back.theme'
             => 'ScContent\Controller\Back\ThemeController',
 
-        'sc-controller.back.layout'
-            => 'ScContent\Controller\Back\LayoutController',
-
         'sc-controller.front.end'
             => 'ScContent\Controller\Front\FrontController',
 
@@ -46,7 +43,12 @@ return array(
             => 'ScContent\Controller\Front\LoginController',
     ),
     'factories' => array(
+        // Factory use events
         'sc-controller.back.manager'
             => 'ScContent\Factory\Controller\Back\ContentManagerFactory',
+
+        // Factory use events
+        'sc-controller.back.layout'
+            => 'ScContent\Factory\Controller\Back\LayoutFactory',
     ),
 );

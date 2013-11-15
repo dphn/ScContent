@@ -7,9 +7,9 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Factory\Service\Back;
+namespace ScContent\Factory\Mapper\Back;
 
-use ScContent\Service\Back\LayoutService,
+use ScContent\Mapper\Back\LayoutMoveMapper,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -17,19 +17,17 @@ use ScContent\Service\Back\LayoutService,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class LayoutFactory implements FactoryInterface
+class LayoutMoveMapperFactory implements FactoryInterface
 {
+    /**
+     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return ScContent\Mapper\Back\LayoutMoveMapper
+     */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $translator = $serviceLocator->get('translator');
         $moduleOptions = $serviceLocator->get('sc-options.module');
-        $layoutMapper = $serviceLocator->get('sc-mapper.back.layout.service');
-
-        $service = new LayoutService();
-
-        $service->setTranslator($translator);
-        $service->setModuleOptions($moduleOptions);
-        $service->setLayoutMapper($layoutMapper);
-        return $service;
+        $adapter = $serviceLocator->get('sc-db.adapter');
+        $mapper = new LayoutMoveMapper($adapter, $moduleOptions);
+        return $mapper;
     }
 }

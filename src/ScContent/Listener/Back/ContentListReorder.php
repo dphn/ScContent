@@ -48,13 +48,13 @@ class ContentListReorder extends ContentListAbstractListener
             => 'The order of elements other than natural, is unmanaged.',
 
         self::SourceNotFound
-            => "Unable to change the position of the element with identifier '%s'. The element was not found.",
+            => 'Unable to change the position of the element with identifier %s. The element was not found.',
 
         self::DestinationNotFound
-            => "Unable to change the order of elements. The parent element was not found.",
+            => 'Unable to change the order of elements. The parent element was not found.',
 
         self::UnexpectedError
-            => "Unable to change the position of '%s'.",
+            => 'Unable to change the position of %s.',
     );
 
     /**

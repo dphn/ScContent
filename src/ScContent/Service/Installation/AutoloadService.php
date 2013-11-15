@@ -39,10 +39,10 @@ class AutoloadService extends AbstractInstallationService
             => 'Unable to copy files to the application autoload directory. Directory %s is not writable. Please check the permissions, or copy the files manually.',
 
         self::UnknownModule
-            => 'Unable to copy file to the application autoload directory. The module %s is not found.',
+            => 'Unable to copy file to the application autoload directory. The module %s was not found.',
 
         self::MissingFile
-            => 'Unable to copy file to the application autoload directory. The file %s is not found.',
+            => 'Unable to copy file to the application autoload directory. The file %s was not found.',
 
         self::CopyFailed
             => 'Failed to copy the file %s to  the configuration autoload directory.',
