@@ -119,7 +119,7 @@ return array(
                             'items' => array(
                                 array(
                                     'source_module' => 'ScContent',
-                                    'source_file' => '/data/installation/zfcuser.local.php.dist',
+                                    'source_file' => '/data/installation/zfcuser.sc.v-0.1.3.002.local.php.dist',
                                 ),
                             ),
                         ),
@@ -134,7 +134,7 @@ return array(
                         'controller' => 'sc-controller.installation.config',
                         'action' => 'index',
                         'batch' => array(
-                            'source_file' => '/data/installation/sccontent.global.php.dist',
+                            'source_file' => '/data/installation/sccontent.sc.v-0.1.3.002.global.php.dist',
                         ),
                     ),
                 ),
@@ -195,6 +195,10 @@ return array(
                                      * to the "public" directory.
                                      */
                                     'validate_if_exists' => 'sc-default',
+                                    /* 'version' - directory must contain a
+                                     * "version" file with this name.
+                                     */
+                                    'version' => 'sc.v-0.1.3.002.version',
                                     'source' => array(
                                         'source_module' => 'ScContent',
                                         'source_zip' => '/data/public.zip',

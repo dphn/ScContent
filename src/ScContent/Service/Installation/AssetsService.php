@@ -51,7 +51,7 @@ class AssetsService extends AbstractInstallationService
             => 'Unable to open archive %s. The archive was corrupt.',
 
         self::RecursiveError
-            => 'A configuration error. The archive %s was extracted, but the directory, specified as the target does not exist.',
+            => 'A configuration error. The archive %s was extracted, but the directory, specified as the target does not exist or is it not the actual version.',
     );
 
     /**
@@ -74,6 +74,11 @@ class AssetsService extends AbstractInstallationService
                 "Missing option 'validate_if_exists'."
             );
         }
+        if (! isset($options['version'])) {
+            throw new InvalidArgumentException(
+                "Missing option 'version'."
+            );
+        }
         if (! isset($options['source'])) {
             throw new InvalidArgumentException(
                 "Missing 'source' options."
@@ -92,8 +97,11 @@ class AssetsService extends AbstractInstallationService
 
         $dir = clone ($this->dir);
 
-        // if directory is already exists
-        if ($dir->appPublic($options['validate_if_exists'], true)) {
+        /* If the directory already exists and the file, that
+         * defines the version, is valid
+         */
+        $version = $options['validate_if_exists'] . DS . $options['version'];
+        if ($dir->appPublic($version, true)) {
             return true;
         }
 
@@ -131,7 +139,7 @@ class AssetsService extends AbstractInstallationService
         $zip->extractTo($dir->appPublic());
         $zip->close();
 
-        if (! $dir->appPublic($options['validate_if_exists'], true)) {
+        if (! $dir->appPublic($version, true)) {
             $this->setValue($archiveDisplayName);
             $this->error(self::RecursiveError);
             return false;

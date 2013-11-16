@@ -82,10 +82,6 @@ class LayoutServiceMapper extends AbstractLayoutMapper
         $itemPrototype = new WidgetItem();
         foreach ($results as $result) {
             $item = clone ($itemPrototype);
-            $name = $result['name'];
-            if (isset($widgets[$name]['display_name'])) {
-                $result['display_name'] = $widgets[$name]['display_name'];
-            }
             $hydrator->hydrate($result, $item);
             $list->addItem($item);
         }

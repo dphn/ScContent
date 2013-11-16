@@ -58,7 +58,19 @@ class Assets extends AbstractValidator
                 "Missing validation option 'validate_if_exists'."
             );
         }
+        if (! isset($options['version'])) {
+            throw new InvalidArgumentException(
+                "Missing validation option 'version'."
+            );
+        }
         $dir = $this->getDir();
-        return (bool) $dir->appPublic($options['validate_if_exists'], true);
+        if (! $dir->appPublic($options['validate_if_exists'], true)) {
+            return false;
+        }
+        $version = $options['validate_if_exists'] . DS . $options['version'];
+        if (! $dir->appPublic($version, true)) {
+            return false;
+        }
+        return true;
     }
 }

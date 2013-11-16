@@ -85,21 +85,32 @@ return array(
 		),
 		'widgets' => array(
 			'login' => array(
-				'display_name' => 'Login',
-				'description'  => 'Login widget.',
-				'frontend'   => array(
+				'options' => array(
+					'display_name' => 'Login',
+					'description'  => 'Login widget.',
+				),
+				'frontend' => array(
 					'controller' => 'sc-controller.front.widget.login',
 					'action' => 'index',
 				),
 			),
 			'test_1' => array(
-			    'display_name' => 'Test 1',
+			    'options' => array(
+			    	'display_name' => 'Test 1',
+			    	'description' => 'The first widget for testing.',
+			    ),
 			),
 			'test_2' => array(
-			    'display_name' => 'Test 2',
+			    'options' => array(
+			    	'display_name' => 'Test 2',
+			    	'description' => 'The second widget for testing.',
+			    ),
 			),
 			'test_3' => array(
-			    'display_name' => 'Test 3',
+			    'options' => array(
+			    	'display_name' => 'Test 3',
+			    	'description' => 'The third widget for testing.',
+			    ),
 			),
 		),
 	    'db' => array(

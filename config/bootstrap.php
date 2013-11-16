@@ -72,7 +72,6 @@ $app = $e->getApplication();
 $sm = $app->getServiceManager();
 
 $file = SCCONTENT_BASE_DIR
-    . DS . 'data'
     . DS . 'settings'
     . DS . 'installation.locked';
 

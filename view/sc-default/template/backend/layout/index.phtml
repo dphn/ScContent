@@ -53,6 +53,11 @@
                         <div class="row form-group">
                             <div class="col-sm-4 form-group-item">
                                 <h4><?php echo $this->translate($widget->getDisplayName()) ?></h4>
+                                <?php if($widget->hasDescription()): ?>
+
+                                <?php echo $widget->getDescription() ?>
+                                <?php endif ?>
+
                             </div>
                             <div class="col-sm-2 form-group-item">
                                 <a href="">Edit</a>

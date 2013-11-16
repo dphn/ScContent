@@ -18,7 +18,7 @@ return array(
 'Check the system requirements'
     => 'Проверка системных требований',
 'Check the configuration settings and installed PHP extensions.'
-    => 'Проверка параметров конфигурации и установленных PHP расширений.',  
+    => 'Проверка параметров конфигурации и установленных PHP расширений.',
 'Safe mode must be disabled.'
     => 'Безопасный режим должен быть отключен.',
 "Directive 'magic_quotes_gpc' should be disabled."
@@ -29,11 +29,11 @@ return array(
     => "Директива 'magic_quotes_sybase' должна быть отключена.",
 'Available memory must be greater than 64M.'
     => 'Доступной памяти должно быть более 64М.',
-                
+
 'Missing php extension'
     => 'Отсутствующее php расширение',
 'Information'
-    => 'Информация',    
+    => 'Информация',
 //step 1
 'Setting the configuration'
     => 'Установка конфигурации',
@@ -61,7 +61,7 @@ return array(
     => 'Ошибка установки:',
 'Continue'
     => 'Продолжить',
-                
+
 // Service\Installation\Uploads
 'Failed to create uploads directory %s. Please, check permissions or create this directory manually.'
     => 'Не удалось создать каталог для загрузки файлов %s. Пожалуйста, проверьте права доступа или создайте этот каталог вручную.',
@@ -75,8 +75,8 @@ return array(
     => 'Невозможно установить ресурсы. Архив %s не найден.',
 'Unable to open archive %s. The archive is corrupt.'
     => 'Невозможно открыть архив %s. Архив поврежден.',
-'A configuration error. The archive %s was extracted, but the directory, specified as the target does not exist.'
-    => 'Ошибка конфигурации. Архив %s извлечен, но каталог, указанный в качестве целевого, не существует.',
+'A configuration error. The archive %s was extracted, but the directory, specified as the target does not exist or is it not the actual version.'
+    => 'Ошибка конфигурации. Архив %s извлечен, но каталог, указанный в качестве целевого, не существует, или это не актуальная версия.',
 
 // Form\Installation\DatabaseForm
 'Database driver'
@@ -95,11 +95,11 @@ return array(
     => 'Повторите пароль',
 'Install'
     => 'Установить',
-                
+
 // layout/backend.phtml
 'Administrator'
     => 'Администратор',
-                
+
 // sc-content/content-manager/index.phtml
 'Content Manager'
     => 'Контент-менеджер',
@@ -124,7 +124,7 @@ return array(
 'Current page'
     => 'Текущая страница',
 'of'
-    => 'из',                                                                                
+    => 'из',
 'All'
     => 'Все',
 'Categories'
@@ -134,7 +134,7 @@ return array(
 'Files'
     => 'Файлы',
 'Reorder'
-    => 'Сместить',                
+    => 'Сместить',
 'Recovery'
     => 'Восстановить',
 'Empty Trash'
@@ -144,7 +144,7 @@ return array(
 'Move to Trash'
     => 'Удалить',
 'Delete'
-    => 'Удалить навсегда',                
+    => 'Удалить навсегда',
 'Add'
     => 'Создать',
 'Category'
@@ -154,13 +154,13 @@ return array(
 'File'
     => 'Файл',
 'Search Preferences'
-    => 'Настроить поиск',                
+    => 'Настроить поиск',
 'Back to'
     => 'Вернуться к',
 'Site'
     => 'Сайт',
 'Trash'
-    => 'Корзина',                
+    => 'Корзина',
 'Title'
     => 'Заголовок',
 'St'  // Status
@@ -188,7 +188,7 @@ return array(
 'Are you sure, you want to delete the contents?'
     => 'Вы действительно хотите удалить содержимое?',
 'Are you sure, you want to empty trash?'
-    => 'Вы действительно хотите очистить корзину?',                               
+    => 'Вы действительно хотите очистить корзину?',
 
 // sc-content/content-manager/search.phtml
 'Content options'
@@ -198,22 +198,22 @@ return array(
 'User options'
     => 'Параметры пользователя',
 'A word or a few words separated by a space.'
-    => 'Слово или несколько слов через пробел.',                
+    => 'Слово или несколько слов через пробел.',
 'A word or beginning of the word.'
-    => 'Слово или начало слова.',                
+    => 'Слово или начало слова.',
 
 // Form\ContentSearch
 'Clean'
     => 'Очистить',
 
 'Containing Text'
-    => 'Содержит текст',    
+    => 'Содержит текст',
 'In the title'
     => 'В названии',
 'In the content'
     => 'В содержимом',
 'In the description'
-    => 'В описании',                                
+    => 'В описании',
 'Date of the latest changes is unknown'
     => 'Дата последних изменений неизвестна',
 'Last week'
@@ -223,18 +223,18 @@ return array(
 'In this range'
     => 'В этом диапазоне',
 'In the name'
-    => 'В имени',                
+    => 'В имени',
 'In the e-mail'
     => 'В e-mail',
-                
+
 // Validator\ContentList\SearchDateRange
 'Options for the date range search are not specified.'
     => 'Параметры для поиска по диапазону дат не указаны.',
 'The start date for the search is not specified.'
     => 'Дата начала поиска не указана.',
 'The end date for the search is not specified.'
-    => 'Дата окончания поиска не указана.',                                                
-                                
+    => 'Дата окончания поиска не указана.',
+
 // sc-content/category/edit.phtml
 'Save'
     => 'Сохранить',
@@ -258,25 +258,25 @@ return array(
     => 'Описание статьи',
 'Article options'
     => 'Параметры статьи',
-                
+
 // sc-content/file/add.phtml
 'Add Files'
     => 'Добавить файлы',
 'File names can only consist of letters of the alphabet, spaces, hyphens, and underscores.'
     => 'Имя файла может содержать только символы латинского алфавита, пробелы, дефисы и нижнее подчеркивание.',
 'Maximum upload file size: 2MB.'
-    => 'Максимальный размер загружаемого файла: 2Мб.',                
+    => 'Максимальный размер загружаемого файла: 2Мб.',
 
 // sc-content/file/add.phtml
 'Edit Files'
     => 'Редактировать файлы',
-                
+
 // Form\FileAdd
 'Upload'
     => 'Загрузить',
 'Upload file'
-    => 'Загрузить файл', 
-                                  
+    => 'Загрузить файл',
+
 // View\Helper\ContentFormat
 'category'
     => 'категория',
@@ -299,7 +299,7 @@ return array(
 'presentation'
     => 'презентация',
 'drawing'
-    => 'графика', 
+    => 'графика',
 
 // ScDefault Theme
 'The default theme with several regions.'

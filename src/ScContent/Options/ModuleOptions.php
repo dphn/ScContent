@@ -156,25 +156,6 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
 
     /**
      * @param string $name
-     * @throws ScContent\Exception\DomainException
-     * @return string
-     */
-    public function getWidgetDisplayName($name)
-    {
-        if (! $this->widgetExists($name)) {
-            throw new DomainException(sprintf(
-                "Unknown widget '%s'.",
-                $name
-            ));
-        }
-        if (isset($this->widget[$name]['display_name'])) {
-            return $this->widget[$name]['display_name'];
-        }
-        return $name;
-    }
-
-    /**
-     * @param string $name
      * @return void
      */
     public function setFrontendThemeName($name)

@@ -29,12 +29,12 @@ class WidgetItem extends AbstractEntity
     /**
      * @var string
      */
-    protected $displayName = '';
+    protected $region = '';
 
     /**
-     * @var string
+     * @var array
      */
-    protected $region = '';
+    protected $options = array();
 
     /**
      * @var integer
@@ -76,26 +76,6 @@ class WidgetItem extends AbstractEntity
     }
 
     /**
-     * @param string $name
-     * @return void
-     */
-    public function setDisplayName($name)
-    {
-        $this->displayName = $name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDisplayName()
-    {
-        if (! $this->displayName) {
-            return $this->name;
-        }
-        return $this->displayName;
-    }
-
-    /**
      * @param string $region
      * @return void
      */
@@ -113,6 +93,26 @@ class WidgetItem extends AbstractEntity
     }
 
     /**
+     * @param string | array $options
+     * @return void
+     */
+    public function setOptions($options)
+    {
+        if (is_string($options)) {
+            $options = unserialize($options);
+        }
+        $this->options = $options;
+    }
+
+    /**
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
      * @param integer $position
      * @return void
      */
@@ -127,5 +127,34 @@ class WidgetItem extends AbstractEntity
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        if (isset($this->options['display_name'])) {
+            return $this->options['display_name'];
+        }
+        return $this->name;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function hasDescription()
+    {
+        return isset($this->options['description']);
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        if (isset($this->options['description'])) {
+            return $this->options['description'];
+        }
     }
 }

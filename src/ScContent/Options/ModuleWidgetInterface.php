@@ -21,7 +21,7 @@ interface ModuleWidgetInterface
 
     /**
      * @return array
-    */
+     */
     function getWidgets();
 
     /**
@@ -29,11 +29,4 @@ interface ModuleWidgetInterface
      * @retunr boolean
      */
     function widgetExists($name);
-
-    /**
-     * @param string $name
-     * @throws ScContent\Exception\DomainException
-     * @return string
-     */
-    function getWidgetDisplayName($name);
 }

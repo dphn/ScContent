@@ -27,7 +27,7 @@ class ModuleFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $settings = include(
-            SCCONTENT_BASE_DIR . DS . 'config' . DS . 'module.settings.php'
+            SCCONTENT_BASE_DIR . DS . 'settings' . DS . 'module.settings.php'
         );
 
         $installation = include(

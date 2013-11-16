@@ -120,7 +120,7 @@ class WidgetEntity extends AbstractEntity
      */
     public function setOptions($options)
     {
-        $this->options = options;
+        $this->options = $options;
     }
 
     /**
