@@ -32,4 +32,13 @@ class FilesList extends AbstractList
     {
         return $this->items;
     }
+
+    /**
+     * @param array $data
+     * @return void
+     */
+    public function exchangeArray($data)
+    {
+        return;
+    }
 }
