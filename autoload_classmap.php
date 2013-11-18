@@ -7,7 +7,7 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
- * total classes:    216
+ * total classes:    217
  * total interfaces: 16
  */
 
@@ -164,6 +164,7 @@ return array(
     'ScContent\Service\Installation\AbstractInstallationService'          => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Service'          . DS . 'Installation'                    . DS . 'AbstractInstallationService.php',
     'ScContent\Service\Installation\AssetsService'                        => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Service'          . DS . 'Installation'                    . DS . 'AssetsService.php',
     'ScContent\Service\Installation\AutoloadService'                      => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Service'          . DS . 'Installation'                    . DS . 'AutoloadService.php',
+    'ScContent\Service\Installation\ConfigService'                        => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Service'          . DS . 'Installation'                    . DS . 'ConfigService.php',
     'ScContent\Service\Installation\InstallationInspector'                => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Service'          . DS . 'Installation'                    . DS . 'InstallationInspector.php',
     'ScContent\Service\Installation\LayoutService'                        => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Service'          . DS . 'Installation'                    . DS . 'LayoutService.php',
     'ScContent\Service\Installation\MigrationService'                     => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Service'          . DS . 'Installation'                    . DS . 'MigrationService.php',
@@ -222,7 +223,6 @@ return array(
     'ScContent\Factory\Mapper\Back\LayoutMoveMapperFactory'               => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Mapper'                          . DS . 'Back'                                . DS . 'LayoutMoveMapperFactory.php',
     'ScContent\Factory\Mapper\Back\LayoutReorderMapperFactory'            => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Mapper'                          . DS . 'Back'                                . DS . 'LayoutReorderMapperFactory.php',
     'ScContent\Factory\Mapper\Back\LayoutServiceMapperFactory'            => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Mapper'                          . DS . 'Back'                                . DS . 'LayoutServiceMapperFactory.php',
-    'ScContent\Factory\Mapper\Installation\ConfigFactory'                 => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Mapper'                          . DS . 'Installation'                        . DS . 'ConfigFactory.php',
     'ScContent\Factory\Mapper\Installation\LayoutFactory'                 => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Mapper'                          . DS . 'Installation'                        . DS . 'LayoutFactory.php',
     'ScContent\Factory\Service\Back\ArticleFactory'                       => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Service'                         . DS . 'Back'                                . DS . 'ArticleFactory.php',
     'ScContent\Factory\Service\Back\CategoryFactory'                      => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Service'                         . DS . 'Back'                                . DS . 'CategoryFactory.php',
@@ -233,6 +233,7 @@ return array(
     'ScContent\Factory\Service\Back\LayoutFactory'                        => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Service'                         . DS . 'Back'                                . DS . 'LayoutFactory.php',
     'ScContent\Factory\Service\Installation\AssetsFactory'                => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Service'                         . DS . 'Installation'                        . DS . 'AssetsFactory.php',
     'ScContent\Factory\Service\Installation\AutoloadFactory'              => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Service'                         . DS . 'Installation'                        . DS . 'AutoloadFactory.php',
+    'ScContent\Factory\Service\Installation\ConfigFactory'                => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Service'                         . DS . 'Installation'                        . DS . 'ConfigFactory.php',
     'ScContent\Factory\Service\Installation\InstallationInspectorFactory' => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Service'                         . DS . 'Installation'                        . DS . 'InstallationInspectorFactory.php',
     'ScContent\Factory\Service\Installation\LayoutFactory'                => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Service'                         . DS . 'Installation'                        . DS . 'LayoutFactory.php',
     'ScContent\Factory\Service\Installation\MigrationFactory'             => __DIR__ . DS . 'src'       . DS . 'ScContent'     . DS . 'Factory'          . DS . 'Service'                         . DS . 'Installation'                        . DS . 'MigrationFactory.php',

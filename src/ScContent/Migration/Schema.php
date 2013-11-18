@@ -37,6 +37,19 @@ class Schema implements SchemaInterface
      */
     public function up($dataBase = 'mysql')
     {
+        /* {{{ [1] It is a temporary feature.
+         *     It is planned to replace it with a full-fledged
+         *     migration version control.
+         */
+            // reset database
+            $this->down();
+            $queries[] = "CREATE TABLE IF NOT EXISTS `v1` (
+                `temp` CHAR(1)
+            )";
+        /*
+         * [1] }}}
+         */
+
         $queries[] = "CREATE TABLE IF NOT EXISTS `sc_content` (
             `id`          INT UNSIGNED NOT NULL AUTO_INCREMENT,
             `left_key`    INT NOT NULL,
@@ -144,9 +157,11 @@ class Schema implements SchemaInterface
     {
         $queries[] = "DROP TABLE IF EXISTS `sc_content`";
         $queries[] = "DROP TABLE IF EXISTS `sc_search`";
+        $queries[] = "DROP TABLE IF EXISTS `sc_garbage`";
         $queries[] = "DROP TABLE IF EXISTS `sc_widgets`";
         $queries[] = "DROP TABLE IF EXISTS `sc_layout`";
         $queries[] = "DROP TABLE IF EXISTS `sc_users`";
+        $queries[] = "DROP TABLE IF EXISTS `v1`";
 
         $adapter = $this->adapter;
         foreach($queries as $query) {

@@ -49,6 +49,9 @@ return array(
         'sc-service.installation.assets'
             => 'ScContent\Factory\Service\Installation\AssetsFactory',
 
+        'sc-service.installation.config'
+            => 'ScContent\Factory\Service\Installation\ConfigFactory',
+
         'sc-service.installation.layout'
             => 'ScContent\Factory\Service\Installation\LayoutFactory',
 
@@ -72,9 +75,6 @@ return array(
 
         'sc-service.back.layout'
             => 'ScContent\Factory\Service\Back\LayoutFactory',
-
-        'sc-mapper.installation.config'
-            => 'ScContent\Factory\Mapper\Installation\ConfigFactory',
 
         'sc-mapper.installation.layout'
             => 'ScContent\Factory\Mapper\Installation\LayoutFactory',

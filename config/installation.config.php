@@ -120,6 +120,7 @@ return array(
                                 array(
                                     'source_module' => 'ScContent',
                                     'source_file' => '/data/installation/zfcuser.sc.v-0.1.3.002.local.php.dist',
+                                    'old_files_mask' => 'zfcuser.sc.v-*',
                                 ),
                             ),
                         ),
@@ -134,7 +135,8 @@ return array(
                         'controller' => 'sc-controller.installation.config',
                         'action' => 'index',
                         'batch' => array(
-                            'source_file' => '/data/installation/sccontent.sc.v-0.1.3.002.global.php.dist',
+                            'source_file' => '/data/installation/sccontent.sc.v-0.1.3.003.global.php.dist',
+                            'old_files_mask' => 'sccontent.sc.v-*',
                         ),
                     ),
                 ),
@@ -164,6 +166,7 @@ return array(
                                         'sc_widgets',
                                         'sc_layout',
                                         'sc_users',
+                                        'v1',
                                     ),
                                 ),
                             ),

@@ -10,9 +10,6 @@
 namespace ScContent\Mapper\Installation;
 
 use ScContent\Entity\Installation\DatabaseConfig,
-    ScContent\Service\Dir,
-    //
-    ScContent\Mapper\Exception\RuntimeException,
     //
     Zend\Stdlib\Hydrator\HydratorInterface,
     Zend\Stdlib\Hydrator\ArraySerializable,
@@ -27,11 +24,6 @@ use ScContent\Entity\Installation\DatabaseConfig,
  */
 class ConfigMapper
 {
-    /**
-     * @var ScContent\Service\Dir
-     */
-    protected $dir;
-
     /**
      * @var Zend\Config\Config
      */
@@ -48,34 +40,14 @@ class ConfigMapper
     protected $hydrator;
 
     /**
-     * Constructor
-     *
-     * @param ScContent\Service\Dir $dir
-     */
-    public function __construct(Dir $dir)
-    {
-        $this->dir = $dir;
-    }
-
-    /**
      * @param ScContent\Entity\Installation\DatabaseConfig $entity
-     * @param string $source
-     * @throws ScContent\Mapper\Exception\RuntimeException
+     * @param string $source Source file path
+     * @param string $destination Destination file path
      * @return void
      */
-    public function save(DatabaseConfig $entity, $source)
+    public function save(DatabaseConfig $entity, $source, $destination)
     {
-        $dir = $this->dir;
-        if (! $dir->module($source, true)) {
-            throw new RuntimeException(sprintf(
-                "Unable to install configuration. Missing source file '%s'.",
-                $source
-            ));
-        }
-        $destination = $dir->appAutoload(basename($source, '.dist'));
-        $repository = $this->getRepository(
-            require($dir->module($source))
-        );
+        $repository = $this->getRepository(require($source));
         $repository->sc->db = array();
         $repository->sc->db->driver = 'pdo';
         $data = $this->getHydrator()->extract($entity);

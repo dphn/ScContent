@@ -25,8 +25,10 @@ class MigrationFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+        $translator = $serviceLocator->get('translator');
         $service = new MigrationService();
         $service->setServiceLocator($serviceLocator);
+        $service->setTranslator($translator);
         return $service;
     }
 }

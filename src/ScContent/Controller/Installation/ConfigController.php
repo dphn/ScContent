@@ -10,13 +10,10 @@
 namespace ScContent\Controller\Installation;
 
 use ScContent\Controller\AbstractInstallation,
-    ScContent\Entity\Installation\DatabaseConfig,
-    ScContent\Mapper\Installation\ConfigMapper,
+    ScContent\Service\Installation\ConfigService,
     ScContent\Form\Installation\DatabaseForm,
     //
-    Zend\View\Model\ViewModel,
-    //
-    Exception;
+    Zend\View\Model\ViewModel;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -24,14 +21,9 @@ use ScContent\Controller\AbstractInstallation,
 class ConfigController extends AbstractInstallation
 {
     /**
-     * @var ScContent\Entity\Installation\DatabaseConfig
+     * @var ScContent\Service\Installation\ConfigService
      */
-    protected $entity;
-
-    /**
-     * @var ScContent\Mapper\Installation\ConfigMapper
-     */
-    protected $mapper;
+    protected $configService;
 
     /**
      * @var ScContent\Form\Installation\DatabaseForm
@@ -39,9 +31,7 @@ class ConfigController extends AbstractInstallation
     protected $form;
 
     /**
-     * Creates the internal configuration of the module.
-     *
-     * @return Zend\View\Model\ViewModel
+     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
      */
     public function indexAction()
     {
@@ -50,9 +40,12 @@ class ConfigController extends AbstractInstallation
         if (! $routeMatch->getParam('step')
             || ! $routeMatch->getParam('member')
         ) {
-            return $this->redirect()->toUrl($redirect)->setStatusCode(303);
+            return $this->redirect()
+                ->toUrl($redirect)
+                ->setStatusCode(303);
         }
 
+        $view = new ViewModel();
         $step = $routeMatch->getParam('step');
         $member = $routeMatch->getParam('member');
         $options = $this->getModuleOptions()->getInstallation();
@@ -60,71 +53,25 @@ class ConfigController extends AbstractInstallation
         $form = $this->getForm();
         $form->setAttribute(
             'action',
-            $this->url()->fromRoute('sc-install', array('process' => 'process'))
+            $this->url()->fromRoute(
+                'sc-install', array('process' => 'process')
+            )
         );
-        $form->bind($this->getEntity());
+        $view->form = $form;
+        $service = $this->getConfigService();
+        $config = $service->getConfig();
+        $form->bind($config);
         if ($this->getRequest()->isPost()) {
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
-                $mapper = $this->getConfigMapper();
-                $databaseConfig = $form->getData();
-                try {
-                    $mapper->save($databaseConfig, $batch['source_file']);
+                $result = $service->saveConfig($config, $batch);
+                if ($result) {
                     return $this->redirect()->toUrl($redirect);
-                } catch (Exception $e) {
-                    return array(
-                        'errors' => array($e->getMessage()),
-                        'form' => $form,
-                    );
                 }
+                $view->errors = $service->getMessages();
             }
         }
-        return new ViewModel(array(
-            'form' => $form
-        ));
-    }
-
-    /**
-     * @param ScContent\Entity\Installation\DatabaseConfig $entity
-     * @return void
-     */
-    public function setEntity(DatabaseConfig $entity)
-    {
-        $this->entity = $entity;
-    }
-
-    /**
-     * @return ScContent\Entity\Installation\DatabaseConfig
-     */
-    public function getEntity()
-    {
-        if (! $this->entity instanceof DatabaseConfig) {
-            $this->entity = new DatabaseConfig();
-        }
-        return $this->entity;
-    }
-
-    /**
-     * @param ScContent\Mapper\Installation\ConfigMapper $mapper
-     * @return void
-     */
-    public function setMapper(ConfigMapper $mapper)
-    {
-        $this->mapper = $mapper;
-    }
-
-    /**
-     * @return ScContent\Mapper\Installation\ConfigMapper
-     */
-    public function getConfigMapper()
-    {
-        if (! $this->mapper instanceof ConfigMapper) {
-            $serviceLocator = $this->getServiceLocator();
-            $this->mapper = $serviceLocator->get(
-                'sc-mapper.installation.config'
-            );
-        }
-        return $this->mapper;
+        return $view;
     }
 
     /**
@@ -150,5 +97,28 @@ class ConfigController extends AbstractInstallation
             );
         }
         return $this->form;
+    }
+
+    /**
+     * @param ScContent\Service\Installation\ConfigService $service
+     * @return void
+     */
+    public function setConfigService(ConfigService $service)
+    {
+        $this->configService = $service;
+    }
+
+    /**
+     * @return ScContent\Service\Installation\ConfigService
+     */
+    public function getConfigService()
+    {
+        if (! $this->configService instanceof ConfigService) {
+            $serviceLocator = $this->getServiceLocator();
+            $this->configService = $serviceLocator->get(
+                'sc-service.installation.config'
+            );
+        }
+        return $this->configService;
     }
 }
