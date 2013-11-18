@@ -12,8 +12,11 @@ namespace ScContent\Service;
 use ScContent\Exception\InvalidArgumentException,
     ScContent\Exception\IoCException,
     //
-    ReflectionClass,
-    ReflectionException;
+    ZfcBase\Module\AbstractModule,
+    //
+    Zend\Stdlib\ErrorHandler,
+    //
+    ReflectionClass;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -64,14 +67,28 @@ class Dir
     {
         $nsParts = explode('\\', $namespace);
         $moduleClass = $nsParts[0] . '\Module';
-        try {
-            $reflection = new ReflectionClass($moduleClass);
-        } catch (ReflectionException $e) {
+
+        if (! class_exists($moduleClass, true)) {
             throw new InvalidArgumentException(sprintf(
                 "The Module class was not found in the '%s' namespace.",
                 $namespace
-            ), null, $e);
+            ));
         }
+
+        $module = new $moduleClass();
+
+        /* Recommended.
+         * If you Module class extends 'ZfcBase\Module\AbstractModule'.
+         */
+        if ($module instanceof AbstractModule) {
+            $this->moduleDir = realpath($module->getDir());
+            return $this;
+        }
+
+        /* Otherwise - get a path using of Reflection.
+         */
+        $reflection = new ReflectionClass($module);
+
         $this->moduleDir = realpath(dirname($reflection->getFileName()));
         return $this;
     }
