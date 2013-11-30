@@ -12,6 +12,7 @@ This is a simple module for editing the content based on Zend Framework 2.
 Requirements
 -----------------
 * [Zend Framework 2](https://github.com/zendframework/zf2) (latest master)
+* [BjyAuthorize](https://github.com/bjyoungblood/BjyAuthorize) (latest master)
 * [ZfcUser](https://github.com/ZF-Commons/ZfcUser) (latest master)
 * [ZfcBase](https://github.com/ZF-Commons/ZfcBase) (latest master)
 
@@ -24,11 +25,13 @@ Installation
 
 #### By cloning project
 
-1. Install the [ZfcBase](https://github.com/ZF-Commons/ZfcBase) ZF2 module
+1. Install the [BjyAuthorize](https://github.com/bjyoungblood/BjyAuthorize) ZF2 module
    by cloning it into `./vendor/`.
-2. Install the [ZfcUser](https://github.com/ZF-Commons/ZfcUser) ZF2 module
+2. Install the [ZfcBase](https://github.com/ZF-Commons/ZfcBase) ZF2 module
    by cloning it into `./vendor/`.
-3. Clone this project into your `./vendor/` directory.
+3. Install the [ZfcUser](https://github.com/ZF-Commons/ZfcUser) ZF2 module
+   by cloning it into `./vendor/`.
+4. Clone this project into your `./vendor/` directory.
 
 #### With composer
 
@@ -57,6 +60,7 @@ Installation
             // ...
             'ZfcBase',
             'ZfcUser',
+            'BjyAuthorize',
             'ScContent',
         ),
         // ...
