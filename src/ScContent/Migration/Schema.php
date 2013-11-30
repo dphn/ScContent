@@ -10,7 +10,6 @@
 namespace ScContent\Migration;
 
 use ScContent\Exception\MigrationException,
-    ScContent\Migration\MapperBase,
     //
     Exception;
 
