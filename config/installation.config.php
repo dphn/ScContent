@@ -167,7 +167,7 @@ return [
                         'batch' => [
                             'items' => [
                                 [
-                                    'schema' => 'ScMigration.Schema',
+                                    'schema' => 'ScContent.Migration.Schema',
                                     'tables' => [
                                         'sc_content',
                                         'sc_search',

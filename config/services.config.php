@@ -12,12 +12,12 @@ return [
         'ScService.DateTime'
             => 'ScContent\Service\ScDateTime',
     ],
+    'abstract_factories' => [
+        'ScContent\Factory\Migration\MigrationSchemaAbstractFactory',
+    ],
     'factories' => [
         'ScDb.Adapter'
             => 'ScContent\Factory\Db\AdapterServiceFactory',
-
-        'ScMigration.Schema'
-            => 'ScContent\Factory\Migration\SchemaFactory',
 
         'ScOptions.ModuleOptions'
             => 'ScContent\Factory\Options\ModuleFactory',
