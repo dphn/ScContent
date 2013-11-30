@@ -7,8 +7,8 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-return array(
-    'invokables' => array(
+return [
+    'invokables' => [
         'ScValidator.Installation.PhpIni'
             => 'ScContent\Validator\Installation\PhpIni',
 
@@ -26,8 +26,8 @@ return array(
 
         'ScValidator.Mapper.Nesting'
             => 'ScContent\Validator\Mapper\NestingValidator',
-    ),
-    'factories' => array(
+    ],
+    'factories' => [
         'ScValidator.Installation.Autoload'
             => 'ScContent\Factory\Validator\Installation\AutoloadFactory',
 
@@ -48,5 +48,5 @@ return array(
 
         'ScValidator.File.Type'
             => 'ScContent\Factory\Validator\FileTypeFactory',
-    ),
-);
+    ],
+];

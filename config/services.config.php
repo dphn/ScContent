@@ -7,12 +7,12 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-return array(
-    'invokables' => array(
+return [
+    'invokables' => [
         'ScService.DateTime'
             => 'ScContent\Service\ScDateTime',
-    ),
-    'factories' => array(
+    ],
+    'factories' => [
         'ScDb.Adapter'
             => 'ScContent\Factory\Db\AdapterServiceFactory',
 
@@ -159,5 +159,5 @@ return array(
 
         'ScListener.Back.Garbage'
             => 'ScContent\Factory\Listener\Back\GarbageFactory',
-    ),
-);
+    ],
+];

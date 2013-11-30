@@ -7,8 +7,8 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-return array(
-    'factories' => array(
+return [
+    'factories' => [
         'scDateTime'
             => 'ScContent\Factory\View\Helper\DateTimeFactory',
 
@@ -17,5 +17,5 @@ return array(
 
         'scContentFormat'
             => 'ScContent\Factory\View\Helper\ContentFormatFactory',
-    ),
-);
+    ],
+];
