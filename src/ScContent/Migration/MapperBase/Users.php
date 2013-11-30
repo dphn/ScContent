@@ -64,12 +64,12 @@ class Users extends AbstractMigrationMapper
         $this->execute(new CreateIndex(
            'sc_users',
            CreateIndex::Unique,
-    	   'i_username',
+           'i_username',
            'username'
         ));
 
         $this->execute(new CreateIndex(
-        	'sc_users',
+            'sc_users',
             CreateIndex::Unique,
             'i_email',
             'email'

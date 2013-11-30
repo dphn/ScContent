@@ -39,14 +39,14 @@ class RolesLinker extends AbstractMigrationMapper
         $this->execute($sql);
 
         $this->execute(new CreateIndex(
-        	'sc_roles_linker',
+            'sc_roles_linker',
             CreateIndex::Key,
             'i_role_id',
             'role_id'
         ));
 
         $this->execute(new CreateIndex(
-        	'sc_roles_linker',
+            'sc_roles_linker',
             CreateIndex::Key,
             'i_user_id',
             'user_id'

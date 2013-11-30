@@ -1,206 +1,206 @@
 <?php
 
-return array(
-    'view_manager' => array(
-        'template_map' => array(
+return [
+    'view_manager' => [
+        'template_map' => [
             // @todo
-        ),
-        'template_path_stack' => array(
+        ],
+        'template_path_stack' => [
             SCCONTENT_BASE_DIR . DS . 'view',
-        ),
-    ),
-    'translator' => array(
+        ],
+    ],
+    'translator' => [
         'locale' => Locale::getDefault(),
-        'translation_file_patterns' => array(array(
+        'translation_file_patterns' => [[
             'type' => 'phpArray',
             'base_dir' => SCCONTENT_BASE_DIR . DS . 'language',
             'pattern' => '%s.php',
-        )),
-    ),
-    'router' => array(
-        'routes' => array(
+        ]],
+    ],
+    'router' => [
+        'routes' => [
             /* The route to the home page.
              */
-            'sc' => array(
+            'sc' => [
                 'type' => 'literal',
                 'priority' => 100,
-                'options' => array(
+                'options' => [
                     'route' => '/',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'ScController.Front.Frontend',
                         'action' => 'index',
-                    ),
-                ),
-            ),
+                    ],
+                ],
+            ],
             /* Installation.
              */
-            'sc-install' => array(
+            'sc-install' => [
                 'type' => 'segment',
-                'options' => array(
+                'options' => [
                     'route' => '/install[/:process]',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'ScController.Installation.Default',
                         'action' => 'index',
-                    ),
-                ),
-            ),
+                    ],
+                ],
+            ],
             /* The virtual route '/admin' with low priority.
              * It is used to create the child routes for managing widgets.
              * For example, to edit article using the route '/admin/article/edit'.
              */
-            'sc-admin' => array(
+            'sc-admin' => [
                 'type' => 'literal',
                 'priority' => -1,
-                'options' => array(
+                'options' => [
                     'route' => '/admin',
-                ),
-                'child_routes' => array(
+                ],
+                'child_routes' => [
                     /* Displays the content list.
                      */
-                    'content-manager' => array(
+                    'content-manager' => [
                         'type' => 'segment',
-                        'options' => array(
+                        'options' => [
                             'route' => '/content[/:pane][/:type][/:root][/:filter][/:parent][/:page][/:order_by]',
-                            'defaults' => array(
+                            'defaults' => [
                                 'controller' => 'ScController.Back.Manager',
                                 'action' => 'index',
-                            ),
-                        ),
-                    ),
+                            ],
+                        ],
+                    ],
                     /* Search for content.
                      */
-                    'content-search' => array(
+                    'content-search' => [
                         'type' => 'segment',
-                        'options' => array(
+                        'options' => [
                             'route' => '/search[/:pane][/:root][/:filter][/:page][/:order_by]',
-                            'defaults' => array(
+                            'defaults' => [
                                 'controller' => 'ScController.Back.Manager',
                                 'action' => 'search',
-                            ),
-                        )
-                    ),
+                            ],
+                        ],
+                    ],
                     /* Category
                      */
-                    'category' => array(
+                    'category' => [
                         'type' => 'literal',
-                        'options' => array(
+                        'options' => [
                             'route' => '/category',
-                        ),
-                        'child_routes' => array(
-                            'add' => array(
+                        ],
+                        'child_routes' => [
+                            'add' => [
                                 'type' => 'segment',
-                                'options' => array(
+                                'options' => [
                                     'route' => '/add[/:parent]',
-                                    'defaults' => array(
+                                    'defaults' => [
                                         'controller' => 'ScController.Back.Category',
                                         'action' => 'add',
-                                    ),
-                                ),
-                            ),
-                            'edit' => array(
+                                    ],
+                                ],
+                            ],
+                            'edit' => [
                                 'type' => 'segment',
-                                'options' => array(
+                                'options' => [
                                     'route' => '/edit[/:id]',
-                                    'defaults' => array(
+                                    'defaults' => [
                                         'controller' => 'ScController.Back.Category',
                                         'action' => 'edit',
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                     /* Article
                      */
-                    'article' => array(
+                    'article' => [
                         'type' => 'literal',
-                        'options' => array(
+                        'options' => [
                             'route' => '/article',
-                        ),
-                        'child_routes' => array(
-                            'add' => array(
+                        ],
+                        'child_routes' => [
+                            'add' => [
                                 'type' => 'segment',
-                                'options' => array(
+                                'options' => [
                                     'route' => '/add[/:parent]',
-                                    'defaults' => array(
+                                    'defaults' => [
                                         'controller' => 'ScController.Back.Article',
                                         'action' => 'add',
-                                    ),
-                                ),
-                            ),
-                            'edit' => array(
+                                    ],
+                                ],
+                            ],
+                            'edit' => [
                                 'type' => 'segment',
-                                'options' => array(
+                                'options' => [
                                     'route' => '/edit[/:id]',
-                                    'defaults' => array(
+                                    'defaults' => [
                                         'controller' => 'ScController.Back.Article',
                                         'action' => 'edit',
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                     /* File
                      */
-                    'file' => array(
+                    'file' => [
                         'type' => 'literal',
-                        'options' => array(
+                        'options' => [
                             'route' => '/file',
-                        ),
-                        'child_routes' => array(
-                            'add' => array(
+                        ],
+                        'child_routes' => [
+                            'add' => [
                                 'type' => 'segment',
-                                'options' => array(
+                                'options' => [
                                     'route' => '/add[/:parent]',
-                                    'defaults' => array(
+                                    'defaults' => [
                                         'controller' => 'ScController.Back.File',
                                         'action' => 'add',
-                                    ),
-                                ),
-                            ),
-                            'edit' => array(
+                                    ],
+                                ],
+                            ],
+                            'edit' => [
                                 'type' => 'segment',
-                                'options' => array(
+                                'options' => [
                                     'route' => '/edit[/:id]',
-                                    'defaults' => array(
+                                    'defaults' => [
                                         'controller' => 'ScController.Back.File',
                                         'action' => 'edit',
-                                    ),
-                                ),
-                            ),
-                            'delete' => array(
+                                    ],
+                                ],
+                            ],
+                            'delete' => [
                                 'type' => 'segment',
-                                'options' => array(
+                                'options' => [
                                     'route' => '/delete[/:random]',
-                                    'defaults' => array(
+                                    'defaults' => [
                                         'controller' => 'ScController.Back.Garbage',
                                         'action' => 'collect',
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
-                    'themes' => array(
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'themes' => [
                         'type' => 'segment',
-                        'options' => array(
+                        'options' => [
                             'route' => '/themes',
-                            'defaults' => array(
+                            'defaults' => [
                                 'controller' => 'ScController.Back.Theme',
                                 'action' => 'index',
-                            ),
-                        ),
-                    ),
-                    'layout' => array(
+                            ],
+                        ],
+                    ],
+                    'layout' => [
                         'type' => 'segment',
-                        'options' => array(
+                        'options' => [
                             'route' => '/layout[/:theme]',
-                            'defaults' => array(
+                            'defaults' => [
                                 'controller' => 'ScController.Back.Layout',
                                 'action' => 'index',
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
-);
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+];

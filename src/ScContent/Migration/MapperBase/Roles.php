@@ -44,14 +44,14 @@ class Roles extends AbstractMigrationMapper
         $this->execute($sql);
 
         $this->execute(new CreateIndex(
-    	   'sc_roles',
+           'sc_roles',
            CreateIndex::Unique,
            'i_unique_role',
            'role_id'
         ));
 
         $this->execute(new CreateIndex(
-    	   'sc_roles',
+           'sc_roles',
            CreateIndex::Key,
            'i_parent_id',
            'parent_id'

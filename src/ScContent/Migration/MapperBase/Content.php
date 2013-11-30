@@ -83,7 +83,7 @@ class Content extends AbstractMigrationMapper
         ));
 
         $this->execute(new CreateIndex(
-        	'sc_content',
+            'sc_content',
             CreateIndex::Key,
             'i_info',
             array(

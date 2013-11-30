@@ -42,7 +42,7 @@ class MapperBuilder
         $class = str_replace('.', '\\', $name);
         if (! class_exists($class)) {
             throw new DomainException(sprintf(
-	           "The class '%s' was not found.",
+               "The class '%s' was not found.",
                $class
             ));
         }

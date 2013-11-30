@@ -31,49 +31,49 @@ class Schema extends AbstractMigrationSchema
 
         try {
             $this->buildMapper(
-	           'ScContent.Migration.MapperBase.Content'
+               'ScContent.Migration.MapperBase.Content'
             )
-        	->up();
+            ->up();
 
-        	$this->buildMapper(
-        	    'ScContent.Migration.MapperBase.Search'
-        	)
-        	->up();
+            $this->buildMapper(
+                'ScContent.Migration.MapperBase.Search'
+            )
+            ->up();
 
-        	$this->buildMapper(
-        	    'ScContent.Migration.MapperBase.Garbage'
-        	)
-        	->up();
+            $this->buildMapper(
+                'ScContent.Migration.MapperBase.Garbage'
+            )
+            ->up();
 
-        	$this->buildMapper(
-        	    'ScContent.Migration.MapperBase.Layout'
-        	)
-        	->up();
+            $this->buildMapper(
+                'ScContent.Migration.MapperBase.Layout'
+            )
+            ->up();
 
-        	$this->buildMapper(
-        	    'ScContent.Migration.MapperBase.Widgets'
-        	)
-        	->up();
+            $this->buildMapper(
+                'ScContent.Migration.MapperBase.Widgets'
+            )
+            ->up();
 
-        	$this->buildMapper(
-        	    'ScContent.Migration.MapperBase.Users'
-        	)
-        	->up();
+            $this->buildMapper(
+                'ScContent.Migration.MapperBase.Users'
+            )
+            ->up();
 
-        	$this->buildMapper(
-        	    'ScContent.Migration.MapperBase.Roles'
-        	)
-        	->up();
+            $this->buildMapper(
+                'ScContent.Migration.MapperBase.Roles'
+            )
+            ->up();
 
-        	$this->buildMapper(
-        	    'ScContent.Migration.MapperBase.RolesLinker'
-        	)
-        	->up();
+            $this->buildMapper(
+                'ScContent.Migration.MapperBase.RolesLinker'
+            )
+            ->up();
 
         } catch (Exception $e) {
             $this->down();
             throw new MigrationException(
-	           'Migration Failed: ' . $e->getMessage(),
+               'Migration Failed: ' . $e->getMessage(),
                $e->getCode(),
                $e
             );
@@ -89,7 +89,7 @@ class Schema extends AbstractMigrationSchema
     {
         try {
             $this->buildMapper(
-	           'ScContent.Migration.MapperBase.Content'
+               'ScContent.Migration.MapperBase.Content'
             )
             ->down();
         } catch (Exception $e) {
