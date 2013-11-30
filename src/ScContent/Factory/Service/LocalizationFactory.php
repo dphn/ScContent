@@ -26,7 +26,7 @@ class LocalizationFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $translator = $serviceLocator->get('translator');
-        $datetime   = $serviceLocator->get('sc-service.datetime');
+        $datetime   = $serviceLocator->get('ScService.DateTime');
         $plugins    = $serviceLocator->get('ViewHelperManager');
         $dateformat = $plugins->get('dateformat');
         $l10n = new Localization($translator, $dateformat, $datetime);

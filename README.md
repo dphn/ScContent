@@ -3,6 +3,7 @@ ScContent
 
 This module in process.
 At this time, the module works only with the database MySql.
+The module ScContent need PHP version >= 5.4.0
 
 Introduction
 -----------------

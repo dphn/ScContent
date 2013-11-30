@@ -7,48 +7,45 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-return array(
-    'invokables' => array(
-        'sc-controller.installation.requirements'
+return [
+    'invokables' => [
+        'ScController.Installation.Requirements'
             => 'ScContent\Controller\Installation\RequirementsController',
 
-        'sc-controller.installation.default'
+        'ScController.Installation.Default'
             => 'ScContent\Controller\Installation\InstallationController',
 
-        'sc-controller.installation.config'
+        'ScController.Installation.Config'
             => 'ScContent\Controller\Installation\ConfigController',
 
-        'sc-controller.back.garbage'
+        'ScController.Back.Garbage'
             => 'ScContent\Controller\Back\GarbageController',
 
-        'sc-controller.back.category'
+        'ScController.Back.Category'
             => 'ScContent\Controller\Back\CategoryController',
 
-        'sc-controller.back.article'
+        'ScController.Back.Article'
             => 'ScContent\Controller\Back\ArticleController',
 
-        'sc-controller.back.file'
+        'ScController.Back.File'
             => 'ScContent\Controller\Back\FileController',
 
-        'sc-controller.back.theme'
+        'ScController.Back.Theme'
             => 'ScContent\Controller\Back\ThemeController',
 
-        'sc-controller.front.end'
+        'ScController.Front.Frontend'
             => 'ScContent\Controller\Front\FrontController',
 
-        'sc-controller.front.widget.content'
-            => 'ScContent\Controller\Front\ContentController',
-
-        'sc-controller.front.widget.login'
+        'ScController.Front.Widget.Login'
             => 'ScContent\Controller\Front\LoginController',
-    ),
-    'factories' => array(
+    ],
+    'factories' => [
         // Factory use events
-        'sc-controller.back.manager'
+        'ScController.Back.Manager'
             => 'ScContent\Factory\Controller\Back\ContentManagerFactory',
 
         // Factory use events
-        'sc-controller.back.layout'
+        'ScController.Back.Layout'
             => 'ScContent\Factory\Controller\Back\LayoutFactory',
-    ),
-);
+    ],
+];

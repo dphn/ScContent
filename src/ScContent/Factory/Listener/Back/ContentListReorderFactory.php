@@ -27,9 +27,9 @@ class ContentListReorderFactory implements FactoryInterface
     {
         $translator = $serviceLocator->get('translator');
         $optionsProvider = $serviceLocator->get(
-            'sc-service.back.content.list.options.provider'
+            'ScService.Back.ContentListOptionsProvider'
         );
-        $mapper = $serviceLocator->get('sc-mapper.back.content.list.reorder');
+        $mapper = $serviceLocator->get('ScMapper.Back.ContentListReorder');
 
         $listener = new ContentListReorder();
 

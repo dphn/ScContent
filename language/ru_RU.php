@@ -13,8 +13,8 @@ return array(
 'Installing a module ScContent'
     => 'Установка модуля ScContent',
 // step 1 Pre-test
-'1: Pre-test'
-    => '1: Предварительная проверка',
+'Pre-test'
+    => 'Предварительная проверка',
 'Check the system requirements'
     => 'Проверка системных требований',
 'Check the configuration settings and installed PHP extensions.'

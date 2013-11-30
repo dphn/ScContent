@@ -25,9 +25,9 @@ class ContentListMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $adapter = $serviceLocator->get('sc-db.adapter');
+        $adapter = $serviceLocator->get('ScDb.Adapter');
         $optionsProvider = $serviceLocator->get(
-            'sc-service.back.content.list.options.provider'
+            'ScService.Back.ContentListOptionsProvider'
         );
         $mapper = new ContentListMapper($adapter, $optionsProvider);
         return $mapper;

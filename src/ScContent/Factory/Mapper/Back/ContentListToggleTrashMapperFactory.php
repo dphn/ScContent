@@ -25,9 +25,9 @@ class ContentListToggleTrashMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $adapter = $serviceLocator->get('sc-db.adapter');
+        $adapter = $serviceLocator->get('ScDb.Adapter');
         $validatorManager = $serviceLocator->get('ValidatorManager');
-        $validator = $validatorManager->get('sc-validator.mapper.nesting');
+        $validator = $validatorManager->get('ScValidator.Mapper.Nesting');
         $mapper = new ContentListToggleTrashMapper($adapter, $validator);
         return $mapper;
     }

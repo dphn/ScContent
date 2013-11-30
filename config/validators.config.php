@@ -9,44 +9,44 @@
  */
 return array(
     'invokables' => array(
-        'sc-validator.installation.phpini'
-            => 'ScContent\Validator\Installation\Phpini',
+        'ScValidator.Installation.PhpIni'
+            => 'ScContent\Validator\Installation\PhpIni',
 
-        'sc-validator.installation.phpextension'
-            => 'ScContent\Validator\Installation\Phpextension',
+        'ScValidator.Installation.PhpExtension'
+            => 'ScContent\Validator\Installation\PhpExtension',
 
-        'sc-validator.content.list.search.date.range'
+        'ScValidator.ContentList.SearchDateRange'
             => 'ScContent\Validator\ContentList\SearchDateRange',
 
-        'sc-validator.db.connection'
+        'ScValidator.Db.Connection'
             => 'ScContent\Validator\Db\Connection',
 
-        'sc-validator.file.name'
+        'ScValidator.File.Name'
             => 'ScContent\Validator\File\FileName',
 
-        'sc-validator.mapper.nesting'
+        'ScValidator.Mapper.Nesting'
             => 'ScContent\Validator\Mapper\NestingValidator',
     ),
     'factories' => array(
-        'sc-validator.installation.autoload'
+        'ScValidator.Installation.Autoload'
             => 'ScContent\Factory\Validator\Installation\AutoloadFactory',
 
-        'sc-validator.installation.config'
+        'ScValidator.Installation.Config'
             => 'ScContent\Factory\Validator\Installation\ConfigFactory',
 
-        'sc-validator.installation.uploads'
+        'ScValidator.Installation.Uploads'
             => 'ScContent\Factory\Validator\Installation\UploadsFactory',
 
-        'sc-validator.installation.migration'
+        'ScValidator.Installation.Migration'
             => 'ScContent\Factory\Validator\Installation\MigrationFactory',
 
-        'sc-validator.installation.assets'
+        'ScValidator.Installation.Assets'
             => 'ScContent\Factory\Validator\Installation\AssetsFactory',
 
-        'sc-validator.installation.layout'
+        'ScValidator.Installation.Layout'
             => 'ScContent\Factory\Validator\Installation\LayoutFactory',
 
-        'sc-validator.file.type'
+        'ScValidator.File.Type'
             => 'ScContent\Factory\Validator\FileTypeFactory',
     ),
 );

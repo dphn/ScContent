@@ -20,7 +20,7 @@ use ScContent\Validator\ContentList\SearchDateRange,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class ContentSearch extends Form
+class ContentSearchForm extends Form
 {
     /**
      * Constructor
@@ -32,7 +32,7 @@ class ContentSearch extends Form
     }
 
     /**
-     * @return ContentSearch
+     * @return ContentSearchForm
      */
     protected function setFormSpecification()
     {
@@ -178,7 +178,7 @@ class ContentSearch extends Form
     }
 
     /**
-     * @return ContentSearch
+     * @return ContentSearchForm
      */
     protected function setInputSpecification()
     {

@@ -13,8 +13,8 @@ return array(
         'locale' => Locale::getDefault(),
         'translation_file_patterns' => array(array(
             'type' => 'phpArray',
-            'base_dir'  => SCCONTENT_BASE_DIR . DS . 'language',
-            'pattern'  => '%s.php',
+            'base_dir' => SCCONTENT_BASE_DIR . DS . 'language',
+            'pattern' => '%s.php',
         )),
     ),
     'router' => array(
@@ -27,10 +27,10 @@ return array(
                 'options' => array(
                     'route' => '/',
                     'defaults' => array(
-                        'controller' => 'sc-controller.front.end',
-                        'action'     => 'index',              
-                    ),                
-                ),                
+                        'controller' => 'ScController.Front.Frontend',
+                        'action' => 'index',
+                    ),
+                ),
             ),
             /* Installation.
              */
@@ -39,8 +39,8 @@ return array(
                 'options' => array(
                     'route' => '/install[/:process]',
                     'defaults' => array(
-                        'controller' => 'sc-controller.installation.default',
-                        'action'     => 'index',
+                        'controller' => 'ScController.Installation.Default',
+                        'action' => 'index',
                     ),
                 ),
             ),
@@ -62,9 +62,9 @@ return array(
                         'options' => array(
                             'route' => '/content[/:pane][/:type][/:root][/:filter][/:parent][/:page][/:order_by]',
                             'defaults' => array(
-                                'controller' => 'sc-controller.back.manager',
+                                'controller' => 'ScController.Back.Manager',
                                 'action' => 'index',
-                            ),        
+                            ),
                         ),
                     ),
                     /* Search for content.
@@ -74,10 +74,10 @@ return array(
                         'options' => array(
                             'route' => '/search[/:pane][/:root][/:filter][/:page][/:order_by]',
                             'defaults' => array(
-                                'controller' => 'sc-controller.back.manager',
+                                'controller' => 'ScController.Back.Manager',
                                 'action' => 'search',
-                            ),               
-                        )                
+                            ),
+                        )
                     ),
                     /* Category
                      */
@@ -92,9 +92,9 @@ return array(
                                 'options' => array(
                                     'route' => '/add[/:parent]',
                                     'defaults' => array(
-                                        'controller' => 'sc-controller.back.category',
-                                        'action' => 'add',                
-                                    ),              
+                                        'controller' => 'ScController.Back.Category',
+                                        'action' => 'add',
+                                    ),
                                 ),
                             ),
                             'edit' => array(
@@ -102,19 +102,19 @@ return array(
                                 'options' => array(
                                     'route' => '/edit[/:id]',
                                     'defaults' => array(
-                                        'controller' => 'sc-controller.back.category',
-                                        'action' => 'edit',                
-                                    ),                
-                                ),                
-                            ),               
-                        ),  
+                                        'controller' => 'ScController.Back.Category',
+                                        'action' => 'edit',
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                     /* Article
                      */
                     'article' => array(
                         'type' => 'literal',
                         'options' => array(
-                            'route' => '/article',                
+                            'route' => '/article',
                         ),
                         'child_routes' => array(
                             'add' => array(
@@ -122,57 +122,57 @@ return array(
                                 'options' => array(
                                     'route' => '/add[/:parent]',
                                     'defaults' => array(
-                                        'controller' => 'sc-controller.back.article',
-                                        'action' => 'add',                
-                                    ),                
-                                ),                
+                                        'controller' => 'ScController.Back.Article',
+                                        'action' => 'add',
+                                    ),
+                                ),
                             ),
                             'edit' => array(
                                 'type' => 'segment',
                                 'options' => array(
                                     'route' => '/edit[/:id]',
                                     'defaults' => array(
-                                        'controller' => 'sc-controller.back.article',
-                                        'action' => 'edit',                
-                                    ),                
-                                ),                
-                            ),                
-                        ),                
+                                        'controller' => 'ScController.Back.Article',
+                                        'action' => 'edit',
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                     /* File
-                     */ 
+                     */
                     'file' => array(
                         'type' => 'literal',
                         'options' => array(
                             'route' => '/file',
-                        ),                
+                        ),
                         'child_routes' => array(
                             'add' => array(
                                 'type' => 'segment',
                                 'options' => array(
                                     'route' => '/add[/:parent]',
                                     'defaults' => array(
-                                        'controller' => 'sc-controller.back.file',
-                                        'action' => 'add',  
-                                    ),                
-                                ),                
+                                        'controller' => 'ScController.Back.File',
+                                        'action' => 'add',
+                                    ),
+                                ),
                             ),
                             'edit' => array(
                                 'type' => 'segment',
                                 'options' => array(
                                     'route' => '/edit[/:id]',
                                     'defaults' => array(
-                                        'controller' => 'sc-controller.back.file',
-                                        'action' => 'edit',                
-                                    ),                
-                                ),                
+                                        'controller' => 'ScController.Back.File',
+                                        'action' => 'edit',
+                                    ),
+                                ),
                             ),
                             'delete' => array(
                                 'type' => 'segment',
                                 'options' => array(
                                     'route' => '/delete[/:random]',
                                     'defaults' => array(
-                                        'controller' => 'sc-controller.back.garbage',
+                                        'controller' => 'ScController.Back.Garbage',
                                         'action' => 'collect',
                                     ),
                                 ),
@@ -184,7 +184,7 @@ return array(
                         'options' => array(
                             'route' => '/themes',
                             'defaults' => array(
-                                'controller' => 'sc-controller.back.theme',
+                                'controller' => 'ScController.Back.Theme',
                                 'action' => 'index',
                             ),
                         ),
@@ -194,13 +194,13 @@ return array(
                         'options' => array(
                             'route' => '/layout[/:theme]',
                             'defaults' => array(
-                                'controller' => 'sc-controller.back.layout',
+                                'controller' => 'ScController.Back.Layout',
                                 'action' => 'index',
                             ),
                         ),
                     ),
-                ),             
+                ),
             ),
-        ),            
+        ),
     ),
 );

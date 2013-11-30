@@ -64,14 +64,14 @@ class ContentListAggregate implements ListenerAggregateInterface,
         $this->listeners[] = $events->attach(
             'reorder',
             function($e) use ($sm) {
-                $listener = $sm->get('sc-listener.back.content.list.reorder');
+                $listener = $sm->get('ScListener.Back.ContentListReorder');
                 return $listener->process($e);
             }
         );
         $this->listeners[] = $events->attach(
             'move',
             function($e) use ($sm) {
-                $listener = $sm->get('sc-listener.back.content.list.move');
+                $listener = $sm->get('ScListener.Back.ContentListMove');
                 return $listener->process($e);
             }
         );
@@ -85,21 +85,21 @@ class ContentListAggregate implements ListenerAggregateInterface,
         $this->listeners[] = $events->attach(
             'recovery',
             function($e) use ($sm) {
-                $listener = $sm->get('sc-listener.back.content.list.recovery.from.trash');
+                $listener = $sm->get('ScListener.Back.ContentListRecoveryFromTrash');
                 return $listener->process($e);
             }
         );
         $this->listeners[] = $events->attach(
             'delete',
             function($e) use ($sm) {
-                $listener = $sm->get('sc-listener.back.content.list.delete');
+                $listener = $sm->get('ScListener.Back.ContentListDelete');
                 return $listener->process($e);
             }
         );
         $this->listeners[] = $events->attach(
             'clean',
             function($e) use ($sm) {
-                $listener = $sm->get('sc-listener.back.content.list.clean');
+                $listener = $sm->get('ScListener.Back.ContentListClean');
                 return $listener->process($e);
             }
         );

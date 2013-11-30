@@ -29,7 +29,7 @@ class ContentManagerFactory implements FactoryInterface
 
         $serviceLocator = $controllerManager->getServiceLocator();
         $listeners = $serviceLocator->get(
-            'sc-listener.back.content.list.aggregate'
+            'ScListener.Back.ContentListAggregate'
         );
         $events = $controller->getEventManager();
         $events->attachAggregate($listeners);

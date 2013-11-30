@@ -27,7 +27,7 @@ class LocalizationFactory implements FactoryInterface
         ServiceLocatorInterface $viewHelperPluginManager
     ) {
         $serviceLocator = $viewHelperPluginManager->getServiceLocator();
-        $l10n = $serviceLocator->get('sc-service.l10n');
+        $l10n = $serviceLocator->get('ScService.Localization');
         $viewHelper = new Localization($l10n);
         return $viewHelper;
     }

@@ -51,7 +51,7 @@ class InstallationInspector
      */
     public function inspect(MvcEvent $event)
     {
-        $controller = 'sc-controller.installation.default';
+        $controller = 'ScController.Installation.Default';
         $action = 'index';
         $options = $this->moduleOptions->getInstallation();
         if (! isset($options['steps']) || ! is_array($options['steps'])) {

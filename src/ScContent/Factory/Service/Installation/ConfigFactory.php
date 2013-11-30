@@ -26,7 +26,7 @@ class ConfigFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $translator = $serviceLocator->get('translator');
-        $dir = $serviceLocator->get('sc-service.dir');
+        $dir = $serviceLocator->get('ScService.Dir');
 
         $service = new ConfigService();
 

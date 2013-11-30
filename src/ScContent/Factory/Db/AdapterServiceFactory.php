@@ -30,7 +30,7 @@ class AdapterServiceFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $moduleOptions = $serviceLocator->get('sc-options.module');
+        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
         $connection = $this->makeConnection($moduleOptions);
         $driver = new Pdo($connection);
 

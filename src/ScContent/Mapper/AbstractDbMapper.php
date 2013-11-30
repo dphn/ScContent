@@ -104,6 +104,17 @@ abstract class AbstractDbMapper
     }
 
     /**
+     * @return string
+     */
+    public function getPlatformName()
+    {
+        $adapter = $this->getAdapter();
+        $platform = $adapter->getPlatform();
+        $name= strtolower($platform->getName());
+        return $name;
+    }
+
+    /**
      * @param Zend\Db\Sql\SqlInterface $sql
      * @return AbstractDbMapper
      */
@@ -261,7 +272,7 @@ abstract class AbstractDbMapper
         if (is_null($parameters) && $sql instanceof PreparableSqlInterface) {
             return $this->getSql()->prepareStatementForSqlObject($sql)->execute();
         }
-        if ($sql instanceof PreparableSqlInterface) {
+        if ($sql instanceof SqlInterface) {
             $sql = $this->toString($sql);
         }
         $sth = $this->getAdapter()->createStatement($sql, $parameters);

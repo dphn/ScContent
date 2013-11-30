@@ -22,8 +22,8 @@ class LayoutFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $translator = $serviceLocator->get('translator');
-        $moduleOptions = $serviceLocator->get('sc-options.module');
-        $layoutMapper = $serviceLocator->get('sc-mapper.back.layout.service');
+        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
+        $layoutMapper = $serviceLocator->get('ScMapper.Back.LayoutService');
 
         $service = new LayoutService();
 

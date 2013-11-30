@@ -138,7 +138,7 @@ class RequirementsController extends AbstractInstallation
                 'ValidatorManager'
             );
             $this->iniValidator = $validatorManager->get(
-                'sc-validator.installation.phpini'
+                'ScValidator.Installation.PhpIni'
             );
         }
         return $this->iniValidator;
@@ -163,7 +163,7 @@ class RequirementsController extends AbstractInstallation
                 'ValidatorManager'
             );
             $this->extensionValidator = $validatorManager->get(
-                'sc-validator.installation.phpextension'
+                'ScValidator.Installation.PhpExtension'
             );
         }
         return $this->extensionValidator;

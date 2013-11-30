@@ -12,6 +12,7 @@ namespace ScContent\Service\Installation;
 use ScContent\Migration\SchemaInterface,
     ScContent\Exception\InvalidArgumentException,
     ScContent\Exception\DomainException,
+    ScContent\Exception\DebugException,
     ScContent\Exception\IoCException,
     //
     Zend\ServiceManager\ServiceLocatorAwareInterface,
@@ -80,6 +81,7 @@ class MigrationService extends AbstractInstallationService implements
      * @param array $options
      * @throws ScContent\Exception\InvalidArgumentException
      * @throws ScContent\Exception\DomainException
+     * @throws ScContent\Exception\DebugException
      * @return boolean
      */
     public function process($options)
@@ -105,6 +107,13 @@ class MigrationService extends AbstractInstallationService implements
         try {
             $schema->up();
         } catch (Exception $e) {
+            if (DEBUG_MODE) {
+                throw new DebugException(
+    	           'Error: ' . $e->getMessage(),
+                    $e->getCode(),
+                    $e
+                );
+            }
             $this->setValue($options['schema']);
             $this->error(self::MigrationFailed);
             return false;

@@ -27,8 +27,8 @@ class ContentFormatFactory implements FactoryInterface
         ServiceLocatorInterface $viewHelperPluginManager
     ) {
         $serviceLocator = $viewHelperPluginManager->getServiceLocator();
-        $dir = $serviceLocator->get('sc-service.dir');
-        $catalog = $serviceLocator->get('sc-service.file.types.catalog');
+        $dir = $serviceLocator->get('ScService.Dir');
+        $catalog = $serviceLocator->get('ScService.FileTypesCatalog');
         $basePath = $viewHelperPluginManager->get('basepath');
         $viewHelper = new ContentFormat($basePath, $dir, $catalog);
         return $viewHelper;

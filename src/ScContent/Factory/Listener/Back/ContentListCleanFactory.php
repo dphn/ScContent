@@ -27,9 +27,9 @@ class ContentListCleanFactory implements FactoryInterface
     {
         $translator = $serviceLocator->get('translator');
         $optionsProvider = $serviceLocator->get(
-            'sc-service.back.content.list.options.provider'
+            'ScService.Back.ContentListOptionsProvider'
         );
-        $mapper = $serviceLocator->get('sc-mapper.back.content.list.clean');
+        $mapper = $serviceLocator->get('ScMapper.Back.ContentListClean');
 
         $listener = new ContentListClean();
 
@@ -42,12 +42,12 @@ class ContentListCleanFactory implements FactoryInterface
             'process.clean.pre',
             function($event) use ($serviceLocator) {
                 $layoutListener = $serviceLocator->get(
-                    'sc-listener.back.layout'
+                    'ScListener.Back.Layout'
                 );
                 $layoutListener->contentCleaned($event);
 
                 $garbageListener = $serviceLocator->get(
-                    'sc-listener.back.garbage'
+                    'ScListener.Back.Garbage'
                 );
                 $garbageListener->contentCleaned($event);
             }

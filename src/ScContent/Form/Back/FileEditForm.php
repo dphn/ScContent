@@ -16,7 +16,7 @@ use Zend\Form\Element\Collection,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class FileEdit extends Form
+class FileEditForm extends Form
 {
     /**
      * Constructor
@@ -30,7 +30,7 @@ class FileEdit extends Form
     /**
      * @param object $object
      * @param integer $flags
-     * @return FileEdit
+     * @return FileEditForm
      */
     public function bind($object, $flags = FormInterface::VALUES_NORMALIZED)
     {
@@ -58,7 +58,7 @@ class FileEdit extends Form
     }
 
     /**
-     * @return FileEdit
+     * @return FileEditForm
      */
     protected function setFormSpecification()
     {

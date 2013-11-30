@@ -37,7 +37,7 @@ class AutoloadService extends AbstractInstallationService
      */
     protected $errorMessages = array(
         self::AutoloadIsNotWritable
-            => 'Unable to copy files to the application autoload directory. Directory %s is not writable. Please check the permissions, or copy the files manually.',
+            => 'Unable to copy files to the application autoload directory. Directory %s is not writable. Please, check the permissions, or copy the file %s manually.',
 
         self::UnknownModule
             => 'Unable to copy file to the application autoload directory. The module %s was not found.',
@@ -93,7 +93,10 @@ class AutoloadService extends AbstractInstallationService
         }
 
         if (! is_writable($dir->appAutoload())) {
-            $this->setValue($options['source_module'] . DS . $source)
+            $this->setValue(
+                    $dir->getRelativeAppAutoloadDir(),
+                    $options['source_module'] . DS . $source
+                )
                 ->error(self::AutoloadIsNotWritable);
             return false;
         }

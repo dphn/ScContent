@@ -48,14 +48,14 @@ class CategoryControllerTest extends PHPUnit_Framework_TestCase
             ->getMock();
 
         $pluginManager->setFactory(
-            'translate',
+            'scTranslate',
             function() use ($plugin) {
                 return $plugin;
             }
         );
 
         $this->fakeForm = $this
-            ->getMockBuilder('ScContent\Form\Back\Category')
+            ->getMockBuilder('ScContent\Form\Back\CategoryForm')
             ->disableOriginalConstructor()
             ->setMethods(array('bind', 'isValid', 'getData'))
             ->getMock();
@@ -70,7 +70,7 @@ class CategoryControllerTest extends PHPUnit_Framework_TestCase
         $this->controller->setCategoryService($this->fakeCategoryService);
 
         $this->routeMatch = new RouteMatch(array(
-            'controller' => 'sc-controller.back.category',
+            'controller' => 'ScController.Back.Category',
         ));
         $this->request = new Request();
         $this->event = new MvcEvent();

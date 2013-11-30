@@ -27,7 +27,7 @@ class MigrationFactory implements FactoryInterface
         ServiceLocatorInterface $validatorPluginManager
     ) {
         $serviceLocator = $validatorPluginManager->getServiceLocator();
-        $adapter = $serviceLocator->get('sc-db.adapter');
+        $adapter = $serviceLocator->get('ScDb.Adapter');
         $validator = new Migration($adapter);
         return $validator;
     }

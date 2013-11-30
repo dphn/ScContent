@@ -22,7 +22,7 @@ use ScContent\InputFilter\FileInput,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class FileAdd extends Form
+class FileAddForm extends Form
 {
     /**
      * @var ScContent\Filter\File\MimeType
@@ -111,7 +111,7 @@ class FileAdd extends Form
     }
 
     /**
-     * @return FileAdd
+     * @return FileAddForm
      */
     protected function setFormSpecification()
     {
@@ -144,7 +144,7 @@ class FileAdd extends Form
     }
 
     /**
-     * @return FileAdd
+     * @return FileAddForm
      */
     protected function setInputSpecification()
     {

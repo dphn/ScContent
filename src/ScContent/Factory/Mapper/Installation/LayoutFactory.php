@@ -25,7 +25,7 @@ class LayoutFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $adapter = $serviceLocator->get('sc-db.adapter');
+        $adapter = $serviceLocator->get('ScDb.Adapter');
         $mapper = new LayoutMapper($adapter);
         return $mapper;
     }

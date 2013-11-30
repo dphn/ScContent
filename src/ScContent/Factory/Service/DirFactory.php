@@ -25,7 +25,7 @@ class DirFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $moduleOptions = $serviceLocator->get('sc-options.module');
+        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
         $autoloadDir = $moduleOptions->getAppAutoloadDir();
         $uploadsDir = $moduleOptions->getAppUploadsDir();
         $publicDir = $moduleOptions->getAppPublicDir();

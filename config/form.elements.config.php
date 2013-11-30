@@ -7,25 +7,25 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-return array(
-    'invokables' => array(
-        'sc-form.back.category'
-            => 'ScContent\Form\Back\Category',
+return [
+    'invokables' => [
+        'ScForm.Back.Category'
+            => 'ScContent\Form\Back\CategoryForm',
 
-        'sc-form.back.article'
-            => 'ScContent\Form\Back\Article',
+        'ScForm.Back.Article'
+            => 'ScContent\Form\Back\ArticleForm',
 
-        'sc-form.back.file.edit'
-            => 'ScContent\Form\Back\FileEdit',
+        'ScForm.Back.FileEdit'
+            => 'ScContent\Form\Back\FileEditForm',
 
-        'sc-form.back.content.search'
-            => 'ScContent\Form\Back\ContentSearch',
-    ),
-    'factories' => array(
-        'sc-form.back.file.add'
+        'ScForm.Back.ContentSearch'
+            => 'ScContent\Form\Back\ContentSearchForm',
+    ],
+    'factories' => [
+        'ScForm.Back.FileAdd'
             => 'ScContent\Factory\Form\Back\FileAddFactory',
 
-        'sc-form.installation.database'
+        'ScForm.Installation.Database'
             => 'ScContent\Factory\Form\Installation\DatabaseFormFactory',
-    ),
-);
+    ],
+];

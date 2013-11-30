@@ -50,7 +50,7 @@ class Dir
      *
      * Usage:
      * <code>
-     *     $scDir = $serviceLocator->get('sc-service.dir');
+     *     $scDir = $serviceLocator->get('ScService.Dir');
      *     $dir = clone($scDir);
      *     $dir->setModule('MyModuleNamespace');
      *     $myModuleConfigFile = $dir->module('/config/module.config.php');
@@ -104,7 +104,7 @@ class Dir
      *
      * Usage:
      * <code>
-     *     $scDir = $serviceLocator->get('sc-service.dir');
+     *     $scDir = $serviceLocator->get('ScService.Dir');
      *     $dir = clone($scDir);
      *     $dir->setModule('MyModuleNamespace');
      *     $myModuleConfigFile = $dir->module('/config/module.config.php');
@@ -161,7 +161,7 @@ class Dir
      *
      * Usage:
      * <code>
-     *     $dir = $serviceLocator->get('sc-service.dir');
+     *     $dir = $serviceLocator->get('ScService.Dir');
      *     $myConfigFile = $dir->appAutoload('my.local.php');
      * </code>
      *
@@ -192,7 +192,7 @@ class Dir
      *
      * Usage:
      * <code>
-     *     $dir = $serviceLocator->get('sc-service.dir');
+     *     $dir = $serviceLocator->get('ScService.Dir');
      *     $myAssetsDir = $dir->appPublic('/mydirectory');
      *     $myCss = $dir->appPublic('/mydirectory/css/example.css');
      * </code>
@@ -223,7 +223,7 @@ class Dir
      *
      * Usage:
      * <code>
-     *     $dir = $serviceLocator->get('sc-service.dir');
+     *     $dir = $serviceLocator->get('ScService.Dir');
      *     $uploadedFile = $dir->appUploads('test.jpg');
      * </code>
      *

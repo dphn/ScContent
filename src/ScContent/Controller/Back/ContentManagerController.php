@@ -12,7 +12,7 @@ namespace ScContent\Controller\Back;
 use ScContent\Controller\AbstractBack,
     ScContent\Service\Back\ContentListProvider,
     ScContent\Service\Back\ContentListOptionsProvider as OptionsProvider,
-    ScContent\Form\Back\ContentSearch as SearchForm,
+    ScContent\Form\Back\ContentSearchForm,
     //
     Zend\View\Model\ViewModel,
     Zend\Http\Response;
@@ -33,7 +33,7 @@ class ContentManagerController extends AbstractBack
     protected $contentListsProvider;
 
     /**
-     * @var ScContent\Form\Back\ContentSearch
+     * @var ScContent\Form\Back\ContentSearchForm
      */
     protected $searchForm;
 
@@ -105,7 +105,7 @@ class ContentManagerController extends AbstractBack
             }
             if ($form->isValid()) {
                 $options->setSearchOptions(
-                    $form->getData(SearchForm::VALUES_AS_ARRAY)
+                    $form->getData(ContentSearchForm::VALUES_AS_ARRAY)
                 );
                 $optionsProvider->save($options->getName());
             }
@@ -137,7 +137,7 @@ class ContentManagerController extends AbstractBack
         if (! $this->optionsProvider instanceof OptionsProvider) {
             $serviceLocator = $this->getServiceLocator();
             $this->optionsProvider = $serviceLocator->get(
-                'sc-service.back.content.list.options.provider'
+                'ScService.Back.ContentListOptionsProvider'
             );
         }
         return $this->optionsProvider;
@@ -161,32 +161,32 @@ class ContentManagerController extends AbstractBack
         if (! $this->contentListsProvider instanceof ContentListProvider) {
             $serviceLocator = $this->getServiceLocator();
             $this->contentListsProvider = $serviceLocator->get(
-                'sc-service.back.content.list.provider'
+                'ScService.Back.ContentListProvider'
             );
         }
         return $this->contentListsProvider;
     }
 
     /**
-     * @param ScContent\Form\Back\ContentSearch $form
+     * @param ScContent\Form\Back\ContentSearchForm $form
      * @return void
      */
-    public function setSearchForm(SearchForm $form)
+    public function setSearchForm(ContentSearchForm $form)
     {
         $this->searchForm = $form;
     }
 
     /**
-     * @return ScContent\Form\Back\ContentSearch
+     * @return ScContent\Form\Back\ContentSearchForm
      */
     public function getSearchForm()
     {
-        if (! $this->searchForm instanceof SearchForm) {
+        if (! $this->searchForm instanceof ContentSearchForm) {
             $formElementManager = $this->getServiceLocator()->get(
                 'FormElementManager'
             );
             $this->searchForm = $formElementManager->get(
-                'sc-form.back.content.search'
+                'ScForm.Back.ContentSearch'
             );
         }
         return $this->searchForm;

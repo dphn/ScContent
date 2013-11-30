@@ -15,19 +15,19 @@ use Zend\InputFilter\InputFilter,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class Category extends Form
+class ArticleForm extends Form
 {
     /**
      * Constructor
      */
     public function __construct()
     {
-        parent::__construct('category');
+        parent::__construct('article');
         $this->setFormSpecification()->setInputSpecification();
     }
 
     /**
-     * @return Category
+     * @return ArticleForm
      */
     protected function setFormSpecification()
     {
@@ -35,22 +35,23 @@ class Category extends Form
             'name' => 'title',
             'type' => 'text',
             'attributes' => array(
-                'class' => 'form-control input-lg',
                 'placeholder' => 'Title',
+                'required'    => 'required',
+                'class'       => 'form-control input-lg',
             ),
         ));
 
         $this->add(array(
-            'name' => 'description',
+            'name' => 'content',
             'type' => 'textarea',
             'options' => array(
-                'label' => 'Category description',
+                'label' => 'Article content',
                 'label_attributes' => array(
                     'class' => 'content-form-label'
                 ),
             ),
             'attributes' => array(
-                'id' => 'description',
+                'id' => 'content',
                 'class' => 'form-control',
                 'rows'  => 14,
             ),
@@ -89,7 +90,7 @@ class Category extends Form
     }
 
     /**
-     * @return Category
+     * @return ArticleForm
      */
     protected function setInputSpecification()
     {

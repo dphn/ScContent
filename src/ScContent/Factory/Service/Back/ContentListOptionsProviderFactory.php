@@ -27,7 +27,7 @@ class ContentListOptionsProviderFactory implements FactoryInterface
     {
         $router  = $serviceLocator->get('Router');
         $request = $serviceLocator->get('Request');
-        $l10n = $serviceLocator->get('sc-service.l10n');
+        $l10n = $serviceLocator->get('ScService.Localization');
 
         $service = new ContentListOptionsProvider(
             $router, $request, $l10n

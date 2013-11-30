@@ -7,13 +7,13 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-return array(
-    'invokables' => array(
+return [
+    'invokables' => [
         'widgetAvailability'
             => 'ScContent\Controller\Plugin\WidgetAvailability',
-    ),
-    'factories' => array(
-        'translate'
+    ],
+    'factories' => [
+        'scTranslate'
             => 'ScContent\Factory\Controller\Plugin\TranslatorFactory',
-    ),
-);
+    ],
+];

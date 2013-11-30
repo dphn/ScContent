@@ -25,9 +25,9 @@ class LayoutReorderFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $moduleOptions = $serviceLocator->get('sc-options.module');
+        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
         $translator = $serviceLocator->get('translator');
-        $mapper = $serviceLocator->get('sc-mapper.back.layout.reorder');
+        $mapper = $serviceLocator->get('ScMapper.Back.LayoutReorder');
 
         $listener = new LayoutReorder();
 

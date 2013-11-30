@@ -27,7 +27,7 @@ class FileTypesCatalogFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $moduleOptions = $serviceLocator->get('sc-options.module');
+        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
         $catalogClass = $moduleOptions->getFileTypesCatalogClass();
         $catalog = new $catalogClass();
         if(!$catalog instanceof FileTypesCatalogInterface) {

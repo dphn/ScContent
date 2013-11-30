@@ -27,7 +27,7 @@ class DateTimeFactory implements FactoryInterface
         ServiceLocatorInterface $viewHelperPluginManager
     ) {
         $serviceLocator = $viewHelperPluginManager->getServiceLocator();
-        $scDatetime = $serviceLocator->get('sc-service.datetime');
+        $scDatetime = $serviceLocator->get('ScService.DateTime');
         $dateformat = $viewHelperPluginManager->get('dateformat');
         $viewHelper = new DateTime($scDatetime, $dateformat);
         return $viewHelper;

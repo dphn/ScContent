@@ -79,7 +79,7 @@ if (! file_exists($file)) {
     $app->getEventManager()->attach(
         MvcEvent::EVENT_DISPATCH,
         array(
-            $sm->get('sc-service.installation.inspector'),
+            $sm->get('ScService.Installation.Inspector'),
             'inspect',
         ),
         PHP_INT_MAX
@@ -97,15 +97,15 @@ $sharedEvents->attach('*', 'dispatch', function($e) use($sm) {
     $target = $e->getTarget();
     switch (true) {
         case $target instanceof AbstractBack:
-            $theme = $sm->get('sc-listener.theme.backend');
+            $theme = $sm->get('ScListener.Theme.Backend');
             $theme->update($e);
             break;
         case $target instanceof AbstractFront:
-            $theme = $sm->get('sc-listener.theme.frontend');
+            $theme = $sm->get('ScListener.Theme.Frontend');
             $theme->update($e);
             break;
         case $target instanceof AbstractInstallation:
-            $theme = $sm->get('sc-listener.theme.installation');
+            $theme = $sm->get('ScListener.Theme.Installation');
             $theme->update($e);
             break;
     }
@@ -114,7 +114,7 @@ $sharedEvents->attach('*', 'dispatch', function($e) use($sm) {
 /* After the user logs in, sets the locale and time zone according to the
  * user specified data from database
  */
-$l10n = $sm->get('sc-service.l10n');
+$l10n = $sm->get('ScService.Localization');
 
 $zfcServiceEvents = $sm->get('ZfcUser\Authentication\Adapter\AdapterChain')->getEventManager();
 $zfcServiceEvents->attach('authenticate', function ($e) use($l10n, $sm) {

@@ -15,7 +15,7 @@ use Zend\Validator\Exception\InvalidArgumentException,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class Phpini extends AbstractValidator
+class PhpIni extends AbstractValidator
 {
     /**
      * @param array $options

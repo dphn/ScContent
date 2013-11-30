@@ -14,12 +14,12 @@ class ThemeController extends AbstractBack
      * @var ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
-    
+
     /**
      * @var ScContent\Service\Installation\LayoutService
      */
     protected $layoutService;
-    
+
     public function indexAction()
     {
         $view = new ViewModel();
@@ -27,12 +27,12 @@ class ThemeController extends AbstractBack
         $view->registeredThemes = $layout->getRegisteredThemes();
         $view->options = $this->getModuleOptions();
         $flashMessenger = $this->flashMessenger();
-        if($flashMessenger->hasMessages()) {
+        if ($flashMessenger->hasMessages()) {
             $view->messages = $flashMessenger->getMessages();
         }
         return $view;
     }
-    
+
     /**
      * @param ScContent\Options\ModuleOptions $options
      */
@@ -40,29 +40,33 @@ class ThemeController extends AbstractBack
     {
         $this->moduleOptions = $options;
     }
-    
+
     /**
      * @return ScContent\Options\ModuleOptions
      */
     public function getModuleOptions()
     {
-        if(!$this->moduleOptions instanceof ModuleOptions) {
+        if (! $this->moduleOptions instanceof ModuleOptions) {
             $serviceLocator = $this->getServiceLocator();
-            $this->moduleOptions = $serviceLocator->get('sc-options.module');
+            $this->moduleOptions = $serviceLocator->get(
+                'ScOptions.ModuleOptions'
+            );
         }
         return $this->moduleOptions;
     }
-    
+
     public function setLayoutService(LayoutService $service)
     {
         $this->layoutService = $service;
     }
-    
+
     public function getLayoutService()
     {
-        if(!$this->layoutService instanceof LayoutService) {
+        if (! $this->layoutService instanceof LayoutService) {
             $serviceLocator = $this->getServiceLocator();
-            $this->layoutService = $serviceLocator->get('sc-service.installation.layout');
+            $this->layoutService = $serviceLocator->get(
+                'ScService.Installation.Layout'
+            );
         }
         return $this->layoutService;
     }

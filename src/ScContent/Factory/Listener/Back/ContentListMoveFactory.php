@@ -24,9 +24,9 @@ class ContentListMoveFactory implements FactoryInterface
     {
         $translator = $serviceLocator->get('translator');
         $optionsProvider = $serviceLocator->get(
-            'sc-service.back.content.list.options.provider'
+            'ScService.Back.ContentListOptionsProvider'
         );
-        $mapper = $serviceLocator->get('sc-mapper.back.content.list.move');
+        $mapper = $serviceLocator->get('ScMapper.Back.ContentListMove');
 
         $listener = new ContentListMove();
 
@@ -39,7 +39,7 @@ class ContentListMoveFactory implements FactoryInterface
             'process.move',
             function($event) use ($serviceLocator) {
                 $layoutListener = $serviceLocator->get(
-                    'sc-listener.back.layout'
+                    'ScListener.Back.Layout'
                 );
                 $layoutListener->contentRelocated($event);
             }

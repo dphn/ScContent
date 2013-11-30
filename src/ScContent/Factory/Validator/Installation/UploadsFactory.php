@@ -27,7 +27,7 @@ class UploadsFactory implements FactoryInterface
         ServiceLocatorInterface $validatorPluginManager
     ) {
         $serviceLocator = $validatorPluginManager->getServiceLocator();
-        $dir = $serviceLocator->get('sc-service.dir');
+        $dir = $serviceLocator->get('ScService.Dir');
         $validator = new Uploads();
         $validator->setDir($dir);
         return $validator;

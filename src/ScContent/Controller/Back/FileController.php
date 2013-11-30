@@ -13,8 +13,8 @@ use ScContent\Controller\AbstractBack,
     ScContent\Service\Back\FileService,
     ScContent\Service\FileTransferInterface,
     ScContent\Service\FileTransfer,
-    ScContent\Form\Back\FileEdit,
-    ScContent\Form\Back\FileAdd,
+    ScContent\Form\Back\FileEditForm,
+    ScContent\Form\Back\FileAddForm,
     ScContent\Exception\RuntimeException,
     ScContent\Exception\DebugException,
     //
@@ -38,14 +38,14 @@ class FileController extends AbstractBack
     protected $fileTransfer;
 
     /**
-     * @var ScContent\Form\Back\FileAdd
+     * @var ScContent\Form\Back\FileAddForm
      */
-    protected $addFileForm;
+    protected $fileAddForm;
 
     /**
-     * @var ScContent\Form\Back\FileEdit
+     * @var ScContent\Form\Back\FileEditForm
      */
-    protected $editFileForm;
+    protected $fileEditForm;
 
     /**
      * Add File.
@@ -57,7 +57,7 @@ class FileController extends AbstractBack
         $parent = $this->params()->fromRoute('parent');
         if (! is_numeric($parent)) {
             $this->flashMessenger()->addMessage(
-                'The file location is not specified.'
+                $this->scTranslate('The file location was not specified.')
             );
             return $this->redirect()
                 ->toRoute('sc-admin/content-manager')
@@ -127,7 +127,7 @@ class FileController extends AbstractBack
         }
         if (empty($ids)) {
             $this->flashMessenger()->addMessage(
-                $this->translate('The file ID(s) was not specified.')
+                $this->scTranslate('The file ID(s) was not specified.')
             );
             return $this->redirect()
                 ->toRoute('sc-admin/content-manager')
@@ -144,7 +144,7 @@ class FileController extends AbstractBack
         }
         if ($filesList->isEmpty()) {
             $this->flashMessenger()->addMessage(
-                $this->translate('No files, available for editing.')
+                $this->scTranslate('No files, available for editing.')
             );
             return $this->redirect()
                 ->toRoute('sc-admin/content-manager')
@@ -187,7 +187,7 @@ class FileController extends AbstractBack
     {
         if (! $this->fileService instanceof FileService) {
             $serviceLocator = $this->getServiceLocator();
-            $this->fileService = $serviceLocator->get('sc-service.back.file');
+            $this->fileService = $serviceLocator->get('ScService.Back.File');
         }
         return $this->fileService;
     }
@@ -209,59 +209,59 @@ class FileController extends AbstractBack
         if (! $this->fileTransfer instanceof FileTransfer) {
             $serviceLocator = $this->getServiceLocator();
             $this->fileTransfer = $serviceLocator->get(
-                'sc-service.file.transfer'
+                'ScService.FileTransfer'
             );
         }
         return $this->fileTransfer;
     }
 
     /**
-     * @param ScContent\Form\Back\FileAdd $form
+     * @param ScContent\Form\Back\FileAddForm $form
      * @return void
      */
-    public function setAddFileForm(FileAdd $form)
+    public function setFileAddForm(FileAddForm $form)
     {
-        $this->addFileForm = $form;
+        $this->fileAddForm = $form;
     }
 
     /**
-     * @return ScContent\Form\Back\FileAdd
+     * @return ScContent\Form\Back\FileAddForm
      */
-    public function getAddFileForm()
+    public function getFileAddForm()
     {
-        if (! $this->addFileForm instanceof FileAdd) {
+        if (! $this->fileAddForm instanceof FileAddForm) {
             $formElementManager = $this->getServiceLocator()->get(
                 'FormElementManager'
             );
-            $this->addFileForm = $formElementManager->get(
-                'sc-form.back.file.add'
+            $this->fileAddForm = $formElementManager->get(
+                'ScForm.Back.FileAdd'
             );
         }
-        return $this->addFileForm;
+        return $this->fileAddForm;
     }
 
     /**
-     * @param ScContent\Form\Back\FileEdit $form
+     * @param ScContent\Form\Back\FileEditForm $form
      * @return void
      */
-    public function setEditFileForm(FileEdit $form)
+    public function setFileEditForm(FileEditForm $form)
     {
-        $this->editFileForm = $form;
+        $this->fileEditForm = $form;
     }
 
     /**
-     * @return ScContent\Form\Back\FileEdit
+     * @return ScContent\Form\Back\FileEditForm
      */
-    public function getEditFileForm()
+    public function getFileEditForm()
     {
-        if (! $this->editFileForm instanceof FileEdit) {
+        if (! $this->fileEditForm instanceof FileEditForm) {
             $formElementManager = $this->getServiceLocator()->get(
                 'FormElementManager'
             );
-            $this->editFileForm = $formElementManager->get(
-                'sc-form.back.file.edit'
+            $this->fileEditForm = $formElementManager->get(
+                'ScForm.Back.FileEdit'
             );
         }
-        return $this->editFileForm;
+        return $this->fileEditForm;
     }
 }

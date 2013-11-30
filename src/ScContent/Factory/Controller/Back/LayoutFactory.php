@@ -33,7 +33,7 @@ class LayoutFactory implements FactoryInterface
             'indexAction',
             function($event) use ($serviceLocator) {
                 $listener = $serviceLocator->get(
-                    'sc-listener.back.layout.reorder'
+                    'ScListener.Back.LayoutReorder'
                 );
                 return $listener->process($event);
             }
@@ -42,7 +42,7 @@ class LayoutFactory implements FactoryInterface
             'indexAction',
             function($event) use ($serviceLocator) {
                 $listener = $serviceLocator->get(
-                    'sc-listener.back.layout.move'
+                    'ScListener.Back.LayoutMove'
                 );
                 return $listener->process($event);
             }

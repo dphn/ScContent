@@ -25,8 +25,14 @@ class SchemaFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $adapter = $serviceLocator->get('sc-db.adapter');
-        $schema = new Schema($adapter);
+        static $builder;
+        if (! $builder) {
+            $adapter = $serviceLocator->get('ScDb.Adapter');
+            $builder = new MapperBuilder($adapter);
+        }
+
+        $schema = new Schema();
+        $schema->setBuilder($builder);
         return $schema;
     }
 }

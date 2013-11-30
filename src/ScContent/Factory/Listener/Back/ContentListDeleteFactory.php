@@ -27,9 +27,9 @@ class ContentListDeleteFactory implements FactoryInterface
     {
         $translator = $serviceLocator->get('translator');
         $optionsProvider = $serviceLocator->get(
-            'sc-service.back.content.list.options.provider'
+            'ScService.Back.ContentListOptionsProvider'
         );
-        $mapper = $serviceLocator->get('sc-mapper.back.content.list.delete');
+        $mapper = $serviceLocator->get('ScMapper.Back.ContentListDelete');
 
         $listener = new ContentListDelete();
 
@@ -42,12 +42,12 @@ class ContentListDeleteFactory implements FactoryInterface
             'process.delete.pre',
             function($event) use ($serviceLocator) {
                 $layoutListener = $serviceLocator->get(
-                    'sc-listener.back.layout'
+                    'ScListener.Back.Layout'
                 );
                 $layoutListener->contentRemoved($event);
 
                 $garbageListener = $serviceLocator->get(
-                    'sc-listener.back.garbage'
+                    'ScListener.Back.Garbage'
                 );
                 $garbageListener->contentRemoved($event);
             }

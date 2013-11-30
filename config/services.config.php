@@ -9,155 +9,155 @@
  */
 return array(
     'invokables' => array(
-        'sc-service.datetime'
+        'ScService.DateTime'
             => 'ScContent\Service\ScDateTime',
     ),
     'factories' => array(
-        'sc-db.adapter'
+        'ScDb.Adapter'
             => 'ScContent\Factory\Db\AdapterServiceFactory',
 
-        'sc-migration.schema'
+        'ScMigration.Schema'
             => 'ScContent\Factory\Migration\SchemaFactory',
 
-        'sc-options.module'
+        'ScOptions.ModuleOptions'
             => 'ScContent\Factory\Options\ModuleFactory',
 
-        'sc-service.dir'
+        'ScService.Dir'
             => 'ScContent\Factory\Service\DirFactory',
 
-        'sc-service.l10n'
+        'ScService.Localization'
             => 'ScContent\Factory\Service\LocalizationFactory',
 
-        'sc-service.file.transfer'
+        'ScService.FileTransfer'
             => 'ScContent\Factory\Service\FileTransferFactory',
 
-        'sc-service.file.types.catalog'
+        'ScService.FileTypesCatalog'
             => 'ScContent\Factory\Service\FileTypesCatalogFactory',
 
-        'sc-service.installation.inspector'
+        'ScService.Installation.Inspector'
             => 'ScContent\Factory\Service\Installation\InstallationInspectorFactory',
 
-        'sc-service.installation.autoload'
+        'ScService.Installation.Autoload'
             => 'ScContent\Factory\Service\Installation\AutoloadFactory',
 
-        'sc-service.installation.uploads'
+        'ScService.Installation.Uploads'
             => 'ScContent\Factory\Service\Installation\UploadsFactory',
 
-        'sc-service.installation.migration'
+        'ScService.Installation.Migration'
             => 'ScContent\Factory\Service\Installation\MigrationFactory',
 
-        'sc-service.installation.assets'
+        'ScService.Installation.Assets'
             => 'ScContent\Factory\Service\Installation\AssetsFactory',
 
-        'sc-service.installation.config'
+        'ScService.Installation.Config'
             => 'ScContent\Factory\Service\Installation\ConfigFactory',
 
-        'sc-service.installation.layout'
+        'ScService.Installation.Layout'
             => 'ScContent\Factory\Service\Installation\LayoutFactory',
 
-        'sc-service.back.content.list.options.provider'
+        'ScService.Back.ContentListOptionsProvider'
             => 'ScContent\Factory\Service\Back\ContentListOptionsProviderFactory',
 
-        'sc-service.back.content.list.provider'
+        'ScService.Back.ContentListProvider'
             => 'ScContent\Factory\Service\Back\ContentListProviderFactory',
 
-        'sc-service.back.category'
+        'ScService.Back.Category'
             => 'ScContent\Factory\Service\Back\CategoryFactory',
 
-        'sc-service.back.article'
+        'ScService.Back.Article'
             => 'ScContent\Factory\Service\Back\ArticleFactory',
 
-        'sc-service.back.file'
+        'ScService.Back.File'
             => 'ScContent\Factory\Service\Back\FileFactory',
 
-        'sc-service.back.garbage.collector'
+        'ScService.Back.GarbageCollector'
             => 'ScContent\Factory\Service\Back\GarbageCollectorFactory',
 
-        'sc-service.back.layout'
+        'ScService.Back.Layout'
             => 'ScContent\Factory\Service\Back\LayoutFactory',
 
-        'sc-mapper.installation.layout'
+        'ScMapper.Installation.Layout'
             => 'ScContent\Factory\Mapper\Installation\LayoutFactory',
 
-        'sc-mapper.back.content'
+        'ScMapper.Back.Content'
             => 'ScContent\Factory\Mapper\Back\ContentFactory',
 
-        'sc-mapper.back.content.list'
+        'ScMapper.Back.ContentList'
             => 'ScContent\Factory\Mapper\Back\ContentListMapperFactory',
 
-        'sc-mapper.back.content.search'
+        'ScMapper.Back.ContentSearch'
             => 'ScContent\Factory\Mapper\Back\ContentSearchMapperFactory',
 
-        'sc-mapper.back.content.list.reorder'
+        'ScMapper.Back.ContentListReorder'
             => 'ScContent\Factory\Mapper\Back\ContentListReorderMapperFactory',
 
-        'sc-mapper.back.content.list.move'
+        'ScMapper.Back.ContentListMove'
             => 'ScContent\Factory\Mapper\Back\ContentListMoveMapperFactory',
 
-        'sc-mapper.back.content.list.toggle.trash'
+        'ScMapper.Back.ContentListToggleTrash'
             => 'ScContent\Factory\Mapper\Back\ContentListToggleTrashMapperFactory',
 
-        'sc-mapper.back.content.list.delete'
+        'ScMapper.Back.ContentListDelete'
             => 'ScContent\Factory\Mapper\Back\ContentListDeleteMapperFactory',
 
-        'sc-mapper.back.content.list.clean'
+        'ScMapper.Back.ContentListClean'
             => 'ScContent\Factory\Mapper\Back\ContentListCleanMapperFactory',
 
-        'sc-mapper.back.garbage'
+        'ScMapper.Back.Garbage'
             => 'ScContent\Factory\Mapper\Back\GarbageMapperFactory',
 
-        'sc-mapper.back.layout.listener'
+        'ScMapper.Back.LayoutListener'
             => 'ScContent\Factory\Mapper\Back\LayoutListenerMapperFactory',
 
-        'sc-mapper.back.layout.service'
+        'ScMapper.Back.LayoutService'
             => 'ScContent\Factory\Mapper\Back\LayoutServiceMapperFactory',
 
-        'sc-mapper.back.layout.reorder'
+        'ScMapper.Back.LayoutReorder'
             => 'ScContent\Factory\Mapper\Back\LayoutReorderMapperFactory',
 
-        'sc-mapper.back.layout.move'
+        'ScMapper.Back.LayoutMove'
             => 'ScContent\Factory\Mapper\Back\LayoutMoveMapperFactory',
 
-        'sc-listener.theme.installation'
+        'ScListener.Theme.Installation'
             => 'ScContent\Factory\Listener\Theme\InstallationFactory',
 
-        'sc-listener.theme.backend'
+        'ScListener.Theme.Backend'
             => 'ScContent\Factory\Listener\Theme\BackendFactory',
 
-        'sc-listener.theme.frontend'
+        'ScListener.Theme.Frontend'
             => 'ScContent\Factory\Listener\Theme\FrontendFactory',
 
-        'sc-listener.back.content.list.aggregate'
+        'ScListener.Back.ContentListAggregate'
             => 'ScContent\Factory\Listener\Back\ContentListAggregateFactory',
 
-        'sc-listener.back.content.list.reorder'
+        'ScListener.Back.ContentListReorder'
             => 'ScContent\Factory\Listener\Back\ContentListReorderFactory',
 
-        'sc-listener.back.content.list.move'
+        'ScListener.Back.ContentListMove'
             => 'ScContent\Factory\Listener\Back\ContentListMoveFactory',
 
         'sc-listener.back.content.list.move.to.trash'
             => 'ScContent\Factory\Listener\Back\ContentListMoveToTrashFactory',
 
-        'sc-listener.back.content.list.recovery.from.trash'
+        'ScListener.Back.ContentListRecoveryFromTrash'
             => 'ScContent\Factory\Listener\Back\ContentListRecoveryFromTrashFactory',
 
-        'sc-listener.back.content.list.delete'
+        'ScListener.Back.ContentListDelete'
             => 'ScContent\Factory\Listener\Back\ContentListDeleteFactory',
 
-        'sc-listener.back.content.list.clean'
+        'ScListener.Back.ContentListClean'
             => 'ScContent\Factory\Listener\Back\ContentListCleanFactory',
 
-        'sc-listener.back.layout'
+        'ScListener.Back.Layout'
             => 'ScContent\Factory\Listener\Back\LayoutFactory',
 
-        'sc-listener.back.layout.reorder'
+        'ScListener.Back.LayoutReorder'
             => 'ScContent\Factory\Listener\Back\LayoutReorderFactory',
 
-        'sc-listener.back.layout.move'
+        'ScListener.Back.LayoutMove'
             => 'ScContent\Factory\Listener\Back\LayoutMoveFactory',
 
-        'sc-listener.back.garbage'
+        'ScListener.Back.Garbage'
             => 'ScContent\Factory\Listener\Back\GarbageFactory',
     ),
 );

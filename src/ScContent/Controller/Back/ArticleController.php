@@ -11,7 +11,7 @@ namespace ScContent\Controller\Back;
 
 use ScContent\Controller\AbstractBack,
     ScContent\Service\Back\ArticleService,
-    ScContent\Form\Back\Article as ArticleForm,
+    ScContent\Form\Back\ArticleForm,
     ScContent\Exception\RuntimeException,
     //
     Zend\View\Model\ViewModel;
@@ -27,7 +27,7 @@ class ArticleController extends AbstractBack
     protected $articleService;
 
     /**
-     * @var ScContent\Form\Back\Article
+     * @var ScContent\Form\Back\ArticleForm
      */
     protected $articleForm;
 
@@ -41,7 +41,7 @@ class ArticleController extends AbstractBack
         $parent = $this->params()->fromRoute('parent');
         if (! is_numeric($parent)) {
             $this->flashMessenger()->addMessage(
-                $this->translate('The article location was not specified.')
+                $this->scTranslate('The article location was not specified.')
             );
             return $this->redirect()
                 ->toRoute('sc-admin/content-manager')
@@ -71,7 +71,7 @@ class ArticleController extends AbstractBack
         $id = $this->params()->fromRoute('id');
         if (! is_numeric($id)) {
             $this->flashMessenger()->addMessage(
-                $this->translate('The article ID was not specified.')
+                $this->scTranslate('The article ID was not specified.')
             );
             return $this->redirect()
                 ->toRoute('sc-admin/content-manager')
@@ -123,14 +123,14 @@ class ArticleController extends AbstractBack
         if (! $this->articleService instanceof ArticleService) {
             $serviceLocator = $this->getServiceLocator();
             $this->articleService = $serviceLocator->get(
-                'sc-service.back.article'
+                'ScService.Back.Article'
             );
         }
         return $this->articleService;
     }
 
     /**
-     * @param ScContent\Form\Back\Article $form
+     * @param ScContent\Form\Back\ArticleForm $form
      * @return void
      */
     public function setArticleForm(ArticleForm $form)
@@ -139,7 +139,7 @@ class ArticleController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Form\Back\Article
+     * @return ScContent\Form\Back\ArticleForm
      */
     public function getArticleForm()
     {
@@ -148,7 +148,7 @@ class ArticleController extends AbstractBack
                 'FormElementManager'
             );
             $this->articleForm = $formElementManager->get(
-                'sc-form.back.article'
+                'ScForm.Back.Article'
             );
         }
         return $this->articleForm;

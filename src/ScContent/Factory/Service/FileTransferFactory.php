@@ -27,8 +27,8 @@ class FileTransferFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $thumbnailGenerator = new ThumbnailGenerator();
-        $catalog = $serviceLocator->get('sc-service.file.types.catalog');
-        $dir = $serviceLocator->get('sc-service.dir');
+        $catalog = $serviceLocator->get('ScService.FileTypesCatalog');
+        $dir = $serviceLocator->get('ScService.Dir');
         $fileTransfer = new FileTransfer($thumbnailGenerator, $catalog, $dir);
         return $fileTransfer;
     }

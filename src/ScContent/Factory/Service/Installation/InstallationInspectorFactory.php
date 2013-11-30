@@ -26,7 +26,7 @@ class InstallationInspectorFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $validatorManager = $serviceLocator->get('ValidatorManager');
-        $options = $serviceLocator->get('sc-options.module');
+        $options = $serviceLocator->get('ScOptions.ModuleOptions');
         $inspector = new InstallationInspector($validatorManager, $options);
         return $inspector;
     }

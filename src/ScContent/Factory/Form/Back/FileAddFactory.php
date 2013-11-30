@@ -9,7 +9,7 @@
  */
 namespace ScContent\Factory\Form\Back;
 
-use ScContent\Form\Back\FileAdd,
+use ScContent\Form\Back\FileAddForm,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -21,19 +21,19 @@ class FileAddFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $formElementManager
-     * @return ScContent\Form\Back\FileAdd
+     * @return ScContent\Form\Back\FileAddForm
      */
     public function createService(ServiceLocatorInterface $formElementManager)
     {
         $serviceLocator = $formElementManager->getServiceLocator();
         $validatorManager = $serviceLocator->get('ValidatorManager');
-        $fileNameValidator = $validatorManager->get('sc-validator.file.name');
-        $fileTypeValidator = $validatorManager->get('sc-validator.file.type');
+        $fileNameValidator = $validatorManager->get('ScValidator.File.Name');
+        $fileTypeValidator = $validatorManager->get('ScValidator.File.Type');
 
         $filterManager = $serviceLocator->get('FilterManager');
-        $mimeTypeFilter = $filterManager->get('sc-filter.file.mime');
+        $mimeTypeFilter = $filterManager->get('ScFilter.File.MimeType');
 
-        $form = new FileAdd(
+        $form = new FileAddForm(
             $mimeTypeFilter,
             $fileNameValidator,
             $fileTypeValidator

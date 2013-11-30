@@ -49,14 +49,14 @@ class ArticleControllerTest extends PHPUnit_Framework_TestCase
             ->getMock();
 
         $pluginManager->setFactory(
-            'translate',
+            'scTranslate',
             function() use ($plugin) {
                 return $plugin;
             }
         );
 
         $this->fakeForm = $this
-            ->getMockBuilder('ScContent\Form\Back\Article')
+            ->getMockBuilder('ScContent\Form\Back\ArticleForm')
             ->disableOriginalConstructor()
             ->setMethods(array('bind', 'isValid', 'getData'))
             ->getMock();
@@ -71,7 +71,7 @@ class ArticleControllerTest extends PHPUnit_Framework_TestCase
         $this->controller->setArticleService($this->fakeArticleService);
 
         $this->routeMatch = new RouteMatch(array(
-            'controller' => 'sc-controller.back.article',
+            'controller' => 'ScController.Back.Article',
         ));
         $this->request = new Request();
         $this->event = new MvcEvent();

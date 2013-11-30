@@ -90,7 +90,7 @@ class LayoutController extends AbstractBack
         if (! $this->layoutService instanceof LayoutService) {
             $serviceLocator = $this->getServiceLocator();
             $this->layoutService = $serviceLocator->get(
-                'sc-service.back.layout'
+                'ScService.Back.Layout'
             );
         }
         return $this->layoutService;

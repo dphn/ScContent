@@ -60,7 +60,7 @@ abstract class AbstractInstallation extends AbstractActionController
     {
         if (! $this->moduleOptions instanceof ModuleOptions) {
             $serviceLocator = $this->getServiceLocator();
-            $this->moduleOptions = $serviceLocator->get('sc-options.module');
+            $this->moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
         }
         return $this->moduleOptions;
     }

@@ -25,7 +25,7 @@ class BackendFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $moduleOptions = $serviceLocator->get('sc-options.module');
+        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
         $listener = new BackendListener();
         $listener->setModuleOptions($moduleOptions);
         return $listener;

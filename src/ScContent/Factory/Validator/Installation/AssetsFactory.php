@@ -27,7 +27,7 @@ class AssetsFactory implements FactoryInterface
         ServiceLocatorInterface $validatorPluginManager
     ) {
         $serviceLocator = $validatorPluginManager->getServiceLocator();
-        $dir = $serviceLocator->get('sc-service.dir');
+        $dir = $serviceLocator->get('ScService.Dir');
         $validator = new Assets();
         $validator->setDir($dir);
         return $validator;

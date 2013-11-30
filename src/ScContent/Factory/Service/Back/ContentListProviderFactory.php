@@ -26,10 +26,10 @@ class ContentListProviderFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $optionsProvider = $serviceLocator->get(
-            'sc-service.back.content.list.options.provider'
+            'ScService.Back.ContentListOptionsProvider'
         );
-        $searchMapper = $serviceLocator->get('sc-mapper.back.content.search');
-        $listMapper = $serviceLocator->get('sc-mapper.back.content.list');
+        $searchMapper = $serviceLocator->get('ScMapper.Back.ContentSearch');
+        $listMapper = $serviceLocator->get('ScMapper.Back.ContentList');
 
         $service = new ContentListProvider();
 

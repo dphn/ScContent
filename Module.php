@@ -14,6 +14,12 @@ use Zend\ModuleManager\ModuleManager,
     //
     Locale;
 
+if (0 > version_compare(phpversion(), '5.4.0')) {
+    exit(
+	   'The module ScContent need PHP version >= 5.4.0'
+    );
+}
+
 /**
  * Short alias for DIRECTORY_SEPARATOR
  *

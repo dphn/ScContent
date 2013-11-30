@@ -27,7 +27,7 @@ class AutoloadFactory implements FactoryInterface
         ServiceLocatorInterface $validatorPluginManager
     ) {
         $serviceLocator = $validatorPluginManager->getServiceLocator();
-        $dir = $serviceLocator->get('sc-service.dir');
+        $dir = $serviceLocator->get('ScService.Dir');
         $validator = new Autoload();
         $validator->setDir($dir);
         return $validator;

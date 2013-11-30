@@ -27,9 +27,9 @@ class CategoryFactory implements FactoryInterface
     {
         $translator = $serviceLocator->get('translator');
         $authentication = $serviceLocator->get('zfcuser_auth_service');
-        $contentMapper = $serviceLocator->get('sc-mapper.back.content');
-        $moduleOptions = $serviceLocator->get('sc-options.module');
-        $datetime = $serviceLocator->get('sc-service.datetime');
+        $contentMapper = $serviceLocator->get('ScMapper.Back.Content');
+        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
+        $datetime = $serviceLocator->get('ScService.DateTime');
 
         $service = new CategoryService();
 
@@ -43,7 +43,7 @@ class CategoryFactory implements FactoryInterface
         $events->attach(
             'makeCategory',
             function($event) use($serviceLocator) {
-                $layout = $serviceLocator->get('sc-listener.back.layout');
+                $layout = $serviceLocator->get('ScListener.Back.Layout');
                 $layout->contentCreated($event);
             }
         );

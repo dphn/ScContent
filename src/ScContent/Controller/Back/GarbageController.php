@@ -61,7 +61,7 @@ class GarbageController extends AbstractActionController
         if (! $this->garbageCollector instanceof GarbageCollector) {
             $serviceLocator = $this->getServiceLocator();
             $this->garbageCollector = $serviceLocator->get(
-                'sc-service.back.garbage.collector'
+                'ScService.Back.GarbageCollector'
             );
         }
         return $this->garbageCollector;

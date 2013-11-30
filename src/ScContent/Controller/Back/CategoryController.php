@@ -11,7 +11,7 @@ namespace ScContent\Controller\Back;
 
 use ScContent\Controller\AbstractBack,
     ScContent\Service\Back\CategoryService,
-    ScContent\Form\Back\Category as CategoryForm,
+    ScContent\Form\Back\CategoryForm,
     ScContent\Exception\RuntimeException,
     //
     Zend\View\Model\ViewModel;
@@ -27,7 +27,7 @@ class CategoryController extends AbstractBack
     protected $categoryService;
 
     /**
-     * @var ScContent\Form\Back\Category
+     * @var ScContent\Form\Back\CategoryForm
      */
     protected $categoryForm;
 
@@ -41,7 +41,7 @@ class CategoryController extends AbstractBack
         $parent = $this->params()->fromRoute('parent');
         if (! is_numeric($parent)) {
             $this->flashMessenger()->addMessage(
-                $this->translate('The category location was not specified.')
+                $this->scTranslate('The category location was not specified.')
             );
             return $this->redirect()
                 ->toRoute('sc-admin/content-manager')
@@ -71,7 +71,7 @@ class CategoryController extends AbstractBack
         $id = $this->params()->fromRoute('id');
         if (! is_numeric($id)) {
             $this->flashMessenger()->addMessage(
-                $this->translate('The category ID was not specified.')
+                $this->scTranslate('The category ID was not specified.')
             );
             return $this->redirect()
                 ->toRoute('sc-admin/content-manager')
@@ -123,14 +123,14 @@ class CategoryController extends AbstractBack
         if (! $this->categoryService instanceof CategoryService) {
             $serviceLocator = $this->getServiceLocator();
             $this->categoryService = $serviceLocator->get(
-                'sc-service.back.category'
+                'ScService.Back.Category'
             );
         }
         return $this->categoryService;
     }
 
     /**
-     * @param ScContent\Form\Back\Category $form
+     * @param ScContent\Form\Back\CategoryForm $form
      * @return void
      */
     public function setCategoryForm(CategoryForm $form)
@@ -139,7 +139,7 @@ class CategoryController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Form\Back\Category
+     * @return ScContent\Form\Back\CategoryForm
      */
     public function getCategoryForm()
     {
@@ -148,7 +148,7 @@ class CategoryController extends AbstractBack
                 'FormElementManager'
             );
             $this->categoryForm = $formElementManager->get(
-                'sc-form.back.category'
+                'ScForm.Back.Category'
             );
         }
         return $this->categoryForm;

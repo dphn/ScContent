@@ -27,8 +27,8 @@ class LayoutFactory implements FactoryInterface
         ServiceLocatorInterface $validatorPluginManager
     ) {
         $serviceLocator = $validatorPluginManager->getServiceLocator();
-        $options = $serviceLocator->get('sc-options.module');
-        $mapper = $serviceLocator->get('sc-mapper.installation.layout');
+        $options = $serviceLocator->get('ScOptions.ModuleOptions');
+        $mapper = $serviceLocator->get('ScMapper.Installation.Layout');
 
         $validator = new Layout();
 

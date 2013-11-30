@@ -26,7 +26,7 @@ class UploadsFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $translator = $serviceLocator->get('translator');
-        $dir = $serviceLocator->get('sc-service.dir');
+        $dir = $serviceLocator->get('ScService.Dir');
         $service = new UploadsService($dir);
         $service->setTranslator($translator);
         return $service;

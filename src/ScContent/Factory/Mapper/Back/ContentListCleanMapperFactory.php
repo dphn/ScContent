@@ -25,7 +25,7 @@ class ContentListCleanMapperFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $adapter = $serviceLocator->get('sc-db.adapter');
+        $adapter = $serviceLocator->get('ScDb.Adapter');
         $mapper = new ContentListCleanMapper($adapter);
         return $mapper;
     }

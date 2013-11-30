@@ -26,8 +26,8 @@ class GarbageCollectorFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $translator = $serviceLocator->get('translator');
-        $garbageMapper = $serviceLocator->get('sc-mapper.back.garbage');
-        $dir = $serviceLocator->get('sc-service.dir');
+        $garbageMapper = $serviceLocator->get('ScMapper.Back.Garbage');
+        $dir = $serviceLocator->get('ScService.Dir');
 
         $service = new GarbageCollector();
 

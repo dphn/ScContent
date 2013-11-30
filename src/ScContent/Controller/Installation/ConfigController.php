@@ -93,7 +93,7 @@ class ConfigController extends AbstractInstallation
                 'FormElementManager'
             );
             $this->form = $formElementManager->get(
-                'sc-form.installation.database'
+                'ScForm.Installation.Database'
             );
         }
         return $this->form;
@@ -116,7 +116,7 @@ class ConfigController extends AbstractInstallation
         if (! $this->configService instanceof ConfigService) {
             $serviceLocator = $this->getServiceLocator();
             $this->configService = $serviceLocator->get(
-                'sc-service.installation.config'
+                'ScService.Installation.Config'
             );
         }
         return $this->configService;

@@ -27,7 +27,7 @@ class FileTypeFactory implements FactoryInterface
         ServiceLocatorInterface $validatorPluginManager
     ) {
         $serviceLocator = $validatorPluginManager->getServiceLocator();
-        $catalog = $serviceLocator->get('sc-service.file.types.catalog');
+        $catalog = $serviceLocator->get('ScService.FileTypesCatalog');
         $validator = new FileType(null, $catalog);
         return $validator;
     }

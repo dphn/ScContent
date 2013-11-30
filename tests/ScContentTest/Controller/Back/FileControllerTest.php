@@ -33,8 +33,8 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
     protected $request;
     protected $event;
 
-    protected $fakeAddFileForm;
-    protected $fakeEditFileForm;
+    protected $fakeFileAddForm;
+    protected $fakeFileEditForm;
     protected $fakeFileService;
     protected $fakeFilesList;
     protected $fakeFileTransfer;
@@ -44,13 +44,13 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
         $serviceManager = Bootstrap::getServiceManager();
         $this->controller = new FileController();
 
-        $this->fakeAddFileForm = $this
-            ->getMockBuilder('ScContent\Form\Back\FileAdd')
+        $this->fakeFileAddForm = $this
+            ->getMockBuilder('ScContent\Form\Back\FileAddForm')
             ->disableOriginalConstructor()
             ->setMethods(array('setData', 'isValid', 'getData'))
             ->getMock();
 
-        $this->controller->setAddFileForm($this->fakeAddFileForm);
+        $this->controller->setFileAddForm($this->fakeFileAddForm);
         $pluginManager = $this->controller->getPluginManager();
         $plugin = $this
             ->getMockBuilder('ScContent\Controller\Plugin\TranslatorProxy')
@@ -59,19 +59,19 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
             ->getMock();
 
         $pluginManager->setFactory(
-            'translate',
+            'scTranslate',
             function() use ($plugin) {
                 return $plugin;
             }
         );
 
-        $this->fakeEditFileForm = $this
-            ->getMockBuilder('ScContent\Form\Back\FileEdit')
+        $this->fakeFileEditForm = $this
+            ->getMockBuilder('ScContent\Form\Back\FileEditForm')
             ->disableOriginalConstructor()
             ->setMethods(array('bind', 'isValid'))
             ->getMock();
 
-        $this->controller->setEditFileForm($this->fakeEditFileForm);
+        $this->controller->setFileEditForm($this->fakeFileEditForm);
 
         $this->fakeFileService = $this
             ->getMockBuilder('ScContent\Service\Back\FileService')
@@ -93,7 +93,9 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
             ->setMethods(array('isEmpty'))
             ->getMock();
 
-        $this->routeMatch = new RouteMatch(array('controller' => 'sc-controller.back.article'));
+        $this->routeMatch = new RouteMatch(array(
+            'controller' => 'ScController.Back.Article',
+        ));
         $this->request = new Request();
         $this->event = new MvcEvent();
 
@@ -131,11 +133,11 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
             ->method('makeFiles')
             ->will($this->throwException($exception));
 
-        $this->fakeAddFileForm->expects($this->once())
+        $this->fakeFileAddForm->expects($this->once())
             ->method('isValid')
             ->will($this->returnValue(true));
 
-        $this->fakeAddFileForm->expects($this->once())
+        $this->fakeFileAddForm->expects($this->once())
             ->method('getData')
             ->will($this->returnValue(array()));
 
@@ -222,11 +224,11 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
         $this->fakeFileService->expects($this->once())
             ->method('saveFiles');
 
-        $this->fakeEditFileForm->expects($this->once())
+        $this->fakeFileEditForm->expects($this->once())
             ->method('isValid')
             ->will($this->returnValue(true));
 
-        $this->fakeEditFileForm->expects($this->once())
+        $this->fakeFileEditForm->expects($this->once())
             ->method('bind');
 
         $this->request->setMethod(Request::METHOD_POST);
