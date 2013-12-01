@@ -14,12 +14,12 @@ abstract class AbstractThemeListener
      * @var ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
-    
+
     /**
      * @var Zend\Filter\Word\CamelCaseToDash
      */
     protected $inflector;
-    
+
     /**
      * @param ScContent\Options\ModuleOptions $options
      */
@@ -27,7 +27,7 @@ abstract class AbstractThemeListener
     {
         $this->moduleOptions = $options;
     }
-    
+
     /**
      * @throws ScContent\Exception\IoCException
      * @return ScContent\Options\ModuleOptions
@@ -41,12 +41,12 @@ abstract class AbstractThemeListener
         }
         return $this->moduleOptions;
     }
-    
+
     /**
      * @param Zend\Mvc\MvcEvent $event
      */
     public abstract function update(MvcEvent $event);
-    
+
     /**
      * @param string $name
      * @return string
@@ -59,23 +59,27 @@ abstract class AbstractThemeListener
         $name = $this->inflector->filter($name);
         return strtolower($name);
     }
-    
+
     /**
-     * @param string $controller
+     * @param string | object $controller
      * @return string
      */
     protected function deriveControllerClass($controller)
     {
+        if(is_object($controller)) {
+            $controller = get_class($controller);
+        }
+
         if(strstr($controller, '\\')) {
             $controller = substr($controller, strrpos($controller, '\\') + 1);
         }
-    
+
         if((10 < strlen($controller))
             && ('Controller' == substr($controller, -10))
         ) {
             $controller = substr($controller, 0, -10);
         }
-    
+
         return $controller;
     }
 }

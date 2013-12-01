@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 // module.settings.php
 'Php.ini option'
     => 'Параметр php.ini',
@@ -250,6 +250,10 @@ return array(
     => 'Опубликовано',
 'Draft'
     => 'Черновик',
+'Name'
+    => 'Имя',
+'Category Name'
+    => 'Имя категории',
 
 // sc-content/article/edit.phtml
 'Article content'
@@ -258,6 +262,12 @@ return array(
     => 'Описание статьи',
 'Article options'
     => 'Параметры статьи',
+'Name'
+    => 'Имя',
+'Article Name'
+    => 'Имя статьи',
+'Permalink:'
+    => 'Постоянная ссылка:',
 
 // sc-content/file/add.phtml
 'Add Files'
@@ -304,4 +314,4 @@ return array(
 // ScDefault Theme
 'The default theme with several regions.'
     => 'Тема по умолчанию с несколькими областями.',
-);
+];

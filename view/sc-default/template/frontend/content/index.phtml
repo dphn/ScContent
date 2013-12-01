@@ -1,0 +1,8 @@
+<h1><?= $content->getTitle() ?></h1>
+<? if('category' == $content->getType()): ?>
+
+<div><?= $content->getDescription() ?></div>
+<? elseif('article' == $content->getType()): ?>
+
+<div><?= $content->getContent() ?></div>
+<? endif ?>

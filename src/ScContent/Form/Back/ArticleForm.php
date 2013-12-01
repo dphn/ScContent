@@ -31,47 +31,60 @@ class ArticleForm extends Form
      */
     protected function setFormSpecification()
     {
-        $this->add(array(
+        $this->add([
             'name' => 'title',
             'type' => 'text',
-            'attributes' => array(
+            'attributes' => [
                 'placeholder' => 'Title',
                 'required'    => 'required',
                 'class'       => 'form-control input-lg',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
+            'name' => 'name',
+            'type' => 'text',
+            'attributes' => [
+                'placeholder' => 'Name',
+                'required'    => 'required',
+                'class'       => 'form-control input-sm',
+            ],
+            'options' => [
+                'label' => 'Article Name',
+            ],
+        ]);
+
+        $this->add([
             'name' => 'content',
             'type' => 'textarea',
-            'options' => array(
+            'options' => [
                 'label' => 'Article content',
-                'label_attributes' => array(
+                'label_attributes' => [
                     'class' => 'content-form-label'
-                ),
-            ),
-            'attributes' => array(
+                ],
+            ],
+            'attributes' => [
                 'id' => 'content',
                 'class' => 'form-control',
                 'rows'  => 14,
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'status',
             'type' => 'select',
-            'options' => array(
+            'options' => [
                 'label' => 'Status',
-                'value_options' => array(
+                'value_options' => [
                     'published' => 'Published',
                     'draft' => 'Draft',
-                ),
-            ),
-            'attributes' => array(
+                ],
+            ],
+            'attributes' => [
                 'id' => 'status',
                 'class' => 'form-control',
-            ),
-        ));
+            ],
+        ]);
 
         $this->add(array(
             'name' => 'save',
@@ -98,6 +111,11 @@ class ArticleForm extends Form
 
         $spec->add(array(
             'name' => 'title',
+            'required' => true,
+        ));
+
+        $spec->add(array(
+            'name' => 'name',
             'required' => true,
         ));
 

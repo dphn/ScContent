@@ -60,10 +60,10 @@ class LayoutController extends AbstractBack
                 }
             }
         }
-        $view = new ViewModel(array(
+        $view = new ViewModel([
             'regions' => $service->getRegions($theme->getName()),
-            'theme' => $theme
-        ));
+            'theme' => $theme,
+        ]);
 
         $flashMessenger = $this->flashMessenger();
         if ($flashMessenger->hasMessages()) {

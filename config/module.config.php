@@ -22,12 +22,12 @@ return [
             /* The route to the home page.
              */
             'sc' => [
-                'type' => 'literal',
+                'type' => 'segment',
                 'priority' => 100,
                 'options' => [
-                    'route' => '/',
+                    'route' => '/[:content-name]',
                     'defaults' => [
-                        'controller' => 'ScController.Front.Frontend',
+                        'controller' => 'ScController.Front.Content',
                         'action' => 'index',
                     ],
                 ],

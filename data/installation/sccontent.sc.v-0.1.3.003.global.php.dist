@@ -24,7 +24,7 @@ return array(
 				/* Frontend
 				 */
 				'frontend' => array(
-					'layout' => 'sc-default-front-layout',
+					'layout' => 'sc-default/layout/frontend/index',
 					'regions' => array(
 						'header' => array(
 							'display_name' => 'Header',

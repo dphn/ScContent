@@ -57,7 +57,7 @@ class CategoryController extends AbstractBack
         }
         return $this->redirect()->toRoute(
             'sc-admin/category/edit',
-            array('id' => $categoryId)
+            ['id' => $categoryId]
         );
     }
 
@@ -89,7 +89,7 @@ class CategoryController extends AbstractBack
         $form = $this->getCategoryForm();
         $form->setAttribute(
             'action',
-            $this->url()->fromRoute('sc-admin/category/edit', array('id' => $id))
+            $this->url()->fromRoute('sc-admin/category/edit', ['id' => $id])
         );
         $form->bind($category);
 
@@ -100,10 +100,10 @@ class CategoryController extends AbstractBack
             }
         }
 
-        return new ViewModel(array(
+        return new ViewModel([
             'content' => $category,
             'form' => $form,
-        ));
+        ]);
     }
 
     /**

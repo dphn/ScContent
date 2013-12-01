@@ -55,6 +55,9 @@ return [
         'ScService.Installation.Layout'
             => 'ScContent\Factory\Service\Installation\LayoutFactory',
 
+        'ScService.Front.ContentService'
+            => 'ScContent\Factory\Service\Front\ContentFactory',
+
         'ScService.Back.ContentListOptionsProvider'
             => 'ScContent\Factory\Service\Back\ContentListOptionsProviderFactory',
 
@@ -78,6 +81,9 @@ return [
 
         'ScMapper.Installation.Layout'
             => 'ScContent\Factory\Mapper\Installation\LayoutFactory',
+
+        'ScMapper.Front.Content'
+            => 'ScContent\Factory\Mapper\Front\ContentFactory',
 
         'ScMapper.Back.Content'
             => 'ScContent\Factory\Mapper\Back\ContentFactory',

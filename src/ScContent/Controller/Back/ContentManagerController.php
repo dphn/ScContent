@@ -58,10 +58,10 @@ class ContentManagerController extends AbstractBack
         }
         $lists = $this->getContentListProvider();
 
-        $view = new ViewModel(array(
+        $view = new ViewModel([
             'optionsProvider' => $optionsProvider,
             'contentListsProvider' => $lists
-        ));
+        ]);
 
         $flashMessenger = $this->flashMessenger();
         if ($flashMessenger->hasMessages()) {
@@ -92,7 +92,7 @@ class ContentManagerController extends AbstractBack
             'action',
             $this->url()->fromRoute(
                 'sc-admin/content-search',
-                array('pane' => $pane)
+                ['pane' => $pane]
             )
         );
         $form->bind($search);
@@ -112,12 +112,12 @@ class ContentManagerController extends AbstractBack
         }
         $list = $this->getContentListProvider()->getList($pane);
 
-        return new ViewModel(array(
+        return new ViewModel([
             'options' => $options,
             'list' => $list,
             'pane' => $pane,
-            'form' => $form
-        ));
+            'form' => $form,
+        ]);
     }
 
     /**

@@ -3,7 +3,7 @@
         <input type="hidden" name="pane" value="<?php echo $options->getName() ?>">
         <div class="editor-tabs">
             <?php if($list->getTotalPages() > 1): ?>
-            
+
             <div class="page-control pull-right">
                 <div class="btn-group">
                     <a href="<?php echo $this->url('sc-admin/content-manager', array('pane' => $pane, 'type' => $options->getType(), 'root' => $options->getRoot(), 'filter' => $options->getFilter(), 'parent' => $options->getParent(), 'page' => 1)) ?>" class="btn btn-default btn-sm" title="<?php echo $this->translate('Go to the first page') ?>">«</a>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <?php endif ?>
-            
+
             <ul class="nav nav-tabs">
                 <li<?php if($options->getType() == 'list' && $options->getRoot() == 'site'): ?> class="active"<?php endif ?>><a href="<?php echo $this->url('sc-admin/content-manager', array('pane' => $pane, 'type' => 'list', 'root' => 'site')) ?>"><span class="glyphicon glyphicon-globe"></span><?php echo $this->translate('Web Site') ?></a></li>
                 <li<?php if($options->getType() == 'list' && $options->getRoot() == 'trash'): ?> class="active"<?php endif ?>><a href="<?php echo $this->url('sc-admin/content-manager', array('pane' => $pane, 'type' => 'list', 'root' => 'trash')) ?>"><span class="glyphicon glyphicon-trash"></span><?php echo $this->translate('Trash') ?></a></li>
@@ -49,23 +49,23 @@
                     <?php if($otherType == 'list' && $otherRoot == 'site'): ?>
                     <button class="btn btn-default btn-sm" name="suboperation" value="recovery" type="submit"><?php echo $this->translate('Recovery') ?></button>
                     <?php endif ?>
-                    
+
                     <button class="btn btn-default btn-sm" name="suboperation" value="delete" type="submit" onclick="return confirm('<?php echo $this->translate('Are you sure, you want to delete the contents?') ?>') ? true : false;"><?php echo $this->translate('Delete') ?></button>
                     <?php if($options->getType() == 'list'): ?>
-                    
+
                     <button class="btn btn-default btn-sm" name="suboperation" value="clean" type="submit" onclick="return confirm('<?php echo $this->translate('Are you sure, you want to empty trash?') ?>') ? true : false;"><?php echo $this->translate('Empty Trash') ?></button>
                     <?php endif ?>
                 <?php endif ?>
                 <?php if($options->getRoot() == 'site'): ?>
                     <?php if($options->getType() == 'list'): ?>
-                    
+
                     <button class="btn btn-default btn-sm" name="suboperation" value="reorder" type="submit" <?php if($options->getOrderBy() != 'natural' || $options->getFilter() != 'all'): ?> disabled="disabled" <?php endif ?>><?php echo $this->translate('Reorder') ?></button>
                     <?php endif ?>
                     <?php if($otherType == 'list' && $otherRoot == 'site'): ?>
-                    
+
                     <button class="btn btn-default btn-sm" name="suboperation" value="move" type="submit"><?php echo $this->translate('Move') ?></button>
                     <?php endif ?>
-                
+
                     <button class="btn btn-default btn-sm" name="suboperation" value="trash" type="submit"><?php echo $this->translate('Move to Trash') ?></button>
                     <?php if($options->getType() == 'list'): ?>
                     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><?php echo $this->translate('Add') ?> <span class="caret"></span></button>
@@ -77,26 +77,26 @@
                     <?php endif ?>
                 <?php endif ?>
                 <?php if('search' == $options->getType()): ?>
-                    
+
                     <a href="<?php echo $this->url('sc-admin/content-search', array('pane' => $pane)) ?>" class="btn btn-default btn-sm"><?php echo $this->translate('Search Preferences') ?></a>
                 <?php endif ?>
-                
+
             </div>
-            
+
             <?php if($list->hasTop()): ?>
             <div class="btn-group pull-right">
                 <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><?php echo $this->translate('Back to')?> <span class="caret"></span></button>
                 <ul class="dropdown-menu text-right" role="menu">
                     <?php foreach($list->getBack() as $back): ?>
-                                        
+
                     <li><a href="<?php echo $this->url('sc-admin/content-manager', array('pane' => $pane, 'type' => $options->getType(), 'root' => $options->getRoot(), 'filter' => $options->getFilter(), 'parent' => $back['id'])) ?>"><?php echo $this->translate($back['title']) ?></a></li>
                     <?php endforeach ?>
-                    
+
                 </ul>
             </div>
             <div class="clearfix"></div>
             <?php endif ?>
-            
+
         </div>
         <div class="content-root">/ <?php echo $this->translate($list->getParent('title')) ?></div>
         <div class="content-scrollarea">
@@ -125,7 +125,7 @@
                 </tfoot>
                 <tbody>
                     <?php if($list->hasTop()): ?>
-                    
+
                     <tr class="hidden-xs">
                         <td colspan="7" class="content-list-top">
                             <a href="<?php echo $this->url('sc-admin/content-manager', array('pane' => $pane, 'type' => $options->getType(), 'root' => $options->getRoot(), 'filter' => $options->getFilter(), 'parent' => $list->getTop())) ?>" class="content-list-top" title="<?php echo $this->translate('Go top') ?>"><span class="glyphicon glyphicon-chevron-up"></span> ...</a>
@@ -138,7 +138,7 @@
                     </tr>
                     <?php endif ?>
                     <?php if($list->isEmpty()): ?>
-                    
+
                     <tr class="hidden-xs">
                         <td colspan="7">
                             <div class="well"><?php echo $this->translate('Nothing was found.') ?><?php if('all' != $options->getFilter() && 0 < $list->getCounter('all')): ?> <?php echo $this->translate('Try to change the filter.') ?><?php endif ?></div>
@@ -151,7 +151,7 @@
                     </tr>
                     <?php endif ?>
                     <?php foreach($list as $item): ?>
-                    
+
                     <tr>
                         <td class="content-list-check hide-if-no-js">
                             <input type="checkbox" name="id[]" value="<?php echo $item->getId() ?>" id="checkbox-<?php echo $pane ?>-<?php echo $item->getId() ?>" />
@@ -162,46 +162,46 @@
                         <td class="content-list-order">
                             <input class="form-control input-sm" type="text" name="position[<?php echo $item->getId() ?>]" value="<?php echo $item->getOrder() ?>"<?php if($options->getType() != 'list' || $options->getRoot() != 'site'|| $options->getFilter() != 'all' || $options->getOrderBy() != 'natural'): ?> disabled="disabled"<?php endif ?> />
                             <?php if($options->getType() == 'list' && $options->getRoot() == 'site' && $options->getFilter() == 'all' && $options->getOrderBy() == 'natural'): ?><input type="hidden" name="old_position[<?php echo $item->getId() ?>]" value="<?php echo $item->getOrder() ?>" /><?php endif ?>
-                            
+
                         </td>
                         <td class="content-list-title">
                             <span><?php echo $item->getTitle() ?></span>
                             <br />
                             <?php if('file' != $item->getType()): ?>
-                            
+
                             <span class="content-childrens">(<?php echo $item->getChildrens() ?>)</span>
-                            
+
                             <?php else: ?>
-                            
+
                             <span class="content-type"><?php echo $this->scContentFormat()->getExtension($item) ?></span>
                             <?php endif ?>
-                            
+
                             <br />
                             <span class="content-item-actions">
                                 <?php if('file' != $item->getType()): ?>
-                                
+
                                 <a href="<?php echo $this->url('sc-admin/content-manager', array('pane' => $pane, 'type' => 'list', 'root' => $options->getRoot(), 'filter' => $options->getFilter(), 'parent' => $item->getId())) ?>"><?php echo $this->translate('Use') ?></a>
                                 <?php endif ?>
                                 <?php if($options->getRoot() != 'trash'): ?>
-                                
+
                                     <?php if('file' != $item->getType()): ?>|&nbsp;<?php endif ?><a href="<?php echo $this->url('sc-admin/' . $item->getType() . '/edit', array('id' => $item->getId())) ?>"><?php echo $this->translate('Edit') ?></a>
                                         <?php if($this->scContentFormat()->canPreview($item)): ?>
-                                        
-                                        |&nbsp;<a href=""><?php echo $this->translate('Preview') ?></a>
+
+                                        |&nbsp;<a href="<?= $this->url('sc', ['content-name' => $item->getName()]) ?>" target="blank"><?php echo $this->translate('Preview') ?></a>
                                         <?php endif ?>
                                 <?php endif ?>
-                                
+
                             </span>
                         </td>
                         <td class="content-list-status hidden-xs">
                             <?php if('published' == $item->getStatus()): ?>
-                            
+
                             <span class="glyphicon glyphicon-eye-open"></span>
                             <?php else: ?>
-                            
+
                             <span class="glyphicon glyphicon-eye-close"></span>
                             <?php endif ?>
-                            
+
                         </td>
                         <td class="content-list-user hidden-xs">
                             <span><?php echo $item->getUserName() ?></span><br /><span class="content-list-email"><?php echo $item->getUserEmail() ?></span>
@@ -209,12 +209,12 @@
                         <td class="content-list-date hidden-xs">
                             <?php echo $this->scDateTime()->getDate($item->getDate()) ?><br />
                             <?php echo $this->scDateTime()->getTime($item->getDate()) ?>
-                            
+
                         </td>
                     </tr>
-                    
+
                     <?php endforeach ?>
-                    
+
                 </tbody>
             </table>
         </div>

@@ -168,7 +168,7 @@ abstract class AbstractContent extends AbstractEntity implements
         $flag = (int) $flag;
         if ($flag) {
             throw new RuntimeException(sprintf(
-                "Unable to edit the contents with identifier '%s', since it is located in the trash.",
+                "Unable to edit the content with identifier '%s', since it is located in the trash.",
                 $this->id
             ));
         }

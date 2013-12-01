@@ -11,6 +11,7 @@
 <!-- Styles -->
 <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/sc-default/img/favicon.ico'))
                 ->appendStylesheet($this->basePath() . '/sc-default/css/bootstrap.min.css')
+                ->appendStylesheet($this->basePath() . '/sc-default/css/bootstrap-theme.min.css')
                 ->appendStylesheet($this->basePath() . '/sc-default/css/common.css')
 ?>
 
@@ -20,18 +21,25 @@
                               ->appendFile($this->basePath() . '/sc-default/js/bootstrap.min.js')
                               ->appendFile($this->basePath() . '/sc-default/js/respond.min.js')
 ?>
-    
+
 </head>
 <body>
-<h1>FRONTEND</h1>
-
-<?php 
+<?php
     foreach($registry as $region => $widgets){
         foreach($widgets as $widget) {
             echo $this->$widget;
         }
     }
 ?>
-<?php echo $this->content ?>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <?php echo $this->content ?>
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

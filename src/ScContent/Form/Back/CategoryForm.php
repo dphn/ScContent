@@ -31,59 +31,72 @@ class CategoryForm extends Form
      */
     protected function setFormSpecification()
     {
-        $this->add(array(
+        $this->add([
             'name' => 'title',
             'type' => 'text',
-            'attributes' => array(
+            'attributes' => [
                 'class' => 'form-control input-lg',
                 'placeholder' => 'Title',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
+            'name' => 'name',
+            'type' => 'text',
+            'attributes' => [
+                'placeholder' => 'Name',
+                'required'    => 'required',
+                'class'       => 'form-control input-sm',
+            ],
+            'options' => [
+            'label' => 'Category Name',
+            ],
+        ]);
+
+        $this->add([
             'name' => 'description',
             'type' => 'textarea',
-            'options' => array(
+            'options' => [
                 'label' => 'Category description',
-                'label_attributes' => array(
+                'label_attributes' => [
                     'class' => 'content-form-label'
-                ),
-            ),
-            'attributes' => array(
+                ],
+            ],
+            'attributes' => [
                 'id' => 'description',
                 'class' => 'form-control',
                 'rows'  => 14,
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'status',
             'type' => 'select',
-            'options' => array(
+            'options' => [
                 'label' => 'Status',
-                'value_options' => array(
+                'value_options' => [
                     'published' => 'Published',
                     'draft' => 'Draft',
-                ),
-            ),
-            'attributes' => array(
+                ],
+            ],
+            'attributes' => [
                 'id' => 'status',
                 'class' => 'form-control',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'save',
             'type' => 'button',
-            'options' => array(
+            'options' => [
                 'label' => 'Save',
-            ),
-            'attributes' => array(
+            ],
+            'attributes' => [
                 'type'  => 'submit',
                 'class' => 'btn btn-primary',
                 'value' => 'save',
-            ),
-        ));
+            ],
+        ]);
 
         return $this;
     }
@@ -95,10 +108,10 @@ class CategoryForm extends Form
     {
         $spec = new InputFilter();
 
-        $spec->add(array(
+        $spec->add([
             'name' => 'title',
             'required' => true,
-        ));
+        ]);
 
         $this->setInputFilter($spec);
 

@@ -69,7 +69,7 @@ class FileController extends AbstractBack
             'action',
             $this->url()->fromRoute(
                 'sc-admin/file/add',
-                array('parent' => $parent)
+                ['parent' => $parent]
             )
         );
         $request = $this->getRequest();
@@ -89,7 +89,7 @@ class FileController extends AbstractBack
                     );
                     return $this->redirect()->toRoute(
                         'sc-admin/file/edit',
-                        array('id' => implode(',', $fileIds))
+                        ['id' => implode(',', $fileIds)]
                     );
                 } catch (Exception $e) {
                     $transfer->rollBack($data);
@@ -108,9 +108,9 @@ class FileController extends AbstractBack
                 }
             }
         }
-        return new ViewModel(array(
-            'form' => $form
-        ));
+        return new ViewModel([
+            'form' => $form,
+        ]);
     }
 
     /**
@@ -156,7 +156,7 @@ class FileController extends AbstractBack
             'action',
             $this->url()->fromRoute(
                 'sc-admin/file/edit',
-                array('id' => $id)
+                ['id' => $id]
             )
         );
         $form->bind($filesList);
@@ -166,9 +166,9 @@ class FileController extends AbstractBack
                 $this->getFileService()->saveFiles($filesList);
             }
         }
-        return new ViewModel(array(
+        return new ViewModel([
             'form' => $form
-        ));
+        ]);
     }
 
     /**

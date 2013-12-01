@@ -57,7 +57,7 @@ class ArticleController extends AbstractBack
         }
         return $this->redirect()->toRoute(
             'sc-admin/article/edit',
-            array('id' => $categoryId)
+            ['id' => $categoryId]
         );
     }
 
@@ -89,7 +89,7 @@ class ArticleController extends AbstractBack
         $form = $this->getArticleForm();
         $form->setAttribute(
             'action',
-            $this->url()->fromRoute('sc-admin/article/edit', array('id' => $id))
+            $this->url()->fromRoute('sc-admin/article/edit', ['id' => $id])
         );
         $form->bind($article);
 
@@ -100,10 +100,10 @@ class ArticleController extends AbstractBack
             }
         }
 
-        return new ViewModel(array(
+        return new ViewModel([
             'content' => $article,
             'form' => $form,
-        ));
+        ]);
     }
 
     /**

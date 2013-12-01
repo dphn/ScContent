@@ -39,7 +39,7 @@ class GarbageController extends AbstractActionController
         return $this->redirect()
             ->toRoute(
                 'sc-admin/file/delete',
-                array('random' => Stdlib::randomKey(6))
+                ['random' => Stdlib::randomKey(6)]
             )
             ->setStatusCode(303);
     }

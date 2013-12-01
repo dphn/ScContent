@@ -7,12 +7,7 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-use ScContent\Controller\AbstractBack,
-    ScContent\Controller\AbstractFront,
-    ScContent\Controller\AbstractInstallation,
-    ScContent\Controller\Installation\InstallationController,
-    //
-    Zend\Mvc\MvcEvent;
+use Zend\Mvc\MvcEvent;
 
 /**
  * Instead, each time you need to check the parameters of the
@@ -78,10 +73,7 @@ $file = SCCONTENT_BASE_DIR
 if (! file_exists($file)) {
     $app->getEventManager()->attach(
         MvcEvent::EVENT_DISPATCH,
-        array(
-            $sm->get('ScService.Installation.Inspector'),
-            'inspect',
-        ),
+        [$sm->get('ScService.Installation.Inspector'), 'inspect'],
         PHP_INT_MAX
     );
 }
@@ -91,25 +83,15 @@ if (! file_exists($file)) {
  * The target - Controller.
  * Controller instance, currently does not exist.
  */
+
 $sharedEvents = $app->getEventManager()->getSharedManager();
 
-$sharedEvents->attach('*', 'dispatch', function($e) use($sm) {
-    $target = $e->getTarget();
-    switch (true) {
-        case $target instanceof AbstractBack:
-            $theme = $sm->get('ScListener.Theme.Backend');
-            $theme->update($e);
-            break;
-        case $target instanceof AbstractFront:
-            $theme = $sm->get('ScListener.Theme.Frontend');
-            $theme->update($e);
-            break;
-        case $target instanceof AbstractInstallation:
-            $theme = $sm->get('ScListener.Theme.Installation');
-            $theme->update($e);
-            break;
-    }
-}, - PHP_INT_MAX);
+$sharedEvents->attach(
+    'Zend\Stdlib\DispatchableInterface',
+    'dispatch',
+    ['ScContent\Listener\Theme\ThemeResolver', 'process'],
+    -100
+);
 
 /* After the user logs in, sets the locale and time zone according to the
  * user specified data from database

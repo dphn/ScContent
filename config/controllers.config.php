@@ -33,8 +33,8 @@ return [
         'ScController.Back.Theme'
             => 'ScContent\Controller\Back\ThemeController',
 
-        'ScController.Front.Frontend'
-            => 'ScContent\Controller\Front\FrontController',
+        'ScController.Front.Content'
+            => 'ScContent\Controller\Front\ContentController',
 
         'ScController.Front.Widget.Login'
             => 'ScContent\Controller\Front\LoginController',
