@@ -1,0 +1,120 @@
+<?php
+
+/*
+ * If you want to add a new "widget module" - set it mywidget.global.php configuration, at this example:
+ */
+return [
+    'sc' => [
+        /* File types catalog class
+         */
+        'file_types_catalog_class' => 'ScContent\Service\FileTypesCatalog',
+
+        /* Backend entities
+         */
+        'entity_back_category_class' => 'ScContent\Entity\Back\Category',
+        'entity_back_article_class' => 'ScContent\Entity\Back\Article',
+        'entity_back_file_class' => 'ScContent\Entity\Back\File',
+
+        'themes' => [
+            'sc-default' => [
+                'display_name' => 'ScContent Default',
+                'screenshot' => 'sc-default/img/theme.png',
+                'description' => 'The default theme with several regions.',
+
+                /* Frontend
+                 */
+                'frontend' => [
+                    'layout' => 'sc-default/layout/frontend/index',
+                    'regions' => [
+                        'header' => [
+                            'display_name' => 'Header',
+                            'template' => 'sc-default-front-region-header',
+                            'contains' => []
+                        ],
+                        'content_top' => [
+                            'display_name' => 'Content Top',
+                            'template' => 'sc-default-front-region-content-top',
+                            'contains' => []
+                        ],
+                        'content_middle' => [
+                            'display_name' => 'Content Middle',
+                            'template' => 'sc-default-front-region-content-middle',
+                            'contains' => [
+                                'content'
+                            ],
+                        ],
+                        'content_bottom' => [
+                            'display_name' => 'Content Bottom',
+                            'template' => 'sc-default-front-region-content-bottom'
+                        ],
+                        'aside_first' => [
+                            'display_name' => 'Aside First',
+                            'template' => 'sc-default-front-region-aside-first',
+                            'contains' => [
+                                'login'
+                            ]
+                        ],
+                        'aside_second' => [
+                            'display_name' => 'Aside Second',
+                            'template' => 'sc-default-front-region-aside-second',
+                            'contains' => []
+                        ],
+                        'footer' => [
+                            'display_name' => 'Footer',
+                            'template' => 'sc-default-front-region-footer',
+                            'contains' => []
+                        ]
+                    ]
+                ],
+
+                /* Backend
+                 */
+                'backend' => [
+                    'layout' => 'sc-default-back-layout'
+                ]
+            ]
+        ],
+        'widgets' => [
+            /*
+             * prepare to moving to separate "widget module"
+            'login' => [
+                'options' => [
+                    'display_name' => 'Login',
+                    'description' => 'Login widget.'
+                ],
+                'frontend' => [
+                    'controller' => 'sc-controller.front.widget.login',
+                    'action' => 'index'
+                ]
+            ],
+            */
+            'test_1' => [
+                'options' => [
+                    'display_name' => 'Test 1',
+                    'description' => 'The first widget for testing.'
+                ]
+            ],
+            'test_2' => [
+                'options' => [
+                    'display_name' => 'Test 2',
+                    'description' => 'The second widget for testing.'
+                ]
+            ],
+            'test_3' => [
+                'options' => [
+                    'display_name' => 'Test 3',
+                    'description' => 'The third widget for testing.'
+                ]
+            ]
+        ],
+        'db' => [
+            'driver' => 'pdo',
+            'dsn' => 'mysql:dbname=dbname;host=localhost',
+            'username' => 'username',
+            'password' => 'password',
+            'driver_options' => [
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+            ]
+        ]
+    ]
+];

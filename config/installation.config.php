@@ -142,7 +142,7 @@ return [
                         'controller' => 'ScController.Installation.Config',
                         'action' => 'index',
                         'batch' => [
-                            'source_file' => '/data/installation/sccontent.sc.v-0.1.3.003.global.php.dist',
+                            'source_file' => '/data/installation/sccontent.sc.v-0.1.3.004.global.php.dist',
                             'old_files_mask' => 'sccontent.sc.v-*',
                         ],
                     ],
