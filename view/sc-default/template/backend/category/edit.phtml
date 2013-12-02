@@ -90,9 +90,12 @@
 <?php
 $tinyMceStyles = $this->basePath() . '/sc-default/css/tinymce.css';
 $language = $this->scLocalization()->getPrimaryLanguage();
+$baseUrl = $this->url('sc', [], ['force_canonical' => true]);
 echo $this->inlineScript()->appendScript(<<<EOT
     tinymce.init({
         language: "$language",
+        document_base_url: "$baseUrl",
+        relative_urls: true,
         selector: "textarea#description",
         theme: "modern",
         plugins: [
