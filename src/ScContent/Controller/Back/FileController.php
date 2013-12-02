@@ -64,7 +64,7 @@ class FileController extends AbstractBack
                 ->setStatusCode(303);
         }
 
-        $form = $this->getAddFileForm();
+        $form = $this->getFileAddForm();
         $form->setAttribute(
             'action',
             $this->url()->fromRoute(
@@ -151,7 +151,7 @@ class FileController extends AbstractBack
                 ->setStatusCode(303);
         }
 
-        $form = $this->getEditFileForm();
+        $form = $this->getFileEditForm();
         $form->setAttribute(
             'action',
             $this->url()->fromRoute(

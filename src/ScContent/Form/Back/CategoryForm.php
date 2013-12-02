@@ -49,7 +49,7 @@ class CategoryForm extends Form
                 'class'       => 'form-control input-sm',
             ],
             'options' => [
-            'label' => 'Category Name',
+                'label' => 'Category Name',
             ],
         ]);
 
@@ -110,6 +110,11 @@ class CategoryForm extends Form
 
         $spec->add([
             'name' => 'title',
+            'required' => true,
+        ]);
+
+        $spec->add([
+            'name' => 'name',
             'required' => true,
         ]);
 
