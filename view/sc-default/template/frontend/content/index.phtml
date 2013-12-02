@@ -1,8 +1,14 @@
 <h1><?= $content->getTitle() ?></h1>
-<? if('category' == $content->getType()): ?>
+<? if ('category' == $content->getType()): ?>
 
 <div><?= $content->getDescription() ?></div>
-<? elseif('article' == $content->getType()): ?>
+<? elseif ('article' == $content->getType()): ?>
 
 <div><?= $content->getContent() ?></div>
+<? elseif ('file' == $content->getType()):?>
+
+    <div>
+        <img src="<?= $this->scContentFormat()->getImagePath($content) ?>" alt="<?= $content->getContent() ?>" title="<?= $content->getTitle() ?>" />
+        <div><?= $content->getDescription() ?></div>
+    </div>
 <? endif ?>

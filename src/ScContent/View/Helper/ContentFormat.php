@@ -118,6 +118,24 @@ class ContentFormat extends AbstractTranslatorHelper
      * @param ScContent\View\Helper\FormatProviderInterface $provider
      * @return string
      */
+    public function getImagePath(FormatProviderInterface $provider)
+    {
+        if (! $this->isWebImage($provider)) {
+            return $this->getIconPath($provider);
+        }
+        $fileName = $provider->getName();
+        list ($extension, $mime) = explode(':', $provider->getSpec());
+        $uploads = $this->options['uploads'];
+        $file = $fileName . '.' . $extension;
+        $uploads = $this->options['uploads'];
+        $src = $this->basePath->__invoke($uploads . '/' . $file);
+        return $src;
+    }
+
+    /**
+     * @param ScContent\View\Helper\FormatProviderInterface $provider
+     * @return string
+     */
     public function getIconPath(FormatProviderInterface $provider)
     {
         $type = $provider->getType();

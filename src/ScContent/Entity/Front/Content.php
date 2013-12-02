@@ -2,9 +2,10 @@
 
 namespace ScContent\Entity\Front;
 
-use ScContent\Entity\AbstractContent;
+use ScContent\Entity\AbstractContent,
+    ScContent\View\Helper\FormatProviderInterface;
 
-class Content extends AbstractContent
+class Content extends AbstractContent implements FormatProviderInterface
 {
     public function setType($type)
     {
