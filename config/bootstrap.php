@@ -71,9 +71,13 @@ $file = SCCONTENT_BASE_DIR
     . DS . 'installation.locked';
 
 if (! file_exists($file)) {
+    $installation = $sm->get('ScOptions.ModuleOptions')->getInstallation();
     $app->getEventManager()->attach(
         MvcEvent::EVENT_DISPATCH,
-        [$sm->get('ScService.Installation.Inspector'), 'inspect'],
+        [
+            $sm->get('ScService.Installation.Inspector')->setup($installation),
+            'inspect'
+        ],
         PHP_INT_MAX
     );
 }
