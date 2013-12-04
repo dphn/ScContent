@@ -10,6 +10,7 @@
 namespace ScContent\Factory\Options;
 
 use ScContent\Options\ModuleOptions,
+    ScContent\Module,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface,
@@ -26,25 +27,19 @@ class ModuleFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+        $baseDir = Module::getDir();
         $settings = include(
-            SCCONTENT_BASE_DIR . DS . 'settings' . DS . 'module.settings.php'
-        );
-
-        $installation = include(
-            SCCONTENT_BASE_DIR . DS . 'config' . DS . 'installation.config.php'
+            $baseDir . DS . 'settings' . DS . 'module.settings.php'
         );
 
         $config = $serviceLocator->get('Config');
         $options = isset($config['sc']) ? $config['sc'] : array();
 
-        // [1] Rewriting the basic installation options using global options.
-        $options = ArrayUtils::merge($installation, $options);
-
-        // [2] Rewriting some module options using fixed module settings.
+        // [1] Rewriting some module options using fixed module settings.
         $options['frontend_theme_name'] = $settings['frontend_theme_name'];
         $options['backend_theme_name'] = $settings['backend_theme_name'];
 
-        // [3] Initialize module options.
+        // [2] Initialize module options.
         $moduleOptions = new ModuleOptions($options);
 
         return $moduleOptions;

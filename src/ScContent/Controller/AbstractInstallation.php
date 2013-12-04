@@ -9,7 +9,7 @@
  */
 namespace ScContent\Controller;
 
-use ScContent\Options\ModuleOptions,
+use ScContent\Service\Installation\InstallationInspector,
     //
     Zend\Mvc\Controller\AbstractActionController;
 
@@ -19,9 +19,9 @@ use ScContent\Options\ModuleOptions,
 abstract class AbstractInstallation extends AbstractActionController
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var ScContent\Service\Installation\InstallationInspector
      */
-    protected $moduleOptions;
+    protected $installationInspector;
 
     /**
      * @return string
@@ -38,7 +38,9 @@ abstract class AbstractInstallation extends AbstractActionController
         ) {
             return $this->redirect()->toUrl($redirect)->setStatusCode(303);
         }
-        $options = $this->getModuleOptions()->getInstallation();
+        $installationInspector = $this->getInstallationInspector();
+
+        $options = $installationInspector->getCurrentSetup();
         if (isset($options['redirect_on_success'])) {
             $redirect = $this->url()->fromRoute($options['redirect_on_success']);
         }
@@ -46,22 +48,25 @@ abstract class AbstractInstallation extends AbstractActionController
     }
 
     /**
-     * @param ScContent\Options\ModuleOptions $options
+     * @param ScContent\Service\Installation\InstallationInspector $service
+     * @return void
      */
-    public function setModuleOptions(ModuleOptions $options)
+    public function setInstallationInspector(InstallationInspector $service)
     {
-        $this->moduleOptions = $options;
+        $this->installationInspector = $service;
     }
 
     /**
-     * @return ScContent\Options\ModuleOptions
+     * @return ScContent\Service\Installation\InstallationInspector
      */
-    public function getModuleOptions()
+    public function getInstallationInspector()
     {
-        if (! $this->moduleOptions instanceof ModuleOptions) {
+        if (! $this->installationInspector instanceof InstallationInspector) {
             $serviceLocator = $this->getServiceLocator();
-            $this->moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
+            $this->installationInspector = $serviceLocator->get(
+                'ScService.Installation.Inspector'
+            );
         }
-        return $this->moduleOptions;
+        return $this->installationInspector;
     }
 }

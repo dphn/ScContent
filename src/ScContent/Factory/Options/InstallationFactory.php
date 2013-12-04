@@ -7,9 +7,10 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Factory\Listener\Theme;
+namespace ScContent\Factory\Options;
 
-use ScContent\Listener\Theme\FrontendListener,
+use ScContent\Options\InstallationOptions,
+    ScContent\Module,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -17,22 +18,19 @@ use ScContent\Listener\Theme\FrontendListener,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class FrontendFactory implements FactoryInterface
+class InstallationFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Theme\FrontendListener
+     * @return ScContent\Options\InstallationOptions
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
-        $layoutMapper = $serviceLocator->get('ScMapper.Theme.FrontendLayoutMapper');
-
-        $listener = new FrontendListener();
-
-        $listener->setModuleOptions($moduleOptions);
-        $listener->setLayoutMapper($layoutMapper);
-
-        return $listener;
+        $baseDir = Module::getDir();
+        $options = include(
+            $baseDir . DS . 'config' . DS . 'installation.config.php'
+        );
+        $installationOptions = new InstallationOptions($options);
+        return $installationOptions;
     }
 }

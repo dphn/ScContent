@@ -6,36 +6,9 @@
  * @copyright Copyright (c) 2013 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
- *
- *
- * You can use this feature to automate
- * the installation of YOUR APPLICATION.
- *
- * You can change this options directly or create global options:
- * [
- *     'sc' => [
- *
- *         'app_autoload_dir' => 'your_dir',
- *
- *         // ...
- *
- *         'installation' => [
- *             // ... your options here ...
- *         ],
- *     ],
- * ],
  */
 
 return [
-    /* Directories. Paths relative to the application root directory.
-     */
-    'app_autoload_dir' => '/config/autoload',
-    'app_uploads_dir'  => '/public/uploads',
-    'app_public_dir'   => '/public',
-
-    // Address relative to applications basePath
-    'app_uploads_src'  => 'uploads',
-
     'installation' => [
         'layout'   => 'sc-default/layout/installation/index',
         'template' => 'sc-default/template/installation/index',
@@ -142,7 +115,7 @@ return [
                         'controller' => 'ScController.Installation.Config',
                         'action' => 'index',
                         'batch' => [
-                            'source_file' => '/data/installation/sccontent.sc.v-0.1.3.004.global.php.dist',
+                            'source_file' => '/data/installation/sccontent.sc.v-0.1.3.005.global.php.dist',
                             'old_files_mask' => 'sccontent.sc.v-*',
                         ],
                     ],
@@ -213,7 +186,7 @@ return [
                                     /* 'version' - directory must contain a
                                      * "version" file with this name.
                                      */
-                                    'version' => 'sc.v-0.1.3.002.version',
+                                    'version' => 'sc.v-0.1.3.003.version',
                                     'source' => [
                                         'source_module' => 'ScContent',
                                         'source_zip' => '/data/public.zip',
@@ -226,20 +199,16 @@ return [
             ],
             /* ________________________________________________________________
              */
-            4 => [
+            '4' => [
                 'title' => 'Widgets installation',
                 'info' => 'Register widgets for the current theme and existing content.',
                 'chain' => [
-                    /* Record in the database all the widgets, specified in the
-                     * configuration, for the existing content.
-                     */
                     'layout' => [
                         'validator' => 'ScValidator.Installation.Layout',
                         'service' => 'ScService.Installation.Layout',
                     ],
                 ],
             ],
-
         ],
     ],
 ];

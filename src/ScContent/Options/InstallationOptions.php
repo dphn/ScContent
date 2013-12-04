@@ -9,18 +9,31 @@
  */
 namespace ScContent\Options;
 
+use Zend\Stdlib\AbstractOptions;
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-interface ModuleInstallationInterface
+class InstallationOptions extends AbstractOptions
 {
     /**
-     * @param array $options
+     * @var array
      */
-    function setInstallation($options);
+    protected $installation = [];
+
+    /**
+     * @param array $options
+     * @return void
+     */
+    public function setInstallation($options)
+    {
+        $this->installation = $options;
+    }
 
     /**
      * @return array
      */
-    function getInstallation();
+    public function getInstallation()
+    {
+        return $this->installation;
+    }
 }

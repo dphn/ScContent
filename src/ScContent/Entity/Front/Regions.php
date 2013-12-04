@@ -7,7 +7,7 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Entity\Back;
+namespace ScContent\Entity\Front;
 
 use ScContent\Entity\AbstractList,
     ScContent\Entity\WidgetsList,
@@ -28,51 +28,58 @@ class Regions extends AbstractList
     /**
      * @var array
      */
-    protected $names = array();
+    protected $regionOptions = [];
 
     /**
      * @param array $theme
-     * @return void
      */
     public function __construct($theme)
     {
         if (! isset($theme['frontend']['regions'])) {
             throw new InvalidArgumentException(
-    	       'Invalid format of the theme.'
+                'Invalid format of the theme.'
             );
         }
         $regions = $theme['frontend']['regions'];
         foreach ($regions as $name => $region) {
-            if (strtolower($name) != 'none') {
-                $displayName = $name;
-                if (isset($region['display_name'])) {
-                    $displayName = $region['display_name'];
-                }
-                $this->names[$name] = $displayName;
-                $widgetsList = clone($this->getWidgetsListPrototype());
-                $this->items[$name] = $widgetsList;
+            if (strtolower($name) == 'none') {
+                continue;
             }
+            $this->regionOptions[$name] = $region;
+            $widgetsList = clone($this->getWidgetsListPrototype());
+            $this->items[$name] = $widgetsList;
         }
-        $this->names['none'] = 'Disabled';
-        $widgetsList = clone($this->getWidgetsListPrototype());
-        $this->items['none'] = $widgetsList;
     }
 
     /**
      * @param ScContent\Entity\WidgetItem $item
-     * @throws ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function addItem(WidgetItem $item)
     {
         if (! $this->offsetExists($item->getRegion())) {
-            throw new InvalidArgumentException(sprintf(
-                "Unknown region '%s'.",
-                $item->getRegion()
-            ));
+            return;
         }
         $items = &$this->items[$item->getRegion()];
         $items->addItem($item);
+    }
+
+    public function getRegionOption($regionName, $optionName)
+    {
+        if (! isset($this->regionOptions[$regionName])) {
+            throw new InvalidArgumentException(sprintf(
+                "The region '%s' does not exists.",
+                $regionName
+            ));
+        }
+        if (! isset($this->regionOptions[$regionName][$optionName])) {
+            throw new InvalidArgumentException(sprintf(
+                "The option '%s' of region '%s' does not exists.",
+                $regionName,
+                $optionName
+            ));
+        }
+        return $this->regionOptions[$regionName][$optionName];
     }
 
     /**
@@ -85,32 +92,6 @@ class Regions extends AbstractList
             return true;
         }
         return false;
-    }
-
-    /**
-     * @param string $name
-     * @throws ScContent\Exception\InvalidArgumentException
-     * @return string
-     */
-    public function getDisplayName($name)
-    {
-        if (! isset($this->names[$name])) {
-            throw new InvalidArgumentException(sprintf(
-                "Unknown region name '%s'.",
-                $name
-            ));
-        }
-        return $this->names[$name];
-    }
-
-    /**
-     * @return array
-     */
-    public function getNames()
-    {
-        $names = $this->names;
-        $names['none'] = '- None -';
-        return $names;
     }
 
     /**

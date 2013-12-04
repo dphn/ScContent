@@ -1,19 +1,95 @@
 <?php
 
 return [
+    'sc' => [
+        /* Why these 'sc' options here? Why not 'config/autoload'?
+         *
+         * If the module is disabled, these options will not be present in the
+         * global configuration. It is important, because uses
+         * both the database and configuration.
+         * Take this into consideration when writing a "theme module".
+         */
+        'widgets' => [
+            'content' => [
+                'options' => [
+                    'display_name' => 'Content',
+                    'description' => 'Editable content. For editing use the content manager.',
+                ],
+            ],
+        ],
+        'themes' => [
+            'sc-default' => [
+                'display_name' => 'ScContent Default',
+                'screenshot' => 'sc-default/img/theme.png',
+                'description' => 'The default theme with several regions.',
+
+                /* Frontend
+                 */
+                'frontend' => [
+                    'layout' => 'sc-default/layout/frontend/index',
+                    'regions' => [
+                        'header' => [
+                            'display_name' => 'Header',
+                            'partial' => 'sc-default/layout/frontend/region/header',
+                            'contains' => []
+                        ],
+                        'aside_first' => [
+                            'display_name' => 'Aside First',
+                            'partial' => 'sc-default/layout/frontend/region/aside-first',
+                            'contains' => [
+                                'login'
+                            ]
+                        ],
+                        'content_top' => [
+                            'display_name' => 'Content Top',
+                            'partial' => 'sc-default/layout/frontend/region/content-top',
+                            'contains' => []
+                        ],
+                        'content_middle' => [
+                            'display_name' => 'Content Middle',
+                            'partial' => 'sc-default/layout/frontend/region/content-middle',
+                            'contains' => [
+                                'content'
+                            ],
+                        ],
+                        'content_bottom' => [
+                            'display_name' => 'Content Bottom',
+                            'partial' => 'sc-default/layout/frontend/region/content-bottom'
+                        ],
+                        'aside_second' => [
+                            'display_name' => 'Aside Second',
+                            'partial' => 'sc-default/layout/frontend/region/aside-second',
+                            'contains' => []
+                        ],
+                        'footer' => [
+                            'display_name' => 'Footer',
+                            'partial' => 'sc-default/layout/frontend/region/footer',
+                            'contains' => []
+                        ]
+                    ]
+                ],
+
+                /* Backend
+                 */
+                'backend' => [
+                    'layout' => 'sc-default-back-layout'
+                ]
+            ]
+        ],
+    ],
     'view_manager' => [
         'template_map' => [
             // @todo
         ],
         'template_path_stack' => [
-            SCCONTENT_BASE_DIR . DS . 'view',
+            $this->getDir() . DS . 'view',
         ],
     ],
     'translator' => [
         'locale' => Locale::getDefault(),
         'translation_file_patterns' => [[
             'type' => 'phpArray',
-            'base_dir' => SCCONTENT_BASE_DIR . DS . 'language',
+            'base_dir' => $this->getDir() . DS . 'language',
             'pattern' => '%s.php',
         ]],
     ],

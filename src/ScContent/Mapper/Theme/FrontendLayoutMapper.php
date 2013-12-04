@@ -7,11 +7,11 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Mapper\Back;
+namespace ScContent\Mapper\Theme;
 
 use ScContent\Mapper\AbstractLayoutMapper,
     ScContent\Options\ModuleOptions,
-    ScContent\Entity\Back\Regions,
+    ScContent\Entity\Front\Regions,
     ScContent\Entity\WidgetItem,
     //
     Zend\Db\Adapter\AdapterInterface;
@@ -19,7 +19,7 @@ use ScContent\Mapper\AbstractLayoutMapper,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class LayoutServiceMapper extends AbstractLayoutMapper
+class FrontendLayoutMapper extends AbstractLayoutMapper
 {
     /**
      * @var ScContent\Options\ModuleOptions
@@ -41,13 +41,13 @@ class LayoutServiceMapper extends AbstractLayoutMapper
     }
 
     /**
-     * @param string $themeName
      * @return ScContent\Entity\Back\Regions
      */
-    public function findRegions($themeName)
+    public function findRegions()
     {
         $moduleOptions = $this->moduleOptions;
-        $theme = $moduleOptions->getThemeByName($themeName);
+        $theme = $moduleOptions->getFrontendTheme();
+        $themeName = $moduleOptions->getFrontendThemeName();
 
         $list = new Regions($theme);
         $widgets = $moduleOptions->getWidgets();
@@ -57,14 +57,11 @@ class LayoutServiceMapper extends AbstractLayoutMapper
 
         if (! isset($theme['frontend']['regions'])
             || ! is_array($theme['frontend']['regions'])
-         ) {
+        ) {
             return $list;
         }
         $regions = $theme['frontend']['regions'];
         $availableRegions = array_keys($regions);
-        if (! in_array('none', $availableRegions)) {
-            $availableRegions[] = 'none';
-        }
         $availableWidgets = array_keys($widgets);
 
         $select = $this->getSql()

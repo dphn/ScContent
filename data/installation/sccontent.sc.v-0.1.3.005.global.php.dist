@@ -1,0 +1,28 @@
+<?php
+
+/*
+ * If you want to add a new "widget module" - set it mywidget.global.php configuration, at this example:
+ */
+return [
+    'sc' => [
+        /* File types catalog class
+         */
+        'file_types_catalog_class' => 'ScContent\Service\FileTypesCatalog',
+
+        /* Backend entities
+         */
+        'entity_back_category_class' => 'ScContent\Entity\Back\Category',
+        'entity_back_article_class' => 'ScContent\Entity\Back\Article',
+        'entity_back_file_class' => 'ScContent\Entity\Back\File',
+        
+        'db' => [
+            'driver' => 'pdo',
+            'dsn' => 'mysql:dbname=dbname;host=localhost',
+            'username' => 'username',
+            'password' => 'password',
+            'driver_options' => [
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+            ]
+        ]
+    ]
+];

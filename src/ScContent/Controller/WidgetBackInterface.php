@@ -7,21 +7,14 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Entity\Back;
+namespace ScContent\Controller;
 
-use ScContent\Entity\AbstractList;
+use Zend\Stdlib\DispatchableInterface;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class WidgetsList extends AbstractList
+interface WidgetBackInterface extends DispatchableInterface
 {
-    /**
-     * @param ScContent\Entity\WidgetItem $item
-     * @return void
-     */
-    public function addItem(WidgetItem $item)
-    {
-        $this->items[] = $item;
-    }
+    function backAction();
 }

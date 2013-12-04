@@ -7,9 +7,7 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Entity\Back;
-
-use ScContent\Entity\AbstractEntity;
+namespace ScContent\Entity;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>

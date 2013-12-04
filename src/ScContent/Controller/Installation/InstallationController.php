@@ -45,7 +45,7 @@ class InstallationController extends AbstractInstallation
             return $this->redirect()->toUrl($redirect)->setStatusCode(303);
         }
         $isStarted = false;
-        $options = $this->getModuleOptions()->getInstallation();
+        $options = $this->getInstallationInspector()->getCurrentSetup();
         $step = &$options['steps'][$routeMatch->getParam('step')];
         foreach ($step['chain'] as $memberName => &$member) {
             if ($memberName == $routeMatch->getParam('member')) {

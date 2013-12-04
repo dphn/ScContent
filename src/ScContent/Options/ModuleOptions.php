@@ -21,11 +21,6 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     /**
      * @var array
      */
-    protected $installation;
-
-    /**
-     * @var array
-     */
     protected $widgets = array();
 
     /**
@@ -87,23 +82,6 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
      * @var string
      */
     protected $entityBackFileClass = 'ScContent\Entity\Back\File';
-
-    /**
-     * @param array $options
-     * @return void
-     */
-    public function setInstallation($options)
-    {
-        $this->installation = $options;
-    }
-
-    /**
-     * @return array
-     */
-    public function getInstallation()
-    {
-        return $this->installation;
-    }
 
     /**
      * @param array $db

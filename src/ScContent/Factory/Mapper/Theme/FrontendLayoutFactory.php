@@ -7,9 +7,9 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Factory\Listener\Theme;
+namespace ScContent\Factory\Mapper\Theme;
 
-use ScContent\Listener\Theme\FrontendListener,
+use ScContent\Mapper\Theme\FrontendLayoutMapper,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -17,22 +17,17 @@ use ScContent\Listener\Theme\FrontendListener,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class FrontendFactory implements FactoryInterface
+class FrontendLayoutFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Theme\FrontendListener
+     * @return ScContent\Mapper\Theme\FrontendLayoutMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+        $adapter = $serviceLocator->get('ScDb.Adapter');
         $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
-        $layoutMapper = $serviceLocator->get('ScMapper.Theme.FrontendLayoutMapper');
-
-        $listener = new FrontendListener();
-
-        $listener->setModuleOptions($moduleOptions);
-        $listener->setLayoutMapper($layoutMapper);
-
-        return $listener;
+        $mapper = new FrontendLayoutMapper($adapter, $moduleOptions);
+        return $mapper;
     }
 }

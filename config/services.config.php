@@ -22,6 +22,9 @@ return [
         'ScOptions.ModuleOptions'
             => 'ScContent\Factory\Options\ModuleFactory',
 
+        'ScOptions.InstallationOptions'
+            => 'ScContent\Factory\Options\InstallationFactory',
+
         'ScService.Dir'
             => 'ScContent\Factory\Service\DirFactory',
 
@@ -84,6 +87,9 @@ return [
 
         'ScMapper.Front.Content'
             => 'ScContent\Factory\Mapper\Front\ContentFactory',
+
+        'ScMapper.Theme.FrontendLayoutMapper'
+            => 'ScContent\Factory\Mapper\Theme\FrontendLayoutFactory',
 
         'ScMapper.Back.Content'
             => 'ScContent\Factory\Mapper\Back\ContentFactory',

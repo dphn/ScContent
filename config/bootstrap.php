@@ -63,23 +63,36 @@ mb_internal_encoding(MB_INTERNAL_ENCODING);
  * The target - Application.
  * Application instance, currently exists.
  */
-$app = $e->getApplication();
-$sm = $app->getServiceManager();
+$app = $event->getApplication();
+$serviceLocator = $app->getServiceManager();
 
-$file = SCCONTENT_BASE_DIR
-    . DS . 'settings'
-    . DS . 'installation.locked';
+/* Global installation feature.
+ *
+ * Added global installation feature to application events.
+ */
+$app->getEventManager()->attach(
+    MvcEvent::EVENT_DISPATCH,
+    [
+        $serviceLocator->get('ScService.Installation.Inspector'),
+        'inspect'
+    ],
+    PHP_INT_MAX
+);
+
+/* ScContent installation.
+ *
+ * Using installation feature for installation of module ScContent.
+ */
+
+$file = $this->getDir() . DS . 'settings' . DS . 'installation.locked';
 
 if (! file_exists($file)) {
-    $installation = $sm->get('ScOptions.ModuleOptions')->getInstallation();
-    $app->getEventManager()->attach(
-        MvcEvent::EVENT_DISPATCH,
-        [
-            $sm->get('ScService.Installation.Inspector')->setup($installation),
-            'inspect'
-        ],
-        PHP_INT_MAX
-    );
+    // See options: ScContent/config/installation.config.php
+    $installation = $serviceLocator->get('ScOptions.InstallationOptions')
+        ->getInstallation();
+
+    // You can use this feature for your module.
+    $serviceLocator->get('ScService.Installation.Inspector')->setup($installation);
 }
 
 /* Activates listeners of themes
@@ -100,13 +113,17 @@ $sharedEvents->attach(
 /* After the user logs in, sets the locale and time zone according to the
  * user specified data from database
  */
-$l10n = $sm->get('ScService.Localization');
+$l10n = $serviceLocator->get('ScService.Localization');
 
-$zfcServiceEvents = $sm->get('ZfcUser\Authentication\Adapter\AdapterChain')->getEventManager();
-$zfcServiceEvents->attach('authenticate', function ($e) use($l10n, $sm) {
-    $userId = $e->getIdentity();
+$zfcServiceEvents = $serviceLocator->get(
+        'ZfcUser\Authentication\Adapter\AdapterChain'
+    )
+    ->getEventManager();
+
+$zfcServiceEvents->attach('authenticate', function ($event) use($l10n, $serviceLocator) {
+    $userId = $event->getIdentity();
     if ($userId) {
-        $mapper = $sm->get('zfcuser_user_mapper');
+        $mapper = $serviceLocator->get('zfcuser_user_mapper');
         $user = $mapper->findById($userId);
         $l10n->save($user);
     }

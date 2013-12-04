@@ -2,14 +2,36 @@
 
 namespace ScContent\Listener\Theme;
 
-use Zend\View\Model\ModelInterface as ViewModel,
+use ScContent\Mapper\Theme\FrontendLayoutMapper,
+    ScContent\Exception\IoCException,
+    //
+    Zend\View\Model\ModelInterface as ViewModel,
     Zend\Mvc\MvcEvent;
 
 class FrontendListener extends AbstractThemeListener
 {
+    protected $layoutMapper;
+
+    public function setLayoutMapper(FrontendLayoutMapper $mapper)
+    {
+        $this->layoutMapper = $mapper;
+    }
+
+    public function getLayotMapper()
+    {
+        if (! $this->layoutMapper instanceof FrontendLayoutMapper) {
+            throw new IoCException(
+	       'The layout mapper was not set.'
+            );
+        }
+        return $this->layoutMapper;
+    }
+
     public function update(MvcEvent $event)
     {
         $moduleOptions = $this->getModuleOptions();
+        $mapper = $this->getLayotMapper();
+
         $theme = $moduleOptions->getFrontendThemeName();
         $options = $moduleOptions->getFrontendTheme();
         $options = $options['frontend'];
@@ -47,19 +69,12 @@ class FrontendListener extends AbstractThemeListener
         }
         $layout->setTemplate($template);
 
-        $registry = array_fill_keys(array_keys($options['regions']), array());
+        $regions = $mapper->findRegions();
+        $layout->regions = $regions;
 
         $widgets = $moduleOptions->getWidgets();
-        foreach($widgets as $widgetName => $widgetOptions) {
-            /*
-            if(isset($widgetOptions['default_region'])) {
-                $defaultRegion = $widgetOptions['default_region'];
-                if(array_key_exists($defaultRegion, $registry)) {
-                    $registry[$defaultRegion][] = $widgetName;
-                }
-            }
-            */
 
+        foreach($widgets as $widgetName => $widgetOptions) {
             if (! isset($widgetOptions['frontend'])) {
                 continue;
             }
@@ -72,6 +87,5 @@ class FrontendListener extends AbstractThemeListener
 
             $layout->addChild($widget, $widgetName);
         }
-        $layout->registry = $registry;
     }
 }

@@ -25,9 +25,9 @@ class InstallationFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
+        $service = $serviceLocator->get('ScService.Installation.Inspector');
         $listener = new InstallationListener();
-        $listener->setModuleOptions($moduleOptions);
+        $listener->setInstallationInspector($service);
         return $listener;
     }
 }

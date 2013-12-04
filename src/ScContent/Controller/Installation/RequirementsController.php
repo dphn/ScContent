@@ -52,7 +52,7 @@ class RequirementsController extends AbstractInstallation
         }
         $step = $routeMatch->getParam('step');
         $member = $routeMatch->getParam('member');
-        $options = $this->getModuleOptions()->getInstallation();
+        $options = $this->getInstallationInspector()->getCurrentSetup();
         $batch = &$options['steps'][$step]['chain'][$member]['batch'];
         $failures = array();
         $validator = $this->getIniValidator();
@@ -96,7 +96,7 @@ class RequirementsController extends AbstractInstallation
         }
         $step = $routeMatch->getParam('step');
         $member = $routeMatch->getParam('member');
-        $options = $this->getModuleOptions()->getInstallation();
+        $options = $this->getInstallationInspector()->getCurrentSetup();
         $batch = &$options['steps'][$step]['chain'][$member]['batch'];
         $failures = array();
         $validator = $this->getExtensionValidator();

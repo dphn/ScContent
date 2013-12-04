@@ -9,20 +9,20 @@
 <?php endif ?>
 
 <div class="row">
-    <?php echo $this->partial('sc-default/template/backend/content-manager/pane.phtml', array(
+    <?= $this->partial('sc-default/template/backend/content-manager/pane.phtml', [
         'otherType' => $optionsProvider->getOtherOptions('first')->getType(),
         'otherRoot' => $optionsProvider->getOtherOptions('first')->getRoot(),
         'options' => $optionsProvider->getOptions('first'),
         'list' => $contentListsProvider->getList('first'),
         'pane' => 'first',
-    )) ?>
+    ]) ?>
 
-    <?php echo $this->partial('sc-default/template/backend/content-manager/pane.phtml', array(
+    <?= $this->partial('sc-default/template/backend/content-manager/pane.phtml', [
         'otherType' => $optionsProvider->getOtherOptions('second')->getType(),
         'otherRoot' => $optionsProvider->getOtherOptions('second')->getRoot(),
         'options' => $optionsProvider->getOptions('second'),
         'list' => $contentListsProvider->getList('second'),
         'pane' => 'second',
-    )) ?>
+    ]) ?>
 
 </div>

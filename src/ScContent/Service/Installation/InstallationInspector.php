@@ -30,6 +30,11 @@ class InstallationInspector
     protected $queue = array();
 
     /**
+     * @var array
+     */
+    protected $current = array();
+
+    /**
      * Constructor
      *
      * @param Zend\Validator\ValidatorPluginManager $validatorManager
@@ -40,6 +45,8 @@ class InstallationInspector
     }
 
     /**
+     * @api
+     *
      * @param array $options
      * @return InstallationInspector
      */
@@ -53,6 +60,14 @@ class InstallationInspector
     }
 
     /**
+     * @return array
+     */
+    public function getCurrentSetup()
+    {
+        return $this->current;
+    }
+
+    /**
      * @param Zend\Mvc\MvcEvent $event
      * @throws ScContent\Exception\InvalidArgumentException
      * @return void
@@ -62,7 +77,8 @@ class InstallationInspector
         while (! empty($this->queue)) {
             $controller = 'ScController.Installation.Default';
             $action = 'index';
-            $options = array_shift($this->queue);
+            $options = $this->current = array_shift($this->queue);
+
             if (! isset($options['steps']) || ! is_array($options['steps'])) {
                 throw new InvalidArgumentException(
                     "Missing configuration options 'steps'."

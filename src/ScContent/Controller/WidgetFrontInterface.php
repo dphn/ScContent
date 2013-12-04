@@ -9,11 +9,12 @@
  */
 namespace ScContent\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Stdlib\DispatchableInterface;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-abstract class AbstractWidgetFront extends AbstractActionController
+interface WidgetFrontInterface extends DispatchableInterface
 {
+    function frontAction();
 }

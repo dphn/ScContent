@@ -13,7 +13,6 @@ namespace ScContent\Options;
  * @author Dolphin <work.dolphin@gmail.com>
  */
 interface ModuleOptionsInterface extends
-    ModuleInstallationInterface,
     ModuleThemeInterface,
     ModuleWidgetInterface,
     ServiceBackContentInterface,

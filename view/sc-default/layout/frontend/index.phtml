@@ -12,7 +12,7 @@
 <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/sc-default/img/favicon.ico'))
                 ->appendStylesheet($this->basePath() . '/sc-default/css/bootstrap.min.css')
                 ->appendStylesheet($this->basePath() . '/sc-default/css/bootstrap-theme.min.css')
-                ->appendStylesheet($this->basePath() . '/sc-default/css/common.css')
+                ->appendStylesheet($this->basePath() . '/sc-default/css/frontend.css')
 ?>
 
 <!-- Scripts -->
@@ -24,22 +24,12 @@
 
 </head>
 <body>
-<?php
-    foreach($registry as $region => $widgets){
-        foreach($widgets as $widget) {
-            echo $this->$widget;
-        }
-    }
-?>
+<?php foreach($regions as $regionName => $widgets): ?>
+<?php $partial = $regions->getRegionOption($regionName, 'partial') ?>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <?php echo $this->content ?>
+<?= $this->partial($partial, ['widgets' => $widgets]) ?>
 
-        </div>
-    </div>
-</div>
+<?php endforeach ?>
 
 </body>
 </html>

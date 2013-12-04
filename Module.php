@@ -9,7 +9,9 @@
  */
 namespace ScContent;
 
-use Zend\ModuleManager\ModuleManager,
+use ZfcBase\Module\AbstractModule,
+    //
+    Zend\ModuleManager\ModuleManager,
     Zend\Mvc\MvcEvent,
     //
     Locale;
@@ -28,21 +30,31 @@ if (0 > version_compare(phpversion(), '5.4.0')) {
 defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 
 /**
- * The root directory of the module ScContent
- *
- * @const string
- */
-define('SCCONTENT_BASE_DIR', __DIR__);
-
-/**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class Module
+class Module extends AbstractModule
 {
     /**
-     * @param Zend\Mvc\MvcEvent $e
+     * @return string
      */
-    public function onBootstrap(MvcEvent $e)
+    public function getDir()
+    {
+        return __DIR__;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNamespace()
+    {
+        return __NAMESPACE__;
+    }
+
+    /**
+     * @param Zend\Mvc\MvcEvent $event
+     * @return void
+     */
+    public function onBootstrap(MvcEvent $event)
     {
         include __DIR__ . DS . 'config' . DS . 'bootstrap.php';
     }
@@ -109,17 +121,5 @@ class Module
     public function getViewHelperConfig()
     {
         return include __DIR__ . DS . 'config' . DS . 'view.helpers.config.php';
-    }
-
-    /**
-     * @return array
-     */
-    public function getAutoloaderConfig()
-    {
-        return array(
-            'Zend\Loader\ClassMapAutoloader' => array(
-                __DIR__ . DS . 'autoload_classmap.php'
-            )
-        );
     }
 }
