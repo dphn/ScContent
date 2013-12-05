@@ -95,6 +95,12 @@ return [
     ],
     'router' => [
         'routes' => [
+            '#' => [
+                'type' => 'literal',
+                'options' => [
+                    'route' => '#',
+                ],
+            ],
             /* The route to the home page.
              */
             'sc' => [

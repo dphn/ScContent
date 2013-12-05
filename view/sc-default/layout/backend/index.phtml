@@ -22,7 +22,7 @@
                               ->prependFile($this->basePath() . '/sc-default/js/jquery.min.js')
                               ->prependFile($this->basePath() . '/sc-default/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9'))
 ?>
-    
+
 </head>
 <body>
 <div id="wrap">
@@ -39,30 +39,16 @@
             <a class="navbar-brand" href="<?php echo $this->url() ?>">ScContent</a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $this->translate('Content') ?> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="<?php echo $this->url('sc-admin/content-manager') ?>"><?php echo $this->translate('Manager') ?></a></li>
-                        <li><a href="<?php echo $this->url('sc-admin/content-search') ?>"><?php echo $this->translate('Search') ?></a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $this->translate('Appearance') ?> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="<?php echo $this->url('sc-admin/themes') ?>"><?php echo $this->translate('Themes') ?></a></li>
-                        <li><a href="<?php echo $this->url('sc-admin/layout') ?>"><?php echo $this->translate('Layout') ?></a></li>
-                    </ul>
-                </li>
-            </ul>
+            <?= $this->navigation('ScNavigation.Backend')->menu()->setPartial(['sc-default/layout/backend/navigation', 'sc-backend']) ?>
+
         </div>
     </div>
 </div>
 <div class="container">
 
     <?php echo $this->content ?>
-    
-</div>   
+
+</div>
 </div>
 </div>
 <footer id="footer">

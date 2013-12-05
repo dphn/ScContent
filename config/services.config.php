@@ -16,6 +16,9 @@ return [
         'ScContent\Factory\Migration\MigrationSchemaAbstractFactory',
     ],
     'factories' => [
+        'ScNavigation.Backend'
+            => 'ScContent\Factory\Navigation\BackendNavigationFactory',
+
         'ScDb.Adapter'
             => 'ScContent\Factory\Db\AdapterServiceFactory',
 
