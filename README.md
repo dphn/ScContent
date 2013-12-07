@@ -7,7 +7,7 @@ At this time, the module works only with the database MySql.
 Introduction
 -----------------
 It is a simple module for editing the content based on Zend Framework 2.
-![Screenshot] (https://github.com/dphn/ScContent/docs/img/sc-content.png?raw=true)
+![Screenshot] (/docs/img/sc-content.png?raw=true)
 
 Requirements
 -----------------
