@@ -3,14 +3,15 @@ ScContent
 
 This module in process.
 At this time, the module works only with the database MySql.
-The module ScContent need PHP version >= 5.4.0
 
 Introduction
 -----------------
-This is a simple module for editing the content based on Zend Framework 2.
+It is a simple module for editing the content based on Zend Framework 2.
+<img style="max-width:100%" src="http://https://github.com/dphn/ScContent/tree/master/docs/img/sc-content.png" />
 
 Requirements
 -----------------
+* php >= 5.4.0
 * [Zend Framework 2](https://github.com/zendframework/zf2) (latest master)
 * [BjyAuthorize](https://github.com/bjyoungblood/BjyAuthorize) (latest master)
 * [ZfcUser](https://github.com/ZF-Commons/ZfcUser) (latest master)

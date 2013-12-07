@@ -21,80 +21,80 @@ class DatabaseInputFilter extends InputFilter
      */
     public function __construct()
     {
-        $this->add(array(
+        $this->add([
             'name' => 'driver',
             'required' => true,
-            'validators' => array(
-                array(
+            'validators' => [
+                [
                     'name' => 'ScContent\Validator\Db\Connection',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'path',
             'required' => false,
-            'filters' => array(
-                array(
+            'filters' => [
+                [
                     'name' => 'StringTrim',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'database',
             'required' => false,
-            'filters' => array(
-                array(
+            'filters' => [
+                [
                     'name' => 'StringTrim',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'host',
             'required' => false,
-            'filters' => array(
-                array(
+            'filters' => [
+                [
                     'name' => 'StringTrim',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'username',
             'required' => false,
-            'filters' => array(
-                array(
+            'filters' => [
+                [
                     'name' => 'StringTrim',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'password',
             'required' => false,
-            'filters' => array(
-                array(
+            'filters' => [
+                [
                     'name' => 'StringTrim',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'password2',
             'required' => false,
-            'filters' => array(
-                array(
+            'filters' => [
+                [
                     'name' => 'StringTrim',
-                ),
-            ),
-            'validators' => array(
-                array(
+                ],
+            ],
+            'validators' => [
+                [
                     'name' => 'identical',
-                    'options' => array('token' => 'password'),
-                ),
-            ),
-        ));
+                    'options' => ['token' => 'password'],
+                ],
+            ],
+        ]);
     }
 }

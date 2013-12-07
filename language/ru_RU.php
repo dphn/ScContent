@@ -1,7 +1,7 @@
 <?php
 
 return [
-// module.settings.php
+// config/installation.config.php
 'Php.ini option'
     => 'Параметр php.ini',
 'Value'
@@ -12,7 +12,7 @@ return [
     => 'ScContent - Инсталляция',
 'Installing a module ScContent'
     => 'Установка модуля ScContent',
-// step 1 Pre-test
+// Pre-test
 'Pre-test'
     => 'Предварительная проверка',
 'Check the system requirements'
@@ -95,6 +95,22 @@ return [
     => 'Повторите пароль',
 'Install'
     => 'Установить',
+
+// backend Navigator
+'Content'
+    => 'Содержимое',
+'Manager'
+    => 'Менеджер',
+'Search'
+    => 'Поиск',
+
+'Apperance'
+    => 'Оформление',
+'Themes'
+    => 'Темы',
+'Layout'
+    => 'Макет',
+
 
 // layout/backend.phtml
 'Administrator'

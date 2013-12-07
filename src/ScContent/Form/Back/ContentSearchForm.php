@@ -36,143 +36,143 @@ class ContentSearchForm extends Form
      */
     protected function setFormSpecification()
     {
-        $this->add(array(
+        $this->add([
             'name' => 'text',
             'type' => 'text',
-            'options' => array(
+            'options' => [
                 'label' => 'Containing Text',
-            ),
-            'attributes' => array(
+            ],
+            'attributes' => [
                 'id' => 'search-text',
                 'class' => 'form-control',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'text_source',
             'type' => 'radio',
-            'options' => array(
-                'value_options' => array(
+            'options' => [
+                'value_options' => [
                     'title' => 'In the title',
                     'content' => 'In the content',
                     'description' => 'In the description',
-                ),
-            ),
-            'attributes' => array(
+                ],
+            ],
+            'attributes' => [
                 'value' => 'title',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'date_type',
             'type' => 'radio',
-            'options' => array(
-                'value_options' => array(
+            'options' => [
+                'value_options' => [
                     'unknown' => 'Date of the latest changes is unknown',
                     'week' => 'Last week',
                     'month' => 'Last month',
                     'range' => 'In this range',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'date_start',
             'type' => 'text', // for browser compatibility
             'attributes' => array(
                 'id' => 'search-date-start',
                 'class' => 'form-control input-sm',
             ),
-        ));
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'date_end',
             'type' => 'text', // for browser compatibility
-            'attributes' => array(
+            'attributes' => [
                 'id' => 'search-date-end',
                 'class' => 'form-control input-sm',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'modification_type',
             'type' => 'select',
-            'options' => array(
-                'value_options' => array(
+            'options' => [
+                'value_options' => [
                     'created' => 'Created',
                     'modified' => 'Modified',
-                ),
-            ),
-            'attributes' => array(
+                ],
+            ],
+            'attributes' => [
                 'class' => 'form-control',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'user_name',
             'type' => 'text',
-            'options' => array(
+            'options' => [
                 'label' => 'Containing Text',
-            ),
-            'attributes' => array(
+            ],
+            'attributes' => [
                 'id' => 'search-user',
                 'class' => 'form-control',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'user_source',
             'type' => 'radio',
-            'options' => array(
-                'value_options' => array(
+            'options' => [
+                'value_options' => [
                     'username' => 'In the name',
                     'email' => 'In the e-mail',
-                ),
-            ),
-            'attributes' => array(
+                ],
+            ],
+            'attributes' => [
                 'value' => 'username',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'user_type',
             'type' => 'select',
-            'options' => array(
-                'value_options' => array(
+            'options' => [
+                'value_options' => [
                     'author' => 'Author',
                     'editor' => 'Editor',
-                ),
-            ),
-            'attributes' => array(
+                ],
+            ],
+            'attributes' => [
                 'class' => 'form-control',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'search',
             'type' => 'button',
-            'options' => array(
+            'options' => [
                 'label' => 'Search',
-            ),
-            'attributes' => array(
+            ],
+            'attributes' => [
                 'type'  => 'submit',
                 'class' => 'btn btn-primary',
                 'value' => 'search',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'clean',
             'type' => 'button',
-            'options' => array(
+            'options' => [
                 'label' => 'Clean',
-            ),
-            'attributes' => array(
+            ],
+            'attributes' => [
                 'type'  => 'submit',
                 'class' => 'btn btn-primary',
                 'value' => 'clean',
-            ),
-        ));
+            ],
+        ]);
 
         return $this;
     }
@@ -184,77 +184,77 @@ class ContentSearchForm extends Form
     {
         $spec = new InputFilter();
 
-        $spec->add(array(
+        $spec->add([
             'name' => 'text',
             'required' => false,
-            'validators' => array(
-                array(
+            'validators' => [
+                [
                     'name' => 'stringlength',
-                    'options' => array(
+                    'options' => [
                         'encoding' => 'UTF-8',
                         'min' => 3,
                         'max' => 64,
-                    ),
-                ),
-            ),
-        ));
+                    ],
+                ],
+            ],
+        ]);
 
-        $spec->add(array(
+        $spec->add([
             'name' => 'date_type',
             'required' => false,
-            'validators' => array(
-                array(
+            'validators' => [
+                [
                     'name' => 'ScContent\Validator\ContentList\SearchDateRange',
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
 
-        $spec->add(array(
+        $spec->add([
             'name' => 'date_start',
             'required' => false,
-            'validators' => array(
-                array(
+            'validators' => [
+                [
                     'name' => 'datetime',
-                    'options' => array(
+                    'options' => [
                         // l10n service sets actual Locale as application-wide Locale
                         'locale' => Locale::getDefault(),
                         'dateType' => IntlDateFormatter::SHORT,
                         'timeType' => IntlDateFormatter::NONE
-                    ),
-                ),
-            ),
-        ));
+                    ],
+                ],
+            ],
+        ]);
 
-        $spec->add(array(
+        $spec->add([
             'name' => 'date_end',
             'required' => false,
-            'validators' => array(
-                array(
+            'validators' => [
+                [
                     'name' => 'datetime',
-                    'options' => array(
+                    'options' => [
                         // l10n service sets actual Locale as application-wide Locale
                         'locale' => Locale::getDefault(),
                         'dateType' => IntlDateFormatter::SHORT,
                         'timeType' => IntlDateFormatter::NONE
-                    ),
-                ),
-            ),
-        ));
+                    ],
+                ],
+            ],
+        ]);
 
-        $spec->add(array(
+        $spec->add([
             'name' => 'user_name',
             'required' => false,
-            'validators' => array(
-                array(
+            'validators' => [
+                [
                     'name' => 'stringlength',
-                    'options' => array(
+                    'options' => [
                         'encoding' => 'UTF-8',
                         'min' => 3,
                         'max' => 64,
-                    ),
-                ),
-            ),
-        ));
+                    ],
+                ],
+            ],
+        ]);
 
         $this->setInputFilter($spec);
 

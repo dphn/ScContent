@@ -21,7 +21,7 @@ class DatabaseForm extends Form
     /**
      * @var array
      */
-    protected $drivers = array();
+    protected $drivers = [];
 
     /**
      * Constructor
@@ -40,94 +40,94 @@ class DatabaseForm extends Form
      */
     protected function setFormSpecification()
     {
-        $this->add(array(
+        $this->add([
             'name' => 'driver',
             'type' => 'select',
-            'options' => array(
+            'options' => [
                 'label' => 'Database driver',
                 'value_options' => $this->drivers,
-            ),
-            'attributes' => array(
+            ],
+            'attributes' => [
                 'id' => 'driver',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'path',
-            'attributes' => array(
+            'attributes' => [
                 'type' => 'text',
-                'id'   => 'dbpath',
-            ),
-            'options' => array(
+                'id' => 'dbpath',
+            ],
+            'options' => [
                 'label' => 'Path (only for SQLite)'
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'host',
-            'attributes' => array(
-                'type'  => 'text',
-                'id'    => 'host',
+            'attributes' => [
+                'type' => 'text',
+                'id' => 'host',
                 'value' => 'localhost',
-            ),
-            'options' => array(
+            ],
+            'options' => [
                 'label' => 'Host',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'database',
-            'attributes' => array(
+            'attributes' => [
                 'type' => 'text',
-                'id'   => 'database',
-            ),
-            'options' => array(
+                'id' => 'database',
+            ],
+            'options' => [
                 'label' => 'Database name',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'username',
-            'attributes' => array(
+            'attributes' => [
                 'type' => 'text',
-                'id'   => 'username',
-            ),
-            'options' => array(
+                'id' => 'username',
+            ],
+            'options' => [
                 'label' => 'Username',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'password',
-            'attributes' => array(
+            'attributes' => [
                 'type' => 'password',
-                'id'   => 'password',
-            ),
-            'options' => array(
+                'id' => 'password',
+            ],
+            'options' => [
                 'label' => 'Password',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'password2',
-            'attributes' => array(
+            'attributes' => [
                 'type' => 'password',
-                'id'   => 'password2',
-            ),
-            'options' => array(
+                'id' => 'password2',
+            ],
+            'options' => [
                 'label' => 'Password verify',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'submit',
-            'attributes' => array(
+            'attributes' => [
                 'type' => 'submit',
                 'value' => 'Install',
                 'id' => 'submit',
                 'class' => 'btn-primary',
-            ),
-        ));
+            ],
+        ]);
 
         return $this;
     }

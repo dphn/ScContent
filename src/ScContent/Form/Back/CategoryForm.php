@@ -111,11 +111,39 @@ class CategoryForm extends Form
         $spec->add([
             'name' => 'title',
             'required' => true,
+            'filters' => [
+                [
+                    'name' => 'StringTrim',
+                ],
+            ],
+            'validators' => [
+                [
+                    'name' => 'StringLength',
+                    'options' => [
+                        'max' => 255,
+                        'encoding' => 'utf-8',
+                    ]
+                ]
+            ],
         ]);
 
         $spec->add([
             'name' => 'name',
             'required' => true,
+            'filters' => [
+                [
+                    'name' => 'StringTrim',
+                ],
+            ],
+            'validators' => [
+                [
+                    'name' => 'StringLength',
+                    'options' => [
+                        'max' => 255,
+                        'encoding' => 'utf-8',
+                    ]
+                ]
+            ],
         ]);
 
         $this->setInputFilter($spec);

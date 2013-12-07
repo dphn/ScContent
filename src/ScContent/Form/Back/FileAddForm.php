@@ -115,30 +115,30 @@ class FileAddForm extends Form
      */
     protected function setFormSpecification()
     {
-        $this->add(array(
+        $this->add([
             'name' => 'file',
             'type' => 'file',
-            'options' => array(
+            'options' => [
                 'label' => 'Upload file'
-            ),
-            'attributes' => array(
+            ],
+            'attributes' => [
                 'multiple' => true,
                 'id' => 'file',
-            )
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'upload',
             'type' => 'button',
-            'options' => array(
+            'options' => [
                 'label' => 'Upload',
-            ),
-            'attributes' => array(
+            ],
+            'attributes' => [
                 'type'  => 'submit',
                 'class' => 'btn btn-primary',
                 'value' => 'upload',
-            ),
-        ));
+            ],
+        ]);
 
         return $this;
     }

@@ -15,8 +15,7 @@ use Zend\InputFilter\InputFilterProviderInterface,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class FileEditFieldset extends Fieldset
-    implements InputFilterProviderInterface
+class FileEditFieldset extends Fieldset implements InputFilterProviderInterface
 {
     /**
      * Constructor
@@ -25,43 +24,43 @@ class FileEditFieldset extends Fieldset
     {
         parent::__construct('file');
 
-        $this->add(array(
+        $this->add([
             'name' => 'title',
-            'attributes' => array(
+            'attributes' => [
                 'placeholder' => 'Title',
                 'class' => 'form-control input-lg',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'content',
-            'options' => array(
+            'options' => [
                 'label' => 'Alternative text',
-                'label_attributes' => array(
+                'label_attributes' => [
                     'class' => 'content-form-label'
-                ),
-            ),
-            'attributes' => array(
+                ],
+            ],
+            'attributes' => [
                 'id' => 'content',
                 'class' => 'form-control',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'description',
             'type' => 'textarea',
-            'options' => array(
+            'options' => [
                 'label' => 'Description',
-                'label_attributes' => array(
+                'label_attributes' => [
                     'class' => 'content-form-label'
-                ),
-            ),
-            'attributes' => array(
+                ],
+            ],
+            'attributes' => [
                 'id' => 'description',
                 'class' => 'form-control',
-                'rows'  => 4,
-            ),
-        ));
+                'rows' => 4,
+            ],
+        ]);
     }
 
     /**
@@ -69,10 +68,24 @@ class FileEditFieldset extends Fieldset
      */
     public function getInputFilterSpecification()
     {
-        return array(
-            'title' => array(
+        return [
+            'title' => [
                 'required' => true,
-            ),
-        );
+                'filters' => [
+                    [
+                        'name' => 'StringTrim',
+                    ],
+                ],
+                'validators' => [
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'max' => 255,
+                            'encoding' => 'utf-8',
+                        ],
+                    ],
+                ],
+            ],
+        ];
     }
 }

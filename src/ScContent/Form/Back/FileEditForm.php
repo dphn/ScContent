@@ -62,40 +62,40 @@ class FileEditForm extends Form
      */
     protected function setFormSpecification()
     {
-        $this->add(array(
+        $this->add([
             'type' => 'collection',
             'name' => 'files',
-            'options' => array(
+            'options' => [
                 'allow_add' => false,
                 'allow_remove' => false,
                 'target_element' => new FileEditFieldset(),
                 'should_create_template' => false,
-            ),
-        ));
+            ],
+        ]);
 
         $collection = $this->get('files');
         $collection->setHydrator($collection->getHydrator());
 
-        $this->add(array(
+        $this->add([
             'name' => 'save',
             'type' => 'button',
-            'options' => array(
+            'options' => [
                 'label' => 'Save',
-            ),
-            'attributes' => array(
+            ],
+            'attributes' => [
                 'type'  => 'submit',
                 'class' => 'btn btn-primary',
                 'value' => 'save',
-            ),
-        ));
+            ],
+        ]);
 
-        $this->setValidationGroup(array(
-            'files' => array(
+        $this->setValidationGroup([
+            'files' => [
                 'title',
                 'description',
                 'content',
-            )
-        ));
+            ]
+        ]);
 
         return $this;
     }

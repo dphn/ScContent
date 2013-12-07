@@ -1,10 +1,10 @@
 
             <ul class="nav navbar-nav">
-            <?php foreach ($this->container as $page): ?>
-                <?php if(! $page->isVisible() || !$this->navigation()->accept($page)) continue; ?>
-                <?php if(! $page->hasPages()): ?>
+            <?php foreach($this->container as $page): ?>
+                <?php if (! $page->isVisible() || !$this->navigation()->accept($page)) continue ?>
+                <?php if (! $page->hasPages()): ?>
 
-                <li><a href="<?php echo $page->getHref() ?>"><?php echo $this->translate($page->getLabel()) ?></a></li>
+                <li><a href="<?php echo $page->getHref() ?>"><?= $this->translate($page->getLabel()) ?></a></li>
 
                 <?php else: ?>
 
@@ -14,7 +14,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <?php foreach($page->getPages() as $child): ?>
-                            <?php if( ! $child->isVisible() || !$this->navigation()->accept($child)) continue; ?>
+                            <?php if (! $child->isVisible() || !$this->navigation()->accept($child)) continue ?>
 
                             <li><a href="<?= $child->getHref() ?>"><?= $this->translate($child->getLabel()) ?></a></li>
                         <?php endforeach ?>
