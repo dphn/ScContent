@@ -35,7 +35,6 @@ class Layout extends AbstractMigrationMapper
             ->addColumn(new Column\Varchar('theme', 128))
             ->addColumn(new Column\Varchar('region', 128))
             ->addColumn(new Column\Varchar('name', 128))
-            ->addColumn(new Column\Integer('immutable', false, 0))
             ->addColumn(new Column\Text('options'))
             ->addColumn(new Column\Integer('position', false))
             ->addConstraint(new Constraint\PrimaryKey('id'));

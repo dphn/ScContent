@@ -35,6 +35,33 @@ class ArticleForm extends Form
     }
 
     /**
+     * @param object $object
+     * @param  int $flags
+     * @return ArticleForm
+     */
+    public function bind($object, $flags = Form::VALUES_NORMALIZED)
+    {
+        $inputFilter = $this->getInputFilter();
+        $input = $inputFilter->get('name');
+        $validatorsChain = $input->getValidatorChain();
+        foreach ($validatorsChain->getValidators() as $validation) {
+            if (! isset($validation['instance'])) {
+                continue;
+            }
+            $validator = $validation['instance'];
+            if ($validator instanceof AbstractDb) {
+                $validator->setExclude([
+                    'field' => 'id',
+                    'value' => $object->getId(),
+                ]);
+            }
+        }
+
+        parent::bind($object, $flags);
+        return $this;
+    }
+
+    /**
      * @return ArticleForm
      */
     protected function setFormSpecification()

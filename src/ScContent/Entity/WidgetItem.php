@@ -111,6 +111,19 @@ class WidgetItem extends AbstractEntity
     }
 
     /**
+     * @param string $name
+     * @param mixed $default
+     * @return mixed
+     */
+    public function getOption($name, $default = null)
+    {
+        if (array_key_exists($name, $this->options)) {
+            return $this->options[$name];
+        }
+        return $default;
+    }
+
+    /**
      * @param integer $position
      * @return void
      */

@@ -12,6 +12,7 @@ return [
         'widgets' => [
             'content' => [
                 'options' => [
+                    'immutable' => true,
                     'display_name' => 'Content',
                     'description' => 'Editable content. For editing use the content manager.',
                 ],

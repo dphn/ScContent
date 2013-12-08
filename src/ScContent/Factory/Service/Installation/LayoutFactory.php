@@ -27,11 +27,13 @@ class LayoutFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $entity = new WidgetEntity();
+        $translator = $serviceLocator->get('translator');
         $options = $serviceLocator->get('ScOptions.ModuleOptions');
         $mapper = $serviceLocator->get('ScMapper.Installation.Layout');
 
         $service = new LayoutService();
 
+        $service->setTranslator($translator);
         $service->setModuleOptions($options);
         $service->setLayoutMapper($mapper);
         $service->setWidgetEntity($entity);

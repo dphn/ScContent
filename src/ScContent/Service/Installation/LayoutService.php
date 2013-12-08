@@ -154,15 +154,12 @@ class LayoutService extends AbstractInstallationService
                 $installedWidgets
             );
             foreach ($notInstalledWidgets as $widgetName) {
-                $widgetPrototype->setName($widgetName);
-                $widgetPrototype->setRegion($regions[$widgetName]);
-                if (isset($widgets[$widgetName]['options'])) {
-                    $widgetPrototype->setOptions(
-                        $widgets[$widgetName]['options']
-                    );
-                }
+                $widget = clone ($widgetPrototype);
+                $widget->setName($widgetName);
+                $widget->setRegion($regions[$widgetName]);
+                $widget->exchangeArray($widgets[$widgetName]);
                 @set_time_limit(30);
-                $mapper->install($widgetPrototype);
+                $mapper->install($widget);
             }
         } catch (Exception $e) {
             $this->error(self::WidgetsInstallationFailed);
