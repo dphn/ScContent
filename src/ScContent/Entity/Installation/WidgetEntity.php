@@ -37,11 +37,6 @@ class WidgetEntity extends AbstractEntity
     protected $name = '';
 
     /**
-     * @var integer
-     */
-    protected $immutable = 0;
-
-    /**
      * @var array
      */
     protected $options = array();
@@ -117,24 +112,6 @@ class WidgetEntity extends AbstractEntity
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * @param boolean | integer | string $flag
-     * @return WidgetEntity
-     */
-    public function setImmutable($flag)
-    {
-        $this->immutable = (int) $flag;
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getImmutable()
-    {
-        return $this->immutable;
     }
 
     /**

@@ -12,6 +12,7 @@ namespace ScContent\Factory\Service;
 use ScContent\Service\ThumbnailGenerator,
     ScContent\Service\FileTransfer,
     //
+    Zend\Validator\Db\NoRecordExists,
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
 
@@ -26,10 +27,44 @@ class FileTransferFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $thumbnailGenerator = new ThumbnailGenerator();
+        $translator = $serviceLocator->get('translator');
         $catalog = $serviceLocator->get('ScService.FileTypesCatalog');
         $dir = $serviceLocator->get('ScService.Dir');
-        $fileTransfer = new FileTransfer($thumbnailGenerator, $catalog, $dir);
-        return $fileTransfer;
+
+        $adapter = $serviceLocator->get('ScDb.Adapter');
+        $validator = new NoRecordExists([
+            'adapter' => $adapter,
+            'table'   => 'sc_content',
+            'field'   => 'name',
+        ]);
+
+        $service = new FileTransfer();
+
+        $service->setTranslator($translator);
+        $service->setValidator($validator);
+        $service->setCatalog($catalog);
+        $service->setDir($dir);
+
+        $events = $service->getEventManager();
+        $events->attach(
+            'receive',
+            function($event) use ($serviceLocator) {
+                $listener = $serviceLocator->get(
+                    'ScListener.ThumbnailListener'
+                );
+                return $listener->generate($event);
+            }
+        );
+        $events->attach(
+            'rollBack',
+            function($event) use ($serviceLocator) {
+                $listener = $serviceLocator->get(
+                    'ScListener.ThumbnailListener'
+                );
+                return $listener->remove($event);
+            }
+        );
+
+        return $service;
     }
 }

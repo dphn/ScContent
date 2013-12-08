@@ -185,7 +185,8 @@ class CategoryForm extends Form
                         'table' => 'sc_content',
                         'field' => 'name',
                         'messages' => [
-                            AbstractDb::ERROR_RECORD_FOUND => "The name '%value%' already exists.",
+                            AbstractDb::ERROR_RECORD_FOUND
+                                => "The name '%value%' already exists.",
                         ],
                     ],
                 ],

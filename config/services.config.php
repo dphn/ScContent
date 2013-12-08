@@ -133,6 +133,9 @@ return [
         'ScMapper.Back.LayoutMove'
             => 'ScContent\Factory\Mapper\Back\LayoutMoveMapperFactory',
 
+        'ScListener.ThumbnailListener'
+            => 'ScContent\Factory\Listener\ThumbnailListenerFactory',
+
         'ScListener.Theme.Installation'
             => 'ScContent\Factory\Listener\Theme\InstallationFactory',
 

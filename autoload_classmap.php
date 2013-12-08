@@ -7,8 +7,8 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
- * total classes:    240
- * total interfaces: 17
+ * total classes:    241
+ * total interfaces: 16
  */
 
 defined('DS') || define('DS', DIRECTORY_SEPARATOR);
@@ -87,6 +87,7 @@ return array(
     'ScContent\Factory\Listener\Theme\BackendFactory'                     => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Listener'                         . DS . 'Theme'                                . DS . 'BackendFactory.php',
     'ScContent\Factory\Listener\Theme\FrontendFactory'                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Listener'                         . DS . 'Theme'                                . DS . 'FrontendFactory.php',
     'ScContent\Factory\Listener\Theme\InstallationFactory'                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Listener'                         . DS . 'Theme'                                . DS . 'InstallationFactory.php',
+    'ScContent\Factory\Listener\ThumbnailListenerFactory'                 => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Listener'                         . DS . 'ThumbnailListenerFactory.php',
     'ScContent\Factory\Mapper\Back\ContentFactory'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'ContentFactory.php',
     'ScContent\Factory\Mapper\Back\ContentListCleanMapperFactory'         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'ContentListCleanMapperFactory.php',
     'ScContent\Factory\Mapper\Back\ContentListDeleteMapperFactory'        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'ContentListDeleteMapperFactory.php',
@@ -166,6 +167,7 @@ return array(
     'ScContent\Listener\Theme\FrontendListener'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'Theme'                            . DS . 'FrontendListener.php',
     'ScContent\Listener\Theme\InstallationListener'                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'Theme'                            . DS . 'InstallationListener.php',
     'ScContent\Listener\Theme\ThemeResolver'                              => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'Theme'                            . DS . 'ThemeResolver.php',
+    'ScContent\Listener\ThumbnailListener'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'ThumbnailListener.php',
     'ScContent\Mapper\AbstractContentMapper'                              => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'AbstractContentMapper.php',
     'ScContent\Mapper\AbstractDbMapper'                                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'AbstractDbMapper.php',
     'ScContent\Mapper\AbstractLayoutMapper'                               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'AbstractLayoutMapper.php',
@@ -246,8 +248,6 @@ return array(
     'ScContent\Service\ScDateTime'                                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'             . DS . 'ScDateTime.php',
     'ScContent\Service\ScDateTimeInterface'                               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'             . DS . 'ScDateTimeInterface.php',
     'ScContent\Service\Stdlib'                                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'             . DS . 'Stdlib.php',
-    'ScContent\Service\ThumbnailGenerator'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'             . DS . 'ThumbnailGenerator.php',
-    'ScContent\Service\ThumbnailGeneratorInterface'                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'             . DS . 'ThumbnailGeneratorInterface.php',
     'ScContent\Validator\ContentList\SearchDateRange'                     => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'           . DS . 'ContentList'                      . DS . 'SearchDateRange.php',
     'ScContent\Validator\Controller\WidgetValidator'                      => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'           . DS . 'Controller'                       . DS . 'WidgetValidator.php',
     'ScContent\Validator\Db\Connection'                                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'           . DS . 'Db'                               . DS . 'Connection.php',

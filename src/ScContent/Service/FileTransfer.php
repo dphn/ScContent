@@ -11,43 +11,100 @@ namespace ScContent\Service;
 
 use ScContent\Service\FileTypesCatalogInterface as CatalogInterface,
     ScContent\Service\Stdlib,
-    ScContent\Exception\RuntimeException,
-    ScContent\Exception\DomainException;
+    ScContent\Exception\IoCException,
+    ScContent\Exception\DebugException,
+    //
+    Zend\Validator\Db\NoRecordExists,
+    //
+    Exception;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class FileTransfer implements FileTransferInterface
+class FileTransfer extends AbstractService implements FileTransferInterface
 {
     /**
-     * @var ScContent\Service\ThumbnailGeneratorInterface
+     * @var Zend\Validator\Db\NoRecordExists
      */
-    protected $thumbnailGenerator;
+    protected $validator;
 
     /**
-     * @var ScContent\Service\FileTypesCatalog
+     * @var FileTypesCatalog
      */
     protected $catalog;
 
     /**
-     * @var ScContent\Service\Dir
+     * @var Dir
      */
     protected $dir;
 
     /**
-     * @param ScContent\Service\ThumbnailGeneratorInterface $thumbnailGenerator
-     * @param ScContent\Service\FileTypesCatalogInterface $catalog
-     * @param ScContent\Service\Dir $dir
+     * @param Zend\Validator\Db\NoRecordExists $validator
      * @return void
      */
-    public function __construct(
-        ThumbnailGeneratorInterface $thumbnailGenerator,
-        CatalogInterface $catalog,
-        Dir $dir
-    ) {
-        $this->thumbnailGenerator = $thumbnailGenerator;
+    public function setValidator(NoRecordExists $validator)
+    {
+        $this->validator = $validator;
+    }
+
+    /**
+     * @throws ScContent\Exception\IoCException
+     * @return Zend\Validator\Db\NoRecordExists
+     */
+    public function getValidator()
+    {
+        if (! $this->validator instanceof NoRecordExists) {
+            throw new IoCException(
+                'The validator was not set.'
+            );
+        }
+        return $this->validator;
+    }
+
+    /**
+     * @param FileTypesCatalogInterface $catalog
+     * @return void
+     */
+    public function setCatalog(CatalogInterface $catalog)
+    {
         $this->catalog = $catalog;
+    }
+
+    /**
+     * @throws ScContent\Exception\IoCException
+     * @return FileTypesCatalogInterface
+     */
+    public function getCatalog()
+    {
+        if (! $this->catalog instanceof CatalogInterface) {
+            throw new IoCException(
+                'The file types catalog was not set.'
+            );
+        }
+        return $this->catalog;
+    }
+
+    /**
+     * @param Dir $dir
+     * @return void
+     */
+    public function setDir(Dir $dir)
+    {
         $this->dir = $dir;
+    }
+
+    /**
+     * @throws ScContent\Exception\IoCException
+     * @return Dir
+     */
+    public function getDir()
+    {
+        if (! $this->dir instanceof Dir) {
+            throw new IoCException(
+                'The directory service was not set.'
+            );
+        }
+        return $this->dir;
     }
 
     /**
@@ -57,7 +114,12 @@ class FileTransfer implements FileTransferInterface
      */
     public function receive($files)
     {
-        $dir = $this->dir;
+        $dir = $this->getDir();
+        $catalog = $this->getCatalog();
+        $events = $this->getEventManager();
+        $translator = $this->getTranslator();
+        $validator = $this->getValidator();
+
         if (! $dir->appUploads('', true)) {
             throw new RuntimeException(
                 'Uploads directory does not exist or is unavailable.'
@@ -91,7 +153,7 @@ class FileTransfer implements FileTransferInterface
                 $rand = Stdlib::randomKey(6);
                 $name = $title . ' (' . $rand . ')';
                 $fileName = $name . '.' . $extension;
-            } while ($dir->appUploads($fileName, true));
+            } while ($dir->appUploads($fileName, true) && ! $validator->isValid($name));
 
             $newFile = $dir->appUploads($fileName);
 
@@ -103,16 +165,25 @@ class FileTransfer implements FileTransferInterface
             @chmod($newFile, CHMOD_FILE);
             @unlink($file['tmp_name']);
 
-            if ($this->catalog->getFeature($spec) & CatalogInterface::GdEditable) {
-                try {
-                    $this->thumbnailGenerator->generate($newFile);
-                } catch (DomainException $e) {
-                    @unlink($newFile);
-                    continue;
-                } catch (RuntimeException $e) {
-                    @unlink($newFile);
-                    continue;
+            try {
+                $events->trigger(
+                    __FUNCTION__,
+                    null,
+                    [
+                        'file' => $newFile,
+                        'spec' => $spec,
+                    ]
+                );
+            } catch (Exception $e) {
+                @unlink($newFile);
+                if (DEBUG_MODE) {
+                    throw new DebugException(
+                        $translator->translate('Error: ') . $e->getMessage(),
+                        $e->getCode(),
+                        $e
+                    );
                 }
+                continue;
             }
             $info[] = $data;
         }
@@ -125,17 +196,22 @@ class FileTransfer implements FileTransferInterface
      */
     public function rollBack($data)
     {
+        $events = $this->getEventManager();
         $dir = $this->dir;
         foreach ($data as $file) {
             list ($extension, $mime) = explode(':', $file['spec']);
             $fileName = $file['name'] . '.' . $extension;
-            $fileThumbnail = $file['name'] . '.thumbnail.' . $extension;
             if ($dir->appUploads($fileName, true)) {
                 @unlink($dir->appUploads($fileName));
             }
-            if ($dir->appUploads($fileThumbnail, true)) {
-                @unlink($dir->appUploads($fileThumbnail));
-            }
+            $events->trigger(
+                __FUNCTION__,
+                null,
+                [
+                    'file' => $fileName,
+                    'spec' => $spec,
+                ]
+            );
         }
     }
 }

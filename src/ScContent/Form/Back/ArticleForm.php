@@ -121,18 +121,18 @@ class ArticleForm extends Form
             ],
         ]);
 
-        $this->add(array(
+        $this->add([
             'name' => 'save',
             'type' => 'button',
-            'options' => array(
+            'options' => [
                 'label' => 'Save',
-            ),
-            'attributes' => array(
+            ],
+            'attributes' => [
                 'type'  => 'submit',
                 'class' => 'btn btn-primary',
                 'value' => 'save',
-            ),
-        ));
+            ],
+        ]);
 
         return $this;
     }
@@ -186,7 +186,8 @@ class ArticleForm extends Form
                         'table' => 'sc_content',
                         'field' => 'name',
                         'messages' => [
-                            AbstractDb::ERROR_RECORD_FOUND => "The name '%value%' already exists.",
+                            AbstractDb::ERROR_RECORD_FOUND
+                                => "The name '%value%' already exists.",
                         ],
                     ],
                 ],
