@@ -9,12 +9,6 @@
  */
 return [
     'invokables' => [
-        'ScForm.Back.Category'
-            => 'ScContent\Form\Back\CategoryForm',
-
-        'ScForm.Back.Article'
-            => 'ScContent\Form\Back\ArticleForm',
-
         'ScForm.Back.FileEdit'
             => 'ScContent\Form\Back\FileEditForm',
 
@@ -22,6 +16,12 @@ return [
             => 'ScContent\Form\Back\ContentSearchForm',
     ],
     'factories' => [
+        'ScForm.Back.Category'
+            => 'ScContent\Factory\Form\Back\CategoryFormFactory',
+
+        'ScForm.Back.Article'
+            => 'ScContent\Factory\Form\Back\ArticleFormFactory',
+
         'ScForm.Back.FileAdd'
             => 'ScContent\Factory\Form\Back\FileAddFactory',
 

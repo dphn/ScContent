@@ -15,7 +15,6 @@ use ScContent\InputFilter\FileInput,
     ScContent\Validator\File\FileType,
     //
     Zend\InputFilter\InputFilterInterface,
-    Zend\InputFilter\InputFilter,
     Zend\Form\Exception\DomainException,
     Zend\Form\Form;
 
@@ -148,7 +147,7 @@ class FileAddForm extends Form
      */
     protected function setInputSpecification()
     {
-        $spec = new InputFilter();
+        $spec = $this->getInputFilter();
 
         $fileInput = new FileInput('file');
         $fileInput->setRequired(true);
@@ -163,7 +162,7 @@ class FileAddForm extends Form
             // @todo  ->attachByName('filecount', array('max' => 10));
 
         $spec->add($fileInput);
-        $this->setInputFilter($spec);
+
         return $this;
     }
 }

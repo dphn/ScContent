@@ -11,7 +11,6 @@ namespace ScContent\Form\Back;
 
 use ScContent\Validator\ContentList\SearchDateRange,
     //
-    Zend\InputFilter\InputFilter,
     Zend\Form\Form,
     //
     IntlDateFormatter,
@@ -182,7 +181,7 @@ class ContentSearchForm extends Form
      */
     protected function setInputSpecification()
     {
-        $spec = new InputFilter();
+        $spec = $this->getInputFilter();
 
         $spec->add([
             'name' => 'text',
@@ -255,8 +254,6 @@ class ContentSearchForm extends Form
                 ],
             ],
         ]);
-
-        $this->setInputFilter($spec);
 
         return $this;
     }

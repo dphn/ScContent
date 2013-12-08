@@ -7,7 +7,7 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
- * total classes:    237
+ * total classes:    240
  * total interfaces: 17
  */
 
@@ -69,6 +69,8 @@ return array(
     'ScContent\Factory\Controller\Back\LayoutFactory'                     => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Controller'                       . DS . 'Back'                                 . DS . 'LayoutFactory.php',
     'ScContent\Factory\Controller\Plugin\TranslatorFactory'               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Controller'                       . DS . 'Plugin'                               . DS . 'TranslatorFactory.php',
     'ScContent\Factory\Db\AdapterServiceFactory'                          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Db'                               . DS . 'AdapterServiceFactory.php',
+    'ScContent\Factory\Form\Back\ArticleFormFactory'                      => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Form'                             . DS . 'Back'                                 . DS . 'ArticleFormFactory.php',
+    'ScContent\Factory\Form\Back\CategoryFormFactory'                     => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Form'                             . DS . 'Back'                                 . DS . 'CategoryFormFactory.php',
     'ScContent\Factory\Form\Back\FileAddFactory'                          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Form'                             . DS . 'Back'                                 . DS . 'FileAddFactory.php',
     'ScContent\Factory\Form\Installation\DatabaseFormFactory'             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Form'                             . DS . 'Installation'                         . DS . 'DatabaseFormFactory.php',
     'ScContent\Factory\Listener\Back\ContentListAggregateFactory'         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Listener'                         . DS . 'Back'                                 . DS . 'ContentListAggregateFactory.php',
@@ -103,6 +105,7 @@ return array(
     'ScContent\Factory\Mapper\Theme\FrontendLayoutFactory'                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Mapper'                           . DS . 'Theme'                                . DS . 'FrontendLayoutFactory.php',
     'ScContent\Factory\Migration\MapperBuilder'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Migration'                        . DS . 'MapperBuilder.php',
     'ScContent\Factory\Migration\MigrationSchemaAbstractFactory'          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Migration'                        . DS . 'MigrationSchemaAbstractFactory.php',
+    'ScContent\Factory\Navigation\BackendNavigationFactory'               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Navigation'                       . DS . 'BackendNavigationFactory.php',
     'ScContent\Factory\Options\InstallationFactory'                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Options'                          . DS . 'InstallationFactory.php',
     'ScContent\Factory\Options\ModuleFactory'                             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Options'                          . DS . 'ModuleFactory.php',
     'ScContent\Factory\Service\Back\ArticleFactory'                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Service'                          . DS . 'Back'                                 . DS . 'ArticleFactory.php',

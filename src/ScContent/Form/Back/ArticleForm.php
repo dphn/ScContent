@@ -9,7 +9,8 @@
  */
 namespace ScContent\Form\Back;
 
-use Zend\InputFilter\InputFilter,
+use Zend\Db\Adapter\AdapterInterface,
+    Zend\Validator\Db\AbstractDb,
     Zend\Form\Form;
 
 /**
@@ -18,10 +19,17 @@ use Zend\InputFilter\InputFilter,
 class ArticleForm extends Form
 {
     /**
+     * @var Zend\Db\Adapter\AdapterInterface
+     */
+    protected $adapter;
+
+    /**
      * Constructor
      */
-    public function __construct()
+    public function __construct(AdapterInterface $adapter)
     {
+        $this->adapter = $adapter;
+
         parent::__construct('article');
         $this->setFormSpecification()->setInputSpecification();
     }
@@ -107,19 +115,56 @@ class ArticleForm extends Form
      */
     protected function setInputSpecification()
     {
-        $spec = new InputFilter();
+        $spec = $this->getInputFilter();
 
-        $spec->add(array(
+        $spec->add([
             'name' => 'title',
             'required' => true,
-        ));
+            'filters' => [
+                [
+                    'name' => 'StringTrim',
+                ],
+            ],
+            'validators' => [
+                [
+                    'name' => 'StringLength',
+                    'options' => [
+                        'max' => 255,
+                        'encoding' => 'utf-8',
+                    ],
+                ],
+            ],
+        ]);
 
-        $spec->add(array(
+        $spec->add([
             'name' => 'name',
             'required' => true,
-        ));
-
-        $this->setInputFilter($spec);
+            'filters' => [
+                [
+                    'name' => 'StringTrim',
+                ],
+            ],
+            'validators' => [
+                [
+                    'name' => 'StringLength',
+                    'options' => [
+                        'max' => 255,
+                        'encoding' => 'utf-8',
+                    ],
+                ],
+                [
+                    'name' => 'DbNoRecordExists',
+                    'options' => [
+                        'adapter' => $this->adapter,
+                        'table' => 'sc_content',
+                        'field' => 'name',
+                        'messages' => [
+                            AbstractDb::ERROR_RECORD_FOUND => "The name '%value%' already exists.",
+                        ],
+                    ],
+                ],
+            ],
+        ]);
 
         return $this;
     }

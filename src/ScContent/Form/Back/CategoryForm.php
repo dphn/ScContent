@@ -9,7 +9,8 @@
  */
 namespace ScContent\Form\Back;
 
-use Zend\InputFilter\InputFilter,
+use Zend\Db\Adapter\AdapterInterface,
+    Zend\Validator\Db\AbstractDb,
     Zend\Form\Form;
 
 /**
@@ -18,10 +19,17 @@ use Zend\InputFilter\InputFilter,
 class CategoryForm extends Form
 {
     /**
-     * Constructor
+     * @var Zend\Db\Adapter\AdapterInterface
      */
-    public function __construct()
+    protected $adapter;
+
+    /**
+     * @return void
+     */
+    public function __construct(AdapterInterface $adapter)
     {
+        $this->adapter = $adapter;
+
         parent::__construct('category');
         $this->setFormSpecification()->setInputSpecification();
     }
@@ -106,7 +114,7 @@ class CategoryForm extends Form
      */
     protected function setInputSpecification()
     {
-        $spec = new InputFilter();
+        $spec = $this->getInputFilter();
 
         $spec->add([
             'name' => 'title',
@@ -122,8 +130,8 @@ class CategoryForm extends Form
                     'options' => [
                         'max' => 255,
                         'encoding' => 'utf-8',
-                    ]
-                ]
+                    ],
+                ],
             ],
         ]);
 
@@ -141,12 +149,21 @@ class CategoryForm extends Form
                     'options' => [
                         'max' => 255,
                         'encoding' => 'utf-8',
-                    ]
-                ]
+                    ],
+                ],
+                [
+                    'name' => 'DbNoRecordExists',
+                    'options' => [
+                        'adapter' => $this->adapter,
+                        'table' => 'sc_content',
+                        'field' => 'name',
+                        'messages' => [
+                            AbstractDb::ERROR_RECORD_FOUND => "The name '%value%' already exists.",
+                        ],
+                    ],
+                ],
             ],
         ]);
-
-        $this->setInputFilter($spec);
 
         return $this;
     }

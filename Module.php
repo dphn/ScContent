@@ -12,7 +12,8 @@ namespace ScContent;
 use ZfcBase\Module\AbstractModule,
     //
     Zend\ModuleManager\ModuleManager,
-    Zend\Mvc\MvcEvent,
+    Zend\ModuleManager\Feature,
+    Zend\EventManager\EventInterface,
     //
     Locale;
 
@@ -32,7 +33,16 @@ defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class Module extends AbstractModule
+class Module extends AbstractModule implements
+    Feature\BootstrapListenerInterface,
+    Feature\ConfigProviderInterface,
+    Feature\ServiceProviderInterface,
+    Feature\ControllerProviderInterface,
+    Feature\ControllerPluginProviderInterface,
+    Feature\FormElementProviderInterface,
+    Feature\FilterProviderInterface,
+    Feature\ValidatorProviderInterface,
+    Feature\ViewHelperProviderInterface
 {
     /**
      * @return string
@@ -51,10 +61,10 @@ class Module extends AbstractModule
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param Zend\EventManager\EventInterface $event
      * @return void
      */
-    public function onBootstrap(MvcEvent $event)
+    public function onBootstrap(EventInterface $event)
     {
         include __DIR__ . DS . 'config' . DS . 'bootstrap.php';
     }
