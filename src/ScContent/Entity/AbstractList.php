@@ -17,7 +17,7 @@ abstract class AbstractList implements \Iterator, \Countable
     /**
      * @var array
      */
-    protected $items = array();
+    protected $items = [];
 
     /**
      * @return boolean

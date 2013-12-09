@@ -21,12 +21,12 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     /**
      * @var array
      */
-    protected $widgets = array();
+    protected $widgets = [];
 
     /**
      * @var array
      */
-    protected $db = array();
+    protected $db = [];
 
     /**
      * @var string
@@ -41,7 +41,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     /**
      * @var array
      */
-    protected $themes = array();
+    protected $themes = [];
 
     /**
      * @var string

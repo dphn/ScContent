@@ -25,19 +25,19 @@ class WidgetOptionsValidator extends AbstractValidator
     /**
      * @var array
      */
-    protected $messageTemplates = array(
+    protected $messageTemplates = [
         self::ConfigurationError
             => "Widget options don’t contain '%value%' section.",
-    );
+    ];
 
     /**
      * @param array $options
      */
-    public function __construct($options = array())
+    public function __construct($options = [])
     {
         if (! is_array($options)) {
             $options = func_get_args();
-            $temp = array();
+            $temp = [];
             if (! empty($options)) {
                 $temp['section'] = array_shift($options);
             }

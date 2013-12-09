@@ -31,7 +31,7 @@ class Connection extends AbstractValidator
     /**
      * @var array
      */
-    protected $messageTemplates = array(
+    protected $messageTemplates = [
         self::MissingOptions
             => "Missing options. The database connection failed.",
 
@@ -43,7 +43,7 @@ class Connection extends AbstractValidator
 
         self::ConnectionFailed
             => "The database connection failed. Please, check the entered options.",
-    );
+    ];
 
     /**
      * @param string $value

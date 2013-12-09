@@ -39,9 +39,9 @@ class MigrationService extends AbstractInstallationService implements
     /**
      * @var array
      */
-    protected $errorMessages = array(
-        self::MigrationFailed => 'Migration for the scheme %s is failed.'
-    );
+    protected $errorMessages = [
+        self::MigrationFailed => 'Migration for the scheme %s is failed.',
+    ];
 
     /**
      * Constructor

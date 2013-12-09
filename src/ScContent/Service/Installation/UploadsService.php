@@ -29,10 +29,10 @@ class UploadsService extends AbstractInstallationService
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::FailedCreateDirectory
             => 'Failed to create uploads directory %s. Please, check permissions or create this directory manually.',
-    );
+    ];
 
     /**
      * Constructor

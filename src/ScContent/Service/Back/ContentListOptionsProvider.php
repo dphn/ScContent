@@ -42,23 +42,23 @@ class ContentListOptionsProvider
     /**
      * @var array
      */
-    protected $query = array();
+    protected $query = [];
 
     /**
      * @var array
      */
-    protected $options = array(
+    protected $options = [
         'first'  => null,
         'second' => null,
-    );
+    ];
 
     /**
      * @var array
      */
-    protected $searchProxies = array(
+    protected $searchProxies = [
         'first'  => null,
         'second' => null,
-    );
+    ];
 
     /**
      * Constructor
@@ -75,7 +75,7 @@ class ContentListOptionsProvider
         $this->l10n = $l10n;
         $this->router = $router;
         $this->request = $request;
-        $query = array();
+        $query = [];
         if ($this->request->isPost()) {
             $query = $this->request->getPost();
         }

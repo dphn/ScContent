@@ -40,9 +40,9 @@ class LayoutListenerMapper extends AbstractLayoutMapper
             $this->getTable(self::WidgetsTableAlias),
             $this->getTable(self::LayoutTableAlias)
         );
-        $this->execute($sql, array(
+        $this->execute($sql, [
             ':contentId' => $contentId,
-        ));
+        ]);
     }
 
     /**
@@ -56,15 +56,18 @@ class LayoutListenerMapper extends AbstractLayoutMapper
         $this->checkTransaction($tid);
 
         $select = $this->getSql()->select()
-            ->columns(array('left_key', 'right_key'))
+            ->columns([
+                'left_key',
+                'right_key',
+            ])
             ->from($this->getTable(self::ContentTableAlias))
-            ->where(array(
+            ->where([
                 'id' => $contentId,
                 'trash' => (int) $trash
-            ));
+            ]);
 
         $content = $this->execute($select)->current();
-        if(empty($content)) {
+        if (empty($content)) {
             throw new UnavailableSourceException(
                 'The content was not found.'
             );
@@ -89,11 +92,11 @@ class LayoutListenerMapper extends AbstractLayoutMapper
             $this->getTable(self::ContentTableAlias)
         );
 
-        $this->execute($sql, array(
+        $this->execute($sql, [
             ':leftKey'     => $content['left_key'],
             ':rightKey'    => $content['right_key'],
             ':trash'       => (int) $trash,
-        ));
+        ]);
     }
 
     /**

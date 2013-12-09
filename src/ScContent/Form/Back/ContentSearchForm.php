@@ -78,10 +78,10 @@ class ContentSearchForm extends Form
         $this->add([
             'name' => 'date_start',
             'type' => 'text', // for browser compatibility
-            'attributes' => array(
+            'attributes' => [
                 'id' => 'search-date-start',
                 'class' => 'form-control input-sm',
-            ),
+            ],
         ]);
 
         $this->add([

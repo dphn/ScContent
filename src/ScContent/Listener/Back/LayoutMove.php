@@ -52,7 +52,7 @@ class LayoutMove extends AbstractControllerListener
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::SourceNotFound
             => 'Unable to move the widget with identifier %s in the new region. The widget was not found.',
 
@@ -61,7 +61,7 @@ class LayoutMove extends AbstractControllerListener
 
         self::UnexpectedError
             => 'Unable to move the widget %s in the new region.',
-    );
+    ];
 
     /**
      * @param ScContent\Options\ModuleOptions $options
@@ -145,7 +145,7 @@ class LayoutMove extends AbstractControllerListener
             ));
         }
 
-        $this->setRedirectRouteParams(array('theme' => $theme));
+        $this->setRedirectRouteParams(['theme' => $theme]);
         foreach ($regions as $id => $region) {
             try {
                 $mapper->beginTransaction();

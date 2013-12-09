@@ -49,7 +49,7 @@ class AdapterServiceFactory implements FactoryInterface
         $dbOptions = $moduleOptions->getDb();
 
         $dsn = $username = $password = $hostname = $database = null;
-        $options = array();
+        $options = [];
         foreach ($dbOptions as $key => $value) {
             switch (strtolower($key)) {
                 case 'dsn':
@@ -60,7 +60,7 @@ class AdapterServiceFactory implements FactoryInterface
                     if (strpos($value, 'pdo') === 0) {
                         $pdoDriver = strtolower(
                             substr(
-                                str_replace(array('-', '_', ' '), '', $value), 3
+                                str_replace(['-', '_', ' '], '', $value), 3
                             )
                         );
                     }
@@ -101,7 +101,7 @@ class AdapterServiceFactory implements FactoryInterface
             }
         }
         if (! isset($dsn) && isset($pdoDriver)) {
-            $dsn = array();
+            $dsn = [];
             switch ($pdoDriver) {
                 case 'sqlite':
                     $dsn[] = $database;

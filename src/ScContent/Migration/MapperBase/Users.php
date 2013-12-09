@@ -30,7 +30,7 @@ class Users extends AbstractMigrationMapper
                 'user_id',
                 true,
                 null,
-                array('auto_increment' => true)
+                ['auto_increment' => true]
             ))
             ->addColumn(
                 (new Column\Varchar('username', 255))

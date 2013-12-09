@@ -29,9 +29,9 @@ class ContentListClean extends ContentListAbstractListener
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::UnexpectedError => 'Unable to clean trash.',
-    );
+    ];
 
     /**
      * @param ScContent\Mapper\Back\ContentListCleanMapper $mapper
@@ -67,9 +67,9 @@ class ContentListClean extends ContentListAbstractListener
             $events->trigger(
                 __FUNCTION__ . '.clean.pre',
                 null,
-                array(
+                [
                     'tid' => $tid,
-                )
+                ]
             );
             $mapper->clean($tid);
             $mapper->commit();

@@ -42,7 +42,7 @@ class ContentListMove extends ContentListAbstractListener
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::MoveFromTrash
             => "Moving elements from the trash is impossible. Use the 'recovery' feature.",
 
@@ -66,7 +66,7 @@ class ContentListMove extends ContentListAbstractListener
 
         self::UnexpectedError
             => 'Unable to move %s.',
-    );
+    ];
 
     /**
      * @param ScContent\Mapper\Back\ContentListMoveMapper $mapper
@@ -119,10 +119,10 @@ class ContentListMove extends ContentListAbstractListener
                 $events->trigger(
                     __FUNCTION__ . '.move',
                     null,
-                    array(
+                    [
                         'content' => $id,
                         'tid' => $tid,
-                    )
+                    ]
                 );
                 $mapper->commit();
             } catch (UnavailableSourceException $e) {

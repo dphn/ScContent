@@ -91,7 +91,7 @@ class ContentListReorderMapper extends ContentListOperationAbstract
 
         $update = $this->getSql()->update()
             ->table($this->getTable(self::ContentTableAlias))
-            ->set(array(
+            ->set([
                 'left_key' => new Expression(
                     '`left_key` + @offset :=
                     IF(`left_key` > :topRight AND `right_key` < :bottomLeft,
@@ -103,20 +103,20 @@ class ContentListReorderMapper extends ContentListOperationAbstract
                     )'
                 ),
                 'right_key' => new Expression('`right_key` + @offset'),
-            ))
-            ->where(array(
+            ])
+            ->where([
                 '`left_key` >= ?' => $topLeft,
                 '`left_key` <= ?' => $bottomRight,
                 '`trash`     = ?' => 0,
-            ));
+            ]);
 
-        $this->execute($update, array(
+        $this->execute($update, [
             ':skewTree'       => $skewTree,
             ':topRight'       => $topRight,
             ':bottomLeft'     => $bottomLeft,
             ':skewEditTop'    => $skewEditTop,
             ':skewEditBottom' => $skewEditBottom,
-        ));
+        ]);
     }
 
     /**
@@ -127,16 +127,16 @@ class ContentListReorderMapper extends ContentListOperationAbstract
     protected function findMetaByPosition($parent, $position)
     {
         $select = $this->getSql()->select()
-            ->columns(array(
+            ->columns([
                 'id', 'left_key', 'right_key', 'level', 'trash'
-            ))
-            ->from(array('content' => $this->getTable(self::ContentTableAlias)))
-            ->where(array(
+            ])
+            ->from(['content' => $this->getTable(self::ContentTableAlias)])
+            ->where([
                 '`content`.`left_key`  > ?' => $parent['left_key'],
                 '`content`.`right_key` < ?' => $parent['right_key'],
                 '`content`.`level`     = ?' => $parent['level'] + 1,
                 '`content`.`trash`     = ?' => $parent['trash'],
-            ))
+            ])
             ->order('content.left_key ASC')
             ->limit(1)
             ->offset($position);
@@ -151,15 +151,15 @@ class ContentListReorderMapper extends ContentListOperationAbstract
     protected function findMetaByMaxBottomPosition($parent)
     {
         $select = $this->getSql()->select()
-            ->columns(array(
+            ->columns([
                 'id', 'left_key', 'right_key', 'level', 'trash'
-            ))
-            ->from(array('content' => $this->getTable(self::ContentTableAlias)))
-            ->where(array(
+            ])
+            ->from(['content' => $this->getTable(self::ContentTableAlias)])
+            ->where([
                 'content.right_key' => $parent['right_key'] - 1,
                 'content.level'     => $parent['level'] + 1,
                 'content.trash'     => $parent['trash'],
-            ));
+            ]);
 
         return $this->execute($select)->current();
     }

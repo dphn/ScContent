@@ -34,10 +34,11 @@ class AbstractLayoutMapper extends AbstractDbMapper
     /**
      * @var array
      */
-    protected $_tables = array(
+    protected $_tables = [
         self::WidgetsTableAlias => 'sc_widgets',
-        self::LayoutTableAlias => 'sc_layout',
-        self::ContentTableAlias => 'sc_content');
+        self::LayoutTableAlias  => 'sc_layout',
+        self::ContentTableAlias => 'sc_content',
+    ];
 
     /**
      * @param Zend\Db\Adapter\AdapterInterface $adapter
@@ -52,10 +53,10 @@ class AbstractLayoutMapper extends AbstractDbMapper
      */
     public function findExistingThemes()
     {
-        $test = array();
+        $test = [];
         $select = $this->getSql()->select()
             ->from($this->getTable(self::LayoutTableAlias))
-            ->columns(array('theme'))
+            ->columns(['theme'])
             ->group('theme');
 
         $result = $this->execute($select);
@@ -70,10 +71,10 @@ class AbstractLayoutMapper extends AbstractDbMapper
     {
         $select = $this->getSql()->select()
             ->from($this->getTable(self::LayoutTableAlias))
-            ->columns(array(
+            ->columns([
                 'id', 'theme', 'region', 'name', 'position',
-            ))
-            ->where(array('id' => $id));
+            ])
+            ->where(['id' => $id]);
 
         return $this->execute($select)->current();
     }

@@ -342,6 +342,6 @@ class Dir
      */
     public function normalizePath($path)
     {
-        return trim(str_replace(array('/', '\\'), DS, $path), DS);
+        return trim(str_replace(['/', '\\'], DS, $path), DS);
     }
 }

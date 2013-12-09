@@ -82,7 +82,7 @@ class FrontendListener extends AbstractThemeListener
 
             $widget = $controller->forward()->dispatch(
                 $invokables['controller'],
-                array('action' => $invokables['action'])
+                ['action' => $invokables['action']]
             );
 
             $layout->addChild($widget, $widgetName);

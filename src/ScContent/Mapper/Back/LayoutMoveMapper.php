@@ -95,7 +95,7 @@ class LayoutMoveMapper extends AbstractLayoutMapper
         $newPosition = $this->findMaxPosition($source['theme'], $region);
         $update = $this->getSql()->update()
             ->table($this->getTable(self::LayoutTableAlias))
-            ->set(array(
+            ->set([
                 'position' => new Expression(
                     'IF(`id` = :id,
                         :newPosition,
@@ -108,18 +108,18 @@ class LayoutMoveMapper extends AbstractLayoutMapper
                         `region`
                     )'
                 ),
-            ))
-            ->where(array(
+            ])
+            ->where([
                 'theme     = ?' => $source['theme'],
                 'region    = ?' => $source['region'],
                 'position >= ?' => $source['position'],
-            ));
+            ]);
 
-        $this->execute($update, array(
+        $this->execute($update, [
             ':id' => $id,
             ':newRegion' => $region,
             ':newPosition' => $newPosition,
-        ));
+        ]);
     }
 
     /**
@@ -130,12 +130,14 @@ class LayoutMoveMapper extends AbstractLayoutMapper
     protected function findMaxPosition($theme, $region)
     {
         $select = $this->getSql()->select()
-            ->columns(array('position'))
+            ->columns([
+                'position',
+            ])
             ->from($this->getTable(self::LayoutTableAlias))
-            ->where(array(
+            ->where([
                 'region' => $region,
                 'theme' => $theme,
-            ))
+            ])
             ->order('position DESC')
             ->limit(1);
 

@@ -155,7 +155,7 @@ class FileInput extends Input
                 $value = $filter->filter($value);
             } else {
                 // Multi file input (multiple attribute set)
-                $newValue = array();
+                $newValue = [];
                 foreach ($value as $fileData) {
                     if (is_array($fileData) && isset($fileData['tmp_name'])) {
                         $newValue[] = $filter->filter($fileData);

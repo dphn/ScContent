@@ -48,7 +48,7 @@ class ConfigMapper
     public function save(DatabaseConfig $entity, $source, $destination)
     {
         $repository = $this->getRepository(require($source));
-        $repository->sc->db = array();
+        $repository->sc->db = [];
         $repository->sc->db->driver = 'pdo';
         $data = $this->getHydrator()->extract($entity);
         if ('sqlite' == $data['driver']) {
@@ -66,8 +66,10 @@ class ConfigMapper
             $repository->sc->db->username = $data['username'];
             $repository->sc->db->password = $data['password'];
             $repository->sc->db->hostname = $data['host'];
-            if (version_compare(PHP_VERSION, '5.3.6') < 0) {
-                $repository->sc->db->driver_options = array();
+            /* @deprecated Current compatible PHP version >= 5.4
+             *
+             if (version_compare(PHP_VERSION, '5.3.6') < 0) {
+                $repository->sc->db->driver_options = [];
                 switch($data['driver']) {
                     case 'mysql':
                         $initCommand = PDO::MYSQL_ATTR_INIT_COMMAND;
@@ -76,6 +78,7 @@ class ConfigMapper
                         break;
                 }
             }
+            */
         }
         $adapter = $this->getAdapter();
         $adapter->toFile($destination, $repository);

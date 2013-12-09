@@ -35,9 +35,9 @@ class ContentListCleanMapper extends ContentListOperationAbstract
 
         $delete = $this->getSql()->delete()
             ->from($this->getTable(self::ContentTableAlias))
-            ->where(array(
+            ->where([
                 'trash' => 1,
-            ));
+            ]);
 
         $this->execute($delete);
     }

@@ -89,57 +89,57 @@ class ContentList extends AbstractEntity
     /**
      * @var array
      */
-    protected $list = array();
+    protected $list = [];
 
     /**
      * @var array
      */
-    protected $search = array();
+    protected $search = [];
 
     /**
      * @var array
      */
-    protected $searchOptions = array();
+    protected $searchOptions = [];
 
     /**
      * @var array
      */
-    protected static $types = array('list', 'search');
+    protected static $types = ['list', 'search'];
 
     /**
      * @var array
      */
-    protected static $names = array('first', 'second');
+    protected static $names = ['first', 'second'];
 
     /**
      * @var array
      */
-    protected static $roots = array('site', 'trash', 'search');
+    protected static $roots = ['site', 'trash', 'search'];
 
     /**
      * @var array
      */
-    protected static $filters = array('all', 'categories', 'articles', 'files');
+    protected static $filters = ['all', 'categories', 'articles', 'files'];
 
     /**
      * @var array
      */
-    protected static $userTypes = array('author', 'editor');
+    protected static $userTypes = ['author', 'editor'];
 
     /**
      * @var array
      */
-    protected static $modificationTypes = array('created', 'modified');
+    protected static $modificationTypes = ['created', 'modified'];
 
     /**
      * @var array
      */
-    protected static $orders = array('asc', 'desc');
+    protected static $orders = ['asc', 'desc'];
 
     /**
      * @var array
      */
-    protected static $ordersBy = array('natural', 'title', 'status', 'user', 'date');
+    protected static $ordersBy = ['natural', 'title', 'status', 'user', 'date'];
 
     /**
      * @param string $name
@@ -456,7 +456,7 @@ class ContentList extends AbstractEntity
             return $list;
         }
         if (! isset($list[$this->root])) {
-            $list[$this->root] = array();
+            $list[$this->root] = [];
         }
         $root = &$list[$this->root];
         $list['user_type'] = $this->userType;
@@ -487,7 +487,7 @@ class ContentList extends AbstractEntity
             return $search;
         }
         if (! isset($search[$this->root])) {
-            $search[$this->root] = array();
+            $search[$this->root] = [];
         }
         $root = &$search[$this->root];
         $search['user_type'] = $this->userType;
@@ -569,11 +569,11 @@ class ContentList extends AbstractEntity
      */
     protected function filterOptions($options)
     {
-        $keys = array(
+        $keys = [
             'root',      'state',
             'user_type', 'modification_type',
             'page',      'parent',
-        );
+        ];
         foreach ($keys as $key) {
             if (isset($options[$key])) {
                 unset($options[$key]);

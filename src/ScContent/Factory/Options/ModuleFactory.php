@@ -33,7 +33,7 @@ class ModuleFactory implements FactoryInterface
         );
 
         $config = $serviceLocator->get('Config');
-        $options = isset($config['sc']) ? $config['sc'] : array();
+        $options = isset($config['sc']) ? $config['sc'] : [];
 
         // [1] Rewriting some module options using fixed module settings.
         $options['frontend_theme_name'] = $settings['frontend_theme_name'];

@@ -33,7 +33,7 @@ class ContentListDelete extends ContentListAbstractListener
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::DeleteFromSite
             => 'Permanently delete content that is not in the trash, is impossible.',
 
@@ -42,7 +42,7 @@ class ContentListDelete extends ContentListAbstractListener
 
         self::UnexpectedError
             => 'Failed to permanently delete %s.',
-    );
+    ];
 
     /**
      * @param ScContent\Mapper\Back\ContentListDeleteMapper $mapper
@@ -84,10 +84,10 @@ class ContentListDelete extends ContentListAbstractListener
                 $events->trigger(
                     __FUNCTION__ . '.delete.pre',
                     null,
-                    array(
+                    [
                         'content' => $id,
                         'tid' => $tid,
-                    )
+                    ]
                 );
                 $mapper->delete($id, $tid);
                 $mapper->commit();

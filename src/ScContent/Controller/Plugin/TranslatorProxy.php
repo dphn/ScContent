@@ -53,7 +53,7 @@ class TranslatorProxy extends AbstractPlugin
     public function __call($method, $args)
     {
         return call_user_func_array(
-            array($this->translator, $method),
+            [$this->translator, $method],
             $args
         );
     }

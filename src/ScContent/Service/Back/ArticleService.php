@@ -49,10 +49,10 @@ class ArticleService extends AbstractContentService
             $events->trigger(
                 __FUNCTION__,
                 null,
-                array(
+                [
                     'content' => $article,
                     'tid' => $tid,
-                )
+                ]
             );
             $mapper->commit();
         } catch (UnavailableDestinationException $e) {
@@ -77,13 +77,13 @@ class ArticleService extends AbstractContentService
             $events->trigger(
                 ERROR,
                 null,
-                array(
+                [
                     'file'      => __FILE__,
                     'class'     => __CLASS__,
                     'method'    => __METHOD__,
                     'line'      => __LINE__,
                     'exception' => $e
-                )
+                ]
             );
             if (DEBUG_MODE) {
                 throw new DebugException(
@@ -123,10 +123,10 @@ class ArticleService extends AbstractContentService
             $events->trigger(
                 __FUNCTION__,
                 null,
-                array(
+                [
                     'content' => $article,
                     'tid' => $tid
-                )
+                ]
             );
             $mapper->commit();
         } catch (UnavailableSourceException $e) {
@@ -142,13 +142,13 @@ class ArticleService extends AbstractContentService
             $events->trigger(
                 ERROR,
                 null,
-                array(
+                [
                     'file'      => __FILE__,
                     'class'     => __CLASS__,
                     'method'    => __METHOD__,
                     'line'      => __LINE__,
                     'exception' => $e
-                )
+                ]
             );
             if (DEBUG_MODE) {
                 throw new DebugException(

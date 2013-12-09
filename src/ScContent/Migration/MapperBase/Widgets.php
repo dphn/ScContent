@@ -40,7 +40,7 @@ class Widgets extends AbstractMigrationMapper
             'sc_widgets',
             CreateIndex::Unique,
             'i_widgets',
-            array('widget', 'content')
+            ['widget', 'content']
         ));
     }
 

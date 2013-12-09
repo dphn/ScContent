@@ -17,7 +17,7 @@ class FileTypesCatalog implements FileTypesCatalogInterface
     /**
      * @var array
      */
-    protected $catalogue = array(
+    protected $catalogue = [
 
         // safe/multimedia/image/web/gdeditable
         'gif:image/gif'
@@ -412,7 +412,7 @@ class FileTypesCatalog implements FileTypesCatalogInterface
 
         'zip:application/zip'
             => 0x9000,
-    );
+    ];
 
     /**
      * Returns true if and only if the file specification
@@ -470,7 +470,7 @@ class FileTypesCatalog implements FileTypesCatalogInterface
         }
         $features = $this->catalogue[$spec];
         if (! is_array($pattern)) {
-            $pattern = array($pattern);
+            $pattern = [$pattern];
         }
         $needle = 0;
         foreach ($pattern as $term) {
@@ -549,13 +549,13 @@ class FileTypesCatalog implements FileTypesCatalogInterface
     protected function findByType($pattern, $part)
     {
         if (! is_array($pattern)) {
-            $pattern = array($pattern);
+            $pattern = [$pattern];
         }
         $needle = 0;
         foreach ($pattern as $term) {
             $needle |= $term;
         }
-        $matches = array();
+        $matches = [];
         foreach ($this->catalogue as $spec => $features) {
             if ($needle === ($features & $needle)) {
                 $props = explode(':', $spec);

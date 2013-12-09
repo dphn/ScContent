@@ -28,7 +28,7 @@ abstract class AbstractControllerListener extends AbstractIntelligentService
     /**
      * @var array
      */
-    protected $redirectRouteParams = array();
+    protected $redirectRouteParams = [];
 
     /**
      * @param string $route
@@ -80,7 +80,7 @@ abstract class AbstractControllerListener extends AbstractIntelligentService
     protected function redirect(
         EventInterface $event,
         $route = '',
-        $params = array()
+        $params = []
     ) {
         $target = $event->getTarget();
         if (! $target instanceof AbstractActionController) {

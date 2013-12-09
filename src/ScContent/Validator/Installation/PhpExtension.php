@@ -25,7 +25,7 @@ class PhpExtension extends AbstractValidator
     public function isValid($options)
     {
         if (isset($options['name'])) {
-            $options = array($options);
+            $options = [$options];
         }
         foreach ($options as $requirement) {
             if (! isset($requirement['name'])) {

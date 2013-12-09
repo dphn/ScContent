@@ -44,7 +44,7 @@ class FileName extends AbstractValidator
     /**
      * @var array
      */
-    protected $messageTemplates = array(
+    protected $messageTemplates = [
         self::IllegalCharacters
             => "The file name '%value%' contains illegal characters.",
 
@@ -53,7 +53,7 @@ class FileName extends AbstractValidator
 
         self::ToShort
             => "The file name '%value%' is too short.",
-    );
+    ];
 
     /**
      * @param integer $min

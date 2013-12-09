@@ -121,7 +121,7 @@ class FileController extends AbstractBack
     public function editAction()
     {
         $id = $this->params()->fromRoute('id');
-        $ids = array();
+        $ids = [];
         if (! empty($id) && ! is_array($id)) {
             $ids = explode(',', $id);
         }

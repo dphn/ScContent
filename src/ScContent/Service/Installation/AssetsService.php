@@ -37,7 +37,7 @@ class AssetsService extends AbstractInstallationService
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::DestinationIsNotWritable
             => 'Unable to extract assets. The target directory %s is not writable.',
 
@@ -52,7 +52,7 @@ class AssetsService extends AbstractInstallationService
 
         self::RecursiveError
             => 'A configuration error. The archive %s was extracted, but the directory, specified as the target does not exist or is it not the actual version.',
-    );
+    ];
 
     /**
      * @param ScContent\Service\Dir $dir

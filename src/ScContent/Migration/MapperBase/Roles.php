@@ -30,7 +30,7 @@ class Roles extends AbstractMigrationMapper
                 'id',
                 true,
                 null,
-                array('auto_increment' => true)
+                ['auto_increment' => true]
             ))
             ->addColumn(new Column\Varchar('role_id', 255))
             ->addColumn(new Column\Integer('is_default', false, 0))

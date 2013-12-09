@@ -74,7 +74,7 @@ abstract class AbstractDbMapper
     /**
      * @var array
      */
-    protected $_tables = array();
+    protected $_tables = [];
 
     /**
      * @var boolean
@@ -285,7 +285,7 @@ abstract class AbstractDbMapper
      */
     protected function toArray(ResultInterface $source)
     {
-        $result = array();
+        $result = [];
         foreach ($source as $item) {
             $result[] = $item;
         }
@@ -300,7 +300,7 @@ abstract class AbstractDbMapper
      */
     protected function toList(ResultInterface $source, $key)
     {
-        $result = array();
+        $result = [];
         foreach ($source as $item) {
             if (! isset($item[$key])) {
                 throw new InvalidArgumentException(

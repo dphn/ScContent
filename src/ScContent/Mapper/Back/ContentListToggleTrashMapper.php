@@ -87,7 +87,7 @@ class ContentListToggleTrashMapper extends ContentListOperationAbstract
         $nearKey = $destination['right_key'] - 1;
         $update = $this->getSql()->update()
             ->table($this->getTable(self::ContentTableAlias))
-            ->set(array(
+            ->set([
                 'level' => new Expression(
                     'IF(
                          `trash` = :trash AND `right_key` <= :rightKey,
@@ -128,19 +128,19 @@ class ContentListToggleTrashMapper extends ContentListOperationAbstract
                         `trash`
                     )'
                 )
-            ))
-            ->where(array(
+            ])
+            ->where([
                 '(`right_key` > ?' => $source['left_key'],
                 '`trash`     = ?)' => $currentTrash,
-            ))
-            ->where(array('(`right_key` > ?' => $nearKey), PredicateSet::OP_OR)
-            ->where(array('`trash`     <> ?)' => $currentTrash));
+            ])
+            ->where(['(`right_key` > ?' => $nearKey], PredicateSet::OP_OR)
+            ->where(['`trash`     <> ?)' => $currentTrash]);
 
         $skewTree = $source['right_key'] - $source['left_key'] + 1;
         $skewEdit = $source['left_key'] - $destination['right_key'];
         $skewLevel = $destination['level'] + 1 - $source['level'];
 
-        $this->execute($update, array(
+        $this->execute($update, [
             ':trash'     => $currentTrash,
             ':nearKey'   => $nearKey,
             ':leftKey'   => $source['left_key'],
@@ -148,6 +148,6 @@ class ContentListToggleTrashMapper extends ContentListOperationAbstract
             ':skewTree'  => $skewTree,
             ':skewEdit'  => $skewEdit,
             ':skewLevel' => $skewLevel,
-        ));
+        ]);
     }
 }

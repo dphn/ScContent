@@ -37,7 +37,7 @@ class ContentListReorder extends ContentListAbstractListener
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::ReorderSearch
             => 'Changing the order of elements in the search results is impossible.',
 
@@ -55,7 +55,7 @@ class ContentListReorder extends ContentListAbstractListener
 
         self::UnexpectedError
             => 'Unable to change the position of %s.',
-    );
+    ];
 
     /**
      * @param ScContent\Mapper\Back\ContentListReorderMapper $mapper

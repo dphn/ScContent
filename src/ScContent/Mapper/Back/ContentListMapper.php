@@ -61,12 +61,12 @@ class ContentListMapper extends AbstractContentMapper implements
                 $parent = $this->getVirtualRoot($options->isTrash());
             }
             $back = $this->findBack($parent);
-            $counter = array(
+            $counter = [
                 'all'        => $this->getContentCount($parent, 'all'),
                 'categories' => $this->getContentCount($parent, 'categories'),
                 'articles'   => $this->getContentCount($parent, 'articles'),
                 'files'      => $this->getContentCount($parent, 'files'),
-            );
+            ];
             $total = $counter[$options->getFilter()];
             $totalPages = max(1, ceil($total / $options->getLimit()));
             $currentPage = max(1, min($totalPages, $options->getPage()));
@@ -99,24 +99,24 @@ class ContentListMapper extends AbstractContentMapper implements
     protected function getContentCount($parent, $filter)
     {
         $select = $this->getSql()->select()
-            ->columns(array('total' => new Expression('COUNT(`id`)')))
+            ->columns(['total' => new Expression('COUNT(`id`)')])
             ->from($this->getTable(self::ContentTableAlias))
-            ->where(array(
+            ->where([
                 '`trash`     = ?' => $parent['trash'],
                 '`left_key`  > ?' => $parent['left_key'],
                 '`right_key` < ?' => $parent['right_key'],
                 '`level`     = ?' => $parent['level'] + 1,
-            ));
+            ]);
 
         switch ($filter) {
             case 'categories':
-                $select->where(array('type' => 'category'));
+                $select->where(['type' => 'category']);
                 break;
             case 'articles':
-                $select->where(array('type' => 'article'));
+                $select->where(['type' => 'article']);
                 break;
             case 'files':
-                $select->where(array('type' => 'file'));
+                $select->where(['type' => 'file']);
                 break;
         }
         $result = $this->execute($select)->current();
@@ -134,46 +134,46 @@ class ContentListMapper extends AbstractContentMapper implements
         $options = $this->optionsProvider->getOptions($optionsIdentifier);
         $on = new Predicate();
         $select = $this->getSql()->select()
-            ->columns(array(
+            ->columns([
                 'id', 'type', 'status', 'title', 'name', 'spec',
                 'date' => $options->getModificationType()
-            ))
-            ->from(array('content' => $this->getTable(self::ContentTableAlias)))
+            ])
+            ->from(['content' => $this->getTable(self::ContentTableAlias)])
             ->join(
-                array('subsidiary' => $this->getTable(self::ContentTableAlias)),
+                ['subsidiary' => $this->getTable(self::ContentTableAlias)],
                 $on->equalTo('subsidiary.trash', $content->getParent('trash'))
                    ->equalTo('subsidiary.level', $content->getParent('level') + 2)
                    ->literal('`subsidiary`.`left_key`  > `content`.`left_key`')
                    ->literal('`subsidiary`.`right_key` < `content`.`right_key`'),
-                array('childrens' => new Expression('COUNT(`subsidiary`.`id`)')),
+                ['childrens' => new Expression('COUNT(`subsidiary`.`id`)')],
                 self::JoinLeft
             )
             ->join(
-                array('users' => $this->getTable(self::UsersTableAlias)),
+                ['users' => $this->getTable(self::UsersTableAlias)],
                 'author' == $options->getUserType() ? 'content.author = users.user_id'
                                                     : 'content.editor = users.user_id',
-                array('user_id' => 'user_id', 'user_name' => 'username', 'user_email' => 'email'),
+                ['user_id' => 'user_id', 'user_name' => 'username', 'user_email' => 'email'],
                 self::JoinLeft
             )
-            ->where(array(
+            ->where([
                 '`content`.`trash`     = ?' => $content->getParent('trash'),
                 '`content`.`left_key`  > ?' => $content->getParent('left_key'),
                 '`content`.`right_key` < ?' => $content->getParent('right_key'),
                 '`content`.`level`     = ?' => $content->getParent('level') + 1,
-            ))
+            ])
             ->group('content.id')
             ->limit($options->getLimit())
             ->offset($offset);
 
         switch ($options->getFilter()) {
             case 'categories':
-                $select->where(array('content.type' => 'category'));
+                $select->where(['content.type' => 'category']);
                 break;
             case 'articles':
-                $select->where(array('content.type' => 'article'));
+                $select->where(['content.type' => 'article']);
                 break;
             case 'files':
-                $select->where(array('content.type' => 'file'));
+                $select->where(['content.type' => 'file']);
                 break;
         }
 

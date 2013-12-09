@@ -46,9 +46,9 @@ class LayoutService extends AbstractInstallationService
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::WidgetsInstallationFailed => 'Widgets installation failed.'
-    );
+    ];
 
     /**
      * @param ScContent\Options\ModuleOptions $options
@@ -192,7 +192,7 @@ class LayoutService extends AbstractInstallationService
         $regions = $theme['frontend']['regions'];
         $widgets = array_keys($options->getWidgets());
 
-        $map = array();
+        $map = [];
         foreach ($regions as $regionName => $regionOptions) {
             if (isset($regionOptions['contains']) &&
                  is_array($regionOptions['contains'])) {

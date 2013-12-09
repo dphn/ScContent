@@ -52,13 +52,13 @@ class LayoutReorder extends AbstractControllerListener
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::SourceNotFound
             => 'Unable to change the position of the widget with identifier %s. The widget was not found.',
 
         self::UnexpectedError
             => 'Unable to change the position of %s.',
-    );
+    ];
 
     /**
      * @param ScContent\Options\ModuleOptions $options
@@ -143,7 +143,7 @@ class LayoutReorder extends AbstractControllerListener
             ));
         }
 
-        $this->setRedirectRouteParams(array('theme' => $theme));
+        $this->setRedirectRouteParams(['theme' => $theme]);
         foreach ($positions as $id => $position) {
             try {
                 $mapper->beginTransaction();

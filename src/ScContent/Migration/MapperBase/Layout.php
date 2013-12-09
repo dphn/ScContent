@@ -30,7 +30,7 @@ class Layout extends AbstractMigrationMapper
                 'id',
                 true,
                 null,
-                array('auto_increment' => true)
+                ['auto_increment' => true]
             ))
             ->addColumn(new Column\Varchar('theme', 128))
             ->addColumn(new Column\Varchar('region', 128))
@@ -49,14 +49,14 @@ class Layout extends AbstractMigrationMapper
            'sc_layout',
            CreateIndex::Unique,
            'i_layout',
-           array('theme', 'name')
+           ['theme', 'name']
         ));
 
         $this->execute(new CreateIndex(
             'sc_layout',
             CreateIndex::Key,
             'i_layout_search',
-            array('theme', 'region', 'position')
+            ['theme', 'region', 'position']
         ));
     }
 

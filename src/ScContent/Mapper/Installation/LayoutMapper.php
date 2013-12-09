@@ -30,17 +30,17 @@ class LayoutMapper extends AbstractLayoutMapper
     public function findExistingWidgets($theme, $names)
     {
         if (! is_array($names)) {
-            $names = array($names);
+            $names = [$names];
         }
         $select = $this->getSql()->select()
             ->from($this->getTable(self::LayoutTableAlias))
-            ->columns(array(
-                'name'
-            ))
-            ->where(array(
+            ->columns([
+                'name',
+            ])
+            ->where([
                 'theme' => $theme,
                 'name'  => $names, // = new In('name', $names)
-            ));
+            ]);
 
         $result = $this->execute($select);
         return $this->toList($result, 'name');
@@ -71,11 +71,11 @@ class LayoutMapper extends AbstractLayoutMapper
             $this->getTable(self::LayoutTableAlias),
             $this->getTable(self::LayoutTableAlias)
         );
-        $this->execute($sql, array(
+        $this->execute($sql, [
             ':options' => $entity->getOptions(),
             ':theme'   => $entity->getTheme(),
             ':region'  => $entity->getRegion(),
             ':name'    => $entity->getName(),
-        ));
+        ]);
     }
 }

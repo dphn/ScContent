@@ -54,7 +54,7 @@ class ConfigController extends AbstractInstallation
         $form->setAttribute(
             'action',
             $this->url()->fromRoute(
-                'sc-install', array('process' => 'process')
+                'sc-install', ['process' => 'process']
             )
         );
         $view->form = $form;

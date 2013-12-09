@@ -54,26 +54,26 @@ class RequirementsController extends AbstractInstallation
         $member = $routeMatch->getParam('member');
         $options = $this->getInstallationInspector()->getCurrentSetup();
         $batch = &$options['steps'][$step]['chain'][$member]['batch'];
-        $failures = array();
+        $failures = [];
         $validator = $this->getIniValidator();
         foreach ($batch as &$requirement) {
             if (! $validator->isValid($requirement)) {
-                $failures[] = array(
+                $failures[] = [
                     $requirement['name'],
                     (false === ini_get($requirement['name']))
                              ? 'false'
                              : ini_get($requirement['name']),
                     $requirement['failure_message']
-                );
+                ];
             }
         }
         if (! empty($failures)) {
-            return new ViewModel(array(
-                'errors' => array('table' => array(
-                    'head' => array('Php.ini option', 'Value', 'Requirement'),
+            return new ViewModel([
+                'errors' => ['table' => [
+                    'head' => ['Php.ini option', 'Value', 'Requirement'],
                     'body' => $failures
-                ))
-            ));
+                ]]
+            ]);
         }
         return $this->redirect()->toUrl($redirect)->setStatusCode(303);
     }
@@ -98,23 +98,23 @@ class RequirementsController extends AbstractInstallation
         $member = $routeMatch->getParam('member');
         $options = $this->getInstallationInspector()->getCurrentSetup();
         $batch = &$options['steps'][$step]['chain'][$member]['batch'];
-        $failures = array();
+        $failures = [];
         $validator = $this->getExtensionValidator();
         foreach ($batch as &$requirement) {
             if (! $validator->isValid($requirement)) {
-                $failures[] = array(
+                $failures[] = [
                     $requirement['name'],
                     $requirement['information'],
-                );
+                ];
             }
         }
         if (! empty($failures)) {
-            return new ViewModel(array(
-                'errors' => array('table' => array(
-                    'head' => array('Missing php extension', 'Information'),
+            return new ViewModel([
+                'errors' => ['table' => [
+                    'head' => ['Missing php extension', 'Information'],
                     'body' => $failures,
-                ))
-            ));
+                ]]
+            ]);
         }
         return $this->redirect()->toUrl($redirect);
     }

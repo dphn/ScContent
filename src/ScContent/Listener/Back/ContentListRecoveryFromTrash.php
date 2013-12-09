@@ -39,7 +39,7 @@ class ContentListRecoveryFromTrash extends ContentListAbstractListener
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::RecoveryFromSite
             => 'A recovery operation for the content, that is not in the trash, is impossible.',
 
@@ -60,7 +60,7 @@ class ContentListRecoveryFromTrash extends ContentListAbstractListener
 
         self::UnexpectedError
             => 'Unable to recovery %s.',
-    );
+    ];
 
     /**
      * @param ScContent\Mapper\Back\ContentListToggleTrashMapper $mapper
@@ -115,10 +115,10 @@ class ContentListRecoveryFromTrash extends ContentListAbstractListener
                 $events->trigger(
                     __FUNCTION__ . '.recovery',
                     null,
-                    array(
+                    [
                         'content' => $id,
                         'tid' => $tid,
-                    )
+                    ]
                 );
                 $mapper->commit();
             } catch (UnavailableSourceException $e) {

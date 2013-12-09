@@ -30,7 +30,7 @@ class ContentListAggregate implements ListenerAggregateInterface,
     /**
      * @var array
      */
-    protected $listeners = array();
+    protected $listeners = [];
 
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator

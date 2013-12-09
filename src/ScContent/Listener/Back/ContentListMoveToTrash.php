@@ -33,7 +33,7 @@ class ContentListMoveToTrash extends ContentListAbstractListener
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::MoveFromTrashToTrash
             => 'Moving elements from the trash to the trash is impossible.',
 
@@ -42,7 +42,7 @@ class ContentListMoveToTrash extends ContentListAbstractListener
 
         self::UnexpectedError
             => 'Unable to move %s to trash.',
-    );
+    ];
 
 
     /**

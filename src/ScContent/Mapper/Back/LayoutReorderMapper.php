@@ -105,26 +105,26 @@ class LayoutReorderMapper extends AbstractLayoutMapper
 
         $update = $this->getSql()->update()
             ->table($this->getTable(self::LayoutTableAlias))
-            ->set(array(
+            ->set([
                 'position' => new Expression(
                     'IF(`id` = :sourceId,
                         :newPosition,
                         `position` + :skew
                     )'
                 ),
-            ))
-            ->where(array(
+            ])
+            ->where([
                 'theme     = ?' => $source['theme'],
                 'region    = ?' => $source['region'],
                 'position <= ?' => $maxPosition,
                 'position >= ?' => $minPosition,
-            ));
+            ]);
 
-        $this->execute($update, array(
+        $this->execute($update, [
             ':skew' => $skew,
             ':sourceId' => $source['id'],
             ':newPosition' => $destination['position'],
-        ));
+        ]);
     }
 
     /**
@@ -137,14 +137,14 @@ class LayoutReorderMapper extends AbstractLayoutMapper
     {
         $select = $this->getSql()->select()
             ->from($this->getTable(self::LayoutTableAlias))
-            ->columns(array(
+            ->columns([
                 'id', 'theme', 'region', 'name', 'position',
-            ))
-            ->where(array(
+            ])
+            ->where([
                 'theme' => $theme,
                 'region' => $region,
                 'position' => $position,
-            ));
+            ]);
 
         return $this->execute($select)->current();
     }
@@ -157,13 +157,13 @@ class LayoutReorderMapper extends AbstractLayoutMapper
     {
         $select = $this->getSql()->select()
             ->from($this->getTable(self::LayoutTableAlias))
-            ->columns(array(
+            ->columns([
                 'id', 'theme', 'region', 'name', 'position',
-            ))
-            ->where(array(
-                'theme' => $theme,
+            ])
+            ->where([
+                'theme'  => $theme,
                 'region' => $region,
-            ))
+            ])
             ->order('position DESC')
             ->limit(1);
 

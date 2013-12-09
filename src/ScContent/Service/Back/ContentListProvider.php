@@ -28,18 +28,18 @@ class ContentListProvider extends AbstractService
     /**
      * @var array
      */
-    protected $lists = array(
+    protected $lists = [
         'first'  => null,
         'second' => null,
-    );
+    ];
 
     /**
      * @var array
      */
-    protected $mappers = array(
+    protected $mappers = [
         'list'   => null,
         'search' => null,
-    );
+    ];
 
     /**
      * @param ScContent\Service\ContentListOptionsProvider $provider

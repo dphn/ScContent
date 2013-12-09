@@ -25,9 +25,9 @@ class NestingValidator extends AbstractValidator
     /**
      * @var array
      */
-    protected $messageTemplates = array(
+    protected $messageTemplates = [
         self::NestingError => 'Invalid nesting types.'
-    );
+    ];
 
     /**
      * Usage:
@@ -44,7 +44,7 @@ class NestingValidator extends AbstractValidator
      * @throws Zend\Validator\Exception\InvalidArgumentException
      * @return boolean
      */
-    public function isValid($options = array())
+    public function isValid($options = [])
     {
         if (! is_array($options)) {
             if (func_num_args() < 2) {

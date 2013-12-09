@@ -34,7 +34,7 @@ class MimeType extends AbstractFilter
      *
      * @var array
      */
-    protected $magicFiles = array(
+    protected $magicFiles = [
         '/usr/share/misc/magic',
         '/usr/share/misc/magic.mime',
         '/usr/share/misc/magic.mgc',
@@ -44,17 +44,17 @@ class MimeType extends AbstractFilter
         '/usr/share/file/magic',
         '/usr/share/file/magic.mime',
         '/usr/share/file/magic.mgc',
-    );
+    ];
 
     /**
      * Options for this filter
      *
      * @var array
      */
-    protected $options = array(
-        'disableMagicFile'  => false,  // Disable usage of magicfile
-        'magicFile'         => null,   // Magicfile to use
-    );
+    protected $options = [
+        'disableMagicFile' => false,  // Disable usage of magicfile
+        'magicFile'        => null,   // Magicfile to use
+    ];
 
     /**
      * Returns the actual set magicfile
@@ -118,7 +118,8 @@ class MimeType extends AbstractFilter
         } elseif (! (class_exists('finfo', false))) {
             $this->options['magicFile'] = null;
             throw new Exception\RuntimeException(
-                'Magicfile can not be set; there is no finfo extension installed');
+                'Magicfile can not be set; there is no finfo extension installed'
+            );
         } elseif (! is_file($file) || ! is_readable($file)) {
             throw new Exception\InvalidArgumentException(sprintf(
                 'The given magicfile ("%s") could not be read',

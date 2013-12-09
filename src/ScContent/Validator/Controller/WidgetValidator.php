@@ -28,21 +28,21 @@ class WidgetValidator extends AbstractValidator
     /**
      * @var array
      */
-    protected $messageTemplates = array(
+    protected $messageTemplates = [
         self::RuntimeControllerError
             => "Don’t can to get the widget, the controller '%value%' does not exist.",
         self::RuntimeActionError
             => "Don’t can to get the widget, the action '%value%' does not exist.",
-    );
+    ];
 
     /**
      * @param array $options
      */
-    public function __construct($options = array())
+    public function __construct($options = [])
     {
         if (! is_array($options)) {
             $options = func_get_args();
-            $temp = array();
+            $temp = [];
             if (! empty($options)) {
                 $temp['loader'] = array_shift($options);
             }

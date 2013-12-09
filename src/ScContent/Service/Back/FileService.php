@@ -43,7 +43,7 @@ class FileService extends AbstractContentService
         $translator = $this->getTranslator();
         $filePrototype = $this->getFilePrototype();
         $filePrototype = $this->prepareNew($filePrototype);
-        $ids = array();
+        $ids = [];
         try {
             $mapper->beginTransaction();
             $tid = $mapper->getTransactionIdentifier();
@@ -57,10 +57,10 @@ class FileService extends AbstractContentService
                 $events->trigger(
                     __FUNCTION__,
                     null,
-                    array(
+                    [
                         'content' => $file,
                         'tid' => $tid,
-                    )
+                    ]
                 );
                 $ids[] = $file->getId();
             }
@@ -75,7 +75,7 @@ class FileService extends AbstractContentService
             ), null, $e);
         } catch (NestingException $e) {
             $mapper->rollBack();
-            $parent = array('type' => 'category');
+            $parent = ['type' => 'category'];
             if ($parentId != 0) {
                 $parent = $mapper->findMetaById($parentId);
             }
@@ -91,13 +91,13 @@ class FileService extends AbstractContentService
             $events->trigger(
                 ERROR,
                 null,
-                array(
+                [
                     'file'      => __FILE__,
                     'class'     => __CLASS__,
                     'method'    => __METHOD__,
                     'line'      => __LINE__,
                     'exception' => $e
-                )
+                ]
             );
             if (DEBUG_MODE) {
                 throw new DebugException(
@@ -139,10 +139,10 @@ class FileService extends AbstractContentService
                     $events->trigger(
                         __FUNCTION__,
                         null,
-                        array(
+                        [
                             'content' => $file,
                             'tid' => $tid,
-                        )
+                        ]
                     );
                 } catch (UnavailableSource $e) {
                     continue;
@@ -155,13 +155,13 @@ class FileService extends AbstractContentService
             $events->trigger(
                 ERROR,
                 null,
-                array(
+                [
                     'file'      => __FILE__,
                     'class'     => __CLASS__,
                     'method'    => __METHOD__,
                     'line'      => __LINE__,
                     'exception' => $e
-                )
+                ]
             );
             if (DEBUG_MODE) {
                 throw new DebugException(

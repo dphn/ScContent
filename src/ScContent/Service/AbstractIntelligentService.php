@@ -17,12 +17,12 @@ class AbstractIntelligentService extends AbstractService
     /**
      * @var array
      */
-    protected $errors = array();
+    protected $errors = [];
 
     /**
      * @var array
     */
-    protected $value = array();
+    protected $value = [];
 
     /**
      * @var string
@@ -32,7 +32,7 @@ class AbstractIntelligentService extends AbstractService
     /**
      * @var array
      */
-    protected $errorMessages = array();
+    protected $errorMessages = [];
 
     /**
      * @return boolean
@@ -113,7 +113,7 @@ class AbstractIntelligentService extends AbstractService
         );
         $value = $this->value;
         if (! is_array($value)) {
-            $value = array($value);
+            $value = [$value];
         }
         $this->errors[] = vsprintf($message, $value);
         return $this;

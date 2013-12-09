@@ -27,12 +27,12 @@ class InstallationInspector
     /**
      * @var array
      */
-    protected $queue = array();
+    protected $queue = [];
 
     /**
      * @var array
      */
-    protected $current = array();
+    protected $current = [];
 
     /**
      * Constructor

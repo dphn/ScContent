@@ -27,16 +27,16 @@ abstract class ContentListOperationAbstract extends AbstractContentMapper
         }
 
         $select = $this->getSql()->select()
-            ->columns(array(
+            ->columns([
                 'id', 'left_key', 'right_key', 'level', 'trash', 'type'
-            ))
+            ])
             ->from($this->getTable(self::ContentTableAlias))
-            ->where(array(
+            ->where([
                 '`trash`     = ?' => $meta['trash'],
                 '`left_key`  < ?' => $meta['left_key'],
                 '`right_key` > ?' => $meta['right_key'],
                 '`level`     = ?' => $meta['level'] - 1,
-            ));
+            ]);
 
         return $this->execute($select)->current();
     }

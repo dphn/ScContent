@@ -113,7 +113,7 @@ class ContentListMoveMapper extends ContentListOperationAbstract
         $nearKey = $destination['right_key'] - 1;
         $update = $this->getSql()->update()
             ->table($this->getTable(self::ContentTableAlias))
-            ->set(array(
+            ->set([
                 'right_key' => new Expression(
                     'IF(`left_key` >= :leftKey,
                         `right_key` + :skewEdit,
@@ -138,24 +138,24 @@ class ContentListMoveMapper extends ContentListOperationAbstract
                         )
                     )'
                 )
-            ))
-            ->where(array(
+            ])
+            ->where([
                 '`right_key` > ?' => $nearKey,
                 '`left_key`  < ?' => $source['right_key'],
                 '`trash`     = ?' => 0,
-            ));
+            ]);
 
         $skewLevel = $destination['level'] - $source['level'] + 1;
         $skewTree  = $source['right_key'] - $source['left_key'] + 1;
         $skewEdit  = $nearKey - $source['left_key'] + 1;
 
-        $this->execute($update, array(
+        $this->execute($update, [
             ':nearKey'   => $nearKey,
             ':leftKey'   => $source['left_key'],
             ':skewEdit'  => $skewEdit,
             ':skewTree'  => $skewTree,
             ':skewLevel' => $skewLevel,
-        ));
+        ]);
     }
 
     /**
@@ -168,7 +168,7 @@ class ContentListMoveMapper extends ContentListOperationAbstract
         $nearKey = $destination['right_key'] - 1;
         $update = $this->getSql()->update()
             ->table($this->getTable(self::ContentTableAlias))
-            ->set(array(
+            ->set([
                 'left_key' => new Expression(
                     'IF(`right_key` <= :rightKey,
                         `left_key` + :skewEdit,
@@ -193,23 +193,23 @@ class ContentListMoveMapper extends ContentListOperationAbstract
                         )
                     )'
                 )
-            ))
-            ->where(array(
+            ])
+            ->where([
                 '`right_key` > ?' => $source['left_key'],
                 '`left_key` <= ?' => $nearKey,
                 '`trash`     = ?' => 0,
-            ));
+            ]);
 
         $skewLevel = $destination['level'] - $source['level'] + 1;
         $skewTree  = $source['right_key'] - $source['left_key'] + 1;
         $skewEdit  = $nearKey - $source['right_key'];
 
-        $this->execute($update, array(
+        $this->execute($update, [
             ':nearKey'   => $nearKey,
             ':rightKey'  => $source['right_key'],
             ':skewEdit'  => $skewEdit,
             ':skewTree'  => $skewTree,
             ':skewLevel' => $skewLevel,
-        ));
+        ]);
     }
 }

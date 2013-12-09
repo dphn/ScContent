@@ -45,11 +45,11 @@ class Search extends AbstractMigrationMapper
             'sc_search',
             CreateIndex::Fulltext,
             'i_search',
-            array(
+            [
                 'title',
                 'description',
                 'content',
-            )
+            ]
         ));
     }
 

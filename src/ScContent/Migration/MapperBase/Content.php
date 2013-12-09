@@ -30,7 +30,7 @@ class Content extends AbstractMigrationMapper
                'id',
                true,
                null,
-               array('auto_increment' => true)
+               ['auto_increment' => true]
             ))
             ->addColumn(new Column\Integer('left_key', false))
             ->addColumn(new Column\Integer('right_key', false))
@@ -73,25 +73,25 @@ class Content extends AbstractMigrationMapper
            'sc_content',
             CreateIndex::Key,
             'i_sets',
-            array(
+            [
                 'left_key',
                 'right_key',
                 'level',
                 'trash',
                 'type',
-            )
+            ]
         ));
 
         $this->execute(new CreateIndex(
             'sc_content',
             CreateIndex::Key,
             'i_info',
-            array(
+            [
                 'author',
                 'editor',
                 'created',
                 'modified',
-            )
+            ]
         ));
     }
 

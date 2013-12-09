@@ -125,15 +125,13 @@ class FileTransfer extends AbstractService implements FileTransferInterface
                 'Uploads directory does not exist or is unavailable.'
             );
         }
-        $info = array();
+        $info = [];
         $files = $files['file'];
         if (isset($files['name'])) {
-            $files = array(
-                $files
-            );
+            $files = [$files];
         }
         foreach ($files as $file) {
-            $data = array();
+            $data = [];
             $mime = $file['type'];
             $filename = $file['name'];
             $extension = strtolower(
@@ -197,7 +195,8 @@ class FileTransfer extends AbstractService implements FileTransferInterface
     public function rollBack($data)
     {
         $events = $this->getEventManager();
-        $dir = $this->dir;
+        $dir = $this->getDir();
+
         foreach ($data as $file) {
             list ($extension, $mime) = explode(':', $file['spec']);
             $fileName = $file['name'] . '.' . $extension;

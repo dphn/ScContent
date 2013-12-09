@@ -35,7 +35,7 @@ class AutoloadService extends AbstractInstallationService
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::AutoloadIsNotWritable
             => 'Unable to copy files to the application autoload directory. Directory %s is not writable. Please, check the permissions, or copy the file %s manually.',
 
@@ -50,7 +50,7 @@ class AutoloadService extends AbstractInstallationService
 
         self::CopyFailed
             => 'Failed to copy the file %s to  the configuration autoload directory.',
-    );
+    ];
 
     /**
      * @param ScContent\Service\Dir $dir
@@ -117,7 +117,7 @@ class AutoloadService extends AbstractInstallationService
 
         $autoload = $dir->appAutoload();
         $mask = $dir->normalizePath($options['old_files_mask']);
-        $failures = array();
+        $failures = [];
         foreach (glob($autoload . DS . $mask) as $file) {
             if (! @unlink($file)) {
                 $failures[] = str_replace($autoload, '', $file);

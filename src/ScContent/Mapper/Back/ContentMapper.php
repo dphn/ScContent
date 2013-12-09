@@ -56,11 +56,11 @@ class ContentMapper extends AbstractContentMapper
         $update = $this->getSql()->update()
             ->table($this->getTable(self::ContentTableAlias))
             ->set($content)
-            ->where(array(
+            ->where([
                 '`id`    = ?' => $content['id'],
                 '`type`  = ?' => $content['type'],
                 '`trash` = ?' => '0',
-            ));
+            ]);
 
         $result = $this->execute($update);
 
@@ -80,18 +80,18 @@ class ContentMapper extends AbstractContentMapper
 
         $delete = $this->getSql()->delete()
             ->from($this->getTable(self::SearchTableAlias))
-            ->where(array('id' => $content['id']));
+            ->where(['id' => $content['id']]);
 
         $this->execute($delete);
 
         $insert = $this->getSql()->insert()
             ->into($this->getTable(self::SearchTableAlias))
-            ->values(array(
+            ->values([
                 'id'          => $content['id'],
                 'title'       => $content['title'],
                 'description' => $content['description'],
                 'content'     => $content['content'],
-            ));
+            ]);
 
         $this->execute($insert);
     }
@@ -143,18 +143,18 @@ class ContentMapper extends AbstractContentMapper
         // Preparing the tree to insert an item.
         $update = $this->getSql()->update()
             ->table($this->getTable(self::ContentTableAlias))
-            ->set(array(
+            ->set([
                 'right_key' => new Expression('`right_key` + \'2\''),
                 'left_key'  => new Expression(
                     'IF(`left_key` > :rightKey, `left_key` + \'2\', `left_key`)'
                 ),
-            ))
-            ->where(array(
+            ])
+            ->where([
                 '`right_key` >= ?' => $parent['right_key'],
                 '`trash`      = ?' => 0
-            ));
+            ]);
 
-        $this->execute($update, array(':rightKey' => $parent['right_key']));
+        $this->execute($update, [':rightKey' => $parent['right_key']]);
 
         /* Insert content.
          */
@@ -170,18 +170,18 @@ class ContentMapper extends AbstractContentMapper
          */
         $delete = $this->getSql()->delete()
             ->from($this->getTable(self::SearchTableAlias))
-            ->where(array('id' => $entity->getId()));
+            ->where(['id' => $entity->getId()]);
 
         $this->execute($delete);
 
         $insert = $this->getSql()->insert()
             ->into($this->getTable(self::SearchTableAlias))
-            ->values(array(
+            ->values([
                 'id'          => $entity->getId(),
                 'title'       => $content['title'],
                 'description' => $content['description'],
                 'content'     => $content['content'],
-            ));
+            ]);
 
         $this->execute($insert);
     }

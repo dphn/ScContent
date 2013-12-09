@@ -47,28 +47,28 @@ class CreateIndex extends AbstractSql implements SqlInterface
     /**
      * @var array
      */
-    protected $types = array(
+    protected $types = [
         self::Key      => '',
         self::Unique   => 'UNIQUE',
         self::Primary  => 'PRIMARY',
         // FULLTEXT | CLUSTERED | ''
         self::Fulltext => 'FULLTEXT',
-    );
+    ];
 
     /**
      * CREATE %1$s INDEX %2$s ON %3$s (%4$s)
      *
      * @var array
     */
-    protected $specifications = array(
-        self::Index => 'CREATE %s INDEX %s',
-        self::Table => 'ON %s',
-        self::Columns  => array(
-            '(%1$s)' => array(
-                array(1 => '%1$s', 'combinedby' => ', ')
-            )
-        ),
-    );
+    protected $specifications = [
+        self::Index    => 'CREATE %s INDEX %s',
+        self::Table    => 'ON %s',
+        self::Columns  => [
+            '(%1$s)' => [
+                [1 => '%1$s', 'combinedby' => ', ']
+            ]
+        ],
+    ];
 
     /**
      * @var string
@@ -88,7 +88,7 @@ class CreateIndex extends AbstractSql implements SqlInterface
     /**
      * @var array
      */
-    protected $columns = array();
+    protected $columns = [];
 
     /**
      * @param string $table
@@ -184,7 +184,7 @@ class CreateIndex extends AbstractSql implements SqlInterface
     public function setColumns($columns)
     {
         if (! is_array($columns)) {
-            $columns = array($columns);
+            $columns = [$columns];
         }
 
         $this->columns = $columns;
@@ -218,16 +218,16 @@ class CreateIndex extends AbstractSql implements SqlInterface
         // get platform, or create default
         $adapterPlatform = ($adapterPlatform) ?: new AdapterSql92Platform;
 
-        $sqls       = array();
-        $parameters = array();
+        $sqls       = [];
+        $parameters = [];
 
         foreach ($this->specifications as $name => $specification) {
             $parameters[$name] = $this->{'process' . $name}(
-            $adapterPlatform,
-            null,
-            null,
-            $sqls,
-            $parameters
+                $adapterPlatform,
+                null,
+                null,
+                $sqls,
+                $parameters
             );
 
             if ($specification && is_array($parameters[$name])) {
@@ -249,10 +249,10 @@ class CreateIndex extends AbstractSql implements SqlInterface
      */
     protected function processIndex(PlatformInterface $adapterPlatform = null)
     {
-        $sqls = array(
+        $sqls = [
             ! $this->type ? '' : $this->types[$this->type],
             ! $this->name ? '' : $adapterPlatform->quoteIdentifier($this->name),
-        );
+        ];
         return $sqls;
     }
 
@@ -262,7 +262,7 @@ class CreateIndex extends AbstractSql implements SqlInterface
      */
     protected function processTable(PlatformInterface $adapterPlatform = null)
     {
-        return array($adapterPlatform->quoteIdentifier($this->table));
+        return [$adapterPlatform->quoteIdentifier($this->table)];
     }
 
     /**
@@ -271,10 +271,10 @@ class CreateIndex extends AbstractSql implements SqlInterface
      */
     protected function processColumns(PlatformInterface $adapterPlatform = null)
     {
-        $sqls = array();
+        $sqls = [];
         foreach ($this->columns as $column) {
             $sqls[] = $adapterPlatform->quoteIdentifier($column);
         }
-        return array($sqls);
+        return [$sqls];
     }
 }

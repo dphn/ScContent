@@ -19,22 +19,22 @@ class ContentList extends AbstractList
     /**
      * @var array
      */
-    protected $parent = array();
+    protected $parent = [];
 
     /**
      * @var array
      */
-    protected $back = array();
+    protected $back = [];
 
     /**
      * @var array
      */
-    protected $counter = array(
+    protected $counter = [
         'all'        => 0,
         'categories' => 0,
         'articles'   => 0,
         'files'      => 0,
-    );
+    ];
 
     /**
      * @var integer
@@ -44,10 +44,10 @@ class ContentList extends AbstractList
     /**
      * @var array
      */
-    protected static $upper = array(
-        'site'  => array('id' => 0, 'title' => 'Site'),
-        'trash' => array('id' => 0, 'title' => 'Trash'),
-    );
+    protected static $upper = [
+        'site'  => ['id' => 0, 'title' => 'Site'],
+        'trash' => ['id' => 0, 'title' => 'Trash'],
+    ];
 
     /**
      * @param array $parent

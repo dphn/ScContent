@@ -158,8 +158,8 @@ class FileAddForm extends Form
         $fileInput->getValidatorChain()
             ->addValidator($this->fileNameValidator)
             ->addValidator($this->fileTypeValidator)
-            ->attachByName('filesize', array('max' => 2097152));
-            // @todo  ->attachByName('filecount', array('max' => 10));
+            ->attachByName('filesize', ['max' => 2097152]);
+            // @todo  ->attachByName('filecount', ['max' => 10]);
 
         $spec->add($fileInput);
 

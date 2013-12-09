@@ -32,7 +32,7 @@ class WidgetItem extends AbstractEntity
     /**
      * @var array
      */
-    protected $options = array();
+    protected $options = [];
 
     /**
      * @var integer

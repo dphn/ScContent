@@ -58,7 +58,7 @@ class ConfigService extends AbstractIntelligentService
     /**
      * @var array
      */
-    protected $errorMessages = array(
+    protected $errorMessages = [
         self::AutoloadIsNotWritable
             => 'Unable to create the configuration file %s. The application autoload directory is not writable.',
 
@@ -70,7 +70,7 @@ class ConfigService extends AbstractIntelligentService
 
         self::FailedToSave
             => 'Unable to save ScContent configuration.',
-    );
+    ];
 
     /**
      * @param ScContent\Service\Dir $dir
@@ -175,7 +175,7 @@ class ConfigService extends AbstractIntelligentService
         }
 
         $mask = $dir->normalizePath($options['old_files_mask']);
-        $failures = array();
+        $failures = [];
         foreach (glob($autoload . DS . $mask) as $file) {
             if (! @unlink($file)) {
                 $failures[] = str_replace($autoload, '', $file);

@@ -29,7 +29,7 @@ class RolesLinker extends AbstractMigrationMapper
             ->addColumn(new Column\Integer('user_id', false))
             ->addColumn(new Column\Integer('role_id', false))
             ->addConstraint(new Constraint\PrimaryKey(
-                array('user_id', 'role_id')
+                ['user_id', 'role_id']
             ));
 
         $sql = $this->toString($table);

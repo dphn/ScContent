@@ -28,7 +28,7 @@ class Regions extends AbstractList
     /**
      * @var array
      */
-    protected $names = array();
+    protected $names = [];
 
     /**
      * @param array $theme

@@ -33,10 +33,10 @@ class GarbageMapper extends AbstractDbMapper
     /**
      * @var array
      */
-    protected $_tables = array(
+    protected $_tables = [
         self::GarbageTableAlias => 'sc_garbage',
         self::ContentTableAlias => 'sc_content',
-    );
+    ];
 
     /**
      * Constructor
@@ -59,7 +59,7 @@ class GarbageMapper extends AbstractDbMapper
 
         $select = $this->getSql()->select()
             ->from($this->getTable(self::GarbageTableAlias))
-            ->where(array('failures' => 0))
+            ->where(['failures' => 0])
             ->limit($limit);
 
         $result = $this->execute($select);
@@ -77,8 +77,8 @@ class GarbageMapper extends AbstractDbMapper
 
         $update = $this->getSql()->update()
             ->table($this->getTable(self::GarbageTableAlias))
-            ->set(array('failures' => 1))
-            ->where(array('name' => $list));
+            ->set(['failures' => 1])
+            ->where(['name' => $list]);
 
         $this->execute($update);
     }
@@ -94,7 +94,7 @@ class GarbageMapper extends AbstractDbMapper
 
         $delete = $this->getSql()->delete()
             ->from($this->getTable(self::GarbageTableAlias))
-            ->where(array('name' => $list));
+            ->where(['name' => $list]);
 
         $this->execute($delete);
     }
@@ -108,11 +108,11 @@ class GarbageMapper extends AbstractDbMapper
         $this->checkTransaction($tid);
 
         $select = $this->getSql()->select()
-            ->columns(array('total' => new Expression('COUNT(`name`)')))
+            ->columns(['total' => new Expression('COUNT(`name`)')])
             ->from($this->getTable(self::GarbageTableAlias))
-            ->where(array(
-                'failures' => 0
-            ));
+            ->where([
+                'failures' => 0,
+            ]);
 
         $result = $this->execute($select)->current();
         return (int) $result['total'];
@@ -127,12 +127,12 @@ class GarbageMapper extends AbstractDbMapper
     public function registerRemovedGarbage($contentId, $tid)
     {
         $select = $this->getSql()->select()
-            ->columns(array('left_key', 'right_key'))
+            ->columns(['left_key', 'right_key'])
             ->from($this->getTable(self::ContentTableAlias))
-            ->where(array(
+            ->where([
                 'id' => $contentId,
                 'trash' => 1
-            ));
+            ]);
 
         $content = $this->execute($select)->current();
         if(empty($content)) {
@@ -161,10 +161,10 @@ class GarbageMapper extends AbstractDbMapper
             $this->getTable(self::ContentTableAlias)
         );
 
-        $this->execute($sql, array(
+        $this->execute($sql, [
             ':leftKey'  => $content['left_key'],
             ':rightKey' => $content['right_key'],
-        ));
+        ]);
     }
 
     /**

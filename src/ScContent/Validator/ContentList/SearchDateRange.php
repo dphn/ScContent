@@ -27,7 +27,7 @@ class SearchDateRange extends AbstractValidator
     /**
      * @var array
      */
-    protected $messageTemplates = array(
+    protected $messageTemplates = [
         self::MissingOptions
             => "Options for the date range search are not specified.",
 
@@ -36,7 +36,7 @@ class SearchDateRange extends AbstractValidator
 
         self::MissingEndDate
             => "The end date for the search is not specified.",
-    );
+    ];
 
     /**
      * @param string $value

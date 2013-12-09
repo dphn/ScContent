@@ -44,16 +44,16 @@ class ContentFormat extends AbstractTranslatorHelper
     /**
      * @var array
      */
-    protected $options = array(
+    protected $options = [
         'theme'   => 'sc-default',
         'uploads' => 'uploads',
         'class'   => 'content-list-icon',
-    );
+    ];
 
     /**
      * @var array
      */
-    protected $icons = array(
+    protected $icons = [
         'presentation' => 'presentation.png',
         'undefined'    => 'undefined.png',
         'document'     => 'document.png',
@@ -65,7 +65,7 @@ class ContentFormat extends AbstractTranslatorHelper
         'audio'        => 'audio.png',
         'video'        => 'video.png',
         'flash'        => 'flash.png',
-    );
+    ];
 
     /**
      * Constructor

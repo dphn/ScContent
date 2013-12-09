@@ -93,8 +93,8 @@ class GarbageCollector extends AbstractService
         $translator = $this->getTranslator();
         $mapper = $this->getGarbageMapper();
         $dir = $this->getDir();
-        $success  = array();
-        $failures = array();
+        $success  = [];
+        $failures = [];
         try {
             $mapper->beginTransaction();
             $tid = $mapper->getTransactionIdentifier();

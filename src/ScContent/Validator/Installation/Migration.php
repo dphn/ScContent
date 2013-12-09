@@ -21,7 +21,7 @@ class Migration extends AbstractValidator
     /**
      * @var array
      */
-    protected $tables = array();
+    protected $tables = [];
 
     /**
      * @param Zend\Db\Adapter\AdapterInterface $adapter

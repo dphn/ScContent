@@ -50,17 +50,17 @@ class ContentListDeleteMapper extends ContentListOperationAbstract
         }
         $delete = $this->getSql()->delete()
             ->from($this->getTable(self::ContentTableAlias))
-            ->where(array(
+            ->where([
                 'left_key  >= ?' => $meta['left_key'],
                 'right_key <= ?' => $meta['right_key'],
                 'trash      = ?' => 1,
-            ));
+            ]);
 
         $this->execute($delete);
 
         $update = $this->getSql()->update()
             ->table($this->getTable(self::ContentTableAlias))
-            ->set(array(
+            ->set([
                 'left_key' => new Expression(
                     'IF(`left_key` > :leftKey,
                         `left_key` - :skewTree,
@@ -70,15 +70,15 @@ class ContentListDeleteMapper extends ContentListOperationAbstract
                 'right_key' => new Expression(
                     '`right_key` - :skewTree'
                 ),
-            ))
-            ->where(array(
+            ])
+            ->where([
                 '`right_key` > ?' => $meta['right_key'],
                 '`trash`     = ?' => 1
-            ));
+            ]);
 
-        $this->execute($update, array(
+        $this->execute($update, [
             ':leftKey'  => $meta['left_key'],
             ':skewTree' => $meta['right_key'] - $meta['left_key'] + 1
-        ));
+        ]);
     }
 }

@@ -59,7 +59,7 @@ class ContentSearchMapper extends AbstractContentMapper implements
             $search = $this->optionsProvider->getSearchProxy(
                 $optionsIdentifier
             );
-            $counter = array(
+            $counter = [
                 'all' => $this->getSearchCount(
                     $optionsIdentifier,
                     'all'
@@ -76,7 +76,7 @@ class ContentSearchMapper extends AbstractContentMapper implements
                     $optionsIdentifier,
                     'files'
                 ),
-            );
+            ];
             $total = $counter[$options->getFilter()];
             $totalPages = max(1, ceil($total / $options->getLimit()));
             $currentPage = max(1, min($totalPages, $options->getPage()));
@@ -113,19 +113,25 @@ class ContentSearchMapper extends AbstractContentMapper implements
             return 0;
         }
         $select = $this->getSql()->select()
-            ->columns(array('total' => new Expression('COUNT(`content`.`id`)')))
-            ->from(array('content' => $this->getTable(self::ContentTableAlias)))
-            ->where(array('content.trash' => $options->isTrash()));
+            ->columns([
+                'total' => new Expression('COUNT(`content`.`id`)'),
+            ])
+            ->from([
+                'content' => $this->getTable(self::ContentTableAlias),
+            ])
+            ->where([
+                'content.trash' => $options->isTrash()
+            ]);
 
         switch ($filter) {
             case 'categories':
-                $select->where(array('content.type' => 'category'));
+                $select->where(['content.type' => 'category']);
                 break;
             case 'articles':
-                $select->where(array('content.type' => 'article'));
+                $select->where(['content.type' => 'article']);
                 break;
             case 'files':
-                $select->where(array('content.type' => 'file'));
+                $select->where(['content.type' => 'file']);
                 break;
         }
 
@@ -138,9 +144,9 @@ class ContentSearchMapper extends AbstractContentMapper implements
             $on->literal("`content`.`{$userType}` = `users`.`user_id`");
             $on->like("users.{$userSource}", "{$userName}%");
             $select->join(
-                array('users' => $this->getTable(self::UsersTableAlias)),
+                ['users' => $this->getTable(self::UsersTableAlias)],
                 $on,
-                array()
+                []
             );
         }
 
@@ -154,18 +160,18 @@ class ContentSearchMapper extends AbstractContentMapper implements
                 "MATCH(`search`.`{$textSource}`) AGAINST({$text} IN BOOLEAN MODE) > '0'"
             );
             $select->join(
-                array('search' => $this->getTable(self::SearchTableAlias)),
+                ['search' => $this->getTable(self::SearchTableAlias)],
                 $on,
-                array()
+                []
             );
         }
 
         if ($search->hasDate()) {
             $modificationType = $search->getModificationType();
-            $select->where(array(
+            $select->where([
                 "`content`.`{$modificationType}` >= ?" => $search->calculateDateStart(),
                 "`content`.`{$modificationType}` <= ?" => $search->calculateDateEnd(),
-            ));
+            ]);
         }
 
         $result = $this->execute($select)->current();
@@ -189,47 +195,49 @@ class ContentSearchMapper extends AbstractContentMapper implements
         }
         $on = new Predicate();
         $select = $this->getSql()->select()
-            ->columns(array(
+            ->columns([
                 'id', 'type', 'status', 'title', 'name', 'spec',
                 'date' => $search->getModificationType()
-            ))
-            ->from(array('content' => $this->getTable(self::ContentTableAlias)))
+            ])
+            ->from([
+                'content' => $this->getTable(self::ContentTableAlias)
+            ])
             ->join(
-                array('subsidiary' => $this->getTable(self::ContentTableAlias)),
+                ['subsidiary' => $this->getTable(self::ContentTableAlias)],
                 $on->equalTo('subsidiary.trash', $options->isTrash())
                     ->literal('`subsidiary`.`level`     = `content`.`level` + \'1\'')
                     ->literal('`subsidiary`.`left_key`  > `content`.`left_key`')
                     ->literal('`subsidiary`.`right_key` < `content`.`right_key`'),
-                array('childrens' => new Expression('COUNT(`subsidiary`.`id`)')),
+                ['childrens' => new Expression('COUNT(`subsidiary`.`id`)')],
                 self::JoinLeft
             )
             ->join(
-                array('users' => $this->getTable(self::UsersTableAlias)),
+                ['users' => $this->getTable(self::UsersTableAlias)],
                 'author' == $options->getUserType() ? 'content.author = users.user_id'
                                                     : 'content.editor = users.user_id',
-                array(
+                [
                     'user_id' => 'user_id',
                     'user_name' => 'username',
                     'user_email' => 'email',
-                ),
+                ],
                 self::JoinLeft
             )
-            ->where(array(
+            ->where([
                 'content.trash' => $options->isTrash(),
-            ))
+            ])
             ->group('content.id')
             ->limit($options->getLimit())
             ->offset($offset);
 
         switch ($options->getFilter()) {
             case 'categories':
-                $select->where(array('content.type' => 'category'));
+                $select->where(['content.type' => 'category']);
                 break;
             case 'articles':
-                $select->where(array('content.type' => 'article'));
+                $select->where(['content.type' => 'article']);
                 break;
             case 'files':
-                $select->where(array('content.type' => 'file'));
+                $select->where(['content.type' => 'file']);
                 break;
         }
 
@@ -261,9 +269,9 @@ class ContentSearchMapper extends AbstractContentMapper implements
             $on->literal("`content`.`{$userType}` = `search_users`.`user_id`");
             $on->like("search_users.{$userSource}", "{$userName}%");
             $select->join(
-                array('search_users' => $this->getTable(self::UsersTableAlias)),
+                ['search_users' => $this->getTable(self::UsersTableAlias)],
                 $on,
-                array()
+                []
             );
         }
 
@@ -277,18 +285,18 @@ class ContentSearchMapper extends AbstractContentMapper implements
                 "MATCH(`search`.`{$textSource}`) AGAINST({$text} IN BOOLEAN MODE) > '0'"
             );
             $select->join(
-                array('search' => $this->getTable(self::SearchTableAlias)),
+                ['search' => $this->getTable(self::SearchTableAlias)],
                 $on,
-                array()
+                []
             );
         }
 
         if ($search->hasDate()) {
             $modificationType = $search->getModificationType();
-            $select->where(array(
+            $select->where([
                 "`content`.`{$modificationType}` >= ?" => $search->calculateDateStart(),
                 "`content`.`{$modificationType}` <= ?" => $search->calculateDateEnd(),
-            ));
+            ]);
         }
 
         $results = $this->execute($select);

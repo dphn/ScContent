@@ -29,7 +29,7 @@ class FileType extends AbstractValidator
      *
      * @var array
      */
-    protected $patterns = array();
+    protected $patterns = [];
 
     /**#@+
      * @const string
@@ -42,7 +42,7 @@ class FileType extends AbstractValidator
     /**
      * @var array
      */
-    protected $messageTemplates = array(
+    protected $messageTemplates = [
         self::NotFound
             => 'File is not readable or does not exist.',
 
@@ -51,7 +51,7 @@ class FileType extends AbstractValidator
 
         self::IllegalType
             => "File '%value%' has not been loaded, because these file types are not allowed.",
-    );
+    ];
 
     /**
      * @param null | array $options
@@ -59,9 +59,9 @@ class FileType extends AbstractValidator
      */
     public function __construct($options = null, CatalogInterface $catalog = null)
     {
-        $this->patterns = array(
+        $this->patterns = [
             CatalogInterface::Safe
-        );
+        ];
         if (! is_null($catalog)) {
             $this->setFileTypesCatalog($catalog);
         } else if (is_array($options)
@@ -105,7 +105,7 @@ class FileType extends AbstractValidator
     public function setPatterns($patterns)
     {
         if (! is_array($patterns)) {
-            $patterns = array($patterns);
+            $patterns = [$patterns];
         }
         $this->patterns = $patterns;
     }

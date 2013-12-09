@@ -25,7 +25,7 @@ class PhpIni extends AbstractValidator
     public function isValid($options)
     {
         if (isset($options['name']) || isset($options['value'])) {
-            $options = array($options);
+            $options = [$options];
         }
         foreach ($options as &$requirement) {
             if (! isset($requirement['name'])) {
@@ -111,7 +111,7 @@ class PhpIni extends AbstractValidator
     protected function validateExpect($currentValue, $expectedValues)
     {
         if (! is_array($expectedValues)) {
-            $expectedValues = array($expectedValues);
+            $expectedValues = [$expectedValues];
         }
         foreach ($expectedValues as $expectedValue) {
             if ($currentValue === $expectedValue) {
