@@ -24,12 +24,31 @@
 
 </head>
 <body>
-<?php foreach($regions as $regionName => $widgets): ?>
-<?php $partial = $regions->getRegionOption($regionName, 'partial') ?>
+<div id="wrap">
+<div id="main">
+<?php if (isset($regions)): ?>
+    <?php foreach ($regions as $regionName => $widgets): ?>
+    <?php $partial = $regions->getRegionOption($regionName, 'partial') ?>
 
-<?= $this->partial($partial, ['widgets' => $widgets]) ?>
+    <?= $this->partial($partial, ['widgets' => $widgets]) ?>
 
-<?php endforeach ?>
+    <?php endforeach ?>
 
+<?php else: ?>
+
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <?= $this->content ?>
+
+        </div>
+    </div>
+</div>
+
+<?php endif ?>
+
+</div>
+</div>
 </body>
 </html>

@@ -5,7 +5,7 @@ namespace ScContent\Listener\Theme;
 use Zend\View\Model\ModelInterface as ViewModel,
     Zend\Mvc\MvcEvent;
 
-class BackendListener extends AbstractThemeListener
+class BackendStrategy extends AbstractThemeStrategy
 {
     public function update(MvcEvent $event)
     {

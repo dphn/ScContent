@@ -7,9 +7,9 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Factory\Listener\Theme;
+namespace ScContent\Factory\Listener\Installation;
 
-use ScContent\Listener\Theme\FrontendListener,
+use ScContent\Listener\Installation\InstallationInspector,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -17,22 +17,16 @@ use ScContent\Listener\Theme\FrontendListener,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class FrontendFactory implements FactoryInterface
+class InstallationInspectorFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Theme\FrontendListener
+     * @return ScContent\Listener\Installation\InstallationInspector
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
-        $layoutMapper = $serviceLocator->get('ScMapper.Theme.FrontendLayoutMapper');
-
-        $listener = new FrontendListener();
-
-        $listener->setModuleOptions($moduleOptions);
-        $listener->setLayoutMapper($layoutMapper);
-
-        return $listener;
+        $validatorManager = $serviceLocator->get('ValidatorManager');
+        $inspector = new InstallationInspector($validatorManager);
+        return $inspector;
     }
 }

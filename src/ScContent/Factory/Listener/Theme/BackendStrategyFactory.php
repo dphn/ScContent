@@ -7,9 +7,9 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Factory\Service\Installation;
+namespace ScContent\Factory\Listener\Theme;
 
-use ScContent\Service\Installation\InstallationInspector,
+use ScContent\Listener\Theme\BackendStrategy,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -17,16 +17,17 @@ use ScContent\Service\Installation\InstallationInspector,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class InstallationInspectorFactory implements FactoryInterface
+class BackendStrategyFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Installation\InstallationInspector
+     * @return ScContent\Listener\Theme\BackendStrategy
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $validatorManager = $serviceLocator->get('ValidatorManager');
-        $inspector = new InstallationInspector($validatorManager);
-        return $inspector;
+        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
+        $strategy = new BackendStrategy();
+        $strategy->setModuleOptions($moduleOptions);
+        return $strategy;
     }
 }

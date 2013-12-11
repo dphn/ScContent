@@ -40,9 +40,6 @@ return [
         'ScService.FileTypesCatalog'
             => 'ScContent\Factory\Service\FileTypesCatalogFactory',
 
-        'ScService.Installation.Inspector'
-            => 'ScContent\Factory\Service\Installation\InstallationInspectorFactory',
-
         'ScService.Installation.Autoload'
             => 'ScContent\Factory\Service\Installation\AutoloadFactory',
 
@@ -133,17 +130,20 @@ return [
         'ScMapper.Back.LayoutMove'
             => 'ScContent\Factory\Mapper\Back\LayoutMoveMapperFactory',
 
+        'ScListener.Installation.Inspector'
+            => 'ScContent\Factory\Listener\Installation\InstallationInspectorFactory',
+
         'ScListener.ThumbnailListener'
             => 'ScContent\Factory\Listener\ThumbnailListenerFactory',
 
-        'ScListener.Theme.Installation'
-            => 'ScContent\Factory\Listener\Theme\InstallationFactory',
+        'ScListener.Theme.InstallationStrategy'
+            => 'ScContent\Factory\Listener\Theme\InstallationStrategyFactory',
 
-        'ScListener.Theme.Backend'
-            => 'ScContent\Factory\Listener\Theme\BackendFactory',
+        'ScListener.Theme.BackendStrategy'
+            => 'ScContent\Factory\Listener\Theme\BackendStrategyFactory',
 
-        'ScListener.Theme.Frontend'
-            => 'ScContent\Factory\Listener\Theme\FrontendFactory',
+        'ScListener.Theme.FrontendStrategy'
+            => 'ScContent\Factory\Listener\Theme\FrontendStrategyFactory',
 
         'ScListener.Back.ContentListAggregate'
             => 'ScContent\Factory\Listener\Back\ContentListAggregateFactory',

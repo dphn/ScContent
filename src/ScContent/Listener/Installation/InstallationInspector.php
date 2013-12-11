@@ -7,9 +7,12 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Service\Installation;
+namespace ScContent\Listener\Installation;
 
 use ScContent\Exception\InvalidArgumentException,
+    //
+    Zend\EventManager\AbstractListenerAggregate,
+    Zend\EventManager\EventManagerInterface,
     //
     Zend\Validator\ValidatorPluginManager,
     Zend\Mvc\MvcEvent;
@@ -17,7 +20,7 @@ use ScContent\Exception\InvalidArgumentException,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class InstallationInspector
+class InstallationInspector extends AbstractListenerAggregate
 {
     /**
      * @var Zend\Validator\ValidatorPluginManager
@@ -42,6 +45,15 @@ class InstallationInspector
     public function __construct(ValidatorPluginManager $validatorManager)
     {
         $this->validatorManager = $validatorManager;
+    }
+
+    /**
+     * @param Zend\EventManager\EventManagerInterface
+     * @return void
+     */
+    public function attach(EventManagerInterface $events)
+    {
+        $this->listeners[] = $events->attach(MvcEvent::EVENT_DISPATCH, [$this, 'inspect'], PHP_INT_MAX);
     }
 
     /**

@@ -9,7 +9,7 @@
  */
 namespace ScContent\Factory\Listener\Theme;
 
-use ScContent\Listener\Theme\BackendListener,
+use ScContent\Listener\Theme\InstallationStrategy,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -17,17 +17,17 @@ use ScContent\Listener\Theme\BackendListener,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class BackendFactory implements FactoryInterface
+class InstallationStrategyFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Theme\BackendListener
+     * @return ScContent\Listener\Theme\InstallationStrategy
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
-        $listener = new BackendListener();
-        $listener->setModuleOptions($moduleOptions);
-        return $listener;
+        $service = $serviceLocator->get('ScListener.Installation.Inspector');
+        $strategy = new InstallationStrategy();
+        $strategy->setInstallationInspector($service);
+        return $strategy;
     }
 }

@@ -52,4 +52,22 @@ class ContentMapper extends AbstractContentMapper
         $hydrator = $this->getHydrator();
         $hydrator->hydrate($result, $content);
     }
+
+    public function findFirstElement(Content $content)
+    {
+        $select = $this->getSql()->select()
+            ->from($this->getTable(self::ContentTableAlias))
+            ->where([
+                'name'   => 'home',
+                'status' => 'published',
+                'trash'  => 0,
+            ]);
+
+        $result = $this->execute($select)->current();
+        if (empty($result)) {
+            return;
+        }
+        $hydrator = $this->getHydrator();
+        $hydrator->hydrate($result, $content);
+    }
 }

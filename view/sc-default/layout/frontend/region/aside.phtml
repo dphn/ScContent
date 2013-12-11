@@ -1,10 +1,11 @@
 
-    <div id="content-bottom">
+    <aside>
+    <div class="col-sm-4 col-md-4 col-lg-4">
         <?php foreach($widgets as $widget): ?>
             <?php $widgetName = $widget->getName() ?>
 
             <?= $this->layout()->$widgetName ?>
         <?php endforeach ?>
 
-    </div><!-- #content-bottom -->
-    </div><!-- col-sm-8 col-md-8 col-lg-8 -->
+    </div><!-- col-sm-4 col-md-4 col-lg-4 -->
+    </aside>

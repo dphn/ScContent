@@ -8,7 +8,7 @@ use ScContent\Options\ModuleOptions,
     Zend\Filter\Word\CamelCaseToDash,
     Zend\Mvc\MvcEvent;
 
-abstract class AbstractThemeListener
+abstract class AbstractThemeStrategy
 {
     /**
      * @var ScContent\Options\ModuleOptions

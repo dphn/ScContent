@@ -9,7 +9,7 @@
  */
 namespace ScContent\Controller;
 
-use ScContent\Service\Installation\InstallationInspector,
+use ScContent\Listener\Installation\InstallationInspector,
     //
     Zend\Mvc\Controller\AbstractActionController;
 
@@ -48,7 +48,7 @@ abstract class AbstractInstallation extends AbstractActionController
     }
 
     /**
-     * @param ScContent\Service\Installation\InstallationInspector $service
+     * @param ScContent\Listener\Installation\InstallationInspector $service
      * @return void
      */
     public function setInstallationInspector(InstallationInspector $service)
@@ -57,14 +57,14 @@ abstract class AbstractInstallation extends AbstractActionController
     }
 
     /**
-     * @return ScContent\Service\Installation\InstallationInspector
+     * @return ScContent\Listener\Installation\InstallationInspector
      */
     public function getInstallationInspector()
     {
         if (! $this->installationInspector instanceof InstallationInspector) {
             $serviceLocator = $this->getServiceLocator();
             $this->installationInspector = $serviceLocator->get(
-                'ScService.Installation.Inspector'
+                'ScListener.Installation.Inspector'
             );
         }
         return $this->installationInspector;

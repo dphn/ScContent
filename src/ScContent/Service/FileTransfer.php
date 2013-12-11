@@ -13,6 +13,7 @@ use ScContent\Service\FileTypesCatalogInterface as CatalogInterface,
     ScContent\Service\Stdlib,
     ScContent\Exception\IoCException,
     ScContent\Exception\DebugException,
+    ScContent\Exception\RuntimeException,
     //
     Zend\Validator\Db\NoRecordExists,
     //
@@ -120,9 +121,15 @@ class FileTransfer extends AbstractService implements FileTransferInterface
         $translator = $this->getTranslator();
         $validator = $this->getValidator();
 
-        if (! $dir->appUploads('', true)) {
+        $uploads = $dir->appUploads('', true);
+        if (! $uploads) {
             throw new RuntimeException(
-                'Uploads directory does not exist or is unavailable.'
+                'Directory for uploading files does not exist or is not available.'
+            );
+        }
+        if (! is_writable($uploads)) {
+            throw new RuntimeException(
+                'Directory for uploading files is not writable.'
             );
         }
         $info = [];

@@ -11,11 +11,9 @@ namespace ScContent;
 
 use ZfcBase\Module\AbstractModule,
     //
-    Zend\ModuleManager\ModuleManager,
-    Zend\ModuleManager\Feature,
+    Zend\ModuleManager\ModuleManagerInterface,
     Zend\EventManager\EventInterface,
-    //
-    Locale;
+    Zend\ModuleManager\Feature;
 
 if (0 > version_compare(phpversion(), '5.4.0')) {
     exit(
@@ -34,6 +32,7 @@ defined('DS') || define('DS', DIRECTORY_SEPARATOR);
  * @author Dolphin <work.dolphin@gmail.com>
  */
 class Module extends AbstractModule implements
+    Feature\InitProviderInterface,
     Feature\BootstrapListenerInterface,
     Feature\ConfigProviderInterface,
     Feature\ServiceProviderInterface,
@@ -58,6 +57,22 @@ class Module extends AbstractModule implements
     public function getNamespace()
     {
         return __NAMESPACE__;
+    }
+
+    /**
+     * @param Zend\ModuleManager\ModuleManagerInterface
+     * @return void
+     */
+    public function init(ModuleManagerInterface $manager)
+    {
+        /* Instead, each time you need to check the parameters of the
+         * environment, use the constant.
+         */
+        if (! defined('DEBUG_MODE')) {
+            $environment = strtolower(getenv('APPLICATION_ENV'));
+            $mode = $environment === 'development' ? true : false;
+            define('DEBUG_MODE', $mode);
+        }
     }
 
     /**

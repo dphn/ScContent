@@ -10,18 +10,6 @@
 use Zend\Mvc\MvcEvent;
 
 /**
- * Instead, each time you need to check the parameters of the
- * environment, use the constant.
- *
- * @const string
- */
-defined('DEBUG_MODE')
-     || define(
-            'DEBUG_MODE',
-            strtolower(getenv('APPLICATION_ENV')) === 'development' ? true : false
-        );
-
-/**
  * Used as the name for events that report an error.
  *
  * @const string
@@ -65,60 +53,35 @@ mb_internal_encoding(MB_INTERNAL_ENCODING);
  */
 $app = $event->getApplication();
 $serviceLocator = $app->getServiceManager();
+$eventManager   = $app->getEventManager();
 
-/* Global installation feature.
- *
- * Added global installation feature to application events.
- */
-$app->getEventManager()->attach(
-    MvcEvent::EVENT_DISPATCH,
-    [
-        $serviceLocator->get('ScService.Installation.Inspector'),
-        'inspect'
-    ],
-    PHP_INT_MAX
+$eventManager->attachAggregate(
+    $serviceLocator->get('ScListener.Installation.Inspector')
 );
+
+$eventManager->attachAggregate(new \ScContent\Listener\Theme\ThemeContext);
 
 /* ScContent installation.
  *
  * Using installation feature for installation of module ScContent.
  */
-
 $file = $this->getDir() . DS . 'settings' . DS . 'installation.locked';
-
 if (! file_exists($file)) {
-    // See options: ScContent/config/installation.config.php
     $installation = $serviceLocator->get('ScOptions.InstallationOptions')
         ->getInstallation();
 
-    // You can use this feature for your module.
-    $serviceLocator->get('ScService.Installation.Inspector')->setup($installation);
+    $serviceLocator->get('ScListener.Installation.Inspector')->setup($installation);
 }
-
-/* Activates listeners of themes
- *
- * The target - Controller.
- * Controller instance, currently does not exist.
- */
-
-$sharedEvents = $app->getEventManager()->getSharedManager();
-
-$sharedEvents->attach(
-    'Zend\Stdlib\DispatchableInterface',
-    'dispatch',
-    ['ScContent\Listener\Theme\ThemeResolver', 'process'],
-    -100
-);
 
 /* After the user logs in, sets the locale and time zone according to the
  * user specified data from database
  */
-$l10n = $serviceLocator->get('ScService.Localization');
-
 $zfcServiceEvents = $serviceLocator->get(
         'ZfcUser\Authentication\Adapter\AdapterChain'
     )
     ->getEventManager();
+
+$l10n = $serviceLocator->get('ScService.Localization');
 
 $zfcServiceEvents->attach('authenticate', function ($event) use($l10n, $serviceLocator) {
     $userId = $event->getIdentity();

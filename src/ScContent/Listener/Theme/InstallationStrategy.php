@@ -2,7 +2,7 @@
 
 namespace ScContent\Listener\Theme;
 
-use ScContent\Service\Installation\InstallationInspector,
+use ScContent\Listener\Installation\InstallationInspector,
     ScContent\Controller\AbstractInstallation,
     ScContent\Exception\InvalidArgumentException,
     ScContent\Exception\IoCException,
@@ -10,7 +10,7 @@ use ScContent\Service\Installation\InstallationInspector,
     Zend\View\Model\ModelInterface as ViewModel,
     Zend\Mvc\MvcEvent;
 
-class InstallationListener extends AbstractThemeListener
+class InstallationStrategy extends AbstractThemeStrategy
 {
     protected $installationInspector;
 
@@ -38,11 +38,11 @@ class InstallationListener extends AbstractThemeListener
         $controller = $event->getTarget();
         $model = $event->getResult();
 
-        if(!$model instanceof ViewModel) {
+        if (! $model instanceof ViewModel) {
             return;
         }
 
-        if(!$controller instanceof AbstractInstallation) {
+        if (! $controller instanceof AbstractInstallation) {
             throw new InvalidArgumentException(sprintf(
                 "The operation is not applicable to the type of target '%s'.",
                 get_class($controller)
@@ -51,23 +51,23 @@ class InstallationListener extends AbstractThemeListener
         $layout = 'sc-default/layout/installation/index';
         $template = 'sc-default/template/installation/index';
 
-        if(isset($options['layout'])) {
+        if (isset($options['layout'])) {
             $layout = $options['layout'];
         }
-        if(isset($options['template'])) {
+        if (isset($options['template'])) {
             $template = $options['template'];
         }
         $step = $options['steps'][$routeMatch->getParam('step')];
-        if(isset($step['layout'])) {
+        if (isset($step['layout'])) {
             $layout = $step['layout'];
         }
-        if(isset($step['template'])) {
+        if (isset($step['template'])) {
             $template = $step['template'];
         }
 
         if(!$model->terminate()) {
             $event->getViewModel()->setTemplate($layout);
-            if(isset($options['title'])) {
+            if (isset($options['title'])) {
                 $event->getViewModel()->title = $options['title'];
             }
         }
@@ -76,11 +76,15 @@ class InstallationListener extends AbstractThemeListener
         if(isset($options['header'])) {
             $model->header = $options['header'];
         }
+
         $model->step = $routeMatch->getParam('step');
-        if(isset($step['title'])) {
+        if (isset($step['title'])) {
             $model->title = $step['title'];
         }
-        if(isset($step['info'])) {
+        if (isset($step['header'])) {
+            $model->header = $step['header'];
+        }
+        if (isset($step['info'])) {
             $model->info = $step['info'];
         }
     }

@@ -1,8 +1,9 @@
-<div id="content-middle">
-<?php foreach($widgets as $widget): ?>
-    <?php $widgetName = $widget->getName() ?>
 
-    <?= $this->layout()->$widgetName ?>
-<?php endforeach ?>
+    <div id="content-middle">
+    <?php foreach($widgets as $widget): ?>
+        <?php $widgetName = $widget->getName() ?>
 
-</div>
+        <?= $this->layout()->$widgetName ?>
+    <?php endforeach ?>
+
+    </div><!-- #content-middle -->

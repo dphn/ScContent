@@ -36,8 +36,7 @@ class ContentService
             $mapper->findByName($content);
             return $content;
         }
-        $content->setTitle('Test');
-        $content->setContent('Test content.');
+        $mapper->findFirstElement($content);
         return $content;
     }
 }

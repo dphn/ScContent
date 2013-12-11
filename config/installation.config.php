@@ -12,14 +12,13 @@ return [
     'installation' => [
         'layout'   => 'sc-default/layout/installation/index',
         'template' => 'sc-default/template/installation/index',
-        'title'    => 'ScContent - Installation',
-        'header'   => 'Installing a module ScContent',
+        'title'    => 'Installing a module ScContent',
         'redirect_on_success' => 'zfcuser/register',
         'steps' => [
             /* ________________________________________________________________
              */
             'Pre-test' => [
-                'title' => 'Check the system requirements',
+                'header' => 'Check the system requirements',
                 'info' => 'Check the configuration settings and installed PHP extensions.',
                 'chain' => [
                     /* Checks the settings in the php.ini. If the values ​​do not
@@ -82,7 +81,7 @@ return [
             /* ________________________________________________________________
              */
             1 => [
-                'title' => 'Setting the configuration',
+                'header' => 'Setting the configuration',
                 'info' => 'Installing the module configuration and setup parameters of the database connection.',
                 'chain' => [
                    /* Copies the various configuration files without changes
@@ -124,7 +123,7 @@ return [
             /* ________________________________________________________________
              */
             2 => [
-                'title' => 'Database migration',
+                'header' => 'Database migration',
                 'info' => 'Create and populate tables in the database.',
                 'chain' => [
                     /* Checks for each item presence of tables in the database.
@@ -160,7 +159,7 @@ return [
             /* ________________________________________________________________
              */
             3 => [
-                'title' => 'Assets installation',
+                'header' => 'Assets installation',
                 'info' => 'Installation of resources and the creation of the directory to files uploads.',
                 'chain' => [
                     /* Create uploads directory.
@@ -186,7 +185,7 @@ return [
                                     /* 'version' - directory must contain a
                                      * "version" file with this name.
                                      */
-                                    'version' => 'sc.v-0.1.3.003.version',
+                                    'version' => 'sc.v-0.1.3.004.version',
                                     'source' => [
                                         'source_module' => 'ScContent',
                                         'source_zip' => '/data/public.zip',
@@ -200,7 +199,7 @@ return [
             /* ________________________________________________________________
              */
             '4' => [
-                'title' => 'Widgets installation',
+                'header' => 'Widgets installation',
                 'info' => 'Register widgets for the current theme and existing content.',
                 'chain' => [
                     'layout' => [

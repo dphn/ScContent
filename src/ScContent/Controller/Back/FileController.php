@@ -81,9 +81,9 @@ class FileController extends AbstractBack
             );
             $form->setData($post);
             if ($form->isValid()) {
-                $transfer = $this->getFileTransfer();
-                $data = $transfer->receive($form->getData());
                 try {
+                    $transfer = $this->getFileTransfer();
+                    $data = $transfer->receive($form->getData());
                     $fileIds = $this->getFileService()->makeFiles(
                         $parent, $data
                     );
@@ -92,7 +92,9 @@ class FileController extends AbstractBack
                         ['id' => implode(',', $fileIds)]
                     );
                 } catch (Exception $e) {
-                    $transfer->rollBack($data);
+                    if (isset($data)) {
+                        $transfer->rollBack($data);
+                    }
                     if ($e instanceof RuntimeException) {
                         $this->flashMessenger()->addMessage($e->getMessage());
                         return $this->redirect()

@@ -39,6 +39,7 @@ class InstallationController extends AbstractInstallation
         }
         $redirect = $this->getRedirect();
         $routeMatch = $this->getEvent()->getRouteMatch();
+
         if (! $routeMatch->getParam('step')
             || ! $routeMatch->getParam('member')
         ) {

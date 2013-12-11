@@ -8,7 +8,7 @@ use ScContent\Mapper\Theme\FrontendLayoutMapper,
     Zend\View\Model\ModelInterface as ViewModel,
     Zend\Mvc\MvcEvent;
 
-class FrontendListener extends AbstractThemeListener
+class FrontendStrategy extends AbstractThemeStrategy
 {
     protected $layoutMapper;
 

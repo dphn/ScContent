@@ -145,10 +145,7 @@ class WidgetItem extends AbstractEntity
      */
     public function getDisplayName()
     {
-        if (isset($this->options['display_name'])) {
-            return $this->options['display_name'];
-        }
-        return $this->name;
+        return $this->getOption('display_name', $this->name);
     }
 
     /**

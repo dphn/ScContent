@@ -21,9 +21,21 @@ return [
         'themes' => [
             'sc-default' => [
                 'display_name' => 'ScContent Default',
-                'screenshot' => 'sc-default/img/theme.png',
-                'description' => 'The default theme with several regions.',
-
+                'description'  => 'The default theme with several regions.',
+                'screenshot'   => 'sc-default/img/theme.png',
+                'errors' => [
+                    'layout' => 'sc-default/layout/error/index',
+                    'template' => [
+                        /* You can use different templates for frontend,
+                         * backend and installation:
+                         *
+                         * theme/template/error/{side}/index
+                         * theme/template/error/{side}/404
+                         */
+                        'exception' => 'sc-default/template/error/index',
+                        '404'       => 'sc-default/template/error/404',
+                    ],
+                ],
                 /* Frontend
                  */
                 'frontend' => [
@@ -32,19 +44,12 @@ return [
                         'header' => [
                             'display_name' => 'Header',
                             'partial' => 'sc-default/layout/frontend/region/header',
-                            'contains' => []
-                        ],
-                        'aside_first' => [
-                            'display_name' => 'Aside First',
-                            'partial' => 'sc-default/layout/frontend/region/aside-first',
-                            'contains' => [
-                                'login'
-                            ]
+                            'contains' => [],
                         ],
                         'content_top' => [
                             'display_name' => 'Content Top',
                             'partial' => 'sc-default/layout/frontend/region/content-top',
-                            'contains' => []
+                            'contains' => [],
                         ],
                         'content_middle' => [
                             'display_name' => 'Content Middle',
@@ -57,41 +62,50 @@ return [
                             'display_name' => 'Content Bottom',
                             'partial' => 'sc-default/layout/frontend/region/content-bottom'
                         ],
-                        'aside_second' => [
-                            'display_name' => 'Aside Second',
-                            'partial' => 'sc-default/layout/frontend/region/aside-second',
-                            'contains' => []
+                        'aside' => [
+                            'display_name' => 'Aside',
+                            'partial' => 'sc-default/layout/frontend/region/aside',
+                            'contains' => [
+                                'login'
+                            ],
                         ],
                         'footer' => [
                             'display_name' => 'Footer',
                             'partial' => 'sc-default/layout/frontend/region/footer',
-                            'contains' => []
-                        ]
-                    ]
+                            'contains' => [],
+                        ],
+                    ],
                 ],
-
-                /* Backend
-                 */
-                'backend' => [
-                    'layout' => 'sc-default-back-layout'
-                ]
-            ]
+            ],
+        ],
+    ],
+    'service_manager' => [
+        'aliases' => [
+            'translator' => 'MvcTranslator',
+            'Zend\Db\Adapter\Adapter' => 'ScDb.Adapter',
         ],
     ],
     'view_manager' => [
+        'doctype'                  => 'HTML5',
+        'display_not_found_reason' => DEBUG_MODE,
+        'display_exceptions'       => DEBUG_MODE,
+        'not_found_template'       => 'error/404',
+        'exception_template'       => 'error/index',
         'template_map' => [
-            // @todo
+            'layout/layout' => $this->getDir() . str_replace('/', DS, '/view/sc-default/layout/error/index.phtml'),
+            'error/index'   => $this->getDir() . str_replace('/', DS, '/view/sc-default/template/error/index.phtml'),
+            'error/404'     => $this->getDir() . str_replace('/', DS, '/view/sc-default/template/error/404.phtml'),
         ],
         'template_path_stack' => [
             $this->getDir() . DS . 'view',
         ],
     ],
     'translator' => [
-        'locale' => Locale::getDefault(),
+        'locale' => \Locale::getDefault(),
         'translation_file_patterns' => [[
-            'type' => 'phpArray',
+            'type'     => 'phpArray',
             'base_dir' => $this->getDir() . DS . 'language',
-            'pattern' => '%s.php',
+            'pattern'  => '%s.php',
         ]],
     ],
     'router' => [

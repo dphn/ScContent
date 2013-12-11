@@ -96,7 +96,7 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @param string $identifier
+     * @param null | string $identifier optional default null
      * @throws ScContent\Exception\DomainException
      * @return void
      */

@@ -1,66 +1,70 @@
+<?php
+    if (isset($title)) {
+        $this->headTitle($this->translate($title));
+    }
+?>
+
 <div id="header">
-    <h1><?php echo $this->translate($header) ?></h1>
-</div>
-<div id="main">
-<h3>
+    <h3>
     <?php if(isset($step)): ?>
-    
+
     <span class = "step"><?php echo $this->translate('Step') ?> <?php echo $this->translate($step) ?>.</span>
     <?php endif ?>
-    
-    <?php if(isset($title)): ?>
-        <?php $this->headTitle($this->translate($title)) ?>
-        
-        <?php echo $this->translate($title) ?>.
-    
+
+    <?php if(isset($header)): ?>
+
+        <?php echo $this->translate($header) ?>.
+
     <?php endif ?>
-    
-</h3>
+
+    </h3>
+</div>
+<div id="main">
 <?php if(isset($errors)): ?>
-    
+
     <h4 id="errors"><?php echo $this->translate('Installation error:') ?></h4>
     <p>
         <?php if(is_array($errors)): ?>
-            
+
             <?php if(isset($errors['table'])): ?>
-                
+
             <table>
                 <?php if(isset($errors['table']['head'])): ?>
-                
+
                 <tr>
                     <?php foreach($errors['table']['head'] as $th): ?>
-                    
+
                     <th><?php echo $this->translate($th) ?></th>
                     <?php endforeach ?>
-                    
+
                 </tr>
                 <?php endif ?>
                 <?php foreach($errors['table']['body'] as $tr): ?>
-                
+
                     <tr>
                         <?php foreach($tr as $td): ?>
-                        
+
                         <td><?php echo $this->translate($td) ?></td>
                         <?php endforeach ?>
-                        
+
                     </tr>
                 <?php endforeach ?>
-                
+
             </table>
             <?php else: ?>
                 <?php foreach($errors as $error): ?>
-                
+
                 <?php echo $this->translate($error) ?><br/>
-                
+
                 <?php endforeach ?>
             <?php endif ?>
         <?php else: ?>
-        
+
             <?php echo $this->translate($errors) ?>
         <?php endif ?>
-    
+
     </p>
-    
+
 <?php elseif(isset($info)): ?>
 
     <p><?php echo $this->translate($info) ?></p>
@@ -70,14 +74,14 @@
     <?php if(isset($form)): ?>
     <?php
     $form->prepare();
-    echo 
+    echo
         $this->form()->openTag($form),
         $this->formCollection($form),
         $this->form()->closeTag($form);
     ?>
     <?php else: ?>
-    
+
         <a href="<?php echo $this->url('sc-install', array('process' => 'process')) ?>" class="btn-primary"><?php echo $this->translate('Continue') ?></a>
     <?php endif ?>
-    
+
 </div>
