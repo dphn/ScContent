@@ -9,9 +9,9 @@ class Content extends AbstractContent implements FormatProviderInterface
 {
     protected $type = 'category';
 
-    protected $title = 'Nothing was found.';
+    protected $title = 'Welcome!';
 
-    protected $description = 'Content named "home" was not published.';
+    protected $description = 'Create a home page of your site. To do this, add an article or category and assign it the name "home". Do not forget to change its status to "published".';
 
     public function setType($type)
     {
