@@ -1,16 +1,28 @@
 
 <? if ('category' == $content->getType()): ?>
+
     <h1><?= $content->getTitle() ?></h1>
     <div class="justified"><?= $content->getDescription() ?></div>
 <? elseif ('article' == $content->getType()): ?>
-    <artiicle>
+
+    <article>
         <h1><?= $content->getTitle() ?></h1>
         <div class="justified"><?= $content->getContent() ?></div>
-    </artiicle>
+    </article>
 <? elseif ('file' == $content->getType()):?>
+
     <h1><?= $content->getTitle() ?></h1>
     <div>
         <img src="<?= $this->scContentFormat()->getImagePath($content) ?>" alt="<?= $content->getContent() ?>" title="<?= $content->getTitle() ?>" />
         <div><?= $content->getDescription() ?></div>
     </div>
+
+<?php else: ?>
+
+    <h1>Welcome!</h1>
+    <p><?= $this->translate(
+        'Create a home page of your site. To do this, add an article or category'
+        . ' and assign it the name "home". Do not forget to change its status to'
+        . ' "published".'
+    ) ?></p>
 <? endif ?>
