@@ -30,17 +30,24 @@ class ContentMapper extends AbstractContentMapper
 
     /**
      * @param ScContent\Entity\Front\Content $content
+     * @param boolean $allowPreview
      * @throws ScContent\Mapper\Exception\UnavailableSourceException
+     * @return void
      */
-    public function findByName(Content $content)
+    public function findByName(Content $content, $allowPreview)
     {
         $select = $this->getSql()->select()
             ->from($this->getTable(self::ContentTableAlias))
             ->where([
                 'name' => $content->getName(),
-                //'status' => 'published',
                 'trash' => 0,
             ]);
+
+        if (! $allowPreview) {
+            $select->where([
+                'status' => 'published',
+            ]);
+        }
 
         $result = $this->execute($select)->current();
         if (empty($result)) {
@@ -53,7 +60,11 @@ class ContentMapper extends AbstractContentMapper
         $hydrator->hydrate($result, $content);
     }
 
-    public function findFirstElement(Content $content)
+    /**
+     * @param ScContent\Entity\Front\Content $content
+     * @return void
+     */
+    public function findHomePage(Content $content)
     {
         $select = $this->getSql()->select()
             ->from($this->getTable(self::ContentTableAlias))

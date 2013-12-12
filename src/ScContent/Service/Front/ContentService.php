@@ -20,7 +20,7 @@ class ContentService
     {
         if (! $this->mapper instanceof ContentMapper) {
             throw new IoCException(
-	           'The mapper was not set.'
+                'The mapper was not set.'
             );
         }
         return $this->mapper;
@@ -33,10 +33,11 @@ class ContentService
         $content = new Content();
         if (! empty($name)) {
             $content->setName($name);
-            $mapper->findByName($content);
+            // @todo get "Allow preview" from ACL
+            $mapper->findByName($content, true);
             return $content;
         }
-        $mapper->findFirstElement($content);
+        $mapper->findHomePage($content);
         return $content;
     }
 }
