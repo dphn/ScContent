@@ -1,0 +1,93 @@
+<?php
+
+return ['bjyauthorize' => [
+    'default_role' => 'guest',
+    'identity_provider' => 'ScService.IdentityProvider',
+    'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
+    'role_providers' => [
+        'BjyAuthorize\Provider\Role\ZendDb' => [
+            'table' => 'sc_roles',
+            'role_id_field' => 'role_id',
+            'parent_role_field' => 'parent_id',
+        ],
+    ],
+    'guards' => [
+        'BjyAuthorize\Guard\Route' => [
+
+            // ZfcUser
+            /* routes 'zfcuser/changepassword' and 'zfcuser/changeemail'
+             * are not supported. To change a user profile, use the widgets.
+             */
+            [
+                'route' => 'zfcuser',
+                'roles' => ['user', 'admin'],
+            ],
+            [
+                'route' => 'zfcuser/logout',
+                'roles' => ['user', 'admin'],
+            ],
+            [
+                'route' => 'zfcuser/login',
+                'roles' => ['guest', 'admin'],
+            ],
+            [
+                'route' => 'zfcuser/register',
+                'roles' => ['guest'],
+            ],
+
+            // ScContent
+            [
+                'route' => 'sc',
+                'roles' => ['guest', 'admin'],
+            ],
+            [
+                'route' => 'sc-install',
+                'roles' => ['guest', 'admin'],
+            ],
+            [
+                'route' => 'sc-admin/content-manager',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/content-search',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/category/add',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/category/edit',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/article/add',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/article/edit',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/file/add',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/file/edit',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/file/delete',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/themes',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/layout',
+                'roles' => ['admin'],
+            ],
+        ],
+    ],
+]];

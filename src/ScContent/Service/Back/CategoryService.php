@@ -179,9 +179,10 @@ class CategoryService extends AbstractContentService
             if (! $category instanceof Category) {
                 throw new DomainException(sprintf(
                     $translator->translate(
-                        "The custom class '%s' should inherit the class 'ScContent\Entity\Back\Category'."
+                        "The custom class '%s' should inherit the class '%s'."
                     ),
-                    get_class($category)
+                    get_class($category),
+                    'ScContent\Entity\Back\Category'
                 ));
             }
             $this->categoryPrototype = $category;

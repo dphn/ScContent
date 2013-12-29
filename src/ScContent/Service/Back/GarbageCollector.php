@@ -130,7 +130,7 @@ class GarbageCollector extends AbstractService
             $mapper->rollBack();
             throw new RuntimeException(
                 $translator->translate(
-                    'The operation failed in garbage collection.'
+                    'Garbage collection failed.'
                 ),
                 null,
                 $e

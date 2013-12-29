@@ -66,11 +66,12 @@ class Garbage extends AbstractListener
             );
         }
         if (is_null($event->getParam('content'))) {
-            throw new InvalidArgumentException(
+            throw new InvalidArgumentException(sprintf(
                 $translator->translate(
-                    "Missing event param 'content'."
-                )
-            );
+                    "Missing event param '%s'."
+                ),
+                'content'
+            ));
         }
         $mapper->registerRemovedGarbage(
             $event->getParam('content'),

@@ -73,16 +73,18 @@ class ThumbnailListener extends AbstractListener
 
         $path = $event->getParam('file');
         if (empty($path)) {
-            throw new InvalidArgumentException(
-                $translator->translate("Missing event param 'file'.")
-            );
+            throw new InvalidArgumentException(sprintf(
+                $translator->translate("Missing event param '%s'."),
+                'file'
+            ));
         }
 
         $spec = $event->getParam('spec');
         if (empty($spec)) {
-            throw new InvalidArgumentException(
-                $translator->translate("Missing event param 'spec'.")
-            );
+            throw new InvalidArgumentException(sprintf(
+                $translator->translate("Missing event param '%s'."),
+                'spec'
+            ));
         }
 
         if (! ($catalog->getFeature($spec) & CatalogInterface::GdEditable)) {
@@ -146,7 +148,7 @@ class ThumbnailListener extends AbstractListener
             imagedestroy($sourceImage);
             imagedestroy($destinationImage);
             throw new RuntimeException(
-                $translator->translate('Thumbnail creation failed.')
+                $translator->translate('Failed to create thumbnail.')
             );
         }
         switch ($imageInfo['mime']) {
@@ -177,16 +179,18 @@ class ThumbnailListener extends AbstractListener
 
         $path = $event->getParam('file');
         if (empty($path)) {
-            throw new InvalidArgumentException(
-                $translator->translate("Missing event param 'file'.")
-            );
+            throw new InvalidArgumentException(sprintf(
+                $translator->translate("Missing event param '%s'."),
+                'file'
+            ));
         }
 
         $spec = $event->getParam('spec');
         if (empty($spec)) {
-            throw new InvalidArgumentException(
-                $translator->translate("Missing event param 'spec'.")
-            );
+            throw new InvalidArgumentException(sprintf(
+                $translator->translate("Missing event param '%s'."),
+                'spec'
+            ));
         }
 
         if (! ($catalog->getFeature($spec) & CatalogInterface::GdEditable)) {

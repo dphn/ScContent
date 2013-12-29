@@ -9,7 +9,7 @@
  */
 namespace ScContent\Form\Installation;
 
-use ScContent\InputFilter\Back\DatabaseInputFilter,
+use ScContent\InputFilter\Installation\DatabaseInputFilter,
     //
     Zend\Form\Form;
 
@@ -36,7 +36,7 @@ class DatabaseForm extends Form
     }
 
     /**
-     * @return ScContent\Form\Installation\DatabaseForm
+     * @return DatabaseForm
      */
     protected function setFormSpecification()
     {
@@ -47,17 +47,11 @@ class DatabaseForm extends Form
                 'label' => 'Database driver',
                 'value_options' => $this->drivers,
             ],
-            'attributes' => [
-                'id' => 'driver',
-            ],
         ]);
 
         $this->add([
             'name' => 'path',
-            'attributes' => [
-                'type' => 'text',
-                'id' => 'dbpath',
-            ],
+            'type' => 'text',
             'options' => [
                 'label' => 'Path (only for SQLite)'
             ],
@@ -65,9 +59,8 @@ class DatabaseForm extends Form
 
         $this->add([
             'name' => 'host',
+            'type' => 'text',
             'attributes' => [
-                'type' => 'text',
-                'id' => 'host',
                 'value' => 'localhost',
             ],
             'options' => [
@@ -77,10 +70,7 @@ class DatabaseForm extends Form
 
         $this->add([
             'name' => 'database',
-            'attributes' => [
-                'type' => 'text',
-                'id' => 'database',
-            ],
+            'type' => 'text',
             'options' => [
                 'label' => 'Database name',
             ],
@@ -88,10 +78,7 @@ class DatabaseForm extends Form
 
         $this->add([
             'name' => 'username',
-            'attributes' => [
-                'type' => 'text',
-                'id' => 'username',
-            ],
+            'type' => 'text',
             'options' => [
                 'label' => 'Username',
             ],
@@ -99,10 +86,7 @@ class DatabaseForm extends Form
 
         $this->add([
             'name' => 'password',
-            'attributes' => [
-                'type' => 'password',
-                'id' => 'password',
-            ],
+            'type' => 'password',
             'options' => [
                 'label' => 'Password',
             ],
@@ -110,10 +94,7 @@ class DatabaseForm extends Form
 
         $this->add([
             'name' => 'password2',
-            'attributes' => [
-                'type' => 'password',
-                'id' => 'password2',
-            ],
+            'type' => 'password',
             'options' => [
                 'label' => 'Password verify',
             ],
@@ -121,10 +102,9 @@ class DatabaseForm extends Form
 
         $this->add([
             'name' => 'submit',
+            'type' => 'submit',
             'attributes' => [
-                'type' => 'submit',
-                'value' => 'Install',
-                'id' => 'submit',
+                'value' => 'Submit',
                 'class' => 'btn-primary',
             ],
         ]);

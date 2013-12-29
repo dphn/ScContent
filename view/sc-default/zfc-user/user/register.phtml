@@ -1,0 +1,79 @@
+<?php $this->scBodyTag('class', 'registration') ?>
+
+<h1><?= $this->translate('Register'); ?></h1>
+
+<?php if (! $this->enableRegistration): ?>
+
+<?= $this->translate('Registration is disabled') ?>
+
+<div class="where-to">
+    <p>
+        <a href="/"><?= $this->translate('&rarr; Home') ?></a> |
+        <a href="javascript:window.history.back();"><?= $this->translate('&larr; Back') ?></a>
+    </p>
+</div>
+
+<?php return ?>
+<?php endif ?>
+
+<?php
+$form = $this->registerForm;
+$form->prepare();
+$form->setAttribute('action', $this->url('zfcuser/register'));
+$form->setAttribute('method', 'post');
+?>
+
+<?= $this->form()->openTag($form) ?>
+    <?php foreach ($form as $element): ?>
+
+        <div class="form-group">
+            <?php if (! $element instanceof Zend\Form\Element\Button): ?>
+
+                <?= $this->formLabel($element) ?>
+            <?php endif ?>
+            <?php if ($element instanceof Zend\Form\Element\Button): ?>
+
+                <div class="info">
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    <p class="terms-info">
+                        <?= $this->translate('Registration means you agree with the') ?>
+
+                        <a target="_blank" href="<?= $this->url('sc', ['content-name' => 'terms-of-service']) ?>"><?= $this->translate('Terms of Service') ?></a>.
+                    </p>
+                </div>
+                <?= $this->formButton($element->setAttribute('class', 'btn btn-primary')) ?>
+            <?php elseif ($element instanceof Zend\Form\Element\Captcha): ?>
+
+                <div class="captcha"><?= $this->formCaptcha($element->setAttribute('class', 'form-control input-captcha')) ?></div>
+            <?php else: ?>
+
+                <?= $this->formInput($element->setAttribute('class', 'form-control')) ?>
+
+            <?php endif ?>
+            <?php if ($this->formElementErrors($element)): ?>
+
+            <div class="alert alert-warning fade in">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                <?= $this->formElementErrors($element) ?>
+
+            </div>
+
+            <?php endif ?>
+
+        </div>
+    <?php endforeach ?>
+    <?php if ($this->redirect): ?>
+        <input type="hidden" name="redirect" value="<?= $this->escapeHtml($this->redirect) ?>" />
+    <?php endif ?>
+
+<?= $this->form()->closeTag() ?>
+
+<?= $this->translate('Already registered?') ?>
+
+<br /><a href="<?= $this->url('zfcuser/login') ?>"><?= $this->translate('Sign In') ?></a>
+<div class="where-to">
+    <p>
+        <a href="/"><?= $this->translate('&rarr; Home') ?></a> |
+        <a href="javascript:window.history.back();"><?= $this->translate('&larr; Back') ?></a>
+    </p>
+</div>

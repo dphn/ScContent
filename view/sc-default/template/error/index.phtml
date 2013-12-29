@@ -1,11 +1,12 @@
+<?php $this->scBodyTag('class', 'error') ?>
 
 <div id="main">
     <h1><?= $this->translate('An error occurred') ?></h1>
-    <h3><?= $this->message ?></h3>
-    <div class="nav">
+    <h3><?= $this->translate($this->message) ?></h3>
+    <div class="where-to">
         <p>
-            <a href="/">&rarr; <?= $this->translate("Home") ?></a> |
-            <a href="javascript:window.history.back();">&larr; <?= $this->translate('Back') ?></a>
+            <a href="/"><?= $this->translate('&rarr; Home') ?></a> |
+            <a href="javascript:window.history.back();"><?= $this->translate('&larr; Back') ?></a>
         </p>
     </div>
 

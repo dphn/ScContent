@@ -52,6 +52,7 @@ class ContentListOptions
         ) {
             return $options;
         }
+
         if (empty($type) && array_key_exists('type', $query)) {
             $options->setType($query['type']);
         }

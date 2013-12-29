@@ -46,6 +46,12 @@ return [
         'ScValidator.Installation.Layout'
             => 'ScContent\Factory\Validator\Installation\LayoutFactory',
 
+        'ScValidator.Installation.Roles'
+            => 'ScContent\Factory\Validator\Installation\RolesFactory',
+
+        'ScValidator.Installation.Account'
+            => 'ScContent\Factory\Validator\Installation\AccountFactory',
+
         'ScValidator.File.Type'
             => 'ScContent\Factory\Validator\FileTypeFactory',
     ],

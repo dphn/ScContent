@@ -146,18 +146,20 @@ class ConfigService extends AbstractIntelligentService
             );
         }
         if (! isset($options['old_files_mask'])) {
-            throw new InvalidArgumentException(
+            throw new InvalidArgumentException(sprintf(
                 $translator->translate(
-                    "Missing 'old_files_mask' option."
-                )
-            );
+                    "Missing '%s' option."
+                ),
+                'old_files_mask'
+            ));
         }
         if (! isset($options['source_file'])) {
-            throw new InvalidArgumentException(
+            throw new InvalidArgumentException(sprintf(
                 $translator->translate(
-                    "Missing 'source_file' option."
-                )
-            );
+                    "Missing '%s' option."
+                ),
+                'source_file'
+            ));
         }
 
         $source = $dir->normalizePath($options['source_file']);

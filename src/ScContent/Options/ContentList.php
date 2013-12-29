@@ -192,7 +192,8 @@ class ContentList extends AbstractEntity
             return;
         }
         $this->type = $type;
-        $storage = &$this->$type;
+
+        $storage = $this->$type;
         if (isset($storage['root'])) {
             $this->root = $storage['root'];
         }
@@ -205,12 +206,12 @@ class ContentList extends AbstractEntity
         if (! isset($storage[$this->root])) {
             return;
         }
-        $root = &$storage[$this->root];
-        if (isset($root['parent'])) {
-            $this->setParent($root['parent']);
+        $container = $storage[$this->root];
+        if (isset($container['parent'])) {
+            $this->setParent($container['parent']);
         }
-        if (isset($root['page'])) {
-            $this->setPage($root['page']);
+        if (isset($container['page'])) {
+            $this->setPage($container['page']);
         }
     }
 
@@ -235,17 +236,17 @@ class ContentList extends AbstractEntity
         }
         $this->root = $root;
         $type = $this->type;
-        $options = &$this->$type;
-        $options['root'] = $root;
-        if (! isset($options[$root])) {
+        $storage = &$this->$type;
+
+        if (! isset($storage[$root])) {
             return;
         }
-        $storage = &$options[$root];
-        if (isset($storage['parent'])) {
-            $this->setParent($storage['parent']);
+        $container = &$storage[$root];
+        if (isset($container['parent'])) {
+            $this->setParent($container['parent']);
         }
-        if (isset($storage['page'])) {
-            $this->setPage($storage['page']);
+        if (isset($container['page'])) {
+            $this->setPage($container['page']);
         }
     }
 
@@ -458,11 +459,12 @@ class ContentList extends AbstractEntity
         if (! isset($list[$this->root])) {
             $list[$this->root] = [];
         }
-        $root = &$list[$this->root];
+        $list['root'] = $this->root;
         $list['user_type'] = $this->userType;
         $list['modification_type'] = $this->modificationType;
-        $root['parent'] = $this->parent;
-        $root['page'] = $this->page;
+        $container = &$list[$this->root];
+        $container['parent'] = $this->parent;
+        $container['page'] = $this->page;
         return $list;
     }
 
@@ -489,11 +491,12 @@ class ContentList extends AbstractEntity
         if (! isset($search[$this->root])) {
             $search[$this->root] = [];
         }
-        $root = &$search[$this->root];
+        $search['root'] = $this->root;
         $search['user_type'] = $this->userType;
         $search['modification_type'] = $this->modificationType;
-        $root['parent'] = $this->parent;
-        $root['page'] = $this->page;
+        $container = &$search[$this->root];
+        $container['parent'] = $this->parent;
+        $container['page'] = $this->page;
         return $search;
     }
 
@@ -548,6 +551,9 @@ class ContentList extends AbstractEntity
         if (isset($options['search_options'])) {
             $this->setSearchOptions($options['search_options']);
             unset($options['search_options']);
+        }
+        if (isset($options['root'])) {
+            unset($options['root']);
         }
         $options = $this->filterOptions($options);
 

@@ -41,8 +41,13 @@ class ScUser extends User implements ScUserInterface
     {
         $datetime = new DateTime();
         $this->timezone = $datetime->getTimezone()->getName();
-        $this->locale = Locale::getDefault();
         $this->registered = $datetime->getTimeStamp() - $datetime->getOffset();
+
+        $defaultLocale = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        if (! $defaultLocale) {
+            $defaultLocale = Locale::getDefault();
+        }
+        $this->locale = $defaultLocale;
     }
 
     /**

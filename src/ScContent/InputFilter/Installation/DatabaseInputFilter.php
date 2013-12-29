@@ -7,7 +7,7 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\InputFilter\Back;
+namespace ScContent\InputFilter\Installation;
 
 use Zend\InputFilter\InputFilter;
 

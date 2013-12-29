@@ -89,7 +89,8 @@ class ConfigController extends AbstractInstallation
     public function getForm()
     {
         if (! $this->form instanceof DatabaseForm) {
-            $formElementManager = $this->getServiceLocator()->get(
+            $serviceLocator = $this->getServiceLocator();
+            $formElementManager = $serviceLocator->get(
                 'FormElementManager'
             );
             $this->form = $formElementManager->get(

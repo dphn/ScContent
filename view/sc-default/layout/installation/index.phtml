@@ -52,11 +52,11 @@ form {
 label {
     margin:5px 0;
     font-weight:600;
-    display:inline-block;
+    display:block;
     color:555555;
 }
 input, select, textarea {
-    margin-bottom:8px;
+    margin:5px 0;
     font-family:inherit;
     font-size:14px;
     line-height:inherit;
@@ -118,6 +118,10 @@ th, td {
     word-wrap:break-word;
     border:1px solid #e1e2e3ddd;
 }
+.brand img {
+    max-height:24px;
+    margin-left:-4px;
+}
 .btn-primary {
     min-width:50px;
     margin:6px auto;
@@ -170,13 +174,15 @@ th, td {
     margin:0;
 }
 #header {
-    padding:24px 16px 14px;
+    min-height:40px;
+    padding:22px 14px 10px;
     border-bottom:1px solid #e1e2e3;
     -webkit-border-radius:6px 6px 0 0;
        -moz-border-radius:6px 6px 0 0;
             border-radius:6px 6px 0 0;
     -webkit-box-shadow:0 3px 4px rgba(0,0,0,0.05);
             box-shadow:0 3px 4px rgba(0,0,0,0.05);
+    background:#f8f8f8;
     background-image:-webkit-gradient(linear, left 0, left 100%, from(#fff), to(#f8f8f8));
     background-image:-webkit-linear-gradient(top, #fff, 0%, #f8f8f8, 100%);
     background-image:-moz-linear-gradient(top, #fff 0, #f8f8f8 100%);

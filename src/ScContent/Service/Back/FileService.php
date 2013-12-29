@@ -195,9 +195,10 @@ class FileService extends AbstractContentService
             if (! $file instanceof File) {
                 throw new DomainException(sprintf(
                     $translator->translate(
-                        "The custom class '%s' should inherit the class 'ScContent\Entity\Back\File'."
+                        "The custom class '%s' should inherit the class '%s'."
                     ),
-                    get_class($file)
+                    get_class($file),
+                    'ScContent\Entity\Back\File'
                 ));
             }
             $this->filePrototype = $file;

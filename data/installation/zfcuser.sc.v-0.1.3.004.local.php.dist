@@ -1,7 +1,7 @@
 <?php
 
 $settings = array(
-                
+
     'zend_db_adapter' => 'sc-db.adapter',
 
     'user_entity_class' => 'ScContent\Entity\ScUser',
@@ -22,14 +22,13 @@ $settings = array(
 
     'login_after_registration' => true,
 
-    'use_registration_form_captcha' => false,
+    'use_registration_form_captcha' => true,
 
     'use_redirect_parameter_if_present' => true,
 
     //'user_login_widget_view_template' => 'zfc-user/user/login.phtml',
 
-    /* @todo */
-    'login_redirect_route' => 'sc-admin/content-manager',
+    'login_redirect_route' => 'zfcuser',
 
     'logout_redirect_route' => 'zfcuser/login',
 
@@ -38,8 +37,6 @@ $settings = array(
     //'default_user_state' => 1,
     
     //'allowed_login_states' => array( null, 1 ),
-    
-    'table_name' => 'sc_users',
 );
 
 /**

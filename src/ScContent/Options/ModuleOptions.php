@@ -21,11 +21,6 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     /**
      * @var array
      */
-    protected $widgets = [];
-
-    /**
-     * @var array
-     */
     protected $db = [];
 
     /**
@@ -42,6 +37,11 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
      * @var array
      */
     protected $themes = [];
+
+    /**
+     * @var array
+     */
+    protected $widgets = [];
 
     /**
      * @var string
@@ -101,35 +101,6 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     public function getDb()
     {
         return $this->db;
-    }
-
-    /**
-     * @param array $widgets
-     * @return void
-     */
-    public function setWidgets($widgets)
-    {
-        if (is_array($widgets)) {
-            $this->widgets = $widgets;
-        }
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getWidgets()
-    {
-        return $this->widgets;
-    }
-
-    /**
-     * @param string $name
-     * @return string
-     */
-    public function widgetExists($name)
-    {
-        return isset($this->widgets[$name]);
     }
 
     /**
@@ -271,6 +242,35 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
             ));
         }
         return $this->themes[$this->backendThemeName];
+    }
+
+    /**
+     * @param array $widgets
+     * @return void
+     */
+    public function setWidgets($widgets)
+    {
+        if (is_array($widgets)) {
+            $this->widgets = $widgets;
+        }
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getWidgets()
+    {
+        return $this->widgets;
+    }
+
+    /**
+     * @param string $name
+     * @return string
+     */
+    public function widgetExists($name)
+    {
+        return isset($this->widgets[$name]);
     }
 
     /**

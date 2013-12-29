@@ -71,11 +71,12 @@ class Layout extends AbstractListener
             );
         }
         if (! $event->getParam('content')) {
-            throw new InvalidArgumentException(
+            throw new InvalidArgumentException(sprintf(
                 $translator->translate(
-                    "Missing event param 'content'."
-                )
-            );
+                    "Missing event param '%s'."
+                ),
+                'content'
+            ));
         }
         $content = $event->getParam('content');
         if (! $content instanceof AbstractContent) {
@@ -121,11 +122,12 @@ class Layout extends AbstractListener
             );
         }
         if (is_null($event->getParam('content'))) {
-            throw new InvalidArgumentException(
+            throw new InvalidArgumentException(sprintf(
                 $translator->translate(
-                    "Missing event param 'content'."
-                )
-            );
+                    "Missing event param '%s'."
+                ),
+                'content'
+            ));
         }
         $mapper->unregisterContent(
             $event->getParam('content'),
@@ -151,11 +153,12 @@ class Layout extends AbstractListener
             );
         }
         if (is_null($event->getParam('content'))) {
-            throw new InvalidArgumentException(
+            throw new InvalidArgumentException(sprintf(
                 $translator->translate(
-                    "Missing event param 'content'."
-                )
-            );
+                    "Missing event param '%s'."
+                ),
+                'content'
+            ));
         }
         $mapper->unregisterContent(
             $event->getParam('content'),

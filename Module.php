@@ -17,16 +17,9 @@ use ZfcBase\Module\AbstractModule,
 
 if (0 > version_compare(phpversion(), '5.4.0')) {
     exit(
-	   'The module ScContent need PHP version >= 5.4.0'
+        'The module ScContent need PHP version >= 5.4.0'
     );
 }
-
-/**
- * Short alias for DIRECTORY_SEPARATOR
- *
- * @const string
- */
-defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -63,16 +56,22 @@ class Module extends AbstractModule implements
      * @param Zend\ModuleManager\ModuleManagerInterface
      * @return void
      */
-    public function init(ModuleManagerInterface $manager)
+    public function init(ModuleManagerInterface $moduleManager)
     {
-        /* Instead, each time you need to check the parameters of the
-         * environment, use the constant.
-         */
+        define ('SC_VERSION', '0.1.3');
+
+        defined('DS') || define('DS', DIRECTORY_SEPARATOR);
+
         if (! defined('DEBUG_MODE')) {
             $environment = strtolower(getenv('APPLICATION_ENV'));
             $mode = $environment === 'development' ? true : false;
             define('DEBUG_MODE', $mode);
         }
+
+        $eventManager = $moduleManager->getEventManager();
+        $eventManager->attachAggregate(
+            new \ScContent\Listener\ConfigListenerAggregate()
+        );
     }
 
     /**

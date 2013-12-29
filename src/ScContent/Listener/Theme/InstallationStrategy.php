@@ -65,7 +65,7 @@ class InstallationStrategy extends AbstractThemeStrategy
             $template = $step['template'];
         }
 
-        if(!$model->terminate()) {
+        if (! $model->terminate()) {
             $event->getViewModel()->setTemplate($layout);
             if (isset($options['title'])) {
                 $event->getViewModel()->title = $options['title'];
@@ -73,7 +73,10 @@ class InstallationStrategy extends AbstractThemeStrategy
         }
 
         $model->setTemplate($template);
-        if(isset($options['header'])) {
+        if (isset($options['brand'])) {
+            $model->brand = $options['brand'];
+        }
+        if (isset($options['header'])) {
             $model->header = $options['header'];
         }
 

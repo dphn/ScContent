@@ -16,6 +16,12 @@ return [
             => 'ScContent\Form\Back\ContentSearchForm',
     ],
     'factories' => [
+        'ScForm.Installation.Database'
+            => 'ScContent\Factory\Form\Installation\DatabaseFormFactory',
+
+        'ScForm.Installation.Account'
+            => 'ScContent\Factory\Form\Installation\AccountFormFactory',
+
         'ScForm.Back.Category'
             => 'ScContent\Factory\Form\Back\CategoryFormFactory',
 
@@ -24,8 +30,5 @@ return [
 
         'ScForm.Back.FileAdd'
             => 'ScContent\Factory\Form\Back\FileAddFactory',
-
-        'ScForm.Installation.Database'
-            => 'ScContent\Factory\Form\Installation\DatabaseFormFactory',
     ],
 ];

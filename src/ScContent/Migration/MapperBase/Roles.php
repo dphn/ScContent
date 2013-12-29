@@ -34,7 +34,10 @@ class Roles extends AbstractMigrationMapper
             ))
             ->addColumn(new Column\Varchar('role_id', 255))
             ->addColumn(new Column\Integer('is_default', false, 0))
-            ->addColumn(new Column\Integer('parent_id'))
+            ->addColumn(
+                (new Column\Varchar('parent_id', 255))->setNullable(true)
+            )
+            ->addColumn(new Column\Varchar('route', 255))
             ->addConstraint(new Constraint\PrimaryKey('id'));
 
         $sql = $this->toString($table);

@@ -9,7 +9,9 @@
  */
 namespace ScContent\Listener\Installation;
 
-use ScContent\Exception\InvalidArgumentException,
+use ScContent\Listener\GuardExceptionStrategy,
+    ScContent\Exception\InvalidArgumentException,
+    ScContent\Exception\IoCException,
     //
     Zend\EventManager\AbstractListenerAggregate,
     Zend\EventManager\EventManagerInterface,
@@ -28,6 +30,11 @@ class InstallationInspector extends AbstractListenerAggregate
     protected $validatorManager;
 
     /**
+     * @var ScContent\Listener\GuardExceptionStrategy
+     */
+    protected $guardExceptionStrategy;
+
+    /**
      * @var array
      */
     protected $queue = [];
@@ -37,14 +44,50 @@ class InstallationInspector extends AbstractListenerAggregate
      */
     protected $current = [];
 
-    /**
-     * Constructor
-     *
-     * @param Zend\Validator\ValidatorPluginManager $validatorManager
-     */
-    public function __construct(ValidatorPluginManager $validatorManager)
+   /**
+    * @param Zend\Validator\ValidatorPluginManager $validatorManager
+    * @return void
+    */
+    public function setValidatorManager(ValidatorPluginManager $manager)
     {
-        $this->validatorManager = $validatorManager;
+        $this->validatorManager = $manager;
+    }
+
+    /**
+     * @throws ScContent\Exception\IoCException
+     * @return Zend\Validator\ValidatorPluginManager
+     */
+    public function getValidatorManager()
+    {
+        if (! $this->validatorManager instanceof ValidatorPluginManager) {
+            throw new IoCException(
+                'The validator manager was not set.'
+            );
+        }
+        return $this->validatorManager;
+    }
+
+    /**
+     * @param ScContent\Listener\GuardExceptionStrategy $strategy
+     * @return void
+     */
+    public function setGuardExceptionStrategy(GuardExceptionStrategy $strategy)
+    {
+        $this->guardExceptionStrategy = $strategy;
+    }
+
+    /**
+     * @throws ScContent\Exception\IoCException
+     * @return ScContent\Listener\GuardExceptionStrategy
+     */
+    public function getGuardExceptionStrategy()
+    {
+        if (! $this->guardExceptionStrategy instanceof GuardExceptionStrategy) {
+            throw new IoCException(
+                'The guard exception strategy was not set.'
+            );
+        }
+        return $this->guardExceptionStrategy;
     }
 
     /**
@@ -53,7 +96,11 @@ class InstallationInspector extends AbstractListenerAggregate
      */
     public function attach(EventManagerInterface $events)
     {
-        $this->listeners[] = $events->attach(MvcEvent::EVENT_DISPATCH, [$this, 'inspect'], PHP_INT_MAX);
+        $this->listeners[] = $events->attach(
+            MvcEvent::EVENT_DISPATCH,
+            [$this, 'inspect'],
+            PHP_INT_MAX
+        );
     }
 
     /**
@@ -86,6 +133,8 @@ class InstallationInspector extends AbstractListenerAggregate
      */
     public function inspect(MvcEvent $event)
     {
+        $validatorManager = $this->getValidatorManager();
+        $guardExceptionStrategy = $this->getGuardExceptionStrategy();
         while (! empty($this->queue)) {
             $controller = 'ScController.Installation.Default';
             $action = 'index';
@@ -120,7 +169,7 @@ class InstallationInspector extends AbstractListenerAggregate
                         ));
                     }
                     $isValid = true;
-                    $validator = $this->validatorManager->get($member['validator']);
+                    $validator = $validatorManager->get($member['validator']);
 
                     $batch = null;
                     if (isset($member['batch'])) {
@@ -149,6 +198,7 @@ class InstallationInspector extends AbstractListenerAggregate
                         $isValid = false;
                     }
                     if (! $isValid) {
+                        $guardExceptionStrategy->setEnabled(false);
                         $redirect = $event->getRequest()->getRequestUri();
                         $routeMatch = $event->getRouteMatch();
                         $routeMatch->setParam('redirect', $redirect)

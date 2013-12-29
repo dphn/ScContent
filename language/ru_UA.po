@@ -1,0 +1,868 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ScContent 0.1.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-29 13:55+0300\n"
+"PO-Revision-Date: 2013-12-29 18:58+0300\n"
+"Last-Translator: dolphin <pochta.dolphin@gmail.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: /var/www/ScContent\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: /var/www/ScContent\n"
+
+#: /var/www/ScContent/src/ScContent/Service/FileTransfer.php:186
+msgid "Error: "
+msgstr "Ошибка:"
+
+#: /var/www/ScContent/src/ScContent/Service/Installation/ConfigService.php:144
+msgid "The options must be an array of values."
+msgstr "Параметры должны быть массивом значений."
+
+#: /var/www/ScContent/src/ScContent/Service/Installation/ConfigService.php:151
+#: /var/www/ScContent/src/ScContent/Service/Installation/ConfigService.php:159
+#, php-format
+msgid "Missing '%s' option."
+msgstr "Отсутствует параметр '%s'."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/CategoryService.php:62
+#, php-format
+msgid "Failed to add the category. The parent element with identifier '%s' was not found."
+msgstr "Не удалось добавить категорию. Родительский элемент с идентификатором '%s' не найден."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/CategoryService.php:71
+#, php-format
+msgid "Failed to add the category. Nesting error. You cannot add the category to the specified element type '%s'."
+msgstr "Не удалось добавить категорию. Ошибка вложенности. Невозможно добавить категорию к указанному элементу типа '%s'."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/CategoryService.php:96
+msgid "An unexpected error occurred while creating the category."
+msgstr "Непредвиденная ошибка при создании категории."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/CategoryService.php:133
+#, php-format
+msgid "The category with identifier '%s' was not found."
+msgstr "Категория с идентификатором '%s' не найдена."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/CategoryService.php:159
+msgid "An unexpected error occurred when searching for category."
+msgstr "Непредвиденная ошибка при поиске категории."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/CategoryService.php:182
+#: /var/www/ScContent/src/ScContent/Service/Back/FileService.php:198
+#: /var/www/ScContent/src/ScContent/Service/Back/ArticleService.php:185
+#, php-format
+msgid "The custom class '%s' should inherit the class '%s'."
+msgstr "Пользовательский класс '%s' должен наследовать классу '%s'."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/GarbageCollector.php:133
+msgid "Garbage collection failed."
+msgstr "Не удалось собрать мусор."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/FileService.php:72
+#, php-format
+msgid "Failed to add files. The parent element with identifier '%s' was not found."
+msgstr "Не удалось добавить файлы. Родительский элемент с идентификатором '%s' не найден."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/FileService.php:85
+#, php-format
+msgid "Failed to add files. Nesting error. You cannot add files to the specified element type '%s'."
+msgstr "Не удалось добавить файлы. Ошибка вложенности. Невозможно добавить файлы к указанному элементу типа '%s'."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/FileService.php:111
+msgid "An unexpected error occurred during the registration files in the database."
+msgstr "При регистрации файлов в базе данных произошла непредвиденная ошибка."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/FileService.php:175
+msgid "An unexpected error occurred when searching for files in the database."
+msgstr "При поиске файлов в базе данных произошла непредвиденная ошибка."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/ArticleService.php:62
+#, php-format
+msgid "Failed to add the article. The parent element with identifier '%s' was not found."
+msgstr "Не удалось добавить статью. Родительский элемент с идентификатором '%s' не найден."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/ArticleService.php:71
+#, php-format
+msgid "Failed to add the article. Nesting error. You cannot add the article to the specified element type '%s'."
+msgstr "Не удалось добавить статью. Ошибка вложенности. Невозможно добавить статью к указанному элементу типа '%s'."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/ArticleService.php:97
+msgid "Unexpected error when creating an article."
+msgstr "При создании статьи произошла непредвиденная ошибка."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/ArticleService.php:136
+#, php-format
+msgid "The article with identifier '%s' was not found."
+msgstr "Статья с идентификатором '%s' не найдена."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/ArticleService.php:162
+msgid "An unexpected error occurred while searching for the article."
+msgstr "При поиске статьи произошла непредвиденная ошибка."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/LayoutService.php:96
+#, php-format
+msgid "Unknown theme '%s'."
+msgstr "Неизвестная тема '%s'."
+
+#: /var/www/ScContent/src/ScContent/Service/Back/LayoutService.php:103
+#, php-format
+msgid "Theme '%s' was not enabled."
+msgstr "Тема '%s' не установлена."
+
+#: /var/www/ScContent/src/ScContent/Listener/ThumbnailListener.php:77
+#: /var/www/ScContent/src/ScContent/Listener/ThumbnailListener.php:85
+#: /var/www/ScContent/src/ScContent/Listener/ThumbnailListener.php:183
+#: /var/www/ScContent/src/ScContent/Listener/ThumbnailListener.php:191
+#, php-format
+msgid "Missing event param '%s'."
+msgstr "Отсутствует параметр события '%s'."
+
+#: /var/www/ScContent/src/ScContent/Listener/ThumbnailListener.php:97
+#, php-format
+msgid "The file '%s' is not an image."
+msgstr "Файл '%s' не является изображением."
+
+#: /var/www/ScContent/src/ScContent/Listener/ThumbnailListener.php:151
+msgid "Failed to create thumbnail."
+msgstr "Не удалось создать миниатюру."
+
+#: /var/www/ScContent/src/ScContent/Listener/Back/Layout.php:69
+#: /var/www/ScContent/src/ScContent/Listener/Back/Layout.php:120
+#: /var/www/ScContent/src/ScContent/Listener/Back/Layout.php:151
+#: /var/www/ScContent/src/ScContent/Listener/Back/Layout.php:182
+#: /var/www/ScContent/src/ScContent/Listener/Back/Garbage.php:64
+#: /var/www/ScContent/src/ScContent/Listener/Back/Garbage.php:94
+msgid "Unknown transaction identifier. Missing event param 'tid'."
+msgstr "Неизвестен идентификатор транзакции. Отсутствует параметр события 'tid'."
+
+#: /var/www/ScContent/src/ScContent/Listener/Back/Layout.php:85
+msgid "Layout can be updated only for specific types of standard content."
+msgstr "Макет можно обновить только для определенных типов стандартного содержимого."
+
+#: /var/www/ScContent/src/ScContent/Listener/Back/Layout.php:94
+#, php-format
+msgid "Invalid content type '%s'."
+msgstr "Неверный тип содержимого '%s'."
+
+#: /var/www/ScContent/src/ScContent/Form/Installation/poedit.php:7
+msgid "Database driver"
+msgstr "Драйвер базы данных"
+
+#: /var/www/ScContent/src/ScContent/Form/Installation/poedit.php:8
+msgid "Path (only for SQLite)"
+msgstr "Путь (только для SQLite)"
+
+#: /var/www/ScContent/src/ScContent/Form/Installation/poedit.php:9
+msgid "Host"
+msgstr "Хост"
+
+#: /var/www/ScContent/src/ScContent/Form/Installation/poedit.php:10
+msgid "Database name"
+msgstr "Имя базы данных"
+
+#: /var/www/ScContent/src/ScContent/Form/Installation/poedit.php:11
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: /var/www/ScContent/src/ScContent/Form/Installation/poedit.php:12
+msgid "Password"
+msgstr "Пароль"
+
+#: /var/www/ScContent/src/ScContent/Form/Installation/poedit.php:13
+msgid "Password verify"
+msgstr "Подтвердите пароль"
+
+#: /var/www/ScContent/src/ScContent/Form/Installation/poedit.php:15
+msgid "Please select your language and region"
+msgstr "Пожалуйста, выберите язык и регион"
+
+#: /var/www/ScContent/src/ScContent/Form/Installation/poedit.php:16
+msgid "Please select your timezone"
+msgstr "Пожалуйста, выберите ваш часовой пояс"
+
+#: /var/www/ScContent/view/sc-default/layout/backend/poedit.php:6
+msgid "Content"
+msgstr "Содержимое"
+
+#: /var/www/ScContent/view/sc-default/layout/backend/poedit.php:7
+msgid "Manager"
+msgstr "Менеджер"
+
+#: /var/www/ScContent/view/sc-default/layout/backend/poedit.php:8
+msgid "Search"
+msgstr "Поиск"
+
+#: /var/www/ScContent/view/sc-default/layout/backend/poedit.php:9
+msgid "Apperance"
+msgstr "Оформление"
+
+#: /var/www/ScContent/view/sc-default/layout/backend/poedit.php:10
+msgid "Themes"
+msgstr "Темы"
+
+#: /var/www/ScContent/view/sc-default/layout/backend/poedit.php:11
+msgid "Layout"
+msgstr "Макет"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:7
+msgid "Email"
+msgstr "E-mail"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:8
+msgid "New Email"
+msgstr "Новый e-mail"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:9
+msgid "Verify New Email"
+msgstr "Подтвердите новый e-mail"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:10
+msgid "Display Name"
+msgstr "Отображаемое имя"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:12
+msgid "Password Verify"
+msgstr "Подтвердите пароль"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:13
+msgid "Current Password"
+msgstr "Текущий пароль"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:14
+msgid "Verify New Password"
+msgstr "Подтвердите новый пароль"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:15
+msgid "New Password"
+msgstr "Новый пароль"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:16
+msgid "Please type the following text"
+msgstr "Пожалуйста, введите следующий текст"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:17
+msgid "Submit"
+msgstr "Отправить"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:18
+msgid "Sign In"
+msgstr "Вход"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:19
+msgid "Register"
+msgstr "Регистрация"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:20
+msgid "No record matching the input was found"
+msgstr "Не найдено записей, совпадающих с предоставленными данными"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:21
+msgid "A record matching the input was found"
+msgstr "Найдены записи, совпадающие с предоставленными данными"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:22
+msgid "Authentication failed. Please try again."
+msgstr "Не удалось удостоверить подлинность. Пожалуйста, повторите."
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:23
+msgid "Username or Email"
+msgstr "Имя пользователя или e-mail"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:24
+msgid "Value is required and can't be empty"
+msgstr "Значение обязательно и не может быть пустым"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:25
+msgid "Captcha value is wrong"
+msgstr "Значение cpatcha ошибочно"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:27
+msgid "Invalid type given. String expected"
+msgstr "Неверный тип данных. Ожидается строка"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:28
+msgid "The input is less than %min% characters long"
+msgstr "Количество символов меньше, чем %min%"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/poedit.php:29
+msgid "The input is more than %max% characters long"
+msgstr "Количество символов превышает %max%"
+
+#: /var/www/ScContent/view/sc-default/template/error/poedit.php:6
+msgid "An error occurred during execution; please try again later."
+msgstr "Произошла ошибка; пожалуйста, попробуйте позже."
+
+#: /var/www/ScContent/view/sc-default/template/error/poedit.php:7
+msgid "Page not found."
+msgstr "Страница не найдена."
+
+#: /var/www/ScContent/view/sc-default/template/backend/article/poedit.php:6
+msgid "Article content"
+msgstr "Содержимое статьи"
+
+#: /var/www/ScContent/view/sc-default/template/backend/article/poedit.php:7
+msgid "Article Name"
+msgstr "Имя статьи"
+
+#: /var/www/ScContent/view/sc-default/template/backend/file/poedit.php:6
+msgid "Description"
+msgstr "Описание"
+
+#: /var/www/ScContent/view/sc-default/template/backend/file/poedit.php:7
+msgid "Upload"
+msgstr "Загрузить"
+
+#: /var/www/ScContent/view/sc-default/template/backend/file/poedit.php:8
+msgid "Upload file"
+msgstr "Загрузить файл"
+
+#: /var/www/ScContent/view/sc-default/template/backend/file/poedit.php:9
+msgid "Alternative text"
+msgstr "Альтернативный текст"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:6
+msgid "Author"
+msgstr "Автор"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:7
+msgid "Editor"
+msgstr "Редактор"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:8
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:16
+msgid "Containing Text"
+msgstr "Содержит текст"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:9
+msgid "In the title"
+msgstr "В заголовке"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:10
+msgid "In the content"
+msgstr "В содержимом"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:11
+msgid "In the description"
+msgstr "В описании"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:12
+msgid "Date of the latest changes is unknown"
+msgstr "Дата последних изменений неизвестна"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:13
+msgid "Last week"
+msgstr "На прошлой неделе"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:14
+msgid "Last month"
+msgstr "В прошлом месяце"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:15
+msgid "In this range"
+msgstr "В этом диапазоне"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:17
+msgid "In the name"
+msgstr "В имени"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:18
+msgid "In the e-mail"
+msgstr "В e-mail"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:19
+msgid "Clean"
+msgstr "Очистить"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/poedit.php:20
+msgid "Site"
+msgstr "Сайт"
+
+#: /var/www/ScContent/view/sc-default/template/backend/category/poedit.php:6
+msgid "Category description"
+msgstr "Описание категории"
+
+#: /var/www/ScContent/view/sc-default/template/backend/category/poedit.php:7
+msgid "Status"
+msgstr "Статус"
+
+#: /var/www/ScContent/view/sc-default/template/backend/category/poedit.php:8
+msgid "Published"
+msgstr "Опубликовано"
+
+#: /var/www/ScContent/view/sc-default/template/backend/category/poedit.php:9
+msgid "Draft"
+msgstr "Черновик"
+
+#: /var/www/ScContent/view/sc-default/template/backend/category/poedit.php:10
+msgid "Category Name"
+msgstr "Имя категории"
+
+#: /var/www/ScContent/view/sc-default/template/backend/category/poedit.php:11
+msgid "Name"
+msgstr "Имя"
+
+#: /var/www/ScContent/config/poedit.php:7
+msgid "Installing a module ScContent"
+msgstr "Установка модуля ScContent"
+
+#: /var/www/ScContent/config/poedit.php:9
+msgid "Check the system requirements."
+msgstr "Проверка системных требований."
+
+#: /var/www/ScContent/config/poedit.php:10
+msgid "Check the configuration settings and installed PHP extensions."
+msgstr "Проверка параметров конфигурации и установленных PHP расширений."
+
+#: /var/www/ScContent/config/poedit.php:11
+msgid "Safe mode must be disabled."
+msgstr "Безопасный режим должен быть отключен."
+
+#: /var/www/ScContent/config/poedit.php:12
+msgid "Directive 'magic_quotes_gpc' should be disabled."
+msgstr "Директива 'magic_quotes_gpc' должна быть отключена."
+
+#: /var/www/ScContent/config/poedit.php:13
+msgid "Directive 'magic_quotes_runtime' should be disabled."
+msgstr "Директива 'magic_quotes_runtime' должна быть отключена."
+
+#: /var/www/ScContent/config/poedit.php:14
+msgid "Directive 'magic_quotes_sybase' should be disabled."
+msgstr "Директива 'magic_quotes_sybase' должна быть отключена."
+
+#: /var/www/ScContent/config/poedit.php:15
+msgid "Available memory must be greater than 64M."
+msgstr "Доступной памяти должно быть более 64М."
+
+#: /var/www/ScContent/config/poedit.php:17
+msgid "Setting the configuration."
+msgstr "Установка конфигурации."
+
+#: /var/www/ScContent/config/poedit.php:18
+msgid "Installing the module configuration and setup parameters of the database connection."
+msgstr "Установка конфигурации модуля и настройка параметров соединения с базой данных."
+
+#: /var/www/ScContent/config/poedit.php:20
+msgid "Database migration."
+msgstr "Миграция базы данных."
+
+#: /var/www/ScContent/config/poedit.php:21
+msgid "Create and populate tables in the database."
+msgstr "Создание и заполнение таблиц базы данных."
+
+#: /var/www/ScContent/config/poedit.php:23
+msgid "Assets installation."
+msgstr "Установка ресурсов."
+
+#: /var/www/ScContent/config/poedit.php:24
+msgid "Installation of resources and the creation of the directory to files uploads."
+msgstr "Установка ресурсов и создание каталога для загрузки файлов."
+
+#: /var/www/ScContent/config/poedit.php:26
+msgid "Widgets installation."
+msgstr "Установка виджетов."
+
+#: /var/www/ScContent/config/poedit.php:27
+msgid "Register widgets for the current theme and existing content."
+msgstr "Регистрация виджетов для текущей темы и существующего контента."
+
+#: /var/www/ScContent/config/poedit.php:29
+msgid "Create your account."
+msgstr "Создание учетной записи."
+
+#: /var/www/ScContent/config/poedit.php:30
+msgid "Create an access control system and administrator account."
+msgstr "Создание системы контроля доступа и учетной записи администратора."
+
+#: /var/www/ScContent/view/sc-default/layout/backend/index.phtml:7
+msgid "Administrator"
+msgstr "Администратор"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:7
+msgid "Registration is disabled"
+msgstr "Регистрация отключена"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:11
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:76
+#: /var/www/ScContent/view/sc-default/zfc-user/user/login.phtml:56
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:8
+msgid "&rarr; Home"
+msgstr "&rarr; На главную"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:12
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:77
+#: /var/www/ScContent/view/sc-default/zfc-user/user/login.phtml:57
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:9
+msgid "&larr; Back"
+msgstr "&larr; На предыдущую"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:39
+msgid "Registration means you agree with the"
+msgstr "Регистрация означает ваше согласие c"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:41
+msgid "Terms of Service"
+msgstr "Условиями пользовательского соглашения"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:71
+msgid "Already registered?"
+msgstr "Уже зарегистрированы?"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/login.phtml:49
+msgid "Not registered?"
+msgstr "Еще не зарегистрированы?"
+
+#: /var/www/ScContent/view/sc-default/zfc-user/user/login.phtml:51
+msgid "Sign up!"
+msgstr "Зарегистрироваться!"
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:4
+msgid "A 404 error occurred"
+msgstr "Ошибка 404"
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:19
+msgid "The requested controller was unable to dispatch the request."
+msgstr "Запрашиваемый контроллер не смог отправить запрос."
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:22
+msgid "The requested controller could not be mapped to an existing controller class."
+msgstr "Запрашиваемый контроллер не может быть сопоставлен с существующими классом контроллера."
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:25
+msgid "The requested controller was not dispatchable."
+msgstr "Запрашиваемый контроллер не доступен."
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:28
+msgid "The requested URL could not be matched by routing."
+msgstr "Для запрашиваемого URL не может быть достигнуто направление."
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:31
+msgid "We cannot determine at this time why a 404 was generated."
+msgstr "На данный момент мы не можем определить причину создания страницы 404."
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:43
+msgid "Controller"
+msgstr "Контроллер"
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:50
+#, php-format
+msgid "resolves to %s"
+msgstr "разрешает для %s"
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:65
+msgid "Additional information"
+msgstr "Дополнительная информация"
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:68
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:92
+msgid "File"
+msgstr "Файл"
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:72
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:96
+msgid "Message"
+msgstr "Сообщение"
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:76
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:100
+msgid "Stack trace"
+msgstr "Трассировка стека"
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:86
+msgid "Previous exceptions"
+msgstr "Предыдущее исключение"
+
+#: /var/www/ScContent/view/sc-default/template/error/404.phtml:116
+msgid "No Exception available"
+msgstr "Нет доступных исключений"
+
+#: /var/www/ScContent/view/sc-default/template/error/index.phtml:4
+msgid "An error occurred"
+msgstr "Ошибка"
+
+#: /var/www/ScContent/view/sc-default/template/backend/article/edit.phtml:2
+msgid "Edit Article"
+msgstr "Редактировать статью"
+
+#: /var/www/ScContent/view/sc-default/template/backend/article/edit.phtml:22
+#: /var/www/ScContent/view/sc-default/template/backend/category/edit.phtml:22
+msgid "Permalink:"
+msgstr "Постоянная ссылка:"
+
+#: /var/www/ScContent/view/sc-default/template/backend/article/edit.phtml:45
+msgid "Article options"
+msgstr "Параметры статьи"
+
+#: /var/www/ScContent/view/sc-default/template/backend/layout/index.phtml:2
+msgid "Edit Layout"
+msgstr "Редактировать макет"
+
+#: /var/www/ScContent/view/sc-default/template/backend/layout/index.phtml:14
+msgid "Save"
+msgstr "Сохранить"
+
+#: /var/www/ScContent/view/sc-default/template/backend/layout/index.phtml:49
+msgid "No widgets in this region"
+msgstr "В этом регионе нет виджетов"
+
+#: /var/www/ScContent/view/sc-default/template/backend/theme/index.phtml:29
+#, php-format
+msgid "Screenshot for %s theme"
+msgstr "Скриншот для темы %s"
+
+#: /var/www/ScContent/view/sc-default/template/backend/theme/index.phtml:46
+msgid "Lyout"
+msgstr "Макет"
+
+#: /var/www/ScContent/view/sc-default/template/backend/file/add.phtml:1
+msgid "Add Files"
+msgstr "Добавить файлы"
+
+#: /var/www/ScContent/view/sc-default/template/backend/file/add.phtml:26
+msgid "File names can only consist of letters of the alphabet, spaces, hyphens, and underscores."
+msgstr "Имя файла может содержать только символы латинского алфавита, пробелы, дефисы и нижнее подчеркивание."
+
+#: /var/www/ScContent/view/sc-default/template/backend/file/add.phtml:26
+#, php-format
+msgid "Maximum upload file size: %s MB."
+msgstr "Максимальный размер загружаемого файла: %s Мб."
+
+#: /var/www/ScContent/view/sc-default/template/backend/file/edit.phtml:1
+msgid "Edit Files"
+msgstr "Редактировать файлы"
+
+#: /var/www/ScContent/view/sc-default/template/backend/partial/content-info.phtml:2
+msgid "Created"
+msgstr "Создан"
+
+#: /var/www/ScContent/view/sc-default/template/backend/partial/content-info.phtml:18
+msgid "Modified"
+msgstr "Изменен"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:34
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:9
+msgid "Go to the first page"
+msgstr "Перейти к первой странице"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:35
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:10
+msgid "Go to the previous page"
+msgstr "Перейти к последней странице"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:40
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:15
+msgid "Current page"
+msgstr "Текущая страница"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:43
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:18
+msgid "of"
+msgstr "из"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:46
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:21
+msgid "Go"
+msgstr "Перейти"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:51
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:26
+msgid "Go to the next page"
+msgstr "Перейти к следующей странице"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:52
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:27
+msgid "Go to the last page"
+msgstr "Перейти к последней странице"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:58
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:33
+msgid "Web Site"
+msgstr "Сайт"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:59
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:34
+msgid "Trash"
+msgstr "Корзина"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:64
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:40
+msgid "All"
+msgstr "Все"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:65
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:41
+msgid "Categories"
+msgstr "Категории"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:66
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:42
+msgid "Articles"
+msgstr "Статьи"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:67
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:43
+msgid "Files"
+msgstr "Файлы"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:76
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:86
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:110
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:121
+msgid "Title"
+msgstr "Заголовок"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:77
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:87
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:111
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:122
+msgid "St"
+msgstr "Ст"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:97
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:102
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:145
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:150
+msgid "Nothing was found."
+msgstr "Ничего не найдено."
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:97
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:102
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:145
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:150
+msgid "Try to change the filter."
+msgstr "Попробуйте изменить фильтр."
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:132
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:184
+msgid "Use"
+msgstr "Выбрать"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:136
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:188
+msgid "Edit"
+msgstr "Изменить"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:139
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:191
+msgid "Preview"
+msgstr "Просмотр"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:176
+msgid "Content options"
+msgstr "Параметры содержимого"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:195
+msgid "A word or a few words separated by a space."
+msgstr "Слово или несколько слов через пробел."
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:205
+msgid "Date options"
+msgstr "Параметры даты"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:259
+msgid "User options"
+msgstr "Параметры пользователя"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/search.phtml:279
+msgid "A word or beginning of the word."
+msgstr "Слово или начало слова."
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/index.phtml:2
+msgid "Content Manager"
+msgstr "Контент-менеджер"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:50
+msgid "Recovery"
+msgstr "Восстановить"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:53
+msgid "Are you sure, you want to delete the contents?"
+msgstr "Вы действительно хотите удалить содержимое?"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:53
+msgid "Delete"
+msgstr "Удалить"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:56
+msgid "Are you sure, you want to empty trash?"
+msgstr "Вы действительно хотите очистить корзину?"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:56
+msgid "Empty Trash"
+msgstr "Очистить корзину"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:62
+msgid "Reorder"
+msgstr "Сместить"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:66
+msgid "Move"
+msgstr "Переместить"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:69
+msgid "Move to Trash"
+msgstr "Удалить"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:71
+msgid "Add"
+msgstr "Добавить"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:73
+msgid "&bull; Category"
+msgstr "&bull; Категорию"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:74
+msgid "&bull; Article"
+msgstr "&bull; Статью"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:75
+msgid "&bull; File"
+msgstr "&bull; Файл"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:81
+msgid "Search Preferences"
+msgstr "Настроить поиск"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:89
+msgid "Back to"
+msgstr "Вернуться к"
+
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:132
+#: /var/www/ScContent/view/sc-default/template/backend/content-manager/pane.phtml:137
+msgid "Go top"
+msgstr "Наверх"
+
+#: /var/www/ScContent/view/sc-default/template/backend/category/edit.phtml:2
+msgid "Edit Category"
+msgstr "Редактировать категорию"
+
+#: /var/www/ScContent/view/sc-default/template/backend/category/edit.phtml:45
+msgid "Category options"
+msgstr "Параметры категории"
+
+#: /var/www/ScContent/view/sc-default/template/frontend/content/index.phtml:22
+msgid "Welcome!"
+msgstr "Добро пожаловать!"
+
+#: /var/www/ScContent/view/sc-default/template/frontend/content/index.phtml:24
+msgid "Create a home page of your site. To do this, add an article or category and assign it the name 'home'. Do not forget to change its status to 'published'."
+msgstr "Создайте главную страницу вашего сайта. Для этого добавьте статью или категорию и присвойте ей имя 'home'. Не забудьте изменить ее статус на 'опубликовано'."
+
+#: /var/www/ScContent/view/sc-default/template/installation/index.phtml:16
+msgid "Step"
+msgstr "Шаг"
+
+#: /var/www/ScContent/view/sc-default/template/installation/index.phtml:30
+msgid "Installation error:"
+msgstr "Ошибка установки:"
+
+#: /var/www/ScContent/view/sc-default/template/installation/index.phtml:89
+msgid "Continue"
+msgstr "Продолжить"
+

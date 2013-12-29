@@ -25,8 +25,16 @@ class InstallationInspectorFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+        $guardExceptionStrategy = $serviceLocator->get(
+            'ScListener.GuardExceptionStrategy'
+        );
         $validatorManager = $serviceLocator->get('ValidatorManager');
-        $inspector = new InstallationInspector($validatorManager);
-        return $inspector;
+
+        $listener = new InstallationInspector();
+
+        $listener->setValidatorManager($validatorManager);
+        $listener->setGuardExceptionStrategy($guardExceptionStrategy);
+
+        return $listener;
     }
 }

@@ -13,8 +13,7 @@ use ScContent\Options\ModuleOptions,
     ScContent\Module,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
-    Zend\ServiceManager\FactoryInterface,
-    Zend\Stdlib\ArrayUtils;
+    Zend\ServiceManager\FactoryInterface;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -27,19 +26,9 @@ class ModuleFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $baseDir = Module::getDir();
-        $settings = include(
-            $baseDir . DS . 'settings' . DS . 'module.settings.php'
-        );
-
         $config = $serviceLocator->get('Config');
         $options = isset($config['sc']) ? $config['sc'] : [];
 
-        // [1] Rewriting some module options using fixed module settings.
-        $options['frontend_theme_name'] = $settings['frontend_theme_name'];
-        $options['backend_theme_name'] = $settings['backend_theme_name'];
-
-        // [2] Initialize module options.
         $moduleOptions = new ModuleOptions($options);
 
         return $moduleOptions;

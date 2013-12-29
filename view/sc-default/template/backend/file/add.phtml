@@ -1,5 +1,5 @@
 <?php $this->headTitle($this->translate('Add Files')) ?>
-<?php 
+<?php
     $form->prepare();
     echo $this->form()->openTag($form);
 ?>
@@ -7,23 +7,23 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group content-helper">
-                <?php echo $this->formButton($form->get('upload')) ?>
-                
-                <a href="<?php echo $this->url('sc-admin/content-manager') ?>" class="btn btn-default"><?php echo $this->translate('Manager') ?></a>
+                <?= $this->formButton($form->get('upload')) ?>
+
+                <a href="<?= $this->url('sc-admin/content-manager') ?>" class="btn btn-default"><?= $this->translate('Manager') ?></a>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <?php echo $this->formLabel($form->get('file')) ?>
-            <?php echo $this->formFile($form->get('file')) ?>
+            <?= $this->formLabel($form->get('file')) ?>
+            <?= $this->formFile($form->get('file')) ?>
             <?php if(count($form->get('file')->getMessages())): ?>
-            
-            <div class="alert alert-warning pull-left"><?php echo $this->formElementErrors($form->get('file')) ?></div><div class="clearfix"></div>
-            
+
+            <div class="alert alert-warning pull-left"><?= $this->formElementErrors($form->get('file')) ?></div><div class="clearfix"></div>
+
             <?php endif ?>
-            
-            <p class="help-block"><?php echo $this->translate('File names can only consist of letters of the alphabet, spaces, hyphens, and underscores.') ?><br /><?php echo $this->translate('Maximum upload file size: 2MB.') ?></p>
+
+            <p class="help-block"><?= $this->translate('File names can only consist of letters of the alphabet, spaces, hyphens, and underscores.') ?><br /><?= sprintf($this->translate('Maximum upload file size: %s MB.'), '2') ?></p>
         </div>
     </div>
-    <?php echo $this->form()->closeTag($form) ?>
+    <?= $this->form()->closeTag($form) ?>

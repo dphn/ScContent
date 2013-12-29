@@ -9,6 +9,9 @@
  */
 return [
     'invokables' => [
+        'ScController.User'
+            => 'ScContent\Controller\UserController',
+
         'ScController.Installation.Requirements'
             => 'ScContent\Controller\Installation\RequirementsController',
 
@@ -17,6 +20,9 @@ return [
 
         'ScController.Installation.Config'
             => 'ScContent\Controller\Installation\ConfigController',
+
+        'ScController.Installation.Account'
+            => 'ScContent\Controller\Installation\AccountController',
 
         'ScController.Back.Garbage'
             => 'ScContent\Controller\Back\GarbageController',

@@ -23,15 +23,10 @@ return [
                 'display_name' => 'ScContent Default',
                 'description'  => 'The default theme with several regions.',
                 'screenshot'   => 'sc-default/img/theme.png',
+                'zfcuser_template_path' => $this->getDir() . str_replace('/', DS, '/view/sc-default'),
                 'errors' => [
-                    'layout' => 'sc-default/layout/error/index',
+                    'layout' => 'sc-default/layout/frontend/index',
                     'template' => [
-                        /* You can use different templates for frontend,
-                         * backend and installation:
-                         *
-                         * theme/template/error/{side}/index
-                         * theme/template/error/{side}/404
-                         */
                         'exception' => 'sc-default/template/error/index',
                         '404'       => 'sc-default/template/error/404',
                     ],
@@ -91,11 +86,7 @@ return [
         'display_exceptions'       => DEBUG_MODE,
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
-        'template_map' => [
-            'layout/layout' => $this->getDir() . str_replace('/', DS, '/view/sc-default/layout/error/index.phtml'),
-            'error/index'   => $this->getDir() . str_replace('/', DS, '/view/sc-default/template/error/index.phtml'),
-            'error/404'     => $this->getDir() . str_replace('/', DS, '/view/sc-default/template/error/404.phtml'),
-        ],
+        'template_map' => [],
         'template_path_stack' => [
             $this->getDir() . DS . 'view',
         ],
@@ -103,9 +94,9 @@ return [
     'translator' => [
         'locale' => \Locale::getDefault(),
         'translation_file_patterns' => [[
-            'type'     => 'phpArray',
+            'type'     => 'Gettext',
             'base_dir' => $this->getDir() . DS . 'language',
-            'pattern'  => '%s.php',
+            'pattern'  => '%s.mo',
         ]],
     ],
     'router' => [
@@ -116,8 +107,17 @@ return [
                     'route' => '#',
                 ],
             ],
-            /* The route to the home page.
-             */
+            'zfcuser' => [
+                'type' => 'literal',
+                'priority' => 1010,
+                'options' => [
+                    'route' => '/user',
+                    'defaults' => [
+                        'controller' => 'ScController.User',
+                        'action' => 'index',
+                    ],
+                ],
+            ],
             'sc' => [
                 'type' => 'segment',
                 'priority' => 100,

@@ -9,10 +9,12 @@
  */
 namespace ScContent\Entity;
 
+use ZfcUser\Entity\UserInterface as BaseInterface;
+
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-interface ScUserInterface
+interface ScUserInterface extends BaseInterface
 {
     /**
      * @param string $locale

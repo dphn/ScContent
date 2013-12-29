@@ -11,6 +11,9 @@ return [
     'invokables' => [
         'ScService.DateTime'
             => 'ScContent\Service\ScDateTime',
+
+        'ScListener.GuardExceptionStrategy'
+            => 'ScContent\Listener\GuardExceptionStrategy',
     ],
     'abstract_factories' => [
         'ScContent\Factory\Migration\MigrationSchemaAbstractFactory',
@@ -40,6 +43,12 @@ return [
         'ScService.FileTypesCatalog'
             => 'ScContent\Factory\Service\FileTypesCatalogFactory',
 
+        'ScService.IdentityProvider'
+            => 'ScContent\Factory\Service\IdentityProviderFactory',
+
+        'ScService.RoleProvider'
+            => 'ScContent\Factory\Service\RoleProviderFactory',
+
         'ScService.Installation.Autoload'
             => 'ScContent\Factory\Service\Installation\AutoloadFactory',
 
@@ -57,6 +66,12 @@ return [
 
         'ScService.Installation.Layout'
             => 'ScContent\Factory\Service\Installation\LayoutFactory',
+
+        'ScService.Installation.Roles'
+            => 'ScContent\Factory\Service\Installation\RolesFactory',
+
+        'ScService.Installation.Account'
+            => 'ScContent\Factory\Service\Installation\AccountFactory',
 
         'ScService.Front.ContentService'
             => 'ScContent\Factory\Service\Front\ContentFactory',
@@ -81,6 +96,12 @@ return [
 
         'ScService.Back.Layout'
             => 'ScContent\Factory\Service\Back\LayoutFactory',
+
+        'ScMapper.Roles'
+            => 'ScContent\Factory\Mapper\RolesFactory',
+
+        'ScMapper.Registration'
+            => 'ScContent\Factory\Mapper\RegistrationMapperFactory',
 
         'ScMapper.Installation.Layout'
             => 'ScContent\Factory\Mapper\Installation\LayoutFactory',
@@ -144,6 +165,12 @@ return [
 
         'ScListener.Theme.FrontendStrategy'
             => 'ScContent\Factory\Listener\Theme\FrontendStrategyFactory',
+
+        'ScListener.Theme.CommonStrategy'
+            => 'ScContent\Factory\Listener\Theme\CommonStrategyFactory',
+
+        'ScListener.Front.Registration'
+            => 'ScContent\Factory\Listener\Front\RegistrationListenerFactory',
 
         'ScListener.Back.ContentListAggregate'
             => 'ScContent\Factory\Listener\Back\ContentListAggregateFactory',

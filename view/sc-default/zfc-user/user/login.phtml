@@ -1,0 +1,59 @@
+<?php
+    $this->scBodyTag('class', 'login');
+    $form = $this->loginForm;
+    $form->prepare();
+    $form->setAttribute('action', $this->url('zfcuser/login'));
+    $form->setAttribute('method', 'post');
+?>
+
+    <h1><?= $this->translate('Sign In'); ?></h1>
+
+    <?= $this->form()->openTag($form) ?>
+
+        <?php if($this->formElementErrors($form->get('identity'))): ?>
+
+        <div class="alert alert-warning fade in">
+            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+            <?= $this->formElementErrors($form->get('identity')) ?>
+
+        </div>
+
+        <?php endif ?>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('identity')) ?>
+
+            <?= $this->formInput($form->get('identity')->setAttribute('class', 'form-control')) ?>
+
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('credential')) ?>
+
+            <?= $this->formInput($form->get('credential')->setAttribute('class', 'form-control')) ?>
+
+        </div>
+        <?php if ($this->redirect): ?>
+
+            <input type="hidden" name="redirect" value="<?= $this->escapeHtml($this->redirect) ?>" />
+        <?php endif ?>
+
+        <div class="form-group">
+            <?= $this->formButton($form->get('submit')->setAttribute('class', 'btn btn-primary')) ?>
+
+        </div>
+
+    <?= $this->form()->closeTag() ?>
+
+    <?php if ($this->enableRegistration) : ?>
+
+    <?= $this->translate('Not registered?'); ?>
+
+    <br /><a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><?php echo $this->translate('Sign up!'); ?></a>
+    <?php endif ?>
+
+    <div class="where-to">
+        <p>
+            <a href="/"><?= $this->translate('&rarr; Home') ?></a> |
+            <a href="javascript:window.history.back();"><?= $this->translate('&larr; Back') ?></a>
+        </p>
+    </div>

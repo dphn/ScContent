@@ -182,9 +182,10 @@ class ArticleService extends AbstractContentService
             if (! $article instanceof Article) {
                 throw new DomainException(sprintf(
                     $translator->translate(
-                        "The custom class '%s' should inherit the class 'ScContent\Entity\Back\Article'."
+                        "The custom class '%s' should inherit the class '%s'."
                     ),
-                    get_class($article)
+                    get_class($article),
+                    'ScContent\Entity\Back\Article'
                 ));
             }
             $this->articlePrototype = $article;

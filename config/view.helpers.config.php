@@ -8,6 +8,10 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 return [
+    'invokables' => [
+        'scBodyTag'
+            => 'ScContent\View\Helper\BodyTag',
+    ],
     'factories' => [
         'scDateTime'
             => 'ScContent\Factory\View\Helper\DateTimeFactory',
