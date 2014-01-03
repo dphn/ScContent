@@ -82,11 +82,6 @@ class ContentSearchProxy extends AbstractEntity
     protected $calculatedDateEnd = 0;
 
     /**
-     * @var string
-     */
-    protected $convertedText = '';
-
-    /**
      * @param null | array $data
      */
     public function __construct(Localization $l10n, $data = null)
@@ -304,35 +299,6 @@ class ContentSearchProxy extends AbstractEntity
             return true;
         }
         return false;
-    }
-
-    /**
-     * @return string
-     */
-    public function convertText()
-    {
-        if ($this->convertedText) {
-            return $this->convertedText;
-        }
-        $values = explode(' ', $this->text);
-        $convertedText = '';
-        foreach ($values as $value) {
-            $value = trim($value);
-            if ('' === $value) {
-                continue;
-            }
-            $value = ltrim($value, '+-><~"');
-            $value = rtrim($value, '*"');
-            $strLen = mb_strlen($value);
-            if ($strLen < 3) {
-                continue;
-            }
-            $pos = max(3, $strLen - 2);
-            $value = mb_substr($value, 0, $pos);
-            $convertedText .= $value . '* ';
-        }
-        $this->convertedText = rtrim($convertedText);
-        return $this->convertedText;
     }
 
     /**

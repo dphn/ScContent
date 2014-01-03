@@ -1,4 +1,5 @@
 <?php
+use ScContent\Filter\SimpleStemmingFilter;
 /**
  * ScContent (https://github.com/dphn/ScContent)
  *
@@ -9,6 +10,10 @@
  */
 return [
     'invokables' => [
-        'ScFilter.File.MimeType' => 'ScContent\Filter\File\MimeType',
+        'ScFilter.File.MimeType'
+            => 'ScContent\Filter\File\MimeType',
+
+        'ScFilter.SimpleStemmingFilter'
+            => 'ScContent\Filter\SimpleStemmingFilter',
     ],
 ];

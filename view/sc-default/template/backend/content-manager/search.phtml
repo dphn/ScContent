@@ -136,7 +136,7 @@
                                             <?php if('file' != $item->getType()): ?>|&nbsp;<?php endif ?><a href="<?php echo $this->url('sc-admin/' . $item->getType() . '/edit', array('id' => $item->getId())) ?>"><?php echo $this->translate('Edit') ?></a>
                                                 <?php if($this->scContentFormat()->canPreview($item)): ?>
 
-                                                |&nbsp;<a href="<?= $this->url('home', ['content-name' => $content->getName()]) ?>" target="blank"><?php echo $this->translate('Preview') ?></a>
+                                                |&nbsp;<a href="<?= $this->url('home', ['content-name' => $item->getName()]) ?>" target="blank"><?php echo $this->translate('Preview') ?></a>
                                                 <?php endif ?>
                                         <?php endif ?>
 

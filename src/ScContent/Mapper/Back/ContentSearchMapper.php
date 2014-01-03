@@ -14,6 +14,7 @@ use ScContent\Mapper\AbstractContentMapper,
     ScContent\Entity\Back\ContentList as ContentListEntity,
     ScContent\Entity\Back\ContentListItem,
     //
+    Zend\Filter\FilterInterface,
     Zend\Db\Adapter\AdapterInterface,
     Zend\Db\Sql\Predicate\Predicate,
     Zend\Db\Sql\Expression,
@@ -32,6 +33,11 @@ class ContentSearchMapper extends AbstractContentMapper implements
     protected $optionsProvider;
 
     /**
+     * @var Zend\Filter\FilterInterface
+     */
+    protected $morfologyFilter;
+
+    /**
      * Constructor
      *
      * @param Zend\Db\Adapter\AdapterInterface $adapter
@@ -39,9 +45,11 @@ class ContentSearchMapper extends AbstractContentMapper implements
      */
     public function __construct(
         AdapterInterface $adapter,
-        OptionsProvider $options
+        OptionsProvider $options,
+        FilterInterface $filter
     ) {
         $this->optionsProvider = $options;
+        $this->morfologyFilter = $filter;
         $this->setAdapter($adapter);
     }
 
@@ -151,7 +159,8 @@ class ContentSearchMapper extends AbstractContentMapper implements
         }
 
         if ($search->hasText()) {
-            $text = $this->quoteValue($search->convertText());
+            $text = $this->morfologyFilter->filter($search->getText());
+            $text = $this->quoteValue($text);
             $textSource = $search->getTextSource();
 
             $on = new Predicate();
@@ -276,7 +285,8 @@ class ContentSearchMapper extends AbstractContentMapper implements
         }
 
         if ($search->hasText()) {
-            $text = $this->quoteValue($search->convertText());
+            $text = $this->morfologyFilter->filter($search->getText());
+            $text = $this->quoteValue($text);
             $textSource = $search->getTextSource();
 
             $on = new Predicate();
@@ -314,5 +324,4 @@ class ContentSearchMapper extends AbstractContentMapper implements
             $content->addItem($item);
         }
     }
-
 }

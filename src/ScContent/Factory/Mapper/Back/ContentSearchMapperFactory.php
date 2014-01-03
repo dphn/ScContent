@@ -29,7 +29,10 @@ class ContentSearchMapperFactory implements FactoryInterface
         $optionsProvider = $serviceLocator->get(
             'ScService.Back.ContentListOptionsProvider'
         );
-        $mapper = new ContentSearchMapper($adapter, $optionsProvider);
+
+        $filterManager = $serviceLocator->get('FilterManager');
+        $filter = $filterManager->get('ScFilter.SimpleStemmingFilter');
+        $mapper = new ContentSearchMapper($adapter, $optionsProvider, $filter);
         return $mapper;
     }
 }
