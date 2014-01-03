@@ -118,9 +118,9 @@ return [
                     ],
                 ],
             ],
-            'sc' => [
+            'home' => [
                 'type' => 'segment',
-                'priority' => 100,
+                'priority' => 1000,
                 'options' => [
                     'route' => '/[:content-name]',
                     'defaults' => [
@@ -147,7 +147,7 @@ return [
              */
             'sc-admin' => [
                 'type' => 'literal',
-                'priority' => -1,
+                'priority' => 1000,
                 'options' => [
                     'route' => '/admin',
                 ],

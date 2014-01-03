@@ -68,6 +68,10 @@ class Module extends AbstractModule implements
             define('DEBUG_MODE', $mode);
         }
 
+        if (DEBUG_MODE) {
+            error_reporting(E_ALL | E_STRICT);
+        }
+
         $eventManager = $moduleManager->getEventManager();
         $eventManager->attachAggregate(
             new \ScContent\Listener\ConfigListenerAggregate()

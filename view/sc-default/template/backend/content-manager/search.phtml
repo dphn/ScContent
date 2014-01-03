@@ -1,11 +1,11 @@
-<?php 
+<?php
     $this->headTitle($this->translate('Search'));
     $this->headLink()->appendStylesheet($this->basePath() . '/sc-default/jquery-ui/css/jquery-ui-1.10.3.custom.css');
     $this->headScript()->appendFile($this->basePath() . '/sc-default/jquery-ui/js/jquery-ui-1.10.3.custom.min.js')
                        ->appendFile($this->basePath() . '/sc-default/jquery-ui/js/jquery-ui-i18n.js')
                        ->appendFile($this->basePath() . '/sc-default/js/stratch.js')
                        ->appendFile($this->basePath() . '/sc-default/js/search.js');
-    
+
     $this->formRadio()->setSeparator('</div><div class="radio">');
 ?>
 <?php
@@ -17,9 +17,9 @@
         <div class="col-md-12 col-lg-12">
             <div class="form-group content-helper">
                 <?php echo $this->formButton($form->get('search')) ?>
-                
+
                 <?php echo $this->formButton($form->get('clean')) ?>
-                
+
                 <a href="<?php echo $this->url('sc-admin/content-manager') ?>" class="btn btn-default"><?php echo $this->translate('Manager') ?></a>
             </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="col-md-8 col-lg-8">
             <div class="editor-tabs">
                 <?php if($list->getTotalPages() > 1): ?>
-            
+
                 <div class="page-control pull-right">
                     <div class="btn-group">
                         <a href="<?php echo $this->url('sc-admin/content-search', array('pane' => $pane, 'root' => $options->getRoot(), 'filter' => $options->getFilter(), 'page' => 1)) ?>" class="btn btn-default btn-sm" title="<?php echo $this->translate('Go to the first page') ?>">«</a>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <?php endif ?>
-                
+
                 <ul class="nav nav-tabs">
                     <li<?php if($options->getRoot() == 'site'): ?> class="active"<?php endif ?>><a href="<?php echo $this->url('sc-admin/content-search', array('pane' => $pane, 'root' => 'site')) ?>"><span class="glyphicon glyphicon-globe"></span><?php echo $this->translate('Web Site') ?></a></li>
                     <li<?php if($options->getRoot() == 'trash'): ?> class="active"<?php endif ?>><a href="<?php echo $this->url('sc-admin/content-search', array('pane' => $pane, 'root' => 'trash')) ?>"><span class="glyphicon glyphicon-trash"></span><?php echo $this->translate('Trash') ?></a></li>
@@ -91,7 +91,7 @@
                     </tfoot>
                     <tbody>
                         <?php if($list->isEmpty()): ?>
-                        
+
                         <tr class="hidden-xs">
                             <td colspan="6">
                                 <div class="well"><?php echo $this->translate('Nothing was found.') ?><?php if('all' != $options->getFilter() && 0 < $list->getCounter('all')): ?> <?php echo $this->translate('Try to change the filter.') ?><?php endif ?></div>
@@ -104,11 +104,11 @@
                         </tr>
                         <?php endif ?>
                         <?php foreach($list as $item): ?>
-                        
+
                             <tr>
                                 <td class="content-list-icon hidden-xs">
                                     <?php echo $this->scContentFormat()->getIconPath($item) ?>
-                                    
+
                                 </td>
                                 <td class="content-list-order">
                                     <input class="form-control input-sm" type="text" name="dummy" value="<?php echo $item->getOrder() ?>" disabled="disabled" />
@@ -117,40 +117,40 @@
                                     <span><?php echo $item->getTitle() ?></span>
                                     <br />
                                     <?php if('file' != $item->getType()): ?>
-                            
+
                                     <span class="content-childrens">(<?php echo $item->getChildrens() ?>)</span>
-                                    
+
                                     <?php else: ?>
-                                    
+
                                     <span class="content-type"><?php echo $this->scContentFormat()->getExtension($item) ?></span>
                                     <?php endif ?>
-                                    
+
                                     <br />
                                     <span class="content-item-actions">
                                         <?php if('file' != $item->getType()): ?>
-                                        
+
                                         <a href="<?php echo $this->url('sc-admin/content-manager', array('pane' => $pane, 'type' => 'list', 'root' => $options->getRoot(), 'filter' => $options->getFilter(), 'parent' => $item->getId())) ?>"><?php echo $this->translate('Use') ?></a>
                                         <?php endif ?>
                                         <?php if($options->getRoot() != 'trash'): ?>
-                                        
+
                                             <?php if('file' != $item->getType()): ?>|&nbsp;<?php endif ?><a href="<?php echo $this->url('sc-admin/' . $item->getType() . '/edit', array('id' => $item->getId())) ?>"><?php echo $this->translate('Edit') ?></a>
                                                 <?php if($this->scContentFormat()->canPreview($item)): ?>
-                                                
-                                                |&nbsp;<a href=""><?php echo $this->translate('Preview') ?></a>
+
+                                                |&nbsp;<a href="<?= $this->url('home', ['content-name' => $content->getName()]) ?>" target="blank"><?php echo $this->translate('Preview') ?></a>
                                                 <?php endif ?>
                                         <?php endif ?>
-                                        
+
                                     </span>
                                 </td>
                                 <td class="content-list-status hidden-xs">
                                     <?php if('published' == $item->getStatus()): ?>
-                                    
+
                                     <span class="glyphicon glyphicon-eye-open"></span>
                                     <?php else: ?>
-                                    
+
                                     <span class="glyphicon glyphicon-eye-close"></span>
                                     <?php endif ?>
-                                    
+
                                 </td>
                                 <td class="content-list-user hidden-xs">
                                     <span><?php echo $item->getUserName() ?></span><br /><span class="content-list-email"><?php echo $item->getUserEmail() ?></span>
@@ -158,11 +158,11 @@
                                 <td class="content-list-date hidden-xs">
                                     <?php echo $this->scDateTime()->getDate($item->getDate()) ?><br />
                                     <?php echo $this->scDateTime()->getTime($item->getDate()) ?>
-                                    
+
                                 </td>
                             </tr>
                         <?php endforeach ?>
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -175,10 +175,10 @@
                             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#contentOptions">
                                 <?php echo $this->translate('Content options') ?>
                                 <?php if(count($form->get('text')->getMessages())): ?>
-                                
+
                                 <span class="glyphicon glyphicon-warning-sign"></span>
                                 <?php endif ?>
-                                
+
                             </a>
                         </h4>
                     </div>
@@ -187,27 +187,27 @@
                             <?php echo $this->formLabel($form->get('text')) ?>
                             <?php echo $this->formText($form->get('text')) ?>
                             <?php if(count($form->get('text')->getMessages())): ?>
-                                    
+
                             <div class="alert alert-warning"><?php echo $this->formElementErrors($form->get('text')) ?></div>
-                            
+
                             <?php endif ?>
-                            
+
                             <p class="help-block"><?php echo $this->translate('A word or a few words separated by a space.') ?></p>
                             <div class="radio"><?php echo $this->formRadio($form->get('text_source')) ?></div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#dateOptions">
                                 <?php echo $this->translate('Date options') ?>
                                 <?php if(count($form->get('date_type')->getMessages()) || count($form->get('date_start')->getMessages()) || count($form->get('date_end')->getMessages())): ?>
-                                
+
                                 <span class="glyphicon glyphicon-warning-sign"></span>
                                 <?php endif ?>
-                                
+
                             </a>
                         </h4>
                     </div>
@@ -215,53 +215,53 @@
                         <div class="panel-body">
                             <div id="search-date-group">
                                 <div class="radio"><?php echo $this->formRadio($form->get('date_type')) ?></div>
-                                
+
                                 <?php if(count($form->get('date_type')->getMessages())): ?>
-                                    
+
                                 <div class="alert alert-warning"><?php echo $this->formElementErrors($form->get('date_type')) ?></div>
-                                
+
                                 <?php endif ?>
                             </div>
                             <div class="search-date-range form-group">
                                 <div class="input-group">
                                     <?php echo $this->formText($form->get('date_start')) ?>
-                                    
+
                                     <span class="glyphicon glyphicon-calendar input-group-addon"></span>
                                 </div>
                                 <?php if(count($form->get('date_start')->getMessages())): ?>
-                                    
+
                                 <div class="alert alert-warning"><?php echo $this->formElementErrors($form->get('date_start')) ?></div>
-                                
+
                                 <?php endif ?>
-                                
+
                                 <div class="input-group">
                                     <?php echo $this->formText($form->get('date_end')) ?>
-                                    
+
                                     <span class="glyphicon glyphicon-calendar input-group-addon"></span>
                                 </div>
                                 <?php if(count($form->get('date_end')->getMessages())): ?>
-                                    
+
                                 <div class="alert alert-warning"><?php echo $this->formElementErrors($form->get('date_end')) ?></div>
-                                
+
                                 <?php endif ?>
-                                
+
                             </div>
                             <?php echo $this->formSelect($form->get('modification_type')) ?>
-                                
+
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#userOptions">
                                 <?php echo $this->translate('User options') ?>
                                 <?php if(count($form->get('user_name')->getMessages())): ?>
-                                
+
                                 <span class="glyphicon glyphicon-warning-sign"></span>
                                 <?php endif ?>
-                                
+
                             </a>
                         </h4>
                     </div>
@@ -271,19 +271,19 @@
                                 <?php echo $this->formLabel($form->get('user_name')) ?>
                                 <?php echo $this->formText($form->get('user_name')) ?>
                                 <?php if(count($form->get('user_name')->getMessages())): ?>
-                                    
+
                                 <div class="alert alert-warning"><?php echo $this->formElementErrors($form->get('user_name')) ?></div>
-                                
+
                                 <?php endif ?>
-                                
+
                                 <p class="help-block"><?php echo $this->translate('A word or beginning of the word.') ?></p>
                             </div>
                             <div class="form-group">
                                 <div class="radio"><?php echo $this->formRadio($form->get('user_source')) ?></div>
                             </div>
-                            
+
                             <?php echo $this->formSelect($form->get('user_type')) ?>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -292,14 +292,14 @@
     </div>
 <?php echo $this->form()->closeTag($form) ?>
 
-<?php 
+<?php
 $locale = $this->scLocalization()->getLocale();
 $fallbackLocale = $this->scLocalization()->getPrimaryLanguage();
 echo $this->inlineScript()->appendScript(<<<EOT
     if(typeof jQuery != 'undefined'){
         $(function(){
             dateControl.init("$locale", "$fallbackLocale");
-        })(); 
+        })();
     }
 EOT
 );

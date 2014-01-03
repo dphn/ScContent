@@ -9,7 +9,7 @@
  */
 namespace ScContent\Mapper\Back;
 
-use ScContent\Options\ContentList as Options,
+use ScContent\Options\Back\ContentListOptions as Options,
     ScContent\Exception\DomainException,
     //
     Zend\Session\Container,
@@ -26,7 +26,7 @@ class ContentListOptions
      * @param array $query
      * @param string $type optional
      * @throws ScContent\Exception\DomainException
-     * @return ScContent\Options\ContentList
+     * @return ScContent\Options\Back\ContentListOptions
      */
     public function getOptons($name, $query = null, $type = '')
     {
@@ -75,7 +75,7 @@ class ContentListOptions
     }
 
     /**
-     * @param ScContent\Options\ContentList $options
+     * @param ScContent\Options\Back\ContentListOptions $options
      * @return ScContent\Mapper\Back\ContentListOptions
      */
     public function saveOptions(Options $options)

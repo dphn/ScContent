@@ -26,7 +26,8 @@ class InstallationFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $baseDir = Module::getDir();
+        $module = new Module();
+        $baseDir = $module->getDir();
         $options = include(
             $baseDir . DS . 'config' . DS . 'installation.config.php'
         );

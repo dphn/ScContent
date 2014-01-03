@@ -44,18 +44,21 @@ class FrontendStrategy extends AbstractThemeStrategy
             return;
         }
 
-        $class = get_class($controller);
-        $class = $this->deriveControllerClass($class);
+        $template = $model->getTemplate();
+        if (empty($template)) {
+            $class = get_class($controller);
+            $class = $this->deriveControllerClass($class);
 
-        $template = $theme . '/template/frontend/';
-        $template .= $this->inflectName($class);
+            $template = $theme . '/template/frontend/';
+            $template .= $this->inflectName($class);
 
-        $routeMatch = $event->getRouteMatch();
-        $action  = $routeMatch->getParam('action');
-        if (null !== $action) {
-            $template .= '/' . $this->inflectName($action);
+            $routeMatch = $event->getRouteMatch();
+            $action  = $routeMatch->getParam('action');
+            if (null !== $action) {
+                $template .= '/' . $this->inflectName($action);
+            }
+            $model->setTemplate($template);
         }
-        $model->setTemplate($template);
 
         if ($event->getResult()->terminate()) {
             return;

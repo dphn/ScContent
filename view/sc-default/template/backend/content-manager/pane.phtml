@@ -30,8 +30,8 @@
             <?php endif ?>
 
             <ul class="nav nav-tabs">
-                <li<?php if ($options->getType() == 'list' && $options->getRoot() == 'site'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/content-manager', array('pane' => $pane, 'type' => 'list', 'root' => 'site')) ?>"><span class="glyphicon glyphicon-globe"></span><?= $this->translate('Web Site') ?></a></li>
-                <li<?php if ($options->getType() == 'list' && $options->getRoot() == 'trash'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/content-manager', array('pane' => $pane, 'type' => 'list', 'root' => 'trash')) ?>"><span class="glyphicon glyphicon-trash"></span><?= $this->translate('Trash') ?></a></li>
+                <li<?php if ($options->getType() == 'list' && $options->getRoot() == 'site'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/content-manager', ['pane' => $pane, 'type' => 'list', 'root' => 'site']) ?>"><span class="glyphicon glyphicon-globe"></span><?= $this->translate('Web Site') ?></a></li>
+                <li<?php if ($options->getType() == 'list' && $options->getRoot() == 'trash'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/content-manager', ['pane' => $pane, 'type' => 'list', 'root' => 'trash']) ?>"><span class="glyphicon glyphicon-trash"></span><?= $this->translate('Trash') ?></a></li>
                 <li<?php if ($options->getType() == 'search'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/content-manager', ['pane' => $pane, 'type' => 'search']) ?>"><span class="glyphicon glyphicon-search"></span><?= $this->translate('Search') ?></a></li>
             </ul>
         </div>
@@ -188,7 +188,7 @@
                                     <?php if ('file' != $item->getType()): ?>|&nbsp;<?php endif ?><a href="<?= $this->url('sc-admin/' . $item->getType() . '/edit', ['id' => $item->getId()]) ?>"><?= $this->translate('Edit') ?></a>
                                         <?php if ($this->scContentFormat()->canPreview($item)): ?>
 
-                                        |&nbsp;<a href="<?= $this->url('sc', ['content-name' => $item->getName()]) ?>" target="blank"><?= $this->translate('Preview') ?></a>
+                                        |&nbsp;<a href="<?= $this->url('home', ['content-name' => $item->getName()]) ?>" target="blank"><?= $this->translate('Preview') ?></a>
                                         <?php endif ?>
                                 <?php endif ?>
 

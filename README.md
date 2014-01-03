@@ -4,6 +4,10 @@ ScContent
 This module in process.
 At this time, the module works only with the database MySql.
 
+The module allows you to edit the content, manage themes and widgets.
+Nevertheless, the basic widgets kit is provided as a separate module (https://github.com/dphn/ScWidgets).
+You can easily create your own  widgets kit for your specific application.
+
 Introduction
 -----------------
 It is a simple module for editing the content based on Zend Framework 2.

@@ -13,6 +13,7 @@ use ScContent\Controller,
     //
     Zend\EventManager\AbstractListenerAggregate,
     Zend\EventManager\EventManagerInterface,
+    Zend\View\Model\ViewModel,
     Zend\Mvc\Application,
     Zend\Mvc\MvcEvent;
 
@@ -167,6 +168,11 @@ class ThemeContext extends AbstractListenerAggregate
                     $layout = $theme['errors']['layout'];
                 }
                 $layout = str_replace('{side}', 'frontend', $layout);
+
+                if (isset($renderer->layout()->regions)) {
+                    unset($renderer->layout()->regions);
+                }
+
                 $renderer->layout()->setTemplate($layout);
                 break;
         }
@@ -178,10 +184,6 @@ class ThemeContext extends AbstractListenerAggregate
      */
     public function notFound(MvcEvent $event)
     {
-        $response = $event->getResponse();
-
-        //$target = $event->getTarget();
-
         $application = $event->getApplication();
         $serviceLocator = $application->getServiceManager();
 
@@ -238,6 +240,11 @@ class ThemeContext extends AbstractListenerAggregate
                     $layout = $theme['errors']['layout'];
                 }
                 $layout = str_replace('{side}', 'frontend', $layout);
+
+                if (isset($renderer->layout()->regions)) {
+                    unset($renderer->layout()->regions);
+                }
+
                 $renderer->layout()->setTemplate($layout);
                 break;
         }

@@ -16,19 +16,23 @@ class BackendStrategy extends AbstractThemeStrategy
         $controller = $event->getTarget();
         $model = $event->getResult();
 
-        if(!$model instanceof ViewModel) {
+        if (! $model instanceof ViewModel) {
             return;
         }
 
-        if(!$event->getResult()->terminate()) {
+        if (! $event->getResult()->terminate()) {
             $layout = $theme . '/layout/backend/index';
             $controller->layout($layout);
         }
 
-        if(is_object($controller)) {
+        if ($model->getTemplate()) {
+            return;
+        }
+
+        if (is_object($controller)) {
             $controller = get_class($controller);
         }
-        if(!$controller) {
+        if (! $controller) {
             $controller = $routeMatch->getParam('controller', '');
         }
 

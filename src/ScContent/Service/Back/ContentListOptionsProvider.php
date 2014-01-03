@@ -10,9 +10,9 @@
 namespace ScContent\Service\Back;
 
 use ScContent\Mapper\Back\ContentListOptions as OptionsMapper,
+    ScContent\Options\Back\ContentListOptions as Options,
     ScContent\Entity\Back\ContentSearchProxy,
     ScContent\Service\Localization,
-    ScContent\Options\ContentList,
     //
     ScContent\Exception\DomainException,
     //
@@ -120,11 +120,11 @@ class ContentListOptionsProvider
 
     /**
      * @param string $name
-     * @return ScContent\Options\ContentList
+     * @return ScContent\Options\Back\ContentListOptions
      */
     public function getOptions($name, $type = '')
     {
-        if (! $this->options[$name] instanceof ContentList) {
+        if (! $this->options[$name] instanceof Options) {
             $this->options[$name] = $this->optionsMapper->getOptons(
                 $name, $this->query, $type
             );
@@ -134,7 +134,7 @@ class ContentListOptionsProvider
 
     /**
      * @param string $name
-     * @return ScContent\Options\ContentList
+     * @return ScContent\Options\Back\ContentListOptions
      */
     public function getOtherOptions($name, $type = '')
     {

@@ -223,13 +223,13 @@ return [
                                 'role_id'    => 'guest',
                                 'is_default' => true,
                                 'parent_id'  => null,
-                                'route' => 'sc',
+                                'route' => 'home',
                             ],
                             [
                                 'role_id'    => 'user',
                                 'is_default' => false,
                                 'parent_id'  => 'guest',
-                                'route' => 'sc',
+                                'route' => 'home',
                             ],
                             [
                                 'role_id'    => 'admin',
@@ -247,10 +247,9 @@ return [
                     'guard' => [
                         'validator' => 'ScValidator.Installation.Autoload',
                         'service'   => 'ScService.Installation.Autoload',
-                        'action' => 'index',
                         'batch' => [
                             'source_module' => 'ScContent',
-                            'source_file' => '/data/installation/bjyauthorize.sc.v-0.1.3.001.local.php.dist',
+                            'source_file' => '/data/installation/bjyauthorize.sc.v-0.1.3.003.local.php.dist',
                             'old_files_mask' => 'bjyauthorize.sc.v-*',
                         ],
                     ],

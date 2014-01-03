@@ -232,7 +232,7 @@ return array(
     'ScContent\Migration\MapperBase\Widgets'                               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Migration'           . DS . 'MapperBase'                       . DS . 'Widgets.php',
     'ScContent\Migration\Schema'                                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Migration'           . DS . 'Schema.php',
     'ScContent\Migration\SchemaInterface'                                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Migration'           . DS . 'ShemaInterface.php',
-    'ScContent\Options\ContentList'                                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'             . DS . 'ContentList.php',
+    'ScContent\Options\Back\ContentListOptions'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'             . DS . 'Back'                             . DS . 'ContentListOptions.php',
     'ScContent\Options\InstallationOptions'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'             . DS . 'InstallationOptions.php',
     'ScContent\Options\ModuleOptions'                                      => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'             . DS . 'ModuleOptions.php',
     'ScContent\Options\ModuleOptionsInterface'                             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'             . DS . 'ModuleOptionsInterface.php',

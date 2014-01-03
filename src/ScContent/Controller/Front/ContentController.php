@@ -1,10 +1,21 @@
 <?php
+/**
+ * ScContent (https://github.com/dphn/ScContent)
+ *
+ * @author    Dolphin <work.dolphin@gmail.com>
+ * @copyright Copyright (c) 2013 ScContent
+ * @link      https://github.com/dphn/ScContent
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ */
 namespace ScContent\Controller\Front;
 
 use ScContent\Controller\AbstractFront,
     //
     Zend\View\Model\ViewModel;
 
+/**
+ * @author Dolphin <work.dolphin@gmail.com>
+ */
 class ContentController extends AbstractFront
 {
     /**
@@ -13,7 +24,7 @@ class ContentController extends AbstractFront
     protected $contentService;
 
     /**
-     * @return
+     * @return Zend\View\Model\ViewModel | Zend\Stdlib\ResponseInterface
      */
     public function indexAction()
     {
@@ -47,7 +58,7 @@ class ContentController extends AbstractFront
         if (! $this->contentService instanceof ContentService) {
             $serviceLocator = $this->getServiceLocator();
             $this->contentService = $serviceLocator->get(
-        	   'ScService.Front.ContentService'
+                'ScService.Front.ContentService'
             );
         }
         return $this->contentService;

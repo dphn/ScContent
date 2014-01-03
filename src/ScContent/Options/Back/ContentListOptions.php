@@ -7,14 +7,14 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Options;
+namespace ScContent\Options\Back;
 
 use ScContent\Entity\AbstractEntity;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class ContentList extends AbstractEntity
+class ContentListOptions extends AbstractEntity
 {
     /**
      * @var integer
@@ -326,7 +326,7 @@ class ContentList extends AbstractEntity
     }
 
     /**
-     * @return number
+     * @return integer
      */
     public function getPage()
     {

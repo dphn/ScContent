@@ -1,15 +1,18 @@
 
 <? if ('category' == $content->getType()): ?>
+    <?php $this->headTitle($content->getTitle()) ?>
 
     <h1><?= $content->getTitle() ?></h1>
     <div class="justified"><?= $content->getDescription() ?></div>
 <? elseif ('article' == $content->getType()): ?>
+    <?php $this->headTitle($content->getTitle()) ?>
 
     <article>
         <h1><?= $content->getTitle() ?></h1>
         <div class="justified"><?= $content->getContent() ?></div>
     </article>
 <? elseif ('file' == $content->getType()):?>
+    <?php $this->headTitle($content->getTitle()) ?>
 
     <h1><?= $content->getTitle() ?></h1>
     <div>
@@ -18,6 +21,7 @@
     </div>
 
 <?php else: ?>
+    <?php $this->headTitle($this->translate('Welcome!')) ?>
 
     <h1><?= $this->translate('Welcome!') ?></h1>
     <p><?= $this->translate(

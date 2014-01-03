@@ -37,7 +37,11 @@ return ['bjyauthorize' => [
 
             // ScContent
             [
-                'route' => 'sc',
+                'route' => 'home',
+                'roles' => ['guest', 'admin'],
+            ],
+            [
+                'route' => 'sc-search',
                 'roles' => ['guest', 'admin'],
             ],
             [

@@ -59,7 +59,9 @@ class ConfigListenerAggregate implements ListenerAggregateInterface
      */
     public function mergeSettings(ModuleEvent $event)
     {
-        $baseDir = Module::getDir();
+        $module = new Module();
+        $baseDir = $module->getDir();
+        unset($module);
 
         $file = $baseDir . DS . 'settings' . DS . 'module.settings.php';
 
