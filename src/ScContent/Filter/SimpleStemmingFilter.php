@@ -25,7 +25,7 @@ class SimpleStemmingFilter extends AbstractFilter
      */
     protected $options = [
         'minWordLength' => 3,
-        'cutLength'     => 2,
+        'cutLength'     => 3,
     ];
 
     /**

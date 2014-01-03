@@ -1,5 +1,4 @@
 <?php
-use ScContent\Filter\SimpleStemmingFilter;
 /**
  * ScContent (https://github.com/dphn/ScContent)
  *
