@@ -26,6 +26,9 @@ Requirements
 
 Installation
 ---------------
+### Note
+
+The best way to get acquainted with the functionality of widgets - [ScWidgets](https://github.com/dphn/ScWidgets) module installed immediately.
 
 ### Main Setup
 
