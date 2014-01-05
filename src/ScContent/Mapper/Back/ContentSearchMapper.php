@@ -319,7 +319,7 @@ class ContentSearchMapper extends AbstractContentMapper implements
             } else {
                 $result['order'] = $total - $offset - $i;
             }
-            $item = clone($itemPrototype);
+            $item = clone ($itemPrototype);
             $hydrator->hydrate($result, $item);
             $content->addItem($item);
         }

@@ -7,8 +7,8 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
- * total classes:    269
- * total interfaces: 15
+ * total classes:    271
+ * total interfaces: 13
  */
 
 defined('DS') || define('DS', DIRECTORY_SEPARATOR);
@@ -18,6 +18,7 @@ return array(
     'ScContent\Controller\AbstractBack'                                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'AbstractBack.php',
     'ScContent\Controller\AbstractFront'                                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'AbstractFront.php',
     'ScContent\Controller\AbstractInstallation'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'AbstractInstallation.php',
+    'ScContent\Controller\AbstractWidget'                                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'AbstractWidget.php',
     'ScContent\Controller\Back\ArticleController'                          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Back'                             . DS . 'ArticleController.php',
     'ScContent\Controller\Back\CategoryController'                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Back'                             . DS . 'CategoryController.php',
     'ScContent\Controller\Back\ContentManagerController'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Back'                             . DS . 'ContentManagerController.php',
@@ -33,8 +34,6 @@ return array(
     'ScContent\Controller\Plugin\TranslatorProxy'                          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Plugin'                           . DS . 'TranslatorProxy.php',
     'ScContent\Controller\Plugin\WidgetAvailability'                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Plugin'                           . DS . 'WidgetAvailability.php',
     'ScContent\Controller\UserController'                                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'UserController.php',
-    'ScContent\Controller\WidgetBackInterface'                             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'WidgetBackInterface.php',
-    'ScContent\Controller\WidgetFrontInterface'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'WidgetFrontInterface.php',
     'ScContent\Db\Resource'                                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Db'                  . DS . 'Resource.php',
     'ScContent\Db\Sql\Ddl\CreateIndex'                                     => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Db'                  . DS . 'Sql'                              . DS . 'Ddl'                                  . DS . 'CreateIndex.php',
     'ScContent\Db\TransactionAbilityInterface'                             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Db'                  . DS . 'TransactionAbilityInterface.php',
@@ -152,6 +151,7 @@ return array(
     'ScContent\Factory\View\Helper\DateTimeFactory'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'View'                             . DS . 'Helper'                               . DS . 'DateTimeFactory.php',
     'ScContent\Factory\View\Helper\LocalizationFactory'                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'View'                             . DS . 'Helper'                               . DS . 'LocalizationFactory.php',
     'ScContent\Filter\File\MimeType'                                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Filter'              . DS . 'File'                             . DS . 'MimeType.php',
+    'ScContent\Filter\SimpleStemmingFilter'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Filter'              . DS . 'SimpleStemmingFilter.php',
     'ScContent\Form\Back\ArticleForm'                                      => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Form'                . DS . 'Back'                             . DS . 'ArticleForm.php',
     'ScContent\Form\Back\CategoryForm'                                     => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Form'                . DS . 'Back'                             . DS . 'CategoryForm.php',
     'ScContent\Form\Back\ContentSearchForm'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Form'                . DS . 'Back'                             . DS . 'ContentSearchForm.php',

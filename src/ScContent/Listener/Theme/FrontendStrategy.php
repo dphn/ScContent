@@ -81,11 +81,9 @@ class FrontendStrategy extends AbstractThemeStrategy
             if (! isset($widgetOptions['frontend'])) {
                 continue;
             }
-            $invokables = $widgetOptions['frontend'];
-
             $widget = $controller->forward()->dispatch(
-                $invokables['controller'],
-                ['action' => $invokables['action']]
+                $widgetOptions['frontend'],
+                ['action' => 'front']
             );
 
             $layout->addChild($widget, $widgetName);

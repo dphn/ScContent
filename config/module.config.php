@@ -39,7 +39,9 @@ return [
                         'header' => [
                             'display_name' => 'Header',
                             'partial' => 'sc-default/layout/frontend/region/header',
-                            'contains' => [],
+                            'contains' => [
+                                'search'
+                            ],
                         ],
                         'content_top' => [
                             'display_name' => 'Content Top',
