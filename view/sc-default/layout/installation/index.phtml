@@ -210,7 +210,7 @@ th, td {
 <?php $this->headStyle()->captureEnd() ?>
 <?php echo $this->doctype(); ?>
 
-<html lang="en">
+<html lang="<?= \Locale::getPrimaryLanguage(\Locale::getDefault()) ?>">
 <head>
 <meta charset="utf-8">
 <?php echo $this->headStyle() ?>

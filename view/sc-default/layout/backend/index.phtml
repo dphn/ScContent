@@ -1,6 +1,6 @@
 <?= $this->doctype(); ?>
 
-<html lang="en">
+<html lang="<?= \Locale::getPrimaryLanguage(\Locale::getDefault()) ?>">
 <head>
 <meta charset="utf-8">
 <?= $this->headTitle(
