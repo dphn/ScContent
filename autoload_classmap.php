@@ -3,11 +3,11 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
- * total classes:    271
+ * total classes:    276
  * total interfaces: 13
  */
 
@@ -26,6 +26,7 @@ return array(
     'ScContent\Controller\Back\GarbageController'                          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Back'                             . DS . 'GarbageController.php',
     'ScContent\Controller\Back\LayoutController'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Back'                             . DS . 'LayoutController.php',
     'ScContent\Controller\Back\ThemeController'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Back'                             . DS . 'ThemeController.php',
+    'ScContent\Controller\Back\WidgetController'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Back'                             . DS . 'WidgetController.php',
     'ScContent\Controller\Front\ContentController'                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Front'                            . DS . 'ContentController.php',
     'ScContent\Controller\Installation\AccountController'                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Installation'                     . DS . 'AccountController.php',
     'ScContent\Controller\Installation\ConfigController'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Installation'                     . DS . 'ConfigController.php',
@@ -93,6 +94,7 @@ return array(
     'ScContent\Factory\Listener\Theme\FrontendStrategyFactory'             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Listener'                         . DS . 'Theme'                                . DS . 'FrontendStrategyFactory.php',
     'ScContent\Factory\Listener\Theme\InstallationStrategyFactory'         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Listener'                         . DS . 'Theme'                                . DS . 'InstallationStrategyFactory.php',
     'ScContent\Factory\Listener\ThumbnailListenerFactory'                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Listener'                         . DS . 'ThumbnailListenerFactory.php',
+    'ScContent\Factory\Listener\UnauthorizedStrategyFactory'               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Listener'                         . DS . 'UnauthorizedStrategyFactory.php',
     'ScContent\Factory\Mapper\Back\ContentFactory'                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'ContentFactory.php',
     'ScContent\Factory\Mapper\Back\ContentListCleanMapperFactory'          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'ContentListCleanMapperFactory.php',
     'ScContent\Factory\Mapper\Back\ContentListDeleteMapperFactory'         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'ContentListDeleteMapperFactory.php',
@@ -180,6 +182,7 @@ return array(
     'ScContent\Listener\Front\RegistrationListener'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'Front'                            . DS . 'RegistrationListener.php',
     'ScContent\Listener\GuardExceptionStrategy'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'GuardExceptionStrategy.php',
     'ScContent\Listener\Installation\InstallationInspector'                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'Installation'                     . DS . 'InstallationInspector.php',
+    'ScContent\Listener\SantizeOutputListener'                             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'SantizeOutputListener.php',
     'ScContent\Listener\Theme\AbstractThemeStrategy'                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'Theme'                            . DS . 'AbstractThemeStrategy.php',
     'ScContent\Listener\Theme\BackendStrategy'                             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'Theme'                            . DS . 'BackendStrategy.php',
     'ScContent\Listener\Theme\CommonStrategy'                              => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'Theme'                            . DS . 'CommonStrategy.php',
@@ -187,6 +190,7 @@ return array(
     'ScContent\Listener\Theme\InstallationStrategy'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'Theme'                            . DS . 'InstallationStrategy.php',
     'ScContent\Listener\Theme\ThemeContext'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'Theme'                            . DS . 'ThemeContext.php',
     'ScContent\Listener\ThumbnailListener'                                 => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'ThumbnailListener.php',
+    'ScContent\Listener\UnauthorizedStrategy'                              => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'            . DS . 'UnauthorizedStrategy.php',
     'ScContent\Mapper\AbstractContentMapper'                               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'AbstractContentMapper.php',
     'ScContent\Mapper\AbstractDbMapper'                                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'AbstractDbMapper.php',
     'ScContent\Mapper\AbstractLayoutMapper'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'AbstractLayoutMapper.php',
@@ -207,6 +211,7 @@ return array(
     'ScContent\Mapper\Back\LayoutMoveMapper'                               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'Back'                             . DS . 'LayoutMoveMapper.php',
     'ScContent\Mapper\Back\LayoutReorderMapper'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'Back'                             . DS . 'LayoutReorderMapper.php',
     'ScContent\Mapper\Back\LayoutServiceMapper'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'Back'                             . DS . 'LayoutServiceMapper.php',
+    'ScContent\Mapper\Back\WidgetMapper'                                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'Back'                             . DS . 'WidgetMapper.php',
     'ScContent\Mapper\Exception\DomainException'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'Exception'                        . DS . 'DomainException.php',
     'ScContent\Mapper\Exception\InvalidArgumentException'                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'Exception'                        . DS . 'InvalidArgumentException.php',
     'ScContent\Mapper\Exception\LogicException'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'              . DS . 'Exception'                        . DS . 'LogicException.php',

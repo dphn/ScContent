@@ -2,9 +2,9 @@
     <aside id="aside">
     <div class="col-sm-4 col-md-4 col-lg-4">
         <?php foreach($widgets as $widget): ?>
-            <?php $widgetName = $widget->getName() ?>
+            <?php $widgetId = $widget->getId() ?>
 
-            <?= $this->layout()->$widgetName ?>
+            <?= $this->layout()->$widgetId ?>
         <?php endforeach ?>
 
     </div><!-- col-sm-4 col-md-4 col-lg-4 -->

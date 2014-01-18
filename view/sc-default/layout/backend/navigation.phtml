@@ -13,11 +13,11 @@
                         <?= $this->translate($page->getLabel()) ?> <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <?php foreach($page->getPages() as $child): ?>
-                            <?php if (! $child->isVisible() || !$this->navigation()->accept($child)) continue ?>
+                    <?php foreach($page->getPages() as $child): ?>
+                        <?php if (! $child->isVisible() || !$this->navigation()->accept($child)) continue ?>
 
-                            <li><a href="<?= $child->getHref() ?>"><?= $this->translate($child->getLabel()) ?></a></li>
-                        <?php endforeach ?>
+                        <li><a href="<?= $child->getHref() ?>"><?= $this->translate($child->getLabel()) ?></a></li>
+                    <?php endforeach ?>
 
                     </ul>
                 </li>

@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ScContent 0.1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-29 13:55+0300\n"
-"PO-Revision-Date: 2013-12-29 18:58+0300\n"
-"Last-Translator: dolphin <pochta.dolphin@gmail.com>\n"
+"POT-Creation-Date: 2014-01-13 23:54+0300\n"
+"PO-Revision-Date: 2014-01-14 00:00+0300\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,11 @@ msgstr ""
 #: /var/www/ScContent/src/ScContent/Service/FileTransfer.php:186
 msgid "Error: "
 msgstr "Ошибка:"
+
+#: /var/www/ScContent/src/ScContent/Service/Installation/AccountService.php:87
+#, php-format
+msgid "The user entity class '%s' must inherit 'ScContent\\Entity\\ScUserInterface'"
+msgstr "Класс сущности пользователя '%s' должен наследовать 'ScContent\\Entity\\ScUserInterface'"
 
 #: /var/www/ScContent/src/ScContent/Service/Installation/ConfigService.php:144
 msgid "The options must be an array of values."
@@ -120,6 +125,10 @@ msgstr "Тема '%s' не установлена."
 #: /var/www/ScContent/src/ScContent/Listener/ThumbnailListener.php:85
 #: /var/www/ScContent/src/ScContent/Listener/ThumbnailListener.php:183
 #: /var/www/ScContent/src/ScContent/Listener/ThumbnailListener.php:191
+#: /var/www/ScContent/src/ScContent/Listener/Back/Layout.php:76
+#: /var/www/ScContent/src/ScContent/Listener/Back/Layout.php:127
+#: /var/www/ScContent/src/ScContent/Listener/Back/Layout.php:158
+#: /var/www/ScContent/src/ScContent/Listener/Back/Garbage.php:71
 #, php-format
 msgid "Missing event param '%s'."
 msgstr "Отсутствует параметр события '%s'."
@@ -484,41 +493,47 @@ msgstr "Создание системы контроля доступа и уч�
 msgid "Administrator"
 msgstr "Администратор"
 
+#: /var/www/ScContent/view/sc-default/layout/backend/index.phtml:47
+msgid "Sign Out"
+msgstr "Выход"
+
 #: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:7
 msgid "Registration is disabled"
 msgstr "Регистрация отключена"
 
 #: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:11
-#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:76
-#: /var/www/ScContent/view/sc-default/zfc-user/user/login.phtml:56
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:78
+#: /var/www/ScContent/view/sc-default/zfc-user/user/login.phtml:75
 #: /var/www/ScContent/view/sc-default/template/error/404.phtml:8
+#: /var/www/ScContent/view/sc-default/template/error/index.phtml:8
 msgid "&rarr; Home"
 msgstr "&rarr; На главную"
 
 #: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:12
-#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:77
-#: /var/www/ScContent/view/sc-default/zfc-user/user/login.phtml:57
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:79
+#: /var/www/ScContent/view/sc-default/zfc-user/user/login.phtml:76
 #: /var/www/ScContent/view/sc-default/template/error/404.phtml:9
+#: /var/www/ScContent/view/sc-default/template/error/index.phtml:9
 msgid "&larr; Back"
 msgstr "&larr; На предыдущую"
 
-#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:39
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:40
 msgid "Registration means you agree with the"
 msgstr "Регистрация означает ваше согласие c"
 
-#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:41
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:42
 msgid "Terms of Service"
 msgstr "Условиями пользовательского соглашения"
 
-#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:71
+#: /var/www/ScContent/view/sc-default/zfc-user/user/register.phtml:73
 msgid "Already registered?"
 msgstr "Уже зарегистрированы?"
 
-#: /var/www/ScContent/view/sc-default/zfc-user/user/login.phtml:49
+#: /var/www/ScContent/view/sc-default/zfc-user/user/login.phtml:66
 msgid "Not registered?"
 msgstr "Еще не зарегистрированы?"
 
-#: /var/www/ScContent/view/sc-default/zfc-user/user/login.phtml:51
+#: /var/www/ScContent/view/sc-default/zfc-user/user/login.phtml:68
 msgid "Sign up!"
 msgstr "Зарегистрироваться!"
 
@@ -556,29 +571,38 @@ msgid "resolves to %s"
 msgstr "разрешает для %s"
 
 #: /var/www/ScContent/view/sc-default/template/error/404.phtml:65
+#: /var/www/ScContent/view/sc-default/template/error/index.phtml:18
 msgid "Additional information"
 msgstr "Дополнительная информация"
 
 #: /var/www/ScContent/view/sc-default/template/error/404.phtml:68
 #: /var/www/ScContent/view/sc-default/template/error/404.phtml:92
+#: /var/www/ScContent/view/sc-default/template/error/index.phtml:21
+#: /var/www/ScContent/view/sc-default/template/error/index.phtml:45
 msgid "File"
 msgstr "Файл"
 
 #: /var/www/ScContent/view/sc-default/template/error/404.phtml:72
 #: /var/www/ScContent/view/sc-default/template/error/404.phtml:96
+#: /var/www/ScContent/view/sc-default/template/error/index.phtml:25
+#: /var/www/ScContent/view/sc-default/template/error/index.phtml:49
 msgid "Message"
 msgstr "Сообщение"
 
 #: /var/www/ScContent/view/sc-default/template/error/404.phtml:76
 #: /var/www/ScContent/view/sc-default/template/error/404.phtml:100
+#: /var/www/ScContent/view/sc-default/template/error/index.phtml:29
+#: /var/www/ScContent/view/sc-default/template/error/index.phtml:53
 msgid "Stack trace"
 msgstr "Трассировка стека"
 
 #: /var/www/ScContent/view/sc-default/template/error/404.phtml:86
+#: /var/www/ScContent/view/sc-default/template/error/index.phtml:39
 msgid "Previous exceptions"
 msgstr "Предыдущее исключение"
 
 #: /var/www/ScContent/view/sc-default/template/error/404.phtml:116
+#: /var/www/ScContent/view/sc-default/template/error/index.phtml:69
 msgid "No Exception available"
 msgstr "Нет доступных исключений"
 
@@ -846,13 +870,22 @@ msgstr "Редактировать категорию"
 msgid "Category options"
 msgstr "Параметры категории"
 
-#: /var/www/ScContent/view/sc-default/template/frontend/content/index.phtml:22
+#: /var/www/ScContent/view/sc-default/template/frontend/content/index.phtml:24
+#: /var/www/ScContent/view/sc-default/template/frontend/content/index.phtml:26
 msgid "Welcome!"
 msgstr "Добро пожаловать!"
 
-#: /var/www/ScContent/view/sc-default/template/frontend/content/index.phtml:24
+#: /var/www/ScContent/view/sc-default/template/frontend/content/index.phtml:28
 msgid "Create a home page of your site. To do this, add an article or category and assign it the name 'home'. Do not forget to change its status to 'published'."
 msgstr "Создайте главную страницу вашего сайта. Для этого добавьте статью или категорию и присвойте ей имя 'home'. Не забудьте изменить ее статус на 'опубликовано'."
+
+#: /var/www/ScContent/view/sc-default/template/frontend/user/deny.phtml:5
+msgid "Access Denied"
+msgstr "Доступ запрещен"
+
+#: /var/www/ScContent/view/sc-default/template/frontend/user/deny.phtml:7
+msgid "You are denied access to the requested resource. If you have an account with the appropriate permissions, log out and log in again with the appropriate rights."
+msgstr "Вам отказано в доступе к запрошенному ресурсу. Если у вас есть аккаунт с необходимыми правами доступа, выйдите из системы и войдите снова с необходимыми правами."
 
 #: /var/www/ScContent/view/sc-default/template/installation/index.phtml:16
 msgid "Step"

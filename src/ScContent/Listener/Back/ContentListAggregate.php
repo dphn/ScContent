@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -78,7 +78,7 @@ class ContentListAggregate implements ListenerAggregateInterface,
         $this->listeners[] = $events->attach(
             'trash',
             function($e) use ($sm) {
-                $listener = $sm->get('sc-listener.back.content.list.move.to.trash');
+                $listener = $sm->get('ScLstener.Back.ContentListMoveToTrash');
                 return $listener->process($e);
             }
         );

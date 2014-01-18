@@ -1,0 +1,15 @@
+<?php
+    $this->scBodyTag('class', 'user');
+?>
+
+    <h1><?= $this->translate('Access Denied'); ?></h1>
+    <div class="widget">
+        <p><?= $this->translate('You are denied access to the requested resource. If you have an account with the appropriate permissions, log out and log in again with the appropriate rights.') ?></p>
+    </div>
+    <div class="where-to">
+        <p><a href="<?= $this->url('zfcuser/logout') ?>"><?= $this->translate('Sign Out') ?></a></p>
+        <p>
+            <a href="/"><?= $this->translate('&rarr; Home') ?></a> |
+            <a href="javascript:window.history.back();"><?= $this->translate('&larr; Back') ?></a>
+        </p>
+    </div>

@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -37,7 +37,7 @@ class FileEditFieldset extends Fieldset implements InputFilterProviderInterface
             'options' => [
                 'label' => 'Alternative text',
                 'label_attributes' => [
-                    'class' => 'content-form-label'
+                    'class' => 'label-default'
                 ],
             ],
             'attributes' => [
@@ -52,7 +52,7 @@ class FileEditFieldset extends Fieldset implements InputFilterProviderInterface
             'options' => [
                 'label' => 'Description',
                 'label_attributes' => [
-                    'class' => 'content-form-label'
+                    'class' => 'label-default'
                 ],
             ],
             'attributes' => [

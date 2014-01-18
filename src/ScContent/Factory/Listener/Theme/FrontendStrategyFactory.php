@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -25,11 +25,13 @@ class FrontendStrategyFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+        $controllerManager = $serviceLocator->get('ControllerLoader');
         $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
         $layoutMapper = $serviceLocator->get('ScMapper.Theme.FrontendLayoutMapper');
 
         $strategy = new FrontendStrategy();
 
+        $strategy->setControllerManager($controllerManager);
         $strategy->setModuleOptions($moduleOptions);
         $strategy->setLayoutMapper($layoutMapper);
 

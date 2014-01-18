@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -97,6 +97,9 @@ return [
         'ScService.Back.Layout'
             => 'ScContent\Factory\Service\Back\LayoutFactory',
 
+        'ScService.Back.WidgetConfiguration'
+            => 'ScContent\Factory\Service\Back\WidgetConfigurationFactory',
+
         'ScMapper.Roles'
             => 'ScContent\Factory\Mapper\RolesFactory',
 
@@ -151,6 +154,12 @@ return [
         'ScMapper.Back.LayoutMove'
             => 'ScContent\Factory\Mapper\Back\LayoutMoveMapperFactory',
 
+        'ScMapper.Back.Widget'
+            => 'ScContent\Factory\Mapper\Back\WidgetMapperFactory',
+
+        'ScListener.UnauthorizedStrategy'
+            => 'ScContent\Factory\Listener\UnauthorizedStrategyFactory',
+
         'ScListener.Installation.Inspector'
             => 'ScContent\Factory\Listener\Installation\InstallationInspectorFactory',
 
@@ -181,7 +190,7 @@ return [
         'ScListener.Back.ContentListMove'
             => 'ScContent\Factory\Listener\Back\ContentListMoveFactory',
 
-        'sc-listener.back.content.list.move.to.trash'
+        'ScListener.Back.ContentListMoveToTrash'
             => 'ScContent\Factory\Listener\Back\ContentListMoveToTrashFactory',
 
         'ScListener.Back.ContentListRecoveryFromTrash'

@@ -1,22 +1,10 @@
-<?php 
+<?php
     $this->headTitle($this->translate('Themes'));
 ?>
-<?php if(isset($this->messages) && !empty($this->messages)): ?>
+<?php if (isset($messages)): ?>
 
-<div class="row">
-    <div class="col-md-12 col-lg-12">
-        <div class="alert alert-warning fade in">
-            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-            <ul>
-                <?php foreach($this->messages as $message): ?>
-                
-                <li><?php echo $message ?></li>
-                <?php endforeach ?>
-            
-            </ul>
-        </div>
-    </div>
-</div>
+    <?= $this->partial('sc-default/template/backend/partial/error.phtml') ?>
+
 <?php endif ?>
 <?php foreach($options->getThemes() as $name => $item): ?>
 <?php $displayName = isset($item['display_name']) ? $item['display_name'] : $name ?>
@@ -25,32 +13,32 @@
     <div class="col-lg-12">
         <div class="theme-item">
             <?php if(isset($item['screenshot'])): ?>
-                
+
                 <img class="theme-screenshot" src="<?php echo $this->basePath($item['screenshot']) ?>" alt="<?php echo sprintf($this->translate('Screenshot for %s theme'), $displayName) ?>" title="<?php echo sprintf($this->translate('Screenshot for %s theme'), $displayName) ?>" />
             <?php endif ?>
-            
+
             <div class="theme-info">
                 <h3><?php echo $displayName ?></h3>
-                
+
                 <?php if(isset($item['description'])): ?>
-                
+
                 <p><?php echo $this->translate($item['description']) ?></p>
                 <?php endif ?>
-                
+
                 <?php if(in_array($name, $registeredThemes)): ?>
                     <?php if($name !== $options->getFrontendThemeName()): ?>
-                    
+
                         <a href="">Disable</a> |&nbsp;<a href="">Settings</a> |&nbsp;<a href="">Set default</a>
-                    <?php else: ?>    
-                        
+                    <?php else: ?>
+
                         <a href="<?php echo $this->url('sc-admin/layout', array('theme' => $name)) ?>"><?php echo $this->translate('Lyout') ?></a>
                     <?php endif ?>
                 <?php else: ?>
-                
+
                     <a href="">Enable</a> |&nbsp;<a href="">Enable and set default</a>
                 <?php endif ?>
-                
-                
+
+
             </div>
             <div class="clearfix"></div>
         </div>

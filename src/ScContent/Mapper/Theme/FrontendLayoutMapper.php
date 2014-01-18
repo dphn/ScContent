@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -27,6 +27,11 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
     protected $moduleOptions;
 
     /**
+     * @var ScContent\Entity\Front\Regions
+     */
+    protected $regions;
+
+    /**
      * Constructor
      *
      * @param Zend\Db\Adapter\AdapterInterface $adapter
@@ -34,10 +39,12 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
      */
     public function __construct(
         AdapterInterface $adapter,
-        ModuleOptions $options
+        ModuleOptions $options,
+        Regions $regions
     ) {
         $this->setAdapter($adapter);
         $this->moduleOptions = $options;
+        $this->regions = $regions;
     }
 
     /**
@@ -45,11 +52,11 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
      */
     public function findRegions()
     {
+        $list = $this->regions;
         $moduleOptions = $this->moduleOptions;
         $theme = $moduleOptions->getFrontendTheme();
         $themeName = $moduleOptions->getFrontendThemeName();
 
-        $list = new Regions($theme);
         $widgets = $moduleOptions->getWidgets();
         if (! is_array($widgets)) {
             return $list;

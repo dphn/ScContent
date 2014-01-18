@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -94,7 +94,7 @@ class CategoryForm extends Form
             'options' => [
                 'label' => 'Category description',
                 'label_attributes' => [
-                    'class' => 'content-form-label'
+                    'class' => 'label-default'
                 ],
             ],
             'attributes' => [

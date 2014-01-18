@@ -31,7 +31,7 @@
         <div class="col-sm-8 col-md-8 col-lg-8">
             <div class="panel-group accordion" id="accordion">
                 <?php $first = true ?>
-                <?php foreach($regions as $regionName => $widgets): ?>
+                <?php foreach ($regions as $regionName => $widgets): ?>
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -48,7 +48,7 @@
 
                             <em><?= $this->translate('No widgets in this region') ?></em>
                         <?php endif ?>
-                        <?php foreach($widgets as $widget): ?>
+                        <?php foreach ($widgets as $widget): ?>
 
                         <div class="row form-group">
                             <div class="col-sm-4 form-group-item">
@@ -59,10 +59,10 @@
                                 <?php endif ?>
 
                             </div>
-                            <div class="col-sm-2 form-group-item">
-                                <?php if (! $widget->getOption('immutable')): ?>
+                            <div class="col-sm-2 form-group-item layout-actions">
+                                <?php if (! $widget->findOption('immutable')): ?>
 
-                                <a href="">Edit</a>
+                                <a href="<?= $this->url('sc-admin/widget/configure', ['id' => $widget->getId()]) ?>">Configure</a>
                                 <?php endif ?>
 
                             </div>
@@ -72,7 +72,7 @@
                             </div>
                             <div class="col-sm-4 form-group-item">
                                 <select name="region[<?= $widget->getId() ?>]" class="form-control input-sm">
-                                    <?php foreach($regions->getNames() as $itemRegionName => $itemRegionDisplayName): ?>
+                                    <?php foreach ($regions->getNames() as $itemRegionName => $itemRegionDisplayName): ?>
 
                                     <option value="<?= $itemRegionName?>"<?php if ($itemRegionName == $regionName): ?> selected="selected"<?php endif ?>><?= $this->translate($itemRegionDisplayName) ?></option>
                                     <?php endforeach ?>

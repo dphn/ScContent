@@ -3,14 +3,34 @@
 namespace ScContent\Listener\Theme;
 
 use ScContent\Mapper\Theme\FrontendLayoutMapper,
+    ScContent\Controller\AbstractWidget,
+    ScContent\Controller\AbstractFront,
     ScContent\Exception\IoCException,
     //
+    Zend\Mvc\Controller\ControllerManager,
     Zend\View\Model\ModelInterface as ViewModel,
     Zend\Mvc\MvcEvent;
 
 class FrontendStrategy extends AbstractThemeStrategy
 {
+    protected $controllerManager;
+
     protected $layoutMapper;
+
+    public function setControllerManager(ControllerManager $manager)
+    {
+        $this->controllerManager = $manager;
+    }
+
+    public function getControllerManager()
+    {
+        if (! $this->controllerManager instanceof ControllerManager) {
+            throw new IoCException(
+                'The controller manager was not set.'
+            );
+        }
+        return $this->controllerManager;
+    }
 
     public function setLayoutMapper(FrontendLayoutMapper $mapper)
     {
@@ -29,6 +49,7 @@ class FrontendStrategy extends AbstractThemeStrategy
 
     public function update(MvcEvent $event)
     {
+        $controllerManager = $this->getControllerManager();
         $moduleOptions = $this->getModuleOptions();
         $mapper = $this->getLayotMapper();
 
@@ -72,21 +93,46 @@ class FrontendStrategy extends AbstractThemeStrategy
         }
         $layout->setTemplate($template);
 
+        if (! $event->getParam(AbstractFront::EnableRegions, true)) {
+            return;
+        }
+
         $regions = $mapper->findRegions();
         $layout->regions = $regions;
 
-        $widgets = $moduleOptions->getWidgets();
+        foreach ($regions as $widgetsList) {
+            foreach ($widgetsList as $item) {
+                $widgetName = $item->getName();
 
-        foreach($widgets as $widgetName => $widgetOptions) {
-            if (! isset($widgetOptions['frontend'])) {
-                continue;
+                if (! $moduleOptions->widgetExists($widgetName)) {
+                    continue;
+                }
+                $widget = $moduleOptions->getWidgetByName($widgetName);
+                if (isset($widget['options']['immutable'])
+                    && $widget['options']['immutable']
+                ) {
+                    $item->setId($item->getName());
+                }
+                if (! isset($widget['frontend'])) {
+                    continue;
+                }
+
+                if (! $controllerManager->has($widget['frontend'])) {
+                    continue;
+                }
+
+                $widgetController = $controllerManager->get($widget['frontend']);
+                if (! $widgetController instanceof AbstractWidget) {
+                    continue;
+                }
+                $widgetController->setItem($item);
+
+                $childModel = $controller->forward()->dispatch(
+                    $widget['frontend'],
+                    ['action' => 'front']
+                );
+                $layout->addChild($childModel, $item->getId());
             }
-            $widget = $controller->forward()->dispatch(
-                $widgetOptions['frontend'],
-                ['action' => 'front']
-            );
-
-            $layout->addChild($widget, $widgetName);
         }
     }
 }

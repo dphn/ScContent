@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -12,8 +12,11 @@ namespace ScContent\Entity\Front;
 use ScContent\Entity\AbstractList,
     ScContent\Entity\WidgetsList,
     ScContent\Entity\WidgetItem,
+    ScContent\Options\ModuleOptionsInterface,
     //
-    ScContent\Exception\InvalidArgumentException;
+    ScContent\Exception\InvalidArgumentException,
+    //
+    BjyAuthorize\Provider\Identity\ProviderInterface;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -31,10 +34,20 @@ class Regions extends AbstractList
     protected $regionOptions = [];
 
     /**
+     * @var array
+     */
+    protected $roles = [];
+
+    /**
      * @param array $theme
      */
-    public function __construct($theme)
-    {
+    public function __construct(
+        ProviderInterface $identityProvider,
+        ModuleOptionsInterface $options
+    ) {
+        $this->roles = $identityProvider->getIdentityRoles();
+
+        $theme = $options->getFrontendTheme();
         if (! isset($theme['frontend']['regions'])) {
             throw new InvalidArgumentException(
                 'Invalid format of the theme.'
@@ -60,8 +73,13 @@ class Regions extends AbstractList
         if (! $this->offsetExists($item->getRegion())) {
             return;
         }
-        $items = &$this->items[$item->getRegion()];
-        $items->addItem($item);
+        foreach ($this->roles as $role) {
+            if ($item->isApplicable($role)) {
+                $items = &$this->items[$item->getRegion()];
+                $items->addItem($item);
+                break;
+            }
+        }
     }
 
     public function getRegionOption($regionName, $optionName)

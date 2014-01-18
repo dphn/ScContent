@@ -7,9 +7,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <?php foreach($widgets as $widget): ?>
-                    <?php $widgetName = $widget->getName() ?>
+                    <?php $widgetId = $widget->getId() ?>
 
-                    <?= $this->layout()->$widgetName ?>
+                    <?= $this->layout()->$widgetId ?>
                 <?php endforeach ?>
 
             </div>

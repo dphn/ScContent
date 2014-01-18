@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -40,6 +40,11 @@ class IdentityProvider extends AbstractService implements ProviderInterface
      * @var string | Zend\Permissions\Acl\Role\RoleInterface
      */
     protected $defaultRole = 'guest';
+
+    /**
+     * @var array
+     */
+    protected $identityRoles = [];
 
     /**
      * @param ZfcUser\Service\User $service
@@ -92,16 +97,21 @@ class IdentityProvider extends AbstractService implements ProviderInterface
      */
     public function getIdentityRoles()
     {
+        if (! empty($this->identityRoles)) {
+            return $this->identityRoles;
+        }
         $userService = $this->getUserService();
         $authService = $userService->getAuthService();
         if (! $authService->hasIdentity()) {
-            return [$this->getDefaultRole()];
+            $this->identityRoles = [$this->getDefaultRole()];
+            return $this->identityRoles;
         }
 
         $userId = $authService->getIdentity()->getId();
         try {
             $mapper = $this->getMapper();
-            return $mapper->findUserRoles($userId);
+            $this->identityRoles = $mapper->findUserRoles($userId);
+            return $this->identityRoles;
         } catch (Exception $e) {
             $events = $this->getEventManager();
             $events->trigger(
@@ -115,7 +125,8 @@ class IdentityProvider extends AbstractService implements ProviderInterface
                     'exception' => $e
                 ]
             );
-            return [$this->getDefaultRole()];
+            $this->identityRoles = [$this->getDefaultRole()];
+            return $this->identityRoles;
         }
     }
 

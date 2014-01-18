@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -39,11 +39,11 @@ return [
         'ScController.Back.Theme'
             => 'ScContent\Controller\Back\ThemeController',
 
+        'ScController.Back.Widget'
+            => 'ScContent\Controller\Back\WidgetController',
+
         'ScController.Front.Content'
             => 'ScContent\Controller\Front\ContentController',
-
-        'ScController.Front.Widget.Login'
-            => 'ScContent\Controller\Front\LoginController',
     ],
     'factories' => [
         // Factory use events

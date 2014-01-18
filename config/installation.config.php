@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -186,7 +186,7 @@ return [
                                     /* 'version' - directory must contain a
                                      * "version" file with this name.
                                      */
-                                    'version' => 'sc.v-0.1.3.006.version',
+                                    'version' => 'sc.v-0.1.3.007.version',
                                     'source' => [
                                         'source_module' => 'ScContent',
                                         'source_zip' => '/data/public.zip',
@@ -249,7 +249,7 @@ return [
                         'service'   => 'ScService.Installation.Autoload',
                         'batch' => [
                             'source_module' => 'ScContent',
-                            'source_file' => '/data/installation/bjyauthorize.sc.v-0.1.3.003.local.php.dist',
+                            'source_file' => '/data/installation/bjyauthorize.sc.v-0.1.3.004.local.php.dist',
                             'old_files_mask' => 'bjyauthorize.sc.v-*',
                         ],
                     ],

@@ -11,10 +11,10 @@ return [
          */
         'widgets' => [
             'content' => [
+                'display_name' => 'Content',
+                'description' => 'Editable content. For editing use the content manager.',
                 'options' => [
                     'immutable' => true,
-                    'display_name' => 'Content',
-                    'description' => 'Editable content. For editing use the content manager.',
                 ],
             ],
         ],
@@ -23,6 +23,8 @@ return [
                 'display_name' => 'ScContent Default',
                 'description'  => 'The default theme with several regions.',
                 'screenshot'   => 'sc-default/img/theme.png',
+                'theme_images' => '/img',
+                'access_denied_template' => 'sc-default/template/frontend/user/deny',
                 'zfcuser_template_path' => $this->getDir() . str_replace('/', DS, '/view/sc-default'),
                 'errors' => [
                     'layout' => 'sc-default/layout/frontend/index',
@@ -40,13 +42,14 @@ return [
                             'display_name' => 'Header',
                             'partial' => 'sc-default/layout/frontend/region/header',
                             'contains' => [
-                                'search'
+                                'site_title', 'banner', 'search'
                             ],
                         ],
                         'content_top' => [
                             'display_name' => 'Content Top',
                             'partial' => 'sc-default/layout/frontend/region/content-top',
-                            'contains' => [],
+                            'contains' => [
+                            ],
                         ],
                         'content_middle' => [
                             'display_name' => 'Content Middle',
@@ -63,7 +66,8 @@ return [
                             'display_name' => 'Aside',
                             'partial' => 'sc-default/layout/frontend/region/aside',
                             'contains' => [
-                                'login'
+                                'example',
+                                'login',
                             ],
                         ],
                         'footer' => [
@@ -278,6 +282,8 @@ return [
                             ],
                         ],
                     ],
+                    /* Themes
+                     */
                     'themes' => [
                         'type' => 'segment',
                         'options' => [
@@ -288,6 +294,8 @@ return [
                             ],
                         ],
                     ],
+                    /* Layout
+                     */
                     'layout' => [
                         'type' => 'segment',
                         'options' => [
@@ -295,6 +303,36 @@ return [
                             'defaults' => [
                                 'controller' => 'ScController.Back.Layout',
                                 'action' => 'index',
+                            ],
+                        ],
+                    ],
+                    /* Widget
+                     */
+                    'widget' => [
+                        'type' => 'literal',
+                        'options' => [
+                            'route' => '/widget',
+                        ],
+                        'child_routes' => [
+                            'configure' => [
+                                'type' => 'segment',
+                                    'options' => [
+                                    'route' => '/configure[/:id]',
+                                    'defaults' => [
+                                        'controller' => 'ScController.Back.Widget',
+                                        'action' => 'configure',
+                                    ],
+                                ],
+                            ],
+                            'edit' => [
+                                'type' => 'segment',
+                                'options' => [
+                                    'route' => '/edit[/:id]',
+                                    'defaults' => [
+                                        'controller' => 'ScController.Back.Widget',
+                                        'action' => 'edit',
+                                    ],
+                                ],
                             ],
                         ],
                     ],

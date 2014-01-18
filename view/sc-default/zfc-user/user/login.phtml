@@ -1,15 +1,15 @@
 <?php
-    if (! isset($this->layout()->options['render_as_widget'])
-        || ! $this->layout()->options['render_as_widget']
+    if (! isset($this->layout()->options['zfcuser_login_as_widget'])
+        || ! $this->layout()->options['zfcuser_login_as_widget']
     ) {
-        $this->scBodyTag('class', 'login');
+        $this->scBodyTag('class', 'user');
         $useAsWidget = false;
         $inputClass = 'form-control';
         $buttonClass = 'btn btn-primary';
     } else {
         $useAsWidget = true;
         $inputClass = 'form-control input-sm';
-        $buttonClass = 'btn btn-sm btn-primary';
+        $buttonClass = 'btn btn-sm btn-default';
     }
     $form = $this->loginForm;
     $form->prepare();

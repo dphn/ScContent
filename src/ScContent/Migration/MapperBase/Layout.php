@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -35,6 +35,8 @@ class Layout extends AbstractMigrationMapper
             ->addColumn(new Column\Varchar('theme', 128))
             ->addColumn(new Column\Varchar('region', 128))
             ->addColumn(new Column\Varchar('name', 128))
+            ->addColumn(new Column\Varchar('display_name', 255))
+            ->addColumn(new Column\Text('description'))
             ->addColumn(new Column\Text('options'))
             ->addColumn(new Column\Integer('position', false))
             ->addConstraint(new Constraint\PrimaryKey('id'));

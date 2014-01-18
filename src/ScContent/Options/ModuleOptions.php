@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -262,6 +262,22 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     public function getWidgets()
     {
         return $this->widgets;
+    }
+
+    /**
+     * @param string $name
+     * @throws ScContent\Exception\DomainException
+     * @return array
+     */
+    public function getWidgetByName($name)
+    {
+        if (! isset($this->widgets[$name])) {
+            throw new DomainException(sprintf(
+                "Unknown widget '%s'.",
+                $name
+            ));
+        }
+        return $this->widgets[$name];
     }
 
     /**

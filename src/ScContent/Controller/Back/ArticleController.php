@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -71,7 +71,7 @@ class ArticleController extends AbstractBack
         $id = $this->params()->fromRoute('id');
         if (! is_numeric($id)) {
             $this->flashMessenger()->addMessage(
-                $this->scTranslate('The article ID was not specified.')
+                $this->scTranslate('The article identifier was not specified.')
             );
             return $this->redirect()
                 ->toRoute('sc-admin/content-manager')

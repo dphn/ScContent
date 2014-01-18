@@ -3,7 +3,7 @@
  * ScContent (https://github.com/dphn/ScContent)
  *
  * @author    Dolphin <work.dolphin@gmail.com>
- * @copyright Copyright (c) 2013 ScContent
+ * @copyright Copyright (c) 2013-2014 ScContent
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -55,9 +55,9 @@ class LayoutMapper extends AbstractLayoutMapper
         $sql = sprintf(
             'INSERT INTO
                 `%s`
-            (`theme`, `region`, `name`, `options`, `position`)
+            (`theme`, `region`, `name`, `display_name`, `description`, `options`, `position`)
             SELECT
-            :theme, :region, :name, :options,
+            :theme, :region, :name, :displayName, :description, :options,
                 IF(ISNULL(MAX(`position`)),
                    1,
                    MAX(`position`) + 1
@@ -72,10 +72,12 @@ class LayoutMapper extends AbstractLayoutMapper
             $this->getTable(self::LayoutTableAlias)
         );
         $this->execute($sql, [
-            ':options' => $entity->getOptions(),
-            ':theme'   => $entity->getTheme(),
-            ':region'  => $entity->getRegion(),
-            ':name'    => $entity->getName(),
+            ':displayName' => $entity->getDisplayName(),
+            ':description' => $entity->getDescription(),
+            ':options'     => $entity->getOptions(),
+            ':theme'       => $entity->getTheme(),
+            ':region'      => $entity->getRegion(),
+            ':name'        => $entity->getName(),
         ]);
     }
 }

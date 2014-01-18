@@ -47,6 +47,7 @@
             <div class="btn-group btn-group-sm">
                 <?php if ($options->getRoot() == 'trash'): ?>
                     <?php if ($otherType == 'list' && $otherRoot == 'site'): ?>
+
                     <button class="btn btn-default btn-sm" name="suboperation" value="recovery" type="submit"><?= $this->translate('Recovery') ?></button>
                     <?php endif ?>
 
@@ -68,11 +69,12 @@
 
                     <button class="btn btn-default btn-sm" name="suboperation" value="trash" type="submit"><?= $this->translate('Move to Trash') ?></button>
                     <?php if ($options->getType() == 'list'): ?>
+
                     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><?= $this->translate('Add') ?> <span class="caret"></span></button>
                     <ul class="dropdown-menu text-right-gte-sm" role="menu">
-                      <li><a href="<?= $this->url('sc-admin/category/add', ['parent' => $options->getParent()]) ?>"><?= $this->translate('&bull; Category') ?></a></li>
-                      <li><a href="<?= $this->url('sc-admin/article/add', ['parent' => $options->getParent()]) ?>"><?= $this->translate('&bull; Article') ?></a></li>
-                      <li><a href="<?= $this->url('sc-admin/file/add', ['parent' => $options->getParent()]) ?>"><?= $this->translate('&bull; File') ?></a></li>
+                        <li><a href="<?= $this->url('sc-admin/category/add', ['parent' => $options->getParent()]) ?>"><?= $this->translate('&bull; Category') ?></a></li>
+                        <li><a href="<?= $this->url('sc-admin/article/add', ['parent' => $options->getParent()]) ?>"><?= $this->translate('&bull; Article') ?></a></li>
+                        <li><a href="<?= $this->url('sc-admin/file/add', ['parent' => $options->getParent()]) ?>"><?= $this->translate('&bull; File') ?></a></li>
                     </ul>
                     <?php endif ?>
                 <?php endif ?>
