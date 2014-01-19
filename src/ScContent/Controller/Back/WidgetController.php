@@ -72,6 +72,7 @@ class WidgetController extends AbstractBack
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
                 try {
+                    $service = $this->getWidgetConfigurationService();
                     $service->saveWidget($widget);
                 } catch (RuntimeException $e) {
                     $view->messages = [$e->getMessage()];
