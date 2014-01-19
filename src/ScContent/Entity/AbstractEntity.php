@@ -16,12 +16,12 @@ use ScContent\Exception\DomainException,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class AbstractEntity
+class AbstractEntity implements EntityInterface
 {
     /**
      * @param array | Traversable $data
      * @throws ScContent\Exception\DomainException
-     * @return void
+     * @return AbstractEntity
      */
     public function exchangeArray($data)
     {
@@ -40,6 +40,7 @@ class AbstractEntity
             }
             $this->{$setter}($value);
         }
+        return $this;
     }
 
     /**

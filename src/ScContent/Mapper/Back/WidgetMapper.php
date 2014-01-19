@@ -9,7 +9,7 @@
  */
 namespace ScContent\Mapper\Back;
 
-use ScContent\Entity\Back\WidgetEntity,
+use ScContent\Entity\WidgetInterface,
     ScContent\Mapper\AbstractDbMapper,
     ScContent\Mapper\Exception\UnavailableSourceException,
     //
@@ -41,11 +41,11 @@ class WidgetMapper extends AbstractDbMapper
     }
 
     /**
-     * @param ScContent\Entity\Back\WidgetEntity $widget
+     * @param ScContent\Entity\WidgetInterface $widget
      * @throws ScContent\Mapper\Exception\UnavailableSourceException
      * @return void
      */
-    public function find(WidgetEntity $widget)
+    public function find(WidgetInterface $widget)
     {
         $select = $this->getSql()->select()
             ->from($this->getTable(self::LayoutTableAlias))
@@ -64,10 +64,10 @@ class WidgetMapper extends AbstractDbMapper
     }
 
     /**
-     * @param ScContent\Entity\Back\WidgetEntity $widget
+     * @param ScContent\Entity\WidgetInterface $widget
      * @return void
      */
-    public function save(WidgetEntity $widget)
+    public function save(WidgetInterface $widget)
     {
         $hydrator = $this->getHydrator();
         $update = $this->getSql()->update()

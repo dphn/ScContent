@@ -10,7 +10,7 @@
 namespace ScContent\Service\Installation;
 
 use ScContent\Mapper\Installation\LayoutMapper,
-    ScContent\Entity\Installation\WidgetEntity,
+    ScContent\Entity\WidgetInterface,
     ScContent\Options\ModuleOptions,
     //
     ScContent\Exception\InvalidArgumentException,
@@ -93,21 +93,21 @@ class LayoutService extends AbstractInstallationService
     }
 
     /**
-     * @param ScContent\Entity\Installation\WidgetEntity $entity
+     * @param ScContent\Entity\WidgetInterface $entity
      * @return void
      */
-    public function setWidgetEntity(WidgetEntity $entity)
+    public function setWidgetEntity(WidgetInterface $entity)
     {
         $this->widgetEntity = $entity;
     }
 
     /**
      * @throws ScContent\Exception\IoCException
-     * @return ScContent\Entity\Installation\WidgetEntity
+     * @return ScContent\Entity\WidgetInterface
      */
     public function getWidgetEntity()
     {
-        if (! $this->widgetEntity instanceof WidgetEntity) {
+        if (! $this->widgetEntity instanceof WidgetInterface) {
             throw new IoCException('The widget entity was not set.');
         }
         return $this->widgetEntity;

@@ -15,6 +15,7 @@ return [
                 'description' => 'Editable content. For editing use the content manager.',
                 'options' => [
                     'immutable' => true,
+                    'unique' => true,
                 ],
             ],
         ],
@@ -23,7 +24,7 @@ return [
                 'display_name' => 'ScContent Default',
                 'description'  => 'The default theme with several regions.',
                 'screenshot'   => 'sc-default/img/theme.png',
-                'theme_images' => '/img',
+                'theme_images' => '/sc-default/img',
                 'access_denied_template' => 'sc-default/template/frontend/user/deny',
                 'zfcuser_template_path' => $this->getDir() . str_replace('/', DS, '/view/sc-default'),
                 'errors' => [

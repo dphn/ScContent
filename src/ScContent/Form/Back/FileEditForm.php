@@ -24,7 +24,8 @@ class FileEditForm extends Form
     public function __construct()
     {
         parent::__construct('files');
-        $this->setFormSpecification();
+
+        $this->setAttribute('method', 'post')->setFormSpecification();
     }
 
     /**

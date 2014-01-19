@@ -12,7 +12,7 @@ namespace ScContent\Mapper\Back;
 use ScContent\Mapper\AbstractLayoutMapper,
     ScContent\Options\ModuleOptions,
     ScContent\Entity\Back\Regions,
-    ScContent\Entity\WidgetItem,
+    ScContent\Entity\Widget,
     //
     Zend\Db\Adapter\AdapterInterface;
 
@@ -80,7 +80,7 @@ class LayoutServiceMapper extends AbstractLayoutMapper
         $results = $this->execute($select);
 
         $hydrator = $this->getHydrator();
-        $itemPrototype = new WidgetItem();
+        $itemPrototype = new Widget();
         foreach ($results as $result) {
             $item = clone ($itemPrototype);
             $hydrator->hydrate($result, $item);

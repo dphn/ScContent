@@ -31,7 +31,10 @@ class ArticleForm extends Form
         $this->adapter = $adapter;
 
         parent::__construct('article');
-        $this->setFormSpecification()->setInputSpecification();
+
+        $this->setAttribute('method', 'post')
+            ->setFormSpecification()
+            ->setInputSpecification();
     }
 
     /**

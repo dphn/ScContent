@@ -15,10 +15,10 @@ namespace ScContent\Entity;
 class WidgetsList extends AbstractList
 {
     /**
-     * @param WidgetItem $item
+     * @param WidgetInterface $item
      * @return void
      */
-    public function addItem(WidgetItem $item)
+    public function addItem(WidgetInterface $item)
     {
         $this->items[] = $item;
     }

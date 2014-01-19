@@ -12,7 +12,7 @@ return ['bjyauthorize' => [
 
             // ZfcUser
             /* routes 'zfcuser/changepassword' and 'zfcuser/changeemail'
-             * are not supported. To change a user profile, use the widgets.
+             * are not supported.
              */
             [
                 'route' => 'zfcuser',

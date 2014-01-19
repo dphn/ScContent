@@ -10,7 +10,7 @@
 namespace ScContent\Factory\Service\Installation;
 
 use ScContent\Service\Installation\LayoutService,
-    ScContent\Entity\Installation\WidgetEntity,
+    ScContent\Entity\Widget,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -26,7 +26,7 @@ class LayoutFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $entity = new WidgetEntity();
+        $entity = new Widget();
         $translator = $serviceLocator->get('translator');
         $options = $serviceLocator->get('ScOptions.ModuleOptions');
         $mapper = $serviceLocator->get('ScMapper.Installation.Layout');

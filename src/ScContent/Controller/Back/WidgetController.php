@@ -61,18 +61,24 @@ class WidgetController extends AbstractBack
             return $this->getResponse();
         }
 
+        $service = $this->getWidgetConfigurationService();
+        $widgetConfig = $service->getWidgetConfig($widget);
+
         $view->widgetId = $widget->getId();
         $view->theme = $widget->getTheme();
         $moduleOptions = $this->getModuleOptions();
         $view->config = $moduleOptions->getWidgetByName($widget->getName());
 
         $form = $this->getWidgetConfigurationForm();
-        $form->bind($widget);
+        $form->setAttribute(
+            'action',
+            $this->url()->fromRoute('sc-admin/widget/configure', ['id' => $id])
+        );
+        $form->bind($widgetConfig);
         if ($this->getRequest()->isPost()) {
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {
                 try {
-                    $service = $this->getWidgetConfigurationService();
                     $service->saveWidget($widget);
                 } catch (RuntimeException $e) {
                     $view->messages = [$e->getMessage()];
@@ -139,6 +145,11 @@ class WidgetController extends AbstractBack
             $config['backend'],
             ['action' => 'back']
         );
+
+        if ($widget) {
+            $service = $this->getWidgetConfigurationService();
+            $service->saveWidget($widget);
+        }
 
         $view->addChild($childView, 'backend_of_custom_widget');
         return $view;

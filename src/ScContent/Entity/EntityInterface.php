@@ -7,29 +7,21 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Entity\Installation;
-
-use ScContent\Entity\WidgetItem;
+namespace ScContent\Entity;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class WidgetEntity extends WidgetItem
+interface EntityInterface
 {
     /**
-     * @param array $options
-     * @return void
+     * @param array | Traversable $data
+     * @return EntityInterface
      */
-    public function setOptions($options)
-    {
-        $this->options = $options;
-    }
+    function exchangeArray($data);
 
     /**
-     * @return string
+     * @return array
      */
-    public function getOptions()
-    {
-        return serialize($this->options);
-    }
+    function getArrayCopy();
 }

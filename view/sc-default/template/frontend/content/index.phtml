@@ -17,7 +17,7 @@
     <h1><?= $content->getTitle() ?></h1>
     <div>
         <img src="<?= $this->scContentFormat()->getImagePath($content) ?>" alt="<?= $content->getContent() ?>" title="<?= $content->getTitle() ?>" />
-        <div><?= $content->getDescription() ?></div>
+        <div class="file-description"><?= $content->getDescription() ?></div>
     </div>
 
 <?php else: ?>

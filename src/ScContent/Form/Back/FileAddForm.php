@@ -55,7 +55,10 @@ class FileAddForm extends Form
         $this->fileTypeValidator = $fileTypeValidator;
 
         parent::__construct('upload');
-        $this->setFormSpecification()->setInputSpecification();
+
+        $this->setAttribute('method', 'post')
+            ->setFormSpecification()
+            ->setInputSpecification();
     }
 
     /**

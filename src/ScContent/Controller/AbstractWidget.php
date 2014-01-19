@@ -9,7 +9,7 @@
  */
 namespace ScContent\Controller;
 
-use ScContent\Entity\WidgetItem,
+use ScContent\Entity\WidgetInterface,
     ScContent\Exception\IoCException,
     //
     Zend\Mvc\Controller\AbstractActionController;
@@ -20,21 +20,21 @@ use ScContent\Entity\WidgetItem,
 abstract class AbstractWidget extends AbstractActionController
 {
     /**
-     * @var ScContent\Entity\WidgetItem
+     * @var ScContent\Entity\WidgetInterface
      */
     protected $item;
 
-    public function setItem(WidgetItem $item)
+    public function setItem(WidgetInterface $item)
     {
         $this->item = $item;
     }
 
     /**
-     * @return ScContent\Entity\WidgetItem
+     * @return ScContent\Entity\WidgetInterface
      */
     public function getItem()
     {
-        if (! $this->item instanceof WidgetItem) {
+        if (! $this->item instanceof WidgetInterface) {
             throw new IoCException(
                 'Item data was not set.'
             );

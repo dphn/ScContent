@@ -9,13 +9,15 @@
  */
 namespace ScContent\Entity;
 
+use ScContent\Entity\Back\WidgetEntity;
+
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class WidgetItem extends AbstractEntity
+class Widget extends AbstractEntity implements WidgetInterface
 {
     /**
-     * @var integer | null
+     * @var null | integer | string
      */
     protected $id;
 
@@ -55,16 +57,17 @@ class WidgetItem extends AbstractEntity
     protected $position = 0;
 
     /**
-     * @param integer $id
-     * @return void
+     * @param null | integer | string $id
+     * @return WidgetEntity
      */
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
-     * @return integer
+     * @return null | integer | string
      */
     public function getId()
     {
@@ -73,11 +76,12 @@ class WidgetItem extends AbstractEntity
 
     /**
      * @param string $name
-     * @return void
+     * @return Widget
      */
     public function setTheme($name)
     {
         $this->theme = $name;
+        return $this;
     }
 
     /**
@@ -90,11 +94,12 @@ class WidgetItem extends AbstractEntity
 
     /**
      * @param string $region
-     * @return void
+     * @return Widget
      */
     public function setRegion($region)
     {
         $this->region = $region;
+        return $this;
     }
 
     /**
@@ -107,11 +112,12 @@ class WidgetItem extends AbstractEntity
 
     /**
      * @param string $name
-     * @return void
+     * @return Widget
      */
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -124,11 +130,12 @@ class WidgetItem extends AbstractEntity
 
     /**
      * @param string $name
-     * @return void
+     * @return Widget
      */
     public function setDisplayName($name)
     {
         $this->displayName = $name;
+        return $this;
     }
 
     /**
@@ -149,11 +156,12 @@ class WidgetItem extends AbstractEntity
 
     /**
      * @param string $description
-     * @return void
+     * @return Widget
      */
     public function setDescription($description)
     {
         $this->description = $description;
+        return $this;
     }
 
     /**
@@ -165,8 +173,8 @@ class WidgetItem extends AbstractEntity
     }
 
     /**
-     * @param string | array $options
-     * @return void
+     * @param string | array $options Array of options or a serialized options as string
+     * @return Widget
      */
     public function setOptions($options)
     {
@@ -174,19 +182,35 @@ class WidgetItem extends AbstractEntity
             $options = unserialize($options);
         }
         $this->options = $options;
+        return $this;
     }
 
     /**
-     * @return array
+     * @param boolean $serialized optional default true
+     * @return array | string
      */
-    public function getOptions()
+    public function getOptions($serialized = true)
     {
+        if ($serialized) {
+            return serialize($this->options);
+        }
         return $this->options;
     }
 
     /**
      * @param string $name
-     * @param mixed $default
+     * @param mixed $value
+     * @return Widget
+     */
+    public function setOption($name, $value)
+    {
+        $this->options[$name] = $value;
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param mixed $default optional default null
      * @return mixed
      */
     public function findOption($name, $default = null)
@@ -198,6 +222,15 @@ class WidgetItem extends AbstractEntity
     }
 
     /**
+     * Checks whether the widget is applicable to the role.
+     * This behavior differs from the ACL. Returns FALSE if and only if the
+     * widget is explicitly disabled for a given role.
+     *
+     * This is true because the widgets do not have to perform any
+     * function other than displaying information. To change the information
+     * are frontend and backend controllers, protected access
+     * to them engaged ACL.
+     *
      * @param string $role
      * @return boolean
      */
@@ -211,11 +244,12 @@ class WidgetItem extends AbstractEntity
 
     /**
      * @param integer $position
-     * @return void
+     * @return Widget
      */
     public function setPosition($position)
     {
         $this->position = (int) $position;
+        return $this;
     }
 
     /**

@@ -108,11 +108,12 @@ class FrontendStrategy extends AbstractThemeStrategy
                     continue;
                 }
                 $widget = $moduleOptions->getWidgetByName($widgetName);
-                if (isset($widget['options']['immutable'])
-                    && $widget['options']['immutable']
-                ) {
+
+                if ($widgetName === 'content') {
                     $item->setId($item->getName());
+                    continue;
                 }
+
                 if (! isset($widget['frontend'])) {
                     continue;
                 }

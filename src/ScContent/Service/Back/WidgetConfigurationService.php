@@ -4,7 +4,9 @@ namespace ScContent\Service\Back;
 
 use ScContent\Service\AbstractService,
     ScContent\Mapper\Back\WidgetMapper,
-    ScContent\Entity\Back\WidgetEntity,
+    ScContent\Entity\Back\WidgetConfig,
+    ScContent\Entity\WidgetInterface,
+    ScContent\Entity\Widget,
     ScContent\Mapper\RolesMapper,
     //
     ScContent\Exception\RuntimeException,
@@ -74,14 +76,24 @@ class WidgetConfigurationService extends AbstractService
         return $this->rolesMapper;
     }
 
+    public function getWidgetConfig(WidgetInterface $widget)
+    {
+        $rolesMapper = $this->getRolesMapper();
+        $availableRoles = $rolesMapper->findRegisteredRoles();
+
+        $widgetConfig = new WidgetConfig($widget, $availableRoles);
+        return $widgetConfig;
+    }
+
+    /**
+     * @param integer $widgetId
+     */
     public function findWidget($id)
     {
         $translator = $this->getTranslator();
-        $rolesMapper = $this->getRolesMapper();
         $widgetMapper = $this->getWidgetMapper();
 
-        $availableRoles = $rolesMapper->findRegisteredRoles();
-        $widget = new WidgetEntity($availableRoles);
+        $widget = new Widget();
         $widget->setId($id);
         try {
             $widgetMapper->find($widget);
@@ -111,9 +123,9 @@ class WidgetConfigurationService extends AbstractService
     }
 
     /**
-     * @param WidgetEntity $widget
+     * @param ScContent\Entity\WidgetInterface $widget
      */
-    public function saveWidget(WidgetEntity $widget)
+    public function saveWidget(WidgetInterface $widget)
     {
         $translator = $this->getTranslator();
         $mapper = $this->getWidgetMapper();

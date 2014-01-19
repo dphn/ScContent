@@ -11,7 +11,7 @@ namespace ScContent\Entity\Front;
 
 use ScContent\Entity\AbstractList,
     ScContent\Entity\WidgetsList,
-    ScContent\Entity\WidgetItem,
+    ScContent\Entity\WidgetInterface,
     ScContent\Options\ModuleOptionsInterface,
     //
     ScContent\Exception\InvalidArgumentException,
@@ -65,10 +65,10 @@ class Regions extends AbstractList
     }
 
     /**
-     * @param ScContent\Entity\WidgetItem $item
+     * @param ScContent\Entity\WidgetInterface $item
      * @return void
      */
-    public function addItem(WidgetItem $item)
+    public function addItem(WidgetInterface $item)
     {
         if (! $this->offsetExists($item->getRegion())) {
             return;

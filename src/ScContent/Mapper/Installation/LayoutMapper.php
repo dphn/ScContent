@@ -10,7 +10,7 @@
 namespace ScContent\Mapper\Installation;
 
 use ScContent\Mapper\AbstractLayoutMapper,
-    ScContent\Entity\Installation\WidgetEntity,
+    ScContent\Entity\WidgetInterface,
     //
     Zend\Db\Sql\Expression;
 
@@ -47,10 +47,10 @@ class LayoutMapper extends AbstractLayoutMapper
     }
 
     /**
-     * @param ScContent\Entity\Installation\WidgetEntity $entity
+     * @param ScContent\Entity\WidgetInterface $entity
      * @return void
      */
-    public function install(WidgetEntity $entity)
+    public function install(WidgetInterface $entity)
     {
         $sql = sprintf(
             'INSERT INTO

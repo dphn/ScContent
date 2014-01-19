@@ -27,7 +27,10 @@ class ContentSearchForm extends Form
     public function __construct()
     {
         parent::__construct('search');
-        $this->setFormSpecification()->setInputSpecification();
+
+        $this->setAttribute('method', 'post')
+            ->setFormSpecification()
+            ->setInputSpecification();
     }
 
     /**

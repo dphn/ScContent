@@ -31,7 +31,10 @@ class CategoryForm extends Form
         $this->adapter = $adapter;
 
         parent::__construct('category');
-        $this->setFormSpecification()->setInputSpecification();
+
+        $this->setAttribute('method', 'post')
+            ->setFormSpecification()
+            ->setInputSpecification();
     }
 
     /**

@@ -21,9 +21,11 @@ class WidgetConfigurationForm extends Form
      */
     public function __construct()
     {
-        parent::__construct('widget');
+        parent::__construct('widget_configuration');
 
-        $this->setFormSpecification()->setInputSpecification();
+        $this->setAttribute('method', 'post')
+            ->setFormSpecification()
+            ->setInputSpecification();
     }
 
     /**
