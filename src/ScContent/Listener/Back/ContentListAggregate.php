@@ -78,7 +78,7 @@ class ContentListAggregate implements ListenerAggregateInterface,
         $this->listeners[] = $events->attach(
             'trash',
             function($e) use ($sm) {
-                $listener = $sm->get('ScLstener.Back.ContentListMoveToTrash');
+                $listener = $sm->get('ScListener.Back.ContentListMoveToTrash');
                 return $listener->process($e);
             }
         );

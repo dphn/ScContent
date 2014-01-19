@@ -186,7 +186,7 @@ return [
                                     /* 'version' - directory must contain a
                                      * "version" file with this name.
                                      */
-                                    'version' => 'sc.v-0.1.3.007.version',
+                                    'version' => 'sc.v-0.1.3.008.version',
                                     'source' => [
                                         'source_module' => 'ScContent',
                                         'source_zip' => '/data/public.zip',

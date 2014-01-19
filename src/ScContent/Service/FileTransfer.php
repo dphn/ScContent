@@ -155,8 +155,7 @@ class FileTransfer extends AbstractService implements FileTransferInterface
 
             // name
             do {
-                $rand = Stdlib::randomKey(6);
-                $name = $title . ' (' . $rand . ')';
+                $name = $title . '-' . Stdlib::randomKey(6);
                 $fileName = $name . '.' . $extension;
             } while ($dir->appUploads($fileName, true) && ! $validator->isValid($name));
 
