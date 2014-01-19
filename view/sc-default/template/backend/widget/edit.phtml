@@ -1,0 +1,25 @@
+<?php
+    $this->headTitle($this->translate('Edit Widget'));
+?>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group content-helper">
+                <a href="<?= $this->url('sc-admin/layout', ['theme' => $theme]) ?>" class="btn btn-default"><?= $this->translate('Lyout') ?></a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 editor-tabs">
+            <ul class="nav nav-tabs">
+                <li><a href="<?= $this->url('sc-admin/widget/configure', ['id' => $widgetId]) ?>"><?= $this->translate('Configure') ?></a></li>
+                <li class="active"><a href="<?= $this->url('sc-admin/widget/edit', ['id' => $widgetId]) ?>"><?= $this->translate('Edit') ?></a></li>
+            </ul>
+        </div>
+        <div class="col-lg-12">
+            <div class="under-tabs">
+                <?= $this->backend_of_custom_widget ?>
+
+            </div>
+        </div>
+    </div>
