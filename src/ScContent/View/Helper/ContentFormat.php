@@ -191,6 +191,21 @@ class ContentFormat extends AbstractTranslatorHelper
 
     /**
      * @param ScContent\View\Helper\FormatProviderInterface $provider
+     * @return string
+     */
+    public function getFileName(FormatProviderInterface $provider)
+    {
+        $spec = $provider->getSpec();
+        if (empty($spec)) {
+            return $provider->getType();
+        }
+        list ($extension, $mime) = explode(':', $spec);
+        $fileName = $provider->getName() . '.' . $extension;
+        return $fileName;
+    }
+
+    /**
+     * @param ScContent\View\Helper\FormatProviderInterface $provider
      * @return boolean
      */
     public function canPreview(FormatProviderInterface $provider)

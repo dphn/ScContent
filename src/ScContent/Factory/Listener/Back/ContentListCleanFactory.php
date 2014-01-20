@@ -44,12 +44,12 @@ class ContentListCleanFactory implements FactoryInterface
                 $layoutListener = $serviceLocator->get(
                     'ScListener.Back.Layout'
                 );
-                $layoutListener->contentCleaned($event);
+                $layoutListener->beforeCleaningTrash($event);
 
                 $garbageListener = $serviceLocator->get(
                     'ScListener.Back.Garbage'
                 );
-                $garbageListener->contentCleaned($event);
+                $garbageListener->beforeCleaningTrash($event);
             }
         );
 

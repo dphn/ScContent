@@ -17,11 +17,7 @@ use ScContent\Mapper\AbstractLayoutMapper,
  */
 class LayoutListenerMapper extends AbstractLayoutMapper
 {
-    /**
-     * @param integer $contentId Content identifier
-     * @param string $tid Transaction identifier
-     * @return void
-     */
+    /*
     public function registerContent($contentId, $tid)
     {
         $this->checkTransaction($tid);
@@ -43,7 +39,7 @@ class LayoutListenerMapper extends AbstractLayoutMapper
         $this->execute($sql, [
             ':contentId' => $contentId,
         ]);
-    }
+    }*/
 
     /**
      * @param integer $contentId Content identifier

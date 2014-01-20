@@ -28,9 +28,11 @@ class FrontendStrategyFactory implements FactoryInterface
         $controllerManager = $serviceLocator->get('ControllerLoader');
         $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
         $layoutMapper = $serviceLocator->get('ScMapper.Theme.FrontendLayoutMapper');
+        $contentService = $serviceLocator->get('ScService.Front.ContentService');
 
         $strategy = new FrontendStrategy();
 
+        $strategy->setContentService($contentService);
         $strategy->setControllerManager($controllerManager);
         $strategy->setModuleOptions($moduleOptions);
         $strategy->setLayoutMapper($layoutMapper);

@@ -1,33 +1,34 @@
-<dl>
-    <dt><?php echo $this->translate('Created') ?></dt>
-    <dd>
-        <ul class="list-unstyled">
-            <?php if($meta->getAuthorName()): ?>
-            
-            <li><?php echo $meta->getAuthorName() ?></li>
-            <?php endif ?>
-            <?php if($meta->getAuthorEmail()): ?>
-            
-            <li><?php echo $meta->getAuthorEmail() ?></li>
-            <?php endif ?>
-            
-            <li><?php echo $this->scDateTime()->getDateTime($content->getCreated()) ?></li>
-        </ul>
-    </dd>
-    
-    <dt><?php echo $this->translate('Modified') ?></dt>
-    <dd>
-        <ul class="list-unstyled">
-            <?php if($meta->getEditorName()): ?>
-            
-            <li><?php echo $meta->getEditorName() ?></li>
-            <?php endif ?>
-            <?php if($meta->getEditorEmail()): ?>
-            
-            <li><?php echo $meta->getEditorEmail() ?></li>
-            <?php endif ?>
-            
-            <li><?php echo $this->scDateTime()->getDateTime($content->getModified()) ?></li>
-        </ul>
-    </dd>
-</dl>
+
+                <dl>
+                    <dt><?php echo $this->translate('Created') ?></dt>
+                    <dd>
+                        <ul class="list-unstyled">
+                            <?php if($meta->getAuthorName()): ?>
+
+                            <li><?php echo $meta->getAuthorName() ?></li>
+                            <?php endif ?>
+                            <?php if($meta->getAuthorEmail()): ?>
+
+                            <li><?php echo $meta->getAuthorEmail() ?></li>
+                            <?php endif ?>
+
+                            <li><?php echo $this->scDateTime()->getDateTime($content->getCreated()) ?></li>
+                        </ul>
+                    </dd>
+
+                    <dt><?php echo $this->translate('Modified') ?></dt>
+                    <dd>
+                        <ul class="list-unstyled">
+                            <?php if($meta->getEditorName()): ?>
+
+                            <li><?php echo $meta->getEditorName() ?></li>
+                            <?php endif ?>
+                            <?php if($meta->getEditorEmail()): ?>
+
+                            <li><?php echo $meta->getEditorEmail() ?></li>
+                            <?php endif ?>
+
+                            <li><?php echo $this->scDateTime()->getDateTime($content->getModified()) ?></li>
+                        </ul>
+                    </dd>
+                </dl>

@@ -14,7 +14,8 @@ use ScContent\Mapper\AbstractLayoutMapper,
     ScContent\Entity\Front\Regions,
     ScContent\Entity\Widget,
     //
-    Zend\Db\Adapter\AdapterInterface;
+    Zend\Db\Adapter\AdapterInterface,
+    Zend\Db\Sql\Expression;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -48,9 +49,9 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
     }
 
     /**
-     * @return ScContent\Entity\Back\Regions
+     * @return ScContent\Entity\Front\Regions
      */
-    public function findRegions()
+    public function findRegions($contentId)
     {
         $list = $this->regions;
         $moduleOptions = $this->moduleOptions;
@@ -71,17 +72,56 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
         $availableRegions = array_keys($regions);
         $availableWidgets = array_keys($widgets);
 
-        $select = $this->getSql()
-            ->select()
-            ->from($this->getTable(self::LayoutTableAlias))
+        //$this->execute('set profiling=1');
+
+        $select = $this->getSql()->select()
+            ->columns(['left_key', 'right_key'])
+            ->from($this->getTable(self::ContentTableAlias))
             ->where([
-                'theme'  => $themeName,
-                'region' => $availableRegions,
-                'name'   => $availableWidgets,
+                'id' => $contentId,
+            ]);
+
+        $result = $this->execute($select)->current();
+
+        $leftKey = $result['left_key'];
+        $rightKey = $result['right_key'];
+
+        $select = $this->getSql()->select()
+            ->from(['layout' => $this->getTable(self::LayoutTableAlias)])
+            ->where([
+                'layout.theme'  => $themeName,
+                'layout.region' => $availableRegions,
+                'layout.name'   => $availableWidgets,
+                '(NOT EXISTS (%s) OR 1 = (%s))',
+
             ])
             ->order(['region ASC', 'position ASC']);
 
-        $results = $this->execute($select);
+        $sql = $this->toString($select);
+
+        $select = $this->getSql()->select()
+            ->columns(['enabled'])
+            ->from(['widgets' => $this->getTable(self::WidgetsTableAlias)])
+            ->join(
+                ['content' => $this->getTable(self::ContentTableAlias)],
+                'content.id = widgets.content',
+                [],
+                self::JoinLeft
+            )
+            ->where([
+                '`content`.`left_key`  <= ?' => $leftKey,
+                '`content`.`right_key` >= ?' => $rightKey,
+                '`widgets`.`widget` = `layout`.`id`'
+            ])
+            ->order('content.left_key DESC')
+            ->limit(1);
+
+        $sql = sprintf($sql, $this->toString($select), $this->toString($select));
+
+        $results = $this->execute($sql);
+
+        /*$r = $this->execute('show profiles');
+        var_dump($this->toArray($r)); exit();*/
 
         $hydrator = $this->getHydrator();
         $itemPrototype = new Widget();

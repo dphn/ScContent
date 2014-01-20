@@ -54,7 +54,7 @@ class Garbage extends AbstractListener
      * @throws ScContent\Exception\InvalidArgumentException
      * @return void
      */
-    public function contentRemoved(EventInterface $event)
+    public function beforeDeleteContent(EventInterface $event)
     {
         $translator = $this->getTranslator();
         $mapper = $this->getGarbageMapper();
@@ -84,7 +84,7 @@ class Garbage extends AbstractListener
      * @throws ScContent\Exception\InvalidArgumentException
      * @return void
      */
-    public function contentCleaned(EventInterface $event)
+    public function beforeCleaningTrash(EventInterface $event)
     {
         $translator = $this->getTranslator();
         $mapper = $this->getGarbageMapper();

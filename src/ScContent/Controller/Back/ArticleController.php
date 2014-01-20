@@ -48,7 +48,7 @@ class ArticleController extends AbstractBack
                 ->setStatusCode(303);
         }
         try {
-            $categoryId = $this->getArticleService()->makeArticle($parent);
+            $articleId = $this->getArticleService()->makeArticle($parent);
         } catch (RuntimeException $e) {
             $this->flashMessenger()->addMessage($e->getMessage());
             return $this->redirect()
@@ -57,7 +57,7 @@ class ArticleController extends AbstractBack
         }
         return $this->redirect()->toRoute(
             'sc-admin/article/edit',
-            ['id' => $categoryId]
+            ['id' => $articleId]
         );
     }
 

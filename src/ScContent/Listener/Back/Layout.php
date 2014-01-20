@@ -50,16 +50,7 @@ class Layout extends AbstractListener
         return $this->layoutMapper;
     }
 
-    /**
-     * Creates a new layout for the contents in the database.
-     * The visibility rules of widgets (the 'enabled' flag) are created
-     * on the basis of the rules of the parent content.
-     *
-     * @param Zend\EventManager\EventInterface $event
-     * @throws ScContent\Exception\InvalidArgumentException
-     * @return void
-     */
-    public function contentCreated(EventInterface $event)
+    /*public function contentCreated(EventInterface $event)
     {
         $translator = $this->getTranslator();
         $mapper = $this->getLayoutMapper();
@@ -88,7 +79,7 @@ class Layout extends AbstractListener
         }
         if ($content->getType() != 'category'
             && $content->getType() != 'article'
-        ) {
+                ) {
             throw new InvalidArgumentException(sprintf(
                 $translator->translate(
                     "Invalid content type '%s'."
@@ -100,17 +91,17 @@ class Layout extends AbstractListener
             $content->getId(),
             $event->getParam('tid')
         );
-    }
+    }*/
 
     /**
-     * Whenever you relocate the content, is changing the rules of visibility
-     * for widgets (the 'enabled' flag) based on the new parent content rules.
+     * If the content has been moved all the rules of widget visibility
+     * are cleared.
      *
      * @param Zend\EventManager\EventInterface $event
      * @throws ScContent\Exception\InvalidArgumentException
      * @return void
      */
-    public function contentRelocated(EventInterface $event)
+    public function onMoveContent(EventInterface $event)
     {
         $translator = $this->getTranslator();
         $mapper = $this->getLayoutMapper();
@@ -141,7 +132,7 @@ class Layout extends AbstractListener
      * @throws ScContent\Exception\InvalidArgumentException
      * @return void
      */
-    public function contentRemoved(EventInterface $event)
+    public function beforeDeleteContent(EventInterface $event)
     {
         $translator = $this->getTranslator();
         $mapper = $this->getLayoutMapper();
@@ -172,7 +163,7 @@ class Layout extends AbstractListener
      * @throws ScContent\Exception\InvalidArgumentException
      * @return void
      */
-    public function contentCleaned(EventInterface $event)
+    public function beforeCleaningTrash(EventInterface $event)
     {
         $translator = $this->getTranslator();
         $mapper = $this->getLayoutMapper();

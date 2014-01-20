@@ -44,12 +44,12 @@ class ContentListDeleteFactory implements FactoryInterface
                 $layoutListener = $serviceLocator->get(
                     'ScListener.Back.Layout'
                 );
-                $layoutListener->contentRemoved($event);
+                $layoutListener->beforeDeleteContent($event);
 
                 $garbageListener = $serviceLocator->get(
                     'ScListener.Back.Garbage'
                 );
-                $garbageListener->contentRemoved($event);
+                $garbageListener->beforeDeleteContent($event);
             }
         );
 
