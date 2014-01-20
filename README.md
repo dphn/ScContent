@@ -23,9 +23,17 @@ Requirements
 * [ZfcBase](https://github.com/ZF-Commons/ZfcBase) (latest master)
 
 
+Module update
+--------------
+
+Attention! The module is still in the development stage.
+The versioning of database migration is not supported yet.
+***Please, after any update, delete any table from module database!
+
+Sorry for the inconvenience, improvements are planned in the near time.***
 
 Installation
----------------
+--------------
 ### Note
 
 The best way to get acquainted with the functionality of widgets - [ScWidgets](https://github.com/dphn/ScWidgets) module installed immediately.
