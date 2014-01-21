@@ -178,7 +178,7 @@ class UnauthorizedStrategy extends AbstractListenerAggregate
         }
 
         $fallback = substr($request->getUri()->getQuery(), 5);
-        var_dump($fallback);
+
         if (null === $url) {
             $url = $router->assemble(
                 [],
