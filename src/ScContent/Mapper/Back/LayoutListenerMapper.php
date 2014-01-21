@@ -17,30 +17,6 @@ use ScContent\Mapper\AbstractLayoutMapper,
  */
 class LayoutListenerMapper extends AbstractLayoutMapper
 {
-    /*
-    public function registerContent($contentId, $tid)
-    {
-        $this->checkTransaction($tid);
-
-        // @todo Remove this as write reader
-        $sql = sprintf(
-            'INSERT INTO
-                `%s`
-            (`widget`, `content`, `enabled`)
-            SELECT
-                `widgets`.`id`,
-                :contentId,
-                \'0\'
-            FROM
-                `%s` AS `widgets`',
-            $this->getTable(self::WidgetsTableAlias),
-            $this->getTable(self::LayoutTableAlias)
-        );
-        $this->execute($sql, [
-            ':contentId' => $contentId,
-        ]);
-    }*/
-
     /**
      * @param integer $contentId Content identifier
      * @param boolean $trash Content trash flag

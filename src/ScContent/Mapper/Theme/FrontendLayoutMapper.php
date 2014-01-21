@@ -72,8 +72,6 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
         $availableRegions = array_keys($regions);
         $availableWidgets = array_keys($widgets);
 
-        //$this->execute('set profiling=1');
-
         $select = $this->getSql()->select()
             ->columns(['left_key', 'right_key'])
             ->from($this->getTable(self::ContentTableAlias))
@@ -111,17 +109,16 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
             ->where([
                 '`content`.`left_key`  <= ?' => $leftKey,
                 '`content`.`right_key` >= ?' => $rightKey,
-                '`widgets`.`widget` = `layout`.`id`'
+                '`content`.`trash`      = ?' => 0,
+                '`widgets`.`widget` = `layout`.`id`',
             ])
             ->order('content.left_key DESC')
             ->limit(1);
 
-        $sql = sprintf($sql, $this->toString($select), $this->toString($select));
+        $correlatedSql = $this->toString($select);
+        $sql = sprintf($sql, $correlatedSql, $correlatedSql);
 
         $results = $this->execute($sql);
-
-        /*$r = $this->execute('show profiles');
-        var_dump($this->toArray($r)); exit();*/
 
         $hydrator = $this->getHydrator();
         $itemPrototype = new Widget();
