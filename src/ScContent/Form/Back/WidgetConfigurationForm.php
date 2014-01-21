@@ -35,6 +35,7 @@ class WidgetConfigurationForm extends Form
      */
     public function bind($object, $flags = Form::VALUES_NORMALIZED)
     {
+        parent::bind($object, $flags);
         $this->add([
             'name' => 'roles',
             'type' => 'multicheckbox',
@@ -47,7 +48,6 @@ class WidgetConfigurationForm extends Form
                     $object->getRoles(),
                     $object->getRoles()
                 ),
-
             ],
             'attributes' => [
                 'value' => $object->findApplicableRoles(),
@@ -61,7 +61,6 @@ class WidgetConfigurationForm extends Form
             'required' => false,
         ]);
 
-        parent::bind($object, $flags);
         return $this;
     }
 
