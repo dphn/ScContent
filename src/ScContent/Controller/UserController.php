@@ -45,6 +45,11 @@ class UserController extends AbstractActionController
     public function indexAction()
     {
         if (! $this->zfcUserAuthentication()->hasIdentity()) {
+            if ($redirect) {
+                return $this->redirect()->toRoute(
+                    self::LoginRoute, [], ['query' => ['redirect' => $redirect]]
+                );
+            }
             return $this->redirect()->toRoute(self::LoginRoute);
         }
         $rolesMapper = $this->getRolesMapper();

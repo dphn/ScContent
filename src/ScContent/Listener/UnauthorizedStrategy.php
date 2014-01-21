@@ -157,27 +157,33 @@ class UnauthorizedStrategy extends AbstractListenerAggregate
         $result     = $event->getResult();
         $routeMatch = $event->getRouteMatch();
         $response   = $event->getResponse();
+        $request    = $event->getRequest();
         $router     = $event->getRouter();
         $error      = $event->getError();
         $url        = $this->getRedirectUrl();
 
         if ($result instanceof HttpResponse
-        || ! $routeMatch
-        || ($response && ! $response instanceof HttpResponse)
-        || ! (
-            Route::ERROR === $error
-            || Controller::ERROR === $error
-            || (
-                Application::ERROR_EXCEPTION === $error
-                && ($event->getParam('exception') instanceof UnAuthorizedException)
-            )
-        )
+            || ! $routeMatch
+            || ($response && ! $response instanceof HttpResponse)
+            || ! (
+                    Route::ERROR === $error
+                    || Controller::ERROR === $error
+                    || (
+                           Application::ERROR_EXCEPTION === $error
+                           && ($event->getParam('exception') instanceof UnAuthorizedException)
+                       )
+                )
         ) {
             return;
         }
 
+        $fallback = substr($request->getUri()->getQuery(), 5);
+        var_dump($fallback);
         if (null === $url) {
-            $url = $router->assemble([], ['name' => $this->redirectRoute]);
+            $url = $router->assemble(
+                [],
+                ['name' => $this->getRedirectRoute(), 'query' => ['redirect' => $fallback]]
+            );
         }
 
         $response = $response ?: new HttpResponse();
