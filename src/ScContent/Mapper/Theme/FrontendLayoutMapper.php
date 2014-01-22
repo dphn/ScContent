@@ -64,7 +64,8 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
         $select = $this->getSql()->select()
             ->from(['layout' => $this->getTable(self::LayoutTableAlias)])
             ->where([
-                'layout.theme'  => $themeName,
+                'layout.theme   = ?' => $themeName,
+                'layout.region <> ?' => 'none',
                 '(NOT EXISTS (%s) OR 1 = (%s))',
 
             ])
