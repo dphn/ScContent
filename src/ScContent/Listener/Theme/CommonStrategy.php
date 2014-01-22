@@ -1,32 +1,32 @@
 <?php
-
+/**
+ * ScContent (https://github.com/dphn/ScContent)
+ *
+ * @author    Dolphin <work.dolphin@gmail.com>
+ * @copyright Copyright (c) 2013-2014 ScContent
+ * @link      https://github.com/dphn/ScContent
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ */
 namespace ScContent\Listener\Theme;
 
 use Zend\Mvc\MvcEvent;
 
+/**
+ * @author Dolphin <work.dolphin@gmail.com>
+ */
 class CommonStrategy extends AbstractThemeStrategy
 {
+    /**
+     * @var string
+     */
+    protected static $side = 'frontend';
+
+    /**
+     * @param Zend\Mvc\MvcEvent $event
+     * @return FrontendStrategy
+     */
     public function update(MvcEvent $event)
     {
-        if ($event->getResult()->terminate()) {
-            return;
-        }
-
-        $app = $event->getApplication();
-        $sm = $app->getServiceManager();
-
-        $viewManager = $sm->get('ViewManager');
-        $renderer = $viewManager->getRenderer();
-
-        $moduleOptions = $this->getModuleOptions();
-        $theme = $moduleOptions->getFrontendThemeName();
-        $options = $moduleOptions->getFrontendTheme();
-        $options = $options['frontend'];
-
-        $layout = $theme . '/layout/frontend/index';
-        if (isset($options['layout'])) {
-            $layout = $options['layout'];
-        }
-        $renderer->layout()->setTemplate($layout);
+        $this->injectLayoutTemplate($event);
     }
 }

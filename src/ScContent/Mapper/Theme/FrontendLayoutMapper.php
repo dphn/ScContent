@@ -10,12 +10,10 @@
 namespace ScContent\Mapper\Theme;
 
 use ScContent\Mapper\AbstractLayoutMapper,
-    ScContent\Options\ModuleOptions,
-    ScContent\Entity\Front\Regions,
+    ScContent\Service\Theme\FrontendRegionsProxy,
     ScContent\Entity\Widget,
     //
-    Zend\Db\Adapter\AdapterInterface,
-    Zend\Db\Sql\Expression;
+    Zend\Db\Adapter\AdapterInterface;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -23,60 +21,39 @@ use ScContent\Mapper\AbstractLayoutMapper,
 class FrontendLayoutMapper extends AbstractLayoutMapper
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var ScContent\Service\Theme\FrontendRegionsProxy
      */
-    protected $moduleOptions;
-
-    /**
-     * @var ScContent\Entity\Front\Regions
-     */
-    protected $regions;
+    protected $proxy;
 
     /**
      * Constructor
      *
      * @param Zend\Db\Adapter\AdapterInterface $adapter
-     * @param ScContent\Options\ModuleOptions  $options
+     * @param ScContent\Service\Theme\FrontendRegionsProxy $proxy
      */
     public function __construct(
         AdapterInterface $adapter,
-        ModuleOptions $options,
-        Regions $regions
+        FrontendRegionsProxy $proxy
     ) {
         $this->setAdapter($adapter);
-        $this->moduleOptions = $options;
-        $this->regions = $regions;
+        $this->proxy = $proxy;
     }
 
     /**
+     * @param string $themeName
+     * @param null | integer $contentId Content identifier
      * @return ScContent\Entity\Front\Regions
      */
-    public function findRegions($contentId)
+    public function findRegions($themeName, $contentId)
     {
-        $list = $this->regions;
-        $moduleOptions = $this->moduleOptions;
-        $theme = $moduleOptions->getFrontendTheme();
-        $themeName = $moduleOptions->getFrontendThemeName();
-
-        $widgets = $moduleOptions->getWidgets();
-        if (! is_array($widgets)) {
-            return $list;
-        }
-
-        if (! isset($theme['frontend']['regions'])
-            || ! is_array($theme['frontend']['regions'])
-        ) {
-            return $list;
-        }
-        $regions = $theme['frontend']['regions'];
-        $availableRegions = array_keys($regions);
-        $availableWidgets = array_keys($widgets);
+        $proxy = $this->proxy;
 
         $select = $this->getSql()->select()
             ->columns(['left_key', 'right_key'])
             ->from($this->getTable(self::ContentTableAlias))
             ->where([
-                'id' => $contentId,
+                'id'    => $contentId,
+                'trash' => 0,
             ]);
 
         $result = $this->execute($select)->current();
@@ -88,8 +65,6 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
             ->from(['layout' => $this->getTable(self::LayoutTableAlias)])
             ->where([
                 'layout.theme'  => $themeName,
-                'layout.region' => $availableRegions,
-                'layout.name'   => $availableWidgets,
                 '(NOT EXISTS (%s) OR 1 = (%s))',
 
             ])
@@ -125,8 +100,8 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
         foreach ($results as $result) {
             $item = clone ($itemPrototype);
             $hydrator->hydrate($result, $item);
-            $list->addItem($item);
+            $proxy->addItem($item);
         }
-        return $list;
+        return $proxy->getRegions();
     }
 }

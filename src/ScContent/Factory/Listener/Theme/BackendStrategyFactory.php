@@ -26,8 +26,13 @@ class BackendStrategyFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
+        $viewManager = $serviceLocator->get('ViewManager');
+
         $strategy = new BackendStrategy();
+
         $strategy->setModuleOptions($moduleOptions);
+        $strategy->setViewManager($viewManager);
+
         return $strategy;
     }
 }

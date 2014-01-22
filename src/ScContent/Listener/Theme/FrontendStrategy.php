@@ -1,19 +1,35 @@
 <?php
-
+/**
+ * ScContent (https://github.com/dphn/ScContent)
+ *
+ * @author    Dolphin <work.dolphin@gmail.com>
+ * @copyright Copyright (c) 2013-2014 ScContent
+ * @link      https://github.com/dphn/ScContent
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ */
 namespace ScContent\Listener\Theme;
 
 use ScContent\Mapper\Theme\FrontendLayoutMapper,
     ScContent\Service\Front\ContentService,
     ScContent\Controller\AbstractWidget,
     ScContent\Controller\AbstractFront,
+    ScContent\Exception\DomainException,
     ScContent\Exception\IoCException,
     //
-    Zend\Mvc\Controller\ControllerManager,
     Zend\View\Model\ModelInterface as ViewModel,
+    Zend\Mvc\Controller\ControllerManager,
     Zend\Mvc\MvcEvent;
 
+/**
+ * @author Dolphin <work.dolphin@gmail.com>
+ */
 class FrontendStrategy extends AbstractThemeStrategy
 {
+    /**
+     * @var string
+     */
+    protected static $side = 'frontend';
+
     /**
      * @var Zend\Mvc\Controller\ControllerManager
      */
@@ -31,7 +47,7 @@ class FrontendStrategy extends AbstractThemeStrategy
 
     /**
      * @param Zend\Mvc\Controller\ControllerManager $manager
-     * @return FrontendStrategy
+     * @return FrontendLayoutService
      */
     public function setControllerManager(ControllerManager $manager)
     {
@@ -54,7 +70,7 @@ class FrontendStrategy extends AbstractThemeStrategy
 
     /**
      * @param ScContent\Service\Front\ContentService
-     * @return FrontendStrategy
+     * @return FrontendLayoutService
      */
     public function setContentService(ContentService $service)
     {
@@ -78,7 +94,7 @@ class FrontendStrategy extends AbstractThemeStrategy
 
     /**
      * @param ScContent\Mapper\Theme\FrontendLayoutMapper $mapper
-     * @return FrontendStrategy
+     * @return FrontendLayoutService
      */
     public function setLayoutMapper(FrontendLayoutMapper $mapper)
     {
@@ -94,83 +110,65 @@ class FrontendStrategy extends AbstractThemeStrategy
     {
         if (! $this->layoutMapper instanceof FrontendLayoutMapper) {
             throw new IoCException(
-	       'The layout mapper was not set.'
+                'The layout mapper was not set.'
             );
         }
         return $this->layoutMapper;
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent
-     * @return FrontendStrategy
+     * @param Zend\Mvc\MvcEvent $event
+     * @throws ScContent\Exception\DomainException
+     * @return void
      */
     public function update(MvcEvent $event)
     {
-        $moduleOptions = $this->getModuleOptions();
-
-        $theme = $moduleOptions->getFrontendThemeName();
-        $options = $moduleOptions->getFrontendTheme();
-        $options = $options['frontend'];
-
-        $controller = $event->getTarget();
-        $model = $event->getResult();
-
-        if (! $model instanceof ViewModel) {
-            return $this;
+        $target = $event->getTarget();
+        if (! $target instanceof AbstractFront) {
+            throw new DomainException(sprintf(
+                "Frontend theme strategy is not applicable to current target '%s'.",
+                is_object($target) ? get_class($target) : gettype($target)
+            ));
         }
-
-        $template = $model->getTemplate();
-        if (empty($template)) {
-            $class = get_class($controller);
-            $class = $this->deriveControllerClass($class);
-
-            $template = $theme . '/template/frontend/';
-            $template .= $this->inflectName($class);
-
-            $routeMatch = $event->getRouteMatch();
-            $action  = $routeMatch->getParam('action');
-            if (null !== $action) {
-                $template .= '/' . $this->inflectName($action);
-            }
-            $model->setTemplate($template);
-        }
-
-        if ($event->getResult()->terminate()) {
-            return $this;
-        }
-
-        $layout = $controller->layout();
-
-        $template = $theme . '/layout/frontend/index';
-        if(isset($options['layout'])) {
-            $template = $options['layout'];
-        }
-        $layout->setTemplate($template);
-
-        if ($event->getParam(AbstractFront::EnableRegions, true)) {
-            $this->buildRegions($controller, $layout);
-        }
-        return $this;
+        $this->injectContentTemplate($event)
+            ->injectLayoutTemplate($event)
+            ->buildLayout($event);
     }
 
-    protected function buildRegions(AbstractFront $controller, ViewModel $layout)
+    /**
+     * @param Zend\Mvc\MvcEvent $event
+     * @return FrontendStrategy
+     */
+    protected function buildLayout(MvcEvent $event)
     {
-        $mapper = $this->getLayotMapper();
+        if (! $event->getParam(AbstractFront::EnableRegions, true)) {
+            return $this;
+        }
+
+        $result = $event->getResult();
+        if (! $result instanceof ViewModel || $result->terminate()) {
+            return $this;
+        }
+
+        $controller = $event->getTarget();
+        if (! $controller instanceof AbstractFront) {
+            return $this;
+        }
+
+        $layout = $event->getViewModel();
+        if (! $layout instanceof ViewModel) {
+            return $this;
+        }
+
         $moduleOptions = $this->getModuleOptions();
         $controllerManager = $this->getControllerManager();
-        $contentService = $this->getContentService();
-        $content = $contentService->getContent();
 
-        $regions = $mapper->findRegions($content->getId());
+        $regions = $this->getRegions();
         $layout->regions = $regions;
 
         foreach ($regions as $widgetsList) {
             foreach ($widgetsList as $item) {
                 $widgetName = $item->getName();
-
-                if (! $moduleOptions->widgetExists($widgetName)) {
-                    continue;
-                }
                 $widget = $moduleOptions->getWidgetByName($widgetName);
 
                 if ($widgetName === 'content') {
@@ -200,5 +198,22 @@ class FrontendStrategy extends AbstractThemeStrategy
             }
         }
         return $this;
+    }
+
+    /**
+     * @return ScContent\Entity\Front\Regions
+     */
+    protected function getRegions()
+    {
+        $mapper = $this->getLayotMapper();
+        $moduleOptions = $this->getModuleOptions();
+
+        $contentService = $this->getContentService();
+        $content = $contentService->getContent();
+
+        $themeName = $moduleOptions->getFrontendThemeName();
+        $regions = $mapper->findRegions($themeName, $content->getId());
+
+        return $regions;
     }
 }

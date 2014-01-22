@@ -13,10 +13,7 @@ use ScContent\Entity\AbstractList,
     ScContent\Entity\WidgetsList,
     ScContent\Entity\WidgetInterface,
     ScContent\Options\ModuleOptionsInterface,
-    //
-    ScContent\Exception\InvalidArgumentException,
-    //
-    BjyAuthorize\Provider\Identity\ProviderInterface;
+    ScContent\Exception\InvalidArgumentException;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -34,19 +31,10 @@ class Regions extends AbstractList
     protected $regionOptions = [];
 
     /**
-     * @var array
-     */
-    protected $roles = [];
-
-    /**
      * @param array $theme
      */
-    public function __construct(
-        ProviderInterface $identityProvider,
-        ModuleOptionsInterface $options
-    ) {
-        $this->roles = $identityProvider->getIdentityRoles();
-
+    public function __construct(ModuleOptionsInterface $options)
+    {
         $theme = $options->getFrontendTheme();
         if (! isset($theme['frontend']['regions'])) {
             throw new InvalidArgumentException(
@@ -70,18 +58,16 @@ class Regions extends AbstractList
      */
     public function addItem(WidgetInterface $item)
     {
-        if (! $this->offsetExists($item->getRegion())) {
-            return;
-        }
-        foreach ($this->roles as $role) {
-            if ($item->isApplicable($role)) {
-                $items = &$this->items[$item->getRegion()];
-                $items->addItem($item);
-                break;
-            }
-        }
+        $items = &$this->items[$item->getRegion()];
+        $items->addItem($item);
     }
 
+    /**
+     * @param string $regionName
+     * @param string $optionName
+     * @throws ScContent\Exception\InvalidArgumentException
+     * @return mixed
+     */
     public function getRegionOption($regionName, $optionName)
     {
         if (! isset($this->regionOptions[$regionName])) {

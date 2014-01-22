@@ -50,49 +50,6 @@ class Layout extends AbstractListener
         return $this->layoutMapper;
     }
 
-    /*public function contentCreated(EventInterface $event)
-    {
-        $translator = $this->getTranslator();
-        $mapper = $this->getLayoutMapper();
-        if (is_null($event->getParam('tid'))) {
-            throw new InvalidArgumentException(
-                $translator->translate(
-                    "Unknown transaction identifier. Missing event param 'tid'."
-                )
-            );
-        }
-        if (! $event->getParam('content')) {
-            throw new InvalidArgumentException(sprintf(
-                $translator->translate(
-                    "Missing event param '%s'."
-                ),
-                'content'
-            ));
-        }
-        $content = $event->getParam('content');
-        if (! $content instanceof AbstractContent) {
-            throw new InvalidArgumentException(
-                $translator->translate(
-                    'Layout can be updated only for specific types of standard content.'
-                )
-            );
-        }
-        if ($content->getType() != 'category'
-            && $content->getType() != 'article'
-                ) {
-            throw new InvalidArgumentException(sprintf(
-                $translator->translate(
-                    "Invalid content type '%s'."
-                ),
-                $content->getType()
-            ));
-        }
-        $mapper->registerContent(
-            $content->getId(),
-            $event->getParam('tid')
-        );
-    }*/
-
     /**
      * If the content has been moved all the rules of widget visibility
      * are cleared.

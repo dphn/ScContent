@@ -39,15 +39,6 @@ class ArticleFactory implements FactoryInterface
         $service->setModuleOptions($moduleOptions);
         $service->setDateTime($datetime);
 
-        /*$events = $service->getEventManager();
-        $events->attach(
-            'makeArticle',
-            function($event) use ($serviceLocator) {
-                $layout = $serviceLocator->get('ScListener.Back.Layout');
-                $layout->contentCreated($event);
-            }
-        );*/
-
         return $service;
     }
 }

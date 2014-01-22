@@ -10,7 +10,6 @@
 namespace ScContent\Factory\Mapper\Theme;
 
 use ScContent\Mapper\Theme\FrontendLayoutMapper,
-    ScContent\Entity\Front\Regions,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -27,13 +26,9 @@ class FrontendLayoutFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $adapter = $serviceLocator->get('ScDb.Adapter');
-        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
-        $identityProvider = $serviceLocator->get(
-            'BjyAuthorize\Provider\Identity\ProviderInterface'
-        );
-        $regions = new Regions($identityProvider, $moduleOptions);
+        $proxy = $serviceLocator->get('ScService.Theme.FrontendRegionsProxy');
 
-        $mapper = new FrontendLayoutMapper($adapter, $moduleOptions, $regions);
+        $mapper = new FrontendLayoutMapper($adapter, $proxy);
 
         return $mapper;
     }

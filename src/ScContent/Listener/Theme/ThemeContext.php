@@ -34,10 +34,11 @@ class ThemeContext extends AbstractListenerAggregate
     public function attach(EventManagerInterface $events)
     {
         $sharedEvents = $events->getSharedManager();
-        $sharedEvents->attach(
-            'Zend\Stdlib\DispatchableInterface',
-            MvcEvent::EVENT_DISPATCH,
-            [$this, 'capture']
+
+        $events->attach(
+            MvcEvent::EVENT_ROUTE,
+            [$this, 'capture'],
+            -10000
         );
 
         $sharedEvents->attach(
@@ -59,7 +60,16 @@ class ThemeContext extends AbstractListenerAggregate
      * @return void
      */
     public function capture(MvcEvent $event) {
-        $this->target = $event->getTarget();
+        $match = $event->getRouteMatch();
+        $controller = $match->getParam('controller');
+
+        $application = $event->getApplication();
+        $serviceLocator = $application->getServiceManager();
+        $controllerLoader = $serviceLocator->get('ControllerLoader');
+
+        if ($controllerLoader->has($controller)) {
+            $this->target = $controllerLoader->get($controller);
+        }
     }
 
     /**
@@ -68,31 +78,33 @@ class ThemeContext extends AbstractListenerAggregate
      */
     public function onDispatch(MvcEvent $event)
     {
-        $application = $event->getApplication();
-        $serviceLocator = $application->getServiceManager();
-
         $response = $event->getResponse();
         if (404 == $response->getStatusCode()) {
             $this->notFound($event);
             return;
         }
+        if ($event->getTarget() !== $this->target) {
+            return;
+        }
+        $application = $event->getApplication();
+        $serviceLocator = $application->getServiceManager();
 
         switch (true) {
             case $this->target instanceof Controller\AbstractInstallation:
-                $strategy = $serviceLocator->get('ScListener.Theme.InstallationStrategy');
-                $strategy->update($event);
+                $serviceLocator->get('ScListener.Theme.InstallationStrategy')
+                    ->update($event);
                 break;
             case $this->target instanceof Controller\AbstractBack:
-                $strategy = $serviceLocator->get('ScListener.Theme.BackendStrategy');
-                $strategy->update($event);
+                $serviceLocator->get('ScListener.Theme.BackendStrategy')
+                    ->update($event);
                 break;
             case $this->target instanceof Controller\AbstractFront:
-                $strategy = $serviceLocator->get('ScListener.Theme.FrontendStrategy');
-                $strategy->update($event);
+                $serviceLocator->get('ScListener.Theme.FrontendStrategy')
+                    ->update($event);
                 break;
             default:
-                $strategy = $serviceLocator->get('ScListener.Theme.CommonStrategy');
-                $strategy->update($event);
+                $serviceLocator->get('ScListener.Theme.CommonStrategy')
+                    ->update($event);
                 break;
         }
     }

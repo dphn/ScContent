@@ -25,9 +25,14 @@ class CommonStrategyFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+        $viewManager = $serviceLocator->get('ViewManager');
         $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
+
         $strategy = new CommonStrategy();
+
+        $strategy->setViewManager($viewManager);
         $strategy->setModuleOptions($moduleOptions);
+
         return $strategy;
     }
 }

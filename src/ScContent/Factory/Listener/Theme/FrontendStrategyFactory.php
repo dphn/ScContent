@@ -26,15 +26,17 @@ class FrontendStrategyFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $controllerManager = $serviceLocator->get('ControllerLoader');
+        $viewManager = $serviceLocator->get('viewManager');
         $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
-        $layoutMapper = $serviceLocator->get('ScMapper.Theme.FrontendLayoutMapper');
         $contentService = $serviceLocator->get('ScService.Front.ContentService');
+        $layoutMapper = $serviceLocator->get('ScMapper.Theme.FrontendLayoutMapper');
 
         $strategy = new FrontendStrategy();
 
-        $strategy->setContentService($contentService);
         $strategy->setControllerManager($controllerManager);
+        $strategy->setViewManager($viewManager);
         $strategy->setModuleOptions($moduleOptions);
+        $strategy->setContentService($contentService);
         $strategy->setLayoutMapper($layoutMapper);
 
         return $strategy;

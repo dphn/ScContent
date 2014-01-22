@@ -7,7 +7,7 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
- * total classes:    281
+ * total classes:    282
  * total interfaces: 15
  */
 
@@ -28,7 +28,6 @@ return array(
     'ScContent\Controller\Back\ThemeController'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Back'                             . DS . 'ThemeController.php',
     'ScContent\Controller\Back\WidgetController'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Back'                             . DS . 'WidgetController.php',
     'ScContent\Controller\Front\ContentController'                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Front'                            . DS . 'ContentController.php',
-    'ScContent\Controller\Front\ContentWidgetController'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Front'                            . DS . 'ContentWidgetController.php',
     'ScContent\Controller\Installation\AccountController'                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Installation'                     . DS . 'AccountController.php',
     'ScContent\Controller\Installation\ConfigController'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Installation'                     . DS . 'ConfigController.php',
     'ScContent\Controller\Installation\InstallationController'             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'          . DS . 'Installation'                     . DS . 'InstallationController.php',
@@ -145,6 +144,7 @@ return array(
     'ScContent\Factory\Service\Installation\UploadsFactory'                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Service'                          . DS . 'Installation'                         . DS . 'UploadsFactory.php',
     'ScContent\Factory\Service\LocalizationFactory'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Service'                          . DS . 'LocalizationFactory.php',
     'ScContent\Factory\Service\RoleProviderFactory'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Service'                          . DS . 'RoleProviderFactory.php',
+    'ScContent\Factory\Service\Theme\FrontendRegionsProxyFactory'          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Service'                          . DS . 'Theme'                                . DS . 'FrontendRegionsProxyFactory.php',
     'ScContent\Factory\Validator\FileTypeFactory'                          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Validator'                        . DS . 'FileTypeFactory.php',
     'ScContent\Factory\Validator\Installation\AccountFactory'              => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Validator'                        . DS . 'Installation'                         . DS . 'AccountFactory.php',
     'ScContent\Factory\Validator\Installation\AssetsFactory'               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'             . DS . 'Validator'                        . DS . 'Installation'                         . DS . 'AssetsFactory.php',
@@ -284,6 +284,7 @@ return array(
     'ScContent\Service\ScDateTime'                                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'             . DS . 'ScDateTime.php',
     'ScContent\Service\ScDateTimeInterface'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'             . DS . 'ScDateTimeInterface.php',
     'ScContent\Service\Stdlib'                                             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'             . DS . 'Stdlib.php',
+    'ScContent\Service\Theme\FrontendRegionsProxy'                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'             . DS . 'Theme'                            . DS . 'FrontendRegionsProxy.php',
     'ScContent\Validator\ContentList\SearchDateRange'                      => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'           . DS . 'ContentList'                      . DS . 'SearchDateRange.php',
     'ScContent\Validator\Controller\WidgetValidator'                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'           . DS . 'Controller'                       . DS . 'WidgetValidator.php',
     'ScContent\Validator\Db\Connection'                                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'           . DS . 'Db'                               . DS . 'Connection.php',

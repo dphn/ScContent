@@ -1,4 +1,12 @@
 <?php
+/**
+ * ScContent (https://github.com/dphn/ScContent)
+ *
+ * @author    Dolphin <work.dolphin@gmail.com>
+ * @copyright Copyright (c) 2013-2014 ScContent
+ * @link      https://github.com/dphn/ScContent
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ */
 
 return [
     'sc' => [
@@ -21,23 +29,51 @@ return [
         ],
         'themes' => [
             'sc-default' => [
+                // Your theme can provide only frontend templates and layouts.
+                'provides_backend' => true,
+
                 'display_name' => 'ScContent Default',
                 'description'  => 'The default theme with several regions.',
-                'screenshot'   => 'sc-default/img/theme.png',
                 'theme_images' => '/sc-default/img',
+                'screenshot'   => 'sc-default/img/theme.png',
                 'access_denied_template' => 'sc-default/template/frontend/user/deny',
                 'zfcuser_template_path' => $this->getDir() . str_replace('/', DS, '/view/sc-default'),
                 'errors' => [
+                    /* You can use different layouts for frontend errors and
+                     * backend errors, simply use the placeholder {side}:
+                     * 'my-theme/layout/error/{side}'
+                     */
                     'layout' => 'sc-default/layout/frontend/index',
+
+                    /* You can use different templates for frontend errors and
+                     * backend errors, simply use the placeholder {side}:
+                    * 'my-theme/template/error/{side}/index'
+                    * 'my-theme/template/error/{side}/404'
+                    */
                     'template' => [
                         'exception' => 'sc-default/template/error/index',
                         '404'       => 'sc-default/template/error/404',
                     ],
                 ],
+                /* Backend
+                 */
+                'backend' => [
+                    // optionally, by default will automatically be calculated as my-theme/template/backend
+                    'templates' => 'sc-default/template/backend',
+                    // optionally, by default will automatically be calculated as my-theme/layout/backend
+                    'layouts' => 'sc-default/layout/backend',
+                    // optionally, by default 'index'
+                    'default_layout' => 'index',
+                ],
                 /* Frontend
                  */
                 'frontend' => [
-                    'layout' => 'sc-default/layout/frontend/index',
+                    // optionally, by default will automatically be calculated as my-theme/template/frontend
+                    'templates' => 'sc-default/template/frontend',
+                    // optionally, by default will automatically be calculated as my-theme/layout/frontend
+                    'layouts' => 'sc-default/layout/frontend',
+                    // optionally, by default 'index'
+                    'default_layout' => 'index',
                     'regions' => [
                         'header' => [
                             'display_name' => 'Header',

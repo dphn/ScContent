@@ -7,9 +7,10 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Factory\Service\Back;
+namespace ScContent\Factory\Service\Theme;
 
-use ScContent\Service\Back\CategoryService,
+use ScContent\Service\Theme\FrontendRegionsProxy,
+    ScContent\Entity\Front\Regions,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -17,27 +18,27 @@ use ScContent\Service\Back\CategoryService,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class CategoryFactory implements FactoryInterface
+class FrontendRegionsProxyFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Back\CategoryService
+     * @return ScContent\Service\Theme\FrontendRegionsProxy
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $translator = $serviceLocator->get('translator');
-        $authentication = $serviceLocator->get('zfcuser_auth_service');
-        $contentMapper = $serviceLocator->get('ScMapper.Back.Content');
         $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
-        $datetime = $serviceLocator->get('ScService.DateTime');
 
-        $service = new CategoryService();
+        $regions = new Regions($moduleOptions);
 
-        $service->setTranslator($translator);
-        $service->setAuthenticationService($authentication);
-        $service->setContentMapper($contentMapper);
+        $identityProvider = $serviceLocator->get(
+            'BjyAuthorize\Provider\Identity\ProviderInterface'
+        );
+
+        $service = new FrontendRegionsProxy();
+
         $service->setModuleOptions($moduleOptions);
-        $service->setDateTime($datetime);
+        $service->setIdentityProvider($identityProvider);
+        $service->setRegions($regions);
 
         return $service;
     }

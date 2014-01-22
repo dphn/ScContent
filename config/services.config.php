@@ -100,6 +100,9 @@ return [
         'ScService.Back.WidgetConfiguration'
             => 'ScContent\Factory\Service\Back\WidgetConfigurationFactory',
 
+        'ScService.Theme.FrontendRegionsProxy'
+            => 'ScContent\Factory\Service\Theme\FrontendRegionsProxyFactory',
+
         'ScMapper.Roles'
             => 'ScContent\Factory\Mapper\RolesFactory',
 
