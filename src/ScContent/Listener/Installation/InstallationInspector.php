@@ -97,9 +97,9 @@ class InstallationInspector extends AbstractListenerAggregate
     public function attach(EventManagerInterface $events)
     {
         $this->listeners[] = $events->attach(
-            MvcEvent::EVENT_DISPATCH,
+            MvcEvent::EVENT_ROUTE,
             [$this, 'inspect'],
-            PHP_INT_MAX
+            -PHP_INT_MAX
         );
     }
 

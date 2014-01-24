@@ -9,9 +9,7 @@
  */
 namespace ScContent\Controller\Back;
 
-use ScContent\Controller\AbstractBack,
-    ScContent\Service\Back\WidgetConfigurationService,
-    ScContent\Form\Back\WidgetConfigurationForm,
+use ScContent\Form\Back\WidgetConfigurationForm,
     ScContent\Options\ModuleOptions,
     ScContent\Exception\RuntimeException,
     //
@@ -21,17 +19,12 @@ use ScContent\Controller\AbstractBack,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class WidgetController extends AbstractBack
+class WidgetController extends AbstractWidgetAwareController
 {
     /**
      * @var Zend\Mvc\Controller\ControllerManager
      */
     protected static $controllerLoader;
-
-    /**
-     * @var ScContent\Service\Back\WidgetConfigurationService
-     */
-    protected $widgetConfigurationService;
 
     /**
      * @var ScContent\Form\Back\WidgetConfigurationForm
@@ -179,29 +172,6 @@ class WidgetController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Service\Back\WidgetConfigurationService $service
-     * @return void
-     */
-    public function setWidgetConfigurationService(WidgetConfigurationService $service)
-    {
-        $this->widgetConfigurationService = $service;
-    }
-
-    /**
-     * @return ScContent\Service\Back\WidgetConfigurationService
-     */
-    public function getWidgetConfigurationService()
-    {
-        if (! $this->widgetConfigurationService instanceof WidgetConfigurationService) {
-            $serviceLocator = $this->getServiceLocator();
-            $this->widgetConfigurationService = $serviceLocator->get(
-                'ScService.Back.WidgetConfiguration'
-            );
-        }
-        return $this->widgetConfigurationService;
-    }
-
-    /**
      * @param ScContent\Form\Back\WidgetConfigurationForm $form
      * @return void
      */
@@ -247,34 +217,5 @@ class WidgetController extends AbstractBack
             );
         }
         return $this->moduleOptions;
-    }
-
-    protected function deriveWidget($id)
-    {
-        $service = $this->getWidgetConfigurationService();
-        try {
-            $widget = $service->findWidget($id);
-        } catch (RuntimeException $e) {
-            $this->flashMessenger()->addMessage($e->getMessage());
-            $this->redirect()
-                ->toRoute('sc-admin/themes')
-                ->setStatusCode(303);
-
-            return null;
-        }
-        if ($widget->findOption('immutable')) {
-            $this->flashMessenger()->addMessage(sprintf(
-                $this->scTranslate(
-                    "The widget '%s' is immutable."
-                ),
-                $widget->getDisplayName()
-            ));
-            $this->redirect()
-                ->toRoute('sc-admin/layout', ['theme' => $widget->getTheme()])
-                ->setStatusCode(303);
-
-            return null;
-        }
-        return $widget;
     }
 }

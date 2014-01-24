@@ -37,7 +37,7 @@ class ThemeContext extends AbstractListenerAggregate
         $events->attach(
             MvcEvent::EVENT_ROUTE,
             [$this, 'capture'],
-            -10000
+            -PHP_INT_MAX
         );
 
         $sharedEvents->attach(
@@ -82,18 +82,19 @@ class ThemeContext extends AbstractListenerAggregate
             $this->notFound($event);
             return;
         }
-        $application = $event->getApplication();
-        $serviceLocator = $application->getServiceManager();
 
-        if ($event->getTarget() instanceof Controller\AbstractInstallation) {
-            $serviceLocator->get('ScListener.Theme.InstallationStrategy')
-                ->update($event);
-            return;
-        }
         if ($event->getTarget() !== $this->target) {
             return;
         }
+
+        $application = $event->getApplication();
+        $serviceLocator = $application->getServiceManager();
+
         switch (true) {
+            case $this->target instanceof Controller\AbstractInstallation:
+                $serviceLocator->get('ScListener.Theme.InstallationStrategy')
+                    ->update($event);
+                break;
             case $this->target instanceof Controller\AbstractBack:
                 $serviceLocator->get('ScListener.Theme.BackendStrategy')
                     ->update($event);
