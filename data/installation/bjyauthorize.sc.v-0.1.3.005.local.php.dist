@@ -37,10 +37,6 @@ return ['bjyauthorize' => [
                 'roles' => ['guest', 'admin'],
             ],
             [
-                'route' => 'sc-search',
-                'roles' => ['guest', 'admin'],
-            ],
-            [
                 'route' => 'sc-install',
                 'roles' => ['guest', 'admin'],
             ],
@@ -94,6 +90,10 @@ return ['bjyauthorize' => [
             ],
             [
                 'route' => 'sc-admin/widget/edit',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/widget/visibility',
                 'roles' => ['admin'],
             ],
         ],

@@ -13,7 +13,6 @@ use ScContent\Controller,
     //
     Zend\EventManager\AbstractListenerAggregate,
     Zend\EventManager\EventManagerInterface,
-    Zend\View\Model\ViewModel,
     Zend\Mvc\Application,
     Zend\Mvc\MvcEvent;
 
@@ -83,17 +82,18 @@ class ThemeContext extends AbstractListenerAggregate
             $this->notFound($event);
             return;
         }
-        if ($event->getTarget() !== $this->target) {
-            return;
-        }
         $application = $event->getApplication();
         $serviceLocator = $application->getServiceManager();
 
+        if ($event->getTarget() instanceof Controller\AbstractInstallation) {
+            $serviceLocator->get('ScListener.Theme.InstallationStrategy')
+                ->update($event);
+            return;
+        }
+        if ($event->getTarget() !== $this->target) {
+            return;
+        }
         switch (true) {
-            case $this->target instanceof Controller\AbstractInstallation:
-                $serviceLocator->get('ScListener.Theme.InstallationStrategy')
-                    ->update($event);
-                break;
             case $this->target instanceof Controller\AbstractBack:
                 $serviceLocator->get('ScListener.Theme.BackendStrategy')
                     ->update($event);
@@ -256,7 +256,6 @@ class ThemeContext extends AbstractListenerAggregate
                 if (isset($renderer->layout()->regions)) {
                     unset($renderer->layout()->regions);
                 }
-
                 $renderer->layout()->setTemplate($layout);
                 break;
         }

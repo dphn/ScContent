@@ -371,6 +371,16 @@ return [
                                     ],
                                 ],
                             ],
+                            'visibility' => [
+                                'type' => 'segment',
+                                'options' => [
+                                    'route' => '/visibility[/:id]',
+                                    'defaults' => [
+                                        'controller' => 'ScController.Back.WidgetVisibility',
+                                        'action' => 'index',
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                 ],

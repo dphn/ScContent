@@ -42,6 +42,9 @@ return [
         'ScController.Back.Widget'
             => 'ScContent\Controller\Back\WidgetController',
 
+        'ScController.Back.WidgetVisibility'
+            => 'ScContent\Controller\Back\WidgetVisibilityController',
+
         'ScController.Front.Content'
             => 'ScContent\Controller\Front\ContentController',
     ],
