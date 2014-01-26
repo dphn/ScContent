@@ -142,41 +142,30 @@ class ThemeContext implements SharedListenerAggregateInterface
         $layout   = 'sc-default/layout/{side}/index';
         $template = 'sc-default/template/error/index';
         $side     = 'frontend';
+        $theme    = [];
 
         switch (true) {
             case $this->target instanceof Controller\AbstractBack:
                 $side  = 'backend';
                 $theme = $options->getBackendTheme();
-                if (isset($theme['errors']['template']['exception'])) {
-                   $template = $theme['errors']['template']['exception'];
-                }
-                if (isset($theme['errors']['layout'])) {
-                   $layout = $theme['errors']['layout'];
-                }
                 break;
             case $this->target instanceof Controller\AbstractInstallation:
                 $side  = 'installation';
                 $theme = $options->getBackendTheme();
-                if (isset($theme['errors']['template']['exception'])) {
-                   $template = $theme['errors']['template']['exception'];
-                }
-                if (isset($theme['errors']['layout'])) {
-                   $layout = $theme['errors']['layout'];
-                }
                 break;
             case $this->target instanceof Controller\AbstractFront:
             default:
                 $theme = $options->getFrontendTheme();
-                if (isset($theme['errors']['template']['exception'])) {
-                    $template = $theme['errors']['template']['exception'];
-                }
-                if (isset($theme['errors']['layout'])) {
-                    $layout = $theme['errors']['layout'];
-                }
                 if (isset($renderer->layout()->regions)) {
                     unset($renderer->layout()->regions);
                 }
                 break;
+        }
+        if (isset($theme['errors']['template']['exception'])) {
+            $template = $theme['errors']['template']['exception'];
+        }
+        if (isset($theme['errors']['layout'])) {
+            $layout = $theme['errors']['layout'];
         }
         $template = str_replace('{side}', $side, $template);
         $layout   = str_replace('{side}', $side, $layout);
@@ -201,41 +190,30 @@ class ThemeContext implements SharedListenerAggregateInterface
         $layout   = 'sc-default/layout/{side}/index';
         $template = 'sc-default/template/error/404';
         $side     = 'frontend';
+        $theme    = [];
 
         switch (true) {
             case $this->target instanceof Controller\AbstractBack:
                 $side  = 'backend';
                 $theme = $options->getBackendTheme();
-                if (isset($theme['errors']['template']['404'])) {
-                    $template = $theme['errors']['template']['404'];
-                }
-                if (isset($theme['errors']['layout'])) {
-                    $layout = $theme['errors']['layout'];
-                }
                 break;
             case $this->target instanceof Controller\AbstractInstallation:
                 $side  = 'installation';
                 $theme = $options->getBackendTheme();
-                if (isset($theme['errors']['template']['404'])) {
-                    $template = $theme['errors']['template']['404'];
-                }
-                if (isset($theme['errors']['layout'])) {
-                    $layout = $theme['errors']['layout'];
-                }
                 break;
             case $this->target instanceof Controller\AbstractFront:
             default:
                 $theme = $options->getFrontendTheme();
-                if (isset($theme['errors']['template']['404'])) {
-                    $template = $theme['errors']['template']['404'];
-                }
-                if (isset($theme['errors']['layout'])) {
-                    $layout = $theme['errors']['layout'];
-                }
                 if (isset($renderer->layout()->regions)) {
                     unset($renderer->layout()->regions);
                 }
                 break;
+        }
+        if (isset($theme['errors']['template']['404'])) {
+            $template = $theme['errors']['template']['404'];
+        }
+        if (isset($theme['errors']['layout'])) {
+            $layout = $theme['errors']['layout'];
         }
         $template = str_replace('{side}', $side, $template);
         $layout   = str_replace('{side}', $side, $layout);
