@@ -1,5 +1,6 @@
 <?php
     $this->headTitle($this->translate('Edit Widget'));
+    $this->headScript()->appendFile($this->basePath() . '/sc-default/js/stratch.js');
 ?>
 
     <div class="row">
@@ -12,13 +13,13 @@
     <div class="row">
         <div class="col-lg-12 editor-tabs">
             <ul class="nav nav-tabs">
-                <li><a href="<?= $this->url('sc-admin/widget/configure', ['id' => $widgetId]) ?>"><?= $this->translate('Configure') ?></a></li>
-                <li class="active"><a href="<?= $this->url('sc-admin/widget/edit', ['id' => $widgetId]) ?>"><?= $this->translate('Edit') ?></a></li>
-                <li><a href="<?= $this->url('sc-admin/widget/visibility', ['id' => $widgetId]) ?>"><?= $this->translate('Visibility') ?></a></li>
+                <li><a href="<?= $this->url('sc-admin/widget/configure', ['id' => $widgetId]) ?>"><span class="glyphicon glyphicon-cog"></span><?= $this->translate('Configure') ?></a></li>
+                <li class="active"><a href="<?= $this->url('sc-admin/widget/edit', ['id' => $widgetId]) ?>"><span class="glyphicon glyphicon-edit"></span><?= $this->translate('Edit') ?></a></li>
+                <li><a href="<?= $this->url('sc-admin/widget/visibility', ['id' => $widgetId]) ?>"><span class="glyphicon glyphicon-list"></span><?= $this->translate('Visibility') ?></a></li>
             </ul>
         </div>
         <div class="col-lg-12">
-            <div class="under-tabs">
+            <div class="under-tabs stratch">
                 <?= $this->backend_of_custom_widget ?>
 
             </div>

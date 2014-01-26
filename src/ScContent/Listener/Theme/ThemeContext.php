@@ -11,15 +11,15 @@ namespace ScContent\Listener\Theme;
 
 use ScContent\Controller,
     //
-    Zend\EventManager\AbstractListenerAggregate,
-    Zend\EventManager\EventManagerInterface,
+    Zend\EventManager\SharedEventManagerInterface,
+    Zend\EventManager\SharedListenerAggregateInterface,
     Zend\Mvc\Application,
     Zend\Mvc\MvcEvent;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class ThemeContext extends AbstractListenerAggregate
+class ThemeContext implements SharedListenerAggregateInterface
 {
     /**
      * @var Zend\Stdlib\DispatchableInterface
@@ -27,20 +27,19 @@ class ThemeContext extends AbstractListenerAggregate
     protected $target;
 
     /**
-     * @param Zend\EventManager\EventManagerInterface $events
+     * @param Zend\EventManager\SharedEventManagerInterface $events
      * @return void
      */
-    public function attach(EventManagerInterface $events)
+    public function attachShared(SharedEventManagerInterface $events)
     {
-        $sharedEvents = $events->getSharedManager();
-
-        $events->attach(
-            MvcEvent::EVENT_ROUTE,
-            [$this, 'capture'],
-            -PHP_INT_MAX
+        $this->listeners[] = $events->attach(
+            'Zend\Stdlib\DispatchableInterface',
+            'dispatch',
+            [$this, 'captureTarget'],
+            100
         );
 
-        $sharedEvents->attach(
+        $this->listeners[] = $events->attach(
             'Zend\Stdlib\DispatchableInterface',
             MvcEvent::EVENT_DISPATCH,
             [$this, 'onDispatch'],
@@ -48,6 +47,7 @@ class ThemeContext extends AbstractListenerAggregate
         );
 
         $this->listeners[] = $events->attach(
+            'Zend\Mvc\Application',
             [MvcEvent::EVENT_DISPATCH_ERROR, MvcEvent::EVENT_RENDER_ERROR],
             [$this, 'onError'],
             100
@@ -55,19 +55,25 @@ class ThemeContext extends AbstractListenerAggregate
     }
 
     /**
+     * @param Zend\EventManager\SharedEventManagerInterface $events
+     * @return void
+     */
+    public function detachShared(SharedEventManagerInterface $events)
+    {
+        foreach ($this->listeners as $index => $listener) {
+            if ($events->detach($listener)) {
+                unset($this->listeners[$index]);
+            }
+        }
+    }
+
+    /**
      * @param Zend\Mvc\MvcEvent $event
      * @return void
      */
-    public function capture(MvcEvent $event) {
-        $match = $event->getRouteMatch();
-        $controller = $match->getParam('controller');
-
-        $application = $event->getApplication();
-        $serviceLocator = $application->getServiceManager();
-        $controllerLoader = $serviceLocator->get('ControllerLoader');
-
-        if ($controllerLoader->has($controller)) {
-            $this->target = $controllerLoader->get($controller);
+    public function captureTarget(MvcEvent $event) {
+        if (! $this->target) {
+            $this->target = $event->getTarget();
         }
     }
 
@@ -125,70 +131,57 @@ class ThemeContext extends AbstractListenerAggregate
                 return;
         }
 
-        $application = $event->getApplication();
+        $application    = $event->getApplication();
         $serviceLocator = $application->getServiceManager();
 
-        $viewManager = $serviceLocator->get('ViewManager');
-        $renderer = $viewManager->getRenderer();
+        $viewManager       = $serviceLocator->get('ViewManager');
         $exceptionStrategy = $viewManager->getExceptionStrategy();
-        $options  = $serviceLocator->get('ScOptions.ModuleOptions');
+        $renderer          = $viewManager->getRenderer();
+        $options           = $serviceLocator->get('ScOptions.ModuleOptions');
 
-        $layout = 'sc-default/layout/{side}/index';
+        $layout   = 'sc-default/layout/{side}/index';
         $template = 'sc-default/template/error/index';
+        $side     = 'frontend';
 
         switch (true) {
             case $this->target instanceof Controller\AbstractBack:
+                $side  = 'backend';
                 $theme = $options->getBackendTheme();
-                // template
                 if (isset($theme['errors']['template']['exception'])) {
                    $template = $theme['errors']['template']['exception'];
                 }
-                $template = str_replace('{side}', 'backend', $template);
-                $exceptionStrategy->setExceptionTemplate($template);
-                // layout
                 if (isset($theme['errors']['layout'])) {
                    $layout = $theme['errors']['layout'];
                 }
-                $layout = str_replace('{side}', 'backend', $layout);
-                $renderer->layout()->setTemplate($layout);
                 break;
             case $this->target instanceof Controller\AbstractInstallation:
+                $side  = 'installation';
                 $theme = $options->getBackendTheme();
-                // template
                 if (isset($theme['errors']['template']['exception'])) {
                    $template = $theme['errors']['template']['exception'];
                 }
-                $template = str_replace('{side}', 'installation', $template);
-                $exceptionStrategy->setExceptionTemplate($template);
-                // layout
                 if (isset($theme['errors']['layout'])) {
                    $layout = $theme['errors']['layout'];
                 }
-                $layout = str_replace('{side}', 'installation', $layout);
-                $renderer->layout()->setTemplate($layout);
                 break;
             case $this->target instanceof Controller\AbstractFront:
             default:
                 $theme = $options->getFrontendTheme();
-                // template
                 if (isset($theme['errors']['template']['exception'])) {
                     $template = $theme['errors']['template']['exception'];
                 }
-                $template = str_replace('{side}', 'frontend', $template);
-                $exceptionStrategy->setExceptionTemplate($template);
-                // layout
                 if (isset($theme['errors']['layout'])) {
                     $layout = $theme['errors']['layout'];
                 }
-                $layout = str_replace('{side}', 'frontend', $layout);
-
                 if (isset($renderer->layout()->regions)) {
                     unset($renderer->layout()->regions);
                 }
-
-                $renderer->layout()->setTemplate($layout);
                 break;
         }
+        $template = str_replace('{side}', $side, $template);
+        $layout   = str_replace('{side}', $side, $layout);
+        $exceptionStrategy->setExceptionTemplate($template);
+        $renderer->layout()->setTemplate($layout);
     }
 
     /**
@@ -197,68 +190,56 @@ class ThemeContext extends AbstractListenerAggregate
      */
     public function notFound(MvcEvent $event)
     {
-        $application = $event->getApplication();
+        $application    = $event->getApplication();
         $serviceLocator = $application->getServiceManager();
 
-        $viewManager = $serviceLocator->get('ViewManager');
-        $renderer = $viewManager->getRenderer();
-        $options  = $serviceLocator->get('ScOptions.ModuleOptions');
+        $viewManager      = $serviceLocator->get('ViewManager');
         $notFoundStrategy = $viewManager->getRouteNotFoundStrategy();
+        $renderer         = $viewManager->getRenderer();
+        $options          = $serviceLocator->get('ScOptions.ModuleOptions');
 
-        $layout = 'sc-default/layout/{side}/index';
+        $layout   = 'sc-default/layout/{side}/index';
         $template = 'sc-default/template/error/404';
+        $side     = 'frontend';
 
         switch (true) {
             case $this->target instanceof Controller\AbstractBack:
+                $side  = 'backend';
                 $theme = $options->getBackendTheme();
-                // template
                 if (isset($theme['errors']['template']['404'])) {
                     $template = $theme['errors']['template']['404'];
                 }
-                $template = str_replace('{side}', 'backend', $template);
-                $notFoundStrategy->setNotFoundTemplate($template);
-                // layout
                 if (isset($theme['errors']['layout'])) {
                     $layout = $theme['errors']['layout'];
                 }
-                $layout = str_replace('{side}', 'backend', $layout);
-                $renderer->layout()->setTemplate($layout);
                 break;
             case $this->target instanceof Controller\AbstractInstallation:
+                $side  = 'installation';
                 $theme = $options->getBackendTheme();
-                // template
                 if (isset($theme['errors']['template']['404'])) {
                     $template = $theme['errors']['template']['404'];
                 }
-                $template = str_replace('{side}', 'installation', $template);
-                $notFoundStrategy->setNotFoundTemplate($template);
-                // layout
                 if (isset($theme['errors']['layout'])) {
                     $layout = $theme['errors']['layout'];
                 }
-                $layout = str_replace('{side}', 'installation', $layout);
-                $renderer->layout()->setTemplate($layout);
                 break;
             case $this->target instanceof Controller\AbstractFront:
             default:
                 $theme = $options->getFrontendTheme();
-                // template
                 if (isset($theme['errors']['template']['404'])) {
                     $template = $theme['errors']['template']['404'];
                 }
-                $template = str_replace('{side}', 'frontend', $template);
-                $notFoundStrategy->setNotFoundTemplate($template);
-                // layout
                 if (isset($theme['errors']['layout'])) {
                     $layout = $theme['errors']['layout'];
                 }
-                $layout = str_replace('{side}', 'frontend', $layout);
-
                 if (isset($renderer->layout()->regions)) {
                     unset($renderer->layout()->regions);
                 }
-                $renderer->layout()->setTemplate($layout);
                 break;
         }
+        $template = str_replace('{side}', $side, $template);
+        $layout   = str_replace('{side}', $side, $layout);
+        $notFoundStrategy->setNotFoundTemplate($template);
+        $renderer->layout()->setTemplate($layout);
     }
 }

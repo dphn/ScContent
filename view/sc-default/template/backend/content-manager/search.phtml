@@ -67,7 +67,7 @@
                     <li<?php if($options->getFilter() == 'files'): ?> class="active"<?php endif ?>><a href="<?php echo $this->url('sc-admin/content-search', array('pane' => $pane, 'root' => $options->getRoot(), 'filter' => 'files')) ?>"><?php echo $this->translate('Files') ?> <span class="content-filters-count">(<?php echo $list->getCounter('files') ?>)</span></a></li>
                 </ul>
             </div>
-            <div class="content-scrollarea">
+            <div class="content-scrollarea stratch">
                 <table class="table table-hover table-condensed content-list">
                     <thead>
                         <tr>
@@ -105,62 +105,62 @@
                         <?php endif ?>
                         <?php foreach($list as $item): ?>
 
-                            <tr>
-                                <td class="content-list-icon hidden-xs">
-                                    <?php echo $this->scContentFormat()->getIconPath($item) ?>
+                        <tr>
+                            <td class="content-list-icon hidden-xs">
+                                <?php echo $this->scContentFormat()->getIconPath($item) ?>
 
-                                </td>
-                                <td class="content-list-order">
-                                    <input class="form-control input-sm" type="text" name="dummy" value="<?php echo $item->getOrder() ?>" disabled="disabled" />
-                                </td>
-                                <td class="content-list-title">
-                                    <span><?php echo $item->getTitle() ?></span>
-                                    <br />
+                            </td>
+                            <td class="content-list-order">
+                                <input class="form-control input-sm" type="text" name="dummy" value="<?php echo $item->getOrder() ?>" disabled="disabled" />
+                            </td>
+                            <td class="content-list-title">
+                                <span><?php echo $item->getTitle() ?></span>
+                                <br />
+                                <?php if('file' != $item->getType()): ?>
+
+                                <span class="content-childrens">(<?php echo $item->getChildrens() ?>)</span>
+
+                                <?php else: ?>
+
+                                <span class="content-type"><?php echo $this->scContentFormat()->getExtension($item) ?></span>
+                                <?php endif ?>
+
+                                <br />
+                                <span class="content-item-actions">
                                     <?php if('file' != $item->getType()): ?>
 
-                                    <span class="content-childrens">(<?php echo $item->getChildrens() ?>)</span>
+                                    <a href="<?php echo $this->url('sc-admin/content-manager', array('pane' => $pane, 'type' => 'list', 'root' => $options->getRoot(), 'filter' => $options->getFilter(), 'parent' => $item->getId())) ?>"><?php echo $this->translate('Use') ?></a>
+                                    <?php endif ?>
+                                    <?php if($options->getRoot() != 'trash'): ?>
 
-                                    <?php else: ?>
+                                        <?php if('file' != $item->getType()): ?>|&nbsp;<?php endif ?><a href="<?php echo $this->url('sc-admin/' . $item->getType() . '/edit', array('id' => $item->getId())) ?>"><?php echo $this->translate('Edit') ?></a>
+                                            <?php if($this->scContentFormat()->canPreview($item)): ?>
 
-                                    <span class="content-type"><?php echo $this->scContentFormat()->getExtension($item) ?></span>
+                                            |&nbsp;<a href="<?= $this->url('home', ['content-name' => $item->getName()]) ?>" target="blank"><?php echo $this->translate('Preview') ?></a>
+                                            <?php endif ?>
                                     <?php endif ?>
 
-                                    <br />
-                                    <span class="content-item-actions">
-                                        <?php if('file' != $item->getType()): ?>
+                                </span>
+                            </td>
+                            <td class="content-list-status hidden-xs">
+                                <?php if('published' == $item->getStatus()): ?>
 
-                                        <a href="<?php echo $this->url('sc-admin/content-manager', array('pane' => $pane, 'type' => 'list', 'root' => $options->getRoot(), 'filter' => $options->getFilter(), 'parent' => $item->getId())) ?>"><?php echo $this->translate('Use') ?></a>
-                                        <?php endif ?>
-                                        <?php if($options->getRoot() != 'trash'): ?>
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <?php else: ?>
 
-                                            <?php if('file' != $item->getType()): ?>|&nbsp;<?php endif ?><a href="<?php echo $this->url('sc-admin/' . $item->getType() . '/edit', array('id' => $item->getId())) ?>"><?php echo $this->translate('Edit') ?></a>
-                                                <?php if($this->scContentFormat()->canPreview($item)): ?>
+                                <span class="glyphicon glyphicon-eye-close"></span>
+                                <?php endif ?>
 
-                                                |&nbsp;<a href="<?= $this->url('home', ['content-name' => $item->getName()]) ?>" target="blank"><?php echo $this->translate('Preview') ?></a>
-                                                <?php endif ?>
-                                        <?php endif ?>
+                            </td>
+                            <td class="content-list-user hidden-xs">
+                                <span><?php echo $item->getUserName() ?></span><br /><span class="content-list-email"><?php echo $item->getUserEmail() ?></span>
+                            </td>
+                            <td class="content-list-date hidden-xs">
+                                <?php echo $this->scDateTime()->getDate($item->getDate()) ?><br />
+                                <?php echo $this->scDateTime()->getTime($item->getDate()) ?>
 
-                                    </span>
-                                </td>
-                                <td class="content-list-status hidden-xs">
-                                    <?php if('published' == $item->getStatus()): ?>
-
-                                    <span class="glyphicon glyphicon-eye-open"></span>
-                                    <?php else: ?>
-
-                                    <span class="glyphicon glyphicon-eye-close"></span>
-                                    <?php endif ?>
-
-                                </td>
-                                <td class="content-list-user hidden-xs">
-                                    <span><?php echo $item->getUserName() ?></span><br /><span class="content-list-email"><?php echo $item->getUserEmail() ?></span>
-                                </td>
-                                <td class="content-list-date hidden-xs">
-                                    <?php echo $this->scDateTime()->getDate($item->getDate()) ?><br />
-                                    <?php echo $this->scDateTime()->getTime($item->getDate()) ?>
-
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                         <?php endforeach ?>
 
                     </tbody>
@@ -185,11 +185,11 @@
                     <div id="contentOptions" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <?php echo $this->formLabel($form->get('text')) ?>
+
                             <?php echo $this->formText($form->get('text')) ?>
                             <?php if(count($form->get('text')->getMessages())): ?>
 
                             <div class="alert alert-warning"><?php echo $this->formElementErrors($form->get('text')) ?></div>
-
                             <?php endif ?>
 
                             <p class="help-block"><?php echo $this->translate('A word or a few words separated by a space.') ?></p>
@@ -215,12 +215,12 @@
                         <div class="panel-body">
                             <div id="search-date-group">
                                 <div class="radio"><?php echo $this->formRadio($form->get('date_type')) ?></div>
-
                                 <?php if(count($form->get('date_type')->getMessages())): ?>
 
                                 <div class="alert alert-warning"><?php echo $this->formElementErrors($form->get('date_type')) ?></div>
 
                                 <?php endif ?>
+
                             </div>
                             <div class="search-date-range form-group">
                                 <div class="input-group">
@@ -269,6 +269,7 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <?php echo $this->formLabel($form->get('user_name')) ?>
+
                                 <?php echo $this->formText($form->get('user_name')) ?>
                                 <?php if(count($form->get('user_name')->getMessages())): ?>
 

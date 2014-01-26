@@ -55,6 +55,7 @@ class ArticleController extends AbstractBack
                 ->toRoute('sc-admin/content-manager')
                 ->setStatusCode(303);
         }
+
         return $this->redirect()->toRoute(
             'sc-admin/article/edit',
             ['id' => $articleId]
@@ -86,13 +87,13 @@ class ArticleController extends AbstractBack
                 ->toRoute('sc-admin/content-manager')
                 ->setStatusCode(303);
         }
+
         $form = $this->getArticleForm();
         $form->setAttribute(
             'action',
             $this->url()->fromRoute('sc-admin/article/edit', ['id' => $id])
         );
         $form->bind($article);
-
         if ($this->getRequest()->isPost()) {
             $form->setData($this->getRequest()->getPost());
             if ($form->isValid()) {

@@ -104,7 +104,7 @@ return [
             => 'ScContent\Factory\Service\Theme\FrontendRegionsProxyFactory',
 
         'ScMapper.Roles'
-            => 'ScContent\Factory\Mapper\RolesFactory',
+            => 'ScContent\Factory\Mapper\RolesMapperFactory',
 
         'ScMapper.Registration'
             => 'ScContent\Factory\Mapper\RegistrationMapperFactory',

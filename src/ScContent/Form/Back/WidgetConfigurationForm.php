@@ -40,7 +40,6 @@ class WidgetConfigurationForm extends Form
             'name' => 'roles',
             'type' => 'multicheckbox',
             'options' => [
-                'label' => 'Applicable roles',
                 'label_attributes' => [
                     'class' => 'checkbox',
                 ],

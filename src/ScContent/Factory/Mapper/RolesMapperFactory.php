@@ -17,7 +17,7 @@ use ScContent\Mapper\RolesMapper,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class RolesFactory implements FactoryInterface
+class RolesMapperFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator

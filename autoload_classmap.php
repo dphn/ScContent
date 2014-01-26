@@ -5,7 +5,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
  * Generated using Qt
- * total classes:    282
+ * total classes:    284
  * total interfaces: 15
  */
 
@@ -17,6 +17,7 @@ return [
     'ScContent\Controller\AbstractFront'                                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'AbstractFront.php',
     'ScContent\Controller\AbstractInstallation'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'AbstractInstallation.php',
     'ScContent\Controller\AbstractWidget'                                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'AbstractWidget.php',
+    'ScContent\Controller\Back\AbstractWidgetAwareController'              => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'Back'                             . DS . 'AbstractWidgetAwareController.php',
     'ScContent\Controller\Back\ArticleController'                          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'Back'                             . DS . 'ArticleController.php',
     'ScContent\Controller\Back\CategoryController'                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'Back'                             . DS . 'CategoryController.php',
     'ScContent\Controller\Back\ContentManagerController'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'Back'                             . DS . 'ContentManagerController.php',
@@ -25,6 +26,7 @@ return [
     'ScContent\Controller\Back\LayoutController'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'Back'                             . DS . 'LayoutController.php',
     'ScContent\Controller\Back\ThemeController'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'Back'                             . DS . 'ThemeController.php',
     'ScContent\Controller\Back\WidgetController'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'Back'                             . DS . 'WidgetController.php',
+    'ScContent\Controller\Back\WidgetVisibilityController'                 => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'Back'                             . DS . 'WidgetVisibilityController.php',
     'ScContent\Controller\Front\ContentController'                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'Front'                            . DS . 'ContentController.php',
     'ScContent\Controller\Installation\AccountController'                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'Installation'                     . DS . 'AccountController.php',
     'ScContent\Controller\Installation\ConfigController'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Controller'  . DS . 'Installation'                     . DS . 'ConfigController.php',
@@ -112,7 +114,7 @@ return [
     'ScContent\Factory\Mapper\Front\ContentFactory'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Front'                                . DS . 'ContentFactory.php',
     'ScContent\Factory\Mapper\Installation\LayoutFactory'                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Installation'                         . DS . 'LayoutFactory.php',
     'ScContent\Factory\Mapper\RegistrationMapperFactory'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'RegistrationMapperFactory.php',
-    'ScContent\Factory\Mapper\RolesFactory'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'RolesMapperFactory.php',
+    'ScContent\Factory\Mapper\RolesMapperFactory'                          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'RolesMapperFactory.php',
     'ScContent\Factory\Mapper\Theme\FrontendLayoutFactory'                 => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Theme'                                . DS . 'FrontendLayoutFactory.php',
     'ScContent\Factory\Migration\MapperBuilder'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Migration'                        . DS . 'MapperBuilder.php',
     'ScContent\Factory\Migration\MigrationSchemaAbstractFactory'           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Migration'                        . DS . 'MigrationSchemaAbstractFactory.php',

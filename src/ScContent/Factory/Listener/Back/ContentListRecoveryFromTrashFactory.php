@@ -46,7 +46,7 @@ class ContentListRecoveryFromTrashFactory implements FactoryInterface
                 $layoutListener = $serviceLocator->get(
                     'ScListener.Back.Layout'
                 );
-                $layoutListener->contentRelocated($event);
+                $layoutListener->onMoveContent($event);
             }
         );
 

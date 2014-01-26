@@ -23,6 +23,10 @@ abstract class AbstractWidgetAwareController extends AbstractBack
      */
     protected $widgetConfigurationService;
 
+    /**
+     * @param unknown $id
+     * @return NULL | ScContent\Entity\WidgetInterface
+     */
     protected function deriveWidget($id)
     {
         $service = $this->getWidgetConfigurationService();

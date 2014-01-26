@@ -51,7 +51,8 @@ $sharedEvents   = $eventManager->getSharedManager();
 $eventManager->attachAggregate(
     $serviceLocator->get('ScListener.Installation.Inspector')
 );
-$eventManager->attachAggregate(
+
+$sharedEvents->attachAggregate(
     new \ScContent\Listener\Theme\ThemeContext()
 );
 
