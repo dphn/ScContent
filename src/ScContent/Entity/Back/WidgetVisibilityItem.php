@@ -15,7 +15,7 @@ use ScContent\Entity\AbstractEntity,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class ContentListItem extends AbstractEntity
+class WidgetVisibilityItem extends AbstractEntity
     implements FormatProviderInterface
 {
     /**
@@ -27,11 +27,6 @@ class ContentListItem extends AbstractEntity
      * @var string
      */
     protected $type = 'category';
-
-    /**
-     * @var string
-     */
-    protected $status = 'published';
 
     /**
      * @var string
@@ -74,9 +69,9 @@ class ContentListItem extends AbstractEntity
     protected $childrens = 0;
 
     /**
-     * @var integer
+     * @var null | integer
      */
-    protected $order = 0;
+    protected $enabled;
 
     /**
      * @param integer $id
@@ -113,31 +108,11 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param string $status
-     * @return void
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-
-    /**
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
      * @param string $title
-     * @return void
      */
     public function setTitle($title)
     {
-        if (! empty($title)) {
-            $this->title = $title;
-        }
+        $this->title = $title;
     }
 
     /**
@@ -167,11 +142,10 @@ class ContentListItem extends AbstractEntity
 
     /**
      * @param integer $date
-     * @return void
      */
     public function setDate($date)
     {
-        $this->date = (int) $date;
+        $this->date = $date;
     }
 
     /**
@@ -270,19 +244,32 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param integer $order
+     * @param null | integer $flag
      * @return void
      */
-    public function setOrder($order)
+    public function setEnabled($flag = null)
     {
-        $this->order = (int) $order;
+        if (! is_null($flag)) {
+            $this->enabled = (int) $flag;
+        }
+    }
+
+    /**
+     * @return null | integer
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 
     /**
      * @return integer
      */
-    public function getOrder()
+    public function isEnabled()
     {
-        return $this->order;
+        if (is_null($this->enabled)) {
+            return -1;
+        }
+        return $this->enabled;
     }
 }

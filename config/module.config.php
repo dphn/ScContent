@@ -374,7 +374,7 @@ return [
                             'visibility' => [
                                 'type' => 'segment',
                                 'options' => [
-                                    'route' => '/visibility[/:id]',
+                                    'route' => '/visibility[/:widget_id][/:content_id][/:filter][/:page][/:order_by]',
                                     'defaults' => [
                                         'controller' => 'ScController.Back.WidgetVisibility',
                                         'action' => 'index',

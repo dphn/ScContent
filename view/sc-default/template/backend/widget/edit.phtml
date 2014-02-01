@@ -6,19 +6,22 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group content-helper">
-                <a href="<?= $this->url('sc-admin/layout', ['theme' => $theme]) ?>" class="btn btn-default"><?= $this->translate('Lyout') ?></a>
+                <a href="<?= $this->url('sc-admin/layout', ['theme' => $widget->getTheme()]) ?>" class="btn btn-default"><?= $this->translate('Lyout') ?></a>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 editor-tabs">
             <ul class="nav nav-tabs">
-                <li><a href="<?= $this->url('sc-admin/widget/configure', ['id' => $widgetId]) ?>"><span class="glyphicon glyphicon-cog"></span><?= $this->translate('Configure') ?></a></li>
-                <li class="active"><a href="<?= $this->url('sc-admin/widget/edit', ['id' => $widgetId]) ?>"><span class="glyphicon glyphicon-edit"></span><?= $this->translate('Edit') ?></a></li>
-                <li><a href="<?= $this->url('sc-admin/widget/visibility', ['id' => $widgetId]) ?>"><span class="glyphicon glyphicon-list"></span><?= $this->translate('Visibility') ?></a></li>
+                <li><a href="<?= $this->url('sc-admin/widget/configure', ['id' => $widget->getId()]) ?>"><span class="glyphicon glyphicon-cog"></span><?= $this->translate('Configure') ?></a></li>
+                <li class="active"><a href="<?= $this->url('sc-admin/widget/edit', ['id' => $widget->getId()]) ?>"><span class="glyphicon glyphicon-edit"></span><?= $this->translate('Edit') ?></a></li>
+                <li><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId()]) ?>"><span class="glyphicon glyphicon-list"></span><?= $this->translate('Visibility') ?></a></li>
             </ul>
         </div>
         <div class="col-lg-12">
+            <div class="widget-display-name">
+                <h3 class="widget-display-name"><?= $widget->getDisplayName() ?></h3>
+            </div>
             <div class="under-tabs stratch">
                 <?= $this->backend_of_custom_widget ?>
 

@@ -57,8 +57,7 @@ class WidgetController extends AbstractWidgetAwareController
         $service = $this->getWidgetConfigurationService();
         $widgetConfig = $service->getWidgetConfig($widget);
 
-        $view->widgetId = $widget->getId();
-        $view->theme = $widget->getTheme();
+        $view->widget = $widget;
         $moduleOptions = $this->getModuleOptions();
         $view->config = $moduleOptions->getWidgetByName($widget->getName());
 
@@ -130,8 +129,7 @@ class WidgetController extends AbstractWidgetAwareController
         $controller->setItem($widget);
 
         $view = new ViewModel([
-            'widgetId' => $widget->getId(),
-            'theme' => $widget->getTheme(),
+            'widget' => $widget,
         ]);
 
         $childView = $this->forward()->dispatch(

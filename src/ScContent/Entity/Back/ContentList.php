@@ -58,10 +58,10 @@ class ContentList extends AbstractList
     }
 
     /**
-     * @param ScContent\Entity\ContentListItem
+     * @param object
      * @return void
      */
-    public function addItem(ContentListItem $item)
+    public function addItem($item)
     {
         $this->items[] = $item;
     }

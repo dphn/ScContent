@@ -5,7 +5,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
  * Generated using Qt
- * total classes:    284
+ * total classes:    296
  * total interfaces: 15
  */
 
@@ -51,6 +51,8 @@ return [
     'ScContent\Entity\Back\Regions'                                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Entity'      . DS . 'Back'                             . DS . 'Regions.php',
     'ScContent\Entity\Back\Theme'                                          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Entity'      . DS . 'Back'                             . DS . 'Theme.php',
     'ScContent\Entity\Back\WidgetConfig'                                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Entity'      . DS . 'Back'                             . DS . 'WidgetConfig.php',
+    'ScContent\Entity\Back\WidgetVisibilityItem'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Entity'      . DS . 'Back'                             . DS . 'WidgetVisibilityItem.php',
+    'ScContent\Entity\Back\WidgetVisibilityList'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Entity'      . DS . 'Back'                             . DS . 'WidgetVisibilityList.php',
     'ScContent\Entity\ContentInfo'                                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Entity'      . DS . 'ContentInfo.php',
     'ScContent\Entity\EntityInterface'                                     => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Entity'      . DS . 'EntityInterface.php',
     'ScContent\Entity\Front\Content'                                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Entity'      . DS . 'Front'                            . DS . 'Content.php',
@@ -71,6 +73,7 @@ return [
     'ScContent\Exception\RuntimeException'                                 => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Exception'   . DS . 'RuntimeException.php',
     'ScContent\Factory\Controller\Back\ContentManagerFactory'              => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Controller'                       . DS . 'Back'                                 . DS . 'ContentManagerFactory.php',
     'ScContent\Factory\Controller\Back\LayoutFactory'                      => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Controller'                       . DS . 'Back'                                 . DS . 'LayoutFactory.php',
+    'ScContent\Factory\Controller\Back\WidgetVisibilityFactory'            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Controller'                       . DS . 'Back'                                 . DS . 'WidgetVisibilityFactory.php',
     'ScContent\Factory\Controller\Plugin\TranslatorFactory'                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Controller'                       . DS . 'Plugin'                               . DS . 'TranslatorFactory.php',
     'ScContent\Factory\Db\AdapterServiceFactory'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Db'                               . DS . 'AdapterServiceFactory.php',
     'ScContent\Factory\Form\Back\ArticleFormFactory'                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Form'                             . DS . 'Back'                                 . DS . 'ArticleFormFactory.php',
@@ -89,6 +92,7 @@ return [
     'ScContent\Factory\Listener\Back\LayoutFactory'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Listener'                         . DS . 'Back'                                 . DS . 'LayoutFactory.php',
     'ScContent\Factory\Listener\Back\LayoutMoveFactory'                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Listener'                         . DS . 'Back'                                 . DS . 'LayoutMoveFactory.php',
     'ScContent\Factory\Listener\Back\LayoutReorderFactory'                 => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Listener'                         . DS . 'Back'                                 . DS . 'LayoutReorderFactory.php',
+    'ScContent\Factory\Listener\Back\WidgetVisibilityChangeFactory'        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Listener'                         . DS . 'Back'                                 . DS . 'WidgetVisibilityChangeFactory.php',
     'ScContent\Factory\Listener\Front\RegistrationListenerFactory'         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Listener'                         . DS . 'Front'                                . DS . 'RegistrationListenerFactory.php',
     'ScContent\Factory\Listener\Installation\InstallationInspectorFactory' => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Listener'                         . DS . 'Installation'                         . DS . 'InstallationInspectorFactory.php',
     'ScContent\Factory\Listener\Theme\BackendStrategyFactory'              => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Listener'                         . DS . 'Theme'                                . DS . 'BackendStrategyFactory.php',
@@ -111,6 +115,8 @@ return [
     'ScContent\Factory\Mapper\Back\LayoutReorderMapperFactory'             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'LayoutReorderMapperFactory.php',
     'ScContent\Factory\Mapper\Back\LayoutServiceMapperFactory'             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'LayoutServiceMapperFactory.php',
     'ScContent\Factory\Mapper\Back\WidgetMapperFactory'                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'WidgetMapperFactory.php',
+    'ScContent\Factory\Mapper\Back\WidgetVisibilityChangeMapperFactory'    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'WidgetVisibilityChangeMapperFactory.php',
+    'ScContent\Factory\Mapper\Back\WidgetVisibilityMapperFactory'          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'WidgetVisibilityMapperFactory.php',
     'ScContent\Factory\Mapper\Front\ContentFactory'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Front'                                . DS . 'ContentFactory.php',
     'ScContent\Factory\Mapper\Installation\LayoutFactory'                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Installation'                         . DS . 'LayoutFactory.php',
     'ScContent\Factory\Mapper\RegistrationMapperFactory'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'RegistrationMapperFactory.php',
@@ -129,6 +135,7 @@ return [
     'ScContent\Factory\Service\Back\GarbageCollectorFactory'               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Service'                          . DS . 'Back'                                 . DS . 'GarbageCollectorFactory.php',
     'ScContent\Factory\Service\Back\LayoutFactory'                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Service'                          . DS . 'Back'                                 . DS . 'LayoutFactory.php',
     'ScContent\Factory\Service\Back\WidgetConfigurationFactory'            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Service'                          . DS . 'Back'                                 . DS . 'WidgetConfigurationFactory.php',
+    'ScContent\Factory\Service\Back\WidgetVisibilityFactory'               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Service'                          . DS . 'Back'                                 . DS . 'WidgetVisibilityFactory.php',
     'ScContent\Factory\Service\DirFactory'                                 => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Service'                          . DS . 'DirFactory.php',
     'ScContent\Factory\Service\FileTransferFactory'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Service'                          . DS . 'FileTransferFactory.php',
     'ScContent\Factory\Service\FileTypesCatalogFactory'                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Service'                          . DS . 'FileTypesCatalogFactory.php',
@@ -184,6 +191,7 @@ return [
     'ScContent\Listener\Back\Layout'                                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'    . DS . 'Back'                             . DS . 'Layout.php',
     'ScContent\Listener\Back\LayoutMove'                                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'    . DS . 'Back'                             . DS . 'LayoutMove.php',
     'ScContent\Listener\Back\LayoutReorder'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'    . DS . 'Back'                             . DS . 'LayoutReorder.php',
+    'ScContent\Listener\Back\WidgetVisibilityChange'                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'    . DS . 'Back'                             . DS . 'WidgetVisibilityChange.php',
     'ScContent\Listener\ConfigListenerAggregate'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'    . DS . 'ConfigListenerAggregate.php',
     'ScContent\Listener\Front\RegistrationListener'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'    . DS . 'Front'                            . DS . 'RegistrationListener.php',
     'ScContent\Listener\GuardExceptionStrategy'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Listener'    . DS . 'GuardExceptionStrategy.php',
@@ -218,6 +226,9 @@ return [
     'ScContent\Mapper\Back\LayoutReorderMapper'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'LayoutReorderMapper.php',
     'ScContent\Mapper\Back\LayoutServiceMapper'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'LayoutServiceMapper.php',
     'ScContent\Mapper\Back\WidgetMapper'                                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'WidgetMapper.php',
+    'ScContent\Mapper\Back\WidgetVisibilityChangeMapper'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'WidgetVisibilityChangeMapper.php',
+    'ScContent\Mapper\Back\WidgetVisibilityMapper'                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'WidgetVisibilityMapper.php',
+    'ScContent\Mapper\Back\WidgetVisibilityOptionsMapper'                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'WidgetVisibilityOptionsMapper.php',
     'ScContent\Mapper\Exception\DomainException'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Exception'                        . DS . 'DomainException.php',
     'ScContent\Mapper\Exception\InvalidArgumentException'                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Exception'                        . DS . 'InvalidArgumentException.php',
     'ScContent\Mapper\Exception\LogicException'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Exception'                        . DS . 'LogicException.php',
@@ -244,6 +255,7 @@ return [
     'ScContent\Migration\Schema'                                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Migration'   . DS . 'Schema.php',
     'ScContent\Migration\SchemaInterface'                                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Migration'   . DS . 'ShemaInterface.php',
     'ScContent\Options\Back\ContentListOptions'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'Back'                             . DS . 'ContentListOptions.php',
+    'ScContent\Options\Back\WidgetVisibilityListOptions'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'Back'                             . DS . 'WidgetVisibilityListOptions.php',
     'ScContent\Options\InstallationOptions'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'InstallationOptions.php',
     'ScContent\Options\ModuleOptions'                                      => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'ModuleOptions.php',
     'ScContent\Options\ModuleOptionsInterface'                             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'ModuleOptionsInterface.php',
@@ -262,6 +274,7 @@ return [
     'ScContent\Service\Back\GarbageCollector'                              => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'     . DS . 'Back'                             . DS . 'GarbageCollector.php',
     'ScContent\Service\Back\LayoutService'                                 => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'     . DS . 'Back'                             . DS . 'LayoutService.php',
     'ScContent\Service\Back\WidgetConfigurationService'                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'     . DS . 'Back'                             . DS . 'WidgetConfigurationService.php',
+    'ScContent\Service\Back\WidgetVisibilityService'                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'     . DS . 'Back'                             . DS . 'WidgetVisibilityService.php',
     'ScContent\Service\Dir'                                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'     . DS . 'Dir.php',
     'ScContent\Service\EventProvider'                                      => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'     . DS . 'EventProvider.php',
     'ScContent\Service\FileTransfer'                                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'     . DS . 'FileTransfer.php',
@@ -286,7 +299,6 @@ return [
     'ScContent\Service\Stdlib'                                             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'     . DS . 'Stdlib.php',
     'ScContent\Service\Theme\FrontendRegionsProxy'                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Service'     . DS . 'Theme'                            . DS . 'FrontendRegionsProxy.php',
     'ScContent\Validator\ContentList\SearchDateRange'                      => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'   . DS . 'ContentList'                      . DS . 'SearchDateRange.php',
-    'ScContent\Validator\Controller\WidgetValidator'                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'   . DS . 'Controller'                       . DS . 'WidgetValidator.php',
     'ScContent\Validator\Db\Connection'                                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'   . DS . 'Db'                               . DS . 'Connection.php',
     'ScContent\Validator\File\FileName'                                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'   . DS . 'File'                             . DS . 'FileName.php',
     'ScContent\Validator\File\FileType'                                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'   . DS . 'File'                             . DS . 'FileType.php',

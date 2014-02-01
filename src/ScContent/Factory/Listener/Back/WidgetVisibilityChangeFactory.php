@@ -7,9 +7,9 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Factory\Service\Back;
+namespace ScContent\Factory\Listener\Back;
 
-use ScContent\Service\Back\LayoutService,
+use ScContent\Listener\Back\WidgetVisibilityChange,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -17,23 +17,22 @@ use ScContent\Service\Back\LayoutService,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class LayoutFactory implements FactoryInterface
+class WidgetVisibilityChangeFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Back\LayoutService
+     * @return ScContent\Listener\Back\WidgetVisibilityChange
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $translator = $serviceLocator->get('translator');
-        $moduleOptions = $serviceLocator->get('ScOptions.ModuleOptions');
-        $layoutMapper = $serviceLocator->get('ScMapper.Back.LayoutService');
+        $mapper = $serviceLocator->get('ScMapper.Back.WidgetVisibilityChange');
 
-        $service = new LayoutService();
+        $listener = new WidgetVisibilityChange();
 
-        $service->setTranslator($translator);
-        $service->setModuleOptions($moduleOptions);
-        $service->setLayoutMapper($layoutMapper);
-        return $service;
+        $listener->setTranslator($translator);
+        $listener->setMapper($mapper);
+
+        return $listener;
     }
 }

@@ -64,16 +64,15 @@ class ContentService
 
         $mapper = $this->getMapper();
 
-        $content = new Content();
+        $this->content = new Content();
         if (! empty($name)) {
-            $content->setName($name);
+            $this->content->setName($name);
             // @todo get "Allow preview" from ACL
-            $mapper->findByName($content, true);
-            return $content;
+            $mapper->findByName($this->content, true);
+            return $this->content;
         }
-        $mapper->findHomePage($content);
+        $mapper->findHomePage($this->content);
 
-        $this->content = $content;
-        return $content;
+        return $this->content;
     }
 }

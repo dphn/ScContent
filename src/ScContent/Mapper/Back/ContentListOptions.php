@@ -22,6 +22,11 @@ use ScContent\Options\Back\ContentListOptions as Options,
 class ContentListOptions
 {
     /**
+     * @const string
+     */
+    const ContainerPrefix = 'content_options_';
+
+    /**
      * @param string $name
      * @param array $query
      * @param string $type optional
@@ -36,7 +41,7 @@ class ContentListOptions
                 $name
             ));
         }
-        $containerName = 'content_options_' . $name;
+        $containerName = self::ContainerPrefix . $name;
         $container = new Container($containerName);
         $storage = $container->getManager()->getStorage();
 
@@ -45,6 +50,9 @@ class ContentListOptions
 
         if (! empty($type)) {
             $options->setType($type);
+            if (isset($query['type'])) {
+                unset($query['type']);
+            }
         }
         if (! is_array($query) && ! $query instanceof Traversable
             || ! array_key_exists('pane', $query)
@@ -52,25 +60,7 @@ class ContentListOptions
         ) {
             return $options;
         }
-
-        if (empty($type) && array_key_exists('type', $query)) {
-            $options->setType($query['type']);
-        }
-        if (array_key_exists('root', $query)) {
-            $options->setRoot($query['root']);
-        }
-        if (array_key_exists('page', $query)) {
-            $options->setPage($query['page']);
-        }
-        if (array_key_exists('filter', $query)) {
-            $options->setFilter($query['filter']);
-        }
-        if (array_key_exists('order_by', $query)) {
-            $options->setOrderBy($query['order_by']);
-        }
-        if (array_key_exists('parent', $query)) {
-            $options->setParent($query['parent']);
-        }
+        $options->exchangeArray($query);
         return $options;
     }
 
@@ -80,7 +70,7 @@ class ContentListOptions
      */
     public function saveOptions(Options $options)
     {
-        $containerName = 'content_options_' . $options->getName();
+        $containerName = self::ContainerPrefix . $options->getName();
         $container = new Container($containerName);
         $container->exchangeArray($options->getArrayCopy());
         return $this;

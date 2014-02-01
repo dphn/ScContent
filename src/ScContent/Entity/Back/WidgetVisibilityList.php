@@ -7,22 +7,11 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace ScContent\Entity\Front;
-
-use ScContent\Entity\AbstractContent,
-    ScContent\View\Helper\FormatProviderInterface;
+namespace ScContent\Entity\Back;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class Content extends AbstractContent implements FormatProviderInterface
+class WidgetVisibilityList extends ContentList
 {
-    /**
-     * @param string $type
-     * @return void
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
 }

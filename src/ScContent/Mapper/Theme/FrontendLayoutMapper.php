@@ -66,7 +66,7 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
             ->where([
                 '`layout`.`theme`   = ?' => $themeName,
                 '`layout`.`region` <> ?' => 'none',
-                '(NOT EXISTS (%s) OR 1 = (%s))',
+                '1 = COALESCE((%s), 1)',
 
             ])
             ->order(['region ASC', 'position ASC']);
@@ -92,7 +92,7 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
             ->limit(1);
 
         $correlatedSql = $this->toString($select);
-        $sql = sprintf($sql, $correlatedSql, $correlatedSql);
+        $sql = sprintf($sql, $correlatedSql);
 
         $results = $this->execute($sql);
 
@@ -103,6 +103,7 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
             $hydrator->hydrate($result, $item);
             $proxy->addItem($item);
         }
+
         return $proxy->getRegions();
     }
 }

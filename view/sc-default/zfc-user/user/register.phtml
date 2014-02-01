@@ -48,7 +48,7 @@ $form->setAttribute('method', 'post');
                     <div class="captcha"><?= $this->formCaptcha($element->setAttribute('class', 'form-control input-captcha')) ?></div>
                 <?php else: ?>
 
-                    <?= $this->formInput($element->setAttribute('class', 'form-control')) ?>
+                    <?= $this->formElement($element->setAttribute('class', 'form-control')) ?>
 
                 <?php endif ?>
                 <?php if ($this->formElementErrors($element)): ?>

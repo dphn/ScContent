@@ -7,6 +7,7 @@
  * @link      https://github.com/dphn/ScContent
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
+
 return [
     'invokables' => [
         'ScService.DateTime'
@@ -100,6 +101,9 @@ return [
         'ScService.Back.WidgetConfiguration'
             => 'ScContent\Factory\Service\Back\WidgetConfigurationFactory',
 
+        'ScService.Back.WidgetVisibility'
+            => 'ScContent\Factory\Service\Back\WidgetVisibilityFactory',
+
         'ScService.Theme.FrontendRegionsProxy'
             => 'ScContent\Factory\Service\Theme\FrontendRegionsProxyFactory',
 
@@ -160,6 +164,12 @@ return [
         'ScMapper.Back.Widget'
             => 'ScContent\Factory\Mapper\Back\WidgetMapperFactory',
 
+        'ScMapper.Back.WidgetVisibility'
+            => 'ScContent\Factory\Mapper\Back\WidgetVisibilityMapperFactory',
+
+        'ScMapper.Back.WidgetVisibilityChange'
+            => 'ScContent\Factory\Mapper\Back\WidgetVisibilityChangeMapperFactory',
+
         'ScListener.UnauthorizedStrategy'
             => 'ScContent\Factory\Listener\UnauthorizedStrategyFactory',
 
@@ -216,5 +226,8 @@ return [
 
         'ScListener.Back.Garbage'
             => 'ScContent\Factory\Listener\Back\GarbageFactory',
+
+        'ScListener.Back.WidgetVisibilityChange'
+            => 'ScContent\Factory\Listener\Back\WidgetVisibilityChangeFactory',
     ],
 ];

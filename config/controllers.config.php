@@ -42,9 +42,6 @@ return [
         'ScController.Back.Widget'
             => 'ScContent\Controller\Back\WidgetController',
 
-        'ScController.Back.WidgetVisibility'
-            => 'ScContent\Controller\Back\WidgetVisibilityController',
-
         'ScController.Front.Content'
             => 'ScContent\Controller\Front\ContentController',
     ],
@@ -56,5 +53,9 @@ return [
         // Factory use events
         'ScController.Back.Layout'
             => 'ScContent\Factory\Controller\Back\LayoutFactory',
+
+        // Factory use events
+        'ScController.Back.WidgetVisibility'
+            => 'ScContent\Factory\Controller\Back\WidgetVisibilityFactory',
     ],
 ];

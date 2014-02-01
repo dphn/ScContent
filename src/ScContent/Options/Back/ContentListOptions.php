@@ -77,6 +77,11 @@ class ContentListOptions extends AbstractEntity
     protected $page = 1;
 
     /**
+     * @var boolean
+     */
+    protected $pageIsReset = false;
+
+    /**
      * @var sting
      */
     protected $userType = 'author';
@@ -153,10 +158,28 @@ class ContentListOptions extends AbstractEntity
     /**
      * Constructor
      *
-     * @param array
+     * @param array $options
      */
     public function __construct($options)
     {
+        if (! is_array($options)) {
+            return;
+        }
+        if (isset($options['list'])) {
+            $this->setList($options['list']);
+            unset($options['list']);
+        }
+        if (isset($options['search'])) {
+            $this->setSearch($options['search']);
+            unset($options['search']);
+        }
+        if (isset($options['search_options'])) {
+            $this->setSearchOptions($options['search_options']);
+            unset($options['search_options']);
+        }
+
+        $options = $this->filterOptions($options);
+
         $this->exchangeArray($options);
         $this->state = self::StateConstructed;
     }
@@ -192,6 +215,7 @@ class ContentListOptions extends AbstractEntity
             return;
         }
         $this->type = $type;
+        $this->pageIsReset = false;
 
         $storage = $this->$type;
         if (isset($storage['root'])) {
@@ -229,14 +253,13 @@ class ContentListOptions extends AbstractEntity
      */
     public function setRoot($root)
     {
-        if (! in_array($root, self::$roots, true)
-            || ($this->root == $root && $this->state == self::StateConstructed)
-        ) {
+        if (! in_array($root, self::$roots, true) || $this->root == $root) {
             return;
         }
         $this->root = $root;
         $type = $this->type;
         $storage = &$this->$type;
+        $this->pageIsReset = false;
 
         if (! isset($storage[$root])) {
             return;
@@ -276,7 +299,7 @@ class ContentListOptions extends AbstractEntity
         if ($parent >= 0) {
             if ($this->state == self::StateConstructed
                  && $parent != $this->parent) {
-                $this->setPage(1);
+                $this->resetPage();
             }
             $this->parent = $parent;
         }
@@ -299,7 +322,7 @@ class ContentListOptions extends AbstractEntity
         if (in_array($filter, self::$filters, true)) {
             if ($this->state == self::StateConstructed
                  && $filter != $this->filter) {
-                $this->setPage(1);
+                $this->resetPage();
             }
             $this->filter = $filter;
         }
@@ -319,6 +342,9 @@ class ContentListOptions extends AbstractEntity
      */
     public function setPage($page)
     {
+        if ($this->pageIsReset) {
+            return;
+        }
         $page = (int) $page;
         if ($page >= 0) {
             $this->page = $page;
@@ -331,6 +357,15 @@ class ContentListOptions extends AbstractEntity
     public function getPage()
     {
         return $this->page;
+    }
+
+    /**
+     * @return void
+     */
+    public function resetPage()
+    {
+        $this->pageIsReset = true;
+        $this->page = 1;
     }
 
     /**
@@ -529,35 +564,6 @@ class ContentListOptions extends AbstractEntity
     public function getSearchOptions()
     {
         return $this->searchOptions;
-    }
-
-    /**
-     * @param array $options
-     * @return void
-     */
-    public function exchangeArray($options)
-    {
-        if (! is_array($options) && ! $options instanceof Traversable) {
-            return;
-        }
-        if (isset($options['list'])) {
-            $this->setList($options['list']);
-            unset($options['list']);
-        }
-        if (isset($options['search'])) {
-            $this->setSearch($options['search']);
-            unset($options['search']);
-        }
-        if (isset($options['search_options'])) {
-            $this->setSearchOptions($options['search_options']);
-            unset($options['search_options']);
-        }
-        if (isset($options['root'])) {
-            unset($options['root']);
-        }
-        $options = $this->filterOptions($options);
-
-        parent::exchangeArray($options);
     }
 
     /**

@@ -9,8 +9,8 @@
  */
 namespace ScContent\Factory\Service\Back;
 
-use ScContent\Service\Back\ContentListOptionsProvider,
-    ScContent\Mapper\Back\ContentListOptions as OptionsMapper,
+use ScContent\Service\Back\WidgetVisibilityService,
+    ScContent\Mapper\Back\WidgetVisibilityOptionsMapper,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -18,23 +18,23 @@ use ScContent\Service\Back\ContentListOptionsProvider,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class ContentListOptionsProviderFactory implements FactoryInterface
+class WidgetVisibilityFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Back\ContentListOptionsProvider
+     * @return ScContent\Service\Back\WidgetVisibilityService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $l10n = $serviceLocator->get('ScService.Localization');
+        $visibilityMapper = $serviceLocator->get('ScMapper.Back.WidgetVisibility');
+        $optionsMapper = new WidgetVisibilityOptionsMapper();
         $request = $serviceLocator->get('Request');
         $router  = $serviceLocator->get('Router');
-        $mapper = new OptionsMapper();
 
-        $service = new ContentListOptionsProvider();
+        $service = new WidgetVisibilityService();
 
-        $service->setOptionsMapper($mapper);
-        $service->setLocalization($l10n);
+        $service->setVisibilityMapper($visibilityMapper);
+        $service->setOptionsMapper($optionsMapper);
         $service->setRequest($request);
         $service->setRouter($router);
 
