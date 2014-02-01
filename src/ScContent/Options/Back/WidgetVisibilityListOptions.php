@@ -59,7 +59,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     /**
      * @var integer
      */
-    protected $limit = 2;
+    protected $limit = 20;
 
     /**
      * @var integer
