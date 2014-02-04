@@ -5,7 +5,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
  * Generated using Qt
- * total classes:    296
+ * total classes:    298
  * total interfaces: 15
  */
 
@@ -116,7 +116,8 @@ return [
     'ScContent\Factory\Mapper\Back\LayoutServiceMapperFactory'             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'LayoutServiceMapperFactory.php',
     'ScContent\Factory\Mapper\Back\WidgetMapperFactory'                    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'WidgetMapperFactory.php',
     'ScContent\Factory\Mapper\Back\WidgetVisibilityChangeMapperFactory'    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'WidgetVisibilityChangeMapperFactory.php',
-    'ScContent\Factory\Mapper\Back\WidgetVisibilityMapperFactory'          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'WidgetVisibilityMapperFactory.php',
+    'ScContent\Factory\Mapper\Back\WidgetVisibilityListMapperFactory'      => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'WidgetVisibilityListMapperFactory.php',
+    'ScContent\Factory\Mapper\Back\WidgetVisibilitySearchMapperFactory'    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Back'                                 . DS . 'WidgetVisibilitySearchMapperFactory.php',
     'ScContent\Factory\Mapper\Front\ContentFactory'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Front'                                . DS . 'ContentFactory.php',
     'ScContent\Factory\Mapper\Installation\LayoutFactory'                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'Installation'                         . DS . 'LayoutFactory.php',
     'ScContent\Factory\Mapper\RegistrationMapperFactory'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Mapper'                           . DS . 'RegistrationMapperFactory.php',
@@ -227,8 +228,9 @@ return [
     'ScContent\Mapper\Back\LayoutServiceMapper'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'LayoutServiceMapper.php',
     'ScContent\Mapper\Back\WidgetMapper'                                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'WidgetMapper.php',
     'ScContent\Mapper\Back\WidgetVisibilityChangeMapper'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'WidgetVisibilityChangeMapper.php',
-    'ScContent\Mapper\Back\WidgetVisibilityMapper'                         => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'WidgetVisibilityMapper.php',
+    'ScContent\Mapper\Back\WidgetVisibilityListMapper'                     => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'WidgetVisibilityListMapper.php',
     'ScContent\Mapper\Back\WidgetVisibilityOptionsMapper'                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'WidgetVisibilityOptionsMapper.php',
+    'ScContent\Mapper\Back\WidgetVisibilitySearchMapper'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Back'                             . DS . 'WidgetVisibilitySearchMapper.php',
     'ScContent\Mapper\Exception\DomainException'                           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Exception'                        . DS . 'DomainException.php',
     'ScContent\Mapper\Exception\InvalidArgumentException'                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Exception'                        . DS . 'InvalidArgumentException.php',
     'ScContent\Mapper\Exception\LogicException'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Mapper'      . DS . 'Exception'                        . DS . 'LogicException.php',
