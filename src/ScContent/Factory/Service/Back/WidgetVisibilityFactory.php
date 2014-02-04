@@ -26,14 +26,16 @@ class WidgetVisibilityFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $visibilityMapper = $serviceLocator->get('ScMapper.Back.WidgetVisibility');
+        $listMapper = $serviceLocator->get('ScMapper.Back.WidgetVisibilityList');
+        $searchMapper = $serviceLocator->get('ScMapper.Back.WidgetVisibilitySearch');
         $optionsMapper = new WidgetVisibilityOptionsMapper();
         $request = $serviceLocator->get('Request');
         $router  = $serviceLocator->get('Router');
 
         $service = new WidgetVisibilityService();
 
-        $service->setVisibilityMapper($visibilityMapper);
+        $service->setListMapper($listMapper);
+        $service->setSearchMapper($searchMapper);
         $service->setOptionsMapper($optionsMapper);
         $service->setRequest($request);
         $service->setRouter($router);

@@ -1,10 +1,18 @@
 <?php
-
+/**
+ * ScContent (https://github.com/dphn/ScContent)
+ *
+ * @author    Dolphin <work.dolphin@gmail.com>
+ * @copyright Copyright (c) 2013-2014 ScContent
+ * @link      https://github.com/dphn/ScContent
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ */
 namespace ScContent\Service\Back;
 
-use ScContent\Mapper\Back\WidgetVisibilityMapper as VisibilityMapper,
+use ScContent\Mapper\Back\WidgetVisibilityListMapper    as ListMapper,
+    ScContent\Mapper\Back\WidgetVisibilitySearchMapper  as SearchMapper,
     ScContent\Mapper\Back\WidgetVisibilityOptionsMapper as OptionsMapper,
-    ScContent\Options\Back\WidgetVisibilityListOptions as Options,
+    ScContent\Options\Back\WidgetVisibilityListOptions  as Options,
     //
     ScContent\Exception\InvalidArgumentException,
     ScContent\Exception\IoCException,
@@ -13,14 +21,34 @@ use ScContent\Mapper\Back\WidgetVisibilityMapper as VisibilityMapper,
     Zend\Http\Request,
     Zend\Stdlib\ArrayUtils;
 
+/**
+ * @author Dolphin <work.dolphin@gmail.com>
+ */
 class WidgetVisibilityService
 {
+    /**
+     * @var Zend\Mvc\Router\Http\TreeRouteStack
+     */
     protected $router;
 
+    /**
+     * @var Zend\Http\Request
+     */
     protected $request;
 
-    protected $visibilityMapper;
+    /**
+     * @var ScContent\Mapper\Back\WidgetVisibilityListMapper
+     */
+    protected $listMapper;
 
+    /**
+     * @var ScContent\Mapper\Back\WidgetVisibilitySearchMapper
+     */
+    protected $searchMapper;
+
+    /**
+     * @var ScContent\Mapper\Back\WidgetVisibilityOptionsMapper
+     */
     protected $optionsMapper;
 
     /**
@@ -28,13 +56,24 @@ class WidgetVisibilityService
      */
     protected $options;
 
+    /**
+     * @var null | array
+     */
     protected $query;
 
+    /**
+     * @param Zend\Mvc\Router\Http\TreeRouteStack $router
+     * @return void
+     */
     public function setRouter(Router $router)
     {
         $this->router = $router;
     }
 
+    /**
+     * @throws ScContent\Exception\IoCException
+     * @return Zend\Mvc\Router\Http\TreeRouteStack
+     */
     public function getRouter()
     {
         if (! $this->router instanceof Router) {
@@ -45,11 +84,19 @@ class WidgetVisibilityService
         return $this->router;
     }
 
+    /**
+     * @param Zend\Http\Request $request
+     * @return void
+     */
     public function setRequest(Request $request)
     {
         $this->request = $request;
     }
 
+    /**
+     * @throws ScContent\Exception\IoCException
+     * @return Zend\Http\Request
+     */
     public function getRequest()
     {
         if (! $this->request instanceof Request) {
@@ -60,26 +107,65 @@ class WidgetVisibilityService
         return $this->request;
     }
 
-    public function setVisibilityMapper(VisibilityMapper $mapper)
+    /**
+     * @param ScContent\Mapper\Back\WidgetVisibilityListMapper $mapper
+     * @return void
+     */
+    public function setListMapper(ListMapper $mapper)
     {
-        $this->visibilityMapper = $mapper;
+        $this->listMapper = $mapper;
     }
 
-    public function getVisibilityMapper()
+    /**
+     * @throws ScContent\Exception\IoCException
+     * @return ScContent\Mapper\Back\WidgetVisibilityListMapper
+     */
+    public function getListMapper()
     {
-        if (! $this->visibilityMapper instanceof VisibilityMapper) {
+        if (! $this->listMapper instanceof ListMapper) {
             throw new IoCException(
-                'The visibility mapper was not set.'
+                'The visibility list mapper was not set.'
             );
         }
-        return $this->visibilityMapper;
+        return $this->listMapper;
     }
 
+    /**
+     * @param ScContent\Mapper\Back\WidgetVisibilitySearchMapper $mapper
+     * @return void
+     */
+    public function setSearchMapper(SearchMapper $mapper)
+    {
+        $this->searchMapper = $mapper;
+    }
+
+    /**
+     * @throws ScContent\Exception\IoCException
+     * @return ScContent\Mapper\Back\WidgetVisibilitySearchMapper
+     */
+    public function getSearchMapper()
+    {
+        if (! $this->searchMapper instanceof SearchMapper) {
+            throw new IoCException(
+                'The search mapper was not set.'
+            );
+        }
+        return $this->searchMapper;
+    }
+
+    /**
+     * @param ScContent\Mapper\Back\WidgetVisibilityOptionsMapper $mapper
+     * @return void
+     */
     public function setOptionsMapper(OptionsMapper $mapper)
     {
         $this->optionsMapper = $mapper;
     }
 
+    /**
+     * @throws ScContent\Exception\IoCException
+     * @return ScContent\Mapper\Back\WidgetVisibilityOptionsMapper
+     */
     public function getOptionsMapper()
     {
         if (! $this->optionsMapper instanceof OptionsMapper) {
@@ -90,6 +176,11 @@ class WidgetVisibilityService
         return $this->optionsMapper;
     }
 
+    /**
+     * @param array $query
+     * @throws ScContent\Exception\InvalidArgumentException
+     * @return void
+     */
     public function setQuery($query)
     {
         if (! is_array($query)) {
@@ -100,6 +191,9 @@ class WidgetVisibilityService
         $this->query = $query;
     }
 
+    /**
+     * @return array
+     */
     public function getQuery()
     {
         if (is_null($this->query)) {
@@ -108,7 +202,10 @@ class WidgetVisibilityService
             $query = [];
             if ($request->isPost()) {
                 $query = (array) $request->getPost();
+            } elseif ($request->isGet()) {
+                $query = (array) $request->getQuery();
             }
+
             $query = ArrayUtils::merge(
                 $query, $router->match($request)->getParams()
             );
@@ -117,6 +214,9 @@ class WidgetVisibilityService
         return $this->query;
     }
 
+    /**
+     * @return ScContent\Options\Back\WidgetVisibilityOptions
+     */
     public function getOptions()
     {
         if (! $this->options instanceof Options) {
@@ -127,6 +227,9 @@ class WidgetVisibilityService
         return $this->options;
     }
 
+    /**
+     * @return void
+     */
     public function saveOptions()
     {
         $mapper = $this->getOptionsMapper();
@@ -134,10 +237,19 @@ class WidgetVisibilityService
         $mapper->saveOptions($options);
     }
 
+    /**
+     * @return ScContent\Entity\Back\WidgetVisibilityList
+     */
     public function getContentList()
     {
         $options = $this->getOptions();
-        $mapper = $this->getVisibilityMapper();
+
+        if ($options->getSearch()) {
+            $mapper = $this->getSearchMapper();
+        } else {
+            $mapper = $this->getListMapper();
+        }
+
         $list = $mapper->getContent($options);
         return $list;
     }

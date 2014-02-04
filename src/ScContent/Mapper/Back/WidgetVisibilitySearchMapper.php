@@ -14,6 +14,7 @@ use ScContent\Mapper\AbstractContentMapper,
     ScContent\Entity\Back\WidgetVisibilityList,
     ScContent\Entity\Back\WidgetVisibilityItem,
     //
+    Zend\Filter\FilterInterface,
     Zend\Db\Adapter\AdapterInterface,
     Zend\Db\Sql\Predicate\Predicate,
     Zend\Db\Sql\Expression,
@@ -23,8 +24,13 @@ use ScContent\Mapper\AbstractContentMapper,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class WidgetVisibilityMapper extends AbstractContentMapper
+class WidgetVisibilitySearchMapper extends AbstractContentMapper
 {
+    /**
+     * @var Zend\Filter\FilterInterface
+     */
+    protected $morfologyFilter;
+
     /**
      * @const string
      */
@@ -35,92 +41,113 @@ class WidgetVisibilityMapper extends AbstractContentMapper
      */
     protected $_tables = [
         self::ContentTableAlias => 'sc_content',
+        self::SearchTableAlias  => 'sc_search',
         self::WidgetsTableAlias => 'sc_widgets',
         self::UsersTableAlias   => 'sc_users',
     ];
 
     /**
      * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param Zend\Filter\FilterInterface $filter
      */
-    public function __construct(AdapterInterface $adapter)
+    public function __construct(AdapterInterface $adapter, FilterInterface $filter)
     {
+        $this->morfologyFilter = $filter;
         $this->setAdapter($adapter);
     }
 
+    /**
+     * @param ScContent\Options\Back\WidgetVisibilityListOptions $options
+     * @return ScContent\Entity\Back\WidgetVisibilityList
+     */
     public function getContent(Options $options)
     {
-        try {
-            $this->beginTransaction();
-            $parent = $this->findMetaById($options->getContentId());
-            if (empty($parent) || $parent['trash']) {
-                $parent = $this->getVirtualRoot(false);
-            }
-            $back = $this->findBack($parent);
+        $this->beginTransaction();
+        $parent = $this->getVirtualRoot(false);
+        $counter = [
+            'all'        => $this->getSearchCount($options, 'all'),
+            'categories' => $this->getSearchCount($options, 'categories'),
+            'articles'   => $this->getSearchCount($options, 'articles'),
+            'files'      => $this->getSearchCount($options, 'files'),
+        ];
+        $total = $counter[$options->getFilter()];
+        $totalPages = max(1, ceil($total / $options->getLimit()));
+        $currentPage = max(1, min($totalPages, $options->getPage()));
 
-            $counter = [
-                'all'        => $this->getContentCount($parent, 'all'),
-                'categories' => $this->getContentCount($parent, 'categories'),
-                'articles'   => $this->getContentCount($parent, 'articles'),
-                'files'      => $this->getContentCount($parent, 'files'),
-            ];
-            $total = $counter[$options->getFilter()];
-            $totalPages = max(1, ceil($total / $options->getLimit()));
-            $currentPage = max(1, min($totalPages, $options->getPage()));
-
-            // Fix the number of the page received from the request.
-            if ($currentPage != $options->getPage()) {
-                $options->setPage($currentPage);
-            }
-
-            $contentList = new WidgetVisibilityList($parent);
-            $contentList->setBack($back);
-            $contentList->setCounter($counter);
-            $contentList->setTotalPages($totalPages);
-
-            $offset = ($currentPage - 1) * $options->getLimit();
-
-            $this->getContentItems($contentList, $offset, $options);
-
-            $this->commit();
-            return $contentList;
-        } catch (Exception $e) {
-            $this->rollBack();
+        // Fix the number of the page received from the request.
+        if ($currentPage != $options->getPage()) {
+            $options->setPage($currentPage);
         }
+
+        $contentList = new WidgetVisibilityList($parent);
+        $contentList->setCounter($counter);
+        $contentList->setTotalPages($totalPages);
+
+        $offset = ($currentPage - 1) * $options->getLimit();
+
+        $this->getContentItems($contentList, $options, $offset);
+
+        return $contentList;
     }
 
     /**
-     * @param array $parent
+     * @param ScContent\Options\Back\WidgetVisibilityListOptions $options
      * @param string $filter
      * @return integer
      */
-    protected function getContentCount($parent, $filter)
+    protected function getSearchCount(Options $options, $filter)
     {
+        if (! $options->getSearch()) {
+            return 0;
+        }
+
         $select = $this->getSql()->select()
-            ->columns(['total' => new Expression('COUNT(`id`)')])
-            ->from($this->getTable(self::ContentTableAlias))
+            ->columns([
+                'total' => new Expression('COUNT(`content`.`id`)'),
+            ])
+            ->from([
+                'content' => $this->getTable(self::ContentTableAlias),
+            ])
             ->where([
-                '`trash`     = ?' => $parent['trash'],
-                '`left_key`  > ?' => $parent['left_key'],
-                '`right_key` < ?' => $parent['right_key'],
-                '`level`     = ?' => $parent['level'] + 1,
+                'content.trash' => 0
             ]);
 
         switch ($filter) {
-        	case 'categories':
-        	    $select->where(['type' => 'category']);
-        	    break;
-        	case 'articles':
-        	    $select->where(['type' => 'article']);
-        	    break;
-        	case 'files':
-        	    $select->where(['type' => 'file']);
-        	    break;
+            case 'categories':
+                $select->where(['content.type' => 'category']);
+                break;
+            case 'articles':
+                $select->where(['content.type' => 'article']);
+                break;
+            case 'files':
+                $select->where(['content.type' => 'file']);
+                break;
         }
+
+        $text = $this->morfologyFilter->filter($options->getSearch());
+        $text = $this->quoteValue($text);
+        $textSource = $options->getSearchSource();
+
+        $select->join(
+            ['search' => $this->getTable(self::SearchTableAlias)],
+            (new Predicate())->literal('`content`.`id` = `search`.`id`')
+                ->literal(
+                    "MATCH(`search`.`{$textSource}`) AGAINST({$text} IN BOOLEAN MODE) > '0'"
+                ),
+            []
+        );
+
         $result = $this->execute($select)->current();
         return (int) $result['total'];
     }
 
-    protected function getContentItems(WidgetVisibilityList $content, $offset, $options)
+    /**
+     * @param ScContent\Entity\Back\WidgetVisibilityList $content
+     * @param ScContent\Options\Back\WidgetVisibilityListOptions $options
+     * @param integer $offset
+     * @return void
+     */
+    protected function getContentItems(WidgetVisibilityList $content, Options $options, $offset)
     {
         $select = $this->getSql()->select()
             ->columns([
@@ -151,10 +178,7 @@ class WidgetVisibilityMapper extends AbstractContentMapper
                 self::JoinLeft
             )
             ->where([
-                '`content`.`trash`     = ?' => $content->getParent('trash'),
-                '`content`.`left_key`  > ?' => $content->getParent('left_key'),
-                '`content`.`right_key` < ?' => $content->getParent('right_key'),
-                '`content`.`level`     = ?' => $content->getParent('level') + 1,
+                'content.trash' => 0,
             ])
             ->group('content.id')
             ->limit($options->getLimit())
@@ -186,6 +210,19 @@ class WidgetVisibilityMapper extends AbstractContentMapper
                 $select->order('content.created '. $options->getOrder());
                 break;
         }
+
+        $text = $this->morfologyFilter->filter($options->getSearch());
+        $text = $this->quoteValue($text);
+        $textSource = $options->getSearchSource();
+
+        $select->join(
+            ['search' => $this->getTable(self::SearchTableAlias)],
+            (new Predicate())->literal('`content`.`id` = `search`.`id`')
+            ->literal(
+                "MATCH(`search`.`{$textSource}`) AGAINST({$text} IN BOOLEAN MODE) > '0'"
+            ),
+            []
+        );
 
         $results = $this->execute($select);
         $itemPrototype = new WidgetVisibilityItem();

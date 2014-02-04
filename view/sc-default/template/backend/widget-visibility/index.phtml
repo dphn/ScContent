@@ -4,9 +4,7 @@
 
 ?>
 
-    <form action="<?= $this->url('sc-admin/widget/visibility') ?>" method="post">
-        <input type="hidden" name="widget_id" value="<?= $widget->getId() ?>">
-        <input type="hidden" name="content_id" value="<?= $options->getContentId() ?>">
+    <form action="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId()]) ?>" method="post">
         <div class="row">
             <div class="col-lg-12">
                 <div class="form-group content-helper">
@@ -47,7 +45,7 @@
 
                     <ul class="nav nav-tabs">
                         <li><a href="<?= $this->url('sc-admin/widget/configure', ['id' => $widget->getId()]) ?>"><span class="glyphicon glyphicon-cog"></span><?= $this->translate('Configure') ?></a></li>
-                        <?php if(isset($config['backend'])): ?>
+                        <?php if (isset($config['backend'])): ?>
 
                         <li><a href="<?= $this->url('sc-admin/widget/edit', ['id' => $widget->getId()]) ?>"><span class="glyphicon glyphicon-edit"></span><?= $this->translate('Edit') ?></a></li>
                         <?php endif ?>
@@ -61,10 +59,10 @@
                 <div class="content-filters">
                     <div class="editor-pills inline-pills">
                         <ul class="nav nav-pills">
-                            <li<?php if ($options->getFilter() == 'all'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $options->getContentId(), 'filter' => 'all', 'page' => $options->getPage()]) ?>"><?= $this->translate('All') ?> <span class="content-filters-count">(<?= $list->getCounter('all') ?>)</span></a></li>
-                            <li<?php if ($options->getFilter() == 'categories'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $options->getContentId(), 'filter' => 'categories', 'page' => $options->getPage()]) ?>"><?= $this->translate('Categories') ?> <span class="content-filters-count">(<?= $list->getCounter('categories') ?>)</span></a></li>
-                            <li<?php if ($options->getFilter() == 'articles'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $options->getContentId(), 'filter' => 'articles', 'page' => $options->getPage()]) ?>"><?= $this->translate('Articles') ?> <span class="content-filters-count">(<?= $list->getCounter('articles') ?>)</span></a></li>
-                            <li<?php if ($options->getFilter() == 'files'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $options->getContentId(), 'filter' => 'files', 'page' => $options->getPage()]) ?>"><?= $this->translate('Files') ?> <span class="content-filters-count">(<?= $list->getCounter('files') ?>)</span></a></li>
+                            <li<?php if ($options->getFilter() == 'all'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $options->getContentId(), 'filter' => 'all']) ?>"><?= $this->translate('All') ?> <span class="content-filters-count">(<?= $list->getCounter('all') ?>)</span></a></li>
+                            <li<?php if ($options->getFilter() == 'categories'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $options->getContentId(), 'filter' => 'categories']) ?>"><?= $this->translate('Categories') ?> <span class="content-filters-count">(<?= $list->getCounter('categories') ?>)</span></a></li>
+                            <li<?php if ($options->getFilter() == 'articles'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $options->getContentId(), 'filter' => 'articles']) ?>"><?= $this->translate('Articles') ?> <span class="content-filters-count">(<?= $list->getCounter('articles') ?>)</span></a></li>
+                            <li<?php if ($options->getFilter() == 'files'): ?> class="active"<?php endif ?>><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $options->getContentId(), 'filter' => 'files']) ?>"><?= $this->translate('Files') ?> <span class="content-filters-count">(<?= $list->getCounter('files') ?>)</span></a></li>
                         </ul>
                     </div>
                      <?php if ($list->hasTop()): ?>
@@ -89,17 +87,17 @@
                         <thead>
                             <tr>
                                 <th class="content-list-icon hidden-xs">&nbsp;</th>
-                                <th class="content-list-title"><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $list->getTop(), 'filter' => $options->getFilter(), 'page' => $options->getPage(), 'order_by' => 'title']) ?>"><?= $this->translate('Title') ?><?php if ($options->getOrderBy() == 'title'): ?><span class="caret-order-<?= $options->getOrder() ?>"></span><?php endif ?></a></th>
-                                <th class="content-list-user hidden-xs"><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $list->getTop(), 'filter' => $options->getFilter(), 'page' => $options->getPage(), 'order_by' => 'user']) ?>"><?= $this->translate('Author') ?><?php if ($options->getOrderBy() == 'user'): ?><span class="caret-order-<?= $options->getOrder() ?>"></span><?php endif ?></a></th>
-                                <th class="content-list-date hidden-xs"><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $list->getTop(), 'filter' => $options->getFilter(), 'page' => $options->getPage(), 'order_by' => 'date']) ?>"><?= $this->translate('Created') ?><?php if ($options->getOrderBy() == 'date'): ?><span class="caret-order-<?= $options->getOrder() ?>"></span><?php endif ?></a></th>
+                                <th class="content-list-title"><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $list->getParent('id'), 'filter' => $options->getFilter(), 'page' => $options->getPage(), 'order_by' => 'title']) ?>"><?= $this->translate('Title') ?><?php if ($options->getOrderBy() == 'title'): ?><span class="caret-order-<?= $options->getOrder() ?>"></span><?php endif ?></a></th>
+                                <th class="content-list-user hidden-xs"><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $list->getParent('id'), 'filter' => $options->getFilter(), 'page' => $options->getPage(), 'order_by' => 'user']) ?>"><?= $this->translate('Author') ?><?php if ($options->getOrderBy() == 'user'): ?><span class="caret-order-<?= $options->getOrder() ?>"></span><?php endif ?></a></th>
+                                <th class="content-list-date hidden-xs"><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $list->getParent('id'), 'filter' => $options->getFilter(), 'page' => $options->getPage(), 'order_by' => 'date']) ?>"><?= $this->translate('Created') ?><?php if ($options->getOrderBy() == 'date'): ?><span class="caret-order-<?= $options->getOrder() ?>"></span><?php endif ?></a></th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th class="content-list-icon hidden-xs">&nbsp;</th>
-                                <th class="content-list-title"><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $list->getTop(), 'filter' => $options->getFilter(), 'page' => $options->getPage(), 'order_by' => 'title']) ?>"><?= $this->translate('Title') ?><?php if ($options->getOrderBy() == 'title'): ?><span class="caret-order-<?= $options->getOrder() ?>"></span><?php endif ?></a></th>
-                                <th class="content-list-user hidden-xs"><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $list->getTop(), 'filter' => $options->getFilter(), 'page' => $options->getPage(), 'order_by' => 'user']) ?>"><?= $this->translate('Author') ?><?php if ($options->getOrderBy() == 'user'): ?><span class="caret-order-<?= $options->getOrder() ?>"></span><?php endif ?></a></th>
-                                <th class="content-list-date hidden-xs"><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $list->getTop(), 'filter' => $options->getFilter(), 'page' => $options->getPage(), 'order_by' => 'date']) ?>"><?= $this->translate('Created') ?><?php if ($options->getOrderBy() == 'date'): ?><span class="caret-order-<?= $options->getOrder() ?>"></span><?php endif ?></a></th>
+                                <th class="content-list-title"><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $list->getParent('id'), 'filter' => $options->getFilter(), 'page' => $options->getPage(), 'order_by' => 'title']) ?>"><?= $this->translate('Title') ?><?php if ($options->getOrderBy() == 'title'): ?><span class="caret-order-<?= $options->getOrder() ?>"></span><?php endif ?></a></th>
+                                <th class="content-list-user hidden-xs"><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $list->getParent('id'), 'filter' => $options->getFilter(), 'page' => $options->getPage(), 'order_by' => 'user']) ?>"><?= $this->translate('Author') ?><?php if ($options->getOrderBy() == 'user'): ?><span class="caret-order-<?= $options->getOrder() ?>"></span><?php endif ?></a></th>
+                                <th class="content-list-date hidden-xs"><a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $list->getParent('id'), 'filter' => $options->getFilter(), 'page' => $options->getPage(), 'order_by' => 'date']) ?>"><?= $this->translate('Created') ?><?php if ($options->getOrderBy() == 'date'): ?><span class="caret-order-<?= $options->getOrder() ?>"></span><?php endif ?></a></th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -129,7 +127,7 @@
                                 </td>
                             </tr>
                             <?php endif ?>
-                            <?php foreach($list as $item): ?>
+                            <?php foreach ($list as $item): ?>
 
                             <tr>
                                 <td class="content-list-icon hidden-xs">
@@ -137,24 +135,31 @@
 
                                 </td>
                                 <td class="content-list-title">
+                                    <?php if ($this->scContentFormat()->canPreview($item)): ?>
+
                                     <div class="content-item-actions widget-visibility-options pull-right">
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="state[<?= $item->getId() ?>]" value="1"<?php if(1 === $item->isEnabled()): ?> checked="checked"<?php endif ?>> Enabled
+                                                <input type="radio" name="state[<?= $item->getId() ?>]" value="1"<?php if(1 === $item->isEnabled()): ?> checked="checked"<?php endif ?>> <?= $this->translate('Enabled') ?>
+
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="state[<?= $item->getId() ?>]" value="0"<?php if(0 === $item->isEnabled()): ?> checked="checked"<?php endif ?>> Disabled
+                                                <input type="radio" name="state[<?= $item->getId() ?>]" value="0"<?php if(0 === $item->isEnabled()): ?> checked="checked"<?php endif ?>> <?= $this->translate('Disabled') ?>
+
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="state[<?= $item->getId() ?>]" value="-1"<?php if(-1 === $item->isEnabled()): ?> checked="checked"<?php endif ?>> Inherit
+                                                <input type="radio" name="state[<?= $item->getId() ?>]" value="-1"<?php if(-1 === $item->isEnabled()): ?> checked="checked"<?php endif ?>> <?= $this->translate('Inherit') ?>
+
                                             </label>
                                         </div>
                                         <input type="hidden" name="old_state[<?= $item->getId() ?>]" value="<?= $item->isEnabled() ?>" />
                                     </div>
+                                    <?php endif ?>
+
                                     <span><?= $item->getTitle() ?></span>
                                     <br />
                                     <?php if ('file' != $item->getType()): ?>
@@ -169,9 +174,14 @@
                                     <br />
                                     <span class="content-item-actions">
                                         <?php if ('file' != $item->getType()): ?>
+                                            <?php if ($options->getSearch()): ?>
 
-                                        <a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $item->getId()]) ?>"><?= $this->translate('Use') ?></a>
+                                            <a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $item->getId()], ['query' => ['search' => '']]) ?>"><?= $this->translate('Use') ?></a>
+                                            <?php else: ?>
 
+                                            <a href="<?= $this->url('sc-admin/widget/visibility', ['widget_id' => $widget->getId(), 'content_id' => $item->getId()]) ?>"><?= $this->translate('Use') ?></a>
+
+                                            <?php endif ?>
                                         <?php endif ?>
                                         <?php if ($this->scContentFormat()->canPreview($item)): ?>
 
@@ -200,15 +210,43 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#searchOptions">
-                                    <?php echo $this->translate('Search options') ?>
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#widget-visibility-search">
+                                    <?php echo $this->translate('Search') ?>
 
                                 </a>
                             </h4>
                         </div>
-                        <div id="searchOptions" class="panel-collapse collapse in">
+                        <div id="widget-visibility-search" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                @todo
+                                <label for="search"><?= $this->translate('Containing Text') ?></label>
+                                <input class="form-control" type="text" id="search" name="search" value="<?= $options->getSearch() ?>" />
+                                <p class="help-block"><?= $this->translate('A word or a few words separated by a space.') ?></p>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="search_source" value="title"<?php if('title' === $options->getSearchSource()): ?> checked="checked"<?php endif ?>> <?= $this->translate('In the title') ?>
+
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="search_source" value="name"<?php if('name' === $options->getSearchSource()): ?> checked="checked"<?php endif ?>> <?= $this->translate('In the name') ?>
+
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="search_source" value="content"<?php if('content' === $options->getSearchSource()): ?> checked="checked"<?php endif ?>> <?= $this->translate('In the content') ?>
+
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="search_source" value="description"<?php if('description' === $options->getSearchSource()): ?> checked="checked"<?php endif ?>> <?= $this->translate('In the description') ?>
+
+                                    </label>
+                                </div>
+                                <button class="btn btn-default" value="save" type="submit"><?= $this->translate('Search') ?></button>
+                                <button class="btn btn-default" name="search" value="" type="submit"><?= $this->translate('Clean') ?></button>
                             </div>
                         </div>
                     </div>

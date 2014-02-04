@@ -42,6 +42,7 @@ class ContentSearchMapper extends AbstractContentMapper implements
      *
      * @param Zend\Db\Adapter\AdapterInterface $adapter
      * @param ScContent\Service\Back\ContentListOptionsProvider $options
+     * @param Zend\Filter\FilterInterface
      */
     public function __construct(
         AdapterInterface $adapter,
@@ -60,52 +61,46 @@ class ContentSearchMapper extends AbstractContentMapper implements
     public function getContent($optionsIdentifier)
     {
         $options = $this->optionsProvider->getOptions($optionsIdentifier);
-        try {
-            $this->beginTransaction();
-            $parent = $this->getVirtualRoot($options->isTrash());
+        $parent = $this->getVirtualRoot($options->isTrash());
 
-            $search = $this->optionsProvider->getSearchProxy(
-                $optionsIdentifier
-            );
-            $counter = [
-                'all' => $this->getSearchCount(
-                    $optionsIdentifier,
-                    'all'
-                ),
-                'categories' => $this->getSearchCount(
-                    $optionsIdentifier,
-                    'categories'
-                ),
-                'articles' => $this->getSearchCount(
-                    $optionsIdentifier,
-                    'articles'
-                ),
-                'files' => $this->getSearchCount(
-                    $optionsIdentifier,
-                    'files'
-                ),
-            ];
-            $total = $counter[$options->getFilter()];
-            $totalPages = max(1, ceil($total / $options->getLimit()));
-            $currentPage = max(1, min($totalPages, $options->getPage()));
+        $search = $this->optionsProvider->getSearchProxy(
+            $optionsIdentifier
+        );
+        $counter = [
+            'all' => $this->getSearchCount(
+                $optionsIdentifier,
+                'all'
+            ),
+            'categories' => $this->getSearchCount(
+                $optionsIdentifier,
+                'categories'
+            ),
+            'articles' => $this->getSearchCount(
+                $optionsIdentifier,
+                'articles'
+            ),
+            'files' => $this->getSearchCount(
+                $optionsIdentifier,
+                'files'
+            ),
+        ];
+        $total = $counter[$options->getFilter()];
+        $totalPages = max(1, ceil($total / $options->getLimit()));
+        $currentPage = max(1, min($totalPages, $options->getPage()));
 
-            // Fix the number of the page received from the request.
-            if ($currentPage != $options->getPage()) {
-                $options->setPage($currentPage);
-            }
-
-            $contentList = new ContentListEntity($parent);
-            $contentList->setCounter($counter);
-            $contentList->setTotalPages($totalPages);
-
-            $offset = ($currentPage - 1) * $options->getLimit();
-            $this->getContentItems($contentList, $offset, $optionsIdentifier);
-
-            $this->commit();
-            return $contentList;
-        } catch (Exception $e) {
-            $this->rollback();
+        // Fix the number of the page received from the request.
+        if ($currentPage != $options->getPage()) {
+            $options->setPage($currentPage);
         }
+
+        $contentList = new ContentListEntity($parent);
+        $contentList->setCounter($counter);
+        $contentList->setTotalPages($totalPages);
+
+        $offset = ($currentPage - 1) * $options->getLimit();
+        $this->getContentItems($contentList, $offset, $optionsIdentifier);
+
+        return $contentList;
     }
 
     /**
@@ -148,12 +143,10 @@ class ContentSearchMapper extends AbstractContentMapper implements
             $userType = $search->getUserType();
             $userSource = $search->getUserSource();
 
-            $on = new Predicate();
-            $on->literal("`content`.`{$userType}` = `users`.`user_id`");
-            $on->like("users.{$userSource}", "{$userName}%");
             $select->join(
                 ['users' => $this->getTable(self::UsersTableAlias)],
-                $on,
+                (new Predicate())->literal("`content`.`{$userType}` = `users`.`user_id`")
+                    ->like("users.{$userSource}", "{$userName}%"),
                 []
             );
         }
@@ -163,14 +156,12 @@ class ContentSearchMapper extends AbstractContentMapper implements
             $text = $this->quoteValue($text);
             $textSource = $search->getTextSource();
 
-            $on = new Predicate();
-            $on->literal('`content`.`id` = `search`.`id`');
-            $on->literal(
-                "MATCH(`search`.`{$textSource}`) AGAINST({$text} IN BOOLEAN MODE) > '0'"
-            );
             $select->join(
                 ['search' => $this->getTable(self::SearchTableAlias)],
-                $on,
+                (new Predicate())->literal('`content`.`id` = `search`.`id`')
+                    ->literal(
+                        "MATCH(`search`.`{$textSource}`) AGAINST({$text} IN BOOLEAN MODE) > '0'"
+                    ),
                 []
             );
         }
@@ -202,7 +193,6 @@ class ContentSearchMapper extends AbstractContentMapper implements
         if ($search->isEmpty()) {
             return;
         }
-        $on = new Predicate();
         $select = $this->getSql()->select()
             ->columns([
                 'id', 'type', 'status', 'title', 'name', 'spec',
@@ -213,7 +203,7 @@ class ContentSearchMapper extends AbstractContentMapper implements
             ])
             ->join(
                 ['subsidiary' => $this->getTable(self::ContentTableAlias)],
-                $on->equalTo('subsidiary.trash', $options->isTrash())
+                (new Predicate())->equalTo('subsidiary.trash', $options->isTrash())
                     ->literal('`subsidiary`.`level`     = `content`.`level` + \'1\'')
                     ->literal('`subsidiary`.`left_key`  > `content`.`left_key`')
                     ->literal('`subsidiary`.`right_key` < `content`.`right_key`'),
@@ -274,12 +264,10 @@ class ContentSearchMapper extends AbstractContentMapper implements
             $userType = $search->getUserType();
             $userSource = $search->getUserSource();
 
-            $on = new Predicate();
-            $on->literal("`content`.`{$userType}` = `search_users`.`user_id`");
-            $on->like("search_users.{$userSource}", "{$userName}%");
             $select->join(
                 ['search_users' => $this->getTable(self::UsersTableAlias)],
-                $on,
+                (new Predicate())->literal("`content`.`{$userType}` = `search_users`.`user_id`")
+                    ->like("search_users.{$userSource}", "{$userName}%"),
                 []
             );
         }
@@ -289,14 +277,12 @@ class ContentSearchMapper extends AbstractContentMapper implements
             $text = $this->quoteValue($text);
             $textSource = $search->getTextSource();
 
-            $on = new Predicate();
-            $on->literal('`content`.`id` = `search`.`id`');
-            $on->literal(
-                "MATCH(`search`.`{$textSource}`) AGAINST({$text} IN BOOLEAN MODE) > '0'"
-            );
             $select->join(
                 ['search' => $this->getTable(self::SearchTableAlias)],
-                $on,
+                (new Predicate())->literal('`content`.`id` = `search`.`id`')
+                    ->literal(
+                        "MATCH(`search`.`{$textSource}`) AGAINST({$text} IN BOOLEAN MODE) > '0'"
+                    ),
                 []
             );
         }

@@ -56,6 +56,7 @@ class ContentSearchForm extends Form
             'options' => [
                 'value_options' => [
                     'title' => 'In the title',
+                    'name' => 'In the name',
                     'content' => 'In the content',
                     'description' => 'In the description',
                 ],

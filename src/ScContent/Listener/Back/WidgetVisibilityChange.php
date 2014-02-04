@@ -38,6 +38,21 @@ class WidgetVisibilityChange extends AbstractControllerListener
     protected $redirectRoute = 'sc-admin/widget/visibility';
 
     /**
+     * @var string
+     */
+    protected $redirectErrorRoute = 'sc-admin/layout';
+
+    /**
+     * @const string
+     */
+    const WidgetNotFound = 'Widget not found';
+
+    /**
+     * @var string
+     */
+    const ContentNotFound = 'Content not found';
+
+    /**
      * @const string
      */
     const UnexpectedError = 'Unexpected error';
@@ -46,6 +61,12 @@ class WidgetVisibilityChange extends AbstractControllerListener
      * @var array
      */
     protected $errorMessages = [
+        self::WidgetNotFound
+            => 'Unable to change visibility. Widget with identifier %s was not found.',
+
+        self::ContentNotFound
+            => 'Failed to change the visibility of the content with identifier %s. Content was not found.',
+
         self::UnexpectedError
             => 'An unexpected error occurred. Failed to change the visibility of the widgets.',
     ];
@@ -102,20 +123,21 @@ class WidgetVisibilityChange extends AbstractControllerListener
             ));
         }
 
-        $this->setRedirectRouteParams(['widget_id' => $widgetId]);
         $mapper->beginTransaction();
         $tid = $mapper->getTransactionIdentifier();
         foreach ($states as $contentId => $state) {
             try {
                 $mapper->changeState($widgetId, $contentId, $state, $tid);
             } catch (UnavailableSourceException $e) {
-                // layout element with id '$widgetId' was not found
-
                 $mapper->rollBack();
+                // layout element with id '$widgetId' was not found
                 // Widget ID is common for any content
-                break;
+                $this->setRedirectRoute($this->getRedirectErrorRoute());
+                $this->setValue($widgetId)->setError(self::WidgetNotFound);
+                return $this->redirect($event);
             } catch (UnavailableDestinationException $e) {
                 // content with id '$contentId' was not found
+                $this->setValue($contentId)->setError(self::ContentNotFound);
                 continue;
             } catch (Exception $e) {
                 // unexpected error
@@ -134,6 +156,7 @@ class WidgetVisibilityChange extends AbstractControllerListener
             $mapper->commit();
         }
 
+        $this->setRedirectRouteParams(['widget_id' => $widgetId]);
         return $this->redirect($event);
     }
 }

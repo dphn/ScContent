@@ -10,9 +10,9 @@
 namespace ScContent\Mapper\Back;
 
 use ScContent\Mapper\AbstractContentMapper,
-    ScContent\Service\Back\ContentListOptionsProvider as OptionsProvider,
-    ScContent\Entity\Back\ContentList as ContentListEntity,
-    ScContent\Entity\Back\ContentListItem,
+    ScContent\Options\Back\WidgetVisibilityListOptions as Options,
+    ScContent\Entity\Back\WidgetVisibilityList,
+    ScContent\Entity\Back\WidgetVisibilityItem,
     //
     Zend\Db\Adapter\AdapterInterface,
     Zend\Db\Sql\Predicate\Predicate,
@@ -23,42 +23,42 @@ use ScContent\Mapper\AbstractContentMapper,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class ContentListMapper extends AbstractContentMapper implements
-    ContentListMapperInterface
+class WidgetVisibilityListMapper extends AbstractContentMapper
 {
     /**
-     * @var ScContent\Service\Back\ContentListOptionsProvider
+     * @const string
      */
-    protected $optionsProvider;
+    const WidgetsTableAlias = 'widgetsalias';
 
     /**
-     * Constructor
-     *
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
-     * @param ScContent\Service\Back\ContentListOptionsProvider $options
+     * @var array
      */
-    public function __construct(
-        AdapterInterface $adapter,
-        OptionsProvider $options
-    ) {
-        $this->optionsProvider = $options;
+    protected $_tables = [
+        self::ContentTableAlias => 'sc_content',
+        self::WidgetsTableAlias => 'sc_widgets',
+        self::UsersTableAlias   => 'sc_users',
+    ];
+
+    /**
+     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     */
+    public function __construct(AdapterInterface $adapter)
+    {
         $this->setAdapter($adapter);
     }
 
     /**
-     * @param string $optionsIdentifier
-     * @return ScContent\Entity\Back\ContentList
+     * @param ScContent\Options\Back\WidgetVisibilityListOptions $options
+     * @return ScContent\Entity\Back\WidgetVisibilityList
      */
-    public function getContent($optionsIdentifier)
+    public function getContent(Options $options)
     {
-        $options = $this->optionsProvider->getOptions($optionsIdentifier);
-        $parent = $this->findMetaById($options->getParent());
-        if (empty($parent) || $parent['trash'] != $options->isTrash()) {
-            /* reset parent */
-            $options->setParent(0);
-            $parent = $this->getVirtualRoot($options->isTrash());
+        $parent = $this->findMetaById($options->getContentId());
+        if (empty($parent) || $parent['trash']) {
+            $parent = $this->getVirtualRoot(false);
         }
         $back = $this->findBack($parent);
+
         $counter = [
             'all'        => $this->getContentCount($parent, 'all'),
             'categories' => $this->getContentCount($parent, 'categories'),
@@ -74,13 +74,14 @@ class ContentListMapper extends AbstractContentMapper implements
             $options->setPage($currentPage);
         }
 
-        $contentList = new ContentListEntity($parent);
+        $contentList = new WidgetVisibilityList($parent);
         $contentList->setBack($back);
         $contentList->setCounter($counter);
         $contentList->setTotalPages($totalPages);
 
         $offset = ($currentPage - 1) * $options->getLimit();
-        $this->getContentItems($contentList, $offset, $optionsIdentifier);
+
+        $this->getContentItems($contentList, $options, $offset);
 
         return $contentList;
     }
@@ -103,49 +104,54 @@ class ContentListMapper extends AbstractContentMapper implements
             ]);
 
         switch ($filter) {
-            case 'categories':
-                $select->where(['type' => 'category']);
-                break;
-            case 'articles':
-                $select->where(['type' => 'article']);
-                break;
-            case 'files':
-                $select->where(['type' => 'file']);
-                break;
+        	case 'categories':
+        	    $select->where(['type' => 'category']);
+        	    break;
+        	case 'articles':
+        	    $select->where(['type' => 'article']);
+        	    break;
+        	case 'files':
+        	    $select->where(['type' => 'file']);
+        	    break;
         }
         $result = $this->execute($select)->current();
         return (int) $result['total'];
     }
 
     /**
-     * @param ScContent\Entity\Back\ContentList $content
+     * @param ScContent\Entity\Back\WidgetVisibilityList $content
+     * @param ScContent\Options\Back\WidgetVisibilityListOptions $options
      * @param integer $offset
-     * @param string $optionsIdentifier
      * @return void
      */
-    protected function getContentItems(ContentListEntity $content, $offset, $optionsIdentifier)
+    protected function getContentItems(WidgetVisibilityList $content, Options $options, $offset)
     {
-        $options = $this->optionsProvider->getOptions($optionsIdentifier);
         $select = $this->getSql()->select()
             ->columns([
                 'id', 'type', 'status', 'title', 'name', 'spec',
-                'date' => $options->getModificationType()
+                'date' => 'created',
             ])
             ->from(['content' => $this->getTable(self::ContentTableAlias)])
             ->join(
                 ['subsidiary' => $this->getTable(self::ContentTableAlias)],
                 (new Predicate())->equalTo('subsidiary.trash', $content->getParent('trash'))
-                   ->equalTo('subsidiary.level', $content->getParent('level') + 2)
-                   ->literal('`subsidiary`.`left_key`  > `content`.`left_key`')
-                   ->literal('`subsidiary`.`right_key` < `content`.`right_key`'),
+                    ->equalTo('subsidiary.level', $content->getParent('level') + 2)
+                    ->literal('`subsidiary`.`left_key`  > `content`.`left_key`')
+                    ->literal('`subsidiary`.`right_key` < `content`.`right_key`'),
                 ['childrens' => new Expression('COUNT(`subsidiary`.`id`)')],
                 self::JoinLeft
             )
             ->join(
                 ['users' => $this->getTable(self::UsersTableAlias)],
-                'author' == $options->getUserType() ? 'content.author = users.user_id'
-                                                    : 'content.editor = users.user_id',
+                'content.author = users.user_id',
                 ['user_id' => 'user_id', 'user_name' => 'username', 'user_email' => 'email'],
+                self::JoinLeft
+            )
+            ->join(
+                ['widgets' => $this->getTable(self::WidgetsTableAlias)],
+                (new Predicate())->equalTo('widgets.widget', $options->getWidgetId())
+                    ->literal('widgets.content = content.id'),
+                ['enabled'],
                 self::JoinLeft
             )
             ->where([
@@ -177,28 +183,18 @@ class ContentListMapper extends AbstractContentMapper implements
             case 'title':
                 $select->order('content.title ' . $options->getOrder());
                 break;
-            case 'status':
-                $select->order('content.status ' . $options->getOrder());
-                break;
             case 'user':
                 $select->order('users.username ' . $options->getOrder());
                 break;
             case 'date':
-                $modificationType = $options->getModificationType();
-                $select->order("content.{$modificationType} ". $options->getOrder());
+                $select->order('content.created '. $options->getOrder());
                 break;
         }
 
         $results = $this->execute($select);
-        $total = $content->getCounter($options->getFilter());
-        $itemPrototype = new ContentListItem();
+        $itemPrototype = new WidgetVisibilityItem();
         $hydrator = $this->getHydrator();
         foreach ($results as $i => $result) {
-            if ('asc' == $options->getOrder()) {
-                $result['order'] = $offset + $i +1;
-            } else {
-                $result['order'] = $total - $offset - $i;
-            }
             $item = clone($itemPrototype);
             $hydrator->hydrate($result, $item);
             $content->addItem($item);

@@ -12,6 +12,24 @@ namespace ScContent\Entity\Back;
 use ScContent\Entity\AbstractList;
 
 /**
+ * Content List Structure
+ *
+ * <code>
+ *                                      _
+ * | ... Virtual Root (WebSite | Trash)  \
+ * | ... back[n]                          |
+ * | ...                                  | back (iterable as $this->getBack())
+ * | ... back[1]                          |
+ * | ... top (back[0])                  _/
+ * |
+ * |--- parent (All items in the "list" - are children's,
+ * |            all items in "back"     - are parents)
+ * |                                        _
+ * |--------- list (itmes[]) | ... items[0]  \
+ *                           | ...            | (iterable as $this)
+ *                           | ... items[n] _/
+ * </code>
+ *
  * @author Dolphin <work.dolphin@gmail.com>
  */
 class ContentList extends AbstractList

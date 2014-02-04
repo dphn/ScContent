@@ -9,7 +9,7 @@
  */
 namespace ScContent\Factory\Mapper\Back;
 
-use ScContent\Mapper\Back\WidgetVisibilityMapper,
+use ScContent\Mapper\Back\WidgetVisibilityListMapper,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -17,16 +17,16 @@ use ScContent\Mapper\Back\WidgetVisibilityMapper,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class WidgetVisibilityMapperFactory implements FactoryInterface
+class WidgetVisibilityListMapperFactory implements FactoryInterface
 {
     /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Mapper\Back\WidgetVisibilityMapper
+     * @return ScContent\Mapper\Back\WidgetVisibilityListMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $adapter = $serviceLocator->get('ScDb.Adapter');
-        $mapper = new WidgetVisibilityMapper($adapter);
+        $mapper = new WidgetVisibilityListMapper($adapter);
         return $mapper;
     }
 }

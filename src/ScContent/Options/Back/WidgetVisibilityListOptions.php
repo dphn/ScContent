@@ -44,6 +44,16 @@ class WidgetVisibilityListOptions extends AbstractEntity
     /**
      * @var string
      */
+    protected $search = '';
+
+    /**
+     * @var string
+     */
+    protected $searchSource = 'title';
+
+    /**
+     * @var string
+     */
     protected $filter = 'all';
 
     /**
@@ -70,6 +80,11 @@ class WidgetVisibilityListOptions extends AbstractEntity
      * @var boolean
      */
     protected $pageIsReset = false;
+
+    /**
+     * @var array
+     */
+    protected static $searchSources = ['title', 'name', 'content', 'description'];
 
     /**
      * @var array
@@ -121,6 +136,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     public function setContentId($id)
     {
         $id = (int) $id;
+
         if ($this->state == self::StateConstructed
             && $this->contentId != $id
         ) {
@@ -138,6 +154,54 @@ class WidgetVisibilityListOptions extends AbstractEntity
     }
 
     /**
+     * @param string $needle
+     * @return void
+     */
+    public function setSearch($needle)
+    {
+        $needle = mb_substr(trim($needle), 0, 64);
+        if ($this->state == self::StateConstructed
+            && $needle !== $this->search
+        ) {
+            $this->resetPage();
+        }
+        $this->search = $needle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSearch()
+    {
+        return $this->search;
+    }
+
+    /**
+     * @param string $source
+     * @return void
+     */
+    public function setSearchSource($source)
+    {
+        if (! in_array($source, self::$searchSources, true)) {
+            return;
+        }
+        if ($this->state == self::StateConstructed
+            && $source != $this->searchSource
+        ) {
+            $this->resetPage();
+        }
+        $this->searchSource = $source;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSearchSource()
+    {
+        return $this->searchSource;
+    }
+
+    /**
      * @param string $filter
      * @return void
      */
@@ -145,7 +209,8 @@ class WidgetVisibilityListOptions extends AbstractEntity
     {
         if (in_array($filter, self::$filters, true)) {
             if ($this->state == self::StateConstructed
-                 && $filter != $this->filter) {
+                 && $filter != $this->filter
+            ) {
                 $this->resetPage();
             }
             $this->filter = $filter;
@@ -248,6 +313,9 @@ class WidgetVisibilityListOptions extends AbstractEntity
         return $this->page;
     }
 
+    /**
+     * @return void
+     */
     public function resetPage()
     {
         $this->pageIsReset = true;

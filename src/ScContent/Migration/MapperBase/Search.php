@@ -30,6 +30,7 @@ class Search extends AbstractMigrationMapper
     {
         $table = $this->createTable('sc_search')
             ->addColumn(new Column\Integer('id', true, null))
+            ->addColumn(new Column\Varchar('name', 255))
             ->addColumn(new Column\Varchar('title', 255))
             ->addColumn(new Column\Text('content'))
             ->addColumn(new Column\Text('description'))
@@ -46,6 +47,7 @@ class Search extends AbstractMigrationMapper
             CreateIndex::Fulltext,
             'i_search',
             [
+                'name',
                 'title',
                 'description',
                 'content',

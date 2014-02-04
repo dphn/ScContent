@@ -30,6 +30,8 @@ class ContentController extends AbstractFront
     {
         $service = $this->getContentService();
         $contentName = $this->params()->fromRoute('content-name');
+        $serviceLocator = $this->getServiceLocator();
+
         try {
             $content = $service->getContent($contentName);
         } catch (\Exception $e) {

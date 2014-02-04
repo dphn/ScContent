@@ -88,6 +88,7 @@ class ContentMapper extends AbstractContentMapper
             ->into($this->getTable(self::SearchTableAlias))
             ->values([
                 'id'          => $content['id'],
+                'name'        => $content['name'],
                 'title'       => $content['title'],
                 'description' => $content['description'],
                 'content'     => $content['content'],

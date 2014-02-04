@@ -164,8 +164,11 @@ return [
         'ScMapper.Back.Widget'
             => 'ScContent\Factory\Mapper\Back\WidgetMapperFactory',
 
-        'ScMapper.Back.WidgetVisibility'
-            => 'ScContent\Factory\Mapper\Back\WidgetVisibilityMapperFactory',
+        'ScMapper.Back.WidgetVisibilityList'
+            => 'ScContent\Factory\Mapper\Back\WidgetVisibilityListMapperFactory',
+
+        'ScMapper.Back.WidgetVisibilitySearch'
+            => 'ScContent\Factory\Mapper\Back\WidgetVisibilitySearchMapperFactory',
 
         'ScMapper.Back.WidgetVisibilityChange'
             => 'ScContent\Factory\Mapper\Back\WidgetVisibilityChangeMapperFactory',

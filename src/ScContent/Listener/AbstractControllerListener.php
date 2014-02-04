@@ -9,21 +9,26 @@
  */
 namespace ScContent\Listener;
 
-/**
- * @author Dolphin <work.dolphin@gmail.com>
- */
 use ScContent\Service\AbstractIntelligentService,
     ScContent\Exception\InvalidArgumentException,
     //
     Zend\Mvc\Controller\AbstractActionController,
     Zend\EventManager\EventInterface;
 
+/**
+ * @author Dolphin <work.dolphin@gmail.com>
+ */
 abstract class AbstractControllerListener extends AbstractIntelligentService
 {
     /**
      * @var string
      */
     protected $redirectRoute = 'sc-admin/content-manager';
+
+    /**
+     * @var string
+     */
+    protected $redirectErrorRoute = 'sc-admin/content-manager';
 
     /**
      * @var array
@@ -45,6 +50,23 @@ abstract class AbstractControllerListener extends AbstractIntelligentService
     public function getRedirectRoute()
     {
         return $this->redirectRoute;
+    }
+
+    /**
+     * @param string $route
+     * @return void
+     */
+    public function setRedirectErrorRoute($route)
+    {
+        $this->redirectErrorRoute = $route;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRedirectErrorRoute()
+    {
+        return $this->redirectErrorRoute;
     }
 
     /**
