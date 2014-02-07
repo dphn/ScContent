@@ -82,12 +82,21 @@ class Layout extends AbstractValidator
         $options = $this->getModuleOptions();
         $mapper = $this->getLayoutMapper();
 
-        $widgets = array_keys($options->getWidgets());
+        $requiredWidgets = [];
+        $widgets = $options->getWidgets();
+        foreach ($widgets as $widgetName => $widget) {
+            if (isset($widget['options']['unique'])
+                && $widget['options']['unique']
+            ) {
+                $requiredWidgets[] = $widgetName;
+            }
+        }
+
         $result = $mapper->findExistingWidgets(
             $options->getFrontendThemeName(),
-            $widgets
+            $requiredWidgets
         );
-        $missing = array_diff($widgets, $result);
+        $missing = array_diff($requiredWidgets, $result);
         if (! empty($missing)) {
             return false;
         }

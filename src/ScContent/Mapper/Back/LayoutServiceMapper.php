@@ -14,7 +14,8 @@ use ScContent\Mapper\Installation\LayoutMapper,
     ScContent\Entity\Back\Regions,
     ScContent\Entity\Widget,
     //
-    Zend\Db\Adapter\AdapterInterface;
+    Zend\Db\Adapter\AdapterInterface,
+    Zend\Db\Sql\Expression;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -95,13 +96,7 @@ class LayoutServiceMapper extends LayoutMapper
      */
     public function deleteItem($id)
     {
-        $delete = $this->getSql()->delete()
-            ->from($this->getTable(self::LayoutTableAlias))
-            ->where([
-                'id' => $id,
-            ]);
-
-        $this->execute($delete);
+        $this->beginTransaction();
 
         $delete = $this->getSql()->delete()
             ->from($this->getTable(self::WidgetsTableAlias))
@@ -110,5 +105,42 @@ class LayoutServiceMapper extends LayoutMapper
             ]);
 
         $this->execute($delete);
+
+        $select = $this->getSql()->select()
+            ->columns(['theme', 'region', 'position'])
+            ->from($this->getTable(self::LayoutTableAlias))
+            ->where([
+                'id' => $id
+            ]);
+
+        $result = $this->execute($select)->current();
+
+        if (empty($result)) {
+            $this->commit();
+            return;
+        }
+
+        $delete = $this->getSql()->delete()
+            ->from($this->getTable(self::LayoutTableAlias))
+            ->where([
+                'id' => $id,
+                ]);
+
+        $this->execute($delete);
+
+        $update = $this->getSql()->update()
+            ->table($this->getTable(self::LayoutTableAlias))
+            ->set([
+                'position' => new Expression('position - 1')
+            ])
+            ->where([
+                'theme    = ?' => $result['theme'],
+                'region   = ?' => $result['region'],
+                'position > ?' => $result['position']
+            ]);
+
+        $this->execute($update);
+
+        $this->commit();
     }
 }

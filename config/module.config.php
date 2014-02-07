@@ -355,7 +355,6 @@ return [
                                 'options' => [
                                     'route' => '/add[/:theme][/:name]',
                                     'defaults' => [
-                                        'controller' => 'ScController.Back.Layout',
                                         'action' => 'add',
                                     ],
                                 ],
@@ -365,7 +364,6 @@ return [
                                 'options' => [
                                     'route' => '/delete[/:theme][/:id]',
                                     'defaults' => [
-                                        'controller' => 'ScController.Back.Layout',
                                         'action' => 'delete',
                                     ],
                                 ],
