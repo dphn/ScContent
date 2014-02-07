@@ -10,6 +10,7 @@
 namespace ScContent\Factory\Controller\Back;
 
 use ScContent\Controller\Back\LayoutController,
+    ScContent\Listener\Back\LayoutAdd,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
@@ -30,7 +31,7 @@ class LayoutFactory implements FactoryInterface
         $serviceLocator = $controllerManager->getServiceLocator();
         $events = $controller->getEventManager();
         $events->attach(
-            'indexAction',
+            'reorder',
             function($event) use ($serviceLocator) {
                 $listener = $serviceLocator->get(
                     'ScListener.Back.LayoutReorder'
@@ -39,11 +40,18 @@ class LayoutFactory implements FactoryInterface
             }
         );
         $events->attach(
-            'indexAction',
+            'move',
             function($event) use ($serviceLocator) {
                 $listener = $serviceLocator->get(
                     'ScListener.Back.LayoutMove'
                 );
+                return $listener->process($event);
+            }
+        );
+        $events->attach(
+            'add',
+            function($event) use ($serviceLocator) {
+                $listener = new LayoutAdd();
                 return $listener->process($event);
             }
         );

@@ -41,26 +41,25 @@ class LayoutController extends AbstractBack
         } catch (RuntimeException $e) {
             $this->flashMessenger()->addMessage($e->getMessage());
             return $this->redirect()
-                ->toRoute('sc-admin/themes')
+                ->toRoute('sc-admin/layout')
                 ->setStatusCode(303);
         }
 
-        if ($this->getRequest()->isPost()) {
+        $event = $this->getRequest()->getPost('suboperation');
+        if (! empty($event)) {
             $events = $this->getEventManager();
             $params = $this->request->getPost();
             $params['theme'] = $theme->getName();
-            $results = $events->trigger(
-                __FUNCTION__,
-                $this,
-                $params
-            );
+            $results = $events->trigger($event, $this, $params);
             foreach ($results as $result) {
                 if ($result instanceof Response) {
                     return $result;
                 }
             }
         }
+
         $view = new ViewModel([
+            'controlSet' => $service->getControlSet(),
             'regions' => $service->getRegions($theme->getName()),
             'theme' => $theme,
         ]);
@@ -71,6 +70,82 @@ class LayoutController extends AbstractBack
         }
 
         return $view;
+    }
+
+   /**
+    * @return Zend\Stdlib\ResponseInterface
+    */
+    public function addAction()
+    {
+        $theme = $this->params()->fromRoute('theme');
+        if (! $theme) {
+            $this->flashMessenger()->addMessage(
+                $this->scTranslate(
+                    'Unable to add a widget. Theme is not specified.'
+                )
+            );
+            return $this->redirect()
+                ->toRoute('sc-admin/layout')
+                ->setStatusCode(303);
+        }
+
+        $widgetName = $this->params()->fromRoute('name');
+        if (! $widgetName) {
+            $this->flashMessenger()->addMessage(
+                $this->scTranslate(
+                    'Unable to add a widget. Widget name is not specified.'
+                )
+            );
+            return $this->redirect()
+                ->toRoute(
+                    'sc-admin/layout/index',
+                    ['theme' => $theme]
+                )
+                ->setStatusCode(303);
+        }
+
+        $service = $this->getLayoutService();
+        try {
+            $widget = $service->addWidget($theme, $widgetName);
+            return $this->redirect()
+                ->toRoute(
+                    'sc-admin/widget/configure',
+                    ['id' => $widget->getId()]
+                );
+        } catch (RuntimeException $e) {
+            $this->flashMessenger()->addMessage($e->getMessage());
+            return $this->redirect()
+                ->toRoute(
+                    'sc-admin/layout/index',
+                    ['theme' => $theme]
+                )
+                ->setStatusCode(303);
+        }
+    }
+
+    /**
+     * @return Zend\Stdlib\ResponseInterface
+     */
+    public function deleteAction()
+    {
+        $id = $this->params()->fromRoute('id');
+        if (! is_numeric($id)) {
+            $this->flashMessenger()->addMessage(
+                $this->scTranslate('The widget identifier was not specified.')
+            );
+            return $this->redirect()
+                ->toRoute('sc-admin/layout')
+                ->setStatusCode(303);
+        }
+
+        $service = $this->getLayoutService();
+        $service->deleteWidget($id);
+
+        return $this->redirect()
+            ->toRoute(
+                'sc-admin/layout/index',
+                ['theme' => $this->params()->fromRoute('theme')]
+            );
     }
 
     /**

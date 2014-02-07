@@ -48,17 +48,10 @@ class Layout extends AbstractMigrationMapper
         $this->execute($sql);
 
         $this->execute(new CreateIndex(
-           'sc_layout',
-           CreateIndex::Unique,
-           'i_layout',
-           ['theme', 'name']
-        ));
-
-        $this->execute(new CreateIndex(
             'sc_layout',
             CreateIndex::Key,
             'i_layout_search',
-            ['theme', 'region', 'position']
+            ['theme', 'name', 'region', 'position']
         ));
     }
 

@@ -10,9 +10,8 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group content-helper">
-                <div class="btn-group">
-                    <button type="submit" class="btn btn-primary"><?= $this->translate('Save') ?></button>
-                </div>
+                <button type="submit" name="suboperation" value="reorder" class="btn btn-primary"><?= $this->translate('Reorder') ?></button>
+                <button type="submit" name="suboperation" value="move" class="btn btn-primary"><?= $this->translate('Move') ?></button>
                 <a href="<?= $this->url('sc-admin/themes') ?>" class="btn btn-default"><?= $this->translate('Themes') ?></a>
             </div>
         </div>
@@ -51,7 +50,7 @@
                         <?php foreach ($widgets as $widget): ?>
 
                         <div class="row form-group">
-                            <div class="col-sm-4 form-group-item">
+                            <div class="col-sm-4 form-group-item layout-item-description">
                                 <h4><?= $this->translate($widget->getDisplayName()) ?></h4>
                                 <?php if ($widget->hasDescription()): ?>
 
@@ -59,15 +58,19 @@
                                 <?php endif ?>
 
                             </div>
-                            <div class="col-sm-2 form-group-item layout-actions">
+                            <div class="col-sm-3 form-group-item layout-actions">
                                 <?php if (! $widget->findOption('immutable')): ?>
 
-                                <a href="<?= $this->url('sc-admin/widget/configure', ['id' => $widget->getId()]) ?>">Configure</a>
+                                <a href="<?= $this->url('sc-admin/widget/configure', ['id' => $widget->getId()]) ?>"><?= $this->translate('Configure') ?></a>
+                                <?php endif ?>
+                                <?php if (! $widget->findOption('unique')): ?>
+
+                                |&nbsp;<a href="<?= $this->url('sc-admin/layout/delete', ['theme' => $widget->getTheme(), 'id' => $widget->getId()]) ?>" onclick="return confirm('<?= $this->translate('Are you sure, you want to permanently delete the widget?') ?>')"><?= $this->translate('Delete') ?></a>
                                 <?php endif ?>
 
                             </div>
-                            <div class="col-sm-2 form-group-item">
-                                <input type="text" name="position[<?= $widget->getId() ?>]" class="form-control input-sm" maxlength="3" value="<?= $widget->getPosition() ?>" />
+                            <div class="col-sm-1 form-group-item">
+                                <input type="text" name="position[<?= $widget->getId() ?>]" class="form-control input-sm widget-position" maxlength="3" value="<?= $widget->getPosition() ?>" />
                                 <input type="hidden" name="old_position[<?= $widget->getId() ?>]" value="<?= $widget->getPosition() ?>" />
                             </div>
                             <div class="col-sm-4 form-group-item">
@@ -88,6 +91,42 @@
                 </div>
                 <?php endforeach ?>
 
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4 indent-xs-sm">
+            <div class="panel-group accordion" id="accordion2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#layout-control-set">
+                                <?= $this->translate('Control Set') ?>
+
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="layout-control-set" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <?php if (isset($controlSet) && ! empty($controlSet)): ?>
+
+                            <div class="form-group">
+                                <select name="name" class="form-control input-sm">
+                                    <?php foreach ($controlSet as $name => $displayName): ?>
+
+                                    <option value="<?= $name ?>"><?= $this->translate($displayName) ?></option>
+                                    <?php endforeach ?>
+
+                                </select>
+                                <p class="help-block"><?= $this->translate('The widget will be added to the "Disabled" region.') ?></p>
+                            </div>
+                            <button type="submit" name="suboperation" value="add" class="btn btn-default"><?= $this->translate('Add') ?></button>
+                            <?php else: ?>
+
+                            <p><?= $this->translate('Empty control set.') ?></p>
+                            <?php endif ?>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

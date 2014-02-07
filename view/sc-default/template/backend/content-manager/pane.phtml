@@ -51,10 +51,10 @@
                     <button class="btn btn-default btn-sm" name="suboperation" value="recovery" type="submit"><?= $this->translate('Recovery') ?></button>
                     <?php endif ?>
 
-                    <button class="btn btn-default btn-sm" name="suboperation" value="delete" type="submit" onclick="return confirm('<?= $this->translate('Are you sure, you want to delete the contents?') ?>') ? true : false;"><?= $this->translate('Delete') ?></button>
+                    <button class="btn btn-default btn-sm" name="suboperation" value="delete" type="submit" onclick="return confirm('<?= $this->translate('Are you sure, you want to delete the contents?') ?>')"><?= $this->translate('Delete') ?></button>
                     <?php if ($options->getType() == 'list'): ?>
 
-                    <button class="btn btn-default btn-sm" name="suboperation" value="clean" type="submit" onclick="return confirm('<?= $this->translate('Are you sure, you want to empty trash?') ?>') ? true : false;"><?= $this->translate('Empty Trash') ?></button>
+                    <button class="btn btn-default btn-sm" name="suboperation" value="clean" type="submit" onclick="return confirm('<?= $this->translate('Are you sure, you want to empty trash?') ?>')"><?= $this->translate('Empty Trash') ?></button>
                     <?php endif ?>
                 <?php endif ?>
                 <?php if ($options->getRoot() == 'site'): ?>
@@ -172,7 +172,6 @@
                             <?php if ('file' != $item->getType()): ?>
 
                             <span class="content-childrens">(<?= $item->getChildrens() ?>)</span>
-
                             <?php else: ?>
 
                             <span class="content-type"><?= $this->scContentFormat()->getExtension($item) ?></span>
@@ -214,7 +213,6 @@
 
                         </td>
                     </tr>
-
                     <?php endforeach ?>
 
                 </tbody>

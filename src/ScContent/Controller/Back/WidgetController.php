@@ -44,7 +44,7 @@ class WidgetController extends AbstractWidgetAwareController
                 $this->scTranslate('The widget identifier was not specified.')
             );
             return $this->redirect()
-                ->toRoute('sc-admin/themes')
+                ->toRoute('sc-admin/layout')
                 ->setStatusCode(303);
         }
 
@@ -89,7 +89,7 @@ class WidgetController extends AbstractWidgetAwareController
                 $this->scTranslate('The widget identifier was not specified.')
             );
             return $this->redirect()
-                ->toRoute('sc-admin/themes')
+                ->toRoute('sc-admin/layout')
                 ->setStatusCode(303);
         }
         $widget = $this->deriveWidget($id);
@@ -108,7 +108,10 @@ class WidgetController extends AbstractWidgetAwareController
                 $widget->getDisplayName()
             ));
             return $this->redirect()
-                ->toRoute('sc-admin/layout', ['theme' => $widget->getTheme()])
+                ->toRoute(
+                    'sc-admin/layout/index',
+                    ['theme' => $widget->getTheme()]
+                )
                 ->setStatusCode(303);
         }
 
@@ -121,7 +124,10 @@ class WidgetController extends AbstractWidgetAwareController
                 $widget->getDisplayName()
             ));
             return $this->redirect()
-                ->toRoute('sc-admin/layout', ['theme' => $widget->getTheme()])
+                ->toRoute(
+                    'sc-admin/layout/index',
+                    ['theme' => $widget->getTheme()]
+                )
                 ->setStatusCode(303);
         }
 

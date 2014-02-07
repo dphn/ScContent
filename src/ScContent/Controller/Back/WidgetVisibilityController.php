@@ -47,7 +47,7 @@ class WidgetVisibilityController extends AbstractWidgetAwareController
                 $this->scTranslate('The widget identifier was not specified.')
             );
             return $this->redirect()
-                ->toRoute('sc-admin/themes')
+                ->toRoute('sc-admin/layout')
                 ->setStatusCode(303);
         }
 

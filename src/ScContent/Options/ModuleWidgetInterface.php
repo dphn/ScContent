@@ -20,7 +20,8 @@ interface ModuleWidgetInterface
     function setWidgets($widgets);
 
     /**
-     * @param string $widgetName
+     * @param string $name
+     * @return array
      */
     function getWidgetByName($name);
 

@@ -9,7 +9,7 @@
  */
 namespace ScContent\Mapper\Back;
 
-use ScContent\Mapper\AbstractLayoutMapper,
+use ScContent\Mapper\Installation\LayoutMapper,
     ScContent\Options\ModuleOptions,
     ScContent\Entity\Back\Regions,
     ScContent\Entity\Widget,
@@ -19,7 +19,7 @@ use ScContent\Mapper\AbstractLayoutMapper,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class LayoutServiceMapper extends AbstractLayoutMapper
+class LayoutServiceMapper extends LayoutMapper
 {
     /**
      * @var ScContent\Options\ModuleOptions
@@ -87,5 +87,28 @@ class LayoutServiceMapper extends AbstractLayoutMapper
             $list->addItem($item);
         }
         return $list;
+    }
+
+    /**
+     * @param integer $id
+     * @return void
+     */
+    public function deleteItem($id)
+    {
+        $delete = $this->getSql()->delete()
+            ->from($this->getTable(self::LayoutTableAlias))
+            ->where([
+                'id' => $id,
+            ]);
+
+        $this->execute($delete);
+
+        $delete = $this->getSql()->delete()
+            ->from($this->getTable(self::WidgetsTableAlias))
+            ->where([
+                'widget' => $id,
+            ]);
+
+        $this->execute($delete);
     }
 }

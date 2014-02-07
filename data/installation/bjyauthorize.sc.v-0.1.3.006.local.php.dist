@@ -85,6 +85,18 @@ return ['bjyauthorize' => [
                 'roles' => ['admin'],
             ],
             [
+                'route' => 'sc-admin/layout/index',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/layout/add',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/layout/delete',
+                'roles' => ['admin'],
+            ],
+            [
                 'route' => 'sc-admin/widget/configure',
                 'roles' => ['admin'],
             ],

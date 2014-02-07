@@ -79,5 +79,6 @@ class LayoutMapper extends AbstractLayoutMapper
             ':region'      => $entity->getRegion(),
             ':name'        => $entity->getName(),
         ]);
+        $entity->setId($this->lastInsertId());
     }
 }

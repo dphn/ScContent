@@ -11,6 +11,7 @@ namespace ScContent\Service\Back;
 
 use ScContent\Service\AbstractService,
     ScContent\Entity\Back\Theme,
+    ScContent\Entity\Widget,
     ScContent\Options\ModuleOptions,
     ScContent\Mapper\Back\LayoutServiceMapper,
     ScContent\Exception\RuntimeException,
@@ -78,6 +79,81 @@ class LayoutService extends AbstractService
     }
 
     /**
+     * @return array
+     */
+    public function getControlSet()
+    {
+        $moduleOptions = $this->getModuleOptions();
+        $widgets = $moduleOptions->getWidgets();
+        $controlSet = [];
+        foreach ($widgets as $name => $widget) {
+            if (! isset($widget['options']['unique'])
+                || ! $widget['options']['unique']
+            ) {
+                $controlSet[$name] = isset($widget['display_name'])
+                                   ? $widget['display_name']
+                                   : $name;
+            }
+        }
+        return $controlSet;
+    }
+
+    /**
+     * @param string $theme Theme name
+     * @param string $name Widget name
+     * @throws ScContent\Exception\RuntimeException
+     * @return ScContent\Entity\Widget
+     */
+    public function addWidget($theme, $name)
+    {
+        $translator = $this->getTranslator();
+        $moduleOptions = $this->getModuleOptions();
+        $mapper = $this->getLayoutMapper();
+
+        if (! $moduleOptions->themeExists($theme)) {
+            throw new RuntimeException(sprintf(
+                $translator->translate("Unknown theme '%s'."),
+                $theme
+            ));
+        }
+
+        if (! $this->isThemeEnabled($theme)) {
+            throw new RuntimeException(sprintf(
+                $translator->translate("Theme '%s' was not enabled."),
+                $moduleOptions->getThemeDisplayName($theme)
+            ));
+        }
+
+        if (! $moduleOptions->widgetExists($name)) {
+            throw new RuntimeException(sprintf(
+                $translator->translate("Unknown widget '%s'."),
+                $name
+            ));
+        }
+
+        $widget = new Widget();
+        $widgetOptions = $moduleOptions->getWidgetByName($name);
+        $widget->exchangeArray($widgetOptions);
+        $widget->setTheme($theme);
+        $widget->setRegion('none');
+        $widget->setName($name);
+
+        $mapper->install($widget);
+
+        return $widget;
+    }
+
+    /**
+     * @param integer $id
+     * @return void
+     */
+    public function deleteWidget($id)
+    {
+        $mapper = $this->getLayoutMapper();
+        $mapper->deleteItem($id);
+    }
+
+    /**
      * @param string $name
      * @throw ScContent\Exception\RuntimeException
      * @return ScContent\Entity\Back\Theme
@@ -88,13 +164,13 @@ class LayoutService extends AbstractService
         $moduleOptions = $this->getModuleOptions();
         $theme = new Theme();
         if (empty($name)) {
-            $name = $moduleOptions->getBackendThemeName();
+            $name = $moduleOptions->getFrontendThemeName();
         }
 
         if (! $moduleOptions->themeExists($name)) {
             throw new RuntimeException(sprintf(
                 $translator->translate("Unknown theme '%s'."),
-                $moduleOptions->getThemeDisplayName($name)
+                $name
             ));
         }
 

@@ -334,12 +334,41 @@ return [
                     /* Layout
                      */
                     'layout' => [
-                        'type' => 'segment',
+                        'type' => 'literal',
                         'options' => [
-                            'route' => '/layout[/:theme]',
+                            'route' => '/layout',
                             'defaults' => [
                                 'controller' => 'ScController.Back.Layout',
                                 'action' => 'index',
+                            ],
+                        ],
+                        'may_terminate' => true,
+                        'child_routes' => [
+                            'index' => [
+                                'type' => 'segment',
+                                'options' => [
+                                    'route' => '/index[/:theme]',
+                                ],
+                            ],
+                            'add' => [
+                                'type' => 'segment',
+                                'options' => [
+                                    'route' => '/add[/:theme][/:name]',
+                                    'defaults' => [
+                                        'controller' => 'ScController.Back.Layout',
+                                        'action' => 'add',
+                                    ],
+                                ],
+                            ],
+                            'delete' => [
+                                'type' => 'segment',
+                                'options' => [
+                                    'route' => '/delete[/:theme][/:id]',
+                                    'defaults' => [
+                                        'controller' => 'ScController.Back.Layout',
+                                        'action' => 'delete',
+                                    ],
+                                ],
                             ],
                         ],
                     ],
@@ -353,7 +382,7 @@ return [
                         'child_routes' => [
                             'configure' => [
                                 'type' => 'segment',
-                                    'options' => [
+                                'options' => [
                                     'route' => '/configure[/:id]',
                                     'defaults' => [
                                         'controller' => 'ScController.Back.Widget',
