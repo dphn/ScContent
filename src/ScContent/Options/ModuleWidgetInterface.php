@@ -26,6 +26,12 @@ interface ModuleWidgetInterface
     function getWidgetByName($name);
 
     /**
+     * @param string $name
+     * @return string
+     */
+    function getWidgetDisplayName($name);
+
+    /**
      * @return array
      */
     function getWidgets();

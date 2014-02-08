@@ -131,9 +131,20 @@ class LayoutService extends AbstractService
             ));
         }
 
+        $widgetConfig = $moduleOptions->getWidgetByName($name);
+        if (isset($widgetConfig['options']['unique'])
+            && $widgetConfig['options']['unique']
+        ) {
+            throw new RuntimeException(sprintf(
+                $translator->translate(
+                    "Unable to add widget. The widget '%s' is unique."
+                ),
+                $name
+            ));
+        }
+
         $widget = new Widget();
-        $widgetOptions = $moduleOptions->getWidgetByName($name);
-        $widget->exchangeArray($widgetOptions);
+        $widget->exchangeArray($widgetConfig);
         $widget->setTheme($theme);
         $widget->setRegion('none');
         $widget->setName($name);
@@ -150,6 +161,30 @@ class LayoutService extends AbstractService
     public function deleteWidget($id)
     {
         $mapper = $this->getLayoutMapper();
+        $translator = $this->getTranslator();
+        $moduleOptions = $this->getModuleOptions();
+
+        $widgetMeta = $mapper->findMetaById($id);
+        if (empty($widgetMeta)) {
+            throw new RuntimeException(sprintf(
+                $translator->translate(
+                    "The widget with identifier '%s' was not found."
+                ),
+                $id
+            ));
+        }
+
+        $widget = $moduleOptions->getWidgetByName($widgetMeta['name']);
+        if (isset($widget['options']['unique'])
+            && $widget['options']['unique']
+        ) {
+            throw new RuntimeException(sprintf(
+                $translator->translate(
+                    "Unable to delete widget. The widget '%s' is unique."
+                ),
+                $moduleOptions->getWidgetDisplayName($widgetMeta['name'])
+            ));
+        }
         $mapper->deleteItem($id);
     }
 

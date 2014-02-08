@@ -284,6 +284,18 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
      * @param string $name
      * @return string
      */
+    public function getWidgetDisplayName($name)
+    {
+        if (isset($this->widgets[$name]['display_name'])) {
+            return $this->widgets[$name]['display_name'];
+        }
+        return $name;
+    }
+
+    /**
+     * @param string $name
+     * @return string
+     */
     public function widgetExists($name)
     {
         return isset($this->widgets[$name]);

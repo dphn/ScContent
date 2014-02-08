@@ -139,13 +139,17 @@ class LayoutController extends AbstractBack
         }
 
         $service = $this->getLayoutService();
-        $service->deleteWidget($id);
-
-        return $this->redirect()
-            ->toRoute(
-                'sc-admin/layout/index',
-                ['theme' => $this->params()->fromRoute('theme')]
-            );
+        try {
+            $service->deleteWidget($id);
+            return $this->redirect()
+                ->toRoute(
+                    'sc-admin/layout/index',
+                    ['theme' => $this->params()->fromRoute('theme')]
+                );
+        } catch (RuntimeException $e) {
+            $this->flashMessenger()->addMessage($e->getMessage());
+            return $this->redirect()->toRoute('sc-admin/layout');
+        }
     }
 
     /**
