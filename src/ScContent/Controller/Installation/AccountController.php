@@ -42,8 +42,8 @@ class AccountController extends AbstractInstallation
             || ! $routeMatch->getParam('member')
         ) {
             return $this->redirect()
-            ->toUrl($redirect)
-            ->setStatusCode(303);
+                ->toUrl($redirect)
+                ->setStatusCode(303);
         }
 
         $view = new ViewModel();

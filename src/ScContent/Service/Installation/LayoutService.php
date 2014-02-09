@@ -13,7 +13,6 @@ use ScContent\Mapper\Installation\LayoutMapper,
     ScContent\Entity\WidgetInterface,
     ScContent\Options\ModuleOptions,
     //
-    ScContent\Exception\InvalidArgumentException,
     ScContent\Exception\IoCException,
     //
     Exception;
@@ -38,16 +37,36 @@ class LayoutService extends AbstractInstallationService
      */
     protected $widgetEntity;
 
-    /**
+    /**#@+
      * @const string
      */
-    const WidgetsInstallationFailed = 'Widgets installation failed';
+    const UnknownThemeNotEnabled      = 'Unknown theme was not enabled';
+    const MissingRegionsSpecification = 'Missing specification of regions';
+    const FailedEnableTheme           = 'Failed to enable theme';
+    /**#@-*/
 
     /**
-     * @var array
+     * @var string[string] Messages
+     *                     <code>(string) message [(string) message identifier]</code>
      */
     protected $errorMessages = [
-        self::WidgetsInstallationFailed => 'Widgets installation failed.'
+        self::UnknownThemeNotEnabled
+            => 'Unknown theme %s was not enabled. Missing configuration of theme.',
+
+        self::MissingRegionsSpecification
+            => 'Failed to enable theme %s. Missing specification of the regions.',
+
+        self::FailedEnableTheme
+            => 'An unexpected error occurred. Failed to enable theme %s.',
+
+        self::UnableDisableActiveTheme
+            => 'Unable to disable active theme %s.',
+
+        self::DisableNotEnabledTheme
+            => 'Unable to disable theme %s. Theme is not enabled.',
+
+        self::FailedDisableTheme
+            => 'An unexpected error occurred. Failed to disable theme %s.',
     ];
 
     /**
@@ -121,29 +140,31 @@ class LayoutService extends AbstractInstallationService
     {
         $options = $this->getModuleOptions();
         $frontendThemeName = $options->getFrontendThemeName();
-        return $this->install($frontendThemeName);
+        return $this->enableTheme($frontendThemeName);
     }
 
     /**
-     * @param string $theme
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param string $theme Theme name
      * @return boolean
      */
-    public function install($theme)
+    public function enableTheme($theme)
     {
         $options = $this->getModuleOptions();
-        $themes = $options->getThemes();
-        if (! isset($themes[$theme])) {
-            throw new InvalidArgumentException(sprintf(
-                "Unknown theme '%s'.", $theme
-            ));
+        if (! $options->themeExists($theme)) {
+            $this->setValue($theme)->error(self::UnknownThemeNotEnabled);
+            return false;
         }
         $mapper = $this->getLayoutMapper();
         $widgets = $options->getWidgets();
         $availableWidgets = array_keys($widgets);
         $widgetPrototype = $this->getWidgetEntity();
         $widgetPrototype->setTheme($theme);
+
         $regions = $this->getRegions($theme);
+        if (empty($regions)) {
+            $this->setValue($theme)->error(self::MissingRegionsSpecification);
+            return false;
+        }
         try {
             $installedWidgets = $mapper->findExistingWidgets(
                 $theme,
@@ -162,14 +183,14 @@ class LayoutService extends AbstractInstallationService
                 $mapper->install($widget);
             }
         } catch (Exception $e) {
-            $this->error(self::WidgetsInstallationFailed);
+            $this->setValue($theme)->error(self::FailedEnableTheme);
             return false;
         }
         return true;
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getRegisteredThemes()
     {
@@ -181,21 +202,29 @@ class LayoutService extends AbstractInstallationService
      * Get the existing regions from the module options.
      *
      * @param string $themeName
-     * @return array Array in format <code>array('widget_name' =>
-     *         'region_name')</code>
+     * @return string[string] Regions
+     *                        <code>(string) region name [(string) widget name]</code>
      */
     public function getRegions($themeName)
     {
+        $translator = $this->getTranslator();
         $options = $this->getModuleOptions();
-        $themes = $options->getThemes();
-        $theme = $themes[$themeName];
+        $theme = $options->getThemeByName($themeName);
+        $map = [];
+
+        if (! isset($theme['frontend']['regions'])
+            || ! is_array($theme['frontend']['regions'])
+            || empty($theme['frontend']['regions'])
+        ) {
+            return $map;
+        }
         $regions = $theme['frontend']['regions'];
         $widgets = array_keys($options->getWidgets());
 
-        $map = [];
         foreach ($regions as $regionName => $regionOptions) {
-            if (isset($regionOptions['contains']) &&
-                 is_array($regionOptions['contains'])) {
+            if (isset($regionOptions['contains'])
+                && is_array($regionOptions['contains'])
+            ) {
                 $container = $regionOptions['contains'];
                 foreach ($container as $widget) {
                     $map[$widget] = $regionName;

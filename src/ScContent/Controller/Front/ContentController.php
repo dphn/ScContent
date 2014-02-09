@@ -11,7 +11,9 @@ namespace ScContent\Controller\Front;
 
 use ScContent\Controller\AbstractFront,
     //
-    Zend\View\Model\ViewModel;
+    Zend\View\Model\ViewModel,
+    //
+    Exception;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -24,7 +26,7 @@ class ContentController extends AbstractFront
     protected $contentService;
 
     /**
-     * @return Zend\View\Model\ViewModel | Zend\Stdlib\ResponseInterface
+     * @return null | Zend\View\Model\ViewModel
      */
     public function indexAction()
     {
@@ -34,7 +36,7 @@ class ContentController extends AbstractFront
 
         try {
             $content = $service->getContent($contentName);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->getResponse()->setStatusCode(404);
             return;
         }

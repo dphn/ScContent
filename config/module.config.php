@@ -321,13 +321,43 @@ return [
                     ],
                     /* Themes
                      */
-                    'themes' => [
-                        'type' => 'segment',
+                    'theme' => [
+                        'type' => 'literal',
                         'options' => [
-                            'route' => '/themes',
+                            'route' => '/theme',
                             'defaults' => [
                                 'controller' => 'ScController.Back.Theme',
                                 'action' => 'index',
+                            ],
+                        ],
+                        'may_terminate' => true,
+                        'child_routes' => [
+                            'enable' => [
+                                'type' => 'segment',
+                                'options' => [
+                                    'route' => '/enable[/:theme]',
+                                    'defaults' => [
+                                        'action' => 'enable',
+                                    ],
+                                ],
+                            ],
+                            'disable' => [
+                                'type' => 'segment',
+                                'options' => [
+                                    'route' => '/disable[/:theme]',
+                                    'defaults' => [
+                                        'action' => 'disable',
+                                    ],
+                                ],
+                            ],
+                            'default' => [
+                                'type' => 'segment',
+                                'options' => [
+                                    'route' => '/default[/:theme][/:side]',
+                                    'defaults' => [
+                                        'action' => 'default',
+                                    ],
+                                ],
                             ],
                         ],
                     ],

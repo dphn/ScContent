@@ -12,7 +12,7 @@ namespace ScContent\Mapper\Installation;
 use ScContent\Mapper\AbstractLayoutMapper,
     ScContent\Entity\WidgetInterface,
     //
-    Zend\Db\Sql\Expression;
+    Zend\Db\Sql\Predicate\Predicate;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -80,5 +80,37 @@ class LayoutMapper extends AbstractLayoutMapper
             ':name'        => $entity->getName(),
         ]);
         $entity->setId($this->lastInsertId());
+    }
+
+    /**
+     * @param string $theme Theme name
+     * @param string $tid Transaction identifier
+     */
+    public function uninstall($theme, $tid)
+    {
+        $this->checkTransaction($tid);
+
+        $select = $this->getSql()->select()
+            ->columns(['id'])
+            ->from($this->getTable(self::LayoutTableAlias))
+            ->where([
+                'theme' => $theme,
+            ]);
+
+        $delete = $this->getSql()->delete()
+            ->from($this->getTable(self::WidgetsTableAlias))
+            ->where([
+                (new Predicate())->in('widget', $select),
+            ]);
+
+        $this->execute($delete);
+
+        $delete = $this->getSql()->delete()
+            ->from($this->getTable(self::LayoutTableAlias))
+            ->where([
+                'theme' => $theme,
+            ]);
+
+        $this->execute($delete);
     }
 }

@@ -40,7 +40,7 @@ class LayoutReorder extends AbstractControllerListener
     /**
      * @var string
      */
-    protected $redirectRoute = 'sc-admin/layout';
+    protected $redirectRoute = 'sc-admin/layout/index';
 
     /**#@+
      * @const string

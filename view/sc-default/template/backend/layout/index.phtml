@@ -6,13 +6,13 @@
     <?= $this->partial('sc-default/template/backend/partial/error.phtml') ?>
 <?php endif ?>
 
-<form action="<?= $this->url('sc-admin/layout', ['theme' => $theme->getName()]) ?>" method="post">
+<form action="<?= $this->url('sc-admin/layout/index', ['theme' => $theme->getName()]) ?>" method="post">
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group content-helper">
                 <button type="submit" name="suboperation" value="reorder" class="btn btn-primary"><?= $this->translate('Reorder') ?></button>
                 <button type="submit" name="suboperation" value="move" class="btn btn-primary"><?= $this->translate('Move') ?></button>
-                <a href="<?= $this->url('sc-admin/themes') ?>" class="btn btn-default"><?= $this->translate('Themes') ?></a>
+                <a href="<?= $this->url('sc-admin/theme') ?>" class="btn btn-default"><?= $this->translate('Themes') ?></a>
             </div>
         </div>
     </div>

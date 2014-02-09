@@ -39,7 +39,7 @@ class LayoutMove extends AbstractControllerListener
     /**
      * @var string
      */
-    protected $redirectRoute = 'sc-admin/layout';
+    protected $redirectRoute = 'sc-admin/layout/index';
 
     /**#@+
      * @const string

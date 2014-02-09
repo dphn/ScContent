@@ -249,7 +249,7 @@ return [
                         'service'   => 'ScService.Installation.Autoload',
                         'batch' => [
                             'source_module' => 'ScContent',
-                            'source_file' => '/data/installation/bjyauthorize.sc.v-0.1.3.006.local.php.dist',
+                            'source_file' => '/data/installation/bjyauthorize.sc.v-0.1.3.007.local.php.dist',
                             'old_files_mask' => 'bjyauthorize.sc.v-*',
                         ],
                     ],

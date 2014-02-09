@@ -13,7 +13,8 @@ use ScContent\Mapper\AbstractLayoutMapper,
     ScContent\Service\Theme\FrontendRegionsProxy,
     ScContent\Entity\Widget,
     //
-    Zend\Db\Adapter\AdapterInterface;
+    Zend\Db\Adapter\AdapterInterface,
+    Zend\Db\Sql\Predicate\Predicate;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -66,7 +67,7 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
             ->where([
                 '`layout`.`theme`   = ?' => $themeName,
                 '`layout`.`region` <> ?' => 'none',
-                '1 = COALESCE((%s), 1)',
+                (new Predicate())->expression('? = COALESCE((%s), ?)', [1, 1]),
 
             ])
             ->order(['region ASC', 'position ASC']);

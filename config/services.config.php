@@ -95,6 +95,9 @@ return [
         'ScService.Back.GarbageCollector'
             => 'ScContent\Factory\Service\Back\GarbageCollectorFactory',
 
+        'ScService.Back.Theme'
+            => 'ScContent\Factory\Service\Back\ThemeFactory',
+
         'ScService.Back.Layout'
             => 'ScContent\Factory\Service\Back\LayoutFactory',
 
@@ -121,6 +124,9 @@ return [
 
         'ScMapper.Theme.FrontendLayoutMapper'
             => 'ScContent\Factory\Mapper\Theme\FrontendLayoutFactory',
+
+        'ScMapper.Back.Settings'
+            => 'ScContent\Factory\Mapper\Back\SettingsMapperFactory',
 
         'ScMapper.Back.Content'
             => 'ScContent\Factory\Mapper\Back\ContentFactory',

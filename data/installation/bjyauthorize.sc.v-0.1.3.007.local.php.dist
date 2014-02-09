@@ -77,7 +77,19 @@ return ['bjyauthorize' => [
                 'roles' => ['admin'],
             ],
             [
-                'route' => 'sc-admin/themes',
+                'route' => 'sc-admin/theme',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/theme/enable',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/theme/disable',
+                'roles' => ['admin'],
+            ],
+            [
+                'route' => 'sc-admin/theme/default',
                 'roles' => ['admin'],
             ],
             [

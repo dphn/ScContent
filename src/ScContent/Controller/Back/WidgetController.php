@@ -36,6 +36,9 @@ class WidgetController extends AbstractWidgetAwareController
      */
     protected $moduleOptions;
 
+    /**
+     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     */
     public function configureAction()
     {
         $id = $this->params()->fromRoute('id');
@@ -81,6 +84,9 @@ class WidgetController extends AbstractWidgetAwareController
         return $view;
     }
 
+    /**
+     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     */
     public function editAction()
     {
         $id = $this->params()->fromRoute('id');

@@ -1,8 +1,8 @@
 <?php
-
-return [
-    'sc' => [
-        'frontend_theme_name' => 'sc-default',
-        'backend_theme_name'  => 'sc-default',
-    ],
-];
+return array (
+  'sc' => 
+  array (
+    'frontend_theme_name' => 'sc-default',
+    'backend_theme_name' => 'sc-default',
+  ),
+);
