@@ -60,10 +60,10 @@ class GuardExceptionStrategy extends AbstractListenerAggregate
      */
     public function setEnabled($flag = true, Exception $e = null)
     {
-        $this->enabled = (bool) $flag;
         if (! is_null($e) && is_null($this->getException())) {
             $this->exception = $e;
         }
+        $this->enabled = (bool) $flag;
     }
 
     /**

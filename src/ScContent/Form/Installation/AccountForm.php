@@ -170,7 +170,7 @@ class AccountForm extends Form
                 [
                     'name' => 'StringLength',
                     'options' => [
-                        'min' => 3,
+                        'min' => 4,
                         'max' => 255,
                     ],
                 ],
@@ -203,7 +203,7 @@ class AccountForm extends Form
                     'options' => [
                         'min' => 6,
                     ],
-                ]
+                ],
             ],
         ]);
 
@@ -217,13 +217,7 @@ class AccountForm extends Form
             ],
             'validators' => [
                 [
-                    'name' => 'StringLength',
-                    'options' => [
-                        'min' => 6,
-                    ],
-                ],
-                [
-                    'name' => 'Identical',
+                    'name' => 'identical',
                     'options' => [
                         'token' => 'password',
                     ],

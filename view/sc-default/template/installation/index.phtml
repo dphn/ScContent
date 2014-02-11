@@ -11,7 +11,7 @@
     <?php endif ?>
 
     <h3>
-    <?php if (isset($step)): ?>
+    <?php if (isset($step) && false !== $step): ?>
 
     <span class = "step"><?= $this->translate('Step') ?> <?= $this->translate($step) ?>.</span>
     <?php endif ?>
@@ -78,6 +78,7 @@
 <div id="footer">
     <?php if (isset($form)): ?>
     <?php
+    $form->setAttribute('action', $this->url('sc-install', ['process' => 'process']));
     $form->prepare();
     echo
         $this->form()->openTag($form),

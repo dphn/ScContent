@@ -50,6 +50,12 @@ return [
         'ScService.RoleProvider'
             => 'ScContent\Factory\Service\RoleProviderFactory',
 
+        'ScService.Installation.AuthService'
+            => 'ScContent\Factory\Service\Installation\AuthServiceFactory',
+
+        'ScService.Installation.AuthAdapter'
+            => 'ScContent\Factory\Service\Installation\AuthAdapterFactory',
+
         'ScService.Installation.Autoload'
             => 'ScContent\Factory\Service\Installation\AutoloadFactory',
 
@@ -115,6 +121,9 @@ return [
 
         'ScMapper.Registration'
             => 'ScContent\Factory\Mapper\RegistrationMapperFactory',
+
+        'ScMapper.Installation.Credentials'
+            => 'ScContent\Factory\Mapper\Installation\CredentialsFactory',
 
         'ScMapper.Installation.Layout'
             => 'ScContent\Factory\Mapper\Installation\LayoutFactory',
@@ -184,6 +193,9 @@ return [
 
         'ScListener.Installation.Inspector'
             => 'ScContent\Factory\Listener\Installation\InstallationInspectorFactory',
+
+        'ScListener.Installation.Guard'
+            => 'ScContent\Factory\Listener\Installation\InstallationGuardFactory',
 
         'ScListener.ThumbnailListener'
             => 'ScContent\Factory\Listener\ThumbnailListenerFactory',

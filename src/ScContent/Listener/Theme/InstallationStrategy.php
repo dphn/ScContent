@@ -65,29 +65,37 @@ class InstallationStrategy extends AbstractThemeStrategy
             $template = $step['template'];
         }
 
+        $layoutModel = $event->getViewModel();
         if (! $model->terminate()) {
-            $event->getViewModel()->setTemplate($layout);
-            if (isset($options['title'])) {
-                $event->getViewModel()->title = $options['title'];
+            if ('layout/layout' == $layoutModel->getTemplate()) {
+                $layoutModel->setTemplate($layout);
+            }
+            if (isset($options['title']) && ! isset($layoutModel->title)) {
+                $layoutModel->title = $options['title'];
             }
         }
 
-        $model->setTemplate($template);
-        if (isset($options['brand'])) {
+        if (! $model->getTemplate()) {
+            $model->setTemplate($template);
+        }
+
+        if (isset($options['brand']) && ! isset($model->brand)) {
             $model->brand = $options['brand'];
         }
-        if (isset($options['header'])) {
+        if (isset($options['header']) && ! isset($model->header)) {
             $model->header = $options['header'];
         }
 
-        $model->step = $routeMatch->getParam('step');
-        if (isset($step['title'])) {
+        if (! isset($model->step)) {
+            $model->step = $routeMatch->getParam('step');
+        }
+        if (isset($step['title']) && ! isset($model->title)) {
             $model->title = $step['title'];
         }
-        if (isset($step['header'])) {
+        if (isset($step['header']) && ! isset($model->header)) {
             $model->header = $step['header'];
         }
-        if (isset($step['info'])) {
+        if (isset($step['info']) && ! isset($model->info)) {
             $model->info = $step['info'];
         }
     }

@@ -17,6 +17,7 @@ use ScContent\Listener\GuardExceptionStrategy,
     Zend\EventManager\EventManagerInterface,
     //
     Zend\Validator\ValidatorPluginManager,
+    Zend\Session\Container,
     Zend\Mvc\MvcEvent;
 
 /**
@@ -24,6 +25,16 @@ use ScContent\Listener\GuardExceptionStrategy,
  */
 class InstallationInspector extends AbstractListenerAggregate
 {
+    /**
+     * @const string
+     */
+    const DefaultController = 'ScController.Installation.Default';
+
+    /**
+     * @const string
+     */
+    const DefaultAction = 'index';
+
     /**
      * @var Zend\Validator\ValidatorPluginManager
      */
@@ -43,6 +54,11 @@ class InstallationInspector extends AbstractListenerAggregate
      * @var array
      */
     protected $current = [];
+
+    /**
+     * @var boolean
+     */
+    protected $installationGuardIsEnabled = false;
 
    /**
     * @param Zend\Validator\ValidatorPluginManager $validatorManager
@@ -101,6 +117,12 @@ class InstallationInspector extends AbstractListenerAggregate
             [$this, 'inspect'],
             -PHP_INT_MAX
         );
+
+        $this->listeners[] = $events->attach(
+            MvcEvent::EVENT_ROUTE,
+            [$this, 'afterInspect'],
+            -PHP_INT_MAX
+        );
     }
 
     /**
@@ -134,10 +156,9 @@ class InstallationInspector extends AbstractListenerAggregate
     public function inspect(MvcEvent $event)
     {
         $validatorManager = $this->getValidatorManager();
-        $guardExceptionStrategy = $this->getGuardExceptionStrategy();
         while (! empty($this->queue)) {
-            $controller = 'ScController.Installation.Default';
-            $action = 'index';
+            $controller = self::DefaultController;
+            $action     = self::DefaultAction;
             $options = $this->current = array_shift($this->queue);
 
             if (! isset($options['steps']) || ! is_array($options['steps'])) {
@@ -198,7 +219,7 @@ class InstallationInspector extends AbstractListenerAggregate
                         $isValid = false;
                     }
                     if (! $isValid) {
-                        $guardExceptionStrategy->setEnabled(false);
+                        $this->enableInstallationGuard(true);
                         $redirect = $event->getRequest()->getRequestUri();
                         $routeMatch = $event->getRouteMatch();
                         $routeMatch->setParam('redirect', $redirect)
@@ -213,5 +234,38 @@ class InstallationInspector extends AbstractListenerAggregate
                 }
             }
         }
+    }
+
+    /**
+     * @param Zend\Mvc\MvcEvent $event
+     * @return void
+     */
+    public function afterInspect(MvcEvent $event)
+    {
+        if (! $this->installationGuardIsEnabled) {
+            return;
+        }
+        $application = $event->getApplication();
+        $serviceLocator = $application->getServiceManager();
+
+        $zfcUserSessionContainer = new Container('Zend_Auth');
+        $storage = $zfcUserSessionContainer->getManager()->getStorage();
+        $storage[$zfcUserSessionContainer->getName()] = [];
+
+        $installationGuardListener = $serviceLocator->get(
+            'ScListener.Installation.Guard'
+        );
+        $installationGuardListener->process($event);
+    }
+
+    /**
+     * @param boolean $flag
+     * @return void
+     */
+    protected function enableInstallationGuard($flag = true)
+    {
+        $guardExceptionStrategy = $this->getGuardExceptionStrategy();
+        $guardExceptionStrategy->setEnabled(! $flag);
+        $this->installationGuardIsEnabled = $flag;
     }
 }

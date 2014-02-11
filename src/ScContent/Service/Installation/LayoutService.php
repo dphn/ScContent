@@ -58,15 +58,6 @@ class LayoutService extends AbstractInstallationService
 
         self::FailedEnableTheme
             => 'An unexpected error occurred. Failed to enable theme %s.',
-
-        self::UnableDisableActiveTheme
-            => 'Unable to disable active theme %s.',
-
-        self::DisableNotEnabledTheme
-            => 'Unable to disable theme %s. Theme is not enabled.',
-
-        self::FailedDisableTheme
-            => 'An unexpected error occurred. Failed to disable theme %s.',
     ];
 
     /**

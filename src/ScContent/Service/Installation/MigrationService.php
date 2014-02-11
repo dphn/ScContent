@@ -44,19 +44,6 @@ class MigrationService extends AbstractInstallationService implements
     ];
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        // Before migration clear all session data
-        if (! session_id()) {
-            session_start();
-        }
-        session_unset();
-        session_destroy();
-    }
-
-    /**
      * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
      * @return void
      */

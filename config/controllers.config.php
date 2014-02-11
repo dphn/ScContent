@@ -12,6 +12,9 @@ return [
         'ScController.User'
             => 'ScContent\Controller\UserController',
 
+        'ScController.Installation.Authentication'
+            => 'ScContent\Controller\Installation\AuthenticationController',
+
         'ScController.Installation.Requirements'
             => 'ScContent\Controller\Installation\RequirementsController',
 

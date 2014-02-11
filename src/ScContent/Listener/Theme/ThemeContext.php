@@ -139,8 +139,8 @@ class ThemeContext implements SharedListenerAggregateInterface
         $renderer          = $viewManager->getRenderer();
         $options           = $serviceLocator->get('ScOptions.ModuleOptions');
 
-        $layout   = 'sc-default/layout/{side}/index';
-        $template = 'sc-default/template/error/index';
+        $layout   = 'sc-default/layout/error/{side}';
+        $template = 'sc-default/template/error/{side}-index';
         $side     = 'frontend';
         $theme    = [];
 
@@ -187,8 +187,8 @@ class ThemeContext implements SharedListenerAggregateInterface
         $renderer         = $viewManager->getRenderer();
         $options          = $serviceLocator->get('ScOptions.ModuleOptions');
 
-        $layout   = 'sc-default/layout/{side}/index';
-        $template = 'sc-default/template/error/404';
+        $layout   = 'sc-default/layout/error/{side}';
+        $template = 'sc-default/template/error/{side}-404';
         $side     = 'frontend';
         $theme    = [];
 
