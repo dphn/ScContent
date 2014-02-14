@@ -1,6 +1,6 @@
 <?php echo $this->doctype(); ?>
 
-<html lang="<?= \Locale::getPrimaryLanguage(\Locale::getDefault()) ?>">
+<html dir="<?= $this->scLanguageDirection() ?>" lang="<?= \Locale::getPrimaryLanguage(\Locale::getDefault()) ?>">
 <head>
 <meta charset="utf-8">
 <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0')
@@ -26,7 +26,7 @@
 <?= $this->headTitle('') ?>
 
 </head>
-<?= $this->scBodyTag() ?>
+<?= $this->scBodyTag('class', $this->scLanguageDirection()) ?>
 
 <div id="wrap">
 <div id="main">

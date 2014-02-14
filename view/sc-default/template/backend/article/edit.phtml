@@ -89,10 +89,12 @@
 <?php
 $tinyMceStyles = $this->basePath() . '/sc-default/css/tinymce.css';
 $language = $this->scLocalization()->getPrimaryLanguage();
+$directionality = $this->scLanguageDirection();
 $baseUrl = $this->url('home', [], ['force_canonical' => true]);
 echo $this->inlineScript()->appendScript(<<<EOT
     tinymce.init({
         language: "$language",
+        directionality: "$directionality",
         document_base_url: "$baseUrl",
         relative_urls: true,
         selector: "textarea#content",

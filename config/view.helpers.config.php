@@ -11,6 +11,9 @@ return [
     'invokables' => [
         'scBodyTag'
             => 'ScContent\View\Helper\BodyTag',
+
+        'scLanguageDirection'
+            => 'ScContent\View\Helper\LanguageDirection',
     ],
     'factories' => [
         'scDateTime'

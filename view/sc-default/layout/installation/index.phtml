@@ -47,7 +47,6 @@ p {
 }
 form {
     padding:12px 20px;
-    text-align:left;
 }
 label {
     margin:5px 0;
@@ -210,7 +209,7 @@ th, td {
 <?php $this->headStyle()->captureEnd() ?>
 <?php echo $this->doctype(); ?>
 
-<html lang="<?= \Locale::getPrimaryLanguage(\Locale::getDefault()) ?>">
+<html dir="<?= $this->scLanguageDirection() ?>" lang="<?= \Locale::getPrimaryLanguage(\Locale::getDefault()) ?>">
 <head>
 <meta charset="utf-8">
 <?php echo $this->headStyle() ?>
@@ -219,9 +218,9 @@ th, td {
 
 </head>
 
-<body>
+<?= $this->scBodyTag('class', $this->scLanguageDirection()) ?>
 <div id="wrap">
     <?php echo $this->content ?>
 
 </div>
-</body>
+<?= $this->scBodyTag() ?>

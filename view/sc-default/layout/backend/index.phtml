@@ -1,6 +1,6 @@
 <?= $this->doctype(); ?>
 
-<html lang="<?= \Locale::getPrimaryLanguage(\Locale::getDefault()) ?>">
+<html dir="<?= $this->scLanguageDirection() ?>" lang="<?= \Locale::getPrimaryLanguage(\Locale::getDefault()) ?>">
 <head>
 <meta charset="utf-8">
 <?= $this->headTitle(
@@ -39,7 +39,7 @@
 <?php $this->headScript()->prependFile('/test.js')?>
 
 </head>
-<?= $this->scBodyTag() ?>
+<?= $this->scBodyTag('class', $this->scLanguageDirection()) ?>
 
 <div id="wrap">
 <div id="main">
