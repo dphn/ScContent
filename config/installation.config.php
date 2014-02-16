@@ -30,36 +30,38 @@ return [
                         'controller'   => 'ScController.Installation.Requirements',
                         'action' => 'configuration',
                         'batch' => [
-                            [
-                                'name' => 'safe_mode',
-                                'validation_type' => 'expect',
-                                'validation_value' => ['Off', false],
-                                'failure_message' => 'Safe mode must be disabled.',
-                            ],
-                            [
-                                'name' => 'magic_quotes_gpc',
-                                'validation_type' => 'expect',
-                                'validation_value' => ['Off', false],
-                                'failure_message' => "Directive 'magic_quotes_gpc' should be disabled.",
-                            ],
-                            [
-                                'name' => 'magic_quotes_runtime',
-                                'validation_type' => 'expect',
-                                'validation_value' => ['Off', false],
-                                'failure_message' => "Directive 'magic_quotes_runtime' should be disabled.",
-                            ],
-                            [
-                                'name' => 'magic_quotes_sybase',
-                                'validation_type' => 'expect',
-                                'validation_value' => ['Off', false],
-                                'failure_message' => "Directive 'magic_quotes_sybase' should be disabled.",
-                            ],
-                            [
-                                'name' => 'memory_limit',
-                                'validation_type' => 'greater_then',
-                                'validation_value' => '64',
-                                'no_limit' => '-1',
-                                'failure_message' => 'Available memory must be greater than 64M.',
+                            'items' => [
+                                [
+                                    'name' => 'safe_mode',
+                                    'validation_type' => 'expect',
+                                    'validation_value' => ['Off', false],
+                                    'failure_message' => 'Safe mode must be disabled.',
+                                ],
+                                [
+                                    'name' => 'magic_quotes_gpc',
+                                    'validation_type' => 'expect',
+                                    'validation_value' => ['Off', false],
+                                    'failure_message' => "Directive 'magic_quotes_gpc' should be disabled.",
+                                ],
+                                [
+                                    'name' => 'magic_quotes_runtime',
+                                    'validation_type' => 'expect',
+                                    'validation_value' => ['Off', false],
+                                    'failure_message' => "Directive 'magic_quotes_runtime' should be disabled.",
+                                ],
+                                [
+                                    'name' => 'magic_quotes_sybase',
+                                    'validation_type' => 'expect',
+                                    'validation_value' => ['Off', false],
+                                    'failure_message' => "Directive 'magic_quotes_sybase' should be disabled.",
+                                ],
+                                [
+                                    'name' => 'memory_limit',
+                                    'validation_type' => 'greater_then',
+                                    'validation_value' => '64',
+                                    'no_limit' => '-1',
+                                    'failure_message' => 'Available memory must be greater than 64M.',
+                                ],
                             ],
                         ],
                     ],
@@ -71,9 +73,11 @@ return [
                         'controller' => 'ScController.Installation.Requirements',
                         'action' => 'extension',
                         'batch' => [
-                            [
-                                'name' => 'fileinfo',
-                                'information' => '<a href="http://www.php.net/manual/en/fileinfo.installation.php" target="_blank">http://www.php.net/manual/en/fileinfo.installation.php</a>',
+                            'items' => [
+                                [
+                                    'name' => 'fileinfo',
+                                    'information' => '<a href="http://www.php.net/manual/en/fileinfo.installation.php" target="_blank">http://www.php.net/manual/en/fileinfo.installation.php</a>',
+                                ],
                             ],
                         ],
                     ],

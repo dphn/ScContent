@@ -44,7 +44,7 @@ class CategoryControllerTest extends PHPUnit_Framework_TestCase
         $plugin = $this
             ->getMockBuilder('ScContent\Controller\Plugin\TranslatorProxy')
             ->disableOriginalConstructor()
-            ->setMethods(array('__invoke'))
+            ->setMethods(['__invoke'])
             ->getMock();
 
         $pluginManager->setFactory(
@@ -57,26 +57,26 @@ class CategoryControllerTest extends PHPUnit_Framework_TestCase
         $this->fakeForm = $this
             ->getMockBuilder('ScContent\Form\Back\CategoryForm')
             ->disableOriginalConstructor()
-            ->setMethods(array('bind', 'isValid', 'getData'))
+            ->setMethods(['bind', 'isValid', 'getData'])
             ->getMock();
 
         $this->controller->setCategoryForm($this->fakeForm);
 
         $this->fakeCategoryService = $this
             ->getMockBuilder('ScContent\Service\Back\CategoryService')
-            ->setMethods(array('makeCategory', 'getCategory', 'saveContent'))
+            ->setMethods(['makeCategory', 'getCategory', 'saveContent'])
             ->getMock();
 
         $this->controller->setCategoryService($this->fakeCategoryService);
 
-        $this->routeMatch = new RouteMatch(array(
+        $this->routeMatch = new RouteMatch([
             'controller' => 'ScController.Back.Category',
-        ));
+        ]);
         $this->request = new Request();
         $this->event = new MvcEvent();
 
         $config = $serviceManager->get('Config');
-        $routerConfig = isset($config['router']) ? $config['router'] : array();
+        $routerConfig = isset($config['router']) ? $config['router'] : [];
         $router = HttpRouter::factory($routerConfig);
 
         $this->event->setRouter($router);

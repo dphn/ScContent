@@ -45,7 +45,7 @@ class ArticleControllerTest extends PHPUnit_Framework_TestCase
         $plugin = $this
             ->getMockBuilder('ScContent\Controller\Plugin\TranslatorProxy')
             ->disableOriginalConstructor()
-            ->setMethods(array('__invoke'))
+            ->setMethods(['__invoke'])
             ->getMock();
 
         $pluginManager->setFactory(
@@ -58,26 +58,26 @@ class ArticleControllerTest extends PHPUnit_Framework_TestCase
         $this->fakeForm = $this
             ->getMockBuilder('ScContent\Form\Back\ArticleForm')
             ->disableOriginalConstructor()
-            ->setMethods(array('bind', 'isValid', 'getData'))
+            ->setMethods(['bind', 'isValid', 'getData'])
             ->getMock();
 
         $this->controller->setArticleForm($this->fakeForm);
 
         $this->fakeArticleService = $this
             ->getMockBuilder('ScContent\Service\Back\ArticleService')
-            ->setMethods(array('makeArticle', 'getArticle', 'saveContent'))
+            ->setMethods(['makeArticle', 'getArticle', 'saveContent'])
             ->getMock();
 
         $this->controller->setArticleService($this->fakeArticleService);
 
-        $this->routeMatch = new RouteMatch(array(
+        $this->routeMatch = new RouteMatch([
             'controller' => 'ScController.Back.Article',
-        ));
+        ]);
         $this->request = new Request();
         $this->event = new MvcEvent();
 
         $config = $serviceManager->get('Config');
-        $routerConfig = isset($config['router']) ? $config['router'] : array();
+        $routerConfig = isset($config['router']) ? $config['router'] : [];
         $router = HttpRouter::factory($routerConfig);
 
         $this->event->setRouter($router);

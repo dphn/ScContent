@@ -10,8 +10,8 @@
 namespace ScContent\Controller\Installation;
 
 use ScContent\Controller\AbstractInstallation,
-    ScContent\Validator\Installation\Phpini,
-    ScContent\Validator\Installation\Phpextension,
+    ScContent\Validator\Installation\PhpIni,
+    ScContent\Validator\Installation\PhpExtension,
     //
     Zend\View\Model\ViewModel;
 
@@ -21,12 +21,12 @@ use ScContent\Controller\AbstractInstallation,
 class RequirementsController extends AbstractInstallation
 {
     /**
-     * @var ScContent\Validator\Installation\Phpini
+     * @var ScContent\Validator\Installation\PhpIni
      */
     protected $iniValidator;
 
     /**
-     * @var ScContent\Validator\Installation\Phpextension
+     * @var ScContent\Validator\Installation\PhpExtension
      */
     protected $extensionValidator;
 
@@ -53,17 +53,32 @@ class RequirementsController extends AbstractInstallation
         $step = $routeMatch->getParam('step');
         $member = $routeMatch->getParam('member');
         $options = $this->getInstallationInspector()->getCurrentSetup();
+        if (! isset($options['steps'][$step]['chain'][$member]['batch'])) {
+            return $this->redirect()->toUrl($redirect)->setStatusCode(303);
+        }
         $batch = &$options['steps'][$step]['chain'][$member]['batch'];
         $failures = [];
         $validator = $this->getIniValidator();
-        foreach ($batch as &$requirement) {
-            if (! $validator->isValid($requirement)) {
+        if (isset($batch['items']) && is_array($batch['items'])) {
+            foreach ($batch['items'] as &$requirement) {
+                if (! $validator->isValid($requirement)) {
+                    $failures[] = [
+                        $requirement['name'],
+                        (false === ini_get($requirement['name']))
+                                 ? 'false'
+                                 : ini_get($requirement['name']),
+                        $requirement['failure_message']
+                    ];
+                }
+            }
+        } elseif (is_array($batch) && ! empty($batch)) {
+            if (! $validator->isValid($batch)) {
                 $failures[] = [
-                    $requirement['name'],
-                    (false === ini_get($requirement['name']))
+                    $batch['name'],
+                    (false === ini_get($batch['name']))
                              ? 'false'
-                             : ini_get($requirement['name']),
-                    $requirement['failure_message']
+                             : ini_get($batch['name']),
+                     $requirement['failure_message']
                 ];
             }
         }
@@ -75,7 +90,7 @@ class RequirementsController extends AbstractInstallation
                 ]]
             ]);
         }
-        return $this->redirect()->toUrl($redirect)->setStatusCode(303);
+        return $this->redirect()->toUrl($redirect);
     }
 
     /**
@@ -97,14 +112,26 @@ class RequirementsController extends AbstractInstallation
         $step = $routeMatch->getParam('step');
         $member = $routeMatch->getParam('member');
         $options = $this->getInstallationInspector()->getCurrentSetup();
+        if (! isset($options['steps'][$step]['chain'][$member]['batch'])) {
+            return $this->redirect()->toUrl($redirect)->setStatusCode(303);
+        }
         $batch = &$options['steps'][$step]['chain'][$member]['batch'];
         $failures = [];
         $validator = $this->getExtensionValidator();
-        foreach ($batch as &$requirement) {
+        if (isset($batch['items']) && is_array($batch['items'])) {
+            foreach ($batch['items'] as &$requirement) {
+                if (! $validator->isValid($requirement)) {
+                    $failures[] = [
+                        $requirement['name'],
+                        $requirement['information'],
+                    ];
+                }
+            }
+        } elseif (is_array($batch) && ! empty($batch)) {
             if (! $validator->isValid($requirement)) {
                 $failures[] = [
-                    $requirement['name'],
-                    $requirement['information'],
+                    $batch['name'],
+                    $batch['information'],
                 ];
             }
         }
@@ -120,7 +147,7 @@ class RequirementsController extends AbstractInstallation
     }
 
     /**
-     * @param ScContent\Validator\Installation\Phpini $validator
+     * @param ScContent\Validator\Installation\PhpIni $validator
      * @return void
      */
     public function setIniValidator(Phpini $validator)
@@ -129,11 +156,11 @@ class RequirementsController extends AbstractInstallation
     }
 
     /**
-     * @return ScContent\Validator\Installation\Phpini
+     * @return ScContent\Validator\Installation\PhpIni
      */
     public function getIniValidator()
     {
-        if (! $this->iniValidator instanceof Phpini) {
+        if (! $this->iniValidator instanceof PhpIni) {
             $validatorManager = $this->getServiceLocator()->get(
                 'ValidatorManager'
             );
@@ -145,7 +172,7 @@ class RequirementsController extends AbstractInstallation
     }
 
     /**
-     * @param ScContent\Validator\Installation\Phpextension $validator
+     * @param ScContent\Validator\Installation\PhpExtension $validator
      * @return void
      */
     public function setExtensionValidator(Phpextension $validator)
@@ -154,11 +181,11 @@ class RequirementsController extends AbstractInstallation
     }
 
     /**
-     * @return ScContent\Validator\Installation\Phpextension
+     * @return ScContent\Validator\Installation\PhpExtension
      */
     public function getExtensionValidator()
     {
-        if (! $this->extensionValidator instanceof Phpextension) {
+        if (! $this->extensionValidator instanceof PhpExtension) {
             $validatorManager = $this->getServiceLocator()->get(
                 'ValidatorManager'
             );

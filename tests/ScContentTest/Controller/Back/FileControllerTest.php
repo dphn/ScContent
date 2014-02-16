@@ -83,24 +83,24 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
         $this->fakeFileTransfer = $this
             ->getMockBuilder('ScContent\Service\FileTransfer')
             ->disableOriginalConstructor()
-            ->setMethods(array('receive', 'rollBack'))
+            ->setMethods(['receive', 'rollBack'])
             ->getMock();
 
         $this->controller->setFileTransfer($this->fakeFileTransfer);
 
         $this->fakeFilesList = $this
             ->getMockBuilder('ScContent\Entity\Back\FilesList')
-            ->setMethods(array('isEmpty'))
+            ->setMethods(['isEmpty'])
             ->getMock();
 
-        $this->routeMatch = new RouteMatch(array(
+        $this->routeMatch = new RouteMatch([
             'controller' => 'ScController.Back.Article',
-        ));
+        ]);
         $this->request = new Request();
         $this->event = new MvcEvent();
 
         $config = $serviceManager->get('Config');
-        $routerConfig = isset($config['router']) ? $config['router'] : array();
+        $routerConfig = isset($config['router']) ? $config['router'] : [];
         $router = HttpRouter::factory($routerConfig);
 
         $this->event->setRouter($router);
@@ -139,18 +139,18 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
 
         $this->fakeFileAddForm->expects($this->once())
             ->method('getData')
-            ->will($this->returnValue(array()));
+            ->will($this->returnValue([]));
 
         $this->fakeFileTransfer->expects($this->once())
             ->method('receive')
-            ->will($this->returnValue(array()));
+            ->will($this->returnValue([]));
 
         $this->fakeFileTransfer->expects($this->once())
             ->method('rollBack');
 
         $this->routeMatch->setParam('action', 'add');
         $this->routeMatch->setParam('parent', 1);
-        $this->routeMatch->setParam('files', array());
+        $this->routeMatch->setParam('files', []);
         $this->request->setMethod(Request::METHOD_POST);
 
         $result   = $this->controller->dispatch($this->request);
