@@ -27,7 +27,7 @@ use ScContent\Mapper\AbstractContentMapper,
 class WidgetVisibilitySearchMapper extends AbstractContentMapper
 {
     /**
-     * @var Zend\Filter\FilterInterface
+     * @var \Zend\Filter\FilterInterface
      */
     protected $morfologyFilter;
 
@@ -47,8 +47,8 @@ class WidgetVisibilitySearchMapper extends AbstractContentMapper
     ];
 
     /**
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
-     * @param Zend\Filter\FilterInterface $filter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \Zend\Filter\FilterInterface $filter
      */
     public function __construct(AdapterInterface $adapter, FilterInterface $filter)
     {
@@ -57,8 +57,8 @@ class WidgetVisibilitySearchMapper extends AbstractContentMapper
     }
 
     /**
-     * @param ScContent\Options\Back\WidgetVisibilityListOptions $options
-     * @return ScContent\Entity\Back\WidgetVisibilityList
+     * @param  \ScContent\Options\Back\WidgetVisibilityListOptions $options
+     * @return \ScContent\Entity\Back\WidgetVisibilityList
      */
     public function getContent(Options $options)
     {
@@ -91,8 +91,8 @@ class WidgetVisibilitySearchMapper extends AbstractContentMapper
     }
 
     /**
-     * @param ScContent\Options\Back\WidgetVisibilityListOptions $options
-     * @param string $filter
+     * @param  \ScContent\Options\Back\WidgetVisibilityListOptions $options
+     * @param  string $filter
      * @return integer
      */
     protected function getSearchCount(Options $options, $filter)
@@ -142,9 +142,9 @@ class WidgetVisibilitySearchMapper extends AbstractContentMapper
     }
 
     /**
-     * @param ScContent\Entity\Back\WidgetVisibilityList $content
-     * @param ScContent\Options\Back\WidgetVisibilityListOptions $options
-     * @param integer $offset
+     * @param  \ScContent\Entity\Back\WidgetVisibilityList $content
+     * @param  \ScContent\Options\Back\WidgetVisibilityListOptions $options
+     * @param  integer $offset
      * @return void
      */
     protected function getContentItems(WidgetVisibilityList $content, Options $options, $offset)

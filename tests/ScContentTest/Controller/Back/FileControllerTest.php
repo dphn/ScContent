@@ -24,6 +24,8 @@ use ScContent\Controller\Back\FileController,
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
+ *
+ * @coversDefaultClass \ScContent\Controller\Back\FileController
  */
 class FileControllerTest extends PHPUnit_Framework_TestCase
 {
@@ -110,7 +112,7 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers FileController::add
+     * @covers ::addAction
      */
     public function testAddActionWithoutParentIdentifier()
     {
@@ -160,7 +162,7 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers FileController::add
+     * @covers ::addAction
      */
     public function testAddActionSuccess()
     {
@@ -174,7 +176,7 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers FileController::edit
+     * @covers ::editAction
      */
     public function testEditActionWithoutFileIdentifiers()
     {
@@ -187,7 +189,7 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers FileController::edit
+     * @covers ::editAction
      */
     public function testEditActionWithEmptyFilesList()
     {
@@ -209,7 +211,7 @@ class FileControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers FileController::edit
+     * @covers ::editAction
      */
     public function testEditActionSuccess()
     {

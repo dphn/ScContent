@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * ScContent (https://github.com/dphn/ScContent)
+ *
+ * @author    Dolphin <work.dolphin@gmail.com>
+ * @copyright Copyright (c) 2013-2014 ScContent
+ * @link      https://github.com/dphn/ScContent
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ */
 namespace ScContent\Listener\Theme;
 
 use ScContent\Listener\Installation\InstallationInspector,
@@ -10,15 +17,29 @@ use ScContent\Listener\Installation\InstallationInspector,
     Zend\View\Model\ModelInterface as ViewModel,
     Zend\Mvc\MvcEvent;
 
+/**
+ * @author Dolphin <work.dolphin@gmail.com>
+ */
 class InstallationStrategy extends AbstractThemeStrategy
 {
+    /**
+     * @var \ScContent\Listener\Installation\InstallationInspector
+     */
     protected $installationInspector;
 
+    /**
+     * @param  \ScContent\Listener\Installation\InstallationInspector $service
+     * @return void
+     */
     public function setInstallationInspector(InstallationInspector $service)
     {
         $this->installationInspector = $service;
     }
 
+    /**
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Listener\Installation\InstallationInspector
+     */
     public function getInstallationInspector()
     {
         if (! $this->installationInspector instanceof InstallationInspector) {
@@ -29,6 +50,10 @@ class InstallationStrategy extends AbstractThemeStrategy
         return $this->installationInspector;
     }
 
+    /**
+     * @param  \Zend\Mvc\MvcEvent $event
+     * @return void
+     */
     public function update(MvcEvent $event)
     {
         $installationInspector = $this->getInstallationInspector();

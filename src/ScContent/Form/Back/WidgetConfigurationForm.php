@@ -29,7 +29,7 @@ class WidgetConfigurationForm extends Form
     }
 
     /**
-     * @param object $object
+     * @param  object $object
      * @param  int $flags
      * @return WidgetConfigurationForm
      */

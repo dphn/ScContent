@@ -20,8 +20,8 @@ use ScContent\Validator\Installation\Config,
 class ConfigFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
-     * @return ScContent\Validator\Installation\Config
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
+     * @return \ScContent\Validator\Installation\Config
      */
     public function createService(
         ServiceLocatorInterface $validatorPluginManager

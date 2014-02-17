@@ -20,8 +20,8 @@ use ScContent\Validator\Installation\Account,
 class AccountFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
-     * @return ScContent\Validator\Installation\Account
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
+     * @return \ScContent\Validator\Installation\Account
      */
     public function createService(
         ServiceLocatorInterface $validatorPluginManager

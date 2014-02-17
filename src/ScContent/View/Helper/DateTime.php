@@ -22,18 +22,18 @@ use ScContent\Service\ScDateTime,
 class DateTime extends AbstractHelper
 {
     /**
-     * @var ScContent\Service\ScDateTime
+     * @var \ScContent\Service\ScDateTime
      */
     protected $datetime;
 
     /**
-     * @var Zend\I18n\View\Helper\DateFormat
+     * @var \Zend\I18n\View\Helper\DateFormat
      */
     protected $dateformat;
 
     /**
-     * @param ScContent\Service\ScDateTime $datetime
-     * @param Zend\I18n\View\Helper\DateFormat $dateformat
+     * @param \ScContent\Service\ScDateTime $datetime
+     * @param \Zend\I18n\View\Helper\DateFormat $dateformat
      */
     public function __construct(ScDateTime $datetime, DateFormat $dateformat)
     {
@@ -42,7 +42,7 @@ class DateTime extends AbstractHelper
     }
 
     /**
-     * @param integer $gmStamp
+     * @param  integer $gmStamp
      * @return string
      */
     public function fromGm($gmStamp)
@@ -51,7 +51,7 @@ class DateTime extends AbstractHelper
     }
 
     /**
-     * @param integer $gmStamp
+     * @param  integer $gmStamp
      * @return string
      */
     public function getDate($gmStamp)
@@ -66,7 +66,7 @@ class DateTime extends AbstractHelper
     }
 
     /**
-     * @param integer $gmStamp
+     * @param  integer $gmStamp
      * @return string
      */
     public function getTime($gmStamp)
@@ -81,7 +81,7 @@ class DateTime extends AbstractHelper
     }
 
     /**
-     * @param integer $gmStamp
+     * @param  integer $gmStamp
      * @return string
      */
     public function getDateTime($gmStamp)

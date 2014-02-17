@@ -23,24 +23,24 @@ use ScContent\Controller\AbstractBack,
 class ContentManagerController extends AbstractBack
 {
     /**
-     * @var ScContent\Service\Back\ContentListOptionsProvider
+     * @var \ScContent\Service\Back\ContentListOptionsProvider
      */
     protected $optionsProvider;
 
     /**
-     * @var ScContent\Service\ContentListProvider
+     * @var \ScContent\Service\ContentListProvider
      */
     protected $contentListsProvider;
 
     /**
-     * @var ScContent\Form\Back\ContentSearchForm
+     * @var \ScContent\Form\Back\ContentSearchForm
      */
     protected $searchForm;
 
     /**
      * Show content list.
      *
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function indexAction()
     {
@@ -74,7 +74,7 @@ class ContentManagerController extends AbstractBack
     /**
      * Show search options.
      *
-     * @return Zend\View\Model\ViewModel
+     * @return \Zend\View\Model\ViewModel
      */
     public function searchAction()
     {
@@ -121,7 +121,7 @@ class ContentManagerController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Service\Back\ContentListOptionsProvider $optionsProvider
+     * @param  \ScContent\Service\Back\ContentListOptionsProvider $optionsProvider
      * @return void
      */
     public function setOptionsProvider(OptionsProvider $optionsProvider)
@@ -130,7 +130,7 @@ class ContentManagerController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Service\Back\ContentListOptionsProvider
+     * @return \ScContent\Service\Back\ContentListOptionsProvider
      */
     public function getOptionsProvider()
     {
@@ -144,7 +144,7 @@ class ContentManagerController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Service\Back\ContentListProvider $contentListProvider
+     * @param  \ScContent\Service\Back\ContentListProvider $contentListProvider
      * @return void
      */
     public function setContentListProvider(
@@ -154,7 +154,7 @@ class ContentManagerController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Service\Back\ContentListProvider
+     * @return \ScContent\Service\Back\ContentListProvider
      */
     public function getContentListProvider()
     {
@@ -168,7 +168,7 @@ class ContentManagerController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Form\Back\ContentSearchForm $form
+     * @param  \ScContent\Form\Back\ContentSearchForm $form
      * @return void
      */
     public function setSearchForm(ContentSearchForm $form)
@@ -177,7 +177,7 @@ class ContentManagerController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Form\Back\ContentSearchForm
+     * @return \ScContent\Form\Back\ContentSearchForm
      */
     public function getSearchForm()
     {

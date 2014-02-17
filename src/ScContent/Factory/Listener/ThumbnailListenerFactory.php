@@ -20,8 +20,8 @@ use ScContent\Listener\ThumbnailListener,
 class ThumbnailListenerFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\ThumbnailListener
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\ThumbnailListener
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

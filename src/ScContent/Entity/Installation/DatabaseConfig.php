@@ -47,7 +47,7 @@ class DatabaseConfig extends AbstractEntity
     protected $password = '';
 
     /**
-     * @param string $driver
+     * @param  string $driver
      * @return void
      */
     public function setDriver($driver)
@@ -64,7 +64,7 @@ class DatabaseConfig extends AbstractEntity
     }
 
     /**
-     * @param string $path
+     * @param  string $path
      * @return void
      */
     public function setPath($path)
@@ -81,7 +81,7 @@ class DatabaseConfig extends AbstractEntity
     }
 
     /**
-     * @param string $host
+     * @param  string $host
      * @return void
      */
     public function setHost($host)
@@ -98,7 +98,7 @@ class DatabaseConfig extends AbstractEntity
     }
 
     /**
-     * @param string $database
+     * @param  string $database
      * @return void
      */
     public function setDatabase($database)
@@ -115,7 +115,7 @@ class DatabaseConfig extends AbstractEntity
     }
 
     /**
-     * @param string $username
+     * @param  string $username
      * @return void
      */
     public function setUsername($username)
@@ -132,7 +132,7 @@ class DatabaseConfig extends AbstractEntity
     }
 
     /**
-     * @param string $password
+     * @param  string $password
      * @return void
      */
     public function setPassword($password)

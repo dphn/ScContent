@@ -26,8 +26,8 @@ class WidgetVisibilityOptionsMapper
     const ContainerName = 'widget_visibility_options';
 
     /**
-     * @param array $query
-     * @return ScContent\Options\Back\WidgetVisibilityListOptions
+     * @param  array $query
+     * @return \ScContent\Options\Back\WidgetVisibilityListOptions
      */
     public function getOptions($query)
     {
@@ -47,7 +47,7 @@ class WidgetVisibilityOptionsMapper
     }
 
     /**
-     * @param ScContent\Options\Back\WidgetVisibilityListOptions $options
+     * @param  \ScContent\Options\Back\WidgetVisibilityListOptions $options
      * @return WidgetVisibilityOptionsMapper
      */
     public function saveOptions(Options $options)

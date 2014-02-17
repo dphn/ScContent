@@ -27,9 +27,9 @@ abstract class AbstractMigrationMapper extends AbstractDbMapper
     abstract function down();
 
     /**
-     * @param string $table
-     * @param boolean $isTemporary
-     * @return Zend\Db\Sql\Ddl\CreateTable
+     * @param  string $table
+     * @param  boolean $isTemporary
+     * @return \Zend\Db\Sql\Ddl\CreateTable
      */
     public function createTable($table = '', $isTemporary = false)
     {
@@ -37,8 +37,8 @@ abstract class AbstractMigrationMapper extends AbstractDbMapper
     }
 
     /**
-     * @param string $table
-     * @return Zend\Db\Sql\Ddl\DropTable
+     * @param  string $table
+     * @return \Zend\Db\Sql\Ddl\DropTable
      */
     public function dropTable($table = '')
     {
@@ -46,8 +46,8 @@ abstract class AbstractMigrationMapper extends AbstractDbMapper
     }
 
     /**
-     * @param string $table
-     * @return Zend\Db\Sql\Ddl\AlterTable
+     * @param  string $table
+     * @return \Zend\Db\Sql\Ddl\AlterTable
      */
     public function alterTable($table = '')
     {

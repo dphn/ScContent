@@ -19,7 +19,7 @@ use ScContent\Listener\Installation\InstallationInspector,
 abstract class AbstractInstallation extends AbstractActionController
 {
     /**
-     * @var ScContent\Service\Installation\InstallationInspector
+     * @var \ScContent\Service\Installation\InstallationInspector
      */
     protected $installationInspector;
 
@@ -48,7 +48,7 @@ abstract class AbstractInstallation extends AbstractActionController
     }
 
     /**
-     * @param ScContent\Listener\Installation\InstallationInspector $service
+     * @param  \ScContent\Listener\Installation\InstallationInspector $service
      * @return void
      */
     public function setInstallationInspector(InstallationInspector $service)
@@ -57,7 +57,7 @@ abstract class AbstractInstallation extends AbstractActionController
     }
 
     /**
-     * @return ScContent\Listener\Installation\InstallationInspector
+     * @return \ScContent\Listener\Installation\InstallationInspector
      */
     public function getInstallationInspector()
     {

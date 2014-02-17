@@ -20,8 +20,8 @@ use ScContent\Listener\Theme\BackendStrategy,
 class BackendStrategyFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Theme\BackendStrategy
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Theme\BackendStrategy
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

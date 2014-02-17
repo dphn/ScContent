@@ -13,14 +13,15 @@ use ScContent\Mapper\Back\SettingsMapper,
     //
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
+
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
 class SettingsMapperFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Mapper\Back\SettingsMapper
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Mapper\Back\SettingsMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

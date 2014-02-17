@@ -20,8 +20,8 @@ use ScContent\Service\Installation\AssetsService,
 class AssetsFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Installation\AssetsService
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Installation\AssetsService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

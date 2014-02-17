@@ -22,19 +22,19 @@ use ScContent\Controller\AbstractBack,
 class ArticleController extends AbstractBack
 {
     /**
-     * @var ScContent\Service\Back\ArticleService
+     * @var \ScContent\Service\Back\ArticleService
      */
     protected $articleService;
 
     /**
-     * @var ScContent\Form\Back\ArticleForm
+     * @var \ScContent\Form\Back\ArticleForm
      */
     protected $articleForm;
 
     /**
      * Add File.
      *
-     * @return Zend\Stdlib\ResponseInterface
+     * @return \Zend\Stdlib\ResponseInterface
      */
     public function addAction()
     {
@@ -65,7 +65,7 @@ class ArticleController extends AbstractBack
     /**
      * Edit File.
      *
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function editAction()
     {
@@ -108,7 +108,7 @@ class ArticleController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Service\Back\ArticleService $service
+     * @param  \ScContent\Service\Back\ArticleService $service
      * @return void
      */
     public function setArticleService(ArticleService $service)
@@ -117,7 +117,7 @@ class ArticleController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Service\Back\ArticleService
+     * @return \ScContent\Service\Back\ArticleService
      */
     public function getArticleService()
     {
@@ -131,7 +131,7 @@ class ArticleController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Form\Back\ArticleForm $form
+     * @param  \ScContent\Form\Back\ArticleForm $form
      * @return void
      */
     public function setArticleForm(ArticleForm $form)
@@ -140,7 +140,7 @@ class ArticleController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Form\Back\ArticleForm
+     * @return \ScContent\Form\Back\ArticleForm
      */
     public function getArticleForm()
     {

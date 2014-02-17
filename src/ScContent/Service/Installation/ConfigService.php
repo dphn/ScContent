@@ -27,17 +27,17 @@ use ScContent\Service\AbstractIntelligentService,
 class ConfigService extends AbstractIntelligentService
 {
     /**
-     * @var ScContent\Service\Dir
+     * @var \ScContent\Service\Dir
      */
     protected $dir;
 
     /**
-     * @var ScContent\Mapper\Installation\ConfigMapper
+     * @var \ScContent\Mapper\Installation\ConfigMapper
      */
     protected $mapper;
 
     /**
-     * @var ScContent\Entity\Installation\DatabaseConfig
+     * @var \ScContent\Entity\Installation\DatabaseConfig
      */
     protected $config;
 
@@ -73,7 +73,7 @@ class ConfigService extends AbstractIntelligentService
     ];
 
     /**
-     * @param ScContent\Service\Dir $dir
+     * @param  \ScContent\Service\Dir $dir
      * @return void
      */
     public function setDir(Dir $dir)
@@ -82,8 +82,8 @@ class ConfigService extends AbstractIntelligentService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Service\Dir
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Service\Dir
      */
     public function getDir()
     {
@@ -96,7 +96,7 @@ class ConfigService extends AbstractIntelligentService
     }
 
     /**
-     * @param ScContent\Mapper\Installation\ConfigMapper
+     * @param  \ScContent\Mapper\Installation\ConfigMapper
      * @return void
      */
     public function setMapper(ConfigMapper $mapper)
@@ -105,7 +105,7 @@ class ConfigService extends AbstractIntelligentService
     }
 
     /**
-     * @return ScContent\Mapper\Installation\ConfigMapper
+     * @return \ScContent\Mapper\Installation\ConfigMapper
      */
     public function getMapper()
     {
@@ -116,7 +116,7 @@ class ConfigService extends AbstractIntelligentService
     }
 
     /**
-     * @return ScContent\Entity\Installation\DatabaseConfig
+     * @return \ScContent\Entity\Installation\DatabaseConfig
      */
     public function getConfig()
     {
@@ -127,10 +127,10 @@ class ConfigService extends AbstractIntelligentService
     }
 
     /**
-     * @param ScContent\Entity\Installation\DatabaseConfig $config
-     * @param array $options
-     * @throws ScContent\Exception\InvalidArgumentException
-     * @throws ScContent\Exception\DebugException
+     * @param  \ScContent\Entity\Installation\DatabaseConfig $config
+     * @param  array $options
+     * @throws \ScContent\Exception\InvalidArgumentException
+     * @throws \ScContent\Exception\DebugException
      * @return boolean
      */
     public function saveConfig(DatabaseConfig $config, $options)

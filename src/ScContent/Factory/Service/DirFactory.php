@@ -20,8 +20,8 @@ use ScContent\Service\Dir,
 class DirFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Dir
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Dir
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

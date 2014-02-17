@@ -27,17 +27,17 @@ use ScContent\Service\AbstractService,
 class AccountService extends AbstractService
 {
     /**
-     * @var ZfcUser\Options\ModuleOptions
+     * @var \ZfcUser\Options\ModuleOptions
      */
     protected $zfcUserOptions;
 
     /**
-     * @var ZfcUser\Mapper\User
+     * @var \ZfcUser\Mapper\User
      */
     protected $userMapper;
 
     /**
-     * @param ZfcUser\Options\ModuleOptions $options
+     * @param  \ZfcUser\Options\ModuleOptions $options
      * @return void
      */
     public function setZfcUserOptions(ZfcUserOptions $options)
@@ -46,8 +46,8 @@ class AccountService extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ZfcUser\Options\ModuleOptions
+     * @throws \ScContent\Exception\IoCException
+     * @return \ZfcUser\Options\ModuleOptions
      */
     public function getZfcUserOptions()
     {
@@ -60,7 +60,7 @@ class AccountService extends AbstractService
     }
 
     /**
-     * @param ZfcUser\Mapper\User
+     * @param  \ZfcUser\Mapper\User
      * @return void
      */
     public function setUserMapper(UserMapper $mapper)
@@ -69,8 +69,8 @@ class AccountService extends AbstractService
     }
 
     /**
-     * @throw ScContent\Exception\IoCException
-     * @return ZfcUser\Mapper\User
+     * @throws \ScContent\Exception\IoCException
+     * @return \ZfcUser\Mapper\User
      */
     public function getUserMapper()
     {
@@ -83,8 +83,8 @@ class AccountService extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\DomainException
-     * @return ScContent\Entity\ScUserInterface
+     * @throws \ScContent\Exception\DomainException
+     * @return \ScContent\Entity\ScUserInterface
      */
     public function makeUserEntity()
     {
@@ -104,7 +104,7 @@ class AccountService extends AbstractService
     }
 
     /**
-     * @param ScContent\Entity\ScUserInterface
+     * @param  \ScContent\Entity\ScUserInterface
      * @return void
      */
     public function createAccount(ScUserInterface $user)

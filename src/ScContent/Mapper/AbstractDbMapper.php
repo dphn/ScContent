@@ -57,17 +57,17 @@ abstract class AbstractDbMapper
     const ReturnTypeArray = 2;
 
     /**
-     * @var Zend\Db\Adapter\AdapterInterface
+     * @var \Zend\Db\Adapter\AdapterInterface
      */
     protected $_adapter;
 
     /**
-     * @var Zend\Db\Sql\SqlInterface
+     * @var \Zend\Db\Sql\SqlInterface
      */
     protected $_sql;
 
     /**
-     * @var Zend\Stdlib\HydratorInterface
+     * @var \Zend\Stdlib\HydratorInterface
      */
     protected $_hydrator;
 
@@ -82,7 +82,7 @@ abstract class AbstractDbMapper
     protected $_initialized = false;
 
     /**
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param  \Zend\Db\Adapter\AdapterInterface $adapter
      * @return AbstractDbMapper
      */
     public function setAdapter(AdapterInterface $adapter)
@@ -92,8 +92,8 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Db\Adapter\AdapterInterface
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Db\Adapter\AdapterInterface
      */
     public function getAdapter()
     {
@@ -115,7 +115,7 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @param Zend\Db\Sql\SqlInterface $sql
+     * @param  \Zend\Db\Sql\SqlInterface $sql
      * @return AbstractDbMapper
      */
     public function setSql(SqlInterface $sql)
@@ -125,7 +125,7 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @return Zend\Db\Sql\SqlInterface
+     * @return \Zend\Db\Sql\SqlInterface
      */
     public function getSql()
     {
@@ -136,7 +136,7 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @param Zend\Stdlib\HydratorInterface $hydrator
+     * @param  \Zend\Stdlib\HydratorInterface $hydrator
      * @return AbstractDbMapper
      */
     public function setHydrator(HydratorInterface $hydrator)
@@ -146,7 +146,7 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @return Zend\Stdlib\HydratorInterface
+     * @return \Zend\Stdlib\HydratorInterface
      */
     public function getHydrator()
     {
@@ -157,9 +157,9 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @param string $alias
-     * @param string $name
-     * @throws ScContent\Mapper\Exception\InvalidArgumentException
+     * @param  string $alias
+     * @param  string $name
+     * @throws \ScContent\Mapper\Exception\InvalidArgumentException
      * @return AbstractDbMapper
      */
     public function setTable($alias, $name)
@@ -174,8 +174,8 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @param string $alias
-     * @throws ScContent\Mapper\Exception\InvalidArgumentException
+     * @param  string $alias
+     * @throws \ScContent\Mapper\Exception\InvalidArgumentException
      * @return string
      */
     public function getTable($alias)
@@ -221,7 +221,7 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @return string | false
+     * @return string|false
      */
     public function getTransactionIdentifier()
     {
@@ -229,8 +229,8 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @param string | false $activeTransactionIdentifier
-     * @throws ScContent\Mapper\Exception\LogicException
+     * @param  string|false $activeTransactionIdentifier
+     * @throws \ScContent\Mapper\Exception\LogicException
      * $return AbstractDbMapper
      */
     public function checkTransaction($activeTransactionIdentifier)
@@ -255,7 +255,7 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @return int | null | false
+     * @return int|null|false
      */
     protected function lastInsertId()
     {
@@ -263,9 +263,9 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @param Zend\Db\Sql\PreparableSqlInterface | string $sql
-     * @param Zend\Db\Adapter\ParameterContainer | array $parameters optional
-     * @return Zend\Db\Adapter\ResultInterface
+     * @param  \Zend\Db\Sql\PreparableSqlInterface|string $sql
+     * @param  \Zend\Db\Adapter\ParameterContainer|array $parameters optional default null
+     * @return \Zend\Db\Adapter\ResultInterface
      */
     protected function execute($sql, $parameters = null)
     {
@@ -280,7 +280,7 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @param Zend\Db\Adapter\ResultInterface $source
+     * @param  \Zend\Db\Adapter\ResultInterface $source
      * @return array
      */
     protected function toArray(ResultInterface $source)
@@ -293,9 +293,9 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @param Zend\Db\Adapter\ResultInterface $source
-     * @param string $key
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  \Zend\Db\Adapter\ResultInterface $source
+     * @param  string $key
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return array
      */
     protected function toList(ResultInterface $source, $key)
@@ -313,7 +313,7 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @param Zend\Db\Sql\PreparableSqlInterface $sqlObject
+     * @param  \Zend\Db\Sql\PreparableSqlInterface $sqlObject
      * @return string
      */
     protected function toString(SqlInterface $sqlObject)
@@ -322,7 +322,7 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @param string $identifier
+     * @param  string $identifier
      * @return string
      */
     protected function quoteIdentifier($identifier)
@@ -331,7 +331,7 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     protected function quoteValue($value)
@@ -340,8 +340,8 @@ abstract class AbstractDbMapper
     }
 
     /**
-     * @throws ScContent\Mapper\Exception\DomainException
-     * @return ScContent\Db\TransactionAbilityInterface
+     * @throws \ScContent\Mapper\Exception\DomainException
+     * @return \ScContent\Db\TransactionAbilityInterface
      */
     protected function getResource()
     {

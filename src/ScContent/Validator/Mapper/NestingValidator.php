@@ -39,9 +39,9 @@ class NestingValidator extends AbstractValidator
      *     isValid($source, $destination)
      * </code>
      *
-     * @param mixed array | string $options
-     * @param string $destination optional
-     * @throws Zend\Validator\Exception\InvalidArgumentException
+     * @param  mixed array|string $options
+     * @param  string $destination optional
+     * @throws \Zend\Validator\Exception\InvalidArgumentException
      * @return boolean
      */
     public function isValid($options = [])

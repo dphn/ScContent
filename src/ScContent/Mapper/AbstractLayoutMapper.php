@@ -41,7 +41,7 @@ class AbstractLayoutMapper extends AbstractDbMapper
     ];
 
     /**
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
     {
@@ -64,8 +64,8 @@ class AbstractLayoutMapper extends AbstractDbMapper
     }
 
     /**
-     * @param integer $id
-     * @return null | array
+     * @param  integer $id
+     * @return null|array
      */
     public function findMetaById($id)
     {

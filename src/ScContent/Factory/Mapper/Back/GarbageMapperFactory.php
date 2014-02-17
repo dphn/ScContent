@@ -20,8 +20,8 @@ use ScContent\Mapper\Back\GarbageMapper,
 class GarbageMapperFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Mapper\Back\GarbageMapper
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Mapper\Back\GarbageMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

@@ -18,9 +18,9 @@ use Zend\ServiceManager\AbstractFactoryInterface,
 class MigrationSchemaAbstractFactory implements AbstractFactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @param string $name
-     * @param string $requestedName
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @param  string $name
+     * @param  string $requestedName
      * @return boolean
      */
     public function canCreateServiceWithName(

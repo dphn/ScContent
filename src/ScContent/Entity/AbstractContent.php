@@ -19,7 +19,7 @@ abstract class AbstractContent extends AbstractEntity implements
     FormatProviderInterface
 {
     /**
-     * @var null | integer
+     * @var null|integer
      */
     protected $id = null;
 
@@ -84,7 +84,7 @@ abstract class AbstractContent extends AbstractEntity implements
     protected $spec = '';
 
     /**
-     * @var ScContent\Entity\ContentInfo
+     * @var \ScContent\Entity\ContentInfo
      */
     protected $info;
 
@@ -99,7 +99,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return AbstractContent
      */
     public function setId($id)
@@ -117,8 +117,8 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param string $type
-     * @throws ScContent\Exception\RuntimeException
+     * @param  string $type
+     * @throws \ScContent\Exception\RuntimeException
      * @return AbstractContent
      */
     public function setType($type)
@@ -141,7 +141,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param string $status
+     * @param  string $status
      * @return AbstractContent
      */
     public function setStatus($status)
@@ -159,8 +159,8 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param boolean | integer | string $flag
-     * @throws ScContent\Exception\RuntimeException
+     * @param  boolean|integer|string $flag
+     * @throws \ScContent\Exception\RuntimeException
      * @return AbstractContent
      */
     public function setTrash($flag)
@@ -184,7 +184,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param string $title
+     * @param  string $title
      * @return AbstractContent
      */
     public function setTitle($title)
@@ -202,7 +202,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return AbstractContent
      */
     public function setName($name)
@@ -220,7 +220,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param string $content
+     * @param  string $content
      * @return AbstractContent
      */
     public function setContent($content)
@@ -238,7 +238,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param string $description
+     * @param  string $description
      * @return AbstractContent
      */
     public function setDescription($description)
@@ -256,7 +256,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param integer $date GMT
+     * @param  integer $date GMT
      * @return AbstractContent
      */
     public function setCreated($date)
@@ -274,7 +274,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param integer $date GMT
+     * @param  integer $date GMT
      * @return AbstractContent
      */
     public function setModified($date)
@@ -292,7 +292,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return AbstractContent
      */
     public function setAuthor($id)
@@ -310,7 +310,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return AbstractContent
      */
     public function setEditor($id)
@@ -328,7 +328,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param string $spec
+     * @param  string $spec
      * @return AbstractContent
      */
     public function setSpec($spec)
@@ -346,7 +346,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @param ScContent\Entity\ContentInfo $info
+     * @param  ScContent\Entity\ContentInfo $info
      * @return AbstractContent
      */
     public function setInfo(ContentInfo $info)
@@ -356,7 +356,7 @@ abstract class AbstractContent extends AbstractEntity implements
     }
 
     /**
-     * @return ScContent\Entity\ContentInfo
+     * @return \ScContent\Entity\ContentInfo
      */
     public function getInfo()
     {

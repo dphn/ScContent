@@ -15,7 +15,7 @@ namespace ScContent\Options;
 interface ModuleThemeInterface
 {
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     function setFrontendThemeName($name);
@@ -26,7 +26,7 @@ interface ModuleThemeInterface
     function getFrontendThemeName();
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     function setBackendThemeName($name);
@@ -37,7 +37,7 @@ interface ModuleThemeInterface
     function getBackendThemeName();
 
     /**
-     * @param array $themes
+     * @param  array $themes
      * @return void
      */
     function setThemes($themes);
@@ -48,40 +48,40 @@ interface ModuleThemeInterface
     function getThemes();
 
     /**
-     * @param string $name
-     * @throws ScContent\Exception\DomainException
+     * @param  string $name
+     * @throws \ScContent\Exception\DomainException
      * @return array
      */
     function getThemeByName($name);
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return boolean
      */
     function themeExists($name);
 
     /**
-     * @param string $theme
-     * @param string $name
+     * @param  string $theme
+     * @param  string $name
      * @return boolean
      */
     function regionExists($theme, $name);
 
     /**
-     * @param string $name
-     * @throws ScContent\Exception\DomainException
+     * @param  string $name
+     * @throws \ScContent\Exception\DomainException
      * @return string
      */
     function getThemeDisplayName($name);
 
     /**
-     * @throws ScContent\Exception\DomainException
+     * @throws \ScContent\Exception\DomainException
      * @return array
      */
     function getFrontendTheme();
 
     /**
-     * @throws ScContent\Exception\DomainException
+     * @throws \ScContent\Exception\DomainException
      * @return array
      */
     function getBackendTheme();

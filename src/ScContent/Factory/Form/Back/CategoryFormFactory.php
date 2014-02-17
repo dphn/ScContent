@@ -20,8 +20,8 @@ use ScContent\Form\Back\CategoryForm,
 class CategoryFormFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $formElementManager
-     * @return ScContent\Form\Back\CategoryForm
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $formElementManager
+     * @return \ScContent\Form\Back\CategoryForm
      */
     public function createService(ServiceLocatorInterface $formElementManager)
     {

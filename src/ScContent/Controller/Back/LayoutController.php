@@ -22,14 +22,14 @@ use ScContent\Controller\AbstractBack,
 class LayoutController extends AbstractBack
 {
     /**
-     * @var ScContent\Service\Back\LayoutService
+     * @var \ScContent\Service\Back\LayoutService
      */
     protected $layoutService;
 
     /**
      * Shows a layout.
      *
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function indexAction()
     {
@@ -73,7 +73,7 @@ class LayoutController extends AbstractBack
     }
 
    /**
-    * @return Zend\Stdlib\ResponseInterface
+    * @return \Zend\Stdlib\ResponseInterface
     */
     public function addAction()
     {
@@ -124,7 +124,7 @@ class LayoutController extends AbstractBack
     }
 
     /**
-     * @return Zend\Stdlib\ResponseInterface
+     * @return \Zend\Stdlib\ResponseInterface
      */
     public function deleteAction()
     {
@@ -153,7 +153,7 @@ class LayoutController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Service\Back\LayoutService $service
+     * @param  \ScContent\Service\Back\LayoutService $service
      * @return void
      */
     public function setLayoutService(LayoutService $service)
@@ -162,7 +162,7 @@ class LayoutController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Service\Back\LayoutService
+     * @return \ScContent\Service\Back\LayoutService
      */
     public function getLayoutService()
     {

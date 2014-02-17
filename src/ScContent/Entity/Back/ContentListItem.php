@@ -19,7 +19,7 @@ class ContentListItem extends AbstractEntity
     implements FormatProviderInterface
 {
     /**
-     * @var null | integer
+     * @var null|integer
      */
     protected $id;
 
@@ -79,7 +79,7 @@ class ContentListItem extends AbstractEntity
     protected $order = 0;
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return void
      */
     public function setId($id)
@@ -96,7 +96,7 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param string $type
+     * @param  string $type
      * @return void
      */
     public function setType($type)
@@ -113,7 +113,7 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param string $status
+     * @param  string $status
      * @return void
      */
     public function setStatus($status)
@@ -130,7 +130,7 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param string $title
+     * @param  string $title
      * @return void
      */
     public function setTitle($title)
@@ -149,7 +149,7 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setName($name)
@@ -166,7 +166,7 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param integer $date
+     * @param  integer $date
      * @return void
      */
     public function setDate($date)
@@ -183,7 +183,7 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param string $spec
+     * @param  string $spec
      * @return void
      */
     public function setSpec($spec)
@@ -200,7 +200,7 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return void
      */
     public function setUserId($id)
@@ -217,7 +217,7 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setUserName($name)
@@ -236,7 +236,7 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param string $email
+     * @param  string $email
      * @return void
      */
     public function setUserEmail($email)
@@ -253,7 +253,7 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param integer $count
+     * @param  integer $count
      * @return void
      */
     public function setChildrens($count)
@@ -270,7 +270,7 @@ class ContentListItem extends AbstractEntity
     }
 
     /**
-     * @param integer $order
+     * @param  integer $order
      * @return void
      */
     public function setOrder($order)

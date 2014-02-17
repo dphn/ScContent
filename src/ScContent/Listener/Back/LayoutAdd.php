@@ -24,8 +24,8 @@ class LayoutAdd extends AbstractControllerListener
     protected $redirectRoute = 'sc-admin/layout/add';
 
     /**
-     * @param Zend\EventManager\EventInterface $event
-     * @return Zend\Stdlib\Response
+     * @param  \Zend\EventManager\EventInterface $event
+     * @return \Zend\Stdlib\Response
      */
     public function process(EventInterface $event)
     {

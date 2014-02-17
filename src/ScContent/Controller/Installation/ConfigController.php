@@ -21,17 +21,17 @@ use ScContent\Controller\AbstractInstallation,
 class ConfigController extends AbstractInstallation
 {
     /**
-     * @var ScContent\Service\Installation\ConfigService
+     * @var \ScContent\Service\Installation\ConfigService
      */
     protected $configService;
 
     /**
-     * @var ScContent\Form\Installation\DatabaseForm
+     * @var \ScContent\Form\Installation\DatabaseForm
      */
     protected $form;
 
     /**
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function indexAction()
     {
@@ -75,7 +75,7 @@ class ConfigController extends AbstractInstallation
     }
 
     /**
-     * @param ScContent\Form\Installation\DatabaseForm $form
+     * @param  \ScContent\Form\Installation\DatabaseForm $form
      * @return void
      */
     public function setForm(DatabaseForm $form)
@@ -84,7 +84,7 @@ class ConfigController extends AbstractInstallation
     }
 
     /**
-     * @return ScContent\Form\Installation\DatabaseForm
+     * @return \ScContent\Form\Installation\DatabaseForm
      */
     public function getForm()
     {
@@ -101,7 +101,7 @@ class ConfigController extends AbstractInstallation
     }
 
     /**
-     * @param ScContent\Service\Installation\ConfigService $service
+     * @param  \ScContent\Service\Installation\ConfigService $service
      * @return void
      */
     public function setConfigService(ConfigService $service)
@@ -110,7 +110,7 @@ class ConfigController extends AbstractInstallation
     }
 
     /**
-     * @return ScContent\Service\Installation\ConfigService
+     * @return \ScContent\Service\Installation\ConfigService
      */
     public function getConfigService()
     {

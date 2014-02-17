@@ -22,7 +22,7 @@ class CommonStrategy extends AbstractThemeStrategy
     protected static $side = 'frontend';
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return FrontendStrategy
      */
     public function update(MvcEvent $event)

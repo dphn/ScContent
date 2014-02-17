@@ -21,7 +21,7 @@ use ScContent\Service\AbstractService,
 class ContentListProvider extends AbstractService
 {
     /**
-     * @var ScContent\Service\ContentListOptionsProvider
+     * @var \ScContent\Service\ContentListOptionsProvider
      */
     protected $optionsProvider;
 
@@ -42,7 +42,7 @@ class ContentListProvider extends AbstractService
     ];
 
     /**
-     * @param ScContent\Service\ContentListOptionsProvider $provider
+     * @param  \ScContent\Service\ContentListOptionsProvider $provider
      * @return void
      */
     public function setOptionsProvider(ContentListOptionsProvider $provider)
@@ -51,8 +51,8 @@ class ContentListProvider extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Service\ContentListOptionsProvider
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Service\ContentListOptionsProvider
      */
     public function getOptionsProvider()
     {
@@ -65,9 +65,9 @@ class ContentListProvider extends AbstractService
     }
 
     /**
-     * @param ScContent\Mapper\Back\ContentListMapperInterface $mapper
-     * @param string $type
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  \ScContent\Mapper\Back\ContentListMapperInterface $mapper
+     * @param  string $type
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function setMapper(ContentListMapperInterface $mapper, $type)
@@ -82,10 +82,10 @@ class ContentListProvider extends AbstractService
     }
 
     /**
-     * @param string $type
-     * @throws ScContent\Exception\InvalidArgumentException
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\ContentListInterface
+     * @param  string $type
+     * @throws \ScContent\Exception\InvalidArgumentException
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\ContentListInterface
      */
     protected function getMapper($type)
     {
@@ -105,9 +105,9 @@ class ContentListProvider extends AbstractService
     }
 
     /**
-     * @param string $name
-     * @throws ScContent\Exception\InvalidArgumentException
-     * @return ScContent\Entity\ContentList
+     * @param  string $name
+     * @throws \ScContent\Exception\InvalidArgumentException
+     * @return \ScContent\Entity\ContentList
      */
     public function getList($name)
     {

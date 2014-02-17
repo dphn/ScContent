@@ -14,7 +14,13 @@ namespace ScContent\Migration;
  */
 interface SchemaInterface
 {
+    /**
+     * @return void
+     */
     function up();
 
+    /**
+     * @return void
+     */
     function down();
 }

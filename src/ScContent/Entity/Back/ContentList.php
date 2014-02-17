@@ -68,6 +68,8 @@ class ContentList extends AbstractList
     ];
 
     /**
+     * Constructor
+     *
      * @param array $parent
      */
     public function __construct($parent)
@@ -76,7 +78,7 @@ class ContentList extends AbstractList
     }
 
     /**
-     * @param object
+     * @param  object $item
      * @return void
      */
     public function addItem($item)
@@ -85,7 +87,7 @@ class ContentList extends AbstractList
     }
 
     /**
-     * @param string $attribute optional
+     * @param  string $attribute optional default ''
      * @return mixed
      */
     public function getParent($attribute = '')
@@ -97,7 +99,7 @@ class ContentList extends AbstractList
     }
 
     /**
-     * @param array $back
+     * @param  array $back
      * @return void
      */
     public function setBack($back)
@@ -118,7 +120,7 @@ class ContentList extends AbstractList
     }
 
     /**
-     * @param array $counter
+     * @param  array $counter
      * @return void
      */
     public function setCounter($counter)
@@ -127,8 +129,8 @@ class ContentList extends AbstractList
     }
 
     /**
-     * @param string $filter
-     * @return integer | array
+     * @param  string $filter optional default ''
+     * @return integer|array
      */
     public function getCounter($filter = '')
     {
@@ -150,7 +152,7 @@ class ContentList extends AbstractList
     }
 
     /**
-     * @param string $attribute optional default <code>id</code>
+     * @param  string $attribute optional default 'id'
      * @return mixed
      */
     public function getTop($attribute = 'id')
@@ -163,7 +165,7 @@ class ContentList extends AbstractList
     }
 
     /**
-     * @param integer $total
+     * @param  integer $total
      * @return void
      */
     public function setTotalPages($total)
@@ -180,7 +182,7 @@ class ContentList extends AbstractList
     }
 
     /**
-     * @param array $parent
+     * @param  array $parent
      * @return void
      */
     protected function setParent($parent)

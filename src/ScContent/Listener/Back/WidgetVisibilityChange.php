@@ -28,7 +28,7 @@ use ScContent\Listener\AbstractControllerListener,
 class WidgetVisibilityChange extends AbstractControllerListener
 {
     /**
-     * @var ScContent\Mapper\Back\WidgetVisibilityChangeMapper
+     * @var \ScContent\Mapper\Back\WidgetVisibilityChangeMapper
      */
     protected $mapper;
 
@@ -72,7 +72,7 @@ class WidgetVisibilityChange extends AbstractControllerListener
     ];
 
     /**
-     * @param ScContent\Mapper\Back\WidgetVisibilityChangeMapper $mapper
+     * @param  \ScContent\Mapper\Back\WidgetVisibilityChangeMapper $mapper
      * @return void
      */
     public function setMapper(Mapper $mapper)
@@ -81,8 +81,8 @@ class WidgetVisibilityChange extends AbstractControllerListener
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\WidgetVisibilityChangeMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\WidgetVisibilityChangeMapper
      */
     public function getMapper()
     {
@@ -95,8 +95,8 @@ class WidgetVisibilityChange extends AbstractControllerListener
     }
 
     /**
-     * @param Zend\EventManager\EventInterface $event
-     * @return null | Zend\Stdlib\Response
+     * @param  \Zend\EventManager\EventInterface $event
+     * @return null|\Zend\Stdlib\Response
      */
     public function process(EventInterface $event)
     {

@@ -20,8 +20,8 @@ use ScContent\Service\Installation\AccountService,
 class AccountFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Installation\AccountService
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Installation\AccountService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

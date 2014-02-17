@@ -19,12 +19,12 @@ use ScContent\Service\Localization as L10n,
 class Localization extends AbstractHelper
 {
     /**
-     * @var ScContent\Service\Loalization
+     * @var \ScContent\Service\Loalization
      */
     protected $l10n;
 
     /**
-     * @param ScContent\Service\Loalization $l10n
+     * @param  \ScContent\Service\Loalization $l10n
      * @return void
      */
     public function __construct(L10n $l10n)

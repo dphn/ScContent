@@ -27,11 +27,11 @@ class ContentListOptions
     const ContainerPrefix = 'content_options_';
 
     /**
-     * @param string $name
-     * @param array $query
-     * @param string $type optional
-     * @throws ScContent\Exception\DomainException
-     * @return ScContent\Options\Back\ContentListOptions
+     * @param  string $name
+     * @param  array $query
+     * @param  string $type optional
+     * @throws \ScContent\Exception\DomainException
+     * @return \ScContent\Options\Back\ContentListOptions
      */
     public function getOptons($name, $query = null, $type = '')
     {
@@ -65,8 +65,8 @@ class ContentListOptions
     }
 
     /**
-     * @param ScContent\Options\Back\ContentListOptions $options
-     * @return ScContent\Mapper\Back\ContentListOptions
+     * @param  \ScContent\Options\Back\ContentListOptions $options
+     * @return \ScContent\Mapper\Back\ContentListOptions
      */
     public function saveOptions(Options $options)
     {

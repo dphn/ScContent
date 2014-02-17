@@ -21,8 +21,8 @@ use ScContent\Service\Back\ContentListOptionsProvider,
 class ContentListOptionsProviderFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Back\ContentListOptionsProvider
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Back\ContentListOptionsProvider
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

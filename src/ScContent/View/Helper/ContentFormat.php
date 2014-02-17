@@ -22,17 +22,17 @@ use ScContent\Service\FileTypesCatalogInterface as CatalogInterface,
 class ContentFormat extends AbstractTranslatorHelper
 {
     /**
-     * @var ScContent\Service\Dir
+     * @var \ScContent\Service\Dir
      */
     protected $dir;
 
     /**
-     * @var ScContent\Service\FileTypesCatalog
+     * @var \ScContent\Service\FileTypesCatalog
      */
     protected $catalog;
 
     /**
-     * @var Zend\View\Helper\BasePath
+     * @var \Zend\View\Helper\BasePath
      */
     protected $basePath;
 
@@ -70,9 +70,9 @@ class ContentFormat extends AbstractTranslatorHelper
     /**
      * Constructor
      *
-     * @param Zend\View\Helper\BasePath $basePath
-     * @param ScContent\Service\Dir $dir
-     * @param ScContent\Service\FileTypesCatalog $catalog
+     * @param \Zend\View\Helper\BasePath $basePath
+     * @param \ScContent\Service\Dir $dir
+     * @param \ScContent\Service\FileTypesCatalog $catalog
      * @param array $options
      */
     public function __construct(
@@ -90,7 +90,7 @@ class ContentFormat extends AbstractTranslatorHelper
     }
 
     /**
-     * @param Zend\View\Helper\BasePath $basePath
+     * @param  \Zend\View\Helper\BasePath $basePath
      * @return void
      */
     public function setBasePath(BasePath $basePath)
@@ -99,7 +99,7 @@ class ContentFormat extends AbstractTranslatorHelper
     }
 
     /**
-     * @return Zend\View\Helper\BasePath
+     * @return \Zend\View\Helper\BasePath
      */
     public function getBasePath()
     {
@@ -115,7 +115,7 @@ class ContentFormat extends AbstractTranslatorHelper
     }
 
     /**
-     * @param ScContent\View\Helper\FormatProviderInterface $provider
+     * @param  \ScContent\View\Helper\FormatProviderInterface $provider
      * @return string
      */
     public function getImagePath(FormatProviderInterface $provider)
@@ -133,7 +133,7 @@ class ContentFormat extends AbstractTranslatorHelper
     }
 
     /**
-     * @param ScContent\View\Helper\FormatProviderInterface $provider
+     * @param  \ScContent\View\Helper\FormatProviderInterface $provider
      * @return string
      */
     public function getIconPath(FormatProviderInterface $provider)
@@ -176,7 +176,7 @@ class ContentFormat extends AbstractTranslatorHelper
     }
 
     /**
-     * @param ScContent\View\Helper\FormatProviderInterface $provider
+     * @param  \ScContent\View\Helper\FormatProviderInterface $provider
      * @return string
      */
     public function getExtension(FormatProviderInterface $provider)
@@ -190,7 +190,7 @@ class ContentFormat extends AbstractTranslatorHelper
     }
 
     /**
-     * @param ScContent\View\Helper\FormatProviderInterface $provider
+     * @param  \ScContent\View\Helper\FormatProviderInterface $provider
      * @return string
      */
     public function getFileName(FormatProviderInterface $provider)
@@ -205,7 +205,7 @@ class ContentFormat extends AbstractTranslatorHelper
     }
 
     /**
-     * @param ScContent\View\Helper\FormatProviderInterface $provider
+     * @param  \ScContent\View\Helper\FormatProviderInterface $provider
      * @return boolean
      */
     public function canPreview(FormatProviderInterface $provider)
@@ -220,7 +220,7 @@ class ContentFormat extends AbstractTranslatorHelper
     }
 
     /**
-     * @param ScContent\View\Helper\FormatProviderInterface $provider
+     * @param  \ScContent\View\Helper\FormatProviderInterface $provider
      * @return boolean
      */
     public function isWebImage(FormatProviderInterface $provider)
@@ -235,7 +235,7 @@ class ContentFormat extends AbstractTranslatorHelper
     }
 
     /**
-     * @param integer $feature
+     * @param  integer $feature
      * @return string
      */
     protected function getFileType($feature)

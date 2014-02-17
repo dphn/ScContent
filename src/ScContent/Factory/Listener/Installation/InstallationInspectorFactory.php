@@ -20,8 +20,8 @@ use ScContent\Listener\Installation\InstallationInspector,
 class InstallationInspectorFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Installation\InstallationInspector
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Installation\InstallationInspector
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

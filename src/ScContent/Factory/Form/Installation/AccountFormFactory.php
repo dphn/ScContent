@@ -21,8 +21,8 @@ use ScContent\Form\Installation\AccountForm,
 class AccountFormFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $formElementManager
-     * @return ScContent\Form\Installation\AccountForm
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $formElementManager
+     * @return \ScContent\Form\Installation\AccountForm
      */
     public function createService(ServiceLocatorInterface $formElementManager)
     {

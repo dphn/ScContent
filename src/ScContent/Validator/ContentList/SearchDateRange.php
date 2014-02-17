@@ -39,8 +39,8 @@ class SearchDateRange extends AbstractValidator
     ];
 
     /**
-     * @param string $value
-     * @param array $conext
+     * @param  string $value
+     * @param  array $conext
      * @return boolean
      */
     public function isValid($value, $context = null)

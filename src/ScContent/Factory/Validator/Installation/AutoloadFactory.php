@@ -20,8 +20,8 @@ use ScContent\Validator\Installation\Autoload,
 class AutoloadFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
-     * @return ScContent\Validator\Installation\Autoload
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
+     * @return \ScContent\Validator\Installation\Autoload
      */
     public function createService(
         ServiceLocatorInterface $validatorPluginManager

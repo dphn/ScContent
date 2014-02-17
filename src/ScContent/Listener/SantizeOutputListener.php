@@ -21,7 +21,7 @@ use Zend\EventManager\AbstractListenerAggregate,
 class SantizeOutputListener extends AbstractListenerAggregate
 {
     /**
-     * @param Zend\EventManager\EventManagerInterface $events
+     * @param  \Zend\EventManager\EventManagerInterface $events
      * @return void
      */
     public function attach(EventManagerInterface $events)
@@ -34,7 +34,7 @@ class SantizeOutputListener extends AbstractListenerAggregate
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     public function onFinish(MvcEvent $event)
@@ -49,7 +49,7 @@ class SantizeOutputListener extends AbstractListenerAggregate
     }
 
     /**
-     * @param string $html
+     * @param  string $html
      * @return string
      */
     protected function santizeHtml($html)
@@ -57,7 +57,7 @@ class SantizeOutputListener extends AbstractListenerAggregate
         preg_match_all('!(<(?:code|pre).*>[^<]+</(?:code|pre)>)!', $html, $pre);
         $html = preg_replace('!<(?:code|pre).*>[^<]+</(?:code|pre)>!', '#pre#', $html);
         $search = [
-            '/<!--.*?-->/',           // remove html comments
+            '/<!--.*?-->/',        // remove html comments
             '/\r?\n\s*\r?\n/m',    // remove empty lines
         ];
         $replace = [

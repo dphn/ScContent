@@ -19,13 +19,13 @@ use ScContent\Service\Back\WidgetConfigurationService,
 abstract class AbstractWidgetAwareController extends AbstractBack
 {
     /**
-     * @var ScContent\Service\Back\WidgetConfigurationService
+     * @var \ScContent\Service\Back\WidgetConfigurationService
      */
     protected $widgetConfigurationService;
 
     /**
-     * @param unknown $id
-     * @return NULL | ScContent\Entity\WidgetInterface
+     * @param  integer $id
+     * @return null|\ScContent\Entity\WidgetInterface
      */
     protected function deriveWidget($id)
     {
@@ -57,7 +57,7 @@ abstract class AbstractWidgetAwareController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Service\Back\WidgetConfigurationService $service
+     * @param  \ScContent\Service\Back\WidgetConfigurationService $service
      * @return void
      */
     public function setWidgetConfigurationService(WidgetConfigurationService $service)
@@ -66,7 +66,7 @@ abstract class AbstractWidgetAwareController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Service\Back\WidgetConfigurationService
+     * @return \ScContent\Service\Back\WidgetConfigurationService
      */
     public function getWidgetConfigurationService()
     {

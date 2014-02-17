@@ -21,7 +21,7 @@ use ScContent\Mapper\Exception\UnavailableSourceException,
 class ContentListReorderMapper extends ContentListOperationAbstract
 {
     /**
-     * @param AdapterInterface $adapter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
     {
@@ -29,11 +29,11 @@ class ContentListReorderMapper extends ContentListOperationAbstract
     }
 
     /**
-     * @param integer $id
-     * @param integer $position
-     * @param string Transaction identifier
-     * @throws ScContent\Mapper\Exception\UnavailableSourceException
-     * @throws ScContent\Mapper\Exception\UnavailableDestinationException
+     * @param  integer $id
+     * @param  integer $position
+     * @param  string Transaction identifier
+     * @throws \ScContent\Mapper\Exception\UnavailableSourceException
+     * @throws \ScContent\Mapper\Exception\UnavailableDestinationException
      * @return void
      */
     public function reorder($id, $position, $tid)
@@ -120,9 +120,9 @@ class ContentListReorderMapper extends ContentListOperationAbstract
     }
 
     /**
-     * @param array $parent
-     * @param integer $position
-     * @return null | array
+     * @param  array $parent
+     * @param  integer $position
+     * @return null|array
      */
     protected function findMetaByPosition($parent, $position)
     {
@@ -145,8 +145,8 @@ class ContentListReorderMapper extends ContentListOperationAbstract
     }
 
     /**
-     * @param array $parent
-     * @return null | array
+     * @param  array $parent
+     * @return null|array
      */
     protected function findMetaByMaxBottomPosition($parent)
     {

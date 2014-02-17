@@ -20,8 +20,8 @@ use ScContent\Mapper\Back\WidgetVisibilityListMapper,
 class WidgetVisibilityListMapperFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Mapper\Back\WidgetVisibilityListMapper
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Mapper\Back\WidgetVisibilityListMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

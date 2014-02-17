@@ -20,8 +20,8 @@ use ScContent\Mapper\Installation\CredentialsMapper,
 class CredentialsFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Mapper\Installation\CredentialsMapper
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Mapper\Installation\CredentialsMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

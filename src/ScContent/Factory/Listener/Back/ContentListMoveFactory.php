@@ -17,8 +17,8 @@ use ScContent\Listener\Back\ContentListMove,
 class ContentListMoveFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Back\ContentListMove
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Back\ContentListMove
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

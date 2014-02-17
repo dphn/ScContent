@@ -20,8 +20,8 @@ use ScContent\Mapper\Back\ContentListCleanMapper,
 class ContentListCleanMapperFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Mapper\Back\ContentListCleanMapper
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Mapper\Back\ContentListCleanMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

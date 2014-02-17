@@ -17,7 +17,7 @@ use ScContent\Entity\AbstractList;
 class FilesList extends AbstractList
 {
     /**
-     * @param ScContent\Entity\File $item
+     * @param  File $item
      * @return void
      */
     public function addItem(File $item)
@@ -26,7 +26,7 @@ class FilesList extends AbstractList
     }
 
     /**
-     * @return array
+     * @return File[]
      */
     public function getArrayCopy()
     {
@@ -34,7 +34,7 @@ class FilesList extends AbstractList
     }
 
     /**
-     * @param array $data
+     * @param  array $data
      * @return void
      */
     public function exchangeArray($data)

@@ -18,7 +18,7 @@ use ScContent\Service\Dir,
 class AutoloadService extends AbstractInstallationService
 {
     /**
-     * @var ScContent\Service\Dir
+     * @var \ScContent\Service\Dir
      */
     protected $dir;
 
@@ -53,7 +53,7 @@ class AutoloadService extends AbstractInstallationService
     ];
 
     /**
-     * @param ScContent\Service\Dir $dir
+     * @param  \ScContent\Service\Dir $dir
      * @return void
      */
     public function __construct(Dir $dir)
@@ -62,8 +62,8 @@ class AutoloadService extends AbstractInstallationService
     }
 
     /**
-     * @param array $options
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  array $options
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return boolean
      */
     public function process($options)

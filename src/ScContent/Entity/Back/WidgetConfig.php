@@ -18,19 +18,21 @@ use ScContent\Entity\AbstractEntity,
 class WidgetConfig extends AbstractEntity
 {
     /**
-     * @var ScContent\Entity\WidgetInterface
+     * @var \ScContent\Entity\WidgetInterface
      */
     protected $widget;
 
     /**
      * A list of roles that are known to the system.
      *
-     * @var array
+     * @var string[]
      */
     protected $availableRoles = [];
 
     /**
-     * @param array $availableRoles
+     * Constructor
+     *
+     * @param string[] $availableRoles
      */
     public function __construct(WidgetInterface $widget, $availableRoles)
     {
@@ -39,7 +41,7 @@ class WidgetConfig extends AbstractEntity
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return WidgetConfig
      */
     public function setDisplayName($name)
@@ -57,7 +59,7 @@ class WidgetConfig extends AbstractEntity
     }
 
     /**
-     * @param string $description
+     * @param  string $description
      * @return WidgetConfig
      */
     public function setDescription($description)
@@ -77,7 +79,7 @@ class WidgetConfig extends AbstractEntity
     /**
      * This data comes from the form. It is the applicable roles list.
      *
-     * @param array $roles
+     * @param  string[] $roles
      * @return void
      */
     public function setRoles($roles)
@@ -91,7 +93,9 @@ class WidgetConfig extends AbstractEntity
     }
 
     /**
-     * Derive all roles that are known to the system.
+     * Get all roles that are known to the system.
+     *
+     * @return string[]
      */
     public function getRoles()
     {
@@ -99,9 +103,9 @@ class WidgetConfig extends AbstractEntity
     }
 
     /**
-     * Creates a list of applicable roles.
+     * Find applicable roles.
      *
-     * @return array
+     * @return string[]
      */
     public function findApplicableRoles()
     {

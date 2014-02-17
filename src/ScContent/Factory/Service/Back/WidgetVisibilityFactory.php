@@ -21,8 +21,8 @@ use ScContent\Service\Back\WidgetVisibilityService,
 class WidgetVisibilityFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Back\WidgetVisibilityService
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Back\WidgetVisibilityService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

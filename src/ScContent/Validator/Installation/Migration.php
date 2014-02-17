@@ -24,7 +24,7 @@ class Migration extends AbstractValidator
     protected $tables = [];
 
     /**
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param  \Zend\Db\Adapter\AdapterInterface $adapter
      * @return void
      */
     public function __construct(AdapterInterface $adapter)
@@ -36,8 +36,8 @@ class Migration extends AbstractValidator
     }
 
     /**
-     * @param array $options
-     * @throws Zend\Validator\Exception\InvalidArgumentException
+     * @param  array $options
+     * @throws \Zend\Validator\Exception\InvalidArgumentException
      * @return boolean
      */
     public function isValid($options)

@@ -15,13 +15,13 @@ namespace ScContent\Service;
 interface FileTransferInterface
 {
     /**
-     * @param array $data
+     * @param  array $data
      * @return array
      */
     function receive($data);
 
     /**
-     * @param array $data
+     * @param  array $data
      * @return void
      */
     function rollBack($data);

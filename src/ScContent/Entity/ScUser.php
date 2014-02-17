@@ -35,7 +35,7 @@ class ScUser extends User implements ScUserInterface
     protected $registered = 0;
 
     /**
-     * Constructor.
+     * Constructor
      */
     public function __construct()
     {
@@ -51,7 +51,7 @@ class ScUser extends User implements ScUserInterface
     }
 
     /**
-     * @param string $locale
+     * @param  string $locale
      * @return void
      */
     public function setLocale($locale)
@@ -68,7 +68,7 @@ class ScUser extends User implements ScUserInterface
     }
 
     /**
-     * @param string $timezone
+     * @param  string $timezone
      * @return void
      */
     public function setTimezone($timezone)
@@ -85,7 +85,7 @@ class ScUser extends User implements ScUserInterface
     }
 
     /**
-     * @param integer
+     * @param  integer
      * @return void
      */
     public function setRegistered($gmStamp)

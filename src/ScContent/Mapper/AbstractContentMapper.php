@@ -45,8 +45,8 @@ abstract class AbstractContentMapper extends AbstractDbMapper
     ];
 
     /**
-     * @param ScContent\Entity\AbstractContent $content
-     * @throws ScContent\Mapper\Exception\UnavailableSourceException
+     * @param  \ScContent\Entity\AbstractContent $content
+     * @throws \ScContent\Mapper\Exception\UnavailableSourceException
      * @return void
      */
     public function findById(AbstractContent $content)
@@ -86,8 +86,8 @@ abstract class AbstractContentMapper extends AbstractDbMapper
     }
 
     /**
-     * @param integer $id
-     * @return null | array;
+     * @param  integer $id
+     * @return null|array
      */
     public function findMetaById($id)
     {
@@ -107,7 +107,7 @@ abstract class AbstractContentMapper extends AbstractDbMapper
     }
 
     /**
-     * @param array $meta
+     * @param  array $meta
      * @return array
      */
     protected function findBack($meta)
@@ -132,7 +132,7 @@ abstract class AbstractContentMapper extends AbstractDbMapper
     }
 
     /**
-     * @param boolean | integer $trash
+     * @param  boolean|integer $trash
      * @return array
      */
     protected function getVirtualRoot($trash)

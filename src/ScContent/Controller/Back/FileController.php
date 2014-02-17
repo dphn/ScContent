@@ -28,29 +28,29 @@ use ScContent\Controller\AbstractBack,
 class FileController extends AbstractBack
 {
     /**
-     * @var ScContent\Service\Back\FileService
+     * @var \ScContent\Service\Back\FileService
      */
     protected $fileService;
 
     /**
-     * @var ScContent\Service\FileTransfer
+     * @var \ScContent\Service\FileTransfer
      */
     protected $fileTransfer;
 
     /**
-     * @var ScContent\Form\Back\FileAddForm
+     * @var \ScContent\Form\Back\FileAddForm
      */
     protected $fileAddForm;
 
     /**
-     * @var ScContent\Form\Back\FileEditForm
+     * @var \ScContent\Form\Back\FileEditForm
      */
     protected $fileEditForm;
 
     /**
      * Add File.
      *
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function addAction()
     {
@@ -118,7 +118,7 @@ class FileController extends AbstractBack
     /**
      * Edit File(s).
      *
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function editAction()
     {
@@ -174,7 +174,7 @@ class FileController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Service\Back\FileService $service
+     * @param  \ScContent\Service\Back\FileService $service
      * @return void
      */
     public function setFileService(FileService $service)
@@ -183,7 +183,7 @@ class FileController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Service\Back\FileService
+     * @return \ScContent\Service\Back\FileService
      */
     public function getFileService()
     {
@@ -195,7 +195,7 @@ class FileController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Service\FileTransferInterface $fileTransfer
+     * @param  \ScContent\Service\FileTransferInterface $fileTransfer
      * @return void
      */
     public function setFileTransfer(FileTransferInterface $fileTransfer)
@@ -204,7 +204,7 @@ class FileController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Service\FileTransferInterface
+     * @return \ScContent\Service\FileTransferInterface
      */
     public function getFileTransfer()
     {
@@ -218,7 +218,7 @@ class FileController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Form\Back\FileAddForm $form
+     * @param  \ScContent\Form\Back\FileAddForm $form
      * @return void
      */
     public function setFileAddForm(FileAddForm $form)
@@ -227,7 +227,7 @@ class FileController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Form\Back\FileAddForm
+     * @return \ScContent\Form\Back\FileAddForm
      */
     public function getFileAddForm()
     {
@@ -243,7 +243,7 @@ class FileController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Form\Back\FileEditForm $form
+     * @param  \ScContent\Form\Back\FileEditForm $form
      * @return void
      */
     public function setFileEditForm(FileEditForm $form)
@@ -252,7 +252,7 @@ class FileController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Form\Back\FileEditForm
+     * @return \ScContent\Form\Back\FileEditForm
      */
     public function getFileEditForm()
     {

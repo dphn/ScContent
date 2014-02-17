@@ -24,15 +24,15 @@ use ScContent\Validator\Mapper\NestingValidator,
 class ContentListToggleTrashMapper extends ContentListOperationAbstract
 {
     /**
-     * @var ScContent\Validator\Mapper\NestingValidator
+     * @var \ScContent\Validator\Mapper\NestingValidator
      */
     protected $nestingValidator;
 
     /**
      * Constructor
      *
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
-     * @param ScContent\Validator\Mapper\NestingValidator $validator
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \ScContent\Validator\Mapper\NestingValidator $validator
      */
     public function __construct(
         AdapterInterface $adapter,
@@ -43,13 +43,13 @@ class ContentListToggleTrashMapper extends ContentListOperationAbstract
     }
 
     /**
-     * @param integer $id
-     * @param integer $newParentId
-     * @param integer | boolean $currentTrash Trash flag
-     * @param string $tid Transaction identifier
-     * @throws ScContent\Mapper\Exception\UnavailableSourceException
-     * @throws ScContent\Mapper\Exception\UnavailableDestinationException
-     * @throws ScContent\Mapper\Exception\NestingException
+     * @param  integer $id
+     * @param  integer $newParentId
+     * @param  integer|boolean $currentTrash Trash flag
+     * @param  string $tid Transaction identifier
+     * @throws \ScContent\Mapper\Exception\UnavailableSourceException
+     * @throws \ScContent\Mapper\Exception\UnavailableDestinationException
+     * @throws \ScContent\Mapper\Exception\NestingException
      * @return void
      */
     public function toggleTrash($id, $newParentId, $currentTrash, $tid)

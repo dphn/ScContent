@@ -18,12 +18,12 @@ use Zend\Mvc\Controller\Plugin\AbstractPlugin,
 class TranslatorProxy extends AbstractPlugin
 {
     /**
-     * @var Zend\I18n\Translator\Translator
+     * @var \Zend\I18n\Translator\Translator
      */
     protected $translator;
 
     /**
-     * @param Zend\I18n\Translator\Translator $translator
+     * @param \Zend\I18n\Translator\Translator $translator
      */
     public function __construct(Translator $translator)
     {
@@ -33,9 +33,9 @@ class TranslatorProxy extends AbstractPlugin
     /**
      * @api
      *
-     * @param string $message
-     * @param string $textDomain
-     * @param string $locale
+     * @param  string $message
+     * @param  string $textDomain
+     * @param  string $locale
      * @return string
      */
     public function __invoke($message, $textDomain = 'default', $locale = null)
@@ -46,8 +46,8 @@ class TranslatorProxy extends AbstractPlugin
     /**
      * @api
      *
-     * @param string $method
-     * @param array $args
+     * @param  string $method
+     * @param  array $args
      * @return mixed
      */
     public function __call($method, $args)

@@ -12,6 +12,7 @@ namespace ScContent\Controller\Installation;
 use ScContent\Controller\AbstractInstallation,
     ScContent\Validator\Installation\PhpIni,
     ScContent\Validator\Installation\PhpExtension,
+    ScContent\Exception\InvalidArgumentException,
     //
     Zend\View\Model\ViewModel;
 
@@ -21,12 +22,12 @@ use ScContent\Controller\AbstractInstallation,
 class RequirementsController extends AbstractInstallation
 {
     /**
-     * @var ScContent\Validator\Installation\PhpIni
+     * @var \ScContent\Validator\Installation\PhpIni
      */
     protected $iniValidator;
 
     /**
-     * @var ScContent\Validator\Installation\PhpExtension
+     * @var \ScContent\Validator\Installation\PhpExtension
      */
     protected $extensionValidator;
 
@@ -35,7 +36,7 @@ class RequirementsController extends AbstractInstallation
      * configuration of the module. If the settings are not compatible,
      * the installation process stops and displays the information message.
      *
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function configurationAction()
     {
@@ -61,6 +62,21 @@ class RequirementsController extends AbstractInstallation
         $validator = $this->getIniValidator();
         if (isset($batch['items']) && is_array($batch['items'])) {
             foreach ($batch['items'] as &$requirement) {
+                if (! isset($requirement['name'])) {
+                    throw new InvalidArgumentException($this->scTranslate(
+                        "Unable to verify the  php.ini."
+                        ." Missing option 'name' in the installer configuration."
+                    ));
+                }
+                if (! isset($requirement['failure_message'])) {
+                    throw new InvalidArgumentException(sprintf(
+                        $this->scTranslate(
+                            "Unable to verify the  php.ini."
+                            ." Missing option 'failure_message' for '%s' param."
+                        ),
+                        $requirement['name']
+                    ));
+                }
                 if (! $validator->isValid($requirement)) {
                     $failures[] = [
                         $requirement['name'],
@@ -72,6 +88,21 @@ class RequirementsController extends AbstractInstallation
                 }
             }
         } elseif (is_array($batch) && ! empty($batch)) {
+            if (! isset($batch['name'])) {
+                throw new InvalidArgumentException($this->scTranslate(
+                    "Unable to verify the  php.ini."
+                    ." Missing option 'name' in the installer configuration."
+                ));
+            }
+            if (! isset($batch['failure_message'])) {
+                throw new InvalidArgumentException(sprintf(
+                    $this->scTranslate(
+                        "Unable to verify the  php.ini."
+                        ." Missing option 'failure_message' for '%s' param."
+                    ),
+                    $requirement['name']
+                ));
+            }
             if (! $validator->isValid($batch)) {
                 $failures[] = [
                     $batch['name'],
@@ -98,7 +129,7 @@ class RequirementsController extends AbstractInstallation
      * is missing, the installation process stops and displays
      * the information message.
      *
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function extensionAction()
     {
@@ -120,6 +151,21 @@ class RequirementsController extends AbstractInstallation
         $validator = $this->getExtensionValidator();
         if (isset($batch['items']) && is_array($batch['items'])) {
             foreach ($batch['items'] as &$requirement) {
+                if (! isset($requirement['name'])) {
+                    throw new InvalidArgumentException($this->scTranslate(
+                        "Unable to check whether the extension is loaded."
+                        ." Missing option 'name' in the installer configuration."
+                    ));
+                }
+                if (! isset($requirement['information'])) {
+                    throw new InvalidArgumentException(sprintf(
+                        $this->scTranslate(
+                            "Unable to check whether the extension is loaded."
+                            ." Missing option 'information' for '%s' param."
+                        ),
+                        $requirement['name']
+                    ));
+                }
                 if (! $validator->isValid($requirement)) {
                     $failures[] = [
                         $requirement['name'],
@@ -128,6 +174,21 @@ class RequirementsController extends AbstractInstallation
                 }
             }
         } elseif (is_array($batch) && ! empty($batch)) {
+            if (! isset($batch['name'])) {
+                throw new InvalidArgumentException($this->scTranslate(
+                    "Unable to check whether the extension is loaded."
+                    ." Missing option 'name' in the installer configuration."
+                ));
+            }
+            if (! isset($batch['information'])) {
+                throw new InvalidArgumentException(sprintf(
+                    $this->scTranslate(
+                        "Unable to check whether the extension is loaded."
+                        ." Missing option 'information' for '%s' param."
+                    ),
+                    $requirement['name']
+                ));
+            }
             if (! $validator->isValid($requirement)) {
                 $failures[] = [
                     $batch['name'],
@@ -147,7 +208,7 @@ class RequirementsController extends AbstractInstallation
     }
 
     /**
-     * @param ScContent\Validator\Installation\PhpIni $validator
+     * @param  \ScContent\Validator\Installation\PhpIni $validator
      * @return void
      */
     public function setIniValidator(Phpini $validator)
@@ -156,7 +217,7 @@ class RequirementsController extends AbstractInstallation
     }
 
     /**
-     * @return ScContent\Validator\Installation\PhpIni
+     * @return \ScContent\Validator\Installation\PhpIni
      */
     public function getIniValidator()
     {
@@ -172,7 +233,7 @@ class RequirementsController extends AbstractInstallation
     }
 
     /**
-     * @param ScContent\Validator\Installation\PhpExtension $validator
+     * @param  \ScContent\Validator\Installation\PhpExtension $validator
      * @return void
      */
     public function setExtensionValidator(Phpextension $validator)
@@ -181,7 +242,7 @@ class RequirementsController extends AbstractInstallation
     }
 
     /**
-     * @return ScContent\Validator\Installation\PhpExtension
+     * @return \ScContent\Validator\Installation\PhpExtension
      */
     public function getExtensionValidator()
     {

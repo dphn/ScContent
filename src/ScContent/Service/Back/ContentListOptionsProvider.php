@@ -28,27 +28,27 @@ use ScContent\Mapper\Back\ContentListOptions as OptionsMapper,
 class ContentListOptionsProvider
 {
     /**
-     * @var Zend\Mvc\Router\Http\TreeRouteStack
+     * @var \Zend\Mvc\Router\Http\TreeRouteStack
      */
     protected $router;
 
     /**
-     * @var Zend\Http\Request
+     * @var \Zend\Http\Request
      */
     protected $request;
 
     /**
-     * @var ScContent\Service\Localization
+     * @var \ScContent\Service\Localization
      */
     protected $l10n;
 
     /**
-     * @var ScContent\Mapper\Back\ContentListOptions
+     * @var \ScContent\Mapper\Back\ContentListOptions
      */
     protected $optionsMapper;
 
     /**
-     * @var null | array
+     * @var null|array
      */
     protected $query;
 
@@ -69,7 +69,7 @@ class ContentListOptionsProvider
     ];
 
     /**
-     * @param Zend\Mvc\Router\Http\TreeRouteStack $router
+     * @param  \Zend\Mvc\Router\Http\TreeRouteStack $router
      * @return void
      */
     public function setRouter(Router $router)
@@ -79,8 +79,8 @@ class ContentListOptionsProvider
 
     /**
      *
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Mvc\Router\Http\TreeRouteStack
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Mvc\Router\Http\TreeRouteStack
      */
     public function getRouter()
     {
@@ -93,7 +93,7 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @param Zend\Http\Request $request
+     * @param  \Zend\Http\Request $request
      * @return void
      */
     public function setRequest(Request $request)
@@ -102,8 +102,8 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Http\Request
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Http\Request
      */
     public function getRequest()
     {
@@ -116,7 +116,7 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @param ScContent\Service\Localization $l10n
+     * @param \ScContent\Service\Localization $l10n
      */
     public function setLocalization(Localization $l10n)
     {
@@ -124,8 +124,8 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Service\Localization
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Service\Localization
      */
     public function getLocalization()
     {
@@ -138,7 +138,7 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @param ScContent\Mapper\Back\ContentListOptions $mapper
+     * @param  \ScContent\Mapper\Back\ContentListOptions $mapper
      * @return void
      */
     public function setOptionsMapper(OptionsMapper $mapper)
@@ -147,8 +147,8 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\ContentListOptions
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\ContentListOptions
      */
     public function getOptionsMapper()
     {
@@ -161,8 +161,8 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @param array $query
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  array $query
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function setQuery($query)
@@ -196,7 +196,7 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return boolean
      */
     public function hasIdentifier($name)
@@ -205,8 +205,8 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @param null | string $identifier optional default null
-     * @throws ScContent\Exception\DomainException
+     * @param  null|string $identifier optional default null
+     * @throws \ScContent\Exception\DomainException
      * @return void
      */
     public function save($identifier = null)
@@ -229,8 +229,8 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @param string $name
-     * @return ScContent\Options\Back\ContentListOptions
+     * @param  string $name
+     * @return \ScContent\Options\Back\ContentListOptions
      */
     public function getOptions($name, $type = '')
     {
@@ -245,8 +245,8 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @param string $name
-     * @return ScContent\Options\Back\ContentListOptions
+     * @param  string $name
+     * @return \ScContent\Options\Back\ContentListOptions
      */
     public function getOtherOptions($name, $type = '')
     {
@@ -255,8 +255,8 @@ class ContentListOptionsProvider
     }
 
     /**
-     * @param string $name
-     * @return ScContent\Entity\ContentSearchProxy
+     * @param  string $name
+     * @return \ScContent\Entity\ContentSearchProxy
      */
     public function getSearchProxy($name)
     {

@@ -21,19 +21,19 @@ use ScContent\Controller\AbstractBack,
 class ThemeController extends AbstractBack
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
-     * @var ScContent\Service\Back\ThemeService
+     * @var \ScContent\Service\Back\ThemeService
      */
     protected $themeService;
 
     /**
      * Show list of themes.
      *
-     * @return Zend\View\Model\ViewModel
+     * @return \Zend\View\Model\ViewModel
      */
     public function indexAction()
     {
@@ -51,7 +51,7 @@ class ThemeController extends AbstractBack
     /**
      * Enable theme.
      *
-     * @return Zend\Stdlib\ResponseInterface
+     * @return \Zend\Stdlib\ResponseInterface
      */
     public function enableAction()
     {
@@ -77,7 +77,7 @@ class ThemeController extends AbstractBack
     /**
      * Disable theme.
      *
-     * @return Zend\Stdlib\ResponseInterface
+     * @return \Zend\Stdlib\ResponseInterface
      */
     public function disableAction()
     {
@@ -103,7 +103,7 @@ class ThemeController extends AbstractBack
     /**
      * Set the default theme.
      *
-     * @return Zend\Stdlib\ResponseInterface
+     * @return \Zend\Stdlib\ResponseInterface
      */
     public function defaultAction()
     {
@@ -127,7 +127,7 @@ class ThemeController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Options\ModuleOptions $options
+     * @param \ScContent\Options\ModuleOptions $options
      */
     public function setModuleOptions(ModuleOptions $options)
     {
@@ -135,7 +135,7 @@ class ThemeController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Options\ModuleOptions
+     * @return \ScContent\Options\ModuleOptions
      */
     public function getModuleOptions()
     {
@@ -149,7 +149,7 @@ class ThemeController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Service\Back\ThemeService $service
+     * @param  \ScContent\Service\Back\ThemeService $service
      * @return void
      */
     public function setThemeService(ThemeService $service)
@@ -158,7 +158,7 @@ class ThemeController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Service\Back\ThemeService
+     * @return \ScContent\Service\Back\ThemeService
      */
     public function getThemeService()
     {

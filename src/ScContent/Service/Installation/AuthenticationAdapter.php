@@ -29,12 +29,12 @@ class AuthenticationAdapter implements AdapterInterface
     const BcryptCost = 10;
 
     /**
-     * @var Zend\Http\Request
+     * @var \Zend\Http\Request
      */
     protected $request;
 
     /**
-     * @var ScContent\Mapper\Installation\CredentialsMapper
+     * @var \ScContent\Mapper\Installation\CredentialsMapper
      */
     protected $mapper;
 
@@ -49,7 +49,7 @@ class AuthenticationAdapter implements AdapterInterface
     protected $password = '';
 
     /**
-     * @param Zend\Http\Request $request
+     * @param  \Zend\Http\Request $request
      * @return void
      */
     public function setRequest(Request $request)
@@ -58,8 +58,8 @@ class AuthenticationAdapter implements AdapterInterface
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Http\Request
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Http\Request
      */
     public function getRequest()
     {
@@ -72,7 +72,7 @@ class AuthenticationAdapter implements AdapterInterface
     }
 
     /**
-     * @param ScContent\Mapper\Installation\CredentialsMapper $mapper
+     * @param  \ScContent\Mapper\Installation\CredentialsMapper $mapper
      * @return void
      */
     public function setMapper(CredentialsMapper $mapper)
@@ -81,8 +81,8 @@ class AuthenticationAdapter implements AdapterInterface
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Installation\CredentialsMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Installation\CredentialsMapper
      */
     public function getMapper()
     {
@@ -137,8 +137,8 @@ class AuthenticationAdapter implements AdapterInterface
     }
 
     /**
-     * @throws Zend\Authentication\Exception\RuntimeException
-     * @return Zend\Authentication\Result
+     * @throws \Zend\Authentication\Exception\RuntimeException
+     * @return \Zend\Authentication\Result
      */
     public function authenticate()
     {

@@ -22,22 +22,22 @@ use ScContent\Form\Back\WidgetConfigurationForm,
 class WidgetController extends AbstractWidgetAwareController
 {
     /**
-     * @var Zend\Mvc\Controller\ControllerManager
+     * @var \Zend\Mvc\Controller\ControllerManager
      */
     protected static $controllerLoader;
 
     /**
-     * @var ScContent\Form\Back\WidgetConfigurationForm
+     * @var \ScContent\Form\Back\WidgetConfigurationForm
      */
     protected $widgetConfigurationForm;
 
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function configureAction()
     {
@@ -85,7 +85,7 @@ class WidgetController extends AbstractWidgetAwareController
     }
 
     /**
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function editAction()
     {
@@ -159,7 +159,7 @@ class WidgetController extends AbstractWidgetAwareController
     }
 
     /**
-     * @param Zend\Mvc\Controller\ControllerManager $loader
+     * @param  \Zend\Mvc\Controller\ControllerManager $loader
      * @return void
      */
     public function setControllerLoader(ControllerManager $loader)
@@ -168,7 +168,7 @@ class WidgetController extends AbstractWidgetAwareController
     }
 
     /**
-     * @return Zend\Mvc\Controller\ControllerManager
+     * @return \Zend\Mvc\Controller\ControllerManager
      */
     public function getControllerLoader()
     {
@@ -182,7 +182,7 @@ class WidgetController extends AbstractWidgetAwareController
     }
 
     /**
-     * @param ScContent\Form\Back\WidgetConfigurationForm $form
+     * @param  \ScContent\Form\Back\WidgetConfigurationForm $form
      * @return void
      */
     public function setWidgetConfigurationForm(WidgetConfigurationForm $form)
@@ -191,7 +191,7 @@ class WidgetController extends AbstractWidgetAwareController
     }
 
     /**
-     * @return ScContent\Form\Back\WidgetConfigurationForm
+     * @return \ScContent\Form\Back\WidgetConfigurationForm
      */
     public function getWidgetConfigurationForm()
     {
@@ -207,7 +207,7 @@ class WidgetController extends AbstractWidgetAwareController
     }
 
     /**
-     * @param ScContent\Options\ModuleOptions $options
+     * @param  \ScContent\Options\ModuleOptions $options
      * @return void
      */
     public function setModuleOptions(ModuleOptions $options)
@@ -216,7 +216,7 @@ class WidgetController extends AbstractWidgetAwareController
     }
 
     /**
-     * @return ScContent\Options\ModuleOptions
+     * @return \ScContent\Options\ModuleOptions
      */
     public function getModuleOptions()
     {

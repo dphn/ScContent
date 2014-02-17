@@ -24,15 +24,15 @@ use ScContent\Validator\Mapper\NestingValidator,
 class ContentListMoveMapper extends ContentListOperationAbstract
 {
     /**
-     * @var ScContent\Validator\Mapper\NestingValidator
+     * @var \ScContent\Validator\Mapper\NestingValidator
      */
     protected $nestingValidator;
 
     /**
      * Constructor
      *
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
-     * @param ScContent\Validator\Mapper\NestingValidator
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \ScContent\Validator\Mapper\NestingValidator
      */
     public function __construct(
         AdapterInterface $adapter,
@@ -43,13 +43,13 @@ class ContentListMoveMapper extends ContentListOperationAbstract
     }
 
     /**
-     * @param integer $id Content identifier
-     * @param integer $newParentId New parent content identifier
-     * @param string $tid Transaction identifier
-     * @throws ScContent\Mapper\Exception\UnavailableSourceException
-     * @throws ScContent\Mapper\Exception\UnavailableDestinationException
-     * @throws ScContent\Mapper\Exception\NestingException
-     * @throws ScContent\Mapper\Exception\LoopException
+     * @param  integer $id Content identifier
+     * @param  integer $newParentId New parent content identifier
+     * @param  string $tid Transaction identifier
+     * @throws \ScContent\Mapper\Exception\UnavailableSourceException
+     * @throws \ScContent\Mapper\Exception\UnavailableDestinationException
+     * @throws \ScContent\Mapper\Exception\NestingException
+     * @throws \ScContent\Mapper\Exception\LoopException
      * @return void
      */
     public function move($id, $newParentId, $tid)
@@ -104,8 +104,8 @@ class ContentListMoveMapper extends ContentListOperationAbstract
     }
 
     /**
-     * @param array $source
-     * @param array $destination
+     * @param  array $source
+     * @param  array $destination
      * @return void
      */
     protected function moveTop($source, $destination)
@@ -159,8 +159,8 @@ class ContentListMoveMapper extends ContentListOperationAbstract
     }
 
     /**
-     * @param array $source
-     * @param array $destination
+     * @param  array $source
+     * @param  array $destination
      * @return void
      */
     protected function moveBottom($source, $destination)

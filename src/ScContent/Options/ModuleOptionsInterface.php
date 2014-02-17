@@ -29,7 +29,7 @@ interface ModuleOptionsInterface extends
     function getDb();
 
     /**
-     * @param string $class
+     * @param  string $class
      * @return void
      */
     function setFileTypesCatalogClass($class);

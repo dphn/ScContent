@@ -25,8 +25,8 @@ use ScContent\Options\ModuleOptions,
 class AdapterServiceFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return Zend\Db\Adapter\Adapter
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \Zend\Db\Adapter\Adapter
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

@@ -75,6 +75,10 @@ return [
                         'batch' => [
                             'items' => [
                                 [
+                                    'name' => 'intl',
+                                    'information' => '<a href="http://www.php.net/manual/en/intl.installation.php" target="_blank">http://www.php.net/manual/en/intl.installation.php</a>',
+                                ],
+                                [
                                     'name' => 'fileinfo',
                                     'information' => '<a href="http://www.php.net/manual/en/fileinfo.installation.php" target="_blank">http://www.php.net/manual/en/fileinfo.installation.php</a>',
                                 ],

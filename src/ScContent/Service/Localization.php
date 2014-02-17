@@ -25,31 +25,31 @@ use ScContent\Service\ScDatetimeInterface,
 class Localization
 {
     /**
-     * @var Zend\I18n\Translator\Translator
+     * @var \Zend\I18n\Translator\Translator
      */
     protected $translator;
 
     /**
-     * @var Zend\I18n\View\Helper\DateFormat
+     * @var \Zend\I18n\View\Helper\DateFormat
      */
     protected $dateformat;
 
     /**
-     * @var ScContent\Service\ScDatetimeInterface
+     * @var \ScContent\Service\ScDatetimeInterface
      */
     protected $datetime;
 
     /**
-     * @var Zend\Session\Container
+     * @var \Zend\Session\Container
      */
     protected $container;
 
     /**
      * Constructor
      *
-     * @param Zend\I18n\Translator\Translator  $translator
-     * @param Zend\I18n\View\Helper\DateFormat $dateformat
-     * @param ScContent\Service\ScDatetimeInterface $datetime
+     * @param \Zend\I18n\Translator\Translator  $translator
+     * @param \Zend\I18n\View\Helper\DateFormat $dateformat
+     * @param \ScContent\Service\ScDatetimeInterface $datetime
      */
     public function __construct(
         Translator $translator,
@@ -85,7 +85,7 @@ class Localization
     }
 
     /**
-     * @param ScContent\Entity\ScUserInterface $user
+     * @param  \ScContent\Entity\ScUserInterface $user
      * @return void
      */
     public function save(ScUserInterface $user)
@@ -101,7 +101,7 @@ class Localization
     }
 
     /**
-     * @return Zend\I18n\Translator\Translator
+     * @return \Zend\I18n\Translator\Translator
      */
     public function getTranslator()
     {
@@ -109,7 +109,7 @@ class Localization
     }
 
     /**
-     * @return ScContent\Service\ScDatetimeInterface
+     * @return \ScContent\Service\ScDatetimeInterface
      */
     public function getDateTime()
     {
@@ -117,7 +117,7 @@ class Localization
     }
 
     /**
-     * @return Zend\I18n\View\Helper\DateFormat
+     * @return \Zend\I18n\View\Helper\DateFormat
      */
     public function getDateFormat()
     {
@@ -125,8 +125,8 @@ class Localization
     }
 
     /**
-     * @param integer $dateType
-     * @param integer $timeType
+     * @param  integer $dateType
+     * @param  integer $timeType
      * @return string
      */
     public function getDateTimePattern(
@@ -142,7 +142,7 @@ class Localization
     }
 
     /**
-     * @param integer $dateType
+     * @param  integer $dateType
      * @return string
      */
     public function getDatePattern($dateType = IntlDateFormatter::SHORT)
@@ -156,7 +156,7 @@ class Localization
     }
 
     /**
-     * @param integer $timeType
+     * @param  integer $timeType
      * @return string
      */
     public function getTimePattern($timeType = IntlDateFormatter::SHORT)

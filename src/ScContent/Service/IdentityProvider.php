@@ -27,17 +27,17 @@ use ScContent\Mapper\RolesMapper,
 class IdentityProvider extends AbstractService implements ProviderInterface
 {
     /**
-     * @var ScContent\Mapper\RolesMapper
+     * @var \ScContent\Mapper\RolesMapper
      */
     protected $rolesMapper;
 
     /**
-     * @var ZfcUser\Service\User
+     * @var \ZfcUser\Service\User
      */
     protected $userService;
 
     /**
-     * @var string | Zend\Permissions\Acl\Role\RoleInterface
+     * @var string|\Zend\Permissions\Acl\Role\RoleInterface
      */
     protected $defaultRole = 'guest';
 
@@ -47,7 +47,7 @@ class IdentityProvider extends AbstractService implements ProviderInterface
     protected $identityRoles = [];
 
     /**
-     * @param ZfcUser\Service\User $service
+     * @param  \ZfcUser\Service\User $service
      * @return void
      */
     public function setUserService(User $service)
@@ -56,8 +56,8 @@ class IdentityProvider extends AbstractService implements ProviderInterface
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ZfcUser\Service\User
+     * @throws \ScContent\Exception\IoCException
+     * @return \ZfcUser\Service\User
      */
     public function getUserService()
     {
@@ -70,7 +70,7 @@ class IdentityProvider extends AbstractService implements ProviderInterface
     }
 
     /**
-     * @param ScContent\Mapper\RolesMapper $mapper
+     * @param  \ScContent\Mapper\RolesMapper $mapper
      * @return void
      */
     public function setMapper(RolesMapper $mapper)
@@ -79,8 +79,8 @@ class IdentityProvider extends AbstractService implements ProviderInterface
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\RolesMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\RolesMapper
      */
     public function getMapper()
     {
@@ -131,7 +131,7 @@ class IdentityProvider extends AbstractService implements ProviderInterface
     }
 
     /**
-     * @return string | Zend\Permissions\Acl\Role\RoleInterface
+     * @return string|\Zend\Permissions\Acl\Role\RoleInterface
      */
     public function getDefaultRole()
     {
@@ -139,8 +139,8 @@ class IdentityProvider extends AbstractService implements ProviderInterface
     }
 
     /**
-     * @param string | Zend\Permissions\Acl\Role\RoleInterface $defaultRole
-     * @throws BjyAuthorize\Exception\InvalidRoleException
+     * @param  string|\Zend\Permissions\Acl\Role\RoleInterface $defaultRole
+     * @throws \BjyAuthorize\Exception\InvalidRoleException
      */
     public function setDefaultRole($defaultRole)
     {

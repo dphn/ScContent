@@ -59,9 +59,9 @@ class Dir
      *
      * @api
      *
-     * @param string $namespace
-     * @throws ScContent\Exception\InvalidArgumentException
-     * @return ScContent\Service\Dir
+     * @param  string $namespace
+     * @throws \ScContent\Exception\InvalidArgumentException
+     * @return \ScContent\Service\Dir
      */
     public function setModule($namespace)
     {
@@ -113,9 +113,9 @@ class Dir
      *
      * @api
      *
-     * @param string  $path optional
-     * @param boolean $checkIfExists optional default false
-     * @return string | false
+     * @param  string  $path optional
+     * @param  boolean $checkIfExists optional default false
+     * @return string|false
      */
     public function module($path = '', $checkIfExists = false)
     {
@@ -136,9 +136,9 @@ class Dir
      * If the flag "checkIfExists" is set to TRUE, checks for the specified
      * path and if the path was not found, returns FALSE.
      *
-     * @param string  $path optional
-     * @param boolean $checkIfExists optional default false
-     * @return string | false
+     * @param  string  $path optional
+     * @param  boolean $checkIfExists optional default false
+     * @return string|false
      */
     public function app($path = '', $checkIfExists = false)
     {
@@ -167,8 +167,8 @@ class Dir
      *
      * @api
      *
-     * @param string  $path
-     * @param boolean $checkIfExists optional default false
+     * @param  string  $path
+     * @param  boolean $checkIfExists optional default false
      * @return string
      */
     public function appAutoload($path = '', $checkIfExists = false)
@@ -199,8 +199,8 @@ class Dir
      *
      * @api
      *
-     * @param string  $path
-     * @param boolean $checkIfExists optional default false
+     * @param  string  $path
+     * @param  boolean $checkIfExists optional default false
      * @return string
      */
     public function appPublic($path = '', $checkIfExists = false)
@@ -229,8 +229,8 @@ class Dir
      *
      * @api
      *
-     * @param string  $path
-     * @param boolean $checkIfExists optional default false
+     * @param  string  $path
+     * @param  boolean $checkIfExists optional default false
      * @return string
      */
     public function appUploads($path = '', $checkIfExists = false)
@@ -246,8 +246,8 @@ class Dir
     }
 
     /**
-     * @param string $directory
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  string $directory
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function setRelativeAppAutoloadDir($directory)
@@ -265,7 +265,7 @@ class Dir
     /**
      * Returns the relative path to the configuration autoload directory.
      *
-     * @throws ScContent\Exception\IoCException
+     * @throws \ScContent\Exception\IoCException
      * @return string
      */
     public function getRelativeAppAutoloadDir()
@@ -279,8 +279,8 @@ class Dir
     }
 
     /**
-     * @param string $directory
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  string $directory
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function setRelativeAppPublicDir($directory)
@@ -298,7 +298,7 @@ class Dir
     /**
      * Returns the relative path to the public directory.
      *
-     * @throws ScContent\Exception\IoCException
+     * @throws \ScContent\Exception\IoCException
      * @return string
      */
     public function getRelativeAppPublicDir()
@@ -312,7 +312,7 @@ class Dir
     }
 
     /**
-     * @param string $directory
+     * @param  string $directory
      * @return void
      */
     public function setRelativeAppUploadsDir($directory)
@@ -323,7 +323,7 @@ class Dir
     /**
      * Returns relative path to application uploads directory.
      *
-     * @throws ScContent\Exception\IoCException
+     * @throws \ScContent\Exception\IoCException
      * @return string
      */
     public function getRelativeAppUploadsDir()
@@ -337,7 +337,7 @@ class Dir
     }
 
     /**
-     * @param string $path
+     * @param  string $path
      * @return string
      */
     public function normalizePath($path)

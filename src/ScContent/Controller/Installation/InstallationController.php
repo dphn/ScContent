@@ -20,14 +20,14 @@ use ScContent\Controller\AbstractInstallation,
 class InstallationController extends AbstractInstallation
 {
     /**
-     * @var Zend\Validator\ValidatorPluginManager
+     * @var \Zend\Validator\ValidatorPluginManager
      */
     protected $validatorManager;
 
     /**
      * Runs services specified in the configuration.
      *
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function indexAction()
     {
@@ -86,8 +86,8 @@ class InstallationController extends AbstractInstallation
     }
 
     /**
-     * @param Zend\Validator\ValidatorPluginManager
-     * @retunr void
+     * @param  \Zend\Validator\ValidatorPluginManager
+     * @return void
      */
     public function setValidatorManager(ValidatorPluginManager $manager)
     {
@@ -95,7 +95,7 @@ class InstallationController extends AbstractInstallation
     }
 
     /**
-     * @return Zend\Validator\ValidatorPluginManager
+     * @return \Zend\Validator\ValidatorPluginManager
      */
     public function getValidatorManager()
     {

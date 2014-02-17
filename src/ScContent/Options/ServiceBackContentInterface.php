@@ -15,7 +15,7 @@ namespace ScContent\Options;
 interface ServiceBackContentInterface
 {
     /**
-     * @param string $class
+     * @param  string $class
      * @return void
      */
     function setEntityBackCategoryClass($name);
@@ -26,7 +26,7 @@ interface ServiceBackContentInterface
     function getEntityBackCategoryClass();
 
     /**
-     * @param string $class
+     * @param  string $class
      * @return void
      */
     function setEntityBackArticleClass($name);
@@ -37,7 +37,7 @@ interface ServiceBackContentInterface
     function getEntityBackArticleClass();
 
     /**
-     * @param string $class
+     * @param  string $class
      * @return void
      */
     function setEntityBackFileClass($name);

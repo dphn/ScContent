@@ -43,22 +43,22 @@ abstract class AbstractThemeStrategy
     protected static $side = 'backend';
 
     /**
-     * @var Zend\Mvc\View\Http\ViewManager
+     * @var \Zend\Mvc\View\Http\ViewManager
      */
     protected $viewManager;
 
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
-     * @var Zend\Filter\Word\CamelCaseToDash
+     * @var \Zend\Filter\Word\CamelCaseToDash
      */
     protected $inflector;
 
     /**
-     * @param Zend\Mvc\View\Http\ViewManager $viewManager
+     * @param  \Zend\Mvc\View\Http\ViewManager $viewManager
      * @return AbstractThemeStrategy
      */
     public function setViewManager(ViewManager $viewManager)
@@ -68,8 +68,8 @@ abstract class AbstractThemeStrategy
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Mvc\View\Http\ViewManager
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Mvc\View\Http\ViewManager
      */
     public function getViewManager()
     {
@@ -82,7 +82,7 @@ abstract class AbstractThemeStrategy
     }
 
     /**
-     * @param ScContent\Options\ModuleOptions $options
+     * @param  \ScContent\Options\ModuleOptions $options
      * @return AbstractThemeStrategy
      */
     public function setModuleOptions(ModuleOptions $options)
@@ -92,8 +92,8 @@ abstract class AbstractThemeStrategy
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Options\ModuleOptions
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Options\ModuleOptions
      */
     public function getModuleOptions()
     {
@@ -106,14 +106,14 @@ abstract class AbstractThemeStrategy
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param \Zend\Mvc\MvcEvent $event
      */
     public abstract function update(MvcEvent $event);
 
     /**
      * Inject a template into the content view model, if none present
      *
-     * @param Zend\Mvc\MvcEvent
+     * @param  \Zend\Mvc\MvcEvent
      * @return AbstractThemeStrategy
      */
     protected function injectContentTemplate(MvcEvent $event)
@@ -168,7 +168,7 @@ abstract class AbstractThemeStrategy
     /**
      * Inject a template into the layout view model, if none present
      *
-     * @param Zend\Mvc\MvcEvent
+     * @param  \Zend\Mvc\MvcEvent
      * @return AbstractThemeStrategy
      */
     protected function injectLayoutTemplate(MvcEvent $event)
@@ -245,7 +245,7 @@ abstract class AbstractThemeStrategy
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return string
      */
     protected function inflectName($name)
@@ -258,7 +258,7 @@ abstract class AbstractThemeStrategy
     }
 
     /**
-     * @param string | object $controller
+     * @param  string|object $controller
      * @return string
      */
     protected function deriveControllerClass($controller)

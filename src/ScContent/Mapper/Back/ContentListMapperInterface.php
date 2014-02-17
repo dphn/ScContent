@@ -15,8 +15,8 @@ namespace ScContent\Mapper\Back;
 interface ContentListMapperInterface
 {
     /**
-     * @param string $optionsIdentifier
-     * @return ScContent\Entity\Back\ContentList
+     * @param  string $optionsIdentifier
+     * @return \ScContent\Entity\Back\ContentList
      */
     function getContent($optionsIdentifier);
 }

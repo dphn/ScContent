@@ -20,8 +20,8 @@ use ScContent\Mapper\Back\LayoutMoveMapper,
 class LayoutMoveMapperFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Mapper\Back\LayoutMoveMapper
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Mapper\Back\LayoutMoveMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

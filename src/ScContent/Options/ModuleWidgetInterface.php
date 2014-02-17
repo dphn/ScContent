@@ -20,13 +20,13 @@ interface ModuleWidgetInterface
     function setWidgets($widgets);
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return array
      */
     function getWidgetByName($name);
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return string
      */
     function getWidgetDisplayName($name);
@@ -37,8 +37,8 @@ interface ModuleWidgetInterface
     function getWidgets();
 
     /**
-     * @param string $name
-     * @retunr boolean
+     * @param  string $name
+     * @return boolean
      */
     function widgetExists($name);
 }

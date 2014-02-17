@@ -41,7 +41,7 @@ class GarbageMapper extends AbstractDbMapper
     /**
      * Constructor
      *
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
     {
@@ -49,8 +49,8 @@ class GarbageMapper extends AbstractDbMapper
     }
 
     /**
-     * @param integer $limit
-     * @param string $tid Transaction identifier
+     * @param  integer $limit
+     * @param  string $tid Transaction identifier
      * @return array
      */
     public function findGarbage($limit, $tid)
@@ -67,8 +67,8 @@ class GarbageMapper extends AbstractDbMapper
     }
 
     /**
-     * @param array $list
-     * @param string $tid Transaction identifier
+     * @param  array $list
+     * @param  string $tid Transaction identifier
      * @return void
      */
     public function registerFailures($list, $tid)
@@ -84,8 +84,8 @@ class GarbageMapper extends AbstractDbMapper
     }
 
     /**
-     * @param array $list
-     * $param string $tid Transaction identifier
+     * @param  array $list
+     * @param  string $tid Transaction identifier
      * @return void
      */
     public function delete($list, $tid)
@@ -100,7 +100,7 @@ class GarbageMapper extends AbstractDbMapper
     }
 
     /**
-     * @param string $tid Transaction identifier
+     * @param  string $tid Transaction identifier
      * @return integer
      */
     public function getGarbageAmount($tid)
@@ -119,9 +119,9 @@ class GarbageMapper extends AbstractDbMapper
     }
 
     /**
-     * @param integer $contentId Content identifier
-     * @param string $tid Transaction identifier
-     * @throws ScContent\Mapper\Exception\UnavailableSourceException
+     * @param  integer $contentId Content identifier
+     * @param  string $tid Transaction identifier
+     * @throws \ScContent\Mapper\Exception\UnavailableSourceException
      * @return void
      */
     public function registerRemovedGarbage($contentId, $tid)
@@ -168,7 +168,7 @@ class GarbageMapper extends AbstractDbMapper
     }
 
     /**
-     * @param string $tid Transaction identifier
+     * @param  string $tid Transaction identifier
      * @return void
      */
     public function registerCleanedGarbage($tid)

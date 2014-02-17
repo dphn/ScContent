@@ -20,8 +20,8 @@ use ScContent\Validator\Installation\Migration,
 class MigrationFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
-     * @return ScContent\Validator\Installation\Migration
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
+     * @return \ScContent\Validator\Installation\Migration
      */
     public function createService(
         ServiceLocatorInterface $validatorPluginManager

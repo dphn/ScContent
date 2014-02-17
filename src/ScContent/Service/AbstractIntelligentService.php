@@ -51,7 +51,7 @@ class AbstractIntelligentService extends AbstractService
     }
 
     /**
-     * @param string $format
+     * @param  string $format
      * @return void
      */
     public function setValueFormat($format)
@@ -68,8 +68,8 @@ class AbstractIntelligentService extends AbstractService
     }
 
     /**
-     * @param mixed
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  mixed
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return AbstractIntelligentService
      */
     protected function setValue()
@@ -95,8 +95,8 @@ class AbstractIntelligentService extends AbstractService
     }
 
     /**
-     * @param string $key
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  string $key
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return AbstractIntelligentService
      */
     protected function error($key)

@@ -20,8 +20,8 @@ use ScContent\Validator\Installation\Uploads,
 class UploadsFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
-     * @return ScContent\Validator\Installation\Uploads
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
+     * @return \ScContent\Validator\Installation\Uploads
      */
     public function createService(
         ServiceLocatorInterface $validatorPluginManager

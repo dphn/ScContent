@@ -17,7 +17,7 @@ use ScContent\Service\Stdlib;
 class Resource extends \PDO implements TransactionAbilityInterface
 {
     /**
-     * @var string | false
+     * @var string|false
      */
     protected $transactionIdentifier = false;
 
@@ -47,7 +47,7 @@ class Resource extends \PDO implements TransactionAbilityInterface
     }
 
     /**
-     * @return string | false
+     * @return string|false
      */
     public function getTransactionIdentifier()
     {

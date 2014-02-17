@@ -31,22 +31,22 @@ class FrontendStrategy extends AbstractThemeStrategy
     protected static $side = 'frontend';
 
     /**
-     * @var Zend\Mvc\Controller\ControllerManager
+     * @var \Zend\Mvc\Controller\ControllerManager
      */
     protected $controllerManager;
 
     /**
-     * @var ScContent\Service\Front\ContentService
+     * @var \ScContent\Service\Front\ContentService
      */
     protected $contentService;
 
     /**
-     * @var ScContent\Mapper\Theme\FrontendLayoutMapper
+     * @var \ScContent\Mapper\Theme\FrontendLayoutMapper
      */
     protected $layoutMapper;
 
     /**
-     * @param Zend\Mvc\Controller\ControllerManager $manager
+     * @param  \Zend\Mvc\Controller\ControllerManager $manager
      * @return FrontendLayoutService
      */
     public function setControllerManager(ControllerManager $manager)
@@ -55,8 +55,8 @@ class FrontendStrategy extends AbstractThemeStrategy
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Mvc\Controller\ControllerManager
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Mvc\Controller\ControllerManager
      */
     public function getControllerManager()
     {
@@ -69,7 +69,7 @@ class FrontendStrategy extends AbstractThemeStrategy
     }
 
     /**
-     * @param ScContent\Service\Front\ContentService
+     * @param  \ScContent\Service\Front\ContentService
      * @return FrontendLayoutService
      */
     public function setContentService(ContentService $service)
@@ -79,8 +79,8 @@ class FrontendStrategy extends AbstractThemeStrategy
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Service\Front\ContentService
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Service\Front\ContentService
      */
     public function getContentService()
     {
@@ -93,7 +93,7 @@ class FrontendStrategy extends AbstractThemeStrategy
     }
 
     /**
-     * @param ScContent\Mapper\Theme\FrontendLayoutMapper $mapper
+     * @param  \ScContent\Mapper\Theme\FrontendLayoutMapper $mapper
      * @return FrontendLayoutService
      */
     public function setLayoutMapper(FrontendLayoutMapper $mapper)
@@ -103,8 +103,8 @@ class FrontendStrategy extends AbstractThemeStrategy
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Theme\FrontendLayoutMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Theme\FrontendLayoutMapper
      */
     public function getLayotMapper()
     {
@@ -117,8 +117,8 @@ class FrontendStrategy extends AbstractThemeStrategy
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
-     * @throws ScContent\Exception\DomainException
+     * @param  \Zend\Mvc\MvcEvent $event
+     * @throws \ScContent\Exception\DomainException
      * @return void
      */
     public function update(MvcEvent $event)
@@ -136,7 +136,7 @@ class FrontendStrategy extends AbstractThemeStrategy
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return FrontendStrategy
      */
     protected function buildLayout(MvcEvent $event)
@@ -201,7 +201,7 @@ class FrontendStrategy extends AbstractThemeStrategy
     }
 
     /**
-     * @return ScContent\Entity\Front\Regions
+     * @return \ScContent\Entity\Front\Regions
      */
     protected function getRegions()
     {

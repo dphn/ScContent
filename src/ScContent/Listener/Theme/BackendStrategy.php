@@ -25,8 +25,8 @@ class BackendStrategy extends AbstractThemeStrategy
     protected static $side = 'backend';
 
     /**
-     * @param Zend\Mvc\MvcEvent
-     * @throws ScContent\Exception\DomainException
+     * @param  \Zend\Mvc\MvcEvent
+     * @throws \ScContent\Exception\DomainException
      * @return void
      */
     public function update(MvcEvent $event)

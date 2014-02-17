@@ -22,17 +22,17 @@ use ScContent\Mapper\RolesMapper,
 class RoleProvider extends AbstractService implements ProviderInterface
 {
     /**
-     * @var ScContent\Mapper\RolesMapper
+     * @var \ScContent\Mapper\RolesMapper
      */
     protected $rolesMapper;
 
     /**
-     * @var string | Zend\Permissions\Acl\Role\RoleInterface
+     * @var string|\Zend\Permissions\Acl\Role\RoleInterface
      */
     protected $defaultRole = 'guest';
 
     /**
-     * @param ScContent\Mapper\RolesMapper $mapper
+     * @param  \ScContent\Mapper\RolesMapper $mapper
      * @return void
      */
     public function setMapper(RolesMapper $mapper)
@@ -41,8 +41,8 @@ class RoleProvider extends AbstractService implements ProviderInterface
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\RolesMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\RolesMapper
      */
     public function getMapper()
     {
@@ -86,7 +86,7 @@ class RoleProvider extends AbstractService implements ProviderInterface
     }
 
     /**
-     * @return Zend\Permissions\Acl\Role\RoleInterface
+     * @return \Zend\Permissions\Acl\Role\RoleInterface
      */
     public function getDefaultRole()
     {
@@ -98,8 +98,8 @@ class RoleProvider extends AbstractService implements ProviderInterface
     }
 
     /**
-     * @param string | Zend\Permissions\Acl\Role\RoleInterface $defaultRole
-     * @throws BjyAuthorize\Exception\InvalidRoleException
+     * @param  string|\Zend\Permissions\Acl\Role\RoleInterface $defaultRole
+     * @throws \BjyAuthorize\Exception\InvalidRoleException
      */
     public function setDefaultRole($defaultRole)
     {

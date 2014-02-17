@@ -22,12 +22,12 @@ use ScContent\Controller,
 class ThemeContext implements SharedListenerAggregateInterface
 {
     /**
-     * @var Zend\Stdlib\DispatchableInterface
+     * @var \Zend\Stdlib\DispatchableInterface
      */
     protected $target;
 
     /**
-     * @param Zend\EventManager\SharedEventManagerInterface $events
+     * @param  \Zend\EventManager\SharedEventManagerInterface $events
      * @return void
      */
     public function attachShared(SharedEventManagerInterface $events)
@@ -55,7 +55,7 @@ class ThemeContext implements SharedListenerAggregateInterface
     }
 
     /**
-     * @param Zend\EventManager\SharedEventManagerInterface $events
+     * @param  \Zend\EventManager\SharedEventManagerInterface $events
      * @return void
      */
     public function detachShared(SharedEventManagerInterface $events)
@@ -68,7 +68,7 @@ class ThemeContext implements SharedListenerAggregateInterface
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     public function captureTarget(MvcEvent $event) {
@@ -78,7 +78,7 @@ class ThemeContext implements SharedListenerAggregateInterface
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     public function onDispatch(MvcEvent $event)
@@ -117,7 +117,7 @@ class ThemeContext implements SharedListenerAggregateInterface
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     public function onError(MvcEvent $event)
@@ -174,7 +174,7 @@ class ThemeContext implements SharedListenerAggregateInterface
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     public function notFound(MvcEvent $event)

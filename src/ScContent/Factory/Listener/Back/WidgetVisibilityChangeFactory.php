@@ -20,8 +20,8 @@ use ScContent\Listener\Back\WidgetVisibilityChange,
 class WidgetVisibilityChangeFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Back\WidgetVisibilityChange
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Back\WidgetVisibilityChange
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

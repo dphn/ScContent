@@ -23,7 +23,7 @@ class ContentListAggregate implements ListenerAggregateInterface,
     ServiceLocatorAwareInterface
 {
     /**
-     * @var Zend\ServiceManager\ServiceLocatorInterface
+     * @var \Zend\ServiceManager\ServiceLocatorInterface
      */
     protected $serviceLocator;
 
@@ -33,7 +33,7 @@ class ContentListAggregate implements ListenerAggregateInterface,
     protected $listeners = [];
 
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @param \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
      */
     public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
     {
@@ -41,8 +41,8 @@ class ContentListAggregate implements ListenerAggregateInterface,
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\ServiceManager\ServiceLocatorInterface
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\ServiceManager\ServiceLocatorInterface
      */
     public function getServiceLocator()
     {
@@ -55,7 +55,7 @@ class ContentListAggregate implements ListenerAggregateInterface,
     }
 
     /**
-     * @param Zend\EventManager\EventManagerInterface $events
+     * @param  \Zend\EventManager\EventManagerInterface $events
      * @return void
      */
     public function attach(EventManagerInterface $events)
@@ -106,7 +106,7 @@ class ContentListAggregate implements ListenerAggregateInterface,
     }
 
     /**
-     * @param Zend\EventManager\EventManagerInterface $events
+     * @param  \Zend\EventManager\EventManagerInterface $events
      * @return void
      */
     public function detach(EventManagerInterface $events)

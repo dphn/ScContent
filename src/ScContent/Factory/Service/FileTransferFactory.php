@@ -22,8 +22,8 @@ use ScContent\Service\ThumbnailGenerator,
 class FileTransferFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\FileTransfer
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\FileTransfer
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

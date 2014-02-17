@@ -45,7 +45,7 @@ class WidgetVisibilityChangeMapper extends AbstractDbMapper
     ];
 
     /**
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
     {
@@ -53,13 +53,13 @@ class WidgetVisibilityChangeMapper extends AbstractDbMapper
     }
 
     /**
-     * @param integer $widgetId  Layout element identifier
-     * @param integer $contentId Content identifier
-     * @param integer $state Visibility state <code>0 - disabled, 1 - enabled, -1 - inherit</code>
-     * @param string $tid Transaction identifier
-     * @throws UnavailableSourceException
+     * @param  integer $widgetId  Layout element identifier
+     * @param  integer $contentId Content identifier
+     * @param  integer $state Visibility state <code>0 - disabled, 1 - enabled, -1 - inherit</code>
+     * @param  string $tid Transaction identifier
+     * @throws \ScContent\Mapper\Exception\UnavailableSourceException
      *              If layout element was not found
-     * @throws UnavailableDestinationException
+     * @throws \ScContent\Mapper\Exception\UnavailableDestinationException
      *              If content was not found
      */
     public function changeState($widgetId, $contentId, $state, $tid)

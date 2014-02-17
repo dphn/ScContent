@@ -37,7 +37,7 @@ class Theme extends AbstractEntity
     protected $screenshot = '';
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setName($name)
@@ -54,7 +54,7 @@ class Theme extends AbstractEntity
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setDisplayName($name)
@@ -74,7 +74,7 @@ class Theme extends AbstractEntity
     }
 
     /**
-     * @param string $description
+     * @param  string $description
      * @return void
      */
     public function setDescription($description)
@@ -91,7 +91,7 @@ class Theme extends AbstractEntity
     }
 
     /**
-     * @param string $screenshot
+     * @param  string $screenshot
      * @return void
      */
     public function setScrrenshot($screenshot)

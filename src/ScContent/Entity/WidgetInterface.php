@@ -15,18 +15,18 @@ namespace ScContent\Entity;
 interface WidgetInterface extends EntityInterface
 {
     /**
-     * @param null | integer | string $id
+     * @param  null|integer|string $id
      * @return WidgetInterface
      */
     function setId($id);
 
     /**
-     * @return null | integer | string
+     * @return null|integer|string
      */
     function getId();
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return WidgetInterface
      */
     function setTheme($name);
@@ -37,7 +37,7 @@ interface WidgetInterface extends EntityInterface
     function getTheme();
 
     /**
-     * @param string $region
+     * @param  string $region
      * @return WidgetInterface
      */
     function setRegion($region);
@@ -48,7 +48,7 @@ interface WidgetInterface extends EntityInterface
     function getRegion();
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return WidgetInterface
      */
     function setName($name);
@@ -59,7 +59,7 @@ interface WidgetInterface extends EntityInterface
     function getName();
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return WidgetInterface
      */
     function setDisplayName($name);
@@ -75,7 +75,7 @@ interface WidgetInterface extends EntityInterface
     function hasDescription();
 
     /**
-     * @param string $description
+     * @param  string $description
      * @return WidgetInterface
      */
     function setDescription($description);
@@ -86,39 +86,39 @@ interface WidgetInterface extends EntityInterface
     function getDescription();
 
     /**
-     * @param string | array $options Array of options or a serialized options as string
+     * @param  string|array $options Array of options or a serialized options as string
      * @return WidgetInterface
      */
     function setOptions($options);
 
     /**
-     * @param boolean $serialized optional default true
-     * @return array | string
+     * @param  boolean $serialized optional default true
+     * @return array|string
      */
     function getOptions($serialized = true);
 
     /**
-     * @param string $name
-     * @param mixed $value
+     * @param  string $name
+     * @param  mixed $value
      * @return WidgetInterface
      */
     function setOption($name, $value);
 
     /**
-     * @param string $name
-     * @param mixed $default optional default null
+     * @param  string $name
+     * @param  mixed $default optional default null
      * @return mixed
      */
     function findOption($name, $default = null);
 
    /**
-    * @param string $role
+    * @param  string $role
     * @return boolean
     */
     public function isApplicable($role);
 
     /**
-     * @param integer $position
+     * @param  integer $position
      * @return WidgetInterface
      */
     function setPosition($position);

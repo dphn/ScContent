@@ -23,15 +23,15 @@ use ScContent\Mapper\Installation\LayoutMapper,
 class LayoutServiceMapper extends LayoutMapper
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
      * Constructor
      *
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
-     * @param ScContent\Options\ModuleOptions  $options
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \ScContent\Options\ModuleOptions  $options
      */
     public function __construct(
         AdapterInterface $adapter,
@@ -42,8 +42,8 @@ class LayoutServiceMapper extends LayoutMapper
     }
 
     /**
-     * @param string $themeName
-     * @return ScContent\Entity\Back\Regions
+     * @param  string $themeName
+     * @return \ScContent\Entity\Back\Regions
      */
     public function findRegions($themeName)
     {
@@ -91,7 +91,7 @@ class LayoutServiceMapper extends LayoutMapper
     }
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return void
      */
     public function deleteItem($id)

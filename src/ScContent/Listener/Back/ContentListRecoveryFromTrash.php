@@ -63,7 +63,7 @@ class ContentListRecoveryFromTrash extends ContentListAbstractListener
     ];
 
     /**
-     * @param ScContent\Mapper\Back\ContentListToggleTrashMapper $mapper
+     * @param \ScContent\Mapper\Back\ContentListToggleTrashMapper $mapper
      */
     public function setMapper(ContentListToggleTrashMapper $mapper)
     {
@@ -73,8 +73,8 @@ class ContentListRecoveryFromTrash extends ContentListAbstractListener
     /**
      * Recovery subtrees from the trash to the specified location
      *
-     * @param Zend\EventManager\EventInterface $event
-     * @return null | Zend\Http\Response
+     * @param  \Zend\EventManager\EventInterface $event
+     * @return null|\Zend\Http\Response
      */
     public function process(EventInterface $event)
     {

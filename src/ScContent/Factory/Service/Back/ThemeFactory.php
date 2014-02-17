@@ -21,8 +21,8 @@ use ScContent\Service\Back\ThemeService,
 class ThemeFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Back\ThemeService
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Back\ThemeService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

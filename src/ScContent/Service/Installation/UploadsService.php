@@ -17,7 +17,7 @@ use ScContent\Service\Dir;
 class UploadsService extends AbstractInstallationService
 {
     /**
-     * @var ScContent\Service\Dir
+     * @var \ScContent\Service\Dir
      */
     protected $dir;
 
@@ -37,7 +37,7 @@ class UploadsService extends AbstractInstallationService
     /**
      * Constructor
      *
-     * @param ScContent\Service\Dir $dir
+     * @param  \ScContent\Service\Dir $dir
      * @return void
      */
     public function __construct(Dir $dir)
@@ -46,7 +46,7 @@ class UploadsService extends AbstractInstallationService
     }
 
     /**
-     * @param null $options Not uses
+     * @param  null $options Not uses
      * @return boolean
      */
     public function process($options = null)

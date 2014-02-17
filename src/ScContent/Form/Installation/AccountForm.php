@@ -21,12 +21,12 @@ use Zend\Form\Form,
 class AccountForm extends Form
 {
     /**
-     * @var Zend\Validator\Db\NoRecordExists
+     * @var \Zend\Validator\Db\NoRecordExists
      */
     protected $usernameValidator;
 
     /**
-     * @var Zend\Validator\Db\NoRecordExists
+     * @var \Zend\Validator\Db\NoRecordExists
      */
     protected $emailValidator;
 
@@ -42,9 +42,14 @@ class AccountForm extends Form
 
     /**
      * Constructor
+     *
+     * @param \Zend\Validator\Db\NoRecordExists $usernameValidator
+     * @param \Zend\Validator\Db\NoRecordExists $emailValidator
      */
-    public function __construct(NoRecordExists $usernameValidator, NoRecordExists $emailValidator)
-    {
+    public function __construct(
+        NoRecordExists $usernameValidator,
+        NoRecordExists $emailValidator
+    ) {
         $this->usernameValidator = $usernameValidator;
         $this->emailValidator = $emailValidator;
 

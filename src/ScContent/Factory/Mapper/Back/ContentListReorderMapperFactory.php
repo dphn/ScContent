@@ -20,8 +20,8 @@ use ScContent\Mapper\Back\ContentListReorderMapper,
 class ContentListReorderMapperFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Mapper\Back\ContentListReorderMapper
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Mapper\Back\ContentListReorderMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

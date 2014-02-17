@@ -22,17 +22,17 @@ use ScContent\Options\ModuleOptions,
 class Layout extends AbstractValidator
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
-     * @var ScContent\Mapper\Installation\LayoutMapper
+     * @var \ScContent\Mapper\Installation\LayoutMapper
      */
     protected $layoutMapper;
 
     /**
-     * @param ScContent\Options\ModuleOptions $options
+     * @param  \ScContent\Options\ModuleOptions $options
      * @return void
      */
     public function setModuleOptions(ModuleOptions $options)
@@ -41,8 +41,8 @@ class Layout extends AbstractValidator
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Options\ModuleOptions
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Options\ModuleOptions
      */
     public function getModuleOptions()
     {
@@ -53,7 +53,7 @@ class Layout extends AbstractValidator
     }
 
     /**
-     * @param ScContent\Mapper\Installation\LayoutMapper $mapper
+     * @param  \ScContent\Mapper\Installation\LayoutMapper $mapper
      * @return void
      */
     public function setLayoutMapper(LayoutMapper $mapper)
@@ -62,8 +62,8 @@ class Layout extends AbstractValidator
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Installation\LayoutMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Installation\LayoutMapper
      */
     public function getLayoutMapper()
     {
@@ -74,7 +74,7 @@ class Layout extends AbstractValidator
     }
 
     /**
-     * @param null $value Not used
+     * @param  null $value Not used
      * @return boolean
      */
     public function isValid($value = null)

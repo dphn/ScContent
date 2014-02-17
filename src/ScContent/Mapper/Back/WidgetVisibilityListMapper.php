@@ -40,7 +40,7 @@ class WidgetVisibilityListMapper extends AbstractContentMapper
     ];
 
     /**
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
     {
@@ -48,8 +48,8 @@ class WidgetVisibilityListMapper extends AbstractContentMapper
     }
 
     /**
-     * @param ScContent\Options\Back\WidgetVisibilityListOptions $options
-     * @return ScContent\Entity\Back\WidgetVisibilityList
+     * @param  \ScContent\Options\Back\WidgetVisibilityListOptions $options
+     * @return \ScContent\Entity\Back\WidgetVisibilityList
      */
     public function getContent(Options $options)
     {
@@ -87,8 +87,8 @@ class WidgetVisibilityListMapper extends AbstractContentMapper
     }
 
     /**
-     * @param array $parent
-     * @param string $filter
+     * @param  array $parent
+     * @param  string $filter
      * @return integer
      */
     protected function getContentCount($parent, $filter)
@@ -119,9 +119,9 @@ class WidgetVisibilityListMapper extends AbstractContentMapper
     }
 
     /**
-     * @param ScContent\Entity\Back\WidgetVisibilityList $content
-     * @param ScContent\Options\Back\WidgetVisibilityListOptions $options
-     * @param integer $offset
+     * @param  \ScContent\Entity\Back\WidgetVisibilityList $content
+     * @param  \ScContent\Options\Back\WidgetVisibilityListOptions $options
+     * @param  integer $offset
      * @return void
      */
     protected function getContentItems(WidgetVisibilityList $content, Options $options, $offset)

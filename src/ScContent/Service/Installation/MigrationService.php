@@ -27,7 +27,7 @@ class MigrationService extends AbstractInstallationService implements
     ServiceLocatorAwareInterface
 {
     /**
-     * @var Zend\ServiceManager\ServiceLocatorInterface
+     * @var \Zend\ServiceManager\ServiceLocatorInterface
      */
     protected $serviceLocator;
 
@@ -44,7 +44,7 @@ class MigrationService extends AbstractInstallationService implements
     ];
 
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
      * @return void
      */
     public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
@@ -53,8 +53,8 @@ class MigrationService extends AbstractInstallationService implements
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\ServiceManager\ServiceLocatorInterface
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\ServiceManager\ServiceLocatorInterface
      */
     public function getServiceLocator()
     {
@@ -65,10 +65,10 @@ class MigrationService extends AbstractInstallationService implements
     }
 
     /**
-     * @param array $options
-     * @throws ScContent\Exception\InvalidArgumentException
-     * @throws ScContent\Exception\DomainException
-     * @throws ScContent\Exception\DebugException
+     * @param  array $options
+     * @throws \ScContent\Exception\InvalidArgumentException
+     * @throws \ScContent\Exception\DomainException
+     * @throws \ScContent\Exception\DebugException
      * @return boolean
      */
     public function process($options)

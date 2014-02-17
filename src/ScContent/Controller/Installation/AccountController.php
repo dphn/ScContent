@@ -22,17 +22,17 @@ use ScContent\Controller\AbstractInstallation,
 class AccountController extends AbstractInstallation
 {
     /**
-     * @var ScContent\Service\Installation\AccountService
+     * @var \ScContent\Service\Installation\AccountService
      */
     protected $service;
 
     /**
-     * @var ScContent\Form\Installation\AccountForm
+     * @var \ScContent\Form\Installation\AccountForm
      */
     protected $form;
 
     /**
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function indexAction()
     {
@@ -70,7 +70,7 @@ class AccountController extends AbstractInstallation
     }
 
     /**
-     * @param ScContent\Service\Installation\AccountService $service
+     * @param  \ScContent\Service\Installation\AccountService $service
      * @return void
      */
     public function setAccountService(AccountService $service)
@@ -79,7 +79,7 @@ class AccountController extends AbstractInstallation
     }
 
     /**
-     * @return ScContent\Service\Installation\AccountService
+     * @return \ScContent\Service\Installation\AccountService
      */
     public function getAccountService()
     {
@@ -93,7 +93,7 @@ class AccountController extends AbstractInstallation
     }
 
     /**
-     * @param ScContent\Form\Installation\AccountForm $form
+     * @param  \ScContent\Form\Installation\AccountForm $form
      * @return void
      */
     public function setAccountForm(AccountForm $form)
@@ -102,7 +102,7 @@ class AccountController extends AbstractInstallation
     }
 
     /**
-     * @return ScContent\Form\Installation\AccountForm
+     * @return \ScContent\Form\Installation\AccountForm
      */
     public function getAccountForm()
     {

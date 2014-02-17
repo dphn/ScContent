@@ -36,7 +36,7 @@ abstract class AbstractControllerListener extends AbstractIntelligentService
     protected $redirectRouteParams = [];
 
     /**
-     * @param string $route
+     * @param  string $route
      * @return void
      */
     public function setRedirectRoute($route)
@@ -53,7 +53,7 @@ abstract class AbstractControllerListener extends AbstractIntelligentService
     }
 
     /**
-     * @param string $route
+     * @param  string $route
      * @return void
      */
     public function setRedirectErrorRoute($route)
@@ -70,7 +70,7 @@ abstract class AbstractControllerListener extends AbstractIntelligentService
     }
 
     /**
-     * @param array $params
+     * @param  array $params
      * @return void
      */
     public function setRedirectRouteParams($params)
@@ -87,17 +87,17 @@ abstract class AbstractControllerListener extends AbstractIntelligentService
     }
 
     /**
-     * @param Zend\EventManager\EventInterface $event
-     * @return null | Zend\Stdlib\Response
+     * @param  \Zend\EventManager\EventInterface $event
+     * @return null|\Zend\Stdlib\Response
      */
     abstract public function process(EventInterface $event);
 
     /**
-     * @param Zend\EventManager\EventInterface $event
-     * @param string $route optional
-     * @param array $params optional
-     * @throws ScContent\Exception\InvalidArgumentException
-     * @return Zend\Http\Response
+     * @param  \Zend\EventManager\EventInterface $event
+     * @param  string $route optional
+     * @param  array $params optional
+     * @throws \ScContent\Exception\InvalidArgumentException
+     * @return \Zend\Http\Response
      */
     protected function redirect(
         EventInterface $event,

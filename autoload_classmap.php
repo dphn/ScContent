@@ -5,7 +5,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
  * Generated using Qt
- * total classes:    313
+ * total classes:    316
  * total interfaces: 15
  */
 
@@ -330,14 +330,17 @@ return [
     'ScContent\Validator\Installation\Roles'                               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'   . DS . 'Installation'                     . DS . 'Roles.php',
     'ScContent\Validator\Installation\Uploads'                             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'   . DS . 'Installation'                     . DS . 'Uploads.php',
     'ScContent\Validator\Mapper\NestingValidator'                          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'   . DS . 'Mapper'                           . DS . 'NestingValidator.php',
-    'ScContent\Validator\Options\WidgetOptionsValidator'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Validator'   . DS . 'Options'                          . DS . 'WidgetOptionsValidator.php',
     'ScContent\View\Helper\BodyTag'                                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'View'        . DS . 'Helper'                           . DS . 'BodyTag.php',
     'ScContent\View\Helper\ContentFormat'                                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'View'        . DS . 'Helper'                           . DS . 'ContentFormat.php',
     'ScContent\View\Helper\DateTime'                                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'View'        . DS . 'Helper'                           . DS . 'DateTime.php',
     'ScContent\View\Helper\FormatProviderInterface'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'View'        . DS . 'Helper'                           . DS . 'FormatProviderInterface.php',
+    'ScContent\View\Helper\LanguageDirection'                              => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'View'        . DS . 'Helper'                           . DS . 'LanguageDirection.php',
     'ScContent\View\Helper\Localization'                                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'View'        . DS . 'Helper'                           . DS . 'Localization.php',
     'ScContentTest\Bootstrap'                                              => __DIR__ . DS . 'tests'       . DS . 'Bootstrap.php',
     'ScContentTest\Controller\Back\ArticleControllerTest'                  => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Controller'  . DS . 'Back'                             . DS . 'ArticleControllerTest.php',
     'ScContentTest\Controller\Back\CategoryControllerTest'                 => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Controller'  . DS . 'Back'                             . DS . 'CategoryControllerTest.php',
     'ScContentTest\Controller\Back\FileControllerTest'                     => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Controller'  . DS . 'Back'                             . DS . 'FileControllerTest.php',
+    'ScContentTest\Controller\Back\RequirementsControllerTest'             => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Controller'  . DS . 'Installation'                     . DS . 'RequirementsControllerTest.php',
+    'ScContentTest\Validator\Installation\PhpExtensionTest'                => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Validator'   . DS . 'Installation'                     . DS . 'PhpExtensionTest.php',
+    'ScContentTest\Validator\Installation\PhpIniTest'                      => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Validator'   . DS . 'Installation'                     . DS . 'PhpIniTest.php',
 ];

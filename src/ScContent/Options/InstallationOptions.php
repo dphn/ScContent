@@ -21,7 +21,7 @@ class InstallationOptions extends AbstractOptions
     protected $installation = [];
 
     /**
-     * @param array $options
+     * @param  array $options
      * @return void
      */
     public function setInstallation($options)

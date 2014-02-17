@@ -20,8 +20,8 @@ use ScContent\Listener\UnauthorizedStrategy,
 class UnauthorizedStrategyFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\UnauthorizedStrategy
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\UnauthorizedStrategy
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

@@ -147,7 +147,7 @@ class ContentListOptions extends AbstractEntity
     protected static $ordersBy = ['natural', 'title', 'status', 'user', 'date'];
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return boolean
      */
     public static function hasName($name)
@@ -185,7 +185,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setName($name)
@@ -204,7 +204,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $type
+     * @param  string $type
      * @return void
      */
     public function setType($type)
@@ -248,7 +248,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $root
+     * @param  string $root
      * @return void
      */
     public function setRoot($root)
@@ -290,7 +290,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param integer $parent
+     * @param  integer $parent
      * @return void
      */
     public function setParent($parent)
@@ -314,7 +314,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $filter
+     * @param  string $filter
      * @return void
      */
     public function setFilter($filter)
@@ -337,7 +337,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param integer $page
+     * @param  integer $page
      * @return void
      */
     public function setPage($page)
@@ -369,7 +369,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $type
+     * @param  string $type
      * @return void
      */
     public function setUserType($type)
@@ -388,7 +388,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $type
+     * @param  string $type
      * @return void
      */
     public function setModificationType($type)
@@ -407,7 +407,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $order
+     * @param  string $order
      * @return void
      */
     public function setOrder($order)
@@ -429,7 +429,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $orderBy
+     * @param  string $orderBy
      * @return void
      */
     public function setOrderBy($orderBy)
@@ -455,7 +455,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param integer $limit
+     * @param  integer $limit
      * @return void
      */
     public function setLimit($limit)
@@ -472,7 +472,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param array $list
+     * @param  array $list
      * @return void
      */
     public function setList($list)
@@ -504,7 +504,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param array $search
+     * @param  array $search
      * @return void
      */
     public function setSearch($search)
@@ -536,7 +536,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param array $options
+     * @param  array $options
      * @return void
      */
     public function setSearchOptions($options)
@@ -576,7 +576,7 @@ class ContentListOptions extends AbstractEntity
     }
 
     /**
-     * @param array $options
+     * @param  array $options
      * @return array
      */
     protected function filterOptions($options)

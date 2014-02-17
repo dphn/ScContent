@@ -20,8 +20,8 @@ use ScContent\Service\IdentityProvider,
 class IdentityProviderFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\IdentityProvider
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\IdentityProvider
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

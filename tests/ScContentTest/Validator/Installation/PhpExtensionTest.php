@@ -14,8 +14,10 @@ use ScContent\Validator\Installation\PhpExtension,
     PHPUnit_Framework_TestCase;
 
 /**
-* @author Dolphin <work.dolphin@gmail.com>
-*/
+ * @author Dolphin <work.dolphin@gmail.com>
+ *
+ * @coversDefaultClass \ScContent\Validator\Installation\PhpExtension
+ */
 class PhpExtensionTest extends PHPUnit_Framework_TestCase
 {
    /**
@@ -32,7 +34,7 @@ class PhpExtensionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpExtension::setCallback()
+     * @covers ::setCallback
      */
     public function testSetBadCallback()
     {
@@ -45,7 +47,7 @@ class PhpExtensionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpExtension::getCallback()
+     * @covers ::getCallback
      */
     public function testCallbackGetter()
     {
@@ -56,7 +58,7 @@ class PhpExtensionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpExtension::getValueFromCallback()
+     * @covers ::getValueFromCallback
      */
     public function testCallbackValueGetter()
     {
@@ -70,7 +72,7 @@ class PhpExtensionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpExtension::isValid()
+     * @covers ::isValid
      */
     public function testIsValidMissingNameOption()
     {
@@ -83,7 +85,7 @@ class PhpExtensionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpExtension::isValid()
+     * @covers ::isValid
      */
     public function testIsValidIfExtensionNotLoaded()
     {
@@ -102,7 +104,7 @@ class PhpExtensionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpExtension::isValid()
+     * @covers ::isValid
      */
     public function testIsValidIfExtensionLoaded()
     {

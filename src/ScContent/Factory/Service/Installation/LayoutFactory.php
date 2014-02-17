@@ -21,8 +21,8 @@ use ScContent\Service\Installation\LayoutService,
 class LayoutFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Installation\LayoutService
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Installation\LayoutService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

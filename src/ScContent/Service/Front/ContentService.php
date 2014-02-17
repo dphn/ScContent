@@ -20,17 +20,17 @@ use ScContent\Entity\Front\Content,
 class ContentService
 {
     /**
-     * @var ScContent\Entity\Front\Content
+     * @var \ScContent\Entity\Front\Content
      */
     protected $content;
 
     /**
-     * @var ScContent\Mapper\Front\ContentMapper
+     * @var \ScContent\Mapper\Front\ContentMapper
      */
     protected $mapper;
 
     /**
-     * @param ScContent\Mapper\Front\ContentMapper $mapper
+     * @param  \ScContent\Mapper\Front\ContentMapper $mapper
      * @return void
      */
     public function setMapper(ContentMapper $mapper)
@@ -39,8 +39,8 @@ class ContentService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Front\ContentMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Front\ContentMapper
      */
     public function getMapper()
     {
@@ -53,8 +53,8 @@ class ContentService
     }
 
     /**
-     * @param string $name
-     * @return ScContent\Entity\Front\Content
+     * @param  string $name
+     * @return \ScContent\Entity\Front\Content
      */
     public function getContent($name = '')
     {

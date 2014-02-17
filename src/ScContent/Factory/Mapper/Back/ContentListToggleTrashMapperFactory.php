@@ -20,8 +20,8 @@ use ScContent\Mapper\Back\ContentListToggleTrashMapper,
 class ContentListToggleTrashMapperFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Mapper\Back\ContentListToggleTrashMapper
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Mapper\Back\ContentListToggleTrashMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

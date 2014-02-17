@@ -32,7 +32,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     protected $state = self::StateUndefined;
 
     /**
-     * @var null | integer
+     * @var null|integer
      */
     protected $widgetId;
 
@@ -113,7 +113,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     }
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return void
      */
     public function setWidgetId($id)
@@ -122,7 +122,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     }
 
     /**
-     * @return null | integer
+     * @return null|integer
      */
     public function getWidgetId()
     {
@@ -130,7 +130,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     }
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return void
      */
     public function setContentId($id)
@@ -154,7 +154,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $needle
+     * @param  string $needle
      * @return void
      */
     public function setSearch($needle)
@@ -177,7 +177,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $source
+     * @param  string $source
      * @return void
      */
     public function setSearchSource($source)
@@ -202,7 +202,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $filter
+     * @param  string $filter
      * @return void
      */
     public function setFilter($filter)
@@ -226,7 +226,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $order
+     * @param  string $order
      * @return void
      */
     public function setOrder($order)
@@ -248,7 +248,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     }
 
     /**
-     * @param string $orderBy
+     * @param  string $orderBy
      * @return void
      */
     public function setOrderBy($orderBy)
@@ -274,7 +274,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     }
 
     /**
-     * @param integer $limit
+     * @param  integer $limit
      * @return void
      */
     public function setLimit($limit)
@@ -291,7 +291,7 @@ class WidgetVisibilityListOptions extends AbstractEntity
     }
 
     /**
-     * @param integer $page
+     * @param  integer $page
      * @return void
      */
     public function setPage($page)

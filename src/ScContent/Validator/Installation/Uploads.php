@@ -21,12 +21,12 @@ use ScContent\Service\Dir,
 class Uploads extends AbstractValidator
 {
     /**
-     * @var ScContent\Service\Dir
+     * @var \ScContent\Service\Dir
      */
     protected $dir;
 
     /**
-     * @param ScContent\Service\Dir $dir
+     * @param  \ScContent\Service\Dir $dir
      * @return void
      */
     public function setDir(Dir $dir)
@@ -35,8 +35,8 @@ class Uploads extends AbstractValidator
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Service\Dir
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Service\Dir
      */
     public function getDir()
     {
@@ -47,7 +47,7 @@ class Uploads extends AbstractValidator
     }
 
     /**
-     * @param null $value Not used
+     * @param  null $value Not used
      * @return boolean
      */
     public function isValid($value = null)

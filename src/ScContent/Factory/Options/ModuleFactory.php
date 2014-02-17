@@ -21,8 +21,8 @@ use ScContent\Options\ModuleOptions,
 class ModuleFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Options\ModuleOptions
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Options\ModuleOptions
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

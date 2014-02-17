@@ -24,6 +24,8 @@ use ScContent\Controller\Back\CategoryController,
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
+ *
+ * @coversDefaultClass \ScContent\Controller\Back\CategoryController
  */
 class CategoryControllerTest extends PHPUnit_Framework_TestCase
 {
@@ -86,7 +88,7 @@ class CategoryControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers CategoryController::add
+     * @covers ::addAction
      */
     public function testAddActionWithoutParentIdentifier()
     {
@@ -99,7 +101,7 @@ class CategoryControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers CategoryController::add
+     * @covers ::addAction
      */
     public function testAddActionOnCreationError()
     {
@@ -119,7 +121,7 @@ class CategoryControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers CategoryController::add
+     * @covers ::addAction
      */
     public function testAddActionSuccess()
     {
@@ -137,7 +139,7 @@ class CategoryControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers CategoryController::edit
+     * @covers ::editAction
      */
     public function testEditActionWithoutCategoryIdentifier()
     {
@@ -150,7 +152,7 @@ class CategoryControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers CategoryController::edit
+     * @covers ::editAction
      */
     public function testEditActionWithBadCategoryIdentifier()
     {
@@ -170,7 +172,7 @@ class CategoryControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers CategoryController::edit
+     * @covers ::editAction
      */
     public function testEditActionSuccess()
     {

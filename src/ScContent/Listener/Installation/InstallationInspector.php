@@ -36,12 +36,12 @@ class InstallationInspector extends AbstractListenerAggregate
     const DefaultAction = 'index';
 
     /**
-     * @var Zend\Validator\ValidatorPluginManager
+     * @var \Zend\Validator\ValidatorPluginManager
      */
     protected $validatorManager;
 
     /**
-     * @var ScContent\Listener\GuardExceptionStrategy
+     * @var \ScContent\Listener\GuardExceptionStrategy
      */
     protected $guardExceptionStrategy;
 
@@ -61,7 +61,7 @@ class InstallationInspector extends AbstractListenerAggregate
     protected $installationGuardIsEnabled = false;
 
    /**
-    * @param Zend\Validator\ValidatorPluginManager $validatorManager
+    * @param  \Zend\Validator\ValidatorPluginManager $validatorManager
     * @return void
     */
     public function setValidatorManager(ValidatorPluginManager $manager)
@@ -70,8 +70,8 @@ class InstallationInspector extends AbstractListenerAggregate
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Validator\ValidatorPluginManager
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Validator\ValidatorPluginManager
      */
     public function getValidatorManager()
     {
@@ -84,7 +84,7 @@ class InstallationInspector extends AbstractListenerAggregate
     }
 
     /**
-     * @param ScContent\Listener\GuardExceptionStrategy $strategy
+     * @param  \ScContent\Listener\GuardExceptionStrategy $strategy
      * @return void
      */
     public function setGuardExceptionStrategy(GuardExceptionStrategy $strategy)
@@ -93,8 +93,8 @@ class InstallationInspector extends AbstractListenerAggregate
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Listener\GuardExceptionStrategy
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Listener\GuardExceptionStrategy
      */
     public function getGuardExceptionStrategy()
     {
@@ -107,7 +107,7 @@ class InstallationInspector extends AbstractListenerAggregate
     }
 
     /**
-     * @param Zend\EventManager\EventManagerInterface
+     * @param  \Zend\EventManager\EventManagerInterface
      * @return void
      */
     public function attach(EventManagerInterface $events)
@@ -128,7 +128,7 @@ class InstallationInspector extends AbstractListenerAggregate
     /**
      * @api
      *
-     * @param array $options
+     * @param  array $options
      * @return InstallationInspector
      */
     public function setup($options)
@@ -149,8 +149,8 @@ class InstallationInspector extends AbstractListenerAggregate
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  \Zend\Mvc\MvcEvent $event
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function inspect(MvcEvent $event)
@@ -237,7 +237,7 @@ class InstallationInspector extends AbstractListenerAggregate
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     public function afterInspect(MvcEvent $event)
@@ -259,7 +259,7 @@ class InstallationInspector extends AbstractListenerAggregate
     }
 
     /**
-     * @param boolean $flag
+     * @param  boolean $flag
      * @return void
      */
     protected function enableInstallationGuard($flag = true)

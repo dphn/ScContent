@@ -64,8 +64,8 @@ class BodyTag extends AbstractStandalone
     }
 
     /**
-     * @param string $attribute
-     * @param string $value
+     * @param  string $attribute
+     * @param  string $value
      * @return BodyTag
      */
     public function addAttribute($attribute, $value)
@@ -74,9 +74,9 @@ class BodyTag extends AbstractStandalone
     }
 
     /**
-     * @param string $attribute
-     * @param string $value
-     * @throw ScContent\Exception\InvalidArgumentException
+     * @param  string $attribute
+     * @param  string $value
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return BodyTag
      */
     public function __invoke($attribute = null, $value = null)
@@ -127,7 +127,7 @@ class BodyTag extends AbstractStandalone
     }
 
     /**
-     * @param string $attribute
+     * @param  string $attribute
      * @return boolean
      */
     protected function isValid($attribute)
@@ -144,8 +144,8 @@ class BodyTag extends AbstractStandalone
     }
 
     /**
-     * @param string $attribute
-     * @param string $value
+     * @param  string $attribute
+     * @param  string $value
      * @return string
      */
     protected function prepareValue($attribute, $value)

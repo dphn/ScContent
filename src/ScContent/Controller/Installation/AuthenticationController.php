@@ -26,35 +26,39 @@ use ScContent\Controller\AbstractInstallation,
 class AuthenticationController extends AbstractInstallation
 {
     /**
-     * @var Zend\Authentication\AuthenticationService
+     * @var \Zend\Authentication\AuthenticationService
      */
     protected $authService;
 
     /**
-     * @var ScContent\Mapper\Installation\CredentialsMapper
+     * @var \ScContent\Mapper\Installation\CredentialsMapper
      */
     protected $mapper;
 
     /**
-     * @var ScContent\Form\Installation\RegistrationForm
+     * @var \ScContent\Form\Installation\RegistrationForm
      */
     protected $registrationForm;
 
     /**
-     * @var ScContent\Form\Installation\LoginForm
+     * @var \ScContent\Form\Installation\LoginForm
      */
     protected $loginForm;
 
     /**
-     * @var ScContent\Entity\Installation\Credentials
+     * @var \ScContent\Entity\Installation\Credentials
      */
     protected $credentials;
 
+
+    /**
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
+     */
     public function indexAction()
     {
         $redirect = $this->getRedirect();
         $authService = $this->getAuthService();
-        if ($authService->hasIdentity()) { exit('mmmmmmmmmmmmmmm');
+        if ($authService->hasIdentity()) {
             return $this->redirect()->toUrl($redirect);
         }
         $mapper = $this->getMapper();
@@ -66,6 +70,9 @@ class AuthenticationController extends AbstractInstallation
         return $this->loginAction();
     }
 
+    /**
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
+     */
     public function loginAction()
     {
         $redirect = $this->getRedirect();
@@ -103,6 +110,9 @@ class AuthenticationController extends AbstractInstallation
         return $view;
     }
 
+    /**
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
+     */
     public function registerAction()
     {
         $redirect = $this->getRedirect();
@@ -144,7 +154,8 @@ class AuthenticationController extends AbstractInstallation
     }
 
     /**
-     * @param Zend\Authentication\AuthenticationService $service
+     * @param  \Zend\Authentication\AuthenticationService $service
+     * @return void
      */
     public function setAuthService(AuthenticationService $service)
     {
@@ -152,7 +163,7 @@ class AuthenticationController extends AbstractInstallation
     }
 
     /**
-     * @return Zend\Authentication\AuthenticationService
+     * @return \Zend\Authentication\AuthenticationService
      */
     public function getAuthService()
     {
@@ -166,7 +177,7 @@ class AuthenticationController extends AbstractInstallation
     }
 
     /**
-     * @param ScContent\Mapper\Installation\CredentialsMapper $mapper
+     * @param  \ScContent\Mapper\Installation\CredentialsMapper $mapper
      * @return void
      */
     public function setMapper(CredentialsMapper $mapper)
@@ -175,7 +186,7 @@ class AuthenticationController extends AbstractInstallation
     }
 
     /**
-     * @return ScContent\Mapper\Installation\CredentialsMapper
+     * @return \ScContent\Mapper\Installation\CredentialsMapper
      */
     public function getMapper()
     {
@@ -189,7 +200,8 @@ class AuthenticationController extends AbstractInstallation
     }
 
     /**
-     * @param ScContent\Form\Installation\RegistrationForm $form
+     * @param  \ScContent\Form\Installation\RegistrationForm $form
+     * @return void
      */
     public function setRegistrationForm(RegistrationForm $form)
     {
@@ -197,7 +209,7 @@ class AuthenticationController extends AbstractInstallation
     }
 
     /**
-     * @return ScContent\Form\Installation\RegistrationForm
+     * @return \ScContent\Form\Installation\RegistrationForm
      */
     public function getRegistrationForm()
     {
@@ -208,7 +220,7 @@ class AuthenticationController extends AbstractInstallation
     }
 
     /**
-     * @param ScContent\Form\Installation\LoginForm $form
+     * @param  \ScContent\Form\Installation\LoginForm $form
      * @return void
      */
     public function setLoginForm(LoginForm $form)
@@ -217,7 +229,7 @@ class AuthenticationController extends AbstractInstallation
     }
 
     /**
-     * @return ScContent\Form\Installation\LoginForm
+     * @return \ScContent\Form\Installation\LoginForm
      */
     public function getLoginForm()
     {
@@ -228,7 +240,7 @@ class AuthenticationController extends AbstractInstallation
     }
 
     /**
-     * @param ScContent\Entity\Installation\Credentials $entity
+     * @param  \ScContent\Entity\Installation\Credentials $entity
      * @return void
      */
     public function setCredentials(Credentials $entity)
@@ -237,7 +249,7 @@ class AuthenticationController extends AbstractInstallation
     }
 
     /**
-     * @return ScContent\Entity\Installation\Credentials
+     * @return \ScContent\Entity\Installation\Credentials
      */
     public function getCredentials()
     {

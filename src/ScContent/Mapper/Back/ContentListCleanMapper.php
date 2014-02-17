@@ -18,7 +18,7 @@ use Zend\Db\Adapter\AdapterInterface,
 class ContentListCleanMapper extends ContentListOperationAbstract
 {
     /**
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
     {
@@ -26,7 +26,7 @@ class ContentListCleanMapper extends ContentListOperationAbstract
     }
 
     /**
-     * @param string $tid
+     * @param  string $tid
      * @return void
      */
     public function clean($tid)

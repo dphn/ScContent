@@ -20,8 +20,8 @@ use ScContent\Service\Installation\UploadsService,
 class UploadsFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Installation\UploadsService
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Installation\UploadsService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

@@ -20,7 +20,7 @@ use ScContent\Service\FileTypesCatalogInterface as CatalogInterface,
 class FileType extends AbstractValidator
 {
     /**
-     * @var ScContent\Service\FileTypesCatalog
+     * @var \ScContent\Service\FileTypesCatalog
      */
     protected $catalog;
 
@@ -54,8 +54,8 @@ class FileType extends AbstractValidator
     ];
 
     /**
-     * @param null | array $options
-     * @throws Zend\Validator\Exception\InvalidArgumentException
+     * @param  null|array $options
+     * @throws \Zend\Validator\Exception\InvalidArgumentException
      */
     public function __construct($options = null, CatalogInterface $catalog = null)
     {
@@ -82,7 +82,7 @@ class FileType extends AbstractValidator
     }
 
     /**
-     * @param ScContent\Service\FileTypesCatalogInterface $catalog
+     * @param  \ScContent\Service\FileTypesCatalogInterface $catalog
      * @return void
      */
     public function setFileTypesCatalog(CatalogInterface $catalog)
@@ -91,7 +91,7 @@ class FileType extends AbstractValidator
     }
 
     /**
-     * @return ScContent\Service\FileTypesCatalogInterface
+     * @return \ScContent\Service\FileTypesCatalogInterface
      */
     public function getFileTypesCatalog()
     {
@@ -99,7 +99,7 @@ class FileType extends AbstractValidator
     }
 
     /**
-     * @param array $patterns
+     * @param  array $patterns
      * @return void
      */
     public function setPatterns($patterns)
@@ -119,7 +119,7 @@ class FileType extends AbstractValidator
     }
 
     /**
-     * @param  string | array $value Real file name
+     * @param  string|array $value Real file name
      * @param  array $file  File data from \Zend\File\Transfer\Transfer optional
      * @return bool
      */

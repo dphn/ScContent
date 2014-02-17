@@ -29,7 +29,7 @@ class SimpleStemmingFilter extends AbstractFilter
     ];
 
     /**
-     * @param integer $length
+     * @param  integer $length
      * @return void
      */
     public function setMinWordLength($length)
@@ -46,7 +46,7 @@ class SimpleStemmingFilter extends AbstractFilter
     }
 
     /**
-     * @param integer $length
+     * @param  integer $length
      * @return void
      */
     public function setCutLength($length)
@@ -63,7 +63,7 @@ class SimpleStemmingFilter extends AbstractFilter
     }
 
     /**
-     * @param string
+     * @param  string
      * @return string
      */
     public function filter($value)

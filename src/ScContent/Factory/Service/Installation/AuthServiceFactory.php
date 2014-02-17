@@ -20,8 +20,8 @@ use Zend\Authentication\Storage\Session as SessionStorage,
 class AuthServiceFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return Zend\Authentication\AuthenticationService
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \Zend\Authentication\AuthenticationService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

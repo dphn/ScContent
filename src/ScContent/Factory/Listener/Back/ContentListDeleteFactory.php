@@ -20,8 +20,8 @@ use ScContent\Listener\Back\ContentListDelete,
 class ContentListDeleteFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Back\ContentListDelete
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Back\ContentListDelete
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

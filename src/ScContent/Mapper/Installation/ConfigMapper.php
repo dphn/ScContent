@@ -25,24 +25,24 @@ use ScContent\Entity\Installation\DatabaseConfig,
 class ConfigMapper
 {
     /**
-     * @var Zend\Config\Config
+     * @var \Zend\Config\Config
      */
     protected $repository;
 
     /**
-     * @var Zend\Config\Writer\WriterInterface
+     * @var \Zend\Config\Writer\WriterInterface
      */
     protected $adapter;
 
     /**
-     * @var Zend\Stdlib\Hydrator\HydratorInterface
+     * @var \Zend\Stdlib\Hydrator\HydratorInterface
      */
     protected $hydrator;
 
     /**
-     * @param ScContent\Entity\Installation\DatabaseConfig $entity
-     * @param string $source Source file path
-     * @param string $destination Destination file path
+     * @param  \ScContent\Entity\Installation\DatabaseConfig $entity
+     * @param  string $source Source file path
+     * @param  string $destination Destination file path
      * @return void
      */
     public function save(DatabaseConfig $entity, $source, $destination)
@@ -72,7 +72,7 @@ class ConfigMapper
     }
 
     /**
-     * @param Zend\Config\Config $repository
+     * @param  \Zend\Config\Config $repository
      * @return void
      */
     public function setRepository(Repository $repository)
@@ -81,8 +81,8 @@ class ConfigMapper
     }
 
     /**
-     * @param array $array
-     * @return Zend\Config\Config
+     * @param  array $array
+     * @return \Zend\Config\Config
      */
     public function getRepository($array)
     {
@@ -93,7 +93,7 @@ class ConfigMapper
     }
 
     /**
-     * @param Zend\Config\Writer\WriterInterface $adapter
+     * @param  \Zend\Config\Writer\WriterInterface $adapter
      * @return void
      */
     public function setAdapter(WriterInterface $adapter)
@@ -102,7 +102,7 @@ class ConfigMapper
     }
 
     /**
-     * @return Zend\Config\Writer\WriterInterface
+     * @return \Zend\Config\Writer\WriterInterface
      */
     public function getAdapter()
     {
@@ -113,7 +113,7 @@ class ConfigMapper
     }
 
     /**
-     * @param Zend\Stdlib\Hydrator\HydratorInterface $hydrator
+     * @param  \Zend\Stdlib\Hydrator\HydratorInterface $hydrator
      * @return void
      */
     public function setHydrator(HydratorInterface $hydrator)
@@ -122,7 +122,7 @@ class ConfigMapper
     }
 
     /**
-     * @return Zend\Stdlib\Hydrator\HydratorInterface
+     * @return \Zend\Stdlib\Hydrator\HydratorInterface
      */
     public function getHydrator()
     {

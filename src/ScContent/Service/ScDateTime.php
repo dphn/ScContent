@@ -9,8 +9,7 @@
  */
 namespace ScContent\Service;
 
-use IntlDateFormatter,
-    DateTimeZone,
+use DateTimeZone,
     DateTime;
 
 /**
@@ -19,7 +18,7 @@ use IntlDateFormatter,
 class ScDateTime implements ScDateTimeInterface
 {
     /**
-     * @var DateTime
+     * @var \DateTime
      */
     protected $dateTime;
 
@@ -52,7 +51,7 @@ class ScDateTime implements ScDateTimeInterface
     }
 
     /**
-     * @param string $name DateTimeZone identifier
+     * @param  string $name DateTimeZone identifier
      * @return string Old DateTimeZone identifier
      */
     public function setTimeZone($name)
@@ -74,8 +73,8 @@ class ScDateTime implements ScDateTimeInterface
     }
 
     /**
-     * @param boolean $new optional If you need to get the updated value of timestamp
-     * @return integer DateTime stamp (in Unix format) for current locale
+     * @param  boolean $new optional If you need to get the updated value of timestamp
+     * @return integer DateTime stamp (in Unix format) for current DataTimeZone
      */
     public function stamp($new = false) {
         if ($new) {
@@ -85,15 +84,15 @@ class ScDateTime implements ScDateTimeInterface
     }
 
     /**
-     * @return integer GMT offset of the current locale
+     * @return integer GMT offset of the current DateTimeZone
      */
     public function offset() {
         return $this->dateTime->getOffset();
     }
 
     /**
-     * @param boolean $new optional If you need to get the updated value of timestamp
-     * @return GMT (in Unix format)
+     * @param  boolean $new optional If you need to get the updated value of timestamp
+     * @return integer GMT (in Unix format)
      */
     public function gmStamp($new = false) {
         if ($new) {
@@ -103,9 +102,9 @@ class ScDateTime implements ScDateTimeInterface
     }
 
     /**
-     * @param integer $stamp optional GMT (in Unix format)
-     * @param boolean $new optional If you need to get the updated value of timestamp
-     * @return DataTime stamp (in Unix format) for current locale
+     * @param  integer $stamp optional GMT (in Unix format)
+     * @param  boolean $new optional If you need to get the updated value of timestamp
+     * @return integer DateTime stamp (in Unix format) for current DateTimeZone
      */
     public function fromGm($stamp = null, $new = false) {
         if (is_null($stamp)) {

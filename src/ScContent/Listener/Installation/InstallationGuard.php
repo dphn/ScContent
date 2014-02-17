@@ -31,12 +31,12 @@ class InstallationGuard extends AbstractListener
     const AuthAction = 'index';
 
     /**
-     * @var Zend\Authentication\AuthenticationService
+     * @var \Zend\Authentication\AuthenticationService
      */
     protected $auth;
 
     /**
-     * @param Zend\Authentication\AuthenticationService $service
+     * @param  \Zend\Authentication\AuthenticationService $service
      * @return void
      */
     public function setAuthService(AuthenticationService $service)
@@ -45,8 +45,8 @@ class InstallationGuard extends AbstractListener
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Authentication\AuthenticationService
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Authentication\AuthenticationService
      */
     public function getAuthService()
     {
@@ -59,7 +59,7 @@ class InstallationGuard extends AbstractListener
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     public function process(MvcEvent $event)

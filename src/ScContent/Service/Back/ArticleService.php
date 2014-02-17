@@ -25,14 +25,14 @@ use ScContent\Entity\Back\Article,
 class ArticleService extends AbstractContentService
 {
     /**
-     * @var ScContent\Entity\Back\Article
+     * @var \ScContent\Entity\Back\Article
      */
     protected $articlePrototype;
 
     /**
-     * @param integer $parentId
-     * @throws ScContent\Exception\RuntimeException
-     * @throws ScContent\Exception\DebugException
+     * @param  integer $parentId
+     * @throws \ScContent\Exception\RuntimeException
+     * @throws \ScContent\Exception\DebugException
      * @return integer
      */
     public function makeArticle($parentId)
@@ -104,10 +104,10 @@ class ArticleService extends AbstractContentService
     }
 
     /**
-     * @param integer $id
-     * @throws ScContent\Exception\RuntimeExcception
-     * @throws ScContent\Exception\DebugException
-     * @return ScContent\Entity\Back\Article
+     * @param  integer $id
+     * @throws \ScContent\Exception\RuntimeExcception
+     * @throws \ScContent\Exception\DebugException
+     * @return \ScContent\Entity\Back\Article
      */
     public function getArticle($id)
     {
@@ -169,8 +169,8 @@ class ArticleService extends AbstractContentService
     }
 
     /**
-     * @throws ScContent\Exception\DomainException
-     * @return ScContent\Entity\Back\Article
+     * @throws \ScContent\Exception\DomainException
+     * @return \ScContent\Entity\Back\Article
      */
     protected function getArticlePrototype()
     {

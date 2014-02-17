@@ -28,21 +28,21 @@ class ContentSearchMapper extends AbstractContentMapper implements
     ContentListMapperInterface
 {
     /**
-     * @var ScContent\Service\Back\ContentListOptionsProvider
+     * @var \ScContent\Service\Back\ContentListOptionsProvider
      */
     protected $optionsProvider;
 
     /**
-     * @var Zend\Filter\FilterInterface
+     * @var \Zend\Filter\FilterInterface
      */
     protected $morfologyFilter;
 
     /**
      * Constructor
      *
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
-     * @param ScContent\Service\Back\ContentListOptionsProvider $options
-     * @param Zend\Filter\FilterInterface
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \ScContent\Service\Back\ContentListOptionsProvider $options
+     * @param \Zend\Filter\FilterInterface
      */
     public function __construct(
         AdapterInterface $adapter,
@@ -55,8 +55,8 @@ class ContentSearchMapper extends AbstractContentMapper implements
     }
 
     /**
-     * @param string $optionsIdentifier
-     * @return ScContent\Entity\Back\ContentList
+     * @param  string $optionsIdentifier
+     * @return \ScContent\Entity\Back\ContentList
      */
     public function getContent($optionsIdentifier)
     {
@@ -104,8 +104,8 @@ class ContentSearchMapper extends AbstractContentMapper implements
     }
 
     /**
-     * @param string $optionsIdentifier
-     * @param string $filter
+     * @param  string $optionsIdentifier
+     * @param  string $filter
      * @return integer
      */
     protected function getSearchCount($optionsIdentifier, $filter)
@@ -179,7 +179,7 @@ class ContentSearchMapper extends AbstractContentMapper implements
     }
 
     /**
-     * @param ScContent\Entity\Back\ContentList $content
+     * @param \ScContent\Entity\Back\ContentList $content
      * @param integer $offset
      * @param string $optionsIdentifier
      */

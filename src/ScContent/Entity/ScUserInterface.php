@@ -17,7 +17,7 @@ use ZfcUser\Entity\UserInterface as BaseInterface;
 interface ScUserInterface extends BaseInterface
 {
     /**
-     * @param string $locale
+     * @param  string $locale
      * @return void
      */
     function setLocale($locale);
@@ -28,7 +28,7 @@ interface ScUserInterface extends BaseInterface
     function getLocale();
 
     /**
-     * @param string $timezone
+     * @param  string $timezone
      * @return void
      */
     function setTimezone($timezone);
@@ -39,7 +39,7 @@ interface ScUserInterface extends BaseInterface
     function getTimezone();
 
     /**
-     * @param integer $gmStamp
+     * @param  integer $gmStamp
      * @return void
      */
     function setRegistered($gmStamp);

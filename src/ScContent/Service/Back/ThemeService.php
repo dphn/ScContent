@@ -21,7 +21,7 @@ use ScContent\Service\Installation\LayoutService,
 class ThemeService extends LayoutService
 {
     /**
-     * @var ScContent\Mapper\Back\SettingsMapper
+     * @var \ScContent\Mapper\Back\SettingsMapper
      */
     protected $settingsMapper;
 
@@ -36,8 +36,7 @@ class ThemeService extends LayoutService
     /**#@-*/
 
     /**
-     * @var string[string] Messages
-     *                     <code>(string) message [(string) message identifier]</code>
+     * @var array Messages
      */
     protected $errorMessages = [
         self::UnknownThemeNotEnabled
@@ -66,7 +65,7 @@ class ThemeService extends LayoutService
     ];
 
     /**
-     * @param ScContent\Mapper\Back\SettingsMapper $mapper
+     * @param  \ScContent\Mapper\Back\SettingsMapper $mapper
      * @return void
      */
     public function setSettingsMapper(SettingsMapper $mapper)
@@ -75,8 +74,8 @@ class ThemeService extends LayoutService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\SettingsMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\SettingsMapper
      */
     public function getSettingsMapper()
     {
@@ -89,7 +88,7 @@ class ThemeService extends LayoutService
     }
 
     /**
-     * @param string $theme Theme name
+     * @param  string $theme Theme name
      * @return boolean
      */
     public function disableTheme($theme)
@@ -123,8 +122,8 @@ class ThemeService extends LayoutService
     }
 
     /**
-     * @param string $themeName
-     * @param string $side
+     * @param  string $themeName
+     * @param  string $side
      * @return boolean
      */
     public function setDefault($themeName, $side)

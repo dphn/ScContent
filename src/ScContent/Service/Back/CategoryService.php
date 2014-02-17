@@ -25,14 +25,14 @@ use ScContent\Entity\Back\Category,
 class CategoryService extends AbstractContentService
 {
     /**
-     * @var ScContent\Entity\Back\Category
+     * @var \ScContent\Entity\Back\Category
      */
     protected $categoryPrototype;
 
     /**
-     * @param integer $parentId
-     * @throws ScContent\Exception\RuntimeException
-     * @throws ScContent\Exception\DebugException
+     * @param  integer $parentId
+     * @throws \ScContent\Exception\RuntimeException
+     * @throws \ScContent\Exception\DebugException
      * @return integer
      */
     public function makeCategory($parentId)
@@ -101,10 +101,10 @@ class CategoryService extends AbstractContentService
     }
 
     /**
-     * @param integer $id
-     * @throws ScContent\Exception\RuntimeException
-     * @throws ScContent\Exception\DebugException
-     * @return ScContent\Entity\Back\Category
+     * @param  integer $id
+     * @throws \ScContent\Exception\RuntimeException
+     * @throws \ScContent\Exception\DebugException
+     * @return \ScContent\Entity\Back\Category
      */
     public function getCategory($id)
     {
@@ -166,8 +166,8 @@ class CategoryService extends AbstractContentService
     }
 
     /**
-     * @throws ScContent\Exception\DomainException
-     * @return ScContent\Entity\Back\Category
+     * @throws \ScContent\Exception\DomainException
+     * @return \ScContent\Entity\Back\Category
      */
     protected function getCategoryPrototype()
     {

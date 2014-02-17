@@ -20,8 +20,8 @@ use ScContent\View\Helper\Localization,
 class LocalizationFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $viewHelperPluginManager
-     * @return ScContent\View\Helper\Localization
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $viewHelperPluginManager
+     * @return \ScContent\View\Helper\Localization
      */
     public function createService(
         ServiceLocatorInterface $viewHelperPluginManager

@@ -20,7 +20,7 @@ use ScContent\Mapper\Exception\UnavailableSourceException,
 class ContentListDeleteMapper extends ContentListOperationAbstract
 {
     /**
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
     {
@@ -28,9 +28,9 @@ class ContentListDeleteMapper extends ContentListOperationAbstract
     }
 
     /**
-     * @param integer $id Content identifier
-     * @param string $tid Transaction identifier
-     * @throws ScContent\Mapper\Exception\UnavailableSourceException
+     * @param  integer $id Content identifier
+     * @param  string $tid Transaction identifier
+     * @throws \ScContent\Mapper\Exception\UnavailableSourceException
      * @return void
      */
     public function delete($id, $tid)

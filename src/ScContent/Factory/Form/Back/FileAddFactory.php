@@ -20,8 +20,8 @@ use ScContent\Form\Back\FileAddForm,
 class FileAddFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $formElementManager
-     * @return ScContent\Form\Back\FileAddForm
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $formElementManager
+     * @return \ScContent\Form\Back\FileAddForm
      */
     public function createService(ServiceLocatorInterface $formElementManager)
     {

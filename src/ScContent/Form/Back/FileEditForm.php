@@ -29,8 +29,8 @@ class FileEditForm extends Form
     }
 
     /**
-     * @param object $object
-     * @param integer $flags
+     * @param  object $object
+     * @param  integer $flags
      * @return FileEditForm
      */
     public function bind($object, $flags = FormInterface::VALUES_NORMALIZED)

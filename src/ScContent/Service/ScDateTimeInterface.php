@@ -15,7 +15,7 @@ namespace ScContent\Service;
 interface ScDateTimeInterface
 {
     /**
-     * @param string $name DateTimeZone identifier
+     * @param  string $name DateTimeZone identifier
      * @return string Old DateTimeZone identifier
      */
     function setTimeZone($name);
@@ -26,26 +26,26 @@ interface ScDateTimeInterface
     function getTimeZone();
 
     /**
-     * @param boolean $new optional If you need to get the updated value of timestamp
-     * @return integer DateTime stamp (in Unix format) for current locale
+     * @param  boolean $new optional If you need to get the updated value of timestamp
+     * @return integer DateTime stamp (in Unix format) for current DateTimeZone
      */
     function stamp($new);
 
     /**
-     * @return integer GMT offset of the current locale
+     * @return integer GMT offset of the current DateTimeZone
      */
     function offset();
 
     /**
-     * @param boolean $new optional If you need to get the updated value of timestamp
-     * @return GMT (in Unix format)
+     * @param  boolean $new optional If you need to get the updated value of timestamp
+     * @return integer GMT (in Unix format)
      */
     function gmStamp($new);
 
     /**
-     * @param integer $stamp optional GMT (in Unix format)
-     * @param boolean $new optional If you need to get the updated value of timestamp
-     * @return DataTime stamp (in Unix format) for current locale
+     * @param  integer $stamp optional GMT (in Unix format)
+     * @param  boolean $new optional If you need to get the updated value of timestamp
+     * @return integer DataTime stamp (in Unix format) for current DateTimeZone
      */
     function fromGm($stamp, $new);
 }

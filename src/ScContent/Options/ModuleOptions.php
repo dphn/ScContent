@@ -84,7 +84,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     protected $entityBackFileClass = 'ScContent\Entity\Back\File';
 
     /**
-     * @param array $db
+     * @param  array $db
      * @return void
      */
     public function setDb($db)
@@ -104,7 +104,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setFrontendThemeName($name)
@@ -121,7 +121,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setBackendThemeName($name)
@@ -138,7 +138,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param array $themes
+     * @param  array $themes
      * @return void
      */
     public function setThemes($themes)
@@ -155,8 +155,8 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $name
-     * @throws ScContent\Exception\DomainException
+     * @param  string $name
+     * @throws \ScContent\Exception\DomainException
      * @return array
      */
     public function getThemeByName($name)
@@ -171,7 +171,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return boolean
      */
     public function themeExists($name)
@@ -180,8 +180,8 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $theme
-     * @param string $name
+     * @param  string $theme
+     * @param  string $name
      * @return boolean
      */
     public function regionExists($theme, $name)
@@ -196,8 +196,8 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $name
-     * @throws ScContent\Exception\DomainException
+     * @param  string $name
+     * @throws \ScContent\Exception\DomainException
      * @return string
      */
     public function getThemeDisplayName($name)
@@ -215,7 +215,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @throws ScContent\Exception\DomainException
+     * @throws \ScContent\Exception\DomainException
      * @return array
      */
     public function getFrontendTheme()
@@ -230,7 +230,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @throws ScContent\Exception\DomainException
+     * @throws \ScContent\Exception\DomainException
      * @return array
      */
     public function getBackendTheme()
@@ -245,7 +245,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param array $widgets
+     * @param  array $widgets
      * @return void
      */
     public function setWidgets($widgets)
@@ -265,8 +265,8 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $name
-     * @throws ScContent\Exception\DomainException
+     * @param  string $name
+     * @throws \ScContent\Exception\DomainException
      * @return array
      */
     public function getWidgetByName($name)
@@ -281,7 +281,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return string
      */
     public function getWidgetDisplayName($name)
@@ -293,7 +293,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return string
      */
     public function widgetExists($name)
@@ -302,7 +302,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $dir
+     * @param  string $dir
      * @return void
      */
     public function setAppAutoloadDir($dir)
@@ -319,7 +319,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $dir
+     * @param  string $dir
      * @return void
      */
     public function setAppPublicDir($dir)
@@ -336,7 +336,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $dir
+     * @param  string $dir
      * @return void
      */
     public function setAppUploadsDir($dir)
@@ -353,7 +353,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $src
+     * @param  string $src
      * @return void
      */
     public function setAppUploadsSrc($src)
@@ -370,7 +370,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $class
+     * @param  string $class
      * @return void
      */
     public function setFileTypesCatalogClass($class)
@@ -387,7 +387,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setEntityBackCategoryClass($name)
@@ -404,7 +404,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setEntityBackArticleClass($name)
@@ -421,7 +421,7 @@ class ModuleOptions extends AbstractOptions implements ModuleOptionsInterface
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setEntityBackFileClass($name)

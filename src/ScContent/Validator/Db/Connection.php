@@ -46,8 +46,8 @@ class Connection extends AbstractValidator
     ];
 
     /**
-     * @param string $value
-     * @param null | array $c context
+     * @param  string $value
+     * @param  null|array $c context
      * @return boolean
      */
     public function isValid($value, $c = null)
@@ -78,7 +78,7 @@ class Connection extends AbstractValidator
     }
 
     /**
-     * @param array $c Context
+     * @param  array $c Context
      * @return boolean
      */
     protected function validateSQLite($c)

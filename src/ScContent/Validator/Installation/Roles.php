@@ -20,12 +20,12 @@ use ScContent\Mapper\RolesMapper,
 class Roles extends AbstractValidator
 {
     /**
-     * @var ScContent\Mapper\Installation\RolesMapper
+     * @var \ScContent\Mapper\Installation\RolesMapper
      */
     protected $rolesMapper;
 
     /**
-     * @param ScContent\Mapper\Installation\Roles
+     * @param  \ScContent\Mapper\Installation\Roles
      * @return void
      */
     public function setMapper(RolesMapper $mapper)
@@ -34,8 +34,8 @@ class Roles extends AbstractValidator
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Installation\RolesMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Installation\RolesMapper
      */
     public function getMapper()
     {
@@ -48,7 +48,7 @@ class Roles extends AbstractValidator
     }
 
     /**
-     * @param array $options
+     * @param  array $options
      * @return boolean
      */
     public function isValid($options)

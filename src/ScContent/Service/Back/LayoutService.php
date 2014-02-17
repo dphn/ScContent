@@ -23,17 +23,17 @@ use ScContent\Service\AbstractService,
 class LayoutService extends AbstractService
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
-     * @var ScContent\Mapper\Back\LayoutServiceMapper
+     * @var \ScContent\Mapper\Back\LayoutServiceMapper
      */
     protected $layoutMapper;
 
     /**
-     * @param ScContent\Options\ModuleOptions $options
+     * @param  \ScContent\Options\ModuleOptions $options
      * @return void
      */
     public function setModuleOptions(ModuleOptions $options)
@@ -42,8 +42,8 @@ class LayoutService extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Options\ModuleOptions
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Options\ModuleOptions
      */
     public function getModuleOptions()
     {
@@ -56,7 +56,7 @@ class LayoutService extends AbstractService
     }
 
     /**
-     * @param ScContent\Mapper\Back\LayoutServiceMapper $mapper
+     * @param  \ScContent\Mapper\Back\LayoutServiceMapper $mapper
      * @return void
      */
     public function setLayoutMapper(LayoutServiceMapper $mapper)
@@ -65,8 +65,8 @@ class LayoutService extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\LayoutServiceMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\LayoutServiceMapper
      */
     public function getLayoutMapper()
     {
@@ -99,10 +99,10 @@ class LayoutService extends AbstractService
     }
 
     /**
-     * @param string $theme Theme name
-     * @param string $name Widget name
-     * @throws ScContent\Exception\RuntimeException
-     * @return ScContent\Entity\Widget
+     * @param  string $theme Theme name
+     * @param  string $name Widget name
+     * @throws \ScContent\Exception\RuntimeException
+     * @return \ScContent\Entity\Widget
      */
     public function addWidget($theme, $name)
     {
@@ -155,7 +155,7 @@ class LayoutService extends AbstractService
     }
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return void
      */
     public function deleteWidget($id)
@@ -189,9 +189,9 @@ class LayoutService extends AbstractService
     }
 
     /**
-     * @param string $name
-     * @throw ScContent\Exception\RuntimeException
-     * @return ScContent\Entity\Back\Theme
+     * @param  string $name
+     * @throws \ScContent\Exception\RuntimeException
+     * @return \ScContent\Entity\Back\Theme
      */
     public function getTheme($name = null)
     {
@@ -222,7 +222,7 @@ class LayoutService extends AbstractService
     }
 
     /**
-     * @param string $theme
+     * @param  string $theme
      * @return boolean
      */
     public function isThemeEnabled($theme)
@@ -233,8 +233,8 @@ class LayoutService extends AbstractService
     }
 
     /**
-     * @param string $theme
-     * @return ScContent\Entity\Back\Regions
+     * @param  string $theme
+     * @return \ScContent\Entity\Back\Regions
      */
     public function getRegions($theme)
     {

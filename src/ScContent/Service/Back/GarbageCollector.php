@@ -29,17 +29,17 @@ class GarbageCollector extends AbstractService
     const FilesPerOperation = 100;
 
     /**
-     * @var ScContent\Service\Dir
+     * @var \ScContent\Service\Dir
      */
     protected $dir;
 
     /**
-     * @var ScContent\Mapper\Back\GarbageMapper
+     * @var \ScContent\Mapper\Back\GarbageMapper
      */
     protected $garbageMapper;
 
     /**
-     * @param ScContent\Service\Dir $dir
+     * @param  \ScContent\Service\Dir $dir
      * @return void
      */
     public function setDir(Dir $dir)
@@ -48,8 +48,8 @@ class GarbageCollector extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Service\Dir
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Service\Dir
      */
     public function getDir()
     {
@@ -62,7 +62,7 @@ class GarbageCollector extends AbstractService
     }
 
     /**
-     * @param ScContent\Mapper\Back\GarbageMapper $mapper
+     * @param  \ScContent\Mapper\Back\GarbageMapper $mapper
      * @return void
      */
     public function setGarbageMapper(GarbageMapper $mapper)
@@ -71,8 +71,8 @@ class GarbageCollector extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\GarbageMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\GarbageMapper
      */
     public function getGarbageMapper()
     {
@@ -85,7 +85,7 @@ class GarbageCollector extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\RuntimeException
+     * @throws \ScContent\Exception\RuntimeException
      * @return boolean
      */
     public function collect()

@@ -27,12 +27,12 @@ use ScContent\Listener\AbstractControllerListener,
 class LayoutMove extends AbstractControllerListener
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
-     * @var ScContent\Mapper\Back\LayoutMoveMapper
+     * @var \ScContent\Mapper\Back\LayoutMoveMapper
      */
     protected $mapper;
 
@@ -64,7 +64,7 @@ class LayoutMove extends AbstractControllerListener
     ];
 
     /**
-     * @param ScContent\Options\ModuleOptions $options
+     * @param  \ScContent\Options\ModuleOptions $options
      * @return void
      */
     public function setModuleOptions(ModuleOptions $options)
@@ -73,8 +73,8 @@ class LayoutMove extends AbstractControllerListener
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Options\ModuleOptions
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Options\ModuleOptions
      */
     public function getModuleOptions()
     {
@@ -87,7 +87,7 @@ class LayoutMove extends AbstractControllerListener
     }
 
     /**
-     * @param ScContent\Mapper\Back\LayoutMoveMapper $mapper
+     * @param  \ScContent\Mapper\Back\LayoutMoveMapper $mapper
      * @return void
      */
     public function setMapper(LayoutMoveMapper $mapper)
@@ -96,8 +96,8 @@ class LayoutMove extends AbstractControllerListener
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\LayoutMoveMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\LayoutMoveMapper
      */
     public function getMapper()
     {
@@ -110,8 +110,8 @@ class LayoutMove extends AbstractControllerListener
     }
 
     /**
-     * @param Zend\EventManager\EventInterface $event
-     * @return null | Zend\Stdlib\Response
+     * @param  \Zend\EventManager\EventInterface $event
+     * @return null|\Zend\Stdlib\Response
      */
     public function process(EventInterface $event)
     {

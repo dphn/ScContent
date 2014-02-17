@@ -25,27 +25,27 @@ use ScContent\Service\AbstractService,
 abstract class AbstractContentService extends AbstractService
 {
     /**
-     * @var Zend\Authentication\AuthenticationService
+     * @var \Zend\Authentication\AuthenticationService
      */
     protected $authentication;
 
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
-     * @var ScContent\Mapper\Back\ContentMapper
+     * @var \ScContent\Mapper\Back\ContentMapper
      */
     protected $contentMapper;
 
     /**
-     * @var ScContent\Service\ScDateTimeInterface
+     * @var \ScContent\Service\ScDateTimeInterface
      */
     protected $datetime;
 
     /**
-     * @param Zend\Authentication\AuthenticationService $authentication
+     * @param  \Zend\Authentication\AuthenticationService $authentication
      * @return void
      */
     public function setAuthenticationService(AuthenticationService $authentication)
@@ -54,8 +54,8 @@ abstract class AbstractContentService extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Authentication\AuthenticationService
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Authentication\AuthenticationService
      */
     public function getAuthenticationService()
     {
@@ -68,7 +68,7 @@ abstract class AbstractContentService extends AbstractService
     }
 
     /**
-     * @param ScContent\Options\ModuleOptions $options
+     * @param  \ScContent\Options\ModuleOptions $options
      * @return void
      */
     public function setModuleOptions(ModuleOptions $options)
@@ -77,8 +77,8 @@ abstract class AbstractContentService extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Options\ModuleOptions
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Options\ModuleOptions
      */
     public function getModuleOptions()
     {
@@ -91,7 +91,7 @@ abstract class AbstractContentService extends AbstractService
     }
 
     /**
-     * @param ScContent\Mapper\Back\ContentMapper $mapper
+     * @param  \ScContent\Mapper\Back\ContentMapper $mapper
      * @return void
      */
     public function setContentMapper(ContentMapper $mapper)
@@ -100,8 +100,8 @@ abstract class AbstractContentService extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\ContentMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\ContentMapper
      */
     public function getContentMapper()
     {
@@ -114,7 +114,7 @@ abstract class AbstractContentService extends AbstractService
     }
 
     /**
-     * @param ScContent\Service\ScDateTimeInterface $datetime
+     * @param  \ScContent\Service\ScDateTimeInterface $datetime
      * @return void
      */
     public function setDateTime(ScDateTimeInterface $datetime)
@@ -123,8 +123,8 @@ abstract class AbstractContentService extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Service\ScDateTimeInterface
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Service\ScDateTimeInterface
      */
     public function getDateTime()
     {
@@ -137,7 +137,7 @@ abstract class AbstractContentService extends AbstractService
     }
 
     /**
-     * @param ScContent\Entity\AbstractContent $content
+     * @param  \ScContent\Entity\AbstractContent $content
      * @return void
      */
     public function saveContent(AbstractContent $content)
@@ -148,8 +148,8 @@ abstract class AbstractContentService extends AbstractService
     }
 
     /**
-     * @param ScContent\Entity\AbstractContent $content
-     * @return ScContent\Entity\AbstractContent
+     * @param  \ScContent\Entity\AbstractContent $content
+     * @return \ScContent\Entity\AbstractContent
      */
     protected function prepareNew(AbstractContent $content)
     {
@@ -164,8 +164,8 @@ abstract class AbstractContentService extends AbstractService
     }
 
     /**
-     * @param ScContent\Entity\AbstractContent $content
-     * @return ScContent\Entity\AbstractContent
+     * @param  \ScContent\Entity\AbstractContent $content
+     * @return \ScContent\Entity\AbstractContent
      */
     protected function prepareOld(AbstractContent $content)
     {

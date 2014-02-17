@@ -15,6 +15,8 @@ use ScContent\Validator\Installation\PhpIni,
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
+ *
+ * @coversDefaultClass \ScContent\Validator\Installation\PhpIni
  */
 class PhpIniTest extends PHPUnit_Framework_TestCase
 {
@@ -45,7 +47,7 @@ class PhpIniTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpIni::getCallback()
+     * @covers ::getCallback
      */
     public function testCallbackGetter()
     {
@@ -56,7 +58,7 @@ class PhpIniTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpIni::getValueFromCallback()
+     * @covers ::getValueFromCallback
      */
     public function testCallbackValueGetter()
     {
@@ -70,7 +72,7 @@ class PhpIniTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpIni::isValid()
+     * @covers ::isValid
      */
     public function testIsValidMissingNameOption()
     {
@@ -87,7 +89,7 @@ class PhpIniTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpIni::isValid()
+     * @covers ::isValid
      */
     public function testIsValidMissingValidationTypeOption()
     {
@@ -104,7 +106,7 @@ class PhpIniTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpIni::isValid()
+     * @covers ::isValid
      */
     public function testIsValidMissingValidationValueOption()
     {
@@ -121,7 +123,7 @@ class PhpIniTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpIni::isValid()
+     * @covers ::isValid
      */
     public function testNotValidExpect()
     {
@@ -142,7 +144,7 @@ class PhpIniTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpIni::isValid()
+     * @covers ::isValid
      */
     public function testValidExpect()
     {
@@ -163,7 +165,7 @@ class PhpIniTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpIni::isValid()
+     * @covers ::isValid
      */
     public function testNotValidGreaterThen()
     {
@@ -184,7 +186,7 @@ class PhpIniTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpIni::isValid()
+     * @covers ::isValid
      */
     public function testNotValidGreaterThenWithNoLimit()
     {
@@ -206,9 +208,9 @@ class PhpIniTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpIni::isValid()
+     * @covers ::isValid
      */
-    public function testValidGreateThen()
+    public function testValidGreaterThen()
     {
         $validator = $this->validator;
 
@@ -227,7 +229,7 @@ class PhpIniTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PhpIni::isValid()
+     * @covers ::isValid
      */
     public function testValidGreateThenWithNoLimit()
     {

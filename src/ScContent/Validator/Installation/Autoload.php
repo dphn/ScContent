@@ -21,12 +21,12 @@ use ScContent\Service\Dir,
 class Autoload extends AbstractValidator
 {
     /**
-     * @var ScContent\Service\Dir
+     * @var \ScContent\Service\Dir
      */
     protected $dir;
 
     /**
-     * @param ScContent\Service\Dir $dir Directory service
+     * @param  \ScContent\Service\Dir $dir Directory service
      * @return void
      */
     public function setDir(Dir $dir)
@@ -35,8 +35,8 @@ class Autoload extends AbstractValidator
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Service\Dir
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Service\Dir
      */
     public function getDir()
     {
@@ -47,8 +47,8 @@ class Autoload extends AbstractValidator
     }
 
     /**
-     * @param array $options
-     * @throws Zend\Validator\Exception\InvalidArgumentException
+     * @param  array $options
+     * @throws \Zend\Validator\Exception\InvalidArgumentException
      * @return boolean
      */
     public function isValid($options)

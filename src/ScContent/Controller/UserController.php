@@ -30,17 +30,17 @@ class UserController extends AbstractActionController
     const LogoutRoute = 'zfcuser/logout';
 
     /**
-     * @var ScContent\Mapper\RolesMapper
+     * @var \ScContent\Mapper\RolesMapper
      */
     protected $rolesMapper;
 
     /**
-     * @var ScContent\Service\IdentityProvider
+     * @var \ScContent\Service\IdentityProvider
      */
     protected $identityProvider;
 
     /**
-     * @return Zend\Stdlib\ResponseInterface
+     * @return \Zend\Stdlib\ResponseInterface
      */
     public function indexAction()
     {
@@ -61,7 +61,7 @@ class UserController extends AbstractActionController
     }
 
     /**
-     * @param ScContent\Mapper\RolesMapper $mapper
+     * @param  \ScContent\Mapper\RolesMapper $mapper
      * @return void
      */
     public function setRolesMapper(RolesMapper $mapper)
@@ -70,7 +70,7 @@ class UserController extends AbstractActionController
     }
 
     /**
-     * @return ScContent\Mapper\RolesMapper
+     * @return \ScContent\Mapper\RolesMapper
      */
     public function getRolesMapper()
     {
@@ -84,7 +84,7 @@ class UserController extends AbstractActionController
     }
 
     /**
-     * @param ScContent\Service\IdentityProvider $provider
+     * @param  \ScContent\Service\IdentityProvider $provider
      * @return void
      */
     public function setIdentityProvider(IdentityProvider $provider)
@@ -93,7 +93,7 @@ class UserController extends AbstractActionController
     }
 
     /**
-     * @return ScContent\Service\IdentityProvider
+     * @return \ScContent\Service\IdentityProvider
      */
     public function getIdentityProvider()
     {

@@ -23,7 +23,7 @@ use ScContent\Module,
 class ConfigListenerAggregate implements ListenerAggregateInterface
 {
     /**
-     * @param Zend\EventManager\EventManagerInterface $events
+     * @param  \Zend\EventManager\EventManagerInterface $events
      * @return void
      */
     public function attach(EventManagerInterface $events)
@@ -41,7 +41,7 @@ class ConfigListenerAggregate implements ListenerAggregateInterface
     }
 
     /**
-     * @param Zend\EventManager\EventManagerInterface $events
+     * @param  \Zend\EventManager\EventManagerInterface $events
      * @return void
      */
     public function detach(EventManagerInterface $events)
@@ -54,7 +54,7 @@ class ConfigListenerAggregate implements ListenerAggregateInterface
     }
 
     /**
-     * @param Zend\ModuleManager\ModuleEvent $event
+     * @param  \Zend\ModuleManager\ModuleEvent $event
      * @return void
      */
     public function mergeSettings(ModuleEvent $event)
@@ -81,7 +81,7 @@ class ConfigListenerAggregate implements ListenerAggregateInterface
     }
 
     /**
-     * @param Zend\ModuleManager\ModuleEvent $event
+     * @param  \Zend\ModuleManager\ModuleEvent $event
      * @return void
      */
     public function adjustZfcUser(ModuleEvent $event)

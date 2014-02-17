@@ -20,8 +20,8 @@ use ScContent\Validator\Installation\Layout,
 class LayoutFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
-     * @return ScContent\Validator\Installation\Layout
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
+     * @return \ScContent\Validator\Installation\Layout
      */
     public function createService(
         ServiceLocatorInterface $validatorPluginManager

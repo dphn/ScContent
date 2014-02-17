@@ -20,8 +20,8 @@ use ScContent\View\Helper\ContentFormat,
 class ContentFormatFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $viewHelperPluginManager
-     * @return ScContent\View\Helper\ContentFormat
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $viewHelperPluginManager
+     * @return \ScContent\View\Helper\ContentFormat
      */
     public function createService(
         ServiceLocatorInterface $viewHelperPluginManager

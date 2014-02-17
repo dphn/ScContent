@@ -30,7 +30,7 @@ chdir(__DIR__);
 class Bootstrap
 {
     /**
-     * @var Zend\ServiceManager\ServiceManager
+     * @var \Zend\ServiceManager\ServiceManager
      */
     protected static $serviceManager;
 
@@ -89,7 +89,7 @@ class Bootstrap
     }
 
     /**
-     * @return Zend\ServiceManager\ServiceManager
+     * @return \Zend\ServiceManager\ServiceManager
      */
     public static function getServiceManager()
     {
@@ -105,7 +105,7 @@ class Bootstrap
     }
 
     /**
-     * @throws RuntimeException
+     * @throws \RuntimeException
      * @return void
      */
     protected static function initAutoloader()

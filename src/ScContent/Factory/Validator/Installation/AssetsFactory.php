@@ -20,8 +20,8 @@ use ScContent\Validator\Installation\Assets,
 class AssetsFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
-     * @return ScContent\Validator\Installation\Assets
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
+     * @return \ScContent\Validator\Installation\Assets
      */
     public function createService(
         ServiceLocatorInterface $validatorPluginManager

@@ -20,8 +20,8 @@ use ScContent\Mapper\RegistrationMapper,
 class RegistrationMapperFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Mapper\RegistrationMapper
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Mapper\RegistrationMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

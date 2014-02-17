@@ -22,19 +22,19 @@ use ScContent\Controller\AbstractBack,
 class CategoryController extends AbstractBack
 {
     /**
-     * @var ScContent\Service\Back\CategoryService
+     * @var \ScContent\Service\Back\CategoryService
      */
     protected $categoryService;
 
     /**
-     * @var ScContent\Form\Back\CategoryForm
+     * @var \ScContent\Form\Back\CategoryForm
      */
     protected $categoryForm;
 
     /**
      * Add Category.
      *
-     * @return Zend\Stdlib\ResponseInterface
+     * @return \Zend\Stdlib\ResponseInterface
      */
     public function addAction()
     {
@@ -64,7 +64,7 @@ class CategoryController extends AbstractBack
     /**
      * Edit Category.
      *
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function editAction()
     {
@@ -107,7 +107,7 @@ class CategoryController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Service\Back\CategoryService $service
+     * @param  \ScContent\Service\Back\CategoryService $service
      * @return void
      */
     public function setCategoryService(CategoryService $service)
@@ -116,7 +116,7 @@ class CategoryController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Service\Back\CategoryService
+     * @return \ScContent\Service\Back\CategoryService
      */
     public function getCategoryService()
     {
@@ -130,7 +130,7 @@ class CategoryController extends AbstractBack
     }
 
     /**
-     * @param ScContent\Form\Back\CategoryForm $form
+     * @param  \ScContent\Form\Back\CategoryForm $form
      * @return void
      */
     public function setCategoryForm(CategoryForm $form)
@@ -139,7 +139,7 @@ class CategoryController extends AbstractBack
     }
 
     /**
-     * @return ScContent\Form\Back\CategoryForm
+     * @return \ScContent\Form\Back\CategoryForm
      */
     public function getCategoryForm()
     {

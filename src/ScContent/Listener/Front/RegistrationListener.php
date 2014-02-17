@@ -23,7 +23,7 @@ use ScContent\Mapper\RegistrationMapper,
 class RegistrationListener
 {
     /**
-     * @var ScContent\Mapper\Front\RegistrationMapper
+     * @var \ScContent\Mapper\Front\RegistrationMapper
      */
     protected $registrationMapper;
 
@@ -33,7 +33,7 @@ class RegistrationListener
     protected $registrationRole = 'user';
 
     /**
-     * @param ScContent\Mapper\RegistrationMapper $mapper
+     * @param  \ScContent\Mapper\RegistrationMapper $mapper
      * @return void
      */
     public function setMapper($mapper)
@@ -42,8 +42,8 @@ class RegistrationListener
     }
 
     /**
-     * @throw ScContent\Exception\IoCException
-     * @return ScContent\Mapper\RegistrationMapper
+     * @throw  \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\RegistrationMapper
      */
     public function getMapper()
     {
@@ -72,7 +72,7 @@ class RegistrationListener
     }
 
     /**
-     * @throw ScContent\Exception\InvalidArgumentException
+     * @throw  \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function update($event)

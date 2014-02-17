@@ -34,7 +34,7 @@ class ContentListClean extends ContentListAbstractListener
     ];
 
     /**
-     * @param ScContent\Mapper\Back\ContentListCleanMapper $mapper
+     * @param \ScContent\Mapper\Back\ContentListCleanMapper $mapper
      */
     public function setMapper(ContentListCleanMapper $mapper)
     {
@@ -44,8 +44,8 @@ class ContentListClean extends ContentListAbstractListener
     /**
      * Emptying the trash
      *
-     * @param Zend\EventManager\EventInterface $event
-     * @return null | Zend\Http\Response
+     * @param  \Zend\EventManager\EventInterface $event
+     * @return null|\Zend\Http\Response
      */
     public function process(EventInterface $event)
     {

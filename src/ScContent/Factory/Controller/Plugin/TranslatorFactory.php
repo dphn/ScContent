@@ -20,8 +20,8 @@ use ScContent\Controller\Plugin\TranslatorProxy,
 class TranslatorFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $controllerPluginManager
-     * @return ScContent\Controller\Plugin\TranslatorProxy
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $controllerPluginManager
+     * @return \ScContent\Controller\Plugin\TranslatorProxy
      */
     public function createService(
         ServiceLocatorInterface $controllerPluginManager

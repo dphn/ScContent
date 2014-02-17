@@ -19,8 +19,8 @@ use ScContent\Exception\DomainException,
 class AbstractEntity implements EntityInterface
 {
     /**
-     * @param array | Traversable $data
-     * @throws ScContent\Exception\DomainException
+     * @param  array|\Traversable $data
+     * @throws \ScContent\Exception\DomainException
      * @return AbstractEntity
      */
     public function exchangeArray($data)

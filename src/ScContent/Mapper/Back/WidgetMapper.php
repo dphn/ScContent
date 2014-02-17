@@ -33,7 +33,7 @@ class WidgetMapper extends AbstractDbMapper
     ];
 
     /**
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
     {
@@ -41,8 +41,8 @@ class WidgetMapper extends AbstractDbMapper
     }
 
     /**
-     * @param ScContent\Entity\WidgetInterface $widget
-     * @throws ScContent\Mapper\Exception\UnavailableSourceException
+     * @param  \ScContent\Entity\WidgetInterface $widget
+     * @throws \ScContent\Mapper\Exception\UnavailableSourceException
      * @return void
      */
     public function find(WidgetInterface $widget)
@@ -64,7 +64,7 @@ class WidgetMapper extends AbstractDbMapper
     }
 
     /**
-     * @param ScContent\Entity\WidgetInterface $widget
+     * @param  \ScContent\Entity\WidgetInterface $widget
      * @return void
      */
     public function save(WidgetInterface $widget)

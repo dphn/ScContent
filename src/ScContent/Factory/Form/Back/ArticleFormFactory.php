@@ -20,8 +20,8 @@ use ScContent\Form\Back\ArticleForm,
 class ArticleFormFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $formElementManager
-     * @return ScContent\Form\Back\ArticleForm
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $formElementManager
+     * @return \ScContent\Form\Back\ArticleForm
      */
     public function createService(ServiceLocatorInterface $formElementManager)
     {

@@ -68,8 +68,10 @@ class LanguageDirection extends AbstractHelper
         // Yiddish                | yi        | yid
         'yi',
     ];
+
     /**
-     * @param string $locale
+     * @param  string $locale
+     * @return string
      */
     public function __invoke($locale = null)
     {

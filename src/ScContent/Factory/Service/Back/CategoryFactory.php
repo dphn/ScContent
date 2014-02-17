@@ -20,8 +20,8 @@ use ScContent\Service\Back\CategoryService,
 class CategoryFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Back\CategoryService
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Back\CategoryService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

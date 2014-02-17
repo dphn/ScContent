@@ -20,8 +20,8 @@ use ScContent\Listener\Theme\CommonStrategy,
 class CommonStrategyFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Theme\CommonStrategy
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Theme\CommonStrategy
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

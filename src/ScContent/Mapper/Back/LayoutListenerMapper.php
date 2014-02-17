@@ -18,9 +18,9 @@ use ScContent\Mapper\AbstractLayoutMapper,
 class LayoutListenerMapper extends AbstractLayoutMapper
 {
     /**
-     * @param integer $contentId Content identifier
-     * @param boolean $trash Content trash flag
-     * @param string $tid Transaction identifier
+     * @param  integer $contentId Content identifier
+     * @param  boolean $trash Content trash flag
+     * @param  string $tid Transaction identifier
      * @return void
      */
     public function unregisterContent($contentId, $trash, $tid)
@@ -72,7 +72,7 @@ class LayoutListenerMapper extends AbstractLayoutMapper
     }
 
     /**
-     * @param string $tid Transaction identifier
+     * @param  string $tid Transaction identifier
      * @return void
      */
     public function unregisterCleanedContent($tid)

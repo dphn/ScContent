@@ -21,8 +21,8 @@ use ScContent\Options\InstallationOptions,
 class InstallationFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Options\InstallationOptions
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Options\InstallationOptions
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

@@ -27,7 +27,7 @@ class Credentials extends AbstractEntity
     protected $password = '';
 
     /**
-     * @param string $login
+     * @param  string $name
      * @return void
      */
     public function setUsername($name)
@@ -44,7 +44,7 @@ class Credentials extends AbstractEntity
     }
 
     /**
-     * @param string $password
+     * @param  string $password
      * @return void
      */
     public function setPassword($password)

@@ -20,8 +20,8 @@ use ScContent\Listener\Back\LayoutMove,
 class LayoutMoveFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Back\LayoutMove
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Back\LayoutMove
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

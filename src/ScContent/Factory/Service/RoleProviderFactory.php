@@ -20,8 +20,8 @@ use ScContent\Service\RoleProvider,
 class RoleProviderFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\RoleProvider
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\RoleProvider
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

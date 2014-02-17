@@ -24,12 +24,13 @@ use ScContent\Controller\Back\ArticleController,
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
+ *
+ * @coversDefaultClass \ScContent\Controller\Back\ArticleController
  */
 class ArticleControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $controller;
     protected $routeMatch;
-    protected $response;
     protected $request;
     protected $event;
 
@@ -87,7 +88,7 @@ class ArticleControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ArticleController::add
+     * @covers ::addAction
      */
     public function testAddActionWithoutParentIdentifier()
     {
@@ -100,7 +101,7 @@ class ArticleControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ArticleController::add
+     * @covers ::addAction
      */
     public function testAddActionOnCreationError()
     {
@@ -120,7 +121,7 @@ class ArticleControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ArticleController::add
+     * @covers ::addAction
      */
     public function testAddActionSuccess()
     {
@@ -138,7 +139,7 @@ class ArticleControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ArticleController::edit
+     * @covers ::editAction
      */
     public function testEditActionWithoutArticleIdentifier()
     {
@@ -151,7 +152,7 @@ class ArticleControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ArticleController::edit
+     * @covers ::editAction
      */
     public function testEditActionWithBadArticleIdentifier()
     {
@@ -171,7 +172,7 @@ class ArticleControllerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ArticleController::edit
+     * @covers ::editAction
      */
     public function testEditActionSuccess()
     {

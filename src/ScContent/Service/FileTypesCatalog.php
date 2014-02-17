@@ -459,8 +459,8 @@ class FileTypesCatalog implements FileTypesCatalogInterface
      *
      * @api
      *
-     * @param string $spec
-     * $param integer | array $pattern
+     * @param  string $spec
+     * $param  integer|array $pattern
      * @return boolean
      */
     public function isAllowed($spec, $pattern)
@@ -482,8 +482,8 @@ class FileTypesCatalog implements FileTypesCatalogInterface
     /**
      * Get feature (pattern) by specification
      *
-     * @param string $spec
-     * @return null | integer
+     * @param  string $spec
+     * @return null|integer
      */
     public function getFeature($spec)
     {
@@ -507,7 +507,7 @@ class FileTypesCatalog implements FileTypesCatalogInterface
      *
      * @api
      *
-     * @param integer | array $pattern
+     * @param  integer|array $pattern
      * @return array
      */
     public function findExtensionByType($pattern)
@@ -530,7 +530,7 @@ class FileTypesCatalog implements FileTypesCatalogInterface
      *
      * @api
      *
-     * @param integer | array $pattern
+     * @param  integer|array $pattern
      * @return array
      */
     public function findMimeByType($pattern)
@@ -542,8 +542,8 @@ class FileTypesCatalog implements FileTypesCatalogInterface
      * Each new term does not extend the search results,
      * but makes them more specific.
      *
-     * @param integer | array $pattern
-     * @param integer $part <code>0</code> for extension, <code>1</code> for mime
+     * @param  integer|array $pattern
+     * @param  integer $part <code>0</code> for extension, <code>1</code> for mime
      * @return array
      */
     protected function findByType($pattern, $part)

@@ -33,12 +33,12 @@ class ThumbnailListener extends AbstractListener
     const Postfix = 'thumbnail';
 
     /**
-     * @var ScContent\Service\FileTypesCatalogInterface
+     * @var \ScContent\Service\FileTypesCatalogInterface
      */
     protected $catalog;
 
     /**
-     * @param ScContent\Service\FileTypesCatalogInterface $catalog
+     * @param  \ScContent\Service\FileTypesCatalogInterface $catalog
      * @return void
      */
     public function setCatalog(CatalogInterface $catalog)
@@ -47,8 +47,8 @@ class ThumbnailListener extends AbstractListener
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Service\FileTypesCatalogInterface
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Service\FileTypesCatalogInterface
      */
     public function getCatalog()
     {
@@ -61,9 +61,9 @@ class ThumbnailListener extends AbstractListener
     }
 
     /**
-     * @param Zend\EventManager\EventInterface $event
-     * @throws ScContent\Exception\InvalidArgumentException
-     * @throws ScContent\Exception\RuntimeException
+     * @param  \Zend\EventManager\EventInterface $event
+     * @throws \ScContent\Exception\InvalidArgumentException
+     * @throws \ScContent\Exception\RuntimeException
      * @return void
      */
     public function generate(EventInterface $event)
@@ -168,8 +168,8 @@ class ThumbnailListener extends AbstractListener
     }
 
     /**
-     * @param Zend\EventManager\EventInterface $event
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  \Zend\EventManager\EventInterface $event
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function remove(EventInterface $event)

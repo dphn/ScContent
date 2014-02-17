@@ -22,12 +22,12 @@ use ScContent\Listener\AbstractListener,
 class Garbage extends AbstractListener
 {
     /**
-     * @var ScContent\Mapper\Back\GarbageMapper
+     * @var \ScContent\Mapper\Back\GarbageMapper
      */
     protected $garbageMapper;
 
     /**
-     * @param ScContent\Mapper\Back\GarbageMapper $mapper
+     * @param  \ScContent\Mapper\Back\GarbageMapper $mapper
      * @return void
      */
     public function setGarbageMapper(GarbageMapper $mapper)
@@ -36,8 +36,8 @@ class Garbage extends AbstractListener
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\GarbageMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\GarbageMapper
      */
     public function getGarbageMapper()
     {
@@ -50,8 +50,8 @@ class Garbage extends AbstractListener
     }
 
     /**
-     * @param Zend\EventManager\EventInterface $event
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  \Zend\EventManager\EventInterface $event
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function beforeDeleteContent(EventInterface $event)
@@ -80,8 +80,8 @@ class Garbage extends AbstractListener
     }
 
     /**
-     * @param Zend\EventManager\EventInterface $event
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  \Zend\EventManager\EventInterface $event
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function beforeCleaningTrash(EventInterface $event)

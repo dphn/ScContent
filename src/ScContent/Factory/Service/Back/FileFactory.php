@@ -20,8 +20,8 @@ use ScContent\Service\Back\FileService,
 class FileFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Back\FileService
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Back\FileService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

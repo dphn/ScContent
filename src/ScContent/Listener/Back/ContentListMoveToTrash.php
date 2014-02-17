@@ -46,7 +46,7 @@ class ContentListMoveToTrash extends ContentListAbstractListener
 
 
     /**
-     * @param ScContent\Mapper\Back\ContentListToggleTrashMapper
+     * @param \ScContent\Mapper\Back\ContentListToggleTrashMapper
      */
     public function setMapper(ContentListToggleTrashMapper $mapper)
     {
@@ -56,8 +56,8 @@ class ContentListMoveToTrash extends ContentListAbstractListener
     /**
      * Moving subtrees in the trash
      *
-     * @param Zend\EventManager\EventInterface $event
-     * @return null | Zend\Http\Response
+     * @param  \Zend\EventManager\EventInterface $event
+     * @return null|\Zend\Http\Response
      */
     public function process(EventInterface $event)
     {

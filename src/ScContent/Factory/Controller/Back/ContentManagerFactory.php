@@ -20,8 +20,8 @@ use ScContent\Controller\Back\ContentManagerController,
 class ContentManagerFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $controllerManager
-     * @return ScContent\Controller\Back\ContentManager
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $controllerManager
+     * @return \ScContent\Controller\Back\ContentManager
      */
     public function createService(ServiceLocatorInterface $controllerManager)
     {

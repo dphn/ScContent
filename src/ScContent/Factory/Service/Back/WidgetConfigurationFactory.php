@@ -20,8 +20,8 @@ use ScContent\Service\Back\WidgetConfigurationService,
 class WidgetConfigurationFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Back\WidgetConfigurationService
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Back\WidgetConfigurationService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

@@ -23,8 +23,8 @@ class LayoutMapper extends AbstractLayoutMapper
      * Returns the names of the widgets from a predefined list,
      * that are registered in the database.
      *
-     * @param string $theme
-     * @param string $names
+     * @param  string $theme
+     * @param  string $names
      * @return array
      */
     public function findExistingWidgets($theme, $names)
@@ -47,7 +47,7 @@ class LayoutMapper extends AbstractLayoutMapper
     }
 
     /**
-     * @param ScContent\Entity\WidgetInterface $entity
+     * @param  \ScContent\Entity\WidgetInterface $entity
      * @return void
      */
     public function install(WidgetInterface $entity)

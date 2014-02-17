@@ -19,12 +19,14 @@ use Zend\Db\Adapter\AdapterInterface,
 class ArticleForm extends Form
 {
     /**
-     * @var Zend\Db\Adapter\AdapterInterface
+     * @var \Zend\Db\Adapter\AdapterInterface
      */
     protected $adapter;
 
     /**
      * Constructor
+     *
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
     {
@@ -38,7 +40,7 @@ class ArticleForm extends Form
     }
 
     /**
-     * @param object $object
+     * @param  object $object
      * @param  int $flags
      * @return ArticleForm
      */

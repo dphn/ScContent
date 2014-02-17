@@ -18,7 +18,7 @@ use ScContent\Factory\Migration\MapperBuilder,
 abstract class AbstractMigrationSchema implements SchemaInterface
 {
     /**
-     * @var ScContent\Factory\Migration\MapperBuilder
+     * @var \ScContent\Factory\Migration\MapperBuilder
      */
     protected $builder;
 
@@ -33,7 +33,7 @@ abstract class AbstractMigrationSchema implements SchemaInterface
     abstract function down();
 
     /**
-     * @param ScContent\Factory\Migration\MapperBuilder $builder
+     * @param \ScContent\Factory\Migration\MapperBuilder $builder
      */
     public function setBuilder(MapperBuilder $builder)
     {
@@ -41,8 +41,8 @@ abstract class AbstractMigrationSchema implements SchemaInterface
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Factory\Migration\MapperBuilder
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Factory\Migration\MapperBuilder
      */
     public function getBuilder()
     {
@@ -55,8 +55,8 @@ abstract class AbstractMigrationSchema implements SchemaInterface
     }
 
     /**
-     * @param string $name
-     * @return ScContent\Mapper\AbstractMigrationMapper
+     * @param  string $name
+     * @return \ScContent\Mapper\AbstractMigrationMapper
      */
     protected function buildMapper($name)
     {

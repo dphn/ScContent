@@ -21,7 +21,7 @@ use ScContent\Mapper\AbstractContentMapper,
 class ContentMapper extends AbstractContentMapper
 {
     /**
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
     {
@@ -29,9 +29,9 @@ class ContentMapper extends AbstractContentMapper
     }
 
     /**
-     * @param ScContent\Entity\Front\Content $content
-     * @param boolean $allowPreview
-     * @throws ScContent\Mapper\Exception\UnavailableSourceException
+     * @param  \ScContent\Entity\Front\Content $content
+     * @param  boolean $allowPreview
+     * @throws \ScContent\Mapper\Exception\UnavailableSourceException
      * @return void
      */
     public function findByName(Content $content, $allowPreview)
@@ -61,7 +61,7 @@ class ContentMapper extends AbstractContentMapper
     }
 
     /**
-     * @param ScContent\Entity\Front\Content $content
+     * @param  \ScContent\Entity\Front\Content $content
      * @return void
      */
     public function findHomePage(Content $content)

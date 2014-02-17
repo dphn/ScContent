@@ -15,7 +15,7 @@ namespace ScContent\Entity;
 interface EntityInterface
 {
     /**
-     * @param array | Traversable $data
+     * @param  array|Traversable $data
      * @return EntityInterface
      */
     function exchangeArray($data);

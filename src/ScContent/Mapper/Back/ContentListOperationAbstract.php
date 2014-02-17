@@ -17,8 +17,8 @@ use ScContent\Mapper\AbstractContentMapper;
 abstract class ContentListOperationAbstract extends AbstractContentMapper
 {
     /**
-     * @param array $meta
-     * @return null | array
+     * @param  array $meta
+     * @return null|array
      */
     protected function findParent($meta)
     {

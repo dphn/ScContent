@@ -22,10 +22,10 @@ use ScContent\Mapper\Exception\RuntimeException,
 class RegistrationMapper extends RolesMapper
 {
     /**
-     * @param integer $userId
-     * @param string $role
-     * @throws ScContent\Mapper\Exception\DomainException
-     * @throws ScContent\Mapper\Exception\RuntimeException
+     * @param  integer $userId
+     * @param  string $role
+     * @throws \ScContent\Mapper\Exception\DomainException
+     * @throws \ScContent\Mapper\Exception\RuntimeException
      * @return void
      */
     public function registerUser($userId, $role)
@@ -68,7 +68,7 @@ class RegistrationMapper extends RolesMapper
     }
 
     /**
-     * @param integer $userId
+     * @param  integer $userId
      * @return void
      */
     public function removeUser($userId)

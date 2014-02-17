@@ -22,12 +22,12 @@ use ScContent\Service\Dir,
 class CredentialsMapper
 {
     /**
-     * @var ScContent\Service\Dir
+     * @var \ScContent\Service\Dir
      */
     protected $dir;
 
     /**
-     * @var Zend\Config\Writer\PhpArray
+     * @var \Zend\Config\Writer\PhpArray
      */
     protected $writer;
 
@@ -37,7 +37,7 @@ class CredentialsMapper
     protected $path = 'settings/installation.passwd.php';
 
     /**
-     * @param ScContent\Service\Dir $dir
+     * @param  \ScContent\Service\Dir $dir
      * @return void
      */
     public function setDir(Dir $dir)
@@ -46,8 +46,8 @@ class CredentialsMapper
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Service\Dir
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Service\Dir
      */
     public function getDir()
     {
@@ -60,7 +60,7 @@ class CredentialsMapper
     }
 
     /**
-     * @param Zend\Config\Writer\PhpArray $writer
+     * @param \Zend\Config\Writer\PhpArray $writer
      */
     public function setWriter(PhpArray $writer)
     {
@@ -68,7 +68,7 @@ class CredentialsMapper
     }
 
     /**
-     * @return Zend\Config\Writer\PhpArray
+     * @return \Zend\Config\Writer\PhpArray
      */
     public function getWriter()
     {
@@ -79,7 +79,7 @@ class CredentialsMapper
     }
 
     /**
-     * @param string $path
+     * @param  string $path
      * @return void
      */
     public function setFilePath($path)
@@ -96,7 +96,7 @@ class CredentialsMapper
     }
 
     /**
-     * @return string[string]
+     * @return array
      */
     public function findCredentials()
     {
@@ -115,7 +115,7 @@ class CredentialsMapper
     }
 
     /**
-     * @param ScContent\Entity\Installation\Credentials $credentials
+     * @param  \ScContent\Entity\Installation\Credentials $credentials
      * @return void
      */
     public function save(Credentials $credentials)

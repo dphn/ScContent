@@ -20,8 +20,8 @@ use ScContent\Service\Installation\AuthenticationAdapter,
 class AuthAdapterFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return Zend\Authentication\AuthenticationAdapter
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \Zend\Authentication\AuthenticationAdapter
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

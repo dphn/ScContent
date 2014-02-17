@@ -27,15 +27,15 @@ class ContentListMapper extends AbstractContentMapper implements
     ContentListMapperInterface
 {
     /**
-     * @var ScContent\Service\Back\ContentListOptionsProvider
+     * @var \ScContent\Service\Back\ContentListOptionsProvider
      */
     protected $optionsProvider;
 
     /**
      * Constructor
      *
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
-     * @param ScContent\Service\Back\ContentListOptionsProvider $options
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \ScContent\Service\Back\ContentListOptionsProvider $options
      */
     public function __construct(
         AdapterInterface $adapter,
@@ -46,8 +46,8 @@ class ContentListMapper extends AbstractContentMapper implements
     }
 
     /**
-     * @param string $optionsIdentifier
-     * @return ScContent\Entity\Back\ContentList
+     * @param  string $optionsIdentifier
+     * @return \ScContent\Entity\Back\ContentList
      */
     public function getContent($optionsIdentifier)
     {
@@ -86,8 +86,8 @@ class ContentListMapper extends AbstractContentMapper implements
     }
 
     /**
-     * @param array $parent
-     * @param string $filter
+     * @param  array $parent
+     * @param  string $filter
      * @return integer
      */
     protected function getContentCount($parent, $filter)
@@ -118,9 +118,9 @@ class ContentListMapper extends AbstractContentMapper implements
     }
 
     /**
-     * @param ScContent\Entity\Back\ContentList $content
-     * @param integer $offset
-     * @param string $optionsIdentifier
+     * @param  \ScContent\Entity\Back\ContentList $content
+     * @param  integer $offset
+     * @param  string $optionsIdentifier
      * @return void
      */
     protected function getContentItems(ContentListEntity $content, $offset, $optionsIdentifier)

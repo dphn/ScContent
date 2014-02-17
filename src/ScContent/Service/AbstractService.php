@@ -21,7 +21,7 @@ abstract class AbstractService extends EventProvider implements
     TranslatorAwareInterface
 {
     /**
-     * @var Zend\I18n\Translator\Translator
+     * @var \Zend\I18n\Translator\Translator
      */
     protected $translator;
 
@@ -36,9 +36,9 @@ abstract class AbstractService extends EventProvider implements
     protected $translatorEnabled = true;
 
     /**
-     * @param Zend\I18n\Translator\Translator $translator
-     * @param string $textDomain
-     * @return Zend\I18n\Translator\TranslatorAwareInterface
+     * @param  \Zend\I18n\Translator\Translator $translator
+     * @param  string $textDomain
+     * @return \Zend\I18n\Translator\TranslatorAwareInterface
      */
     public function setTranslator(
         Translator $translator = null,
@@ -54,8 +54,8 @@ abstract class AbstractService extends EventProvider implements
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\I18n\Translator\Translator
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\I18n\Translator\Translator
      */
     public function getTranslator()
     {
@@ -74,8 +74,8 @@ abstract class AbstractService extends EventProvider implements
     }
 
     /**
-     * @param boolean $enabled
-     * @return Zend\I18n\Translator\TranslatorAwareInterface
+     * @param  boolean $enabled
+     * @return \Zend\I18n\Translator\TranslatorAwareInterface
      */
     public function setTranslatorEnabled($enabled = true)
     {
@@ -92,8 +92,8 @@ abstract class AbstractService extends EventProvider implements
     }
 
     /**
-     * @param string $textDomain
-     * @return Zend\I18n\Translator\TranslatorAwareInterface
+     * @param  string $textDomain
+     * @return \Zend\I18n\Translator\TranslatorAwareInterface
      */
     public function setTranslatorTextDomain($textDomain = 'default')
     {

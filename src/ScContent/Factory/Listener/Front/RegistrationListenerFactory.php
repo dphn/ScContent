@@ -20,8 +20,8 @@ use ScContent\Listener\Front\RegistrationListener,
 class RegistrationListenerFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Front\RegistrationListener
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Front\RegistrationListener
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

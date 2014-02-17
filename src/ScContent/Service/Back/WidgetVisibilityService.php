@@ -27,42 +27,42 @@ use ScContent\Mapper\Back\WidgetVisibilityListMapper    as ListMapper,
 class WidgetVisibilityService
 {
     /**
-     * @var Zend\Mvc\Router\Http\TreeRouteStack
+     * @var \Zend\Mvc\Router\Http\TreeRouteStack
      */
     protected $router;
 
     /**
-     * @var Zend\Http\Request
+     * @var \Zend\Http\Request
      */
     protected $request;
 
     /**
-     * @var ScContent\Mapper\Back\WidgetVisibilityListMapper
+     * @var \ScContent\Mapper\Back\WidgetVisibilityListMapper
      */
     protected $listMapper;
 
     /**
-     * @var ScContent\Mapper\Back\WidgetVisibilitySearchMapper
+     * @var \ScContent\Mapper\Back\WidgetVisibilitySearchMapper
      */
     protected $searchMapper;
 
     /**
-     * @var ScContent\Mapper\Back\WidgetVisibilityOptionsMapper
+     * @var \ScContent\Mapper\Back\WidgetVisibilityOptionsMapper
      */
     protected $optionsMapper;
 
     /**
-     * @var ScContent\Options\Back\WidgetVisibilityOptions
+     * @var \ScContent\Options\Back\WidgetVisibilityOptions
      */
     protected $options;
 
     /**
-     * @var null | array
+     * @var null|array
      */
     protected $query;
 
     /**
-     * @param Zend\Mvc\Router\Http\TreeRouteStack $router
+     * @param  \Zend\Mvc\Router\Http\TreeRouteStack $router
      * @return void
      */
     public function setRouter(Router $router)
@@ -71,8 +71,8 @@ class WidgetVisibilityService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Mvc\Router\Http\TreeRouteStack
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Mvc\Router\Http\TreeRouteStack
      */
     public function getRouter()
     {
@@ -85,7 +85,7 @@ class WidgetVisibilityService
     }
 
     /**
-     * @param Zend\Http\Request $request
+     * @param  \Zend\Http\Request $request
      * @return void
      */
     public function setRequest(Request $request)
@@ -94,8 +94,8 @@ class WidgetVisibilityService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Http\Request
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Http\Request
      */
     public function getRequest()
     {
@@ -108,7 +108,7 @@ class WidgetVisibilityService
     }
 
     /**
-     * @param ScContent\Mapper\Back\WidgetVisibilityListMapper $mapper
+     * @param  \ScContent\Mapper\Back\WidgetVisibilityListMapper $mapper
      * @return void
      */
     public function setListMapper(ListMapper $mapper)
@@ -117,8 +117,8 @@ class WidgetVisibilityService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\WidgetVisibilityListMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\WidgetVisibilityListMapper
      */
     public function getListMapper()
     {
@@ -131,7 +131,7 @@ class WidgetVisibilityService
     }
 
     /**
-     * @param ScContent\Mapper\Back\WidgetVisibilitySearchMapper $mapper
+     * @param  \ScContent\Mapper\Back\WidgetVisibilitySearchMapper $mapper
      * @return void
      */
     public function setSearchMapper(SearchMapper $mapper)
@@ -140,8 +140,8 @@ class WidgetVisibilityService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\WidgetVisibilitySearchMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\WidgetVisibilitySearchMapper
      */
     public function getSearchMapper()
     {
@@ -154,7 +154,7 @@ class WidgetVisibilityService
     }
 
     /**
-     * @param ScContent\Mapper\Back\WidgetVisibilityOptionsMapper $mapper
+     * @param  \ScContent\Mapper\Back\WidgetVisibilityOptionsMapper $mapper
      * @return void
      */
     public function setOptionsMapper(OptionsMapper $mapper)
@@ -163,8 +163,8 @@ class WidgetVisibilityService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\WidgetVisibilityOptionsMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\WidgetVisibilityOptionsMapper
      */
     public function getOptionsMapper()
     {
@@ -177,8 +177,8 @@ class WidgetVisibilityService
     }
 
     /**
-     * @param array $query
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  array $query
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function setQuery($query)
@@ -215,7 +215,7 @@ class WidgetVisibilityService
     }
 
     /**
-     * @return ScContent\Options\Back\WidgetVisibilityOptions
+     * @return \ScContent\Options\Back\WidgetVisibilityOptions
      */
     public function getOptions()
     {
@@ -238,7 +238,7 @@ class WidgetVisibilityService
     }
 
     /**
-     * @return ScContent\Entity\Back\WidgetVisibilityList
+     * @return \ScContent\Entity\Back\WidgetVisibilityList
      */
     public function getContentList()
     {

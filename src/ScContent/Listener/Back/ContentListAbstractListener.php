@@ -21,17 +21,17 @@ use ScContent\Listener\AbstractControllerListener,
 abstract class ContentListAbstractListener extends AbstractControllerListener
 {
     /**
-     * @var ScContent\Service\Back\ContentListOptionsProvider
+     * @var \ScContent\Service\Back\ContentListOptionsProvider
      */
     protected $optionsProvider;
 
     /**
-     * @var ScContent\Mapper\Back\ContentListOperationAbstract
+     * @var \ScContent\Mapper\Back\ContentListOperationAbstract
      */
     protected $mapper;
 
     /**
-     * @param ScContent\Service\Back\ContentListOptionsProvider $provider
+     * @param  \ScContent\Service\Back\ContentListOptionsProvider $provider
      * @return ContentListAbstractListener
      */
     public function setOptionsProvider(OptionsProvider $provider)
@@ -41,8 +41,8 @@ abstract class ContentListAbstractListener extends AbstractControllerListener
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Service\Back\ContentListOptionsProvider
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Service\Back\ContentListOptionsProvider
      */
     public function getOptionsProvider()
     {
@@ -55,8 +55,8 @@ abstract class ContentListAbstractListener extends AbstractControllerListener
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\ContentListOperationAbstract
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\ContentListOperationAbstract
      */
     public function getMapper()
     {

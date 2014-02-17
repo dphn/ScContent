@@ -28,12 +28,12 @@ use ScContent\Listener\AbstractControllerListener,
 class LayoutReorder extends AbstractControllerListener
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
-     * @var ScContent\Mapper\Back\LayoutReorderMapper
+     * @var \ScContent\Mapper\Back\LayoutReorderMapper
      */
     protected $mapper;
 
@@ -61,7 +61,7 @@ class LayoutReorder extends AbstractControllerListener
     ];
 
     /**
-     * @param ScContent\Options\ModuleOptions $options
+     * @param  \ScContent\Options\ModuleOptions $options
      * @return void
      */
     public function setModuleOptions(ModuleOptions $options)
@@ -70,7 +70,7 @@ class LayoutReorder extends AbstractControllerListener
     }
 
     /**
-     * @return ScContent\Options\ModuleOptions
+     * @return \ScContent\Options\ModuleOptions
      */
     public function getModuleOptions()
     {
@@ -83,7 +83,7 @@ class LayoutReorder extends AbstractControllerListener
     }
 
     /**
-     * @param ScContent\Mapper\Back\LayoutReorderMapper $mapper
+     * @param  \ScContent\Mapper\Back\LayoutReorderMapper $mapper
      * @return void
      */
     public function setMapper(LayoutReorderMapper $mapper)
@@ -92,8 +92,8 @@ class LayoutReorder extends AbstractControllerListener
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\LayoutReorderMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\LayoutReorderMapper
      */
     public function getMapper()
     {
@@ -106,11 +106,11 @@ class LayoutReorder extends AbstractControllerListener
     }
 
     /**
-     * @param Zend\EventManager\EventInterface $event
-     * @throws ScContent\Exception\InvalidArgumentException
-     * @throws ScContent\Exception\DomainException
-     * @throws ScContent\Exception\DebugException
-     * @return null | Zend\Stdlib\Response
+     * @param  \Zend\EventManager\EventInterface $event
+     * @throws \ScContent\Exception\InvalidArgumentException
+     * @throws \ScContent\Exception\DomainException
+     * @throws \ScContent\Exception\DebugException
+     * @return null|\Zend\Stdlib\Response
      */
     public function process(EventInterface $event)
     {

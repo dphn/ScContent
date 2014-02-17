@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * ScContent (https://github.com/dphn/ScContent)
+ *
+ * @author    Dolphin <work.dolphin@gmail.com>
+ * @copyright Copyright (c) 2013-2014 ScContent
+ * @link      https://github.com/dphn/ScContent
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ */
 namespace ScContent\Service\Back;
 
 use ScContent\Service\AbstractService,
@@ -17,21 +24,23 @@ use ScContent\Service\AbstractService,
     //
     Exception;
 
-
+/**
+ * @author Dolphin <work.dolphin@gmail.com>
+ */
 class WidgetConfigurationService extends AbstractService
 {
     /**
-     * @var ScContent\Mapper\Back\WidgetMapper
+     * @var \ScContent\Mapper\Back\WidgetMapper
      */
     protected $widgetMapper;
 
     /**
-     * @var ScContent\Mapper\RolesMapper
+     * @var \ScContent\Mapper\RolesMapper
      */
     protected $rolesMapper;
 
     /**
-     * @param ScContent\Mapper\Back\WidgetMapper $mapper
+     * @param  \ScContent\Mapper\Back\WidgetMapper $mapper
      * @return void
      */
     public function setWidgetMapper(WidgetMapper $mapper)
@@ -40,8 +49,8 @@ class WidgetConfigurationService extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\WidgetMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\WidgetMapper
      */
     public function getWidgetMapper()
     {
@@ -54,7 +63,7 @@ class WidgetConfigurationService extends AbstractService
     }
 
     /**
-     * @param ScContent\Mapper\RolesMapper $mapper
+     * @param  \ScContent\Mapper\RolesMapper $mapper
      * @return void
      */
     public function setRolesMapper(RolesMapper $mapper)
@@ -63,8 +72,8 @@ class WidgetConfigurationService extends AbstractService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\RolesMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\RolesMapper
      */
     public function getRolesMapper()
     {
@@ -76,6 +85,10 @@ class WidgetConfigurationService extends AbstractService
         return $this->rolesMapper;
     }
 
+    /**
+     * @param  \ScContent\Entity\WidgetInterface $widget
+     * @return \ScContent\Entity\Back\WidgetConfig
+     */
     public function getWidgetConfig(WidgetInterface $widget)
     {
         $rolesMapper = $this->getRolesMapper();
@@ -86,7 +99,10 @@ class WidgetConfigurationService extends AbstractService
     }
 
     /**
-     * @param integer $widgetId
+     * @param  integer $id
+     * @throws \ScContent\Exception\RuntimeException
+     * @throws \ScContent\Exception\DebugException
+     * @return \ScContent\Entity\Widget
      */
     public function findWidget($id)
     {
@@ -123,7 +139,8 @@ class WidgetConfigurationService extends AbstractService
     }
 
     /**
-     * @param ScContent\Entity\WidgetInterface $widget
+     * @param  \ScContent\Entity\WidgetInterface $widget
+     * @return void
      */
     public function saveWidget(WidgetInterface $widget)
     {

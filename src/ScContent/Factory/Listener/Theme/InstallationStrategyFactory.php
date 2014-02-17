@@ -20,8 +20,8 @@ use ScContent\Listener\Theme\InstallationStrategy,
 class InstallationStrategyFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Theme\InstallationStrategy
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Theme\InstallationStrategy
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

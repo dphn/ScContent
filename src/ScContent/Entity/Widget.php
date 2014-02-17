@@ -17,7 +17,7 @@ use ScContent\Entity\Back\WidgetEntity;
 class Widget extends AbstractEntity implements WidgetInterface
 {
     /**
-     * @var null | integer | string
+     * @var null|integer|string
      */
     protected $id;
 
@@ -57,8 +57,8 @@ class Widget extends AbstractEntity implements WidgetInterface
     protected $position = 0;
 
     /**
-     * @param null | integer | string $id
-     * @return WidgetEntity
+     * @param null|integer|string $id
+     * @return Widget
      */
     public function setId($id)
     {
@@ -67,7 +67,7 @@ class Widget extends AbstractEntity implements WidgetInterface
     }
 
     /**
-     * @return null | integer | string
+     * @return null|integer|string
      */
     public function getId()
     {
@@ -75,7 +75,7 @@ class Widget extends AbstractEntity implements WidgetInterface
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return Widget
      */
     public function setTheme($name)
@@ -93,7 +93,7 @@ class Widget extends AbstractEntity implements WidgetInterface
     }
 
     /**
-     * @param string $region
+     * @param  string $region
      * @return Widget
      */
     public function setRegion($region)
@@ -111,7 +111,7 @@ class Widget extends AbstractEntity implements WidgetInterface
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return Widget
      */
     public function setName($name)
@@ -129,7 +129,7 @@ class Widget extends AbstractEntity implements WidgetInterface
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return Widget
      */
     public function setDisplayName($name)
@@ -155,7 +155,7 @@ class Widget extends AbstractEntity implements WidgetInterface
     }
 
     /**
-     * @param string $description
+     * @param  string $description
      * @return Widget
      */
     public function setDescription($description)
@@ -173,7 +173,7 @@ class Widget extends AbstractEntity implements WidgetInterface
     }
 
     /**
-     * @param string | array $options Array of options or a serialized options as string
+     * @param  string|array $options Array of options or a serialized options as string
      * @return Widget
      */
     public function setOptions($options)
@@ -186,8 +186,8 @@ class Widget extends AbstractEntity implements WidgetInterface
     }
 
     /**
-     * @param boolean $serialized optional default true
-     * @return array | string
+     * @param  boolean $serialized optional default true
+     * @return array|string
      */
     public function getOptions($serialized = true)
     {
@@ -198,8 +198,8 @@ class Widget extends AbstractEntity implements WidgetInterface
     }
 
     /**
-     * @param string $name
-     * @param mixed $value
+     * @param  string $name
+     * @param  mixed $value
      * @return Widget
      */
     public function setOption($name, $value)
@@ -209,8 +209,8 @@ class Widget extends AbstractEntity implements WidgetInterface
     }
 
     /**
-     * @param string $name
-     * @param mixed $default optional default null
+     * @param  string $name
+     * @param  mixed $default optional default null
      * @return mixed
      */
     public function findOption($name, $default = null)
@@ -231,7 +231,7 @@ class Widget extends AbstractEntity implements WidgetInterface
      * are frontend and backend controllers, protected access
      * to them engaged ACL.
      *
-     * @param string $role
+     * @param  string $role
      * @return boolean
      */
     public function isApplicable($role)
@@ -243,7 +243,7 @@ class Widget extends AbstractEntity implements WidgetInterface
     }
 
     /**
-     * @param integer $position
+     * @param  integer $position
      * @return Widget
      */
     public function setPosition($position)

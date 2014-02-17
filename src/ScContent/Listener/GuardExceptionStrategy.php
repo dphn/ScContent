@@ -32,12 +32,12 @@ class GuardExceptionStrategy extends AbstractListenerAggregate
     protected $enabled = false;
 
     /**
-     * @var Exception
+     * @var \Exception
      */
     protected $exception;
 
     /**
-     * @param Zend\EventManager\EventManagerInterface $events
+     * @param  \Zend\EventManager\EventManagerInterface $events
      * @return void
      */
     public function attach(EventManagerInterface $events)
@@ -55,7 +55,7 @@ class GuardExceptionStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @param boolean $flag optional default true
+     * @param  boolean $flag optional default true
      * @return void
      */
     public function setEnabled($flag = true, Exception $e = null)
@@ -75,7 +75,7 @@ class GuardExceptionStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @return null | Exception
+     * @return null|\Exception
      */
     public function getException()
     {
@@ -83,7 +83,7 @@ class GuardExceptionStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     public function onDispatch(MvcEvent $event)
@@ -100,13 +100,13 @@ class GuardExceptionStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     public function onDispatchError(MvcEvent $event)
     {
         $error = $event->getError();
-        if ($error !== static::Error) {
+        if ($error !== self::Error) {
             return;
         }
         $model = $event->getResult();

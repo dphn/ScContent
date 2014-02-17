@@ -58,7 +58,7 @@ class ContentListReorder extends ContentListAbstractListener
     ];
 
     /**
-     * @param ScContent\Mapper\Back\ContentListReorderMapper $mapper
+     * @param \ScContent\Mapper\Back\ContentListReorderMapper $mapper
      */
     public function setMapper(ContentListReorderMapper $mapper)
     {
@@ -68,8 +68,8 @@ class ContentListReorder extends ContentListAbstractListener
     /**
      * Reorder elements
      *
-     * @param Zend\EventManager\EventInterface $event
-     * @return null | Zend\Http\Response
+     * @param  \Zend\EventManager\EventInterface $event
+     * @return null|\Zend\Http\Response
      */
     public function process(EventInterface $event)
     {

@@ -22,14 +22,14 @@ use ScContent\Mapper\AbstractLayoutMapper,
 class LayoutReorderMapper extends AbstractLayoutMapper
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
      * Constructor
      *
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct(
         AdapterInterface $adapter,
@@ -40,10 +40,10 @@ class LayoutReorderMapper extends AbstractLayoutMapper
     }
 
     /**
-     * @param integer $id Widget identifier
-     * @param integer $position New widget position
-     * @param string $tid Transaction identifier
-     * @throws ScContent\Mapper\Exception\UnavailableSourceException
+     * @param  integer $id Widget identifier
+     * @param  integer $position New widget position
+     * @param  string $tid Transaction identifier
+     * @throws \ScContent\Mapper\Exception\UnavailableSourceException
      * @return void
      */
     public function reorder($id, $position, $tid)
@@ -128,10 +128,10 @@ class LayoutReorderMapper extends AbstractLayoutMapper
     }
 
     /**
-     * @param string $theme
-     * @param string $region
-     * @param integer $position
-     * @return null | array
+     * @param  string $theme
+     * @param  string $region
+     * @param  integer $position
+     * @return null|array
      */
     protected function findMetaByPosition($theme, $region, $position)
     {

@@ -20,17 +20,21 @@ use ScContent\Entity\WidgetInterface,
 abstract class AbstractWidget extends AbstractActionController
 {
     /**
-     * @var ScContent\Entity\WidgetInterface
+     * @var \ScContent\Entity\WidgetInterface
      */
     protected $item;
 
+    /**
+     * @param  \ScContent\Entity\WidgetInterface $item
+     * @return void
+     */
     public function setItem(WidgetInterface $item)
     {
         $this->item = $item;
     }
 
     /**
-     * @return ScContent\Entity\WidgetInterface
+     * @return \ScContent\Entity\WidgetInterface
      */
     public function getItem()
     {

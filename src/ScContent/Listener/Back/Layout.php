@@ -23,12 +23,12 @@ use ScContent\Listener\AbstractListener,
 class Layout extends AbstractListener
 {
     /**
-     * @var ScContent\Mapper\Back\LayoutListenerMapper
+     * @var \ScContent\Mapper\Back\LayoutListenerMapper
      */
     protected $layoutMapper;
 
     /**
-     * @param ScContent\Mapper\Back\LayoutListenerMapper $mapper
+     * @param  \ScContent\Mapper\Back\LayoutListenerMapper $mapper
      * @return void
      */
     public function setLayoutMapper(LayoutListenerMapper $mapper)
@@ -37,8 +37,8 @@ class Layout extends AbstractListener
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Back\LayoutListenerMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Back\LayoutListenerMapper
      */
     public function getLayoutMapper()
     {
@@ -54,8 +54,8 @@ class Layout extends AbstractListener
      * If the content has been moved all the rules of widget visibility
      * are cleared.
      *
-     * @param Zend\EventManager\EventInterface $event
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  \Zend\EventManager\EventInterface $event
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function onMoveContent(EventInterface $event)
@@ -85,8 +85,8 @@ class Layout extends AbstractListener
     }
 
     /**
-     * @param Zend\EventManager\EventInterface $event
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  \Zend\EventManager\EventInterface $event
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function beforeDeleteContent(EventInterface $event)
@@ -116,8 +116,8 @@ class Layout extends AbstractListener
     }
 
     /**
-     * @param Zend\EventManager\EventInterface $event
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  \Zend\EventManager\EventInterface $event
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function beforeCleaningTrash(EventInterface $event)

@@ -36,15 +36,15 @@ interface FileTypesCatalogInterface
      * Returns true if and only if the file specification
      * is allowed for a given pattern.
      *
-     * @param string $spec
-     * $param integer | array $pattern
+     * @param  string $spec
+     * $param  integer|array $pattern
      * @return boolean
      */
     function isAllowed($spec, $pattern);
 
     /**
-     * @param string $spec
-     * @return null | integer
+     * @param  string $spec
+     * @return null|integer
      */
     function getFeature($spec);
 
@@ -52,7 +52,7 @@ interface FileTypesCatalogInterface
      * Each new term does not extend the search results,
      * but makes them more specific.
      *
-     * @param integer | array $pattern
+     * @param  integer|array $pattern
      * @return array
      */
     function findExtensionByType($pattern);
@@ -61,7 +61,7 @@ interface FileTypesCatalogInterface
      * Each new term does not extend the search results,
      * but makes them more specific.
      *
-     * @param integer | array $pattern
+     * @param  integer|array $pattern
      * @return array
      */
     function findMimeByType($pattern);

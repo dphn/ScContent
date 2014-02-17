@@ -45,7 +45,7 @@ class ContentListDelete extends ContentListAbstractListener
     ];
 
     /**
-     * @param ScContent\Mapper\Back\ContentListDeleteMapper $mapper
+     * @param \ScContent\Mapper\Back\ContentListDeleteMapper $mapper
      */
     public function setMapper(ContentListDeleteMapper $mapper)
     {
@@ -55,8 +55,8 @@ class ContentListDelete extends ContentListAbstractListener
     /**
      * To permanently delete elements from the trash
      *
-     * @param Zend\EventManager\EventInterface $event
-     * @return null | Zend\Http\Response
+     * @param  \Zend\EventManager\EventInterface $event
+     * @return null|\Zend\Http\Response
      */
     public function process(EventInterface $event)
     {

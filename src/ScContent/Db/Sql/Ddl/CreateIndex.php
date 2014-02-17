@@ -21,13 +21,21 @@ class CreateIndex extends AbstractSql implements SqlInterface
      * @const string
      */
     const Index = 'index';
+
+    /**
+     * @const string
+     */
     const Table = 'table';
+
+    /**
+     * @const string
+     */
     const Columns = 'columns';
 
     /**
      * @const string
      */
-    const Key   = 'key';
+    const Key = 'key';
 
     /**
      * @const string
@@ -51,7 +59,6 @@ class CreateIndex extends AbstractSql implements SqlInterface
         self::Key      => '',
         self::Unique   => 'UNIQUE',
         self::Primary  => 'PRIMARY',
-        // FULLTEXT | CLUSTERED | ''
         self::Fulltext => 'FULLTEXT',
     ];
 
@@ -86,7 +93,7 @@ class CreateIndex extends AbstractSql implements SqlInterface
     protected $table = '';
 
     /**
-     * @var array
+     * @var string[]
      */
     protected $columns = [];
 
@@ -94,7 +101,7 @@ class CreateIndex extends AbstractSql implements SqlInterface
      * @param string $table
      * @param string $type
      * @param string $name
-     * @param null | string | array $columns
+     * @param null|string|array $columns
     */
     public function __construct
     (
@@ -110,7 +117,7 @@ class CreateIndex extends AbstractSql implements SqlInterface
     }
 
     /**
-     * @param string $table
+     * @param  string $table
      * @return CreateIndex
      */
     public function setTable($table)
@@ -128,8 +135,8 @@ class CreateIndex extends AbstractSql implements SqlInterface
     }
 
     /**
-     * @param string $type
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  string $type
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return CreateIndex
      */
     public function setType($type)
@@ -160,7 +167,7 @@ class CreateIndex extends AbstractSql implements SqlInterface
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return CreateIndex
      */
     public function setName($name)
@@ -178,7 +185,7 @@ class CreateIndex extends AbstractSql implements SqlInterface
     }
 
     /**
-     * @param null | string | array $columns $columns
+     * @param  null|string|array $columns $columns
      * @return CreateIndex
      */
     public function setColumns($columns)
@@ -202,7 +209,7 @@ class CreateIndex extends AbstractSql implements SqlInterface
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getColumns()
     {
@@ -210,7 +217,7 @@ class CreateIndex extends AbstractSql implements SqlInterface
     }
 
     /**
-     * @param  PlatformInterface $adapterPlatform
+     * @param  \Zend\Db\Adapter\Platform\PlatformInterface $adapterPlatform
      * @return string
      */
     public function getSqlString(PlatformInterface $adapterPlatform = null)
@@ -244,8 +251,8 @@ class CreateIndex extends AbstractSql implements SqlInterface
     }
 
     /**
-     * @param Zend\Db\Adapter\Platform\PlatformInterface $adapterPlatform
-     * @return array
+     * @param  \Zend\Db\Adapter\Platform\PlatformInterface $adapterPlatform
+     * @return string[]
      */
     protected function processIndex(PlatformInterface $adapterPlatform = null)
     {
@@ -257,8 +264,8 @@ class CreateIndex extends AbstractSql implements SqlInterface
     }
 
     /**
-     * @param Zend\Db\Adapter\Platform\PlatformInterface $adapterPlatform
-     * @return array
+     * @param  \Zend\Db\Adapter\Platform\PlatformInterface $adapterPlatform
+     * @return string[]
      */
     protected function processTable(PlatformInterface $adapterPlatform = null)
     {
@@ -266,8 +273,8 @@ class CreateIndex extends AbstractSql implements SqlInterface
     }
 
     /**
-     * @param Zend\Db\Adapter\Platform\PlatformInterface $adapterPlatform
-     * @return array
+     * @param  \Zend\Db\Adapter\Platform\PlatformInterface $adapterPlatform
+     * @return string[][]
      */
     protected function processColumns(PlatformInterface $adapterPlatform = null)
     {

@@ -20,8 +20,8 @@ use ScContent\Listener\Back\Garbage,
 class GarbageFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Back\Garbage
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Back\Garbage
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

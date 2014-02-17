@@ -23,15 +23,15 @@ use ScContent\Mapper\AbstractLayoutMapper,
 class LayoutMoveMapper extends AbstractLayoutMapper
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
      * Constructor
      *
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
-     * @param ScContent\Options\ModuleOptions $options
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \ScContent\Options\ModuleOptions $options
      */
     public function __construct(
         AdapterInterface $adapter,
@@ -42,11 +42,11 @@ class LayoutMoveMapper extends AbstractLayoutMapper
     }
 
     /**
-     * @param integer $id Widget identifier
-     * @param string $region Region name
-     * @param string $tid Transaction identifier
-     * @throws ScContent\Mapper\Exception\UnavailableSourceException
-     * @throws ScContent\Mapper\Exception\UnavailableDestinationException
+     * @param  integer $id Widget identifier
+     * @param  string $region Region name
+     * @param  string $tid Transaction identifier
+     * @throws \ScContent\Mapper\Exception\UnavailableSourceException
+     * @throws \ScContent\Mapper\Exception\UnavailableDestinationException
      * @return void
      */
     public function move($id, $region, $tid)
@@ -123,8 +123,8 @@ class LayoutMoveMapper extends AbstractLayoutMapper
     }
 
     /**
-     * @param string $theme
-     * @param string $region
+     * @param  string $theme
+     * @param  string $region
      * @return integer
      */
     protected function findMaxPosition($theme, $region)

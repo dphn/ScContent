@@ -20,8 +20,8 @@ use ScContent\Service\Installation\MigrationService,
 class MigrationFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Installation\MigrationService
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Installation\MigrationService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

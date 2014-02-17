@@ -20,8 +20,8 @@ use ScContent\Listener\Back\ContentListRecoveryFromTrash,
 class ContentListRecoveryFromTrashFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Back\ContentListRecoveryFromTrash
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Back\ContentListRecoveryFromTrash
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

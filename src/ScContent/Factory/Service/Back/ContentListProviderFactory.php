@@ -20,8 +20,8 @@ use ScContent\Service\Back\ContentListProvider,
 class ContentListProviderFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Back\ContentListProvider
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Back\ContentListProvider
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

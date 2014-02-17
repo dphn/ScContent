@@ -21,7 +21,7 @@ use ScContent\Entity\AbstractList,
 class Regions extends AbstractList
 {
     /**
-     * @var ScContent\Enity\WidgetsList
+     * @var \ScContent\Enity\WidgetsList
      */
     protected $widgetsListPrototype;
 
@@ -31,7 +31,7 @@ class Regions extends AbstractList
     protected $regionOptions = [];
 
     /**
-     * @param array $theme
+     * @param \ScContent\Options\ModuleOptionsInterface $options
      */
     public function __construct(ModuleOptionsInterface $options)
     {
@@ -53,7 +53,7 @@ class Regions extends AbstractList
     }
 
     /**
-     * @param ScContent\Entity\WidgetInterface $item
+     * @param  \ScContent\Entity\WidgetInterface $item
      * @return void
      */
     public function addItem(WidgetInterface $item)
@@ -63,9 +63,9 @@ class Regions extends AbstractList
     }
 
     /**
-     * @param string $regionName
-     * @param string $optionName
-     * @throws ScContent\Exception\InvalidArgumentException
+     * @param  string $regionName
+     * @param  string $optionName
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return mixed
      */
     public function getRegionOption($regionName, $optionName)
@@ -87,7 +87,7 @@ class Regions extends AbstractList
     }
 
     /**
-     * @param mixed $index
+     * @param  mixed $index
      * @return boolean
      */
     public function offsetExists($index)
@@ -99,7 +99,7 @@ class Regions extends AbstractList
     }
 
     /**
-     * @return ScContent\Enity\WidgetsList
+     * @return \ScContent\Enity\WidgetsList
      */
     protected function getWidgetsListPrototype()
     {

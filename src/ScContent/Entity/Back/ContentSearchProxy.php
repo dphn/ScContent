@@ -22,7 +22,7 @@ use ScContent\Entity\AbstractEntity,
 class ContentSearchProxy extends AbstractEntity
 {
     /**
-     * @var ScContent\Service\Localization
+     * @var \ScContent\Service\Localization
      */
     protected $l10n;
 
@@ -82,7 +82,10 @@ class ContentSearchProxy extends AbstractEntity
     protected $calculatedDateEnd = 0;
 
     /**
-     * @param null | array $data
+     * Constructor
+     *
+     * @param \ScContent\Service\Localization
+     * @param null|array|\Traversable $data optional default null
      */
     public function __construct(Localization $l10n, $data = null)
     {
@@ -112,7 +115,7 @@ class ContentSearchProxy extends AbstractEntity
     }
 
     /**
-     * @param string $text
+     * @param  string $text
      * @return void
      */
     public function setText($text)
@@ -129,7 +132,7 @@ class ContentSearchProxy extends AbstractEntity
     }
 
     /**
-     * @param string $source
+     * @param  string $source
      * @return void
      */
     public function setTextSource($source)
@@ -161,7 +164,7 @@ class ContentSearchProxy extends AbstractEntity
     }
 
     /**
-     * @param string $type
+     * @param  string $type
      * @return void
      */
     public function setDateType($type)
@@ -178,7 +181,7 @@ class ContentSearchProxy extends AbstractEntity
     }
 
     /**
-     * @param string $start
+     * @param  string $start
      * @return void
      */
     public function setDateStart($start)
@@ -195,7 +198,7 @@ class ContentSearchProxy extends AbstractEntity
     }
 
     /**
-     * @param string $end
+     * @param  string $end
      * @return void
      */
     public function setDateEnd($end)
@@ -212,7 +215,7 @@ class ContentSearchProxy extends AbstractEntity
     }
 
     /**
-     * @param string $type
+     * @param  string $type
      * @return void
      */
     public function setModificationType($type)
@@ -237,7 +240,7 @@ class ContentSearchProxy extends AbstractEntity
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setUserName($name)
@@ -254,7 +257,7 @@ class ContentSearchProxy extends AbstractEntity
     }
 
     /**
-     * @param string $source
+     * @param  string $source
      * @return void
      */
     public function setUserSource($source)
@@ -271,7 +274,7 @@ class ContentSearchProxy extends AbstractEntity
     }
 
     /**
-     * @param string $type
+     * @param  string $type
      * @return void
      */
     public function setUserType($type)

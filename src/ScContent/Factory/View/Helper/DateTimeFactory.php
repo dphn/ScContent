@@ -20,8 +20,8 @@ use ScContent\View\Helper\DateTime,
 class DateTimeFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $viewHelperPluginManager
-     * @return ScContent\View\Helper\DateTime
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $viewHelperPluginManager
+     * @return \ScContent\View\Helper\DateTime
      */
     public function createService(
         ServiceLocatorInterface $viewHelperPluginManager

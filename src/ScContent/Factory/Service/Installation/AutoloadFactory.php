@@ -20,8 +20,8 @@ use ScContent\Service\Installation\AutoloadService,
 class AutoloadFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Installation\AutoloadService
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Installation\AutoloadService
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

@@ -42,7 +42,7 @@ class RolesMapper extends AbstractDbMapper
     ];
 
     /**
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
     {
@@ -50,7 +50,7 @@ class RolesMapper extends AbstractDbMapper
     }
 
     /**
-     * @param string $roleId
+     * @param  string $roleId
      * @return string
      */
     public function findRouteForRole($roleId)
@@ -101,7 +101,7 @@ class RolesMapper extends AbstractDbMapper
 
 
     /**
-     * @param integer $userId
+     * @param  integer $userId
      * @return array
      */
     public function findUserRoles($userId)
@@ -123,7 +123,7 @@ class RolesMapper extends AbstractDbMapper
     }
 
     /**
-     * @param array $options
+     * @param  array $options
      * @return void
      */
     public function addRole($options)
@@ -141,7 +141,7 @@ class RolesMapper extends AbstractDbMapper
     }
 
     /**
-     * @param string $role
+     * @param  string $role
      * @return integer
      */
     public function getAccountsCount($role)

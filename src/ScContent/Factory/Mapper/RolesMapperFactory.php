@@ -20,8 +20,8 @@ use ScContent\Mapper\RolesMapper,
 class RolesMapperFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Mapper\RolesMapper
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Mapper\RolesMapper
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

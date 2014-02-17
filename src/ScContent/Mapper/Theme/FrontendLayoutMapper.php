@@ -22,15 +22,15 @@ use ScContent\Mapper\AbstractLayoutMapper,
 class FrontendLayoutMapper extends AbstractLayoutMapper
 {
     /**
-     * @var ScContent\Service\Theme\FrontendRegionsProxy
+     * @var \ScContent\Service\Theme\FrontendRegionsProxy
      */
     protected $proxy;
 
     /**
      * Constructor
      *
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
-     * @param ScContent\Service\Theme\FrontendRegionsProxy $proxy
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \ScContent\Service\Theme\FrontendRegionsProxy $proxy
      */
     public function __construct(
         AdapterInterface $adapter,
@@ -41,9 +41,9 @@ class FrontendLayoutMapper extends AbstractLayoutMapper
     }
 
     /**
-     * @param string $themeName
-     * @param null | integer $contentId Content identifier
-     * @return ScContent\Entity\Front\Regions
+     * @param  string $themeName
+     * @param  null|integer $contentId Content identifier
+     * @return \ScContent\Entity\Front\Regions
      */
     public function findRegions($themeName, $contentId)
     {

@@ -22,22 +22,22 @@ use ScContent\Entity\Front\Regions,
 class FrontendRegionsProxy
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
-     * @var BjyAuthorize\Provider\Identity\ProviderInterface
+     * @var \BjyAuthorize\Provider\Identity\ProviderInterface
      */
     protected $identityProvider;
 
     /**
-     * @var ScContent\Entity\Front\Regions
+     * @var \ScContent\Entity\Front\Regions
      */
     protected $regions;
 
     /**
-     * @param ScContent\Options\ModuleOptions $options
+     * @param  \ScContent\Options\ModuleOptions $options
      * @return void
      */
     public function setModuleOptions(ModuleOptions $options)
@@ -46,8 +46,8 @@ class FrontendRegionsProxy
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Options\ModuleOptions
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Options\ModuleOptions
      */
     public function getModuleOptions()
     {
@@ -60,7 +60,7 @@ class FrontendRegionsProxy
     }
 
     /**
-     * @param BjyAuthorize\Provider\Identity\ProviderInterface $provider
+     * @param  \BjyAuthorize\Provider\Identity\ProviderInterface $provider
      * @return void
      */
     public function setIdentityProvider(ProviderInterface $provider)
@@ -69,8 +69,8 @@ class FrontendRegionsProxy
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return BjyAuthorize\Provider\Identity\ProviderInterface
+     * @throws \ScContent\Exception\IoCException
+     * @return \BjyAuthorize\Provider\Identity\ProviderInterface
      */
     public function getIdentityProvider()
     {
@@ -83,7 +83,7 @@ class FrontendRegionsProxy
     }
 
     /**
-     * @param ScContent\Entity\Front\Regions $regions
+     * @param  \ScContent\Entity\Front\Regions $regions
      * @return void
      */
     public function setRegions(Regions $regions)
@@ -92,8 +92,8 @@ class FrontendRegionsProxy
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Entity\Front\Regions
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Entity\Front\Regions
      */
     public function getRegions()
     {
@@ -106,7 +106,7 @@ class FrontendRegionsProxy
     }
 
     /**
-     * @param ScContent\Entity\WidgetInterface $widget
+     * @param  \ScContent\Entity\WidgetInterface $widget
      * @return void
      */
     public function addItem(WidgetInterface $widget)

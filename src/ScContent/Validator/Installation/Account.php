@@ -21,7 +21,7 @@ use ScContent\Mapper\RolesMapper,
 class Account extends AbstractValidator
 {
     /**
-     * @var ScContent\Mapper\RolesMapper
+     * @var \ScContent\Mapper\RolesMapper
      */
     protected $rolesMapper;
 
@@ -31,7 +31,7 @@ class Account extends AbstractValidator
     protected $adminRole = 'admin';
 
     /**
-     * @param ScContent\Mapper\RolesMapper $mapper
+     * @param  \ScContent\Mapper\RolesMapper $mapper
      * @return void
      */
     public function setMapper(RolesMapper $mapper)
@@ -40,7 +40,7 @@ class Account extends AbstractValidator
     }
 
     /**
-     * @return ScContent\Mapper\RolesMapper
+     * @return \ScContent\Mapper\RolesMapper
      */
     public function getMapper()
     {
@@ -53,7 +53,7 @@ class Account extends AbstractValidator
     }
 
     /**
-     * @param string $role
+     * @param  string $role
      * @return void
      */
     public function setAdminRole($role)
@@ -70,7 +70,7 @@ class Account extends AbstractValidator
     }
 
     /**
-     * @param null $options Not used
+     * @param  null $options Not used
      * @return boolean
      */
     public function isValid($options = null)

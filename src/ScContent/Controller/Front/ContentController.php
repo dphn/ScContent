@@ -21,12 +21,12 @@ use ScContent\Controller\AbstractFront,
 class ContentController extends AbstractFront
 {
     /**
-     * @var ScContent\Service\Front\ContentService
+     * @var \ScContent\Service\Front\ContentService
      */
     protected $contentService;
 
     /**
-     * @return null | Zend\View\Model\ViewModel
+     * @return null|\Zend\View\Model\ViewModel
      */
     public function indexAction()
     {
@@ -46,7 +46,7 @@ class ContentController extends AbstractFront
     }
 
     /**
-     * @param ScContent\Service\Front\ContentService $service
+     * @param  \ScContent\Service\Front\ContentService $service
      * @return void
      */
     public function setContentService($service)
@@ -55,7 +55,7 @@ class ContentController extends AbstractFront
     }
 
     /**
-     * @return ScContent\Service\Front\ContentService
+     * @return \ScContent\Service\Front\ContentService
      */
     public function getContentService()
     {

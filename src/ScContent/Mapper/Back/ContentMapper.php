@@ -27,15 +27,15 @@ use ScContent\Mapper\AbstractContentMapper,
 class ContentMapper extends AbstractContentMapper
 {
     /**
-     * @var ScContent\Validator\Mapper\NestingValidator
+     * @var \ScContent\Validator\Mapper\NestingValidator
      */
     protected $nestingValidator;
 
     /**
      * Constructor
      *
-     * @param Zend\Db\Adapter\AdapterInterface
-     * @param ScContent\Validator\Mapper\NestingValidator
+     * @param \Zend\Db\Adapter\AdapterInterface
+     * @param \ScContent\Validator\Mapper\NestingValidator
      */
     public function __construct(
         AdapterInterface $adapter,
@@ -46,8 +46,8 @@ class ContentMapper extends AbstractContentMapper
     }
 
     /**
-     * @param ScContent\Entity\AbstractContent $entity
-     * @throws ScContent\Mapper\Exception\UnavailableSourceException
+     * @param  \ScContent\Entity\AbstractContent $entity
+     * @throws \ScContent\Mapper\Exception\UnavailableSourceException
      */
     public function update(AbstractContent $entity)
     {
@@ -98,12 +98,12 @@ class ContentMapper extends AbstractContentMapper
     }
 
     /**
-     * @param ScContent\Entity\AbstractContent $entity
-     * @param integer $parentId
-     * @param string $tid Transaction identifier
-     * @throws ScContent\Mapper\Exception\LogicException
-     * @throws ScContent\Mapper\Exception\UnavailableDestinationException
-     * @throws ScContent\Mapper\Exception\NestingException
+     * @param  \ScContent\Entity\AbstractContent $entity
+     * @param  integer $parentId
+     * @param  string $tid Transaction identifier
+     * @throws \ScContent\Mapper\Exception\LogicException
+     * @throws \ScContent\Mapper\Exception\UnavailableDestinationException
+     * @throws \ScContent\Mapper\Exception\NestingException
      */
     public function insert(AbstractContent $entity, $parentId, $tid)
     {

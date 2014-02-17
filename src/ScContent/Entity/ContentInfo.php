@@ -45,7 +45,7 @@ class ContentInfo extends AbstractEntity
     protected $editorEmail = '';
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return void
      */
     public function setAuthorId($id)
@@ -62,7 +62,7 @@ class ContentInfo extends AbstractEntity
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setAuthorName($name)
@@ -79,7 +79,7 @@ class ContentInfo extends AbstractEntity
     }
 
     /**
-     * @param string $email
+     * @param  string $email
      * @return void
      */
     public function setAuthorEmail($email)
@@ -96,7 +96,7 @@ class ContentInfo extends AbstractEntity
     }
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return void
      */
     public function setEditorId($id)
@@ -113,7 +113,7 @@ class ContentInfo extends AbstractEntity
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setEditorName($name)
@@ -130,7 +130,7 @@ class ContentInfo extends AbstractEntity
     }
 
     /**
-     * @param string $email
+     * @param  string $email
      * @return void
      */
     public function setEditorEmail($email)

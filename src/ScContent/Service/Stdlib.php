@@ -15,7 +15,7 @@ namespace ScContent\Service;
 class Stdlib
 {
     /**
-     * @param integer $length
+     * @param  integer $length
      * @return string
      */
     public static function randomKey($length = 32)

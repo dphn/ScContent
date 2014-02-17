@@ -22,19 +22,19 @@ use ScContent\Controller\AbstractBack,
 class WidgetVisibilityController extends AbstractWidgetAwareController
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
-     * @var ScContent\Service\Back\WidgetVisibilityService
+     * @var \ScContent\Service\Back\WidgetVisibilityService
      */
     protected $visibilityService;
 
     /**
      * Show content list with widget visibility options.
      *
-     * @return Zend\Stdlib\ResponseInterface | Zend\View\Model\ViewModel
+     * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
      */
     public function indexAction()
     {
@@ -82,7 +82,7 @@ class WidgetVisibilityController extends AbstractWidgetAwareController
     }
 
     /**
-     * @param ScContent\Options\ModuleOptions $options
+     * @param  \ScContent\Options\ModuleOptions $options
      * @return void
      */
     public function setModuleOptions(ModuleOptions $options)
@@ -91,7 +91,7 @@ class WidgetVisibilityController extends AbstractWidgetAwareController
     }
 
     /**
-     * @return ScContent\Options\ModuleOptions
+     * @return \ScContent\Options\ModuleOptions
      */
     public function getModuleOptions()
     {
@@ -105,7 +105,7 @@ class WidgetVisibilityController extends AbstractWidgetAwareController
     }
 
     /**
-     * @param ScContent\Service\Back\WidgetVisibilityService
+     * @param  \ScContent\Service\Back\WidgetVisibilityService
      * @return void
      */
     public function setVisibilityService(WidgetVisibilityService $service)
@@ -114,7 +114,7 @@ class WidgetVisibilityController extends AbstractWidgetAwareController
     }
 
     /**
-     * @return ScContent\Service\Back\WidgetVisibilityService
+     * @return \ScContent\Service\Back\WidgetVisibilityService
      */
     public function getVisibilityService()
     {

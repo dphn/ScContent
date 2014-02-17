@@ -23,7 +23,7 @@ abstract class AbstractInstallationService extends AbstractIntelligentService
     protected $valueFormat = '<code>%s</code>';
 
     /**
-     * @param mixed $options optional
+     * @param  mixed $options optional
      * @return boolean
      */
     abstract public function process($options);

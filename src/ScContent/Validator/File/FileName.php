@@ -56,8 +56,8 @@ class FileName extends AbstractValidator
     ];
 
     /**
-     * @param integer $min
-     * @return ScContent\Validator\File\FileName
+     * @param  integer $min
+     * @return \ScContent\Validator\File\FileName
      */
     public function setMin($min)
     {
@@ -74,8 +74,8 @@ class FileName extends AbstractValidator
     }
 
     /**
-     * @param integer $max
-     * @return ScContent\Validator\File\FileName
+     * @param  integer $max
+     * @return \ScContent\Validator\File\FileName
      */
     public function setMax($max)
     {
@@ -92,9 +92,9 @@ class FileName extends AbstractValidator
     }
 
     /**
-     * @param string $pattern
-     * @throws Zend\Validator\Exception\InvalidArgumentException
-     * @return ScContent\Validator\File\FileName
+     * @param  string $pattern
+     * @throws \Zend\Validator\Exception\InvalidArgumentException
+     * @return \ScContent\Validator\File\FileName
      */
     public function setPattern($pattern)
     {
@@ -115,9 +115,9 @@ class FileName extends AbstractValidator
     }
 
     /**
-     * @param  string | array $value File name
+     * @param  string|array $value File name
      * @param  array $file  File data from \Zend\File\Transfer\Transfer optional
-     * @throws Zend\Validator\Exception\InvalidArgumentException
+     * @throws \Zend\Validator\Exception\InvalidArgumentException
      * @return bool
      */
     public function isValid($value, $file = null)

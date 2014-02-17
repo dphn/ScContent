@@ -22,8 +22,8 @@ use ScContent\Form\Installation\DatabaseForm,
 class DatabaseFormFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $formElementManager
-     * @return ScContent\Form\Installation\DatabaseForm
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $formElementManager
+     * @return \ScContent\Form\Installation\DatabaseForm
      */
     public function createService(ServiceLocatorInterface $formElementManager)
     {

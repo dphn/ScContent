@@ -26,14 +26,14 @@ use ScContent\Entity\Back\File,
 class FileService extends AbstractContentService
 {
     /**
-     * @var ScContent\Entity\Back\File
+     * @var \ScContent\Entity\Back\File
      */
     protected $filePrototype;
 
     /**
-     * @param integer $parentId
-     * @param array $data
-     * @throws ScContent\Exception\RuntimeException
+     * @param  integer $parentId
+     * @param  array $data
+     * @throws \ScContent\Exception\RuntimeException
      * @return array List of file identifiers
      */
     public function makeFiles($parentId, $data)
@@ -118,8 +118,8 @@ class FileService extends AbstractContentService
     }
 
     /**
-     * @param array $ids
-     * @return ScContent\Entity\Back\FilesList
+     * @param  array $ids
+     * @return \ScContent\Entity\Back\FilesList
      */
     public function getFilesList($ids)
     {
@@ -182,8 +182,8 @@ class FileService extends AbstractContentService
     }
 
     /**
-     * @throws ScContent\Exception\DomainException
-     * @return ScContent\Entity\Back\File
+     * @throws \ScContent\Exception\DomainException
+     * @return \ScContent\Entity\Back\File
      */
     protected function getFilePrototype()
     {
@@ -207,7 +207,7 @@ class FileService extends AbstractContentService
     }
 
     /**
-     * @param ScContent\Entity\Back\FilesList $list
+     * @param  \ScContent\Entity\Back\FilesList $list
      * @return void
      */
     public function saveFiles(FilesList $list)

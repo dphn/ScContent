@@ -30,7 +30,7 @@ interface TransactionAbilityInterface
     function rollBack();
 
     /**
-     * @return string | false
+     * @return string|false
      */
     function getTransactionIdentifier();
 }

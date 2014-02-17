@@ -32,7 +32,7 @@ class MimeType extends AbstractFilter
      * If no environment variable 'MAGIC' is set, try and autodiscover
      * it based on common locations
      *
-     * @var array
+     * @var string[]
      */
     protected $magicFiles = [
         '/usr/share/misc/magic',
@@ -105,8 +105,8 @@ class MimeType extends AbstractFilter
      * if false, the default MAGIC file from PHP will be used
      *
      * @param  string $file
-     * @throws Zend\Filter\Exception\RuntimeException When finfo can not read the magicfile
-     * @throws Zend\Filter\Exception\InvalidArgumentException
+     * @throws \Zend\Filter\Exception\RuntimeException When finfo can not read the magicfile
+     * @throws \Zend\Filter\Exception\InvalidArgumentException
      * @return MimeType Provides fluid interface
      */
     public function setMagicFile($file)
@@ -145,7 +145,7 @@ class MimeType extends AbstractFilter
     /**
      * Disables usage of MagicFile
      *
-     * @param $disable boolean False disables usage of magic file
+     * @param  boolean $disable Disables usage of magic file
      * @return MimeType Provides fluid interface
      */
     public function disableMagicFile($disable)
@@ -165,9 +165,9 @@ class MimeType extends AbstractFilter
     }
 
     /**
-     * @param string | array $value
-     * @param string $default
-     * @throws Zend\Filter\Exception\InvalidArgumentException
+     * @param  string|array $value
+     * @param  string $default
+     * @throws \Zend\Filter\Exception\InvalidArgumentException
      * @return string
      */
     public function filter($value, $default = null)

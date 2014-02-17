@@ -24,17 +24,17 @@ use Zend\Validator\File\UploadFile as UploadValidator,
 class FileInput extends Input
 {
     /**
-     * @var bool
+     * @var boolean
      */
     protected $isValid = false;
 
     /**
-     * @var bool
+     * @var boolean
      */
     protected $autoPrependUploadValidator = true;
 
     /**
-     * @param  bool $value Enable/Disable automatically prepending an Upload validator
+     * @param  boolean $value Enable/Disable automatically prepending an Upload validator
      * @return FileInput
      */
     public function setAutoPrependUploadValidator($value)
@@ -44,7 +44,7 @@ class FileInput extends Input
     }
 
     /**
-     * @return bool
+     * @return boolean
      */
     public function getAutoPrependUploadValidator()
     {
@@ -65,7 +65,7 @@ class FileInput extends Input
 
     /**
      * @param  mixed $context Extra "context" to provide the validator and filter
-     * @return bool
+     * @return boolean
      */
     public function isValid($context = null)
     {
@@ -103,7 +103,7 @@ class FileInput extends Input
 
     /**
      * @param  mixed $context Extra "context" to provide the validator and filter
-     * @return bool
+     * @return boolean
      */
     protected function injectUploadValidator($context = null)
     {
@@ -139,7 +139,7 @@ class FileInput extends Input
     }
 
     /**
-     * @return null | array
+     * @return null|array
      */
     protected function filterValue()
     {
@@ -179,7 +179,7 @@ class FileInput extends Input
     }
 
     /**
-     * @param  InputInterface $input
+     * @param  \Zend\InputFilter\InputInterface $input
      * @return FileInput
      */
     public function merge(InputInterface $input)

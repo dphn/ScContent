@@ -18,7 +18,7 @@ use ScContent\Entity\AbstractContent,
 class Content extends AbstractContent implements FormatProviderInterface
 {
     /**
-     * @param string $type
+     * @param  string $type
      * @return void
      */
     public function setType($type)

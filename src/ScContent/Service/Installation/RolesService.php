@@ -19,12 +19,12 @@ use ScContent\Mapper\RolesMapper,
 class RolesService extends AbstractInstallationService
 {
     /**
-     * @var ScContent\Mapper\Installation\RolesMapper
+     * @var \ScContent\Mapper\Installation\RolesMapper
      */
     protected $rolesMapper;
 
     /**
-     * @param ScContent\Mapper\Installation\RolesMapper $mapper
+     * @param  \ScContent\Mapper\Installation\RolesMapper $mapper
      * @return void
      */
     public function setMapper(RolesMapper $mapper)
@@ -33,7 +33,7 @@ class RolesService extends AbstractInstallationService
     }
 
     /**
-     * @return ScContent\Mapper\Installation\RolesMapper
+     * @return \ScContent\Mapper\Installation\RolesMapper
      */
     public function getMapper()
     {
@@ -46,7 +46,7 @@ class RolesService extends AbstractInstallationService
     }
 
     /**
-     * @param array $options
+     * @param  array $options
      * @return boolean
      */
     public function process($options)

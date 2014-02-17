@@ -15,11 +15,11 @@ use ScContent\Entity\AbstractEntity,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class WidgetVisibilityItem extends AbstractEntity
-    implements FormatProviderInterface
+class WidgetVisibilityItem extends AbstractEntity implements
+    FormatProviderInterface
 {
     /**
-     * @var null | integer
+     * @var null|integer
      */
     protected $id;
 
@@ -69,12 +69,12 @@ class WidgetVisibilityItem extends AbstractEntity
     protected $childrens = 0;
 
     /**
-     * @var null | integer
+     * @var null|integer
      */
     protected $enabled;
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return void
      */
     public function setId($id)
@@ -91,7 +91,7 @@ class WidgetVisibilityItem extends AbstractEntity
     }
 
     /**
-     * @param string $type
+     * @param  string $type
      * @return void
      */
     public function setType($type)
@@ -108,7 +108,8 @@ class WidgetVisibilityItem extends AbstractEntity
     }
 
     /**
-     * @param string $title
+     * @param  string $title
+     * @return void
      */
     public function setTitle($title)
     {
@@ -124,7 +125,7 @@ class WidgetVisibilityItem extends AbstractEntity
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setName($name)
@@ -141,7 +142,8 @@ class WidgetVisibilityItem extends AbstractEntity
     }
 
     /**
-     * @param integer $date
+     * @param  integer $date
+     * @return void
      */
     public function setDate($date)
     {
@@ -157,7 +159,7 @@ class WidgetVisibilityItem extends AbstractEntity
     }
 
     /**
-     * @param string $spec
+     * @param  string $spec
      * @return void
      */
     public function setSpec($spec)
@@ -174,7 +176,7 @@ class WidgetVisibilityItem extends AbstractEntity
     }
 
     /**
-     * @param integer $id
+     * @param  integer $id
      * @return void
      */
     public function setUserId($id)
@@ -191,7 +193,7 @@ class WidgetVisibilityItem extends AbstractEntity
     }
 
     /**
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function setUserName($name)
@@ -210,7 +212,7 @@ class WidgetVisibilityItem extends AbstractEntity
     }
 
     /**
-     * @param string $email
+     * @param  string $email
      * @return void
      */
     public function setUserEmail($email)
@@ -227,7 +229,7 @@ class WidgetVisibilityItem extends AbstractEntity
     }
 
     /**
-     * @param integer $count
+     * @param  integer $count
      * @return void
      */
     public function setChildrens($count)
@@ -244,7 +246,7 @@ class WidgetVisibilityItem extends AbstractEntity
     }
 
     /**
-     * @param null | integer $flag
+     * @param  null|integer $flag
      * @return void
      */
     public function setEnabled($flag = null)
@@ -255,7 +257,7 @@ class WidgetVisibilityItem extends AbstractEntity
     }
 
     /**
-     * @return null | integer
+     * @return null|integer
      */
     public function getEnabled()
     {

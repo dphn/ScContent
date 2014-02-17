@@ -21,7 +21,7 @@ class Schema extends AbstractMigrationSchema
     /**
      * Migrate.
      *
-     * @throw ScContent\Exception\MigrationException
+     * @throws \ScContent\Exception\MigrationException
      * @return void
      */
     public function up()

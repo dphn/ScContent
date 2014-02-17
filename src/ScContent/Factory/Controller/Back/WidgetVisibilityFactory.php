@@ -14,11 +14,14 @@ use ScContent\Controller\Back\WidgetVisibilityController,
     Zend\ServiceManager\ServiceLocatorInterface,
     Zend\ServiceManager\FactoryInterface;
 
+/**
+ * @author Dolphin <work.dolphin@gmail.com>
+ */
 class WidgetVisibilityFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $controllerManager
-     * @return ScContent\Controller\Back\WidgetVisibilityController
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $controllerManager
+     * @return \ScContent\Controller\Back\WidgetVisibilityController
      */
     public function createService(ServiceLocatorInterface $controllerManager)
     {

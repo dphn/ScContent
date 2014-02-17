@@ -27,7 +27,7 @@ use ScContent\Exception\IoCException,
 class UnauthorizedStrategy extends AbstractListenerAggregate
 {
     /**
-     * @var Zend\Authentication\AuthenticationService
+     * @var \Zend\Authentication\AuthenticationService
      */
     protected $authService;
 
@@ -47,7 +47,7 @@ class UnauthorizedStrategy extends AbstractListenerAggregate
     protected $template = 'sc-default/template/frontend/user/deny';
 
     /**
-     * @param Zend\Authentication\AuthenticationService $service
+     * @param  \Zend\Authentication\AuthenticationService $service
      * @return void
      */
     public function setAuthService(AuthenticationService $service)
@@ -56,8 +56,8 @@ class UnauthorizedStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Authentication\AuthenticationService
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Authentication\AuthenticationService
      */
     public function getAuthService()
     {
@@ -70,7 +70,7 @@ class UnauthorizedStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @param string $route
+     * @param  string $route
      * @return void
      */
     public function setRedirectRoute($route)
@@ -87,7 +87,7 @@ class UnauthorizedStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @param string $url
+     * @param  string $url
      * @return void
      */
     public function setRedirectUrl($url)
@@ -104,7 +104,7 @@ class UnauthorizedStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @param string $template
+     * @param  string $template
      * @return void
      */
     public function setTemplate($template)
@@ -121,7 +121,7 @@ class UnauthorizedStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @param Zend\EventManager\EventManagerInterface
+     * @param  \Zend\EventManager\EventManagerInterface
      * @return void
      */
     public function attach(EventManagerInterface $events)
@@ -134,7 +134,7 @@ class UnauthorizedStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     public function onDispatchError(MvcEvent $event)
@@ -148,7 +148,7 @@ class UnauthorizedStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     protected function performRedirect(MvcEvent $event)
@@ -194,7 +194,7 @@ class UnauthorizedStrategy extends AbstractListenerAggregate
     }
 
     /**
-     * @param Zend\Mvc\MvcEvent $event
+     * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     protected function performRendering(MvcEvent $event)

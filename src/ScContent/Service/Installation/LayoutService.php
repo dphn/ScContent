@@ -23,17 +23,17 @@ use ScContent\Mapper\Installation\LayoutMapper,
 class LayoutService extends AbstractInstallationService
 {
     /**
-     * @var ScContent\Options\ModuleOptions
+     * @var \ScContent\Options\ModuleOptions
      */
     protected $moduleOptions;
 
     /**
-     * @var ScContent\Mapper\Installation\LayoutMapper
+     * @var \ScContent\Mapper\Installation\LayoutMapper
      */
     protected $layoutMapper;
 
     /**
-     * @var ScContent\Entity\Installation\WidgetEntity
+     * @var \ScContent\Entity\Installation\WidgetEntity
      */
     protected $widgetEntity;
 
@@ -46,8 +46,7 @@ class LayoutService extends AbstractInstallationService
     /**#@-*/
 
     /**
-     * @var string[string] Messages
-     *                     <code>(string) message [(string) message identifier]</code>
+     * @var array Messages
      */
     protected $errorMessages = [
         self::UnknownThemeNotEnabled
@@ -61,7 +60,7 @@ class LayoutService extends AbstractInstallationService
     ];
 
     /**
-     * @param ScContent\Options\ModuleOptions $options
+     * @param  \ScContent\Options\ModuleOptions $options
      * @return void
      */
     public function setModuleOptions(ModuleOptions $options)
@@ -70,8 +69,8 @@ class LayoutService extends AbstractInstallationService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Options\ModuleOptions
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Options\ModuleOptions
      */
     public function getModuleOptions()
     {
@@ -82,7 +81,7 @@ class LayoutService extends AbstractInstallationService
     }
 
     /**
-     * @param ScContent\Mapper\Installation\LayoutMapper $mapper
+     * @param  \ScContent\Mapper\Installation\LayoutMapper $mapper
      * @return void
      */
     public function setLayoutMapper(LayoutMapper $mapper)
@@ -91,8 +90,8 @@ class LayoutService extends AbstractInstallationService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Mapper\Installation\LayoutMapper
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Mapper\Installation\LayoutMapper
      */
     public function getLayoutMapper()
     {
@@ -103,7 +102,7 @@ class LayoutService extends AbstractInstallationService
     }
 
     /**
-     * @param ScContent\Entity\WidgetInterface $entity
+     * @param  \ScContent\Entity\WidgetInterface $entity
      * @return void
      */
     public function setWidgetEntity(WidgetInterface $entity)
@@ -112,8 +111,8 @@ class LayoutService extends AbstractInstallationService
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Entity\WidgetInterface
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Entity\WidgetInterface
      */
     public function getWidgetEntity()
     {
@@ -124,7 +123,7 @@ class LayoutService extends AbstractInstallationService
     }
 
     /**
-     * @param null $options Not used
+     * @param  null $options Not used
      * @return boolean
      */
     public function process($options = null)
@@ -135,7 +134,7 @@ class LayoutService extends AbstractInstallationService
     }
 
     /**
-     * @param string $theme Theme name
+     * @param  string $theme Theme name
      * @return boolean
      */
     public function enableTheme($theme)
@@ -192,9 +191,9 @@ class LayoutService extends AbstractInstallationService
     /**
      * Get the existing regions from the module options.
      *
-     * @param string $themeName
-     * @return string[string] Regions
-     *                        <code>(string) region name [(string) widget name]</code>
+     * @param  string $themeName
+     * @return array Regions <code>string[string]</code>
+     *                       <code>(string) region name [(string) widget name]</code>
      */
     public function getRegions($themeName)
     {

@@ -69,7 +69,7 @@ class ContentListMove extends ContentListAbstractListener
     ];
 
     /**
-     * @param ScContent\Mapper\Back\ContentListMoveMapper $mapper
+     * @param \ScContent\Mapper\Back\ContentListMoveMapper $mapper
      */
     public function setMapper(ContentListMoveMapper $mapper) {
         $this->mapper = $mapper;
@@ -78,8 +78,8 @@ class ContentListMove extends ContentListAbstractListener
     /**
      * Moving subtrees
      *
-     * @param Zend\EventManager\EventInterface $event
-     * @return null | Zend\Http\Response
+     * @param  \Zend\EventManager\EventInterface $event
+     * @return null|\Zend\Http\Response
      */
     public function process(EventInterface $event)
     {

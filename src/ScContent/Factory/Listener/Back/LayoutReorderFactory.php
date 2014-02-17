@@ -20,8 +20,8 @@ use ScContent\Listener\Back\LayoutReorder,
 class LayoutReorderFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Back\LayoutReorder
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Back\LayoutReorder
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

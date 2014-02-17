@@ -21,8 +21,8 @@ use ScContent\Service\Theme\FrontendRegionsProxy,
 class FrontendRegionsProxyFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Service\Theme\FrontendRegionsProxy
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Service\Theme\FrontendRegionsProxy
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

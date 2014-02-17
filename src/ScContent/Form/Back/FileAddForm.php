@@ -24,26 +24,26 @@ use ScContent\InputFilter\FileInput,
 class FileAddForm extends Form
 {
     /**
-     * @var ScContent\Filter\File\MimeType
+     * @var \ScContent\Filter\File\MimeType
      */
     protected $mimeTypeFilter;
 
     /**
-     * @var ScContent\Validator\File\FileName
+     * @var \ScContent\Validator\File\FileName
      */
     protected $fileNameValidator;
 
     /**
-     * @var ScContent\Validator\File\FileType
+     * @var \ScContent\Validator\File\FileType
      */
     protected $fileTypeValidator;
 
     /**
      * Constructor
      *
-     * @param MimeType $mimeTypeFilter
-     * @param FileName $fileNameValidator
-     * @param FileType $fileTypeValidator
+     * @param \ScContent\Filter\File\MimeType $mimeTypeFilter
+     * @param \ScContent\Validator\File\FileName $fileNameValidator
+     * @param \ScContent\Validator\File\FileType $fileTypeValidator
      */
     public function __construct(
         MimeType $mimeTypeFilter,
@@ -62,7 +62,7 @@ class FileAddForm extends Form
     }
 
     /**
-     * @throw Zend\Form\Exception\DomainException
+     * @throws \Zend\Form\Exception\DomainException
      * @return boolean
      */
     public function isValid()

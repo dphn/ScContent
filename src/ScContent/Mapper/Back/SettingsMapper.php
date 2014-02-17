@@ -21,17 +21,17 @@ use ScContent\Service\Dir,
 class SettingsMapper
 {
     /**
-     * @var ScContent\Service\Dir
+     * @var \ScContent\Service\Dir
      */
     protected $dir;
 
     /**
-     * @var Zend\Config\Writer\PhpArray
+     * @var \Zend\Config\Writer\PhpArray
      */
     protected $writer;
 
     /**
-     * @var Zend\Config\Config
+     * @var \Zend\Config\Config
      */
     protected $config;
 
@@ -41,7 +41,7 @@ class SettingsMapper
     protected $settingsFilePath = 'settings/module.settings.php';
 
     /**
-     * @param ScContent\Service\Dir $dir
+     * @param  \ScContent\Service\Dir $dir
      * @return void
      */
     public function setDir(Dir $dir)
@@ -50,8 +50,8 @@ class SettingsMapper
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return ScContent\Service\Dir
+     * @throws \ScContent\Exception\IoCException
+     * @return \ScContent\Service\Dir
      */
     public function getDir()
     {
@@ -64,7 +64,7 @@ class SettingsMapper
     }
 
     /**
-     * @param Zend\Config\Writer\PhpArray $writer
+     * @param  \Zend\Config\Writer\PhpArray $writer
      * @return void
      */
     public function setWriter(PhpArray $writer)
@@ -73,7 +73,7 @@ class SettingsMapper
     }
 
     /**
-     * @return Zend\Config\Writer\PhpArray
+     * @return \Zend\Config\Writer\PhpArray
      */
     public function getWriter()
     {
@@ -84,7 +84,7 @@ class SettingsMapper
     }
 
     /**
-     * @param Zend\Config\Config $config
+     * @param  \Zend\Config\Config $config
      * @return void
      */
     public function setConfig(Config $config)
@@ -93,7 +93,7 @@ class SettingsMapper
     }
 
     /**
-     * @return Zend\Config\Config
+     * @return \Zend\Config\Config
      */
     public function getConfig()
     {
@@ -112,7 +112,7 @@ class SettingsMapper
     }
 
     /**
-     * @param string $path
+     * @param  string $path
      * @return string
      */
     public function setSettingsFilePath($path)
@@ -129,7 +129,7 @@ class SettingsMapper
     }
 
     /**
-     * @param Zend\Config\Config $config
+     * @param  \Zend\Config\Config $config
      * @return void
      */
     public function saveConfig(Config $config)

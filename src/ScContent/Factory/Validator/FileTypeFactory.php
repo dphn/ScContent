@@ -20,8 +20,8 @@ use ScContent\Validator\File\FileType,
 class FileTypeFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
-     * @return ScContent\Validator\File\FileType
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
+     * @return \ScContent\Validator\File\FileType
      */
     public function createService(
         ServiceLocatorInterface $validatorPluginManager

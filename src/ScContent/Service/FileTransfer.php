@@ -25,7 +25,7 @@ use ScContent\Service\FileTypesCatalogInterface as CatalogInterface,
 class FileTransfer extends AbstractService implements FileTransferInterface
 {
     /**
-     * @var Zend\Validator\Db\NoRecordExists
+     * @var \Zend\Validator\Db\NoRecordExists
      */
     protected $validator;
 
@@ -40,7 +40,7 @@ class FileTransfer extends AbstractService implements FileTransferInterface
     protected $dir;
 
     /**
-     * @param Zend\Validator\Db\NoRecordExists $validator
+     * @param  \Zend\Validator\Db\NoRecordExists $validator
      * @return void
      */
     public function setValidator(NoRecordExists $validator)
@@ -49,8 +49,8 @@ class FileTransfer extends AbstractService implements FileTransferInterface
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
-     * @return Zend\Validator\Db\NoRecordExists
+     * @throws \ScContent\Exception\IoCException
+     * @return \Zend\Validator\Db\NoRecordExists
      */
     public function getValidator()
     {
@@ -63,7 +63,7 @@ class FileTransfer extends AbstractService implements FileTransferInterface
     }
 
     /**
-     * @param FileTypesCatalogInterface $catalog
+     * @param  FileTypesCatalogInterface $catalog
      * @return void
      */
     public function setCatalog(CatalogInterface $catalog)
@@ -72,7 +72,7 @@ class FileTransfer extends AbstractService implements FileTransferInterface
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
+     * @throws \ScContent\Exception\IoCException
      * @return FileTypesCatalogInterface
      */
     public function getCatalog()
@@ -86,7 +86,7 @@ class FileTransfer extends AbstractService implements FileTransferInterface
     }
 
     /**
-     * @param Dir $dir
+     * @param  Dir $dir
      * @return void
      */
     public function setDir(Dir $dir)
@@ -95,7 +95,7 @@ class FileTransfer extends AbstractService implements FileTransferInterface
     }
 
     /**
-     * @throws ScContent\Exception\IoCException
+     * @throws \ScContent\Exception\IoCException
      * @return Dir
      */
     public function getDir()
@@ -109,8 +109,8 @@ class FileTransfer extends AbstractService implements FileTransferInterface
     }
 
     /**
-     * @param array $data
-     * @throws ScContent\Exception\RuntimeException
+     * @param  array $data
+     * @throws \ScContent\Exception\RuntimeException
      * @return void
      */
     public function receive($files)
@@ -195,7 +195,7 @@ class FileTransfer extends AbstractService implements FileTransferInterface
     }
 
     /**
-     * @param array $data
+     * @param  array $data
      * @return void
      */
     public function rollBack($data)

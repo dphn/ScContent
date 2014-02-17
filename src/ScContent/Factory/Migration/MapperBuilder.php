@@ -20,12 +20,12 @@ use ScContent\Mapper\AbstractMigrationMapper,
 class MapperBuilder
 {
     /**
-     * @var Zend\Db\Adapter\AdapterInterface
+     * @var \Zend\Db\Adapter\AdapterInterface
      */
     protected $adapter;
 
     /**
-     * @param Zend\Db\Adapter\AdapterInterface $adapter
+     * @param \Zend\Db\Adapter\AdapterInterface $adapter
      */
     public function __construct($adapter)
     {
@@ -33,9 +33,9 @@ class MapperBuilder
     }
 
     /**
-     * @param string $name
-     * @throws ScContent\Exception\DomainException
-     * @return ScContent\Mapper\AbstractMigrationMapper
+     * @param  string $name
+     * @throws \ScContent\Exception\DomainException
+     * @return \ScContent\Mapper\AbstractMigrationMapper
      */
     public function make($name)
     {

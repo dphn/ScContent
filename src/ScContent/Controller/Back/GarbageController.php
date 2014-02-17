@@ -20,14 +20,14 @@ use ScContent\Service\Back\GarbageCollector,
 class GarbageController extends AbstractActionController
 {
     /**
-     * @var ScContent\Service\Back\GarbageCollector
+     * @var \ScContent\Service\Back\GarbageCollector
      */
     protected $garbageCollector;
 
     /**
      * Collects garbage - removes files from the file system.
      *
-     * @return Zend\Stdlib\ResponseInterface
+     * @return \Zend\Stdlib\ResponseInterface
      */
     public function collectAction()
     {
@@ -45,7 +45,7 @@ class GarbageController extends AbstractActionController
     }
 
     /**
-     * @param ScContent\Service\Back\GarbageCollector $service
+     * @param  \ScContent\Service\Back\GarbageCollector $service
      * @return void
      */
     public function setGarbageCollector(GarbageCollector $service)
@@ -54,7 +54,7 @@ class GarbageController extends AbstractActionController
     }
 
     /**
-     * @return ScContent\Service\Back\GarbageCollector
+     * @return \ScContent\Service\Back\GarbageCollector
      */
     public function getGarbageCollector()
     {

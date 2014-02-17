@@ -15,7 +15,7 @@ namespace ScContent\Options;
 interface ServiceDirInterface
 {
     /**
-     * @param string $dir
+     * @param  string $dir
      * @return void
      */
     function setAppAutoloadDir($dir);
@@ -26,7 +26,7 @@ interface ServiceDirInterface
     function getAppAutoloadDir();
 
     /**
-     * @param string $dir
+     * @param  string $dir
      * @return void
      */
     function setAppPublicDir($dir);
@@ -37,7 +37,7 @@ interface ServiceDirInterface
     function getAppPublicDir();
 
     /**
-     * @param string $dir
+     * @param  string $dir
      * @return void
      */
     function setAppUploadsDir($dir);

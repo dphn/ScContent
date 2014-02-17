@@ -20,8 +20,8 @@ use ScContent\Validator\Installation\Roles,
 class RolesFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
-     * @return ScContent\Validator\Installation\Roles
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $validatorPluginManager
+     * @return \ScContent\Validator\Installation\Roles
      */
     public function createService(
         ServiceLocatorInterface $validatorPluginManager
@@ -31,7 +31,6 @@ class RolesFactory implements FactoryInterface
 
         $validator = new Roles();
         $validator->setMapper($mapper);
-
 
         return $validator;
     }

@@ -20,8 +20,8 @@ use ScContent\Listener\Back\ContentListAggregate,
 class ContentListAggregateFactory implements FactoryInterface
 {
     /**
-     * @param Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
-     * @return ScContent\Listener\Back\ContentListAggregate
+     * @param  \Zend\ServiceManager\ServiceLocatorInterface $serviceLocator
+     * @return \ScContent\Listener\Back\ContentListAggregate
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

@@ -37,7 +37,7 @@ class PhpExtension extends AbstractValidator
 
     /**
      * @param  callable $callback
-     * @throws Zend\Validator\Exception\InvalidArgumentException
+     * @throws \Zend\Validator\Exception\InvalidArgumentException
      * @return void
      */
     public function setCallback($callback)
@@ -69,8 +69,8 @@ class PhpExtension extends AbstractValidator
     }
 
     /**
-     * @param array $options
-     * @throws Zend\Validator\Exception\InvalidArgumentException
+     * @param  array $options
+     * @throws \Zend\Validator\Exception\InvalidArgumentException
      * @return boolean
      */
     public function isValid($options)
