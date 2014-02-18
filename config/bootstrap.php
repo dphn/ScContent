@@ -122,16 +122,3 @@ $sharedEvents->attach(
 
 $santizeOutput = new \ScContent\Listener\SantizeOutputListener();
 $santizeOutput->attach($eventManager);
-
-$sharedEvents->attach(
-    'ZfcUser\Controller\UserController',
-    \Zend\Mvc\MvcEvent::EVENT_DISPATCH,
-    function ($event) {
-        $controller = $event->getTarget();
-        $layout = $controller->layout();
-        $routeMatch = $event->getRouteMatch();
-        $action = $routeMatch->getParam('action');
-        var_dump($action);
-        $layout->setTemplate('my/layout');
-    }
-);
