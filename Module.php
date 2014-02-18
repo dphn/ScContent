@@ -53,7 +53,7 @@ class Module extends AbstractModule implements
     }
 
     /**
-     * @param Zend\ModuleManager\ModuleManagerInterface
+     * @param  \Zend\ModuleManager\ModuleManagerInterface
      * @return void
      */
     public function init(ModuleManagerInterface $moduleManager)
@@ -79,7 +79,7 @@ class Module extends AbstractModule implements
     }
 
     /**
-     * @param Zend\EventManager\EventInterface $event
+     * @param  \Zend\EventManager\EventInterface $event
      * @return void
      */
     public function onBootstrap(EventInterface $event)
