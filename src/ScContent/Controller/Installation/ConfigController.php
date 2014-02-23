@@ -35,21 +35,13 @@ class ConfigController extends AbstractInstallation
      */
     public function indexAction()
     {
-        $redirect = $this->getRedirect();
-        $routeMatch = $this->getEvent()->getRouteMatch();
-        if (! $routeMatch->getParam('step')
-            || ! $routeMatch->getParam('member')
-        ) {
-            return $this->redirect()
-                ->toUrl($redirect)
-                ->setStatusCode(303);
-        }
+        $redirect     = $this->getRedirect();
+        $installation = $this->getInstallation();
+        $step         = $installation->getCurrentStep();
+        $member       = $step->getCurrentMember();
+        $batch        = current($member->getBatch());
 
         $view = new ViewModel();
-        $step = $routeMatch->getParam('step');
-        $member = $routeMatch->getParam('member');
-        $options = $this->getInstallationInspector()->getCurrentSetup();
-        $batch = $options['steps'][$step]['chain'][$member]['batch'];
         $form = $this->getForm();
         $form->setAttribute(
             'action',

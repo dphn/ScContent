@@ -29,9 +29,6 @@ return [
         'ScOptions.ModuleOptions'
             => 'ScContent\Factory\Options\ModuleFactory',
 
-        'ScOptions.InstallationOptions'
-            => 'ScContent\Factory\Options\InstallationFactory',
-
         'ScService.Dir'
             => 'ScContent\Factory\Service\DirFactory',
 

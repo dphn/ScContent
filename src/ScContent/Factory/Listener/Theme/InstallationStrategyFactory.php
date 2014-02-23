@@ -25,9 +25,9 @@ class InstallationStrategyFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $service = $serviceLocator->get('ScListener.Installation.Inspector');
+        $translator = $serviceLocator->get('translator');
         $strategy = new InstallationStrategy();
-        $strategy->setInstallationInspector($service);
+        $strategy->setTranslator($translator);
         return $strategy;
     }
 }

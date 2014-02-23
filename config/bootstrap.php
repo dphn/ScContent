@@ -81,14 +81,14 @@ try {
 /* ScContent installation.
  * Using installation feature for installation of module ScContent.
  */
-$file = $this->getDir() . DS . 'settings' . DS . 'installation.locked';
+$file = $this->getDir() . str_replace('/', DS, '/settings/installation.locked');
 if (! file_exists($file)) {
 
-    $installationOptions = $serviceLocator->get('ScOptions.InstallationOptions')
-        ->getInstallation();
+    $installation = require $this->getDir()
+                  . str_replace('/', DS, '/config/installation.config.php');
 
     $serviceLocator->get('ScListener.Installation.Inspector')
-        ->setup($installationOptions);
+        ->setup(__NAMESPACE__, $installation);
 }
 
 $l10n = $serviceLocator->get('ScService.Localization');

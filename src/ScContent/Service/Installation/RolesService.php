@@ -19,9 +19,14 @@ use ScContent\Mapper\RolesMapper,
 class RolesService extends AbstractInstallationService
 {
     /**
-     * @var \ScContent\Mapper\Installation\RolesMapper
+     * @var \ScContent\Mapper\RolesMapper
      */
     protected $rolesMapper;
+
+    /**
+     * @var null|array
+     */
+    protected $registeredRoles;
 
     /**
      * @param  \ScContent\Mapper\Installation\RolesMapper $mapper
@@ -33,7 +38,7 @@ class RolesService extends AbstractInstallationService
     }
 
     /**
-     * @return \ScContent\Mapper\Installation\RolesMapper
+     * @return \ScContent\Mapper\RolesMapper
      */
     public function getMapper()
     {
@@ -52,30 +57,43 @@ class RolesService extends AbstractInstallationService
     public function process($options)
     {
         $mapper = $this->getMapper();
-        $registeredRoles = $mapper->findRegisteredRoles();
-        foreach ($options as $i => &$roleOptions) {
-            if (! isset($roleOptions['role_id'])) {
-                throw new InvalidArgumentException(
-                    "In the configuration of roles the 'role_id' option is not specified."
-                );
-            }
-            if (in_array($roleOptions['role_id'], $registeredRoles)) {
-                unset($options[$i]);
-                continue;
-            }
-            if (! isset($roleOptions['route'])) {
-                throw new InvalidArgumentException(
-                    "In the configuration of roles the option 'route' is not specified."
-                );
-            }
-            if (! array_key_exists('is_default', $roleOptions)) {
-                $roleOptions['is_default'] = null;
-            }
-            if (! array_key_exists('parent_id', $roleOptions)) {
-                $roleOptions['parent_id'] = null;
-            }
-            $mapper->addRole($roleOptions);
+        $registeredRoles = $this->getRegisteredRoles();
+
+        if (! isset($options['role_id'])) {
+            throw new InvalidArgumentException(
+                "In the configuration of roles the 'role_id' option is not specified."
+            );
         }
+        if (! isset($options['route'])) {
+            throw new InvalidArgumentException(
+                "In the configuration of roles the option 'route' is not specified."
+            );
+        }
+
+        if (in_array($options['role_id'], $registeredRoles)) {
+            return true;
+        }
+
+        if (! array_key_exists('is_default', $options)) {
+            $roleOptions['is_default'] = null;
+        }
+        if (! array_key_exists('parent_id', $options)) {
+            $roleOptions['parent_id'] = null;
+        }
+        $mapper->addRole($options);
+
         return true;
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getRegisteredRoles()
+    {
+        if (is_null($this->registeredRoles)) {
+            $mapper = $this->getMapper();
+            $this->registeredRoles = $mapper->findRegisteredRoles();
+        }
+        return $this->registeredRoles;
     }
 }

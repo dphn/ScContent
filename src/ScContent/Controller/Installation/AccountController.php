@@ -37,17 +37,9 @@ class AccountController extends AbstractInstallation
     public function indexAction()
     {
         $redirect = $this->getRedirect();
-        $routeMatch = $this->getEvent()->getRouteMatch();
-        if (! $routeMatch->getParam('step')
-            || ! $routeMatch->getParam('member')
-        ) {
-            return $this->redirect()
-                ->toUrl($redirect)
-                ->setStatusCode(303);
-        }
+        $view     = new ViewModel();
+        $form     = $this->getAccountForm();
 
-        $view = new ViewModel();
-        $form = $this->getAccountForm();
         $form->setHydrator(new ClassMethods());
         $form->setAttribute(
             'action',

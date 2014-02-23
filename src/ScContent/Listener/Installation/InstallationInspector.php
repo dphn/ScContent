@@ -10,6 +10,8 @@
 namespace ScContent\Listener\Installation;
 
 use ScContent\Listener\GuardExceptionStrategy,
+    ScContent\Factory\Options\Installation\InstallationOptionsFactory,
+    ScContent\Options\Installation\Installation,
     ScContent\Exception\InvalidArgumentException,
     ScContent\Exception\IoCException,
     //
@@ -26,16 +28,6 @@ use ScContent\Listener\GuardExceptionStrategy,
 class InstallationInspector extends AbstractListenerAggregate
 {
     /**
-     * @const string
-     */
-    const DefaultController = 'ScController.Installation.Default';
-
-    /**
-     * @const string
-     */
-    const DefaultAction = 'index';
-
-    /**
      * @var \Zend\Validator\ValidatorPluginManager
      */
     protected $validatorManager;
@@ -46,12 +38,12 @@ class InstallationInspector extends AbstractListenerAggregate
     protected $guardExceptionStrategy;
 
     /**
-     * @var array
+     * @var \ScContent\Options\Installation\Installation[string]
      */
     protected $queue = [];
 
     /**
-     * @var array
+     * @var \ScContent\Options\Installation\Installation
      */
     protected $current = [];
 
@@ -128,20 +120,27 @@ class InstallationInspector extends AbstractListenerAggregate
     /**
      * @api
      *
-     * @param  array $options
+     * @param  string $moduleName
+     * @param  \ScContent\Options\Installation\Installation|array $options
      * @return InstallationInspector
      */
-    public function setup($options)
+    public function setup($moduleName, $options)
     {
-        if (! is_array($options) || empty($options)) {
+        if (is_array($options)) {
+            $this->queue[] = InstallationOptionsFactory::make($moduleName, $options);
             return $this;
         }
-        $this->queue[] = $options;
-        return $this;
+        if ($options instanceof Installation) {
+            $this->queue[] = $options;
+            return $this;
+        }
+        throw new InvalidArgumentException(
+            "Installation options should be an array or an instance of class 'ScContent\Options\Installation\Installation'."
+        );
     }
 
     /**
-     * @return array
+     * @return \ScContent\Options\Installation\Installation
      */
     public function getCurrentSetup()
     {
@@ -156,80 +155,32 @@ class InstallationInspector extends AbstractListenerAggregate
     public function inspect(MvcEvent $event)
     {
         $validatorManager = $this->getValidatorManager();
+
         while (! empty($this->queue)) {
-            $controller = self::DefaultController;
-            $action     = self::DefaultAction;
-            $options = $this->current = array_shift($this->queue);
+            $installation = $this->current = array_shift($this->queue);
+            foreach ($installation as $stepName => $step) {
+                foreach ($step as $memberName => $member) {
+                    $validator = $validatorManager->get(
+                        $member->getValidator()
+                    );
+                    foreach ($member as $batch) {
+                        if (! $validator->isValid($batch)) {
+                            $this->enableInstallationGuard(true);
 
-            if (! isset($options['steps']) || ! is_array($options['steps'])) {
-                throw new InvalidArgumentException(
-                    "Missing configuration options 'steps'."
-                );
-            }
+                            $installation->setCurrentStepName($stepName);
+                            $step->setCurrentMemberName($memberName);
 
-            foreach ($options['steps'] as $stepNumber => &$step) {
-                if (! isset($step['chain']) || ! is_array($step['chain'])) {
-                    throw new InvalidArgumentException(sprintf(
-                        "Missing configuration option 'chain' for step '%s'.",
-                        $stepNumber
-                    ));
-                }
-                foreach ($step['chain'] as $memberName => &$member) {
-                    if (! isset($member['validator'])) {
-                        throw new InvalidArgumentException(sprintf(
-                            "For step '%s' chain element '%s' validator is not specified.",
-                            $stepNumber, $memberName
-                        ));
-                    }
-                    if (! isset($member['service']) &&
-                        ! (isset($member['controller']) && isset($member['action']))
-                    ) {
-                        throw new InvalidArgumentException(sprintf(
-                            "For step '%s' member '%s' must be specified 'service' or 'controller' and 'action'.",
-                            $stepNumber, $memberName
-                        ));
-                    }
-                    $isValid = true;
-                    $validator = $validatorManager->get($member['validator']);
+                            $routeMatch = $event->getRouteMatch();
+                            $routeMatch
+                                ->setParam('controller', $member->getController())
+                                ->setParam('action',     $member->getAction());
 
-                    $batch = null;
-                    if (isset($member['batch'])) {
-                        $batch = &$member['batch'];
-                    }
-                    if (isset($batch['items']) && is_array($batch['items'])) {
-                        foreach ($batch['items'] as &$item) {
-                            if (! $validator->isValid($item)) {
-                                if (isset($member['controller'])
-                                     && isset($member['action'])
-                                ) {
-                                    $controller = $member['controller'];
-                                    $action = $member['action'];
-                                }
-                                $isValid = false;
-                                break;
-                            }
+                            $event->setParam('installation', $installation);
+
+                            $event->setRouteMatch($routeMatch);
+
+                            return;
                         }
-                    } elseif (! $validator->isValid($batch)) {
-                        if (isset($member['controller'])
-                             && isset($member['action'])
-                        ) {
-                            $controller = $member['controller'];
-                            $action = $member['action'];
-                        }
-                        $isValid = false;
-                    }
-                    if (! $isValid) {
-                        $this->enableInstallationGuard(true);
-                        $redirect = $event->getRequest()->getRequestUri();
-                        $routeMatch = $event->getRouteMatch();
-                        $routeMatch->setParam('redirect', $redirect)
-                            ->setParam('controller', $controller)
-                            ->setParam('action', $action)
-                            ->setParam('member', $memberName)
-                            ->setParam('step', $stepNumber);
-
-                        $event->setRouteMatch($routeMatch);
-                        return;
                     }
                 }
             }
@@ -245,7 +196,7 @@ class InstallationInspector extends AbstractListenerAggregate
         if (! $this->installationGuardIsEnabled) {
             return;
         }
-        $application = $event->getApplication();
+        $application    = $event->getApplication();
         $serviceLocator = $application->getServiceManager();
 
         $zfcUserSessionContainer = new Container('Zend_Auth');

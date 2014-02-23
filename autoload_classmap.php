@@ -5,7 +5,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
  * Generated using Qt
- * total classes:    316
+ * total classes:    319
  * total interfaces: 15
  */
 
@@ -130,7 +130,7 @@ return [
     'ScContent\Factory\Migration\MapperBuilder'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Migration'                        . DS . 'MapperBuilder.php',
     'ScContent\Factory\Migration\MigrationSchemaAbstractFactory'           => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Migration'                        . DS . 'MigrationSchemaAbstractFactory.php',
     'ScContent\Factory\Navigation\BackendNavigationFactory'                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Navigation'                       . DS . 'BackendNavigationFactory.php',
-    'ScContent\Factory\Options\InstallationFactory'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Options'                          . DS . 'InstallationFactory.php',
+    'ScContent\Factory\Options\Installation\InstallationOptionsFactory'    => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Options'                          . DS . 'Installation'                         . DS . 'InstallationOptionsFactory.php',
     'ScContent\Factory\Options\ModuleFactory'                              => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Options'                          . DS . 'ModuleFactory.php',
     'ScContent\Factory\Service\Back\ArticleFactory'                        => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Service'                          . DS . 'Back'                                 . DS . 'ArticleFactory.php',
     'ScContent\Factory\Service\Back\CategoryFactory'                       => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Factory'     . DS . 'Service'                          . DS . 'Back'                                 . DS . 'CategoryFactory.php',
@@ -271,6 +271,9 @@ return [
     'ScContent\Migration\SchemaInterface'                                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Migration'   . DS . 'ShemaInterface.php',
     'ScContent\Options\Back\ContentListOptions'                            => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'Back'                             . DS . 'ContentListOptions.php',
     'ScContent\Options\Back\WidgetVisibilityListOptions'                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'Back'                             . DS . 'WidgetVisibilityListOptions.php',
+    'ScContent\Options\Installation\Installation'                          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'Installation'                     . DS . 'Installation.php',
+    'ScContent\Options\Installation\Member'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'Installation'                     . DS . 'Member.php',
+    'ScContent\Options\Installation\Step'                                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'Installation'                     . DS . 'Step.php',
     'ScContent\Options\InstallationOptions'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'InstallationOptions.php',
     'ScContent\Options\ModuleOptions'                                      => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'ModuleOptions.php',
     'ScContent\Options\ModuleOptionsInterface'                             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'ModuleOptionsInterface.php',

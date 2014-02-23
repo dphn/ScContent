@@ -107,7 +107,12 @@ class IdentityProvider extends AbstractService implements ProviderInterface
             return $this->identityRoles;
         }
 
-        $userId = $authService->getIdentity()->getId();
+        $identity = $authService->getIdentity();
+        if (empty($identity)) {
+            $this->identityRoles = [$this->getDefaultRole()];
+            return $this->identityRoles;
+        }
+        $userId = $identity->getId();
         try {
             $mapper = $this->getMapper();
             $this->identityRoles = $mapper->findUserRoles($userId);

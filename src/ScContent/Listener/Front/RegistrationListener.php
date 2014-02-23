@@ -9,8 +9,10 @@
  */
 namespace ScContent\Listener\Front;
 
-use ScContent\Mapper\RegistrationMapper,
+use ScContent\Listener\AbstractListener,
+    ScContent\Mapper\RegistrationMapper,
     ScContent\Exception\InvalidArgumentException,
+    ScContent\Exception\DebugException,
     ScContent\Exception\IoCException,
     //
     ZfcUser\Service\User,
@@ -20,7 +22,7 @@ use ScContent\Mapper\RegistrationMapper,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-class RegistrationListener
+class RegistrationListener extends AbstractListener
 {
     /**
      * @var \ScContent\Mapper\Front\RegistrationMapper
@@ -72,13 +74,14 @@ class RegistrationListener
     }
 
     /**
-     * @throw  \ScContent\Exception\InvalidArgumentException
+     * @throws \ScContent\Exception\InvalidArgumentException
+     * @throws \ScContent\Exception\DebugException
      * @return void
      */
     public function update($event)
     {
         $user = $event->getParam('user');
-        if (empty($event)) {
+        if (empty($user)) {
             throw new InvalidArgumentException(
                 "Missing event param 'user'."
             );
@@ -86,16 +89,22 @@ class RegistrationListener
         $userId = $user->getId();
 
         $mapper = $this->getMapper();
+        $mapper->beginTransaction();
+        $tid = $mapper->getTransactionIdentifier();
+
         try {
-            $mapper->registerUser($userId, $this->getRegistrationRole());
+            $mapper->registerUser($userId, $this->getRegistrationRole(), $tid);
+            $mapper->commit();
         } catch (Exception $e) {
-            // unset all session data
-            if (! session_id()) {
-                session_start();
+            $mapper->rollBack();
+            $translator = $this->getTranslator();
+            if (DEBUG_MODE) {
+                throw new DebugException(
+                    $translator->translate('Error: ') . $e->getMessage(),
+                    $e->getCode(),
+                    $e
+                );
             }
-            session_unset();
-            session_destroy();
-            $mapper->remove($userId);
         }
     }
 }

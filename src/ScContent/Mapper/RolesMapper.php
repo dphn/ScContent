@@ -148,9 +148,15 @@ class RolesMapper extends AbstractDbMapper
     {
         $select = $this->getSql()->select()
             ->columns([
-                'total' => new Expression('COUNT(`user_id`)'),
+                'total' => new Expression('COUNT(`users`.`user_id`)'),
             ])
-            ->from(['linker' => $this->getTable(self::RolesLinkerTableAlias)])
+            ->from(['users' => $this->getTable(self::UsersTableAlias)])
+            ->join(
+                ['linker' => $this->getTable(self::RolesLinkerTableAlias)],
+                'users.user_id = linker.user_id',
+                [],
+                self::JoinLeft
+            )
             ->join(
                 ['roles' => $this->getTable(self::RolesTableAlias)],
                 'linker.role_id = roles.id',

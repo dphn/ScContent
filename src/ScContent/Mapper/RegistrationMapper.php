@@ -10,11 +10,8 @@
 namespace ScContent\Mapper;
 
 use ScContent\Mapper\Exception\RuntimeException,
-    ScContent\Mapper\Exception\DomainException,
     //
-    Zend\Db\Adapter\AdapterInterface,
-    //
-    Exception;
+    Zend\Db\Adapter\AdapterInterface;
 
 /**
  * @author Dolphin <work.dolphin@gmail.com>
@@ -24,47 +21,37 @@ class RegistrationMapper extends RolesMapper
     /**
      * @param  integer $userId
      * @param  string $role
-     * @throws \ScContent\Mapper\Exception\DomainException
      * @throws \ScContent\Mapper\Exception\RuntimeException
      * @return void
      */
-    public function registerUser($userId, $role)
+    public function registerUser($userId, $role, $tid)
     {
-        try {
-            $this->beginTransaction();
-            $select = $this->getSql()->select()
-                ->columns(['id'])
-                ->from($this->getTable(self::RolesTableAlias))
-                ->where([
-                    'role_id' => $role,
-                ]);
+        $this->checkTransaction($tid);
 
-            $result = $this->execute($select);
-            if (empty($result)) {
-                throw new DomainException(sprintf(
-                    'Unknown role %s.',
-                    $role
-                ));
-            }
-            $roleId = $result->current()['id'];
+        $select = $this->getSql()->select()
+            ->columns(['id'])
+            ->from($this->getTable(self::RolesTableAlias))
+            ->where([
+                'role_id' => $role,
+            ]);
 
-            $insert = $this->getSql()->insert()
-                ->into($this->getTable(self::RolesLinkerTableAlias))
-                ->values([
-                    'user_id' => $userId,
-                    'role_id' => $roleId,
-                ]);
-
-            $this->execute($insert);
-            $this->commit();
-        } catch (Exception $e) {
-            $this->rollBack();
-            throw new RuntimeException(
-                'Registration error.',
-                $e->getCode(),
-                $e
-            );
+        $result = $this->execute($select)->current();
+        if (empty($result)) {
+            throw new RuntimeException(sprintf(
+                'Unknown role %s.',
+                $role
+            ));
         }
+        $roleId = $result['id'];
+
+        $insert = $this->getSql()->insert()
+            ->into($this->getTable(self::RolesLinkerTableAlias))
+            ->values([
+                'user_id' => $userId,
+                'role_id' => $roleId,
+            ]);
+
+        $this->execute($insert);
     }
 
     /**

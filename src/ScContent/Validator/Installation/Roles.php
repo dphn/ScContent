@@ -10,6 +10,7 @@
 namespace ScContent\Validator\Installation;
 
 use ScContent\Mapper\RolesMapper,
+    ScContent\Exception\InvalidArgumentException,
     ScContent\Exception\IoCException,
     //
     Zend\Validator\AbstractValidator;
@@ -23,6 +24,11 @@ class Roles extends AbstractValidator
      * @var \ScContent\Mapper\Installation\RolesMapper
      */
     protected $rolesMapper;
+
+    /**
+     * @var null|array
+     */
+    protected $registeredRoles;
 
     /**
      * @param  \ScContent\Mapper\Installation\Roles
@@ -49,26 +55,38 @@ class Roles extends AbstractValidator
 
     /**
      * @param  array $options
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return boolean
      */
     public function isValid($options)
     {
         if (empty($options)) {
-            return true;
+            return false;
         }
-        $mapper = $this->getMapper();
-
+        if (! isset($options['role_id'])) {
+            throw new InvalidArgumentException(
+                "Missing 'role_id' option."
+            );
+        }
         $roles = [];
         foreach ($options as $option) {
             if (isset($option['role_id'])) {
                 $roles[] = $option['role_id'];
             }
         }
-        $registeredRoles = $mapper->findRegisteredRoles();
-        $missingRoles = array_diff($roles, $registeredRoles);
-        if (! empty($missingRoles)) {
-            return false;
+        $registeredRoles = $this->getRegisteredRoles();
+        return in_array($options['role_id'], $registeredRoles);
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getRegisteredRoles()
+    {
+        if (is_null($this->registeredRoles)) {
+            $mapper = $this->getMapper();
+            $this->registeredRoles = $mapper->findRegisteredRoles();
         }
-        return true;
+        return $this->registeredRoles;
     }
 }

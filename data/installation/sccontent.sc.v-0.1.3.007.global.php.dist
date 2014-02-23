@@ -26,7 +26,7 @@ return [
                 'pages' => [
                     'themes' => [
                         'label' => 'Themes',
-                        'route' => 'sc-admin/themes',
+                        'route' => 'sc-admin/theme',
                     ],
                     'layout' => [
                         'label' => 'Layout',

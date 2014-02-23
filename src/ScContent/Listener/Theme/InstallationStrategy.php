@@ -9,10 +9,9 @@
  */
 namespace ScContent\Listener\Theme;
 
-use ScContent\Listener\Installation\InstallationInspector,
+use ScContent\Options\Installation\Installation,
     ScContent\Controller\AbstractInstallation,
     ScContent\Exception\InvalidArgumentException,
-    ScContent\Exception\IoCException,
     //
     Zend\View\Model\ModelInterface as ViewModel,
     Zend\Mvc\MvcEvent;
@@ -23,49 +22,30 @@ use ScContent\Listener\Installation\InstallationInspector,
 class InstallationStrategy extends AbstractThemeStrategy
 {
     /**
-     * @var \ScContent\Listener\Installation\InstallationInspector
-     */
-    protected $installationInspector;
-
-    /**
-     * @param  \ScContent\Listener\Installation\InstallationInspector $service
-     * @return void
-     */
-    public function setInstallationInspector(InstallationInspector $service)
-    {
-        $this->installationInspector = $service;
-    }
-
-    /**
-     * @throws \ScContent\Exception\IoCException
-     * @return \ScContent\Listener\Installation\InstallationInspector
-     */
-    public function getInstallationInspector()
-    {
-        if (! $this->installationInspector instanceof InstallationInspector) {
-            throw new IoCException(
-	       'The InstallationInspector was not set.'
-            );
-        }
-        return $this->installationInspector;
-    }
-
-    /**
      * @param  \Zend\Mvc\MvcEvent $event
      * @return void
      */
     public function update(MvcEvent $event)
     {
-        $installationInspector = $this->getInstallationInspector();
-        $options = $installationInspector->getCurrentSetup();
-
-        $routeMatch = $event->getRouteMatch();
-        $controller = $event->getTarget();
         $model = $event->getResult();
-
         if (! $model instanceof ViewModel) {
             return;
         }
+
+        $installation = $event->getParam('installation');
+        if (is_null($installation)) {
+            throw new DomainException(
+                "Missing event parameter 'installation'."
+            );
+        }
+        if (! $installation instanceof Installation) {
+            throw new DomainException(
+                "The event parameter 'installation' must be a instance of 'ScContent\Options\Installation\Installation'."
+            );
+        }
+
+        $step       = $installation->getCurrentStep();
+        $controller = $event->getTarget();
 
         if (! $controller instanceof AbstractInstallation) {
             throw new InvalidArgumentException(sprintf(
@@ -73,55 +53,46 @@ class InstallationStrategy extends AbstractThemeStrategy
                 get_class($controller)
             ));
         }
-        $layout = 'sc-default/layout/installation/index';
-        $template = 'sc-default/template/installation/index';
-
-        if (isset($options['layout'])) {
-            $layout = $options['layout'];
-        }
-        if (isset($options['template'])) {
-            $template = $options['template'];
-        }
-        $step = $options['steps'][$routeMatch->getParam('step')];
-        if (isset($step['layout'])) {
-            $layout = $step['layout'];
-        }
-        if (isset($step['template'])) {
-            $template = $step['template'];
-        }
 
         $layoutModel = $event->getViewModel();
         if (! $model->terminate()) {
             if ('layout/layout' == $layoutModel->getTemplate()) {
+                $layout = $step->getLayout();
+                if (empty($layout)) {
+                    $layout = $installation->getLayout();
+                }
                 $layoutModel->setTemplate($layout);
             }
-            if (isset($options['title']) && ! isset($layoutModel->title)) {
-                $layoutModel->title = $options['title'];
+            if (! isset($layoutModel->title)) {
+                $layoutModel->title = $installation->getTitle();
             }
         }
 
         if (! $model->getTemplate()) {
+            $template = $step->getTemplate();
+            if (empty($template)) {
+                $template = $installation->getTemplate();
+            }
             $model->setTemplate($template);
         }
 
-        if (isset($options['brand']) && ! isset($model->brand)) {
-            $model->brand = $options['brand'];
+        if (! isset($model->brand)) {
+            $model->brand = $installation->getBrand();
         }
-        if (isset($options['header']) && ! isset($model->header)) {
-            $model->header = $options['header'];
-        }
-
         if (! isset($model->step)) {
-            $model->step = $routeMatch->getParam('step');
+            $model->step = $step->getName();
         }
-        if (isset($step['title']) && ! isset($model->title)) {
-            $model->title = $step['title'];
+        if (! isset($model->header)) {
+            $model->header = $step->getHeader();
         }
-        if (isset($step['header']) && ! isset($model->header)) {
-            $model->header = $step['header'];
+        if (! isset($model->title)) {
+            $model->title = $step->getTitle();
         }
-        if (isset($step['info']) && ! isset($model->info)) {
-            $model->info = $step['info'];
+        if (! isset($model->header)) {
+            $model->header = $step->getHeader();
+        }
+        if (! isset($model->info)) {
+            $model->info = $step->getInfo();
         }
     }
 }

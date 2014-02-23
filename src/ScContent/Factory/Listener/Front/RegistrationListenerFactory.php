@@ -25,9 +25,14 @@ class RegistrationListenerFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+        $translator = $serviceLocator->get('translator');
         $mapper = $serviceLocator->get('ScMapper.Registration');
+
         $listener = new RegistrationListener();
+
+        $listener->setTranslator($translator);
         $listener->setMapper($mapper);
+
         return $listener;
     }
 }

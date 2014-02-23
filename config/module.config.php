@@ -180,7 +180,7 @@ return [
                     'route' => '/install[/:process]',
                     'defaults' => [
                         'controller' => 'ScController.Installation.Default',
-                        'action' => 'index',
+                        'action' => 'redirect',
                     ],
                 ],
             ],

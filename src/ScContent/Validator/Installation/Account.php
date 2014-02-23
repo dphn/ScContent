@@ -77,10 +77,6 @@ class Account extends AbstractValidator
     {
         $mapper = $this->getMapper();
         $total = $mapper->getAccountsCount($this->getAdminRole());
-        //var_dump($total); exit();
-        if ($total > 0) {
-            return true;
-        }
-        return false;
+        return $total > 0;
     }
 }

@@ -29,7 +29,7 @@ use ScContent\Controller\Installation\RequirementsController,
 class RequirementsControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $controller;
-    protected $routeMatch;
+    protected $routeMatchPrototype;
     protected $request;
     protected $event;
 
@@ -62,7 +62,11 @@ class RequirementsControllerTest extends PHPUnit_Framework_TestCase
             ->setMethods(['getCurrentSetup'])
             ->getMock();
 
-        $this->routeMatch = new RouteMatch([
+        $this->controller->setInstallationInspector(
+            $this->fakeInstallationInspectror
+        );
+
+        $this->routeMatchPrototype = new RouteMatch([
             'controller' => 'ScController.Installation.Requirements',
         ]);
         $this->request = new Request();
@@ -73,15 +77,14 @@ class RequirementsControllerTest extends PHPUnit_Framework_TestCase
         $router = HttpRouter::factory($routerConfig);
 
         $this->event->setRouter($router);
-        $this->event->setRouteMatch($this->routeMatch);
         $this->controller->setEvent($this->event);
         $this->controller->setServiceLocator($serviceManager);
     }
 
     /**
-     * @covers
+     * @covers ::configurationAction
      */
-    function testEmpty()
+    public function testEmpty()
     {
 
     }

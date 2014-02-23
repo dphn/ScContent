@@ -56,7 +56,10 @@ class AuthenticationController extends AbstractInstallation
      */
     public function indexAction()
     {
-        $redirect = $this->getRedirect();
+        $event      = $this->getEvent();
+        $routeMatch = $event->getRouteMatch();
+        $redirect   = $routeMatch->getParam('redirect', '/');
+
         $authService = $this->getAuthService();
         if ($authService->hasIdentity()) {
             return $this->redirect()->toUrl($redirect);
@@ -75,7 +78,10 @@ class AuthenticationController extends AbstractInstallation
      */
     public function loginAction()
     {
-        $redirect = $this->getRedirect();
+        $event      = $this->getEvent();
+        $routeMatch = $event->getRouteMatch();
+        $redirect   = $routeMatch->getParam('redirect', '/');
+
         $auth = $this->getAuthService();
         if ($auth->hasIdentity()) {
             return $this->redirect()
@@ -115,7 +121,10 @@ class AuthenticationController extends AbstractInstallation
      */
     public function registerAction()
     {
-        $redirect = $this->getRedirect();
+        $event      = $this->getEvent();
+        $routeMatch = $event->getRouteMatch();
+        $redirect   = $routeMatch->getParam('redirect', '/');
+
         $mapper = $this->getMapper();
         $data = $mapper->findCredentials();
         if (! empty($data)) {

@@ -207,20 +207,22 @@ th, td {
             border-radius:0 0 6px 6px;
 }
 <?php $this->headStyle()->captureEnd() ?>
-<?php echo $this->doctype(); ?>
+<?= $this->doctype(); ?>
 
 <html dir="<?= $this->scLanguageDirection() ?>" lang="<?= \Locale::getPrimaryLanguage(\Locale::getDefault()) ?>">
 <head>
 <meta charset="utf-8">
-<?php echo $this->headStyle() ?>
+<?= $this->headStyle() ?>
 
-<?php echo $this->headTitle($this->translate($title), \Zend\View\Helper\Placeholder\Container\AbstractContainer::PREPEND)->setSeparator(' . ')->setAutoEscape(false) ?>
+<?php if (isset($title)): ?>
+<?= $this->headTitle($this->translate($title), \Zend\View\Helper\Placeholder\Container\AbstractContainer::PREPEND)->setSeparator(' . ')->setAutoEscape(false) ?>
+<?php endif ?>
 
 </head>
 
 <?= $this->scBodyTag('class', $this->scLanguageDirection()) ?>
 <div id="wrap">
-    <?php echo $this->content ?>
+    <?= $this->content ?>
 
 </div>
 <?= $this->scBodyTag() ?>

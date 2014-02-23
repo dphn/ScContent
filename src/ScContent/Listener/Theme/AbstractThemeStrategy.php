@@ -10,6 +10,7 @@
 namespace ScContent\Listener\Theme;
 
 use ScContent\Options\ModuleOptions,
+    ScContent\Listener\AbstractListener,
     ScContent\Exception\IoCException,
     //
     Zend\View\Model\ModelInterface as ViewModel,
@@ -20,7 +21,7 @@ use ScContent\Options\ModuleOptions,
 /**
  * @author Dolphin <work.dolphin@gmail.com>
  */
-abstract class AbstractThemeStrategy
+abstract class AbstractThemeStrategy extends AbstractListener
 {
     /**
      * @const string
@@ -82,13 +83,12 @@ abstract class AbstractThemeStrategy
     }
 
     /**
-     * @param  \ScContent\Options\ModuleOptions $options
-     * @return AbstractThemeStrategy
+     * @param  \ScContent\Options\ModuleOptions
+     * @return void
      */
     public function setModuleOptions(ModuleOptions $options)
     {
         $this->moduleOptions = $options;
-        return $this;
     }
 
     /**
@@ -97,7 +97,7 @@ abstract class AbstractThemeStrategy
      */
     public function getModuleOptions()
     {
-        if(!$this->moduleOptions instanceof ModuleOptions) {
+        if (! $this->moduleOptions instanceof ModuleOptions) {
             throw new IoCException(
                 'The module options were not set.'
             );
