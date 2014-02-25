@@ -77,15 +77,18 @@ class Member extends AbstractList
         $this->validator = $options['validator'];
 
         if (! isset($options['service'])  && ! isset($options['controller'])) {
-            throw new DomainException(
+            throw new DomainException(sprintf(
                 "For member of chain '%s' must be specified 'service' or 'controller'.",
                 $name
-            );
+            ));
         }
-        if (isset($options['controller']) && isset($options['action'])) {
+        if (isset($options['controller'])) {
             $this->controller = $options['controller'];
-            $this->action = $options['action'];
-        } else {
+            if (isset($options['action'])) {
+                $this->action = $options['action'];
+            }
+        }
+        if (isset($options['service'])) {
             $this->service = $options['service'];
         }
         if (isset($options['batch'])
@@ -144,7 +147,7 @@ class Member extends AbstractList
      */
     public function setController($name)
     {
-        $this->controller = $controller;
+        $this->controller = $name;
     }
 
     /**
@@ -182,6 +185,11 @@ class Member extends AbstractList
         if (! is_array($batch)) {
             throw new InvalidArgumentException(
                 'The batch of parameters must be an array.'
+            );
+        }
+        if (empty($batch)) {
+            throw new InvalidArgumentException(
+                'Batch must not be empty.'
             );
         }
         $this->items = $batch;

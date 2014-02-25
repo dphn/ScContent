@@ -62,9 +62,9 @@ class Installation extends AbstractList
 
     /**
      * @param string $moduleName
-     * @param array  $options
+     * @param array  $options optional
      */
-    public function __construct($moduleName, $options)
+    public function __construct($moduleName, $options = [])
     {
         $this->moduleName = $moduleName;
 
@@ -190,6 +190,22 @@ class Installation extends AbstractList
     /**
      * @param  string $name
      * @throws \ScContent\Exception\InvalidArgumentException
+     * @return Step
+     */
+    public function getStep($name)
+    {
+        if (! array_key_exists($name, $this->items)) {
+            throw new InvalidArgumentException(sprintf(
+                "Unknown step '%s'.",
+                $name
+            ));
+        }
+        return $this->items[$name];
+    }
+
+    /**
+     * @param  string $name
+     * @throws \ScContent\Exception\InvalidArgumentException
      * @return void
      */
     public function setCurrentStepName($name)
@@ -223,21 +239,5 @@ class Installation extends AbstractList
     public function getCurrentStep()
     {
         return $this->items[$this->getCurrentStepName()];
-    }
-
-    /**
-     * @param  string $name
-     * @throws \ScContent\Exception\InvalidArgumentException
-     * @return Step
-     */
-    public function getStep($name)
-    {
-        if (! array_key_exists($name, $this->items)) {
-            throw new InvalidArgumentException(sprintf(
-                "Unknown step '%s'.",
-                $name
-            ));
-        }
-        return $this->step[$name];
     }
 }

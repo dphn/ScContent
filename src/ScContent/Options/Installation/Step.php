@@ -64,9 +64,9 @@ class Step extends AbstractList
      * Constructor
      *
      * @param string $name
-     * @param string $options
+     * @param array $options optional
      */
-    public function __construct($name, $options)
+    public function __construct($name, $options = [])
     {
         $this->name = $name;
 
@@ -196,10 +196,10 @@ class Step extends AbstractList
     public function getMember($name)
     {
         if (! isset($this->items[$name])) {
-            throw new InvalidArgumentException(
+            throw new InvalidArgumentException(sprintf(
                 "Unknown member of installation chain '%s'.",
                 $name
-            );
+            ));
         }
         return $this->items[$name];
     }
