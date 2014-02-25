@@ -33,8 +33,6 @@ class RequirementsControllerTest extends PHPUnit_Framework_TestCase
     protected $request;
     protected $event;
 
-    protected $fakeInstallationInspectror;
-
     /**
      * @return void
      */
@@ -55,15 +53,6 @@ class RequirementsControllerTest extends PHPUnit_Framework_TestCase
             function() use ($plugin) {
                 return $plugin;
             }
-        );
-
-        $this->fakeInstallationInspectror = $this
-            ->getMockBuilder('ScContent\Listener\Installation\InstallationInspector')
-            ->setMethods(['getCurrentSetup'])
-            ->getMock();
-
-        $this->controller->setInstallationInspector(
-            $this->fakeInstallationInspectror
         );
 
         $this->routeMatchPrototype = new RouteMatch([
