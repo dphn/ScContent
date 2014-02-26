@@ -12,9 +12,9 @@ namespace ScContent\Controller;
 use ScContent\Service\Installation\AbstractInstallationService,
     ScContent\Options\Installation\Installation,
     ScContent\Exception\DomainException,
-    ScContent\Exception\IoCException,
     //
     Zend\Mvc\Controller\AbstractActionController,
+    Zend\Validator\ValidatorInterface,
     Zend\Mvc\MvcEvent;
 
 /**
@@ -22,11 +22,6 @@ use ScContent\Service\Installation\AbstractInstallationService,
  */
 abstract class AbstractInstallation extends AbstractActionController
 {
-    /**
-     * @const string
-     */
-    const DefaultRedirectRoute = 'sc-admin/content-manager';
-
     /**
      * @var \ScContent\Options\Installation\Installation
      */
@@ -43,41 +38,6 @@ abstract class AbstractInstallation extends AbstractActionController
     protected $_service;
 
     /**
-     * @param  \Zend\Mvc\MvcEvent
-     * @throws \ScContent\Exception\DomainException
-     * @return mixed
-     */
-    public function onDispatch(MvcEvent $event)
-    {
-        $routeMatch = $event->getRouteMatch();
-        if (! $routeMatch) {
-            throw new DomainException(
-                'Missing route matches; unsure how to retrieve action'
-            );
-        }
-
-        if ('redirect' === $routeMatch->getParam('action')) {
-            return $this->redirect()->toRoute(self::DefaultRedirectRoute);
-        }
-
-        $installation = $event->getParam('installation');
-        if (is_null($installation)) {
-            throw new DomainException(
-                "Missing event parameter 'installation'."
-            );
-        }
-        if (! $installation instanceof Installation) {
-            throw new DomainException(
-                "The event parameter 'installation' must be a instance of 'ScContent\Options\Installation\Installation'."
-            );
-        }
-
-        $this->_installation = $installation;
-
-        return parent::onDispatch($event);
-    }
-
-    /**
      * @param  \ScContent\Options\Installation\Installation $installation
      * @return void
      */
@@ -87,15 +47,25 @@ abstract class AbstractInstallation extends AbstractActionController
     }
 
     /**
-     * @throws \ScContent\Exception\IoCException
+     * @throws \ScContent\Exception\DomainException
      * @return \ScContent\Options\Installation\Installation
      */
     public function getInstallation()
     {
         if (! $this->_installation instanceof Installation) {
-            throw new IoCException(
-                'Installation options was not set.'
-            );
+            $event = $this->getEvent();
+            $installation = $event->getParam('installation');
+            if (is_null($installation)) {
+                throw new DomainException(
+                    "Missing event parameter 'installation'."
+                );
+            }
+            if (! $installation instanceof Installation) {
+                throw new DomainException(
+                    "The event parameter 'installation' must be a instance of 'ScContent\Options\Installation\Installation'."
+                );
+            }
+            $this->_installation = $installation;
         }
         return $this->_installation;
     }
@@ -129,14 +99,6 @@ abstract class AbstractInstallation extends AbstractActionController
             $member        = $step->getCurrentMember();
             $validatorName = $member->getValidator();
 
-            if (empty($validatorName)) {
-                throw new DomainException(
-                    $this->scTranslate(
-                        'Validator was not set.'
-                    )
-                );
-            }
-
             $validatorManager = $this->getServiceLocator()->get(
                 'ValidatorManager'
             );
@@ -149,7 +111,7 @@ abstract class AbstractInstallation extends AbstractActionController
      * @param  \ScContent\Service\Installation\AbstractInstallationService $service
      * @return void
      */
-    public function setService(AbstractInstallation $service)
+    public function setService(AbstractInstallationService $service)
     {
         $this->_service = $service;
     }
@@ -160,20 +122,11 @@ abstract class AbstractInstallation extends AbstractActionController
      */
     public function getService()
     {
-        if (! $this->_service instanceof AbstractInstallation) {
-            $installation = $this->getInstallation();
-            $step         = $installation->getCurrentStep();
-            $member       = $step->getCurrentMember();
-            $serviceName  = $member->getService();
-
-            if (empty($serviceName)) {
-                throw new DomainException(
-                    $this->scTranslate(
-                        'The installation service was not set.'
-                    )
-                );
-            }
-
+        if (! $this->_service instanceof AbstractInstallationService) {
+            $installation   = $this->getInstallation();
+            $step           = $installation->getCurrentStep();
+            $member         = $step->getCurrentMember();
+            $serviceName    = $member->getService();
             $serviceLocator = $this->getServiceLocator();
             $service        = $serviceLocator->get($serviceName);
 

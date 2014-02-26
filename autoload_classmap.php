@@ -5,7 +5,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
  * Generated using Qt
- * total classes:    319
+ * total classes:    322
  * total interfaces: 15
  */
 
@@ -274,7 +274,6 @@ return [
     'ScContent\Options\Installation\Installation'                          => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'Installation'                     . DS . 'Installation.php',
     'ScContent\Options\Installation\Member'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'Installation'                     . DS . 'Member.php',
     'ScContent\Options\Installation\Step'                                  => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'Installation'                     . DS . 'Step.php',
-    'ScContent\Options\InstallationOptions'                                => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'InstallationOptions.php',
     'ScContent\Options\ModuleOptions'                                      => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'ModuleOptions.php',
     'ScContent\Options\ModuleOptionsInterface'                             => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'ModuleOptionsInterface.php',
     'ScContent\Options\ModuleThemeInterface'                               => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'Options'     . DS . 'ModuleThemeInterface.php',
@@ -340,10 +339,14 @@ return [
     'ScContent\View\Helper\LanguageDirection'                              => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'View'        . DS . 'Helper'                           . DS . 'LanguageDirection.php',
     'ScContent\View\Helper\Localization'                                   => __DIR__ . DS . 'src'         . DS . 'ScContent'      . DS . 'View'        . DS . 'Helper'                           . DS . 'Localization.php',
     'ScContentTest\Bootstrap'                                              => __DIR__ . DS . 'tests'       . DS . 'Bootstrap.php',
+    'ScContentTest\Controller\AbstractInstallationTest'                    => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Controller'  . DS . 'AbstractInstallationTest.php',
     'ScContentTest\Controller\Back\ArticleControllerTest'                  => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Controller'  . DS . 'Back'                             . DS . 'ArticleControllerTest.php',
     'ScContentTest\Controller\Back\CategoryControllerTest'                 => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Controller'  . DS . 'Back'                             . DS . 'CategoryControllerTest.php',
     'ScContentTest\Controller\Back\FileControllerTest'                     => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Controller'  . DS . 'Back'                             . DS . 'FileControllerTest.php',
     'ScContentTest\Controller\Back\RequirementsControllerTest'             => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Controller'  . DS . 'Installation'                     . DS . 'RequirementsControllerTest.php',
+    'ScContentTest\Options\Installation\InstallationTest'                  => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Options'     . DS . 'Installation'                     . DS . 'InstallationTest.php',
+    'ScContentTest\Options\Installation\MemberTest'                        => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Options'     . DS . 'Installation'                     . DS . 'MemberTest.php',
+    'ScContentTest\Options\Installation\StepTest'                          => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Options'     . DS . 'Installation'                     . DS . 'StepTest.php',
     'ScContentTest\Validator\Installation\PhpExtensionTest'                => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Validator'   . DS . 'Installation'                     . DS . 'PhpExtensionTest.php',
     'ScContentTest\Validator\Installation\PhpIniTest'                      => __DIR__ . DS . 'tests'       . DS . 'ScContentTest'  . DS . 'Validator'   . DS . 'Installation'                     . DS . 'PhpIniTest.php',
 ];

@@ -22,6 +22,11 @@ use ScContent\Service\AbstractService;
 class InstallationController extends AbstractInstallation
 {
     /**
+     * @const string
+     */
+    const DefaultRedirectRoute = 'zfcuser';
+
+    /**
      * Runs services specified in the configuration.
      *
      * @throws \ScContent\Exception\DomainException
@@ -51,5 +56,13 @@ class InstallationController extends AbstractInstallation
             }
         }
         return $this->redirect()->toUrl($redirect);
+    }
+
+    /**
+     * @return \Zend\Stdlib\ResponseInterface
+     */
+    public function redirectAction()
+    {
+        return $this->redirect()->toRoute(self::DefaultRedirectRoute);
     }
 }
