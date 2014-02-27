@@ -133,8 +133,12 @@ abstract class AbstractInstallation extends AbstractActionController
             if (! $service instanceof AbstractInstallationService) {
                 throw new DomainException(sprintf(
                     $this->scTranslate(
-                        "Service '%s' must inherit from '\ScContent\Service\Installation\AbstractInstallationService'."
+                        "An error occurred while installing the module '%s', step '%s', member '%s'. "
+                        . "Service '%s' must inherit from '\ScContent\Service\Installation\AbstractInstallationService'."
                     ),
+                    $installation->getModuleName(),
+                    $step->getName(),
+                    $member->getName(),
                     $serviceName
                 ));
             }

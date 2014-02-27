@@ -11,7 +11,9 @@ namespace ScContent\Controller\Installation;
 
 use ScContent\Controller\AbstractInstallation,
     ScContent\Validator\Installation\PhpExtension,
+    ScContent\Validator\Installation\PhpIni,
     ScContent\Exception\InvalidArgumentException,
+    ScContent\Exception\DomainException,
     //
     Zend\Validator\ValidatorInterface,
     Zend\View\Model\ViewModel;
@@ -21,11 +23,6 @@ use ScContent\Controller\AbstractInstallation,
  */
 class RequirementsController extends AbstractInstallation
 {
-    /**
-     * @var \Zend\Validator\ValidatorInterface
-     */
-    protected $validator;
-
     /**
      * Checks the settings in the php.ini file in accordance with the
      * configuration of the module. If the settings are not compatible,
@@ -41,23 +38,40 @@ class RequirementsController extends AbstractInstallation
         $member       = $step->getCurrentMember();
         $validator    = $this->getValidator();
 
+        if (! $validator instanceof PhpIni) {
+            throw new DomainException(sprintf(
+                $this->scTranslate(
+                    "An error occurred while installing the module '%s', step '%s', member '%s'. "
+                    . "Validator must be an instance of class '%s', '%s' instead."
+                ),
+                $installation->getModuleName(),
+                $step->getName(),
+                $member->getName(),
+                'ScContent\Validator\Installation\PhpIni',
+                is_object($validator) ? get_class($validator) : gettype($validator)
+            ));
+        }
+
         $failures = [];
         foreach ($member as $requirement) {
             if (! $validator->isValid($requirement)) {
                 if (! isset($requirement['failure_message'])) {
                     throw new InvalidArgumentException(sprintf(
                         $this->scTranslate(
-                            "Unable to verify the  php.ini."
-                            ." Missing option 'failure_message' for member '%s'."
+                            "An error occurred while installing the module '%s', step '%s', member '%s'. "
+                            . "Missing option 'failure_message' for '%s' param."
                         ),
-                        $member->getName()
+                        $installation->getModuleName(),
+                        $step->getName(),
+                        $member->getName(),
+                        $requirement['name']
                     ));
                 }
                 $failures[] = [
                     $requirement['name'],
-                    (false === ini_get($requirement['name']))
+                    (false === $validator->getValueFromCallback($requirement['name']))
                              ? 'false'
-                             : ini_get($requirement['name']),
+                             : $validator->getValueFromCallback($requirement['name']),
                     $requirement['failure_message']
                 ];
             }
@@ -76,7 +90,7 @@ class RequirementsController extends AbstractInstallation
 
     /**
      * Checks for installed php extensions. If a required php extension
-     * is missing, the installation process stops and displays
+     * is not installed, the installation process stops and displays
      * the information message.
      *
      * @return \Zend\Stdlib\ResponseInterface|\Zend\View\Model\ViewModel
@@ -89,15 +103,32 @@ class RequirementsController extends AbstractInstallation
         $member       = $step->getCurrentMember();
         $validator    = $this->getValidator();
 
+        if (! $validator instanceof PhpExtension) {
+            throw new DomainException(sprintf(
+                $this->scTranslate(
+                    "An error occurred while installing the module '%s', step '%s', member '%s'. "
+                    . "Validator must be an instance of class '%s', '%s' instead."
+                ),
+                $installation->getModuleName(),
+                $step->getName(),
+                $member->getName(),
+                'ScContent\Validator\Installation\PhpExtension',
+                is_object($validator) ? get_class($validator) : gettype($validator)
+            ));
+        }
+
         $failures = [];
         foreach ($member as $requirement) {
             if (! $validator->isValid($requirement)) {
                 if (! isset($requirement['information'])) {
                     throw new InvalidArgumentException(sprintf(
                         $this->scTranslate(
-                            "Unable to check whether the extension is loaded."
-                            ." Missing option 'information' for '%s' param."
+                            "An error occurred while installing the module '%s', step '%s', member '%s'. "
+                            . "Missing option 'information' for '%s' param."
                         ),
+                        $installation->getModuleName(),
+                        $step->getName(),
+                        $member->getName(),
                         $requirement['name']
                     ));
                 }
